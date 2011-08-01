@@ -4,3 +4,4 @@ log/*.log
 tmp/
 jetty/*
 Gemfile.lock
+*.swp
