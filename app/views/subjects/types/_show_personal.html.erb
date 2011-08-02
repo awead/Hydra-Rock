@@ -1,0 +1,36 @@
+<% first_name = get_values_from_datastream(@document_fedora,'descMetadata', [:mods, {:subject=>personal_counter}, :personal, :first_name]).first %>
+<% last_name = get_values_from_datastream(@document_fedora,'descMetadata', [:mods, {:subject=>personal_counter}, :personal, :last_name]).first %>
+<% base_id = "subject_#{personal_counter}" %>
+<% unless first_name.empty? && last_name.empty? %>
+  <dl class="individual contributor" id="<%= base_id %>">
+    <dt>Personal Subject:</dt>
+    <dd class="multi_inline individual">
+      <ul>
+        <% unless first_name.empty? %>
+          <li class="name_first">
+            <%= fedora_field_label("descMetadata", [:mods, {:subject=>personal_counter}, :personal, :first_name], "First Name") %>
+            <%= first_name %>
+          </li>
+        <% end %>
+        <% unless last_name.empty? %>
+          <li class="name_last">
+            <%= fedora_field_label("descMetadata", [:mods, {:subject=>personal_counter}, :personal, :last_name], "Last Name") %>
+            <%= last_name %>
+          </li>
+        <% end %>
+        <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>personal_counter}, :personal, :terms_of_address]).first.empty? %>
+          <li class="terms_of_address">
+            <%= fedora_field_label("descMetadata", [:mods, {:subject=>personal_counter}, :personal, :terms_of_address], "Terms of Address") %>
+            <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>personal_counter}, :personal, :terms_of_address]) %>
+          </li>
+        <% end %>
+        <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>personal_counter}, :personal, :date]).first.empty? %>
+          <li class="date">
+            <%= fedora_field_label("descMetadata", [:mods, {:subject=>personal_counter}, :personal, :date], "Dates") %>
+            <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>personal_counter}, :personal, :date]) %>
+          </li>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+<% end %>

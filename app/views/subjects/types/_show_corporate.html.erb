@@ -1,0 +1,15 @@
+<% corporate_name = get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>corporate_counter}, :corporate, :namePart]).first %>
+<% base_id = "subject_#{corporate_counter}" %>
+<% unless corporate_name.first.empty? %>
+  <dl class="corporate subject" id="<%= base_id %>">
+    <dt>Corporate Subject:</dt>
+    <dd class="multi_inline subject">
+      <ul>
+        <li class="name">
+          <%= fedora_field_label("descMetadata", [:mods, {:subject=>corporate_counter}, :corporate, :namePart], "Corporate") %>
+          <%= corporate_name %>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+<% end %>

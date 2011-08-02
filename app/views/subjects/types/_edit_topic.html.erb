@@ -1,0 +1,34 @@
+<% topic_name = get_values_from_datastream(@document_fedora,'descMetadata', [:mods, {:subject=>topic_counter}, :topic]).first %>
+<% base_id = "subject_#{topic_counter}" %>
+
+<% if RAILS_ENV == "development" %>
+  counter: <%= topic_counter %> <br/>
+  name: <%= topic_name %> <br/>
+<% end %>
+
+<li>
+  <dl class="topic subject" id="<%= base_id %>">
+    <dt>Topic Subject:</dt>
+    <dd class="multi_inline topic">
+      <ul>
+        <li class="topic">
+          <%= fedora_field_label("descMetadata", [:mods, {:subject=>topic_counter}, :topic], "Topic") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [:mods, {:subject=>topic_counter}, :topic], :multiple=>false) %>
+        </li>
+        <li class="temporal">
+          <%= fedora_field_label("descMetadata", [:mods, {:subject=>topic_counter}, :temporal], "Temporal") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [:mods, {:subject=>topic_counter}, :temporal], :multiple=>false) %>
+        </li>
+         <li class="genre">
+          <%= fedora_field_label("descMetadata", [:mods, {:subject=>topic_counter}, :genre], "Genre") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [:mods, {:subject=>topic_counter}, :genre], :multiple=>false) %>
+        </li>
+      </ul>
+      <% if ( (params[:action] == "edit" || params[:action] == "create") && !topic_name.strip.empty? ) %>
+        <%= field_selectors_for("descMetadata", [:mods, {:subject=>topic_counter}, :topic]) %>
+        <!-- Need to find an automatic way of getting content_type -->
+        <a class="destructive destroy_subject" href="<%= asset_subject_path(@document_fedora.pid, "topic", topic_counter, { :content_type => "archival_image" } ) %>" title="Delete '<%= topic_name %>'"> Delete</a>
+      <% end %>
+    </dd>
+  </dl>
+</li>

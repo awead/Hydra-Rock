@@ -1,0 +1,28 @@
+<% alt_title_name = get_values_from_datastream(@document_fedora,'descMetadata', [{:alt_title=>alt_title_counter}]).first %>
+
+<% if RAILS_ENV == "development" %>
+  node: <%= alt_title_name %> <br/>
+  counter: <%= alt_title_counter %> <br/>
+<% end %>
+
+<li>
+  <dl class="alt_title node" id="<%= "alt_title_#{alt_title_counter}" %>">
+    <dt>alt_title:</dt>
+    <dd class="multi_inline alt_title">
+      <ul>
+        <li class="alt_title_name">
+          <%= fedora_field_label("descMetadata", [:alt_title], "alt_title Name:") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [{:alt_title=>alt_title_counter}], :multiple=>false) %>
+        </li>
+        <% if (params[:action] == "edit" && !alt_title_name.empty?) %>
+          <%= field_selectors_for("descMetadata", [{:alt_title=>alt_title_counter}]) %>
+          <a class="destructive destroy_node"
+             href="<%= asset_pbcore_path(@document_fedora.pid, "alt_title", alt_title_counter, { :content_type => "archival_video" } ) %>"
+             title="Delete '<%= alt_title_name %>">
+            Delete
+          </a>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+</li>

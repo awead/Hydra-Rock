@@ -1,0 +1,170 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>content_type)%>" method="post" data-resourceType="<%= content_type %>" accept-charset="utf-8">
+
+  <fieldset id="program_fields">
+    <legend>Event/Program</legend>
+    <dl>
+    
+      <!-- Name -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :name, :name_part], "Name:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:program, :name, :name_part], :multiple=>false) %>
+      </dd>
+      
+      <!-- Title -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :title_info, :title], "Title:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:program, :title_info, :title], :multiple=>false) %>
+      </dd>
+      
+      <!-- Sub-title -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :title_info, :sub_title], "Subtitle:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:program, :title_info, :sub_title], :multiple=>false) %>
+      </dd>
+      
+      <!-- Part number -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :title_info, :part_number], "Part Number:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:program, :title_info, :part_number], :multiple=>false) %>
+      </dd>
+      
+      <!-- Part name -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :title_info, :part_name], "Part Name:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:program, :title_info, :part_name], :multiple=>false) %>
+      </dd>
+      
+    </dl>
+    
+  </fieldset>
+  
+  <fieldset id="original_fields">
+    <legend>Original Item</legend>
+    <dl>
+    
+      <!-- Place -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :place], "Place:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:related_item, :origin_info, :place], :multiple=>false) %>
+      </dd>
+      
+      <!-- Publisher -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :publisher], "Publisher:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:related_item, :origin_info, :publisher], :multiple=>false) %>
+      </dd>
+    
+      <!-- Copyright -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :copyright], "Copyright:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:related_item, :origin_info, :copyright], :multiple=>false) %>
+      </dd>
+   
+      <!-- Date Issued -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :date_issued], "Date Issued:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:related_item, :origin_info, :date_issued], :multiple=>false) %>
+      </dd>        
+    
+      <!-- Date Created -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :date_created], "Date Created:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:related_item, :origin_info, :date_created], :multiple=>false) %>
+      </dd>
+            
+      <!-- Format -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :physical_description, :format], "Format:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:related_item, :physical_description, :format], :multiple=>false) %>
+      </dd>            
+      
+      <!-- Extent -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :physical_description, :extent], "Extent:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:related_item, :physical_description, :extent], :multiple=>false) %>
+      </dd>
+            
+      <!-- Shelf Locator -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :location, :shelf_locator], "Shelf Locator:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:related_item, :location, :shelf_locator], :multiple=>false) %>
+      </dd>      
+    
+    </dl>
+  
+  </fieldset>  
+  
+  <fieldset id="source_fields">
+    <legend>Source Collection</legend>
+    <dl>
+    
+      <!-- Name -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :name, :name_part], "Name:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:source, :name, :name_part], :multiple=>false) %>
+      </dd> 
+            
+      <!-- Collection Number -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :identifier], "Collection Number:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:source, :identifier], :multiple=>false) %>
+      </dd> 
+ 
+      <!-- Repository -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :location, :physical_location], "Repository:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:source, :location, :physical_location], :multiple=>false) %>
+      </dd> 
+ 
+      <!-- Access -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :access], "Access restrictions:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:source, :access], :multiple=>false) %>
+      </dd> 
+      
+      <!-- Rights -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :rights], "Rights information:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:source, :rights], :multiple=>false) %>
+      </dd>       
+        
+    </dl>
+  </fieldset>
+
+</form>

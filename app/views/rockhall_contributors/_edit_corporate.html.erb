@@ -1,0 +1,36 @@
+<% corporate = edit_corporate %>
+<% corporate_counter = edit_corporate_counter %>
+<% corporate_name = get_values_from_datastream(@document_fedora,'descMetadata', [:mods, {:corporate=>corporate_counter}, :namePart]).first %>
+<% base_id = "corporate_#{corporate_counter}" %>
+<% if @document_fedora.class.respond_to?(:corporate_relator_terms) %>
+  <% choices = @document_fedora.class.corporate_relator_terms %>
+<% else %>
+  <% choices = Hydra::ModsArticle.dc_relator_terms %>
+<% end %>
+
+<% if RAILS_ENV == "development" %>
+  node: <%= corporate %> <br/>
+  counter: <%= corporate_counter %> </br/>
+<% end %>
+
+<li>
+  <dl class="corporate contributor" id="<%= base_id %>">
+    <dt>
+      <%= fedora_field_label("descMetadata", [:mods, {:corporate => corporate_counter}, :role, :text], "Corporate Role:") %>
+      <%= fedora_select(@document_fedora,"descMetadata", [:mods, {:corporate => corporate_counter}, :role, :text], :choices=>choices.values.sort) %>
+    </dt>
+    <dd class="multi_inline corporate">
+      <ul>
+        <li>
+          <%= fedora_field_label("descMetadata", [:mods, {:corporate => corporate_counter}, :namePart], "Corporate:") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [:mods, {:corporate => corporate_counter}, :namePart], :multiple=>false) %>
+        </li>
+      </ul>
+      <% if (params[:action] == "edit" && !corporate_name.empty?) %>
+        <%= field_selectors_for("descMetadata", [{:person=>corporate_counter}]) %>
+        <!-- Need to find an automatic way of getting content_type -->
+        <a class="destructive destroy_contributor" href="<%= asset_contributor_path(@document_fedora.pid, "corporate", corporate_counter, { :content_type => "archival_image" } ) %>" title="Delete '<%= corporate_name %>"> Delete</a>
+      <% end %>
+    </dd>
+  </dl>
+</li>

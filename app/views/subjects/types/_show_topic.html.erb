@@ -1,0 +1,29 @@
+<% topic_name = get_values_from_datastream(@document_fedora,'descMetadata', [:mods, {:subject=>topic_counter}, :topic]).first %>
+<% base_id = "subject_#{topic_counter}" %>
+<% unless topic_name.empty? %>
+  <dl class="topic subject" id="<%= base_id %>">
+    <dt>Topic Subject:</dt>
+    <dd class="multi_inline subject">
+      <ul>
+        <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>topic_counter}, :topic]).first.empty? %>
+          <li class="topic">
+            <%= fedora_field_label("descMetadata", [:mods, {:subject=>topic_counter}, :topic], "Topic") %>
+            <%= topic_name %>
+          </li>
+        <% end %>
+        <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>topic_counter}, :temporal]).first.empty? %>
+          <li class="temporal">
+            <%= fedora_field_label("descMetadata", [:mods, {:subject=>topic_counter}, :temporal], "Temporal") %>
+            <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>topic_counter}, :temporal]) %>
+          </li>
+        <% end %>
+        <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>topic_counter}, :genre]).first.empty? %>
+          <li class="genre">
+            <%= fedora_field_label("descMetadata", [:mods, {:subject=>topic_counter}, :genre], "Genre") %>
+            <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject=>topic_counter}, :genre]) %>
+          </li>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+<% end %>

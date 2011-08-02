@@ -1,0 +1,65 @@
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html" version="2.0">
+  <instantiationMediaType source="PBCore instantiationMediaType" ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image">Moving image</instantiationMediaType>
+  <pbcoreIdentifier source="rockhall" annotation="Fedora ID"/>
+  <pbcoreTitle annotation="title as seen on-screen" titleType="Full"/>
+  <instantiationLanguage source="ISO 639.2" ref="http://id.loc.gov/vocabulary/iso639-2/eng.html"/>
+  <pbcoreDescription descriptionType="Summary" descriptionTypeSource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#summary"/>
+  <pbcoreDescription descriptionType="Table of Contents" descriptionTypeSource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents"/>
+  <pbcoreCoverage>
+    <coverage annotation="Event Location"/>
+    <coverageType source="PBCore coverageType" ref="http://pbcore.org/vocabularies/coverageType#spatial">Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date"/>
+    <coverageType source="PBCore coverageType" ref="http://pbcore.org/vocabularies/coverageType#temporal">Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="note"/>
+  <pbcoreInstantiation>
+    <instantiationGenerations source="PBCore instantiationGenerations" ref="http://pbcore.org/vocabularies/instantiationGenerations#original">Original</instantiationGenerations>
+    <instantiationPhysical source="PBCore instantiationPhysical"/>
+    <instantiationStandard source="PBCore instantiationStandard"/>
+    <instantiationIdentifier source="rockhall" annotation="barcode"/>
+    <instantiationRelation>
+      <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier source="rockhall" annotation="collection name"/>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier source="rockhall" annotation="collection number"/>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier source="rockhall" annotation="accession number"/>
+    </instantiationRelation>
+    <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+2809 Woodland Ave.,
+Cleveland, OH, 44115
+216-515-1956
+library@rockhall.org</instantiationLocation>
+    <instantiationAnnotation annotationType="note">Copies from original can be made upon request.
+Speak to an archivist for fees and specifications.</instantiationAnnotation>
+  </pbcoreInstantiation>
+  <pbcorePublisher>
+    <publisher/>
+    <publisherRole source="PBcore publisherRole" ref=""/>
+  </pbcorePublisher>
+  <pbcoreContributor>
+    <contributor/>
+    <contributorRole source="MARC List for Relators" ref=""/>
+  </pbcoreContributor>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="" subjectType="topic"/>
+  <pbcoreGenre source="Library of Congress Subject Headings" ref=""/>
+  <pbcoreRelation>
+    <pbcoreRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier/>
+  </pbcoreRelation>
+  <pbcoreSubject source="Library of Congress Subject Headings" subjectType="event"/>
+  <pbcoreSubject source="Library of Congress Subject Headings" subjectType="era"/>
+  <pbcoreSubject source="Library of Congress Subject Headings" subjectType="place"/>
+  <pbcoreSubject source="Library of Congress Name Authorities" subjectType="entity"/>
+  <pbcoreTitle titleType="Episode"/>
+  <pbcoreTitle titleType="Subtitle"/>
+  <pbcoreTitle annotation="Other Title" titleType="Alternatitve"/>
+  <instantiationAlternativeModes/>
+</pbcoreDescriptionDocument>
+

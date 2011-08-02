@@ -1,0 +1,26 @@
+<% geographic_name = get_values_from_datastream(@document_fedora,'descMetadata', [:mods, {:subject=>geographic_counter}, :geographic]).first %>
+<% base_id = "subject_#{geographic_counter}" %>
+
+<% if RAILS_ENV == "development" %>
+  counter: <%= geographic_counter %> <br/>
+  name: <%= geographic_name %> <br/>
+<% end %>
+
+<li>
+  <dl class="geographic subject" id="<%= base_id %>">
+    <dt>Geographic Subject:</dt>
+    <dd class="multi_inline geographic">
+      <ul>
+        <li class="name">
+          <%= fedora_field_label("descMetadata", [:mods, {:subject=>geographic_counter}, :geographic], "Geographic") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [:mods, {:subject=>geographic_counter}, :geographic], :multiple=>false) %>
+        </li>
+      </ul>
+      <% if ( (params[:action] == "edit" || params[:action] == "create") && !geographic_name.strip.empty? ) %>
+        <%= field_selectors_for("descMetadata", [:mods, {:subject=>geographic_counter}, :geographic]) %>
+        <!-- Need to find an automatic way of getting content_type -->
+        <a class="destructive destroy_subject" href="<%= asset_subject_path(@document_fedora.pid, "geographic", geographic_counter, { :content_type => "archival_image" } ) %>" title="Delete '<%= geographic_name %>'"> Delete</a>
+      <% end %>
+    </dd>
+  </dl>
+</li>

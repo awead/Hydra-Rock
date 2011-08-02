@@ -1,0 +1,20 @@
+<% corporate = show_corporate %>
+<% corporate_counter = show_corporate_counter %>
+<% corporate_name = get_values_from_datastream(@document_fedora,'descMetadata', [:mods, {:corporate=>corporate_counter}, :namePart]).first %>
+<% base_id = "corporate_#{corporate_counter}" %>
+<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:corporate => corporate_counter}, :namePart]).first.empty? %>
+  <dl class="corporate contributor" id="<%= base_id %>">
+    <dt>
+      <%= fedora_field_label("descMetadata", [:mods, {:corporate => corporate_counter}, :role, :text], "Role:") %>
+      <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:corporate => corporate_counter}, :role, :text]) %>
+    </dt>
+    <dd class="multi_inline corporate">
+      <ul>
+        <li>
+          <%= fedora_field_label("descMetadata", [:mods, {:corporate => corporate_counter}, :namePart], "Corporate:") %>
+          <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:corporate => corporate_counter}, :namePart]) %>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+<% end %>

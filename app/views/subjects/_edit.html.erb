@@ -1,0 +1,21 @@
+<% subject = edit %>
+<% subject_counter = edit_counter %>
+<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject => subject_counter}, :personal]).first.empty? %>
+  <%= render :partial => "subjects/types/edit_personal", :locals => { :personal_counter => edit_counter } %>
+<% end %>
+<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject => subject_counter}, :corporate]).first.empty? %>
+  <%= render :partial => "subjects/types/edit_corporate", :locals => { :corporate_counter => edit_counter } %>
+<% end %>
+<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject => subject_counter}, :conference]).first.empty? %>
+  <%= render :partial => "subjects/types/edit_conference", :locals => { :conference_counter => edit_counter } %>
+<% end %>
+<% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, {:subject => subject_counter}, :title_info]).first.empty? %>
+  <%= render :partial => "subjects/types/edit_title_info", :locals => { :title_info_counter => edit_counter } %>
+<% end %>
+<% if @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:mods, { :subject => subject_counter}, :topic).count == 1 %>
+  <%= render :partial => "subjects/types/edit_topic", :locals => { :topic_counter => edit_counter } %>
+<% end %>
+<% if @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:mods, { :subject => subject_counter}, :geographic).count == 1 %>
+  <%= render :partial => "subjects/types/edit_geographic", :locals => { :geographic_counter => edit_counter } %>
+<% end %>
+

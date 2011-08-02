@@ -1,0 +1,3 @@
+<dt>Publisher:</dt>
+<dd> <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher => publisher_counter}, :name]) %> (<%= get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher => publisher_counter}, :role]) %>)
+</dd>

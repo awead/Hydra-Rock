@@ -1,0 +1,26 @@
+<% corporate_name = get_values_from_datastream(@document_fedora,'descMetadata', [:mods, {:subject=>corporate_counter}, :corporate, :namePart]).first %>
+<% base_id = "subject_#{corporate_counter}" %>
+
+<% if RAILS_ENV == "development" %>
+  counter: <%= corporate_counter %> <br/>
+  name: <%= corporate_name %> <br/>
+<% end %>
+
+<li>
+  <dl class="corporate subject" id="<%= base_id %>">
+    <dt>Corporate Subject:</dt>
+    <dd class="multi_inline corporate">
+      <ul>
+        <li class="name">
+          <%= fedora_field_label("descMetadata", [:mods, {:subject=>corporate_counter}, :corporate, :namePart], "Corporate") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [:mods, {:subject=>corporate_counter}, :corporate, :namePart], :multiple=>false) %>
+        </li>
+      </ul>
+      <% if ( (params[:action] == "edit" || params[:action] == "create") && !corporate_name.strip.empty? ) %>
+        <%= field_selectors_for("descMetadata", [:mods, {:subject=>corporate_counter}, :corporate]) %>
+        <!-- Need to find an automatic way of getting content_type -->
+        <a class="destructive destroy_subject" href="<%= asset_subject_path(@document_fedora.pid, "corporate", corporate_counter, { :content_type => "archival_image" } ) %>" title="Delete '<%= corporate_name %>'"> Delete</a>
+      <% end %>
+    </dd>
+  </dl>
+</li>

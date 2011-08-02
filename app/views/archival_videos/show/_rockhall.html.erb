@@ -1,0 +1,13 @@
+<dl>
+  <fieldset id="properties">
+    <legend>Properties</legend>
+    <dl>
+
+      <%= display_field([:notes], { :datastream => "properties", :name => "Internal Notes", :multiple => TRUE }) %>
+      <%= display_field([:depositor], { :datastream => "properties" }) %>
+      <%= display_field([:submission], { :datastream => "properties", :multiple => TRUE }) %>
+      <%= display_field([:access], { :datastream => "properties", :name => "Access Restrictions" }) %>
+
+    </dl>
+  </fieldset>
+</dl>

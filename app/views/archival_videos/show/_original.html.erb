@@ -1,0 +1,14 @@
+<dl>
+  <fieldset id="original_fields">
+    <legend>Original</legend>
+    <dl>
+      <%= display_field([:item, :carrier], { :name => "Carrier" }) %>
+      <%= display_field([:item, :standard], { :name => "Standard" }) %>
+      <%= display_field([:item, :barcode], { :name => "Barcode" }) %>
+      <%= display_field([:item, :relation, :collection_name], { :name => "Collection Name" }) %>
+      <%= display_field([:item, :relation, :collection_number], { :name => "Collection Number" }) %>
+      <%= display_field([:item, :relation, :accession_number], { :name => "Accession Number" }) %>
+      <%= display_field([:item, :note], { :name => "Note" }) %>
+    </dl>
+  </fieldset>
+</dl>

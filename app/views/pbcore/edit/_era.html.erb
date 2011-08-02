@@ -1,0 +1,28 @@
+<% era_name = get_values_from_datastream(@document_fedora,'descMetadata', [{:era=>era_counter}]).first %>
+
+<% if RAILS_ENV == "development" %>
+  node: <%= era_name %> <br/>
+  counter: <%= era_counter %> <br/>
+<% end %>
+
+<li>
+  <dl class="era node" id="<%= "era_#{era_counter}" %>">
+    <dt>era:</dt>
+    <dd class="multi_inline era">
+      <ul>
+        <li class="era_name">
+          <%= fedora_field_label("descMetadata", [:era], "era Name:") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [{:era=>era_counter}], :multiple=>false) %>
+        </li>
+        <% if (params[:action] == "edit" && !era_name.empty?) %>
+          <%= field_selectors_for("descMetadata", [{:era=>era_counter}]) %>
+          <a class="destructive destroy_node"
+             href="<%= asset_pbcore_path(@document_fedora.pid, "era", era_counter, { :content_type => "archival_video" } ) %>"
+             title="Delete '<%= era_name %>">
+            Delete
+          </a>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+</li>

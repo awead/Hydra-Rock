@@ -5,3 +5,4 @@ tmp/
 jetty/*
 Gemfile.lock
 *.swp
+.rspec

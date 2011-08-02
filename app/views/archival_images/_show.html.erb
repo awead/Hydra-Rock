@@ -1,0 +1,27 @@
+<% if params[:files] %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#accordion").accordion({active: 1});
+    });
+  </script>
+<% end %>
+
+
+<% javascript_includes << "/plugin_assets/fluid-infusion/infusion-1.2-src/lib/jquery/ui/js/jquery.ui.accordion.js" %>
+<% javascript_includes << ['custom', 'catalog/show', {:plugin=>:hydra_repository}] %>
+
+<div class="document_viewer" id="cover_container">
+
+  <div id="accordion">
+    <h2 class="section-title"><a href="#">Description</a></h2>
+      <%= render :partial => "archival_images/show/description", :locals => {:content_type => "archival_image" } %>
+
+    <h2 class="section-title"><a href="#">Rockhall Metadata</a></h2>
+      <%= render :partial => "archival_images/show/rockhall", :locals => {:content_type => "archival_image" } %>
+
+    <h2 class="section-title"><a href="#">Other Images</a></h2>
+      <%= render :partial => "archival_images/show/all" %>
+
+  </div>
+
+</div>

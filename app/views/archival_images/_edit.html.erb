@@ -1,0 +1,118 @@
+<% if files = params[:files] %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#accordion").accordion({active: 1});
+    });
+  </script>
+<% end %>
+<% stylesheet_links << "../plugin_assets/hydra_repository/javascripts/date-picker/css/datepicker" %>
+<% javascript_includes << infusion_javascripts(:default_no_jquery, :extras=>[:inline_editor_integrations], :debug=>true, :render_html=>false) %>
+<% javascript_includes << ["jquery.jeditable.mini.js", "date-picker/js/datepicker", "jquery.form.js", 'custom', "catalog/edit", "jquery.hydraMetadata.js", "jquery.notice.js", {:plugin=>:hydra_repository}] %>
+<% javascript_includes << "/plugin_assets/fluid-infusion/infusion/components/undo/js/Undo.js" %>
+
+<%# For DatePicker> %>
+<%- javascript_includes << ["jquery.ui.widget.js","jquery.ui.datepicker.js", "mediashelf.datepicker.js", {:plugin=>:hydra_repository }] %>
+
+<%# For Fancybox> %>
+<% javascript_includes << ["fancybox/jquery.fancybox-1.3.1.pack.js", {:plugin=>:hydra_repository}] %>
+<% stylesheet_links << "../plugin_assets/hydra_repository/javascripts/fancybox/jquery.fancybox-1.3.1.css" %>
+<%# For slider controls %>
+<% javascript_includes << ["select_to_ui_slider/selectToUISlider.jQuery.js", {:plugin=>:hydra_repository}] %>
+<% stylesheet_links << ["../plugin_assets/hydra_repository/javascripts/select_to_ui_slider/css/ui.slider.extras.css"] %>
+
+<%# Rockhall javascripts %>
+<% javascript_includes << "jquery.rockhallMetadata.js" %>
+
+<% stylesheet_links << ["slider", {:plugin=>:hydra_repository}] %>
+<% extra_head_content << capture do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(document).catalogEdit();
+    });
+  </script>
+<% end %>
+<div class="document_viewer" id="cover_container">
+  <div class="multipleEdit">
+    <div id="loading" style="display:none;">
+      <img src="/plugin_assets/hydra_repository/images/ajax-loader.gif" width="32" height="32" alt="Saving...">
+      </img>
+    </div>
+    <% if flash[:notice] %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+
+    <div id="accordion">
+      <h2 class="section-title"><a href="#">Title</a></h2>
+      <%= render :partial => "archival_images/edit/title", :locals => {:content_type => "archival_image"} %>
+      
+      <h2 class="section-title"><a href="#">Contributors</a></h2>
+      <%= render :partial => "archival_images/edit/contributors", :locals => {:content_type => "archival_image"} %>
+      
+      <h2 class="section-title"><a href="#">Digital Object</a></h2>
+      <%= render :partial => "archival_images/edit/object", :locals => {:content_type => "archival_image"} %>
+      
+      <h2 class="section-title"><a href="#">Subjects</a></h2>
+      <%= render :partial => "archival_images/edit/subjects", :locals => {:content_type => "archival_image"} %>
+      
+      <h2 class="section-title"><a href="#">Related Items</a></h2>
+      <%= render :partial => "archival_images/edit/related_items", :locals => {:content_type => "archival_image"} %>  
+      
+      <h2 class="section-title"><a href="#">Rockhall Metadata</a></h2>
+      <%= render :partial => 'archival_images/edit/rockhall' %>
+      
+      <h2 class="section-title"><a href="#">Upload Content</a></h2>
+      <div id="uploads" data-pid="<%= params[:id] %>">
+        <h2><a id='toggle-uploader-generic' href="">Upload file</a></h2>
+        <div id='uploader'>
+          <%= render :partial=>"fluid_infusion/uploader" %>
+          <%= render :partial=>"fluid_infusion/uploader_generic_content_objects.js" %>
+        </div>
+      </div>
+
+      <h2 class="section-title"><a href="#">Set permissions</a></h2>
+      <div id="permissions">
+        <%= render :partial => "permissions/index", :locals => {:document => document, :asset_id=>params[:id]} %>
+      </div>
+
+    </div>
+  
+    <%#
+    // This hidden form really belongs elsewhere, but putting it inside of an 
+    // accordion section un-hides it, so I stuck it here for now. -MZ
+    //
+    // These are hidden forms that make the javascripts work that add contributors and subjects -AW
+    %>
+    
+    <%# Hidden form for contributors %>
+    <form id="new_contributor" action="<%=url_for(:action=>"create", :controller=>"contributors", :asset_id=>params[:id]) %>" method="post" style="display:none;">
+      <input id="content_type" type="hidden" name="content_type" value="archival_image" />
+      <!--
+      This used to be here as well, but I'm removing it... I'm not sure if it does anything -AW
+      <label for="contributor_type">Contributor Type</label>
+      <select id="contributor_type" name="contributor_type">
+        <option value="person">Individual</option>
+        <option value="corporate">Corporate</option>
+        <option value="conference">Meeting</option>
+      </select>
+      <input type="submit" value="Add a person" />
+      <input type="submit" value="Add a corporate name" />
+      <input type="submit" value="Add a conference name" />
+      -->
+    </form>
+    
+    <%# Hidden form for subjects %>
+    <form id="new_subject" action="<%=url_for(:action=>"create", :controller=>"subjects", :asset_id=>params[:id]) %>" method="post" style="display:none;">
+      <input id="content_type" type="hidden" name="content_type" value="archival_image" />
+    </form>
+    
+  </div>       
+</div>
+<% sidebar_items << capture do %>
+  <%#= render :partial=>"catalog/_show_partials/facets", :locals=>{:document=>document, :facets_display_heading => "This document refers to:"} %>
+  <%#= render :partial=>'facets' %>
+  <%= delete_image_link(params[:id], "article") %>
+<% end %>
+<%#= async_load_tag(generic_content_object_path(params[:id], :layout=>"false", :method => ":get"), 'uploads') %>

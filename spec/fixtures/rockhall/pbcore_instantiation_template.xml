@@ -1,0 +1,17 @@
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html" version="2.0">
+  <pbcoreInstantiation>
+    <instantiationIdentifier source="rockhall" annotation="file name"/>
+    <instantiationFileSize unitsOfMeasure=""/>
+    <instantiationDataRate unitsOfMeasure=""/>
+    <instantiationDate dateType="created"/>
+    <instantiationDigital source="EBU file formats" ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm"/>
+    <instantiationLocation/>
+    <instantiationGenerations source="PBCore instantiationGenerations" ref=""/>
+    <instantiationColors source="PBCore instantiationColors" ref=""/>
+    <instantiationDuration/>
+    <instantiationRights>
+      <rightsSummary/>
+      <rightsLink/>
+    </instantiationRights>
+  </pbcoreInstantiation>
+</pbcoreDescriptionDocument>

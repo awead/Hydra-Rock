@@ -1,0 +1,21 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>content_type)%>" method="post" data-resourceType="<%= content_type %>" accept-charset="utf-8">
+  <%= link_to("Edit original", edit_catalog_path(@document_fedora.containers.first.pid)) %>
+  <fieldset id="content_fields">
+    <legend>Content Fields</legend>
+    <input id="content_type" type="hidden" name="<%= content_type %>" value="<%= content_type %>" />
+    <dl>
+      <%= display_field([:date]) %>
+      <%= display_field([:generation]) %>
+      <%= display_field([:generation, :ref], { :name=>"Gerneration Ref" }) %>
+      <%= display_field([:type]) %>
+      <%= display_field([:rate]) %>
+      <%= display_field([:rate, :units], { :name=>"Rate Units" }) %>
+      <%= display_field([:colors]) %>
+      <%= display_field([:duration]) %>
+      <%= display_field([:link]) %>
+      <%= display_field([:rights_summary]) %>
+      <%= display_field([:rights_link]) %>
+      <%= display_field([:note]) %>
+    </dl>
+  </fieldset>
+</form>

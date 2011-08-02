@@ -1,0 +1,379 @@
+<dl>
+
+  <fieldset id="image">
+    <legend>Images</legend>
+    <dl>
+      <%= render :partial => "#{content_type}s/show/content" %>
+    </dl>
+  </fieldset>
+
+  <fieldset id="title_fields">
+    <legend>Titles</legend>
+    <dl>
+
+      <!-- Title -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :title_info, :main_title]).first.empty? %>
+        <dt>
+          <%= fedora_field_label("descMetadata", [:mods, :title_info, :main_title], "Title:") %>
+        </dt>
+        <dd class="title">
+          <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :title_info, :main_title]) %>
+        </dd>
+      <% end %>
+
+      <!-- Subtitle -->
+       <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :title_info, :sub_title]).first.empty? %>
+        <dt>
+          <%= fedora_field_label("descMetadata", [:mods, :title_info, :sub_title], "Subtitle:") %>
+        </dt>
+        <dd class="sub_title">
+          <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :title_info, :sub_title]) %>
+        </dd>
+      <% end %>
+
+      <!-- Other Title -->
+       <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :other_title_info, :other_title]).first.empty? %>
+        <dt>
+          <%= fedora_field_label("descMetadata", [:mods, :other_title_info, :other_title], "Other Title:") %>
+        </dt>
+        <dd class="other_title">
+          <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :other_title_info, :other_title]) %>
+        </dd>
+      <% end %>
+
+      <!-- Part Number -->
+       <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :title_info, :part_number]).first.empty? %>
+        <dt>
+          <%= fedora_field_label("descMetadata", [:mods, :title_info, :part_number], "Part Number:") %>
+        </dt>
+        <dd class="part_number">
+          <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :title_info, :part_number]) %>
+        </dd>
+      <% end %>
+
+      <!-- Part Name -->
+       <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :title_info, :part_name]).first.empty? %>
+        <dt>
+          <%= fedora_field_label("descMetadata", [:mods, :title_info, :part_name], "Part Name:") %>
+        </dt>
+        <dd class="part_name">
+          <%= get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :title_info, :part_name]) %>
+        </dd>
+      <% end %>
+
+    </dl>
+  </fieldset>
+
+  <fieldset id="contributor_fields">
+    <legend>Contributors</legend>
+    <%= render :partial=>"rockhall_contributors/show_person", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:mods, :person) %>
+    <%= render :partial=>"rockhall_contributors/show_corporate", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:mods, :corporate) %>
+    <%= render :partial=>"rockhall_contributors/show_conference", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:mods, :conference) %>
+  </fieldset>
+
+  <fieldset id="object_fields">
+    <legend>Digital Object</legend>
+    <dl>
+
+      <!-- Resource -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:resource]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", :resource, "Resource") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:resource]) %>
+      </dd>
+      <% end %>
+
+      <!-- Language -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:language]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", :language, "Language:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:language]) %>
+      </dd>
+      <% end %>
+
+      <!-- Handle -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:location, :url]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:location, :url], "Handle:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:location, :url]) %>
+      </dd>
+      <% end %>
+
+      <!-- Physical description: only in view -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:mods, :physical_description, :extent]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:mods, :physical_description, :extent], "Size:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:mods, :physical_description, :extent]) %>
+      </dd>
+      <% end %>
+
+      <!-- Abstract -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:abstract]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", :abstract, "Abstract:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:abstract]) %>
+      </dd>
+      <% end %>
+
+      <!-- Details -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:note]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", :note, "Details:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:note]) %>
+      </dd>
+      <% end %>
+
+      <!-- Contents -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:contents]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", :contents, "Contents:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:contents]) %>
+      </dd>
+      <% end %>
+
+      <!-- Citation -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:citation]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", :citation, "Citation:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:citation]) %>
+      </dd>
+      <% end %>
+
+      <!-- Guidelines -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:guidelines, :link]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:guidelines, :link], "Guidelines:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:guidelines, :link]) %>
+      </dd>
+      <% end %>
+
+    </dl>
+  </fieldset>
+
+  <fieldset id="subject_fields">
+    <legend>Subjects</legend>
+    <%= render :partial=>"subjects/show", :collection=>@document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(:mods, :subject) %>
+  </fieldset>
+
+  <fieldset id="program_fields">
+    <legend>Educational Program</legend>
+    <dl>
+
+      <!-- Name -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:program, :name, :name_part]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :name, :name_part], "Name:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:program, :name, :name_part]) %>
+      </dd>
+      <% end %>
+
+      <!-- Title -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:program, :title_info, :title]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :title_info, :title], "Title:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:program, :title_info, :title]) %>
+      </dd>
+      <% end %>
+
+      <!-- Sub-title -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:program, :title_info, :sub_title]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :title_info, :sub_title], "Subtitle:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:program, :title_info, :sub_title]) %>
+      </dd>
+      <% end %>
+
+      <!-- Part number -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:program, :title_info, :part_number]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :title_info, :part_number], "Part Number:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:program, :title_info, :part_number]) %>
+      </dd>
+      <% end %>
+
+      <!-- Part name -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:program, :title_info, :part_name]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:program, :title_info, :part_name], "Part Name:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:program, :title_info, :part_name]) %>
+      </dd>
+      <% end %>
+
+    </dl>
+
+  </fieldset>
+
+  <fieldset id="related_fields">
+    <legend>Related Item</legend>
+    <dl>
+
+      <!-- Place -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item, :origin_info, :place]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :place], "Place:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:related_item, :origin_info, :place]) %>
+      </dd>
+      <% end %>
+
+      <!-- Publisher -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item, :origin_info, :publisher]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :publisher], "Publisher:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:related_item, :origin_info, :publisher]) %>
+      </dd>
+      <% end %>
+
+      <!-- Copyright -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item, :origin_info, :copyright]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :copyright], "Copyright:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:related_item, :origin_info, :copyright]) %>
+      </dd>
+      <% end %>
+
+      <!-- Date Issued -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item, :origin_info, :date_issued]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :date_issued], "Date Issued:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:related_item, :origin_info, :date_issued]) %>
+      </dd>
+      <% end %>
+
+      <!-- Date Created -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item, :origin_info, :date_created]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :origin_info, :date_created], "Date Created:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:related_item, :origin_info, :date_created]) %>
+      </dd>
+      <% end %>
+
+      <!-- Format -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item, :physical_description, :format]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :physical_description, :format], "Format:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:related_item, :physical_description, :format]) %>
+      </dd>
+      <% end %>
+
+      <!-- Extent -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item, :physical_description, :extent]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :physical_description, :extent], "Extent:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:related_item, :physical_description, :extent]) %>
+      </dd>
+      <% end %>
+
+      <!-- Shelf Locator -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:related_item, :location, :shelf_locator]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:related_item, :location, :shelf_locator], "Shelf Locator:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:related_item, :location, :shelf_locator]) %>
+      </dd>
+      <% end %>
+
+    </dl>
+
+  </fieldset>
+
+  <fieldset id="source_fields">
+    <legend>Source Collection</legend>
+    <dl>
+
+      <!-- Name -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:source, :name, :name_part]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :name, :name_part], "Name:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:source, :name, :name_part]) %>
+      </dd>
+      <% end %>
+
+      <!-- Collection Number -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:source, :identifier]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :identifier], "Collection Number:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:source, :identifier]) %>
+      </dd>
+      <% end %>
+
+      <!-- Repository -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:source, :location, :physical_location]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :location, :physical_location], "Repository:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:source, :location, :physical_location]) %>
+      </dd>
+      <% end %>
+
+      <!-- Access -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:source, :access]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :access], "Access restrictions:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:source, :access]) %>
+      </dd>
+      <% end %>
+
+      <!-- Rights -->
+      <% unless get_values_from_datastream(@document_fedora,"descMetadata", [:source, :rights]).first.empty? %>
+      <dt>
+        <%= fedora_field_label("descMetadata", [:source, :rights], "Rights information:") %>
+      </dt>
+      <dd>
+        <%= get_values_from_datastream(@document_fedora, "descMetadata", [:source, :rights]) %>
+      </dd>
+      <% end %>
+
+    </dl>
+  </fieldset>
+
+</dl>

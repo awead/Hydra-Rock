@@ -1,0 +1,76 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>content_type)%>" method="post" data-resourceType="<%= content_type %>" accept-charset="utf-8">
+
+  <fieldset id="object_fields">
+    <legend>Digital Object Fields</legend>
+    <dl>
+    
+      <!-- Resource -->
+      <dt>
+        <%= fedora_field_label("descMetadata", :resource, "Resource:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:resource], :multiple=>false) %>
+      </dd>
+      
+      <!-- Language -->
+      <dt>
+        <%= fedora_field_label("descMetadata", :language, "Language:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:language], :multiple=>false) %>
+      </dd>
+      
+      <!-- Handle -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:location, :url], "Handle:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:location, :url], :multiple=>false) %>
+      </dd>
+      
+      <!-- Physical description: only in view -->   
+      
+      <!-- Abstract -->
+      <dt>
+        <%= fedora_field_label("descMetadata", :abstract, "Abstract:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:abstract], :multiple=>false) %>
+      </dd>
+            
+      <!-- Details -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:note] , "Details:") %>
+      </dt>
+      <dd>
+        <%= fedora_text_area(@document_fedora, "descMetadata", [:note], :multiple=>false) %>
+      </dd>       
+            
+      <!-- Contents -->
+      <dt>
+        <%= fedora_field_label("descMetadata", :contents, "Contents:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:contents], :multiple=>false) %>
+      </dd>
+      
+      <!-- Citation -->
+      <dt>
+        <%= fedora_field_label("descMetadata", :citation, "Citation:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:citation], :multiple=>false) %>
+      </dd>
+      
+      <!-- Guidelines -->
+      <dt>
+        <%= fedora_field_label("descMetadata", [:guidelines, :link], "Guidelines:") %>
+      </dt> 
+      <dd>
+        <%= fedora_text_field(@document_fedora, "descMetadata", [:guidelines, :link], :multiple=>false) %>
+      </dd>
+    
+    </dl>
+  </fieldset>
+
+</form>

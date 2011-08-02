@@ -1,0 +1,82 @@
+<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>content_type)%>" method="post" data-resourceType="<%= content_type %>" accept-charset="utf-8">
+  <fieldset id="title_fields">
+    <legend>Content</legend>
+    <input id="content_type" type="hidden" name="<%= content_type %>" value="<%= content_type %>" />
+    <dl>
+      <%= display_field([:full_title], { :name=>"Title" }) %>
+
+      <%= add_field_button(:sub_title, content_type) %>
+      <ol id="rh-pbcore-display-sub_title">
+        <%= display_multiple_field(:sub_title, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:alt_title, content_type) %>
+      <ol id="rh-pbcore-display-alt_title">
+        <%= display_multiple_field(:alt_title, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:episode, content_type) %>
+      <ol id="rh-pbcore-display-episode">
+        <%= display_multiple_field(:episode, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:series, content_type) %>
+      <ol id="rh-pbcore-display-series">
+        <%= display_multiple_field(:series, {:edit=>true}) %>
+      </ol>
+
+      <%= display_field([:language]) %>
+      <%= display_field([:summary]) %>
+      <%= display_field([:contents], { :name=>"Table of Contents" }) %>
+      <%= display_field([:coverage, :event], { :name => "Event Location" }) %>
+      <%= display_field([:coverage, :date], { :name => "Event Date" }) %>
+      <%= display_field([:note], { :multiple=>true }) %>
+
+      <%= add_field_button(:caption, content_type) %>
+      <ol id="rh-pbcore-display-caption">
+        <%= display_multiple_field(:caption, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:contributor, content_type) %>
+      <ol id="rh-pbcore-display-contributor">
+        <%= display_multiple_field(:contributor, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:publisher, content_type) %>
+      <ol id="rh-pbcore-display-publisher">
+        <%= display_multiple_field(:publisher, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:entity, content_type) %>
+      <ol id="rh-pbcore-display-entity">
+        <%= display_multiple_field(:entity, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:event, content_type) %>
+      <ol id="rh-pbcore-display-event">
+        <%= display_multiple_field(:event, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:place, content_type) %>
+      <ol id="rh-pbcore-display-place">
+        <%= display_multiple_field(:place, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:era, content_type) %>
+      <ol id="rh-pbcore-display-era">
+        <%= display_multiple_field(:era, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:genre, content_type) %>
+      <ol id="rh-pbcore-display-genre">
+        <%= display_multiple_field(:genre, {:edit=>true}) %>
+      </ol>
+
+      <%= add_field_button(:topic, content_type) %>
+      <ol id="rh-pbcore-display-topic">
+        <%= display_multiple_field(:topic, {:edit=>true}) %>
+      </ol>
+
+    </dl>
+  </fieldset>
+</form>

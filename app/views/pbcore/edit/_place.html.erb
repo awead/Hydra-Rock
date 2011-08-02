@@ -1,0 +1,28 @@
+<% place_name = get_values_from_datastream(@document_fedora,'descMetadata', [{:place=>place_counter}]).first %>
+
+<% if RAILS_ENV == "development" %>
+  node: <%= place_name %> <br/>
+  counter: <%= place_counter %> <br/>
+<% end %>
+
+<li>
+  <dl class="place node" id="<%= "place_#{place_counter}" %>">
+    <dt>place:</dt>
+    <dd class="multi_inline place">
+      <ul>
+        <li class="place_name">
+          <%= fedora_field_label("descMetadata", [:place], "place Name:") %>
+          <%= fedora_text_field(@document_fedora,"descMetadata", [{:place=>place_counter}], :multiple=>false) %>
+        </li>
+        <% if (params[:action] == "edit" && !place_name.empty?) %>
+          <%= field_selectors_for("descMetadata", [{:place=>place_counter}]) %>
+          <a class="destructive destroy_node"
+             href="<%= asset_pbcore_path(@document_fedora.pid, "place", place_counter, { :content_type => "archival_video" } ) %>"
+             title="Delete '<%= place_name %>">
+            Delete
+          </a>
+        <% end %>
+      </ul>
+    </dd>
+  </dl>
+</li>

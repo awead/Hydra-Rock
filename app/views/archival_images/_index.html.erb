@@ -1,0 +1,3 @@
+<% display_type = params[:display_type].nil? ? 'table' : params[:display_type] %>
+
+<%= render :partial => "archival_images/index_#{display_type}", :locals => {:document => document, :counter => counter } %>
