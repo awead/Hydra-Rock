@@ -241,29 +241,29 @@ class ModsImage < ActiveFedora::NokogiriDatastream
 
 	def to_solr(solr_doc=Solr::Document.new)
 		super(solr_doc)
-		extract_person_full_names.each {|pfn| solr_doc << pfn }
-		solr_doc << {:object_type_facet => "Image"}
+		#extract_person_full_names.each {|pfn| solr_doc.merge!(pfn) }
+		solr_doc.merge!(:object_type_facet => "Image")
 
 		# Add topics
 		topics = Array.new
 		self.find_by_terms(:subject, :topic).each { |topic| topics << topic.text }
-    solr_doc << { :topic_tag_facet => topics }
+    solr_doc.merge!(:topic_tag_facet => topics)
 
     # Add event/series
     events = Array.new
     self.find_by_terms(:subject, :conference, :namePart).each { |conf| events << conf.text }
     program = self.find_by_terms(:program, :name, :name_part).first.text
     events << program unless program.empty?
-    solr_doc << { :event_facet => events }
+    solr_doc.merge!(:event_facet => events)
 
     # Add genre
     genres = Array.new
     self.find_by_terms(:subject, :genre).each { |genre| genres << genre.text }
-    solr_doc << { :genre_facet => genres }
+    solr_doc.merge!(:genre_facet => genres)
 
     # Add collection
     coll =  self.find_by_terms(:source, :name, :name_part).first
-    solr_doc << { :collection_facet => coll.text.strip } unless coll.nil?
+    solr_doc.merge!(:collection_facet => coll.text.strip) unless coll.nil?
 
 		solr_doc
 	end

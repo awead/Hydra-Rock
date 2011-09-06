@@ -1,13 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.0.10'
 
 gem 'blacklight', '~> 3.0.0'
-gem 'hydra-head', '3.0.0pre1'
+gem 'hydra-head', '3.0.0pre3'
+#gem 'hydra-head', :path => "/Users/adamw/Projects/Rails/hydra-head/gem/hydra-head"
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 
-group :development, :test do 
+group :development, :test do
   gem 'solrizer-fedora', '>=1.0.1'
   gem 'ruby-debug'
   gem 'rspec'

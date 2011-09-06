@@ -6,3 +6,4 @@ jetty/*
 Gemfile.lock
 *.swp
 .rspec
+spec/fixtures/rockhall/sips/rockhall_fixture_pbcore_document1/info.dat
