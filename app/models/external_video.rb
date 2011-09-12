@@ -7,7 +7,9 @@ class ExternalVideo < ActiveFedora::Base
   has_relationship "is_member_of_collection", :has_collection_member, :inbound => true
   has_bidirectional_relationship "part_of", :is_part_of, :has_part
 
-  has_datastream :name=>"externalContent", :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  # Object will have either an access or a perservation datastream but not both
+  has_datastream :name=>"access", :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name=>"preservation", :type=>ActiveFedora::Datastream, :controlGroup=>'E'
 
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata
 

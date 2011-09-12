@@ -1,29 +1,29 @@
 # -*- encoding : utf-8 -*-
-# You can configure Blacklight from here. 
-#   
+# You can configure Blacklight from here.
+#
 #   Blacklight.configure(:environment) do |config| end
-#   
-# :shared (or leave it blank) is used by all environments. 
+#
+# :shared (or leave it blank) is used by all environments.
 # You can override a shared key by using that key in a particular
 # environment's configuration.
-# 
+#
 # If you have no configuration beyond :shared for an environment, you
 # do not need to call configure() for that envirnoment.
-# 
+#
 # For specific environments:
-# 
+#
 #   Blacklight.configure(:test) {}
 #   Blacklight.configure(:development) {}
 #   Blacklight.configure(:production) {}
-# 
+#
 
 Blacklight.configure(:shared) do |config|
 
   config[:default_solr_params] = {
     :qt => "search",
-    :per_page => 10 
+    :per_page => 10
   }
- 
+
   # solr field values given special treatment in the show (single result) view
   config[:show] = {
     :html_title => "title_t",
@@ -65,15 +65,15 @@ Blacklight.configure(:shared) do |config|
     # * If left unset, then all facet values returned by solr will be displayed.
     # * If set to an integer, then "f.somefield.facet.limit" will be added to
     # solr request, with actual solr request being +1 your configured limit --
-    # you configure the number of items you actually want _displayed_ in a page.    
+    # you configure the number of items you actually want _displayed_ in a page.
     # * If set to 'true', then no additional parameters will be sent to solr,
     # but any 'sniffed' request limit parameters will be used for paging, with
-    # paging at requested limit -1. Can sniff from facet.limit or 
+    # paging at requested limit -1. Can sniff from facet.limit or
     # f.specific_field.facet.limit solr request params. This 'true' config
     # can be used if you set limits in :default_solr_params, or as defaults
     # on the solr side in the request handler itself. Request handler defaults
     # sniffing requires solr requests to be made with "echoParams=all", for
-    # app code to actually have it echo'd back to see it.     
+    # app code to actually have it echo'd back to see it.
     :limits => {
       "subject_topic_facet" => 20,
       "language_facet" => true
@@ -87,7 +87,7 @@ Blacklight.configure(:shared) do |config|
   config[:default_solr_params][:"facet.field"] = facet_fields
 
   # solr fields to be displayed in the index (search results) view
-  #   The ordering of the field names is the order of the display 
+  #   The ordering of the field names is the order of the display
   config[:index_fields] = {
     :field_names => [
       "title_display",
@@ -114,7 +114,7 @@ Blacklight.configure(:shared) do |config|
   }
 
   # solr fields to be displayed in the show (single result) view
-  #   The ordering of the field names is the order of the display 
+  #   The ordering of the field names is the order of the display
   config[:show_fields] = {
     :field_names => [
       "title_display",
@@ -165,23 +165,23 @@ Blacklight.configure(:shared) do |config|
   # The :key is what will be used to identify this BL search field internally,
   # as well as in URLs -- so changing it after deployment may break bookmarked
   # urls.  A display label will be automatically calculated from the :key,
-  # or can be specified manually to be different. 
+  # or can be specified manually to be different.
   config[:search_fields] ||= []
 
   # This one uses all the defaults set by the solr request handler. Which
   # solr request handler? The one set in config[:default_solr_parameters][:qt],
-  # since we aren't specifying it otherwise. 
+  # since we aren't specifying it otherwise.
   config[:search_fields] << {
-    :key => "all_fields",  
-    :display_label => 'All Fields'   
+    :key => "all_fields",
+    :display_label => 'All Fields'
   }
 
   # Now we see how to over-ride Solr request handler defaults, in this
   # case for a BL "search field", which is really a dismax aggregate
-  # of Solr search fields. 
+  # of Solr search fields.
   config[:search_fields] << {
-    :key => 'title',     
-    # solr_parameters hash are sent to Solr as ordinary url query params. 
+    :key => 'title',
+    # solr_parameters hash are sent to Solr as ordinary url query params.
     :solr_parameters => {
       :"spellcheck.dictionary" => "title"
     },
@@ -195,9 +195,9 @@ Blacklight.configure(:shared) do |config|
     }
   }
   config[:search_fields] << {
-    :key =>'author',     
+    :key =>'author',
     :solr_parameters => {
-      :"spellcheck.dictionary" => "author" 
+      :"spellcheck.dictionary" => "author"
     },
     :solr_local_parameters => {
       :qf => "$author_qf",
@@ -206,10 +206,10 @@ Blacklight.configure(:shared) do |config|
   }
 
   # Specifying a :qt only to show it's possible, and so our internal automated
-  # tests can test it. In this case it's the same as 
-  # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
+  # tests can test it. In this case it's the same as
+  # config[:default_solr_parameters][:qt], so isn't actually neccesary.
   config[:search_fields] << {
-    :key => 'subject', 
+    :key => 'subject',
     :qt=> 'search',
     :solr_parameters => {
       :"spellcheck.dictionary" => "subject"
@@ -219,7 +219,7 @@ Blacklight.configure(:shared) do |config|
       :pf => "$subject_pf"
     }
   }
-  
+
   # "sort results by" select (pulldown)
   # label in pulldown is followed by the name of the SOLR field to sort by and
   # whether the sort is ascending or descending (it must be asc or desc
@@ -230,17 +230,31 @@ Blacklight.configure(:shared) do |config|
   config[:sort_fields] << ['year', 'pub_date_sort desc, title_sort asc']
   config[:sort_fields] << ['author', 'author_sort asc, title_sort asc']
   config[:sort_fields] << ['title', 'title_sort asc, pub_date_sort desc']
-  
-  # If there are more than this many search results, no spelling ("did you 
+
+  # If there are more than this many search results, no spelling ("did you
   # mean") suggestion is offered.
   config[:spell_max] = 5
 
   # Add documents to the list of object formats that are supported for all objects.
-  # This parameter is a hash, identical to the Blacklight::Solr::Document#export_formats 
+  # This parameter is a hash, identical to the Blacklight::Solr::Document#export_formats
   # output; keys are format short-names that can be exported. Hash includes:
   #    :content-type => mime-content-type
   config[:unapi] = {
-    'oai_dc_xml' => { :content_type => 'text/xml' } 
+    'oai_dc_xml' => { :content_type => 'text/xml' }
   }
+
+  # -----------------------------------------------------------------------
+  # Rockhall config section
+  #
+  # This could go in its own file at some point...
+  #
+  # -----------------------------------------------------------------------
+
+  config[:video] = {
+    :location  => "/Users/adamw/Sites/video",
+    :host      => "http://localhost/~adamw/video",
+    :depositor => "archivist1"
+  }
+
 end
 

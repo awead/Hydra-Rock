@@ -133,7 +133,7 @@ describe Rockhall::PbcoreDocument do
       @object_ds.insert_node("caption")
 
       # Load example fixture
-      f = File.open("#{RAILS_ROOT}/spec/fixtures/rockhall/pbcore_document_template.xml")
+      f = File.open("#{Rails.root.to_s}/spec/fixtures/rockhall/pbcore_document_template.xml")
       ref_node = Nokogiri::XML(f)
       f.close
 

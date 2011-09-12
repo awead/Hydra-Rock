@@ -47,7 +47,7 @@ describe Rockhall::PbcoreInstantiation do
 
   describe "#xml_template" do
     it "should return an empty xml document matching an exmplar" do
-      f = File.open("#{RAILS_ROOT}/spec/fixtures/rockhall/pbcore_instantiation_template.xml")
+      f = File.open("#{Rails.root.to_s}/spec/fixtures/rockhall/pbcore_instantiation_template.xml")
       ref_node = Nokogiri::XML(f)
       f.close
       sample_node = Nokogiri::XML(@object_ds.to_xml)

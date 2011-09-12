@@ -26,33 +26,6 @@ class ArchivalVideo < ActiveFedora::Base
     super
   end
 
-  def ingest(sip)
-    raise "SIP is not ready" unless sip.status == "ready"
-    i = 0
-    objects = get_file_objects
-
-    # Add preservation file
-    unless objects.include?(sip.preservation)
-      single_ingest( sip.preservation, Blacklight.config[:video][:preservation_host], { :label => "preservation", :directory => Blacklight.config[:video][:preservation_location] })
-      i = i + 1
-    end
-
-    # Add high-quality access file
-    unless objects.include?(sip.access_hq)
-      single_ingest( sip.access_hq, Blacklight.config[:video][:access_host], { :label => "access_hq", :directory => Blacklight.config[:video][:access_location] })
-      i = i + 1
-    end
-
-    # Add low-quality access file
-    unless objects.include?(sip.access_lq)
-     single_ingest( sip.access_lq, Blacklight.config[:video][:access_host], { :label => "access_lq", :directory => Blacklight.config[:video][:access_location] })
-      i = i + 1
-    end
-
-    return "Ingested #{i} file(s)"
-
-  end
-
   def remove_file_objects
     if self.file_objects.count > 0
       self.file_objects.each do |obj|
@@ -64,38 +37,63 @@ class ArchivalVideo < ActiveFedora::Base
     end
   end
 
-  def single_ingest(file, location, opts={})
-    dslocation = location + file
+
+  def ingest(file,opts={})
+
+    opts[:type].nil? ? type = "preservation" : type = opts[:type]
+    location  = File.join(Blacklight.config[:video][:host], type, file)
+    directory = File.join(Blacklight.config[:video][:location], type)
+
     begin
       ev = ExternalVideo.new
-      opts[:label].nil? ? ev.label = file : ev.label = opts[:label]
-      ev.add_named_datastream("externalContent", :label=>file, :dsLocation=>dslocation, :directory=>opts[:directory])
+      opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
+      if opts[:checksum].nil?
+        ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory, :checksumType=>"SHA-1")
+      else
+        ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory, :checksumType=>"SHA-1", :checksum=>opts[:checksum])
+      end
       ev.apply_depositor_metadata(Blacklight.config[:video][:depositor])
-      ev.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
+
+      if type.eql?("preservation")
+        ev.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+      else
+        ev.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
+      end
+
       self.file_objects_append(ev)
       self.save
     rescue Exception=>e
-      return "Failed to add datastream: #{e}"
+      raise "Failed to add #{type} datastream: #{e}"
     end
+
     return nil
   end
 
   def external_video(type)
-    self.file_objects.each do |obj|
-      if type.to_s == obj.label
-        return obj
+      self.file_objects.each do |obj|
+        if type.to_s == obj.label
+          return obj
+        end
       end
-    end
-    return nil
+      return nil
   end
 
-  private
-
-  def get_file_objects
-    results = Array.new
+  def videos
+    results = Hash.new
+    a_files = Hash.new
+    p_files = Hash.new
+    u_files = Array.new
     self.file_objects.each do |obj|
-      results << obj.datastreams_in_memory["EXTERNALCONTENT1"].label
+      if obj.label.nil?
+        u_files << obj.pid
+      else
+        a_files[obj.label.to_sym] = obj.pid if obj.datastreams_in_memory.keys.contains?("PRESERVATION1")
+        p_files[obj.label.to_sym] = obj.pid if obj.datastreams_in_memory.keys.contains?("ACCESS1")
+      end
     end
+    results << a_files
+    results << p_files
+    results[:unknown] = u_files
     return results
   end
 

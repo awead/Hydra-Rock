@@ -45,31 +45,9 @@ describe ArchivalVideo do
     end
   end
 
-  describe "#ingest" do
-
-    it "should ingest a valid sip" do
-      pending
-    end
-
-    it "should not ingest an invalid sip" do
-      sip = Rockhall::Sip.new
-      lambda { @video.ingest(sip) }.should raise_error
-    end
-
-  end
-
-  describe "#external_video" do
-
-    it "should return the file_object with the corresponding datastream label" do
-      pending
-    end
-
-  end
-
   describe ".to_solr" do
     it "should index the right fields in solr" do
       solr_doc = @video.to_solr
-
     end
   end
 
