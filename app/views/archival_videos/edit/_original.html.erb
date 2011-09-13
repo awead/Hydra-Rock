@@ -1,4 +1,9 @@
-<form id="document_metadata" action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>content_type)%>" method="post" data-resourceType="<%= content_type %>" accept-charset="utf-8">
+<%= form_tag url_for(:action=>"update", :controller=>"assets", :content_type=>"archival_video"),
+      :method             => "put",
+      :id                 => "properties",
+      "data-resourceType" => "archival_video",
+      "accept-charset"    => "utf-8" do %>
+
   <fieldset id="title_fields">
     <legend>Original Item</legend>
     <input id="content_type" type="hidden" name="<%= content_type %>" value="<%= content_type %>" />
@@ -9,7 +14,8 @@
       <%= display_field([:item, :relation, :collection_name], { :name => "Collection Name" }) %>
       <%= display_field([:item, :relation, :collection_number], { :name => "Collection Number" }) %>
       <%= display_field([:item, :relation, :accession_number], { :name => "Accession Number" }) %>
-      <%= display_field([:item, :note], { :name => "Note" }) %>
+      <%= display_field([:item, :note], { :name => "Note", :style => "area" }) %>
     </dl>
   </fieldset>
-</form>
+  <%= submit_tag 'Save Original', {:id => "submitOriginal"} %>
+<% end %>

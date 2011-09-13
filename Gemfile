@@ -23,4 +23,3 @@ group :development, :test do
   gem 'factory_girl'
   gem 'bcrypt-ruby'
 end
-gem "devise"

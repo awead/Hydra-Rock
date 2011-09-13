@@ -44,7 +44,11 @@ module RockhallAssetsHelper
     end
 
     if params[:action] == "edit"
-      values = fedora_text_field(@document_fedora, datastream, path, :multiple=>false)
+      if opts[:style]
+        values = fedora_text_area(@document_fedora, datastream, path, :multiple=>false)
+      else
+        values = fedora_text_field(@document_fedora, datastream, path, :multiple=>false)
+      end
     else
       values = get_values_from_datastream(@document_fedora, datastream, path)
     end
@@ -58,7 +62,7 @@ module RockhallAssetsHelper
         result << "<dd class=\"field\">#{value}</dd>"
       end
     end
-    return result
+    return result.html_safe
   end
 
   def display_legend(path,opts={})
@@ -94,12 +98,12 @@ module RockhallAssetsHelper
     results << "<div class=\"add-rh-pbcore-box\">"
     results << "<input id=\"add-rh-pbcore-action\" type=\"button\" title=\"button title\" value=\"Add #{type.to_s}\" />"
     results << "</div>"
-    return results
+    return results.html_safe
   end
 
   def display_multiple_field(type,opts={})
     collection = @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(type)
-    if opts[:edit].true?
+    if opts[:edit]
       render :partial=>"pbcore/edit/#{type.to_s}", :collection=>collection
     else
       render :partial=>"pbcore/show/#{type.to_s}", :collection=>collection

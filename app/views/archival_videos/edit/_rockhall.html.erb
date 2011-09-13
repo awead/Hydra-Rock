@@ -1,34 +1,15 @@
-<form id="document_metadata"
-  action="<%= url_for(:action=>"update", :controller=>"assets", :content_type=>"archival_video")%>"
-  method="post" data-resourceType="archival_video" accept-charset="utf-8">
+<%= form_tag url_for(:action=>"update", :controller=>"assets", :content_type=>"archival_video"),
+      :method             => "put",
+      :id                 => "properties",
+      "data-resourceType" => "archival_video",
+      "accept-charset"    => "utf-8" do %>
+
   <fieldset id="properties">
     <legend>Properties</legend>
-    <input id="content_type" type="hidden" name="content_type" value="archival_video" />
     <dl>
-
-      <!-- Internal Notes -->
-      <dt>
-        <%= fedora_field_label("properties", :notes, "Internal Notes:") %>
-        <%= fedora_text_field_insert_link "properties", [:notes] %>
-      </dt>
-      <dd class="notes">
-        <%= fedora_text_field(@document_fedora, "properties", [:notes], :multiple=>true) %>
-      </dd>
-
       <%= display_field([:depositor], { :datastream => "properties" }) %>
-
-      <!-- Submission -->
-      <dt>
-        <%= fedora_field_label("properties", :submission, "Submission:") %>
-        <%= fedora_text_field_insert_link "properties", [:submission] %>
-      </dt>
-      <dd class="depositor">
-        <%= fedora_text_field(@document_fedora, "properties", [:submission], :multiple=>true) %>
-      </dd>
-
       <%= display_field([:access], { :datastream => "properties", :name => "Access Restrictions" }) %>
-
-
+      <%= submit_tag 'Save Description', {:id => "submitDescription"} %>
     </dl>
   </fieldset>
-</form>
+<% end %>
