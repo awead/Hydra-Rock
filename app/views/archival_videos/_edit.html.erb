@@ -1,3 +1,8 @@
+<% extra_head_content << capture do -%>
+  <%= javascript_include_tag "rails.js" %>
+  <%= csrf_meta_tag %>
+<% end %>
+
 <div class="document_viewer" id="cover_container">
   <div class="multipleEdit">
 
@@ -10,7 +15,6 @@
     <div id="original_editor">
       <%= render :partial => "archival_videos/edit/original", :locals => {:content_type => "archival_video"} %>
     </div>
-
 
     <% if @document_fedora.file_objects.count > 0 %>
     <h2 class="section-title"><a href="#">Instantiations</a></h2>
@@ -37,5 +41,6 @@
   </div>
 </div>
 <% sidebar_items << capture do %>
-  <%= delete_asset_link(params[:id], "video") %>
+  <%= button_to "Delete this video", { :action => "delete", :id => @document[:id] },
+          :confirm => "Are you sure?", :method => :delete %>
 <% end %>

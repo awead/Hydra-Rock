@@ -5,41 +5,11 @@
   base_id = "publisher_#{publisher_counter}"
 %>
 
-<% #TODO: add relator terms %>
+<legend>Publisher:</legend>
+<dl class="publisher fieldset" id="<%= base_id %>">
 
-<% if RAILS_ENV == "development" %>
-  node: <%= publisher_name %> <br/>
-  counter: <%= publisher_counter %> <br/>
-<% end %>
+  <%= display_field([{:publisher=>publisher_counter}, :name],       { :name=>"Publisher Name" }) %>
+  <%= display_field([{:publisher=>publisher_counter}, :role],       { :name=>"Publisher Role" }) %>
+  <%= display_field([{:publisher=>publisher_counter}, :role, :ref], { :name=>"Publisher Ref" }) %>
 
-
-<li>
-  <dl class="publisher node" id="<%= base_id %>">
-    <dt>Publisher:</dt>
-    <dd class="multi_inline publisher">
-      <ul>
-        <li class="publisher_name">
-          <%= fedora_field_label("descMetadata", [:publisher, :name], "Publisher Name:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:publisher=>publisher_counter}, :name], :multiple=>false) %>
-        </li>
-        <li class="publisher_role">
-          <%= fedora_field_label("descMetadata", [:publisher, :role], "Publisher Role:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:publisher=>publisher_counter}, :role], :multiple=>false) %>
-        </li>
-        <li class="publisher_reference">
-          <%= fedora_field_label("descMetadata", [:publisher, :role, :ref], "Publisher Reference:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:publisher=>publisher_counter}, :role, :ref], :multiple=>false) %>
-        </li>
-        <% if (params[:action] == "edit" && !publisher_name.empty?) %>
-          <%= field_selectors_for("descMetadata", [{:publisher=>publisher_counter}]) %>
-          <!-- Need to find an automatic way of getting content_type -->
-          <a class="destructive destroy_node"
-             href="<%= asset_pbcore_path(@document_fedora.pid, "publisher", publisher_counter, { :content_type => "archival_video" } ) %>"
-             title="Delete '<%= publisher_name %>">
-            Delete
-          </a>
-        <% end %>
-      </ul>
-    </dd>
-  </dl>
-</li>
+</dl>

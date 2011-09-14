@@ -14,7 +14,8 @@
       <%= display_field([:item, :relation, :collection_name], { :name => "Collection Name" }) %>
       <%= display_field([:item, :relation, :collection_number], { :name => "Collection Number" }) %>
       <%= display_field([:item, :relation, :accession_number], { :name => "Accession Number" }) %>
-      <%= display_field([:item, :note], { :name => "Note", :style => "area" }) %>
+      <%= display_field([:item, :note], { :name => "Note", :area=>TRUE} ) %>
+
     </dl>
   </fieldset>
   <%= submit_tag 'Save Original', {:id => "submitOriginal"} %>

@@ -20,10 +20,10 @@ Feature:
     And I should see an icon for video
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
 
-
+  @wip
   Scenario: Viewable metadata
     Given I am on the show document page for rockhall:fixture_pbcore_document1
-    Then I should see the heading "Video"
+    Then I should see "Video"
     And I should see the video "rrhof_access_h264_high.avi"
     And I should see the heading "Content"
     And I should see "Title:"

@@ -5,37 +5,10 @@
   base_id = "topic_#{topic_counter}"
 %>
 
-<% #TODO: add relator terms %>
+<legend>Topic:</legend>
+<dl class="topic fieldset" id="<%= base_id %>">
 
-<% if RAILS_ENV == "development" %>
-  node: <%= topic_name %> <br/>
-  counter: <%= topic_counter %> <br/>
-<% end %>
+  <%= display_field([{:topic=>topic_counter}],       { :name=>"Topic Name" }) %>
+  <%= display_field([{:topic=>topic_counter}, :ref], { :name=>"Topic Ref" }) %>
 
-
-<li>
-  <dl class="topic node" id="<%= base_id %>">
-    <dt>Topic:</dt>
-    <dd class="multi_inline topic">
-      <ul>
-        <li class="topic_name">
-          <%= fedora_field_label("descMetadata", [:topic], "Topic Name:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:topic=>topic_counter}], :multiple=>false) %>
-        </li>
-        <li class="topic_reference">
-          <%= fedora_field_label("descMetadata", [:topic, :ref], "Topic Reference:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:topic=>topic_counter}, :ref], :multiple=>false) %>
-        </li>
-        <% if (params[:action] == "edit" && !topic_name.empty?) %>
-          <%= field_selectors_for("descMetadata", [{:topic=>topic_counter}]) %>
-          <!-- Need to find an automatic way of getting content_type -->
-          <a class="destructive destroy_node"
-             href="<%= asset_pbcore_path(@document_fedora.pid, "topic", topic_counter, { :content_type => "archival_video" } ) %>"
-             title="Delete '<%= topic_name %>">
-            Delete
-          </a>
-        <% end %>
-      </ul>
-    </dd>
-  </dl>
-</li>
+</dl>

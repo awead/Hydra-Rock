@@ -10,13 +10,10 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
+    when /the edit document page for (.*)$/i
+      edit_catalog_path($1)
+    when /the show document page for (.*)$/i
+      catalog_path($1)
     else
       begin
         page_name =~ /^the (.*) page$/

@@ -31,38 +31,51 @@ module RockhallAssetsHelper
   end
 
   def display_field(path,opts={})
+
+    # Default to descMetadata
     opts[:datastream].nil? ? datastream = "descMetadata" : datastream = opts[:datastream]
+
     # Skip if there's no data in the field
     if get_values_from_datastream(@document_fedora, datastream, path).first.empty? and params[:action] == "show"
       return nil
     end
 
+    # Determine field label
     if opts[:name].nil?
       field = fedora_field_label(datastream, path, path.first.to_s.capitalize)
     else
       field = fedora_field_label(datastream, path, opts[:name])
     end
 
+    # Show or edit
     if params[:action] == "edit"
-      if opts[:style]
-        values = fedora_text_area(@document_fedora, datastream, path, :multiple=>false)
+      if opts[:area]
+        values = fedora_text_area(@document_fedora, datastream, path)
       else
-        values = fedora_text_field(@document_fedora, datastream, path, :multiple=>false)
+        values = fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple])
       end
     else
       values = get_values_from_datastream(@document_fedora, datastream, path)
     end
-    result = String.new
 
+    # Put it all together
+    result = String.new
     values.each do |value|
       if opts[:inline]
         result << "<li class=\"field\">" + field + value + "</li>"
+      elsif opts[:area]
+        result << value
       else
         result << "<dt>#{field}:</dt>"
         result << "<dd class=\"field\">#{value}</dd>"
       end
     end
-    return result.html_safe
+
+    if opts[:area]
+      return field.html_safe + result.html_safe
+    else
+      return result.html_safe
+    end
   end
 
   def display_legend(path,opts={})
@@ -78,30 +91,36 @@ module RockhallAssetsHelper
   end
 
   def asset_link(type)
-    @document_fedora.external_video(type.to_sym).datastreams_in_memory["EXTERNALCONTENT1"].label
+    @document_fedora.external_video(type.to_sym).datastreams_in_memory["ACCESS1"].label
   end
 
   def display_all_assets
     results = String.new
-    ["access_hq", "access_lq", "preservation"].each do |type|
-      unless @document_fedora.external_video(type.to_sym).nil?
+    videos = @document_fedora.videos
+    videos.keys.each do |type|
+      unless @document_fedora.videos[type].empty?
         results << "<dt>" + type.to_s + "</dt>"
-        results << "<dd>" + link_to("File information", catalog_path(@document_fedora.external_video(type.to_sym).pid)) + "</dd>"
+        results << "<dd>" + link_to("File information", catalog_path(@document_fedora.videos[type])) + "</dd>"
       end
     end
-    return results
+    return results.html_safe
   end
 
   def add_field_button(type,content_type,opts={})
     results = String.new
-    results << "<input id=\"content_type\" type=\"hidden\" name=\"#{content_type}\" value=\"#{content_type}\"/>"
-    results << "<div class=\"add-rh-pbcore-box\">"
-    results << "<input id=\"add-rh-pbcore-action\" type=\"button\" title=\"button title\" value=\"Add #{type.to_s}\" />"
-    results << "</div>"
+
+    # WIth AJAX:
+    #results << "<input id=\"content_type\" type=\"hidden\" name=\"#{content_type}\" value=\"#{content_type}\"/>"
+    #results << "<div class=\"add-rh-pbcore-box\">"
+    #results << "<input id=\"add-rh-pbcore-action\" type=\"button\" title=\"button title\" value=\"Add #{type.to_s}\" />"
+    #results << "</div>"
+
+    # Plain ol' HTML
+
     return results.html_safe
   end
 
-  def display_multiple_field(type,opts={})
+  def display_fieldset(type,opts={})
     collection = @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(type)
     if opts[:edit]
       render :partial=>"pbcore/edit/#{type.to_s}", :collection=>collection

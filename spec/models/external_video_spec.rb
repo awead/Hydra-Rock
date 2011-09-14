@@ -35,10 +35,4 @@ describe ExternalVideo do
     end
   end
 
-  describe "#link" do
-    it "should return the link to EXTERNALCONTENT1 datastream" do
-      pending
-    end
-  end
-
 end

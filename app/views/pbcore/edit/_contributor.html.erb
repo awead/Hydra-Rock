@@ -1,44 +1,16 @@
 <%
-  # On create: contributor_counter and contributor variables come from the controller
-  # On edit: they come from the defaults in the render call
+  # On create (with AJAX): contributor_counter and contributor variables come from the controller
+  # Eveything else: they come from the defaults in the render call
   contributor_name = get_values_from_datastream(@document_fedora,'descMetadata', [{:contributor=>contributor_counter}, :name]).first
   base_id = "contributor_#{contributor_counter}"
 %>
 
-<% #TODO: add relator terms %>
+<legend>Contributors:</legend>
+<dl class="contributor fieldset" id="<%= base_id %>">
 
-<% if RAILS_ENV == "development" %>
-  node: <%= contributor_name %> <br/>
-  counter: <%= contributor_counter %> <br/>
-<% end %>
+  <%= display_field([{:contributor=>contributor_counter}, :name],       { :name=>"Contributor Name" }) %>
+  <%= display_field([{:contributor=>contributor_counter}, :role],       { :name=>"Contributor Role" }) %>
+  <%= display_field([{:contributor=>contributor_counter}, :role, :ref], { :name=>"Contributor Ref" }) %>
 
-<li>
-  <dl class="contributor node" id="<%= base_id %>">
-    <dt>Contributor:</dt>
-    <dd class="multi_inline contributor">
-      <ul>
-        <li class="contributor_name">
-          <%= fedora_field_label("descMetadata", [:contributor, :name], "Contributor Name:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:contributor=>contributor_counter}, :name], :multiple=>false) %>
-        </li>
-        <li class="contributor_role">
-          <%= fedora_field_label("descMetadata", [:contributor, :role], "Contributor Role:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:contributor=>contributor_counter}, :role], :multiple=>false) %>
-        </li>
-        <li class="contributor_reference">
-          <%= fedora_field_label("descMetadata", [:contributor, :role, :ref], "Contributor Reference:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:contributor=>contributor_counter}, :role, :ref], :multiple=>false) %>
-        </li>
-        <% if (params[:action] == "edit" && !contributor_name.empty?) %>
-          <%= field_selectors_for("descMetadata", [{:contributor=>contributor_counter}]) %>
-          <!-- Need to find an automatic way of getting content_type -->
-          <a class="destructive destroy_node"
-             href="<%= asset_pbcore_path(@document_fedora.pid, "contributor", contributor_counter, { :content_type => "archival_video" } ) %>"
-             title="Delete '<%= contributor_name %>">
-            Delete
-          </a>
-        <% end %>
-      </ul>
-    </dd>
-  </dl>
-</li>
+</dl>
+

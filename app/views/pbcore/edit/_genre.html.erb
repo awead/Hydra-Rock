@@ -5,37 +5,10 @@
   base_id = "genre_#{genre_counter}"
 %>
 
-<% #TODO: add relator terms %>
+<legend>Genre:</legend>
+<dl class="genre fieldset" id="<%= base_id %>">
 
-<% if RAILS_ENV == "development" %>
-  node: <%= genre_name %> <br/>
-  counter: <%= genre_counter %> <br/>
-<% end %>
+  <%= display_field([{:genre=>genre_counter}],       { :name=>"Genre Name" }) %>
+  <%= display_field([{:genre=>genre_counter}, :ref], { :name=>"Genre Ref" }) %>
 
-
-<li>
-  <dl class="genre node" id="<%= base_id %>">
-    <dt>Genre:</dt>
-    <dd class="multi_inline genre">
-      <ul>
-        <li class="genre_name">
-          <%= fedora_field_label("descMetadata", [:genre], "Genre Name:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:genre=>genre_counter}], :multiple=>false) %>
-        </li>
-        <li class="genre_reference">
-          <%= fedora_field_label("descMetadata", [:genre, :ref], "Genre Reference:") %>
-          <%= fedora_text_field(@document_fedora,"descMetadata", [{:genre=>genre_counter}, :ref], :multiple=>false) %>
-        </li>
-        <% if (params[:action] == "edit" && !genre_name.empty?) %>
-          <%= field_selectors_for("descMetadata", [{:genre=>genre_counter}]) %>
-          <!-- Need to find an automatic way of getting content_type -->
-          <a class="destructive destroy_node"
-             href="<%= asset_pbcore_path(@document_fedora.pid, "genre", genre_counter, { :content_type => "archival_video" } ) %>"
-             title="Delete '<%= genre_name %>">
-            Delete
-          </a>
-        <% end %>
-      </ul>
-    </dd>
-  </dl>
-</li>
+</dl>

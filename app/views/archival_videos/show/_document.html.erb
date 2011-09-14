@@ -3,25 +3,28 @@
     <legend>Content Description</legend>
     <dl>
       <%= display_field([:full_title], { :name=>"Title" }) %>
-      <%= display_field([:sub_title], { :name=>"Sub. Title" }) %>
-      <%= display_field([:alt_title], { :name=>"Alt. Title" }) %>
-      <%= display_field([:episode], { :name=>"Episode" }) %>
-      <%= display_field([:series, :name], { :name=>"Series" }) %>
+      <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true}) %>
+      <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true}) %>
+      <%= display_field([:episode],    { :multiple=>true}) %>
+      <%= display_field([:series],     { :multiple=>true}) %>
+
       <%= display_field([:language]) %>
       <%= display_field([:summary]) %>
-      <%= display_field([:contents], { :name=>"Table of Contents" }) %>
-      <%= display_field([:coverage, :event], { :name => "Event Location" }) %>
-      <%= display_field([:coverage, :date], { :name => "Event Date" }) %>
-      <%= display_field([:note]) %>
+      <%= display_field([:contents],          { :name=>"Table of Contents" }) %>
+      <%= display_field([:coverage, :event],  { :name => "Event Location" }) %>
+      <%= display_field([:coverage, :date],   { :name => "Event Date" }) %>
+      <%= display_field([:note],              { :multiple=>true }) %>
       <%= display_field([:caption]) %>
-      <%= display_multiple_field(:contributor) %>
-      <%= display_multiple_field(:publisher) %>
-      <%= display_field([:entity]) %>
-      <%= display_field([:event]) %>
-      <%= display_field([:era]) %>
-      <%= display_field([:place]) %>
-      <%= display_field([:topic]) %>
-      <%= display_field([:genre]) %>
+
+      <%= display_field([:entity], { :multiple=>true}) %>
+      <%= display_field([:era],    { :multiple=>true}) %>
+      <%= display_field([:place],  { :multiple=>true}) %>
+      <%= display_field([:event],  { :multiple=>true}) %>
+
+      <%= display_fieldset(:contributor, {:edit=>true}) %>
+      <%= display_fieldset(:publisher,   {:edit=>true}) %>
+      <%= display_fieldset(:genre,       {:edit=>true}) %>
+      <%= display_fieldset(:topic,       {:edit=>true}) %>
     </dl>
   </fieldset>
 </dl>

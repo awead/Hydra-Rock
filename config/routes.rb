@@ -14,6 +14,7 @@ TestHydraHead::Application.routes.draw do
   resources :assets do
     resources :subjects, :only=>[:new,:create]
     resources :pbcore, :only=>[:new,:create]
+    #resources :pbcore
   end
 
   #map.asset_subject 'assets/:asset_id/subjects/:subject_type/:index', :controller=>:subjects, :action=>:show, :conditions => { :method => :get }

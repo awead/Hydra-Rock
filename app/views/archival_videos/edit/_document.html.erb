@@ -6,88 +6,44 @@
 
   <fieldset id="title_fields">
     <legend>Content</legend>
-    <input id="content_type" type="hidden" name="<%= content_type %>" value="<%= content_type %>" />
     <dl>
       <%= display_field([:full_title], { :name=>"Title" }) %>
-
-      <dt>
-        <%= fedora_field_label("descMetadata", [:sub_title], "Sub-Title:").html_safe %>
-      </dt>
-      <dd class="title">
-        <%= fedora_text_field(@document_fedora,"descMetadata", [:sub_title], :multiple=>true).html_safe %>
-      </dd>
-
-      <dt>
-        <%= fedora_field_label("descMetadata", [:alt_title], "Alt-Title:").html_safe %>
-      </dt>
-      <dd class="title">
-        <%= fedora_text_field(@document_fedora,"descMetadata", [:alt_title], :multiple=>true).html_safe %>
-      </dd>
-
-
-      <%= add_field_button(:episode, content_type) %>
-      <ol id="rh-pbcore-display-episode">
-        <%= display_multiple_field(:episode, {:edit=>true}) %>
-      </ol>
-
-      <%= add_field_button(:series, content_type) %>
-      <ol id="rh-pbcore-display-series">
-        <%= display_multiple_field(:series, {:edit=>true}) %>
-      </ol>
+      <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true}) %>
+      <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true}) %>
+      <%= display_field([:episode],    { :multiple=>true}) %>
+      <%= display_field([:series],     { :multiple=>true}) %>
 
       <%= display_field([:language]) %>
       <%= display_field([:summary]) %>
-      <%= display_field([:contents], { :name=>"Table of Contents" }) %>
-      <%= display_field([:coverage, :event], { :name => "Event Location" }) %>
-      <%= display_field([:coverage, :date], { :name => "Event Date" }) %>
-      <%= display_field([:note], { :multiple=>true }) %>
+      <%= display_field([:contents],          { :name=>"Table of Contents" }) %>
+      <%= display_field([:coverage, :event],  { :name => "Event Location" }) %>
+      <%= display_field([:coverage, :date],   { :name => "Event Date" }) %>
+      <%= display_field([:note],              { :multiple=>true }) %>
+      <%= display_field([:caption]) %>
 
-      <%= add_field_button(:caption, content_type) %>
-      <ol id="rh-pbcore-display-caption">
-        <%= display_multiple_field(:caption, {:edit=>true}) %>
-      </ol>
+      <%= display_field([:entity], { :multiple=>true}) %>
+      <%= display_field([:era],    { :multiple=>true}) %>
+      <%= display_field([:place],  { :multiple=>true}) %>
+      <%= display_field([:event],  { :multiple=>true}) %>
 
-      <%= add_field_button(:contributor, content_type) %>
-      <ol id="rh-pbcore-display-contributor">
-        <%= display_multiple_field(:contributor, {:edit=>true}) %>
-      </ol>
-
-      <%= add_field_button(:publisher, content_type) %>
-      <ol id="rh-pbcore-display-publisher">
-        <%= display_multiple_field(:publisher, {:edit=>true}) %>
-      </ol>
-
-      <%= add_field_button(:entity, content_type) %>
-      <ol id="rh-pbcore-display-entity">
-        <%= display_multiple_field(:entity, {:edit=>true}) %>
-      </ol>
-
-      <%= add_field_button(:event, content_type) %>
-      <ol id="rh-pbcore-display-event">
-        <%= display_multiple_field(:event, {:edit=>true}) %>
-      </ol>
-
-      <%= add_field_button(:place, content_type) %>
-      <ol id="rh-pbcore-display-place">
-        <%= display_multiple_field(:place, {:edit=>true}) %>
-      </ol>
-
-      <%= add_field_button(:era, content_type) %>
-      <ol id="rh-pbcore-display-era">
-        <%= display_multiple_field(:era, {:edit=>true}) %>
-      </ol>
-
-      <%= add_field_button(:genre, content_type) %>
-      <ol id="rh-pbcore-display-genre">
-        <%= display_multiple_field(:genre, {:edit=>true}) %>
-      </ol>
-
-      <%= add_field_button(:topic, content_type) %>
-      <ol id="rh-pbcore-display-topic">
-        <%= display_multiple_field(:topic, {:edit=>true}) %>
-      </ol>
-
+      <%= display_fieldset(:contributor, {:edit=>true}) %>
+      <%= display_fieldset(:publisher,   {:edit=>true}) %>
+      <%= display_fieldset(:genre,       {:edit=>true}) %>
+      <%= display_fieldset(:topic,       {:edit=>true}) %>
     </dl>
   </fieldset>
   <%= submit_tag 'Save Document', {:id => "submitDocument"} %>
 <% end %>
+
+<!-- Buttons for inserting field sets -->
+<% sidebar_items << capture do %>
+  <% ["contributor","publisher","genre","topic"].each do |type| %>
+    <%= form_tag url_for(:action=>"create", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type) do %>
+      <%= submit_tag "Add #{type}", {:id => "add#{type.capitalize}"} %>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+
+

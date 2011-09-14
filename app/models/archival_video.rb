@@ -80,19 +80,15 @@ class ArchivalVideo < ActiveFedora::Base
 
   def videos
     results = Hash.new
-    a_files = Hash.new
-    p_files = Hash.new
     u_files = Array.new
     self.file_objects.each do |obj|
       if obj.label.nil?
         u_files << obj.pid
       else
-        a_files[obj.label.to_sym] = obj.pid if obj.datastreams_in_memory.keys.contains?("PRESERVATION1")
-        p_files[obj.label.to_sym] = obj.pid if obj.datastreams_in_memory.keys.contains?("ACCESS1")
+        results[obj.label.to_sym] = obj.pid if obj.datastreams_in_memory.keys.include?("PRESERVATION1")
+        results[obj.label.to_sym] = obj.pid if obj.datastreams_in_memory.keys.include?("ACCESS1")
       end
     end
-    results << a_files
-    results << p_files
     results[:unknown] = u_files
     return results
   end

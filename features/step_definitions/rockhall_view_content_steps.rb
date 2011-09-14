@@ -3,7 +3,7 @@ Then /^I should see the image "([^"]*)"$/ do |arg1|
 end
 
 Then /^I should see the heading "([^"]*)"$/ do |arg1|
-  response.should have_xpath("//*/a[contains(., '#{arg1}')]")
+  response.should have_xpath("//*/h2[contains(., '#{arg1}')]")
 end
 
 Then /^I should not see the heading "([^"]*)"$/ do |arg1|
