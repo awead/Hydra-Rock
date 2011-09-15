@@ -2,7 +2,7 @@
 <config>
   <!-- For complete comments from the Solr project example solrconfig.xml:
       http://svn.apache.org/repos/asf/lucene/dev/trunk/solr/example/solr/conf/solrconfig.xml
-    See also:  
+    See also:
       http://wiki.apache.org/solr/SolrConfigXml
   -->
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
@@ -26,7 +26,7 @@
     <maxFieldLength>10000</maxFieldLength>
     <unlockOnStartup>false</unlockOnStartup>
   </mainIndex>
-  
+
   <jmx />
 
   <!-- the default high-performance update handler -->
@@ -75,7 +75,7 @@
                  etagSeed="Solr">
     </httpCaching>
   </requestDispatcher>
-  
+
   <requestHandler name="standard" class="solr.SearchHandler">
      <lst name="defaults">
        <str name="echoParams">explicit</str>
@@ -84,7 +84,7 @@
 
   <!-- For complete comments from the Solr project example solrconfig.xml:
       http://svn.apache.org/repos/asf/lucene/dev/trunk/solr/example/solr/conf/solrconfig.xml
-    See also:  
+    See also:
       http://wiki.apache.org/solr/SolrConfigXml
   -->
 
@@ -122,11 +122,12 @@
         person_7_institution_t,person_8_institution_t,person_9_institution_t,
         mods_gps_t, mods_region_t, mods_site_t, mods_ecosystem_t,
         mods_timespan_start_t, mods_timespan_end_t, description_t, mods_title_info_main_title_t, mods_0_title_info_0_main_title_t, embargo_release_date_dt, note_t,
-        object_type_facet, department_facet, peer_reviewed_facet
+        object_type_facet, department_facet, peer_reviewed_facet,
+        format
       </str>
     </lst>
   </requestHandler>
-  
+
   <requestHandler name="public_search" class="solr.SearchHandler" >
     <lst name="defaults">
       <!-- Making defType lucene to exclude file assets -->
@@ -156,16 +157,17 @@
         person_7_institution_t,person_8_institution_t,person_9_institution_t,
         mods_gps_t, mods_region_t, mods_site_t, mods_ecosystem_t,
         mods_timespan_start_t, mods_timespan_end_t, description_t, mods_title_info_t,mods_0_title_info_0_main_title_t, embargo_release_date_dt, note_t,
-        object_type_facet, department_facet, peer_reviewed_facet
+        object_type_facet, department_facet, peer_reviewed_facet,
+        format
       </str>
     </lst>
   </requestHandler>
-  
+
   <requestHandler name="fulltext" class="solr.SearchHandler" >
     <lst name="defaults">
       <str name="defType">dismax</str>
       <str name="facet">on</str>
-      <str name="facet.mincount">1</str> 
+      <str name="facet.mincount">1</str>
       <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
       <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
@@ -178,10 +180,10 @@
       <str name="q.alt">*:*</str>
     </lst>
   </requestHandler>
-  
-  <!-- 
+
+  <!--
     Hydra Permissions request Handler
-    For requests to get just the permissions related info about a document 
+    For requests to get just the permissions related info about a document
   -->
   <requestHandler name="permissions" class="solr.SearchHandler" >
     <lst name="defaults">
@@ -199,7 +201,7 @@
       </str>
     </lst>
   </requestHandler>
-  
+
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
   <requestHandler name="document" class="solr.SearchHandler" >
     <lst name="defaults">
@@ -208,7 +210,7 @@
       <str name="rows">1</str>
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
 
-      <!-- facets on for a single document response??? -->      
+      <!-- facets on for a single document response??? -->
       <str name="facet">on</str>
 	    <str name="facet.mincount">1</str>
 
@@ -229,7 +231,7 @@
 
     </lst>
   </requestHandler>
-  
+
    <!-- The spell check component can return a list of alternative spelling
   suggestions.  -->
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
@@ -274,7 +276,7 @@
       <str>spellcheck</str>
     </arr>
   </requestHandler>
- 
+
   <!-- a search component that enables you to configure the top results for
        a given query regardless of the normal lucene scoring.-->
   <searchComponent name="elevator" class="solr.QueryElevationComponent" >
@@ -282,7 +284,7 @@
     <str name="queryFieldType">string</str>
     <str name="config-file">elevate.xml</str>
   </searchComponent>
- 
+
   <!-- a request handler utilizing the elevator component -->
   <requestHandler name="/elevate" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
@@ -310,8 +312,8 @@
      <str name="echoHandler">true</str>
     </lst>
   </requestHandler>
-  
-  <!-- 
+
+  <!--
   <queryResponseWriter name="xml" class="org.apache.solr.request.XMLResponseWriter" default="true"/>
   <queryResponseWriter name="json" class="org.apache.solr.request.JSONResponseWriter"/>
   <queryResponseWriter name="ruby" class="org.apache.solr.request.RubyResponseWriter"/>
@@ -319,11 +321,11 @@
 
   <!-- XSLT response writer transforms the XML output by any xslt file found
        in Solr's conf/xslt directory.  Changes to xslt files are checked for
-       every xsltCacheLifetimeSeconds.  
+       every xsltCacheLifetimeSeconds.
    -->
   <queryResponseWriter name="xslt" class="org.apache.solr.request.XSLTResponseWriter">
     <int name="xsltCacheLifetimeSeconds">5</int>
-  </queryResponseWriter> 
+  </queryResponseWriter>
 
   <admin>
     <defaultQuery>hydra</defaultQuery>
