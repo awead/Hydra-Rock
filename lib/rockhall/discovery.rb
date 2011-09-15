@@ -7,78 +7,65 @@ class Rockhall::Discovery
 
   # This is a push method that queries the Solr index used by Hydra
   # for publicly available objects and sends them to another solr index
-  # Right now, it's only doing images
+  # Right now, it's only doing ArchivalVideo objects
 
   # adds objects to solr index
   def self.get_objects
 
     # query to return all objects in solr with discovery set to public
-    results = Blacklight.solr.find( :q => "access_group_t:public and object_type_facet:Image" )
-    
+    solr_params = Hash.new
+    solr_params[:fl]   = "id"
+    solr_params[:q]    = "access_group_t:public AND collection_t:archival_video"
+    solr_params[:qt]   = "standard"
+    solr_params[:rows] = 1000
+    solr_response = Blacklight.solr.find(solr_params)
+    document_list = solr_response.docs.collect {|doc| SolrDocument.new(doc, solr_response)}
+
     # connect to our other solr index
     solr = solr_connect
 
-    # update each result
-    results["response"]["docs"].each do |r|
-            
-      contributors = get_contributors(r, "All")
-      authors = get_contributors(r, "Creator")
-      authors = contributors if authors.nil?
-      
-      subjects = Array.new
-      subjects.push(get_subjects(r))
-      
-      topics = Array.new
-      topics.push(contributors) unless contributors.empty?
-      topics.push(subjects) unless subjects.empty?
-      
-      solr_doc = {
-        :format => "image",
-        :id => r["id"],
-        :title_display => r["title_info_main_title_t"],
-        :title_addl_display => r["other_title_info_t"],
-        :author_display => authors.join("; "),
-        :contributors_display => contributors.join("; "),
-        :language_facet => r["mods_0_language_t"],
-        :summary_display => r["mods_0_abstract_t"],
-        :notes_display => r["mods_0_note_t"],
-        :contents_display => r["mods_0_contents_t"],
-        :subject_topic_facet => topics.flatten.uniq,
-        :subject_display => subjects.join("; "),
-        :series_display => r["mods_0_program_0_title_info_0_title_t"],
-        :title_series_t => r["mods_0_program_0_name_0_name_part_t"],
-        :access_display => r["mods_0_source_0_access_t"],
-        :text => r["text"]
-      }
-      solr.add solr_doc
+    # shove 'em in...
+    document_list.each do |doc|
+      retrieve = Hash.new
+      retrieve[:q]  = 'id:"' + doc.id + '"'
+      retrieve[:qt] = "document"
+      response = Blacklight.solr.find(retrieve)
+      solr.add response["response"]["docs"].first
       solr.commit
     end
-    
+
   end
 
-  # delete any existing objects
+  # delete any ActiveFedora objects
   # used prior to an update
   def self.delete_objects
     solr = solr_connect
-    results = solr.find( :fq => "{!raw f=format}image", :qt => "search", "facet.field"=>["format"])
-    results["response"]["docs"].each do |r|
+    solr_params = Hash.new
+    solr_params[:q]    = 'active_fedora_model_s:"ActiveFedora::Base"'
+    solr_params[:qt]   = "standard"
+    solr_params[:rows] = 1000
+    solr_response = Blacklight.solr.find(solr_params)
+
+    solr_response["response"]["docs"].each do |r|
       solr.delete_by_id r["id"]
       solr.commit
     end
   end
-  
-  
+
+
   def self.solr_connect
-    solr = RSolr.connect :url => 'http://localhost:8984/solr/blacklight'
+    solr = RSolr.connect :url => 'http://localhost:8984/solr/blacklight-dev'
   end
-    
+
   private
-  
+
+  # none of this is used anymore
+
   def self.get_contributors(doc,role)
     results = Array.new
     personal = get_personal_contributors(doc, role)
     corporate = get_other_contributors(doc, "corporate", role)
-    conference = get_other_contributors(doc, "conference", role)    
+    conference = get_other_contributors(doc, "conference", role)
     unless personal.nil?
       results.push(personal)
     end
@@ -90,7 +77,7 @@ class Rockhall::Discovery
     end
     return results unless results.empty?
   end
-  
+
   def self.get_personal_contributors(doc,role,opts={})
     contributors = Array.new
     i = 0
@@ -111,7 +98,7 @@ class Rockhall::Discovery
     end
     return contributors unless contributors.empty?
   end
-  
+
   def self.get_other_contributors(doc,type,role,opts={})
     contributors = Array.new
     i = 0
@@ -126,9 +113,9 @@ class Rockhall::Discovery
           unless doc["mods_0_#{type}_#{i}_namePart_t"].nil?
             contributors.push( doc["mods_0_#{type}_#{i}_namePart_t"] )
           end
-        end     
+        end
       end
-      i += 1       
+      i += 1
     end
     return contributors unless contributors.empty?
   end
