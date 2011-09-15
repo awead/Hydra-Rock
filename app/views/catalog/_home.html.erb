@@ -1,0 +1,11 @@
+<!--
+  TODO: this is overridden because the search form is commented-out for some reason
+  in hydra-head-pre3
+-->
+
+<%= render :partial=>'search_form' %>
+<%= render :partial=>'home_text' %>
+
+<% sidebar_items << capture do %>
+  <%= render :partial=>'facets' %>
+<% end %>
