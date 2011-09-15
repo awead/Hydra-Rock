@@ -209,7 +209,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
   def to_solr(solr_doc=Solr::Document.new)
   super(solr_doc)
 
-    solr_doc.merge!(:object_type_facet => "Video")
+    solr_doc.merge!(:format => "Video")
     solr_doc.merge!(:title_t => self.find_by_terms(:full_title).text)
 
 		# Add contributors
