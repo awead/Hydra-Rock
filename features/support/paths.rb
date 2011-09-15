@@ -8,12 +8,18 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the home\s?page$/
+    when /the home\s?page/
       '/'
-    when /the edit document page for (.*)$/i
-      edit_catalog_path($1)
-    when /the show document page for (.*)$/i
+    when /the search page/
+      '/'
+    when /the base search page/
+      '/catalog?q=&search_field=search&action=index&controller=catalog&commit=search'
+    when /the document page for id (.+)/
       catalog_path($1)
+    when /the edit page for id (.+)/
+      edit_catalog_path($1)
+    when /the catalog index page/
+      catalog_index_path
     else
       begin
         page_name =~ /^the (.*) page$/
