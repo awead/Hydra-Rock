@@ -258,5 +258,8 @@ Blacklight.configure(:shared) do |config|
     :depositor => "archivist1"
   }
 
+  config[:hostname]       = "http://george.rockhall.org/hydrangea"
+  config[:solr_discovery] = "localhost:8984/solr/blacklight-dev"
+
 end
 

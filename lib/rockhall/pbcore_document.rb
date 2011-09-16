@@ -214,7 +214,19 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 
     # Specific fields for Blacklight export
     solr_doc.merge!(:title_display => self.find_by_terms(:full_title).text)
+    solr_doc.merge!(:title_addl_display => self.find_by_terms(:alt_title).text)
     solr_doc.merge!(:heading_display => self.find_by_terms(:full_title).text)
+    solr_doc.merge!(:language_display => self.find_by_terms(:language).text)
+    solr_doc.merge!(:summary_display => self.find_by_terms(:summary).text)
+    solr_doc.merge!(:pub_date_display => self.find_by_terms(:coverage, :date).text)
+    solr_doc.merge!(:publisher_display => gather_terms(self.find_by_terms(:publisher, :name)))
+    solr_doc.merge!(:contributors_display => gather_terms(self.find_by_terms(:contributor, :name)))
+    solr_doc.merge!(:subject_display => gather_terms(self.find_by_terms(:subject)))
+    solr_doc.merge!(:genre_display => gather_terms(self.find_by_terms(:genre)))
+    solr_doc.merge!(:series_display => gather_terms(self.find_by_terms(:series, :name)))
+    solr_doc.merge!(:contents_display => gather_terms(self.find_by_terms(:contents)))
+
+
 
     # Blacklight facets - these are the same facet fields used in our Blacklight app
     # for consistency and so they'll show up when we export records from Hydra into BL:
@@ -230,22 +242,15 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     #   genre_facet
     solr_doc.merge!(:material_facet => "Digital")
 
-    genres = Array.new
-    self.find_by_terms(:genre).each { |genre| genres << genre.text }
-    solr_doc.merge!(:genre_facet => genres)
+    solr_doc.merge!(:genre_facet => gather_terms(self.find_by_terms(:genre)))
+    solr_doc.merge!(:name_facet => gather_terms(self.find_by_terms(:contributor, :name)))
+    solr_doc.merge!(:topic_facet => gather_terms(self.find_by_terms(:topic)))
 
+    # Series and events are consolidated into a single field
     events = Array.new
-    self.find_by_terms(:series).each { |series| events << series.text }
+    self.find_by_terms(:series, :name).each { |series| events << series.text }
     self.find_by_terms(:event).each { |event| events << event.text }
     solr_doc.merge!(:series_facet => events)
-
-    names = Array.new
-    self.find_by_terms(:contributor, :name).each { |name| names << name.text }
-    solr_doc.merge!(:name_facet => names)
-
-    topics = Array.new
-    self.find_by_terms(:topic).each { |topic| topics << topic.text }
-    solr_doc.merge!(:topic_facet => topics)
 
 		solr_doc.merge!(:collection_facet => self.find_by_terms(:item, :relation, :collection_name).first.text.strip)
 
@@ -257,10 +262,21 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 		  solr_doc.merge!(:pub_date => DateTime.parse(date).strftime("%Y"))
 		end
 
+		# Create link to item in Hydra
+		solr_doc.merge!(:resource_link_display => File.join(Blacklight.config[:hostname], "catalog", self.pid))
+
 		# For full text, we stuff it into the mods_t field which is already configured for Mods doucments
 		solr_doc.merge!(:mods_t => self.ng_xml.text)
 
     return solr_doc
+  end
+
+  private
+
+  def gather_terms(terms)
+    results = Array.new
+    terms.each { |r| results << r.text }
+    return results
   end
 
 end
