@@ -263,7 +263,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 		end
 
 		# Create link to item in Hydra
-		solr_doc.merge!(:resource_link_display => File.join(Blacklight.config[:hostname], "catalog", self.pid))
+		solr_doc.merge!(:resource_link_display => File.join(Blacklight.config[:hostname], "catalog", self.pid)) if self.pid
 
 		# For full text, we stuff it into the mods_t field which is already configured for Mods doucments
 		solr_doc.merge!(:mods_t => self.ng_xml.text)
