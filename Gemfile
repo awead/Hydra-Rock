@@ -3,8 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.10'
 
 gem 'blacklight', '~> 3.0.0'
-gem 'hydra-head', '3.0.0pre3'
-#gem 'hydra-head', :path => "/Users/adamw/Projects/Rails/hydra-head/gem/hydra-head"
+#gem 'hydra-head', '3.0.0pre3'
+gem 'hydra-head', :path => "/Users/adamw/Projects/Rails/hydra/hydra-head"
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 
