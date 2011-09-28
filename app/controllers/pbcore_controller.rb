@@ -24,9 +24,13 @@ class PbcoreController < ApplicationController
     af_model = retrieve_af_model(params[:content_type], :default=>ArchivalVideo)
     @document_fedora = af_model.find(params[:asset_id])
     @document_fedora.remove_node(params[:node],params[:index])
-    result = @document_fedora.save
-    render :text=>result.inspect
-    #redirect_to catalog_path(:id=>params[:asset_id])
+    @document_fedora.save
+    #result = @document_fedora.save
+    #render :text=>result.inspect
+    respond_to do |format|
+      format.html { redirect_to catalog_path(:id=>params[:asset_id]) }
+      format.js
+    end
   end
 
 

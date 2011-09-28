@@ -120,6 +120,33 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+  def delete_field_button
+    results = String.new
+
+    ["contributor","publisher","genre","topic"].each do |type|
+      # Note: we have to call the datastream method directly otherwise the helper method returns 1
+      types = @document_fedora.get_values_from_datastream('descMetadata', [type.to_sym]).length
+      if types > 0
+        index = 0
+        while index < types
+          if type.include?("genre") or type.include?("topic")
+            value = get_values_from_datastream(@document_fedora,'descMetadata', [{type.to_sym=>"#{index.to_s}"}]).first
+          else
+            value = get_values_from_datastream(@document_fedora,'descMetadata', [{type.to_sym=>"#{index.to_s}"}, :name]).first
+          end
+          name = value.empty? ? " #" + (index + 1).to_s : " " + value
+          results << button_to("Delete " + type + name,
+          {:action=>"destroy", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type, :index=>index},
+          :method => :delete)
+          index = index + 1
+        end
+      end
+    end
+
+    return results.html_safe
+  end
+
+
   def display_fieldset(type,opts={})
     collection = @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(type)
     if opts[:edit]
