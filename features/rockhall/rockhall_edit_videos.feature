@@ -3,6 +3,7 @@ Feature:
   As a library staff user
   I need to edit the metadata of a video
 
+
   Scenario: edit video object
     Given I am logged in as "archivist1"
     And I am on the edit document page for rockhall:fixture_pbcore_document1

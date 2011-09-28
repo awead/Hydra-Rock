@@ -1,9 +1,16 @@
-Given /^I am logged in as "([^\"]*)"$/ do |login|
-  email = "#{login}@#{login}.com"
-  user = User.create(:login => login, :email => email, :password => "password", :password_confirmation => "password")
-  visit user_session_path(:user_session => {:login => login, :password => "password"})
-  User.find(user.id).should_not be_nil
+Given /^I (?:am )?log(?:ged)? in as "([^\"]*)"$/ do |email|
+  # Given %{a User exists with a Login of "#{login}"}
+  user = User.create(:email => email, :password => "password", :password_confirmation => "password")
+  User.find_by_email(email).should_not be_nil
+  visit destroy_user_session_path
+  visit new_user_session_path
+  fill_in "Email", :with => email
+  fill_in "Password", :with => "password"
+  click_button "Sign in"
+  #Then %{I should see a link to "my account info" with label "#{email}"}
+  #And %{I should see a link to "logout"}
 end
+
 
 Given /^I am a superuser$/ do
   login = "BigWig"
