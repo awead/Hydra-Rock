@@ -2,7 +2,8 @@
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
 rerun_opts = rerun.to_s.strip.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
 std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --strict --tags ~@wip"
+require = "--require /Users/adamw/Projects/Rails/hydra/hydra-head/test_support/features/step_definitions"
 %>
 default: <%= std_opts %> features
-wip: --tags @wip:10 --wip features
+wip:  <%= require %> --tags @wip:10 --wip -r features
 rerun: <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip
