@@ -3,28 +3,23 @@ Feature:
   As a public user
   I need to view the content of a video
 
-
-  Scenario: search for a video
+  Scenario: search for a video (DAM-83)
     Given I am on the home page
     And I fill in "q" with "rockhall:fixture_pbcore_document1"
-    When I press "search"
+    When I press "submit"
     Then I should see a link to "the show document page for rockhall:fixture_pbcore_document1"
-    And I should see an icon for video
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
 
-  Scenario: search for a video barcode
+  Scenario: search for a video barcode (DAM-83)
     Given I am on the home page
     And I fill in "q" with "39156042551098"
-    When I press "search"
+    When I press "submit"
     Then I should see a link to "the show document page for rockhall:fixture_pbcore_document1"
-    And I should see an icon for video
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
 
-  Scenario: Viewable metadata
+  Scenario: Viewable metadata (DAM-83)
     Given I am on the show document page for rockhall:fixture_pbcore_document1
     Then I should see "Video"
-    And I should see the video "rrhof_access_h264_high.avi"
-    And I should see the heading "Content"
     And I should see "Title:"
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
     And I should see "Alt. Title:"
@@ -41,28 +36,27 @@ Feature:
     And I should see "1999-03-15"
     And I should see "Note:"
     And I should see "http://rockhall.com/inductees/ceremonies/1999/"
-    And I should see "Contributor:"
-    And I should see "Springsteen, Bruce (recipient)"
-    And I should see "McCartney, Paul. (recipient)"
-    And I should see "Joel, Billy. (recipient)"
-    And I should see "Brown, Charles, 1922-1999. (recipient)"
-    And I should see "Mayfield, Curtis. (recipient)"
-    And I should see "Shannon, Del. (recipient)"
-    And I should see "Springfield, Dusty. (recipient)"
-    And I should see "Staple Singers. (recipient)"
-    And I should see "Pickett, Wilson (performer)"
-    And I should see "Publisher:"
-    And I should see "Rock and Roll Hall of Fame Foundation (presenter)"
+    And I should see "Contributor Name:"
+    And I should see "Springsteen, Bruce"
+    And I should see "McCartney, Paul."
+    And I should see "Joel, Billy."
+    And I should see "Brown, Charles, 1922-1999."
+    And I should see "Mayfield, Curtis."
+    And I should see "Shannon, Del."
+    And I should see "Springfield, Dusty."
+    And I should see "Staple Singers."
+    And I should see "Pickett, Wilson"
+    And I should see "Publisher Name:"
+    And I should see "Rock and Roll Hall of Fame Foundation"
     And I should see "Entity:"
     And I should see "Rock and Roll Hall of Fame and Museum."
-    And I should see "Topic:"
+    And I should see "Topic Name:"
     And I should see "Rock music--History and criticism."
     And I should see "Inductee"
     And I should see "Rock musicians."
-    And I should see "Genre:"
+    And I should see "Genre Name:"
     And I should see "Award presentations (Motion pictures)"
     And I should see "Rock concert films."
-    And I should see the heading "Original"
     And I should see "Carrier:"
     And I should see "Betacam SP"
     And I should see "Standard:"
@@ -77,20 +71,17 @@ Feature:
     And I should see "LA.2003.01.001"
     And I should see "Note:"
     And I should see "Testing a note addition"
-    And I should see the heading "Rockhall"
     And I should see "Depositor:"
-    And I should see "archivist1"
-    And I should see the heading "All Files"
-    And I should see "access_hq"
-    And I should see "access_lq"
-    And I should see "preservation"
+    And I should see "archivist1@example.com"
+    And I should see "original"
+    And I should see "h264"
 
-  Scenario: Videos not ingested yet
+  Scenario: Videos not ingested yet (DAM-83)
     Given I am on the show document page for rockhall:fixture_pbcore_document2
-    Then I should see the heading "Content"
+    Then I should see "Content" within ".section-title"
     And I should see "Pre-Ingest Video"
     And I should see "This is what a video will look like before it is ingested."
-    And I should see the heading "Original"
+    And I should see "Original"
     And I should see "This is a fake video and no actual original exists."
-    And I should not see the heading "Video"
-    And I should not see the heading "All Files"
+    And I should not see "Video" within ".section-title"
+    And I should not see "All Files" within ".section-title"

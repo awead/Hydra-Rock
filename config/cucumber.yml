@@ -4,6 +4,6 @@ rerun_opts = rerun.to_s.strip.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'pr
 std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --strict --tags ~@wip"
 require = "--require /Users/adamw/Projects/Rails/hydra/hydra-head/test_support/features/step_definitions"
 %>
-default: <%= std_opts %> features
+default: <%= std_opts %> <%= require %> -r features
 wip:  <%= require %> --tags @wip:10 --wip -r features
 rerun: <%= rerun_opts %> --format rerun --out rerun.txt --strict --tags ~@wip

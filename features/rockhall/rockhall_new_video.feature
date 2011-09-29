@@ -3,7 +3,7 @@ Feature:
   As a library staff user
   I need to catalog the original analog item
 
-  Scenario: Create new video object
+  Scenario: Create new video object (DAM-83)
     Given I am logged in as "archivist1@example.com"
     And I am on the home page
     And I create a new archival_video
