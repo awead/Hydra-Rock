@@ -127,7 +127,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
       <group>archivist</group>
     </machine>
   </access>
@@ -143,7 +143,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-09-12T13:50:15.441Z" MIMETYPE="text/xml" SIZE="56">
 <foxml:xmlContent>
 <fields>
-  <depositor>archivist1</depositor>
+  <depositor>archivist1@example.com</depositor>
 </fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>

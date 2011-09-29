@@ -952,7 +952,7 @@ library@rockhall.org</instantiationLocation>
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
     </machine>
   </access>
   <embargo>
@@ -981,7 +981,7 @@ library@rockhall.org</instantiationLocation>
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
     </machine>
   </access>
   <embargo>
@@ -1010,7 +1010,7 @@ library@rockhall.org</instantiationLocation>
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
       <group>donor</group>
     </machine>
   </access>
@@ -1026,7 +1026,7 @@ library@rockhall.org</instantiationLocation>
 <foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-04-12T13:44:22.163Z" MIMETYPE="text/xml" SIZE="98">
 <foxml:xmlContent>
 <fields>
-  <depositor>archivist1</depositor>
+  <depositor>archivist1@example.com</depositor>
   <collection>archival_video</collection>
 </fields>
 </foxml:xmlContent>

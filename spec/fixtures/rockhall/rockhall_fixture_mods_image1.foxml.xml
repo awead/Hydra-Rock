@@ -3011,7 +3011,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
     </machine>
   </access>
   <embargo>
@@ -3040,7 +3040,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
     </machine>
   </access>
   <embargo>
@@ -3069,7 +3069,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
       <group>archivist</group>
     </machine>
   </access>
@@ -3099,7 +3099,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
       <group>archivist</group>
       <group>donor</group>
     </machine>
@@ -3130,7 +3130,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
       <group>archivist</group>
       <group>donor</group>
       <group>patron</group>
@@ -3162,7 +3162,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <access type="edit">
     <human></human>
     <machine>
-      <person>archivist1</person>
+      <person>archivist1@example.com</person>
       <group>archivist</group>
       <group>donor</group>
       <group>patron</group>
@@ -3181,7 +3181,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-02-23T20:01:16.734Z" MIMETYPE="text/xml" SIZE="98">
 <foxml:xmlContent>
 <fields>
-  <depositor>archivist1</depositor>
+  <depositor>archivist1@example.com</depositor>
   <collection>archival_image</collection>
 </fields>
 </foxml:xmlContent>
@@ -3189,7 +3189,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="content" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
 <foxml:datastreamVersion ID="content.0" LABEL="content" CREATED="2011-02-23T20:02:41.105Z" MIMETYPE="image/tiff">
-<foxml:binaryContent> 
+<foxml:binaryContent>
               SUkqAKhNDQD/2P/bAEMAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB
               AQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIABAB+AMAEQABEQACEQD/2gAMAwAAAQACAAA/AP7+K/v0j7/h
               /Wv7wJ/4P+Bf+y0VJXPz/wAH/Av/AGWiimCZ8EE5Jxg4HHrxjnP6UUUnmyf3v0X/AAoopv2hv7//AI6P
@@ -17739,12 +17739,12 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               GiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaX
               mJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/
               2Q==
-</foxml:binaryContent> 
+</foxml:binaryContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="max" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
 <foxml:datastreamVersion ID="max.0" LABEL="" CREATED="2011-02-23T20:02:42.038Z" MIMETYPE="image/jpeg">
-<foxml:binaryContent> 
+<foxml:binaryContent>
               /9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwg
               JC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIy
               MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAK1AfgDASIAAhEBAxEB/8QA
@@ -19667,12 +19667,12 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               iiiuWW5QUtFFNAJRRRQwClooqkIKKKKoApcUUUwEooooATFFFFZS3GFFFFSAUtFFXEApaKK0QgpKKKGA
               tFFFCAKKKKp7ANooorAYUUUUALRRRVoQtFFFUAUUUULcAoooqhBRRRSGJSGiiokAUUUVmMKWiiqjuIKK
               KKsBaKKKaAKKKKGAUUUUPYBMUmKKKmyAXFKBRRWkUhC0UUVQH//Z
-</foxml:binaryContent> 
+</foxml:binaryContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="thumbnail" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
 <foxml:datastreamVersion ID="thumbnail.0" LABEL="" CREATED="2011-02-23T20:02:42.831Z" MIMETYPE="image/jpeg">
-<foxml:binaryContent> 
+<foxml:binaryContent>
               /9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwg
               JC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIy
               MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCACJAGQDASIAAhEBAxEB/8QA
@@ -19800,12 +19800,12 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               GSrOAuNoPfJPORXvp6U2m1ZkckTxmy+CN1Jplr9p1uO1u4m3+XHaCSPPT5jkFsqBnnOSeSMVm658D9Xi
               LXGn6jDfuyFJAYERzvc52hjtGFPXdnsO1e80hpNaC5EY/hXRW8O+GNP0l5mme3iw7s27LEknnAyMkgcD
               jFFbI6UU1C5ex//Z
-</foxml:binaryContent> 
+</foxml:binaryContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="screen" STATE="A" CONTROL_GROUP="M" VERSIONABLE="true">
 <foxml:datastreamVersion ID="screen.0" LABEL="" CREATED="2011-02-23T20:02:43.510Z" MIMETYPE="image/jpeg">
-<foxml:binaryContent> 
+<foxml:binaryContent>
               /9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwg
               JC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIy
               MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAUoA8ADASIAAhEBAxEB/8QA
@@ -24016,7 +24016,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
               KKoAoooqgCm0UVlIAoooqBhRRRQAUUUUAFLRRTQgoooqkAClooqgCiiigAooooABRRRREAoooqhBRRRQ
               AUUUUhhRRRQAlFFFJgIaQUUVmwFoooqRhRRRTADQKKKFuIWiiitOgBRRRQAUtFFABRRRTQBRRRTAKKKK
               TAKKKKEAUUUUMBKTFFFQAEUmKKKLAKBRiiimkIXFLiiitEgFoooqgP/Z
-</foxml:binaryContent> 
+</foxml:binaryContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 </foxml:digitalObject>
