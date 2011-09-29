@@ -16,20 +16,6 @@ module RockhallAssetsHelper
     return result
   end
 
-  def delete_image_link(pid, asset_type_display="asset")
-    result = ""
-    result << "<a href=\"\#delete_dialog\" class=\"inline\">Delete this #{asset_type_display}</a>"
-    result << '<div style="display:none"><div id="delete_dialog">'
-      result << "<p>Do you want to permanently delete this image from the repository?</p>"
-      result << form_tag(url_for(:action => "destroy", :controller => "generic_content_objects", :id => pid, :method => "delete"))
-      result << hidden_field_tag("_method", "delete")
-      result << submit_tag("Yes, delete")
-      result << "</form>"
-    result << '</div></div>'
-
-    return result
-  end
-
   def display_field(path,opts={})
 
     # Default to descMetadata
