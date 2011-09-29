@@ -3,11 +3,11 @@ module Rockhall::ModsContributors
   # This module uses the same instance methods from Hydra::ModsContributors
   # but has different class methods for customized XML nodes
 
-  include Hydra::ModsContributors
+  include Hydrangea::ModsContributors
   include Hydra::CommonModsIndexMethods
 
   module MyClassMethods
-      
+
     def person_template
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.name(:type=>"personal", :authority=>"naf") {
@@ -22,7 +22,7 @@ module Rockhall::ModsContributors
       end
       return builder.doc.root
     end
-    
+
     def corporate_template
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.name(:type=>"corporate", :authority=>"naf") {
@@ -33,8 +33,8 @@ module Rockhall::ModsContributors
         }
       end
       return builder.doc.root
-    end  
-    
+    end
+
     def conference_template
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.name(:type=>"conference", :authority=>"naf") {
@@ -45,16 +45,16 @@ module Rockhall::ModsContributors
         }
       end
       return builder.doc.root
-    end  
-  
+    end
+
   end
-    
-    
+
+
   def self.included(klass)
     klass.extend(MyClassMethods)
-  end 
-  
+  end
+
   # Instance methods included from Hydra::ModsContributors
-  
+
 end
 
