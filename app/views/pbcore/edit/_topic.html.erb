@@ -9,6 +9,10 @@
 <dl class="topic fieldset" id="<%= base_id %>">
 
   <%= display_field([{:topic=>topic_counter}],       { :name=>"Topic Name" }) %>
-  <%= display_field([{:topic=>topic_counter}, :ref], { :name=>"Topic Ref" }) %>
+  <% if params[:action] == "edit" %>
+    <%= fedora_select(@document_fedora, "descMetadata", [{:topic=>topic_counter}, :ref], :choices=>Relators.lc, :include_blank => true).html_safe %>
+  <% else %>
+    <%= display_field([{:topic=>topic_counter}, :ref], { :name=>"Topic Ref" }) %>
+  <% end %>
 
 </dl>

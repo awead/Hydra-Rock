@@ -13,5 +13,11 @@ module Relators
     }
   end
 
+  def self.lc
+    {
+      "concept"  => "http://id.loc.gov/authorities/sh2007025014#concept",
+    }
+  end
+
 
 end

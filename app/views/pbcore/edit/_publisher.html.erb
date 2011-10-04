@@ -8,8 +8,17 @@
 <legend>Publisher:</legend>
 <dl class="publisher fieldset" id="<%= base_id %>">
 
-  <%= display_field([{:publisher=>publisher_counter}, :name],       { :name=>"Publisher Name" }) %>
-  <%= display_field([{:publisher=>publisher_counter}, :role],       { :name=>"Publisher Role" }) %>
-  <%= display_field([{:publisher=>publisher_counter}, :role, :ref], { :name=>"Publisher Ref" }) %>
+  <% if params[:action] == "edit" %>
+
+    <%= display_field([{:publisher=>publisher_counter}, :name],       { :name=>"Publisher Name" }) %>
+    <%= publisher_select(publisher_counter) %>
+    <%= display_field([{:publisher=>publisher_counter}, :role],       { :hidden=>TRUE }) %>
+    <%= display_field([{:publisher=>publisher_counter}, :role, :ref], { :hidden=>TRUE }) %>
+
+  <% else %>
+    <%= display_field([{:publisher=>publisher_counter}, :name],       { :name=>"Publisher Name" }) %>
+    <%= display_field([{:publisher=>publisher_counter}, :role],       { :name=>"Publisher Role" }) %>
+    <%= display_field([{:publisher=>publisher_counter}, :role, :ref], { :name=>"Publisher Ref" }) %>
+  <% end %>
 
 </dl>

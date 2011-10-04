@@ -158,4 +158,19 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+  def publisher_select(node)
+    results = String.new
+    results << "<select class=\"publisher_select\" name=\"publisher_select_#{node.to_s}\" id=\"publisher_select_#{node.to_s}\" onchange=\"updatePublisher('#{node.to_s}')\">"
+    results << "<option value=\"\"></option>"
+    Relators.pbcore.each do |k, v|
+      if get_values_from_datastream(@document_fedora,'descMetadata', [{:publisher=>node}, :role]).first == k
+        results << "<option value=\"#{v}\" selected>#{k}</option>"
+      else
+        results << "<option value=\"#{v}\">#{k}</option>"
+      end
+    end
+    results << "</select>"
+    return results.html_safe
+  end
+
 end
