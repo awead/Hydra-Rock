@@ -57,11 +57,16 @@ Feature:
     And I press "Delete contributor #1"
     Then I should not see "Contributor Name:"
 
-  @wip
-  Scenario: Use pull-down menu to update contributor role (DAM-89)
+  @javascript
+  Scenario: Use pull-down menu to update contributor role (DAM-89,90)
     Given I am logged in as "archivist1@example.com"
     And I create a new archival_video
     And I press "Add contributor"
     When I select "performer" from "contributor_select_0"
     And I press "Save Document"
-    Then I should see "performer" within "contributor_select_0"
+    Then I should see "performer"
+    And I follow "Browse"
+    Then I should see "http://id.loc.gov/vocabulary/relators/prf"
+    And I should see "Contributor Role:"
+    And I should see "Contributor Ref:"
+    And I should see "performer"

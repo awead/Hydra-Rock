@@ -18,6 +18,7 @@ group :development, :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'capybara-webkit'
   #gem 'webrat'
   #gem 'aruba'
   gem 'factory_girl'
