@@ -25,7 +25,11 @@ module LocalHydraFedoraMetadataHelper
       body << "<#{container_tag_type.to_s} class=\"editable-container field\" id=\"#{base_id}-container\">"
         body << "<a href=\"\" title=\"Delete '#{h(current_value)}'\" class=\"destructive field\">Delete</a>" if opts.fetch(:multiple, true) && !current_value.empty?
         body << "<span class=\"editable-text text\" id=\"#{base_id}-text\" style=\"display:none;\">#{h(current_value.lstrip)}</span>"
-        body << "<input class=\"editable-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{h(current_value.lstrip)}\"/>"
+        if opts[:hidden]
+          body << "<input type=\"hidden\" class=\"editable-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{h(current_value.lstrip)}\"/>"
+        else
+          body << "<input class=\"editable-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{h(current_value.lstrip)}\"/>"
+        end
       body << "</#{container_tag_type}>"
     end
     result = field_selectors_for(datastream_name, field_key)
@@ -37,7 +41,6 @@ module LocalHydraFedoraMetadataHelper
 
     result.html_safe
   end
-
 
 
 end

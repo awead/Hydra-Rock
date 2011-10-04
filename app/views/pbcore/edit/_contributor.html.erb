@@ -8,9 +8,16 @@
 <legend>Contributors:</legend>
 <dl class="contributor fieldset" id="<%= base_id %>">
 
-  <%= display_field([{:contributor=>contributor_counter}, :name],       { :name=>"Contributor Name" }) %>
-  <%= display_field([{:contributor=>contributor_counter}, :role],       { :name=>"Contributor Role" }) %>
-  <%= display_field([{:contributor=>contributor_counter}, :role, :ref], { :name=>"Contributor Ref" }) %>
+  <% if params[:action] == "edit" %>
+    <%= display_field([{:contributor=>contributor_counter}, :name],       { :name=>"Contributor Name" }) %>
+    <%= contributor_select(contributor_counter) %>
+    <%= display_field([{:contributor=>contributor_counter}, :role],       { :hidden=>TRUE }) %>
+    <%= display_field([{:contributor=>contributor_counter}, :role, :ref], { :hidden=>TRUE }) %>
+  <% else %>
+    <%= display_field([{:contributor=>contributor_counter}, :name],       { :name=>"Contributor Name" }) %>
+    <%= display_field([{:contributor=>contributor_counter}, :role],       { :name=>"Contributor Role" }) %>
+    <%= display_field([{:contributor=>contributor_counter}, :role, :ref], { :name=>"Contributor Ref" }) %>
+  <% end %>
 
 </dl>
 

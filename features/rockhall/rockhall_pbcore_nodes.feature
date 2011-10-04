@@ -3,24 +3,18 @@ Feature:
   As a library staff user
   I need add and remove different pbcore nodes from documents
 
-  Scenario: Add a new nodes enter information
+  Scenario: Add a new nodes enter information (DAM-88)
     Given I am logged in as "archivist1@example.com"
     And I create a new archival_video
     And I press "Add contributor"
     Then I should see "Contributor Name:"
-    And I should see "Contributor Role:"
-    And I should see "Contributor Ref:"
-    And I fill in "asset[descMetadata][contributor_0_name][0]" with "John Doe"
-    And I fill in "asset[descMetadata][contributor_0_role][0]" with "test_role"
-    And I fill in "asset[descMetadata][contributor_0_role_ref][0]" with "test_role_ref"
-    And I press "Save Document"
-    Then I should see "John Doe"
-    And I should see "test_role"
-    And I should see "test_role_ref"
-    And I press "Delete contributor John Doe"
-    Then I should not see "Contributor Name:"
     And I should not see "Contributor Role:"
     And I should not see "Contributor Ref:"
+    And I fill in "asset[descMetadata][contributor_0_name][0]" with "John Doe"
+    And I press "Save Document"
+    Then I should see "John Doe"
+    And I press "Delete contributor John Doe"
+    Then I should not see "Contributor Name:"
     And I press "Add publisher"
     Then I should see "Publisher Name:"
     And I should see "Publisher Role:"
@@ -62,3 +56,12 @@ Feature:
     Then I should see "Contributor Name:"
     And I press "Delete contributor #1"
     Then I should not see "Contributor Name:"
+
+  @wip
+  Scenario: Use pull-down menu to update contributor role (DAM-89)
+    Given I am logged in as "archivist1@example.com"
+    And I create a new archival_video
+    And I press "Add contributor"
+    When I select "performer" from "contributor_select_0"
+    And I press "Save Document"
+    Then I should see "performer" within "contributor_select_0"

@@ -38,7 +38,7 @@ module RockhallAssetsHelper
       if opts[:area]
         values = fedora_text_area(@document_fedora, datastream, path)
       else
-        values = fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple])
+        values = fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden])
       end
     else
       values = get_values_from_datastream(@document_fedora, datastream, path)
@@ -52,7 +52,7 @@ module RockhallAssetsHelper
       elsif opts[:area]
         result << value
       else
-        result << "<dt>#{field}:</dt>"
+        result << "<dt>#{field}:</dt>" unless opts[:hidden]
         result << "<dd class=\"field\">#{value}</dd>"
       end
     end
@@ -140,6 +140,22 @@ module RockhallAssetsHelper
     else
       render :partial=>"pbcore/show/#{type.to_s}", :collection=>collection
     end
+  end
+
+
+  def contributor_select(node)
+    results = String.new
+    results << "<select class=\"contributor_select\" name=\"contributor_select_#{node.to_s}\" id=\"contributor_select_#{node.to_s}\" onchange=\"updateContributor('#{node.to_s}')\">"
+    results << "<option value=\"\"></option>"
+    Relators.marc.each do |k, v|
+      if get_values_from_datastream(@document_fedora,'descMetadata', [{:contributor=>node}, :role]).first == k
+        results << "<option value=\"#{v}\" selected>#{k}</option>"
+      else
+        results << "<option value=\"#{v}\">#{k}</option>"
+      end
+    end
+    results << "</select>"
+    return results.html_safe
   end
 
 end
