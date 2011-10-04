@@ -109,7 +109,7 @@ module RockhallAssetsHelper
   def delete_field_button
     results = String.new
 
-    ["contributor","publisher","genre","topic"].each do |type|
+    ["contributor","publisher","genre","topic","series"].each do |type|
       # Note: we have to call the datastream method directly otherwise the helper method returns 1
       types = @document_fedora.get_values_from_datastream('descMetadata', [type.to_sym]).length
       if types > 0

@@ -11,7 +11,6 @@
       <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true}) %>
       <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true}) %>
       <%= display_field([:episode],    { :multiple=>true}) %>
-      <%= display_field([:series],     { :multiple=>true}) %>
 
       <%= display_field([:language]) %>
       <%= display_field([:summary]) %>
@@ -30,6 +29,7 @@
       <%= display_fieldset(:publisher,   {:edit=>true}) %>
       <%= display_fieldset(:genre,       {:edit=>true}) %>
       <%= display_fieldset(:topic,       {:edit=>true}) %>
+      <%= display_fieldset(:series,      {:edit=>true}) %>
     </dl>
   </fieldset>
   <%= submit_tag 'Save Document', {:id => "submitDocument"} %>
@@ -37,7 +37,7 @@
 
 <!-- Buttons for inserting field sets -->
 <% sidebar_items << capture do %>
-  <% ["contributor","publisher","genre","topic"].each do |type| %>
+  <% ["contributor","publisher","genre","topic","series"].each do |type| %>
     <%= form_tag url_for(:action=>"create", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type) do %>
       <%= submit_tag "Add #{type}", {:id => "add#{type.capitalize}"} %>
     <% end %>

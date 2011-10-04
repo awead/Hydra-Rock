@@ -1,0 +1,11 @@
+<%
+  # On create: series_counter and series variables come from the controller
+  # On edit: they come from the defaults in the render call
+  series_name = get_values_from_datastream(@document_fedora,'descMetadata', [{:series=>series_counter}]).first
+  base_id = "series_#{series_counter}"
+%>
+
+<legend>Series:</legend>
+<dl class="series fieldset" id="<%= base_id %>">
+  <%= display_field([{:series=>series_counter}, :name], { :name=>"Series Name" }) %>
+</dl>
