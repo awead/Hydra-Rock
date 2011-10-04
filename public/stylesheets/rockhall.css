@@ -1,0 +1,137 @@
+/* Our css */
+
+html { height: 100%; width:100%; }
+
+body {
+  font-size: 12px;
+  font-family: Georgia, Times, serif;
+  background: #1d1d19 url(../images/header_tile_bg.jpg) 0 0 repeat-x;
+  padding: 0;
+}
+
+#hd-helper {
+	margin: 0 auto;
+	background: transparent url(../images/header_bg.jpg) top center no-repeat;
+	padding: 0;
+}
+
+#hd {
+	width: 893px;
+	margin: 0 auto;
+	display: block;
+	height: 198px;
+	position: relative;
+	padding: 0;
+}
+
+/* Top Banner */
+h1.site_title {
+	text-indent: -9999px;
+	background: transparent url(../images/logo_flag.png) 0 0 no-repeat;
+	width: 149px;
+	height: 198px;
+	position: absolute;
+	left: 10px;
+	top: 0;
+}
+
+.first h1 {
+    margin: 0px;
+    padding: 0px;
+}
+
+h2.site_title {
+  font-size: 36px;
+  text-align: right;
+  line-height: 0px;
+  font-weight: bold;
+}
+
+h3.site_title {
+  font-size: 16px;
+  text-align: right;
+  line-height: 0px;
+}
+
+/**
+h1.site_title a {
+  display:block;
+  height: 35px;
+  width:120px;
+  text-indent: -9999px;
+  overflow: hidden;
+  text-decoration: none;
+  border: 0px;
+}
+**/
+
+h1.site_title a:link, h1.site_title a:visited, h1.site_title a:hover, h1.site_title a:active {border: 0px;}
+
+h2.search {margin:0; display:inline;}
+
+/*
+  Side-by-side definition list label-value pairs
+  (stole this from Hydrangea's css
+*/
+
+
+dl {
+    overflow:hidden;
+    margin-top:0;
+    padding-top:0;
+}
+
+dl dt {
+    clear: left;
+    float:left;
+    width:11em;
+    text-align: right;
+    font-weight: bold;
+    font-size: .9em;
+    margin-top: 5px;
+    }
+
+dl dd {
+    float: left;
+    width: 30em;
+    margin-top: 4px; /* dd tags look oddly out-of-line unless slightly smaller than dt tags */
+    margin-right: 0;
+    position: relative;
+    }
+
+
+/* Modifications to hydra-head (?) */
+ul li {
+  list-style: none;
+}
+
+
+/* Modifications to Blacklight */
+
+#doc4 {
+ background: #FFF;
+ border-bottom: 2px solid #555;
+ margin: 0px auto;}
+}
+
+dl.defList    {
+  width: 620px;
+  margin: 1em 0;
+  padding: 0;
+}
+
+dl.defList dt {
+  clear: left;
+  float: left;
+  width: 150px;
+  margin: 0;
+  padding: 1px 5px 1px;
+  font-weight: bold;
+}
+
+dl.defList dd {
+  float: left;
+  width: 450px;
+  margin: 0;
+  padding: 1px 5px 1px;
+}
