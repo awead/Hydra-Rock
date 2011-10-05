@@ -1,0 +1,8 @@
+<% unless @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(node.to_sym).empty? %>
+<dt>
+  <label for="<%= node %>"><%= node.capitalize %>:</label>
+</dt>
+<dd class="field">
+  <ul><%= display_fieldset(node.to_sym, {:edit=>true}) %></ul>
+</dd>
+<% end %>

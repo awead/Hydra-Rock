@@ -5,15 +5,11 @@
   base_id = "genre_#{genre_counter}"
 %>
 
-<legend>Genre:</legend>
-<dl class="genre fieldset" id="<%= base_id %>">
-
-
-  <%= display_field([{:genre=>genre_counter}], { :name=>"Genre Name" }) %>
+<li>
   <% if params[:action] == "edit" %>
+    <%= fedora_text_field(@document_fedora, "descMetadata", [{:genre=>genre_counter}], {:size=>"20", :multiple=>FALSE}) %>
     <%= fedora_select(@document_fedora, "descMetadata", [{:genre=>genre_counter}, :ref], :choices=>Relators.lc, :include_blank => true).html_safe %>
   <% else %>
     <%= display_field([{:genre=>genre_counter}, :ref], { :name=>"Genre Ref" }) %>
   <% end %>
-
-</dl>
+<li>

@@ -5,20 +5,16 @@
   base_id = "publisher_#{publisher_counter}"
 %>
 
-<legend>Publisher:</legend>
-<dl class="publisher fieldset" id="<%= base_id %>">
-
+<li>
   <% if params[:action] == "edit" %>
-
-    <%= display_field([{:publisher=>publisher_counter}, :name],       { :name=>"Publisher Name" }) %>
+    <!-- multiple needs to be explicitly set to FALSE. For some reason, it's getting set to TRUE -->
+    <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name], {:size=>"20", :multiple=>FALSE}) %>
     <%= publisher_select(publisher_counter) %>
-    <%= display_field([{:publisher=>publisher_counter}, :role],       { :hidden=>TRUE }) %>
-    <%= display_field([{:publisher=>publisher_counter}, :role, :ref], { :hidden=>TRUE }) %>
-
+    <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :role ], :hidden=>TRUE, :multiple=>FALSE) %>
+    <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :role, :ref], :hidden=>TRUE, :multiple=>FALSE) %>
   <% else %>
     <%= display_field([{:publisher=>publisher_counter}, :name],       { :name=>"Publisher Name" }) %>
     <%= display_field([{:publisher=>publisher_counter}, :role],       { :name=>"Publisher Role" }) %>
     <%= display_field([{:publisher=>publisher_counter}, :role, :ref], { :name=>"Publisher Ref" }) %>
   <% end %>
-
-</dl>
+</li>

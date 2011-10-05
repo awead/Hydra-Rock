@@ -5,7 +5,6 @@
   base_id = "series_#{series_counter}"
 %>
 
-<legend>Series:</legend>
-<dl class="series fieldset" id="<%= base_id %>">
-  <%= display_field([{:series=>series_counter}, :name], { :name=>"Series Name" }) %>
-</dl>
+<li>
+  <%= fedora_text_field(@document_fedora, "descMetadata", [{:series=>series_counter}, :name], {:size=>"20", :multiple=>FALSE}) %>
+</li>

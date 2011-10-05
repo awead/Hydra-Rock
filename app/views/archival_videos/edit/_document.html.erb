@@ -4,8 +4,7 @@
       "data-resourceType" => "archival_video",
       "accept-charset"    => "utf-8" do %>
 
-  <fieldset id="title_fields">
-    <legend>Content</legend>
+  <fieldset id="document_fields">
     <dl>
       <%= display_field([:full_title], { :name=>"Title" }) %>
       <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true}) %>
@@ -25,28 +24,16 @@
       <%= display_field([:place],  { :multiple=>true}) %>
       <%= display_field([:event],  { :multiple=>true}) %>
 
-      <%= display_fieldset(:contributor, {:edit=>true}) %>
-      <%= display_fieldset(:publisher,   {:edit=>true}) %>
-      <%= display_fieldset(:genre,       {:edit=>true}) %>
-      <%= display_fieldset(:topic,       {:edit=>true}) %>
-      <%= display_fieldset(:series,      {:edit=>true}) %>
+      <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
+      <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
+      <%= render :partial=>"pbcore/header", :locals => {:node=>"genre"} %>
+      <%= render :partial=>"pbcore/header", :locals => {:node=>"topic"} %>
+      <%= render :partial=>"pbcore/header", :locals => {:node=>"series"} %>
     </dl>
   </fieldset>
   <%= submit_tag 'Save Document', {:id => "submitDocument"} %>
 <% end %>
 
-<!-- Buttons for inserting field sets -->
-<% sidebar_items << capture do %>
-  <% ["contributor","publisher","genre","topic","series"].each do |type| %>
-    <%= form_tag url_for(:action=>"create", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type) do %>
-      <%= submit_tag "Add #{type}", {:id => "add#{type.capitalize}"} %>
-    <% end %>
-  <% end %>
-
-  <%= delete_field_button %>
-
-
-<% end %>
 
 
 

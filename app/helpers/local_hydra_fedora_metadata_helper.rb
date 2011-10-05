@@ -6,13 +6,14 @@ module LocalHydraFedoraMetadataHelper
     field_name = field_name_for(field_key)
     field_values = get_values_from_datastream(resource, datastream_name, field_key, opts)
     field_values = [""] if field_values.empty?
-    if opts.fetch(:multiple, true)
-      container_tag_type = :li
-    else
-      field_values = [field_values.first]
-      container_tag_type = :span
-    end
+     if opts.fetch(:multiple, true)
+       container_tag_type = :li
+     else
+       field_values = [field_values.first]
+       container_tag_type = :span
+     end
 
+    opts[:size] ? input_size = opts[:size] : input_size = 50
     body = ""
 
     if !field_values[0].empty? and opts.fetch(:multiple, true)
@@ -28,7 +29,7 @@ module LocalHydraFedoraMetadataHelper
         if opts[:hidden]
           body << "<input type=\"hidden\" class=\"editable-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{h(current_value.lstrip)}\"/>"
         else
-          body << "<input class=\"editable-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{h(current_value.lstrip)}\"/>"
+          body << "<input class=\"editable-edit edit\" size=\"#{input_size.to_s}\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{h(current_value.lstrip)}\"/>"
         end
       body << "</#{container_tag_type}>"
     end

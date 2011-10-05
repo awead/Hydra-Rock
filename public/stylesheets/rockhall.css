@@ -74,6 +74,14 @@ h2.search {margin:0; display:inline;}
   (stole this from Hydrangea's css
 */
 
+.fixed_sidebar {
+  position: fixed;
+}
+
+.float_sidebar {
+  position: relative;
+}
+
 
 dl {
     overflow:hidden;
