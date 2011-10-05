@@ -36,9 +36,9 @@ module RockhallAssetsHelper
     # Show or edit
     if params[:action] == "edit"
       if opts[:area]
-        values = fedora_text_area(@document_fedora, datastream, path)
+        values = fedora_text_area(@document_fedora, datastream, path, :multiple=>opts[:multiple])
       else
-        values = fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden])
+        values = fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden], :size=>opts[:size])
       end
     else
       values = get_values_from_datastream(@document_fedora, datastream, path)
@@ -106,13 +106,15 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+
   def delete_field_button
     results = String.new
-
+    results << "<ul>"
     ["contributor","publisher","genre","topic","series"].each do |type|
       # Note: we have to call the datastream method directly otherwise the helper method returns 1
       types = @document_fedora.get_values_from_datastream('descMetadata', [type.to_sym]).length
       if types > 0
+        results << "<li> Delete " + pluralize(types, type) + "</li>"
         index = 0
         while index < types
           if type.include?("genre") or type.include?("topic")
@@ -121,14 +123,16 @@ module RockhallAssetsHelper
             value = get_values_from_datastream(@document_fedora,'descMetadata', [{type.to_sym=>"#{index.to_s}"}, :name]).first
           end
           name = value.empty? ? " #" + (index + 1).to_s : " " + value
-          results << button_to("Delete " + type + name,
-          {:action=>"destroy", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type, :index=>index},
-          :method => :delete)
+          results << "<li>"
+          results << button_to(("Delete " + name.strip).truncate(28),
+                      {:action=>"destroy", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type, :index=>index},
+                      :method => :delete)
+          results << "</li>"
           index = index + 1
         end
       end
     end
-
+    results << "</ul>"
     return results.html_safe
   end
 
@@ -170,6 +174,17 @@ module RockhallAssetsHelper
       end
     end
     results << "</select>"
+    return results.html_safe
+  end
+
+  def toc_links
+    results = String.new
+    results << "<ul>"
+    results << "<li><a href=\"#\">Top</a></li>"
+    ["content","original","digital","rockhall","permissions"].each do |anchor|
+      results << "<li>" + link_to(anchor.capitalize, edit_catalog_path(@document_fedora, :anchor=>anchor)) + "</li>"
+    end
+    results << "</ul>"
     return results.html_safe
   end
 

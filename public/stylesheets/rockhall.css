@@ -113,6 +113,15 @@ ul li {
   list-style: none;
 }
 
+dd.field ol li {
+  list-style: none;
+}
+
+dd.field ul, dd.field ol {
+  margin: 0;
+  padding: 0;
+}
+
 
 /* Modifications to Blacklight */
 

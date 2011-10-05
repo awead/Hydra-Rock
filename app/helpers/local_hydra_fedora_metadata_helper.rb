@@ -24,7 +24,7 @@ module LocalHydraFedoraMetadataHelper
       base_id = generate_base_id(field_name, current_value, field_values, opts)
       name = "asset[#{datastream_name}][#{field_name}][#{z}]"
       body << "<#{container_tag_type.to_s} class=\"editable-container field\" id=\"#{base_id}-container\">"
-        body << "<a href=\"\" title=\"Delete '#{h(current_value)}'\" class=\"destructive field\">Delete</a>" if opts.fetch(:multiple, true) && !current_value.empty?
+        #body << "<a href=\"\" title=\"Delete '#{h(current_value)}'\" class=\"destructive field\">Delete</a>" if opts.fetch(:multiple, true) && !current_value.empty?
         body << "<span class=\"editable-text text\" id=\"#{base_id}-text\" style=\"display:none;\">#{h(current_value.lstrip)}</span>"
         if opts[:hidden]
           body << "<input type=\"hidden\" class=\"editable-edit edit\" id=\"#{base_id}\" data-datastream-name=\"#{datastream_name}\" rel=\"#{field_name}\" name=\"#{name}\" value=\"#{h(current_value.lstrip)}\"/>"

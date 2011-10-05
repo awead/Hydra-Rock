@@ -12,8 +12,21 @@
       <%= display_field([:episode],    { :multiple=>true}) %>
 
       <%= display_field([:language]) %>
-      <%= display_field([:summary]) %>
-      <%= display_field([:contents],          { :name=>"Table of Contents" }) %>
+
+      <dt>
+        <label for="summary">Summary:</label>
+      </dt>
+      <dd class="field">
+        <%= fedora_text_area(@document_fedora, "descMetadata", [:summary], :multiple=>FALSE) %>
+      </dd>
+
+      <dt>
+        <label for="contents">Table of Contents:</label>
+      </dt>
+      <dd class="field">
+        <%= fedora_text_area(@document_fedora, "descMetadata", [:contents], :multiple=>FALSE) %>
+      </dd>
+
       <%= display_field([:coverage, :event],  { :name => "Event Location" }) %>
       <%= display_field([:coverage, :date],   { :name => "Event Date" }) %>
       <%= display_field([:note],              { :multiple=>true }) %>
