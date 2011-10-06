@@ -148,7 +148,7 @@ module RockhallAssetsHelper
 
   def display_fieldset(type,opts={})
     collection = @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(type)
-    render :partial=>"pbcore/edit/#{type.to_s}", :collection=>collection
+    render :partial=>"pbcore/#{type.to_s}", :collection=>collection
   end
 
 
