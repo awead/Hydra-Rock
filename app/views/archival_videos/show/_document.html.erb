@@ -1,30 +1,25 @@
-<dl>
-  <fieldset id="document_fields">
-    <legend>Content Description</legend>
-    <dl>
-      <%= display_field([:full_title], { :name=>"Title" }) %>
-      <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true}) %>
-      <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true}) %>
-      <%= display_field([:episode],    { :multiple=>true}) %>
-      <%= display_field([:series],     { :multiple=>true}) %>
+<fieldset id="document_fields">
 
-      <%= display_field([:language]) %>
-      <%= display_field([:summary]) %>
-      <%= display_field([:contents],          { :name=>"Table of Contents" }) %>
-      <%= display_field([:coverage, :event],  { :name => "Event Location" }) %>
-      <%= display_field([:coverage, :date],   { :name => "Event Date" }) %>
-      <%= display_field([:note],              { :multiple=>true }) %>
-      <%= display_field([:caption]) %>
+  <dl>
+    <%= display_field([:full_title], { :name=>"Title" }) %>
+    <%= display_field([:sub_title],  { :name=>"Subtitle", :inline=>true}) %>
+    <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true}) %>
+    <%= display_field([:episode],    { :inline=>true}) %>
+    <%= display_field([:series],     { :inline=>true}) %>
 
-      <%= display_field([:entity], { :multiple=>true}) %>
-      <%= display_field([:era],    { :multiple=>true}) %>
-      <%= display_field([:place],  { :multiple=>true}) %>
-      <%= display_field([:event],  { :multiple=>true}) %>
+    <%= display_field([:language]) %>
+    <%= display_field([:summary]) %>
+    <%= display_field([:contents],          { :name=>"Table of Contents" }) %>
+    <%= display_field([:coverage, :event],  { :name => "Event Location" }) %>
+    <%= display_field([:coverage, :date],   { :name => "Event Date" }) %>
+    <%= display_field([:note],              { :inline=>true }) %>
+    <%= display_field([:caption]) %>
 
-      <%= display_fieldset(:contributor, {:edit=>true}) %>
-      <%= display_fieldset(:publisher,   {:edit=>true}) %>
-      <%= display_fieldset(:genre,       {:edit=>true}) %>
-      <%= display_fieldset(:topic,       {:edit=>true}) %>
-    </dl>
-  </fieldset>
-</dl>
+    <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
+    <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
+    <%= render :partial=>"pbcore/header", :locals => {:node=>"series"} %>
+
+    <%= render :partial=>"archival_videos/show/subjects" %>
+
+  </dl>
+</fieldset>

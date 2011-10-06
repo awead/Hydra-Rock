@@ -13,9 +13,10 @@
     <%= fedora_text_field(@document_fedora, "descMetadata", [{:contributor=>contributor_counter}, :role ], :hidden=>TRUE, :multiple=>FALSE) %>
     <%= fedora_text_field(@document_fedora, "descMetadata", [{:contributor=>contributor_counter}, :role, :ref], :hidden=>TRUE, :multiple=>FALSE) %>
   <% else %>
-    <%= display_field([{:contributor=>contributor_counter}, :name],       { :name=>"Contributor Name" }) %>
-    <%= display_field([{:contributor=>contributor_counter}, :role],       { :name=>"Contributor Role" }) %>
-    <%= display_field([{:contributor=>contributor_counter}, :role, :ref], { :name=>"Contributor Ref" }) %>
+    <span>
+      <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>contributor_counter}, :name] ) %>,
+      <%= contributor_link(contributor_counter) %>
+    </span>
   <% end %>
 </li>
 

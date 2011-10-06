@@ -13,8 +13,7 @@
     <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :role ], :hidden=>TRUE, :multiple=>FALSE) %>
     <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :role, :ref], :hidden=>TRUE, :multiple=>FALSE) %>
   <% else %>
-    <%= display_field([{:publisher=>publisher_counter}, :name],       { :name=>"Publisher Name" }) %>
-    <%= display_field([{:publisher=>publisher_counter}, :role],       { :name=>"Publisher Role" }) %>
-    <%= display_field([{:publisher=>publisher_counter}, :role, :ref], { :name=>"Publisher Ref" }) %>
+    <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name] ) %>,
+    <%= publisher_link(publisher_counter) %>
   <% end %>
 </li>

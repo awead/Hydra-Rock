@@ -46,15 +46,24 @@ module RockhallAssetsHelper
 
     # Put it all together
     result = String.new
+    if opts[:inline]
+      result << "<dt>#{field}:</dt>"
+      result << "<dd class=\"field\">"
+      result << "<ul>"
+    end
     values.each do |value|
       if opts[:inline]
-        result << "<li class=\"field\">" + field + value + "</li>"
+        result << "<li class=\"field\">" + value + "</li>"
       elsif opts[:area]
         result << value
       else
         result << "<dt>#{field}:</dt>" unless opts[:hidden]
         result << "<dd class=\"field\">#{value}</dd>"
       end
+    end
+    if opts[:inline]
+      result << "</dd>"
+      result << "</ul>"
     end
 
     if opts[:area]
@@ -139,11 +148,7 @@ module RockhallAssetsHelper
 
   def display_fieldset(type,opts={})
     collection = @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(type)
-    if opts[:edit]
-      render :partial=>"pbcore/edit/#{type.to_s}", :collection=>collection
-    else
-      render :partial=>"pbcore/show/#{type.to_s}", :collection=>collection
-    end
+    render :partial=>"pbcore/edit/#{type.to_s}", :collection=>collection
   end
 
 
@@ -182,9 +187,38 @@ module RockhallAssetsHelper
     results << "<ul>"
     results << "<li><a href=\"#\">Top</a></li>"
     ["content","original","digital","rockhall","permissions"].each do |anchor|
-      results << "<li>" + link_to(anchor.capitalize, edit_catalog_path(@document_fedora, :anchor=>anchor)) + "</li>"
+      if params[:action] == "edit"
+        results << "<li>" + link_to(anchor.capitalize, edit_catalog_path(@document_fedora, :anchor=>anchor)) + "</li>"
+      else
+        results << "<li>" + link_to(anchor.capitalize, catalog_path(@document_fedora, :anchor=>anchor)) + "</li>"
+      end
     end
     results << "</ul>"
+    return results.html_safe
+  end
+
+  def contributor_link(counter)
+    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role])
+    ref  = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role, :ref])
+    return link_to(role.to_s, ref.to_s).html_safe
+  end
+
+  def publisher_link(counter)
+    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role])
+    ref  = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role, :ref])
+    return link_to(role.to_s, ref.to_s).html_safe
+  end
+
+  def get_subjects
+    results = String.new
+
+    ["entity","era","place","event"].each do |type|
+      if @document_fedora.get_values_from_datastream('descMetadata', [type.to_sym]).length > 0
+        get_values_from_datastream(@document_fedora, "descMetadata", [type.to_sym]).each do |t|
+          results << "<li>#{t}</li>"
+        end
+      end
+    end
     return results.html_safe
   end
 
