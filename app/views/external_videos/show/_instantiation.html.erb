@@ -1,23 +1,25 @@
-<dl>
-  <%= link_to("View original", catalog_path(@document_fedora.containers.first.pid)) %>
-  <fieldset id="content_fields">
-    <legend>Content Fields</legend>
-    <dl>
-      <%= display_field([:name]) %>
-      <%= display_field([:date]) %>
-      <%= display_field([:generation]) %>
-      <%= display_field([:generation, :ref], { :name=>"Gerneration Ref" }) %>
-      <%= display_field([:type]) %>
-      <%= display_field([:size]) %>
-      <%= display_field([:size, :units], { :name=>"Size Units" }) %>
-      <%= display_field([:rate]) %>
-      <%= display_field([:rate, :units], { :name=>"Rate Units" }) %>
-      <%= display_field([:colors]) %>
-      <%= display_field([:duration]) %>
-      <%= display_field([:link]) %>
-      <%= display_field([:rights_summary]) %>
-      <%= display_field([:rights_link]) %>
-      <%= display_field([:note]) %>
-    </dl>
-  </fieldset>
-</dl>
+<fieldset id="instantiation_fields">
+  <dl>
+    <%= display_field([:name]) %>
+    <%= display_field([:date]) %>
+    <%= display_field([:generation]) %>
+    <%= display_field([:generation, :ref], { :name=>"Gerneration Reference" }) %>
+    <%= display_field([:type]) %>
+
+    <dt>
+      <label for="size">Size:</label>
+    </dt>
+    <dd class="field">
+      <%= get_values_from_datastream(@document_fedora, "descMetadata", [:size]) %> (<%=get_values_from_datastream(@document_fedora, "descMetadata", [:size, :units]) %>)
+    </dd>
+
+    <%= display_field([:rate]) %>
+    <%= display_field([:rate, :units],    { :name=>"Rate Units" }) %>
+    <%= display_field([:colors]) %>
+    <%= display_field([:duration]) %>
+    <%= display_field([:link]) %>
+    <%= display_field([:rights_summary],  { :name=>"Rights Information" }) %>
+    <%= display_field([:rights_link],     { :name=>"Rights Reference" }) %>
+    <%= display_field([:note],            {:inline=>TRUE}) %>
+  </dl>
+</fieldset>

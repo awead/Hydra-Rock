@@ -1,0 +1,15 @@
+<%= form_tag url_for(:action=>"update", :controller=>"assets", :content_type=>"external_video"),
+      :method             => "put",
+      :id                 => "properties",
+      "data-resourceType" => "archival_video",
+      "accept-charset"    => "utf-8" do %>
+
+  <fieldset id="properties">
+    <dl>
+      <%= display_field([:notes], { :datastream => "properties", :name => "Internal Notes", :multiple => TRUE }) %>
+      <%= display_field([:depositor], { :datastream => "properties" }) %>
+      <%= display_field([:collection], { :datastream => "properties" }) %>
+    </dl>
+  </fieldset>
+  <%= submit_tag 'Save Description', {:id => "submitDescription"} %>
+<% end %>
