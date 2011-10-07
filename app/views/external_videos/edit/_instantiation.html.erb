@@ -6,14 +6,8 @@
 
   <fieldset id="instantiation_fields">
     <dl>
-      <%= display_field([:date]) %>
       <%= display_field([:generation]) %>
       <%= display_field([:generation, :ref],  { :name=>"Gerneration Reference" }) %>
-      <%= display_field([:type]) %>
-      <%= display_field([:rate]) %>
-      <%= display_field([:rate, :units],      { :name=>"Rate Units" }) %>
-      <%= display_field([:colors]) %>
-      <%= display_field([:duration]) %>
       <%= display_field([:rights_summary],    { :name=>"Rights Information" }) %>
       <%= display_field([:rights_link],       { :name=>"Rights Reference" }) %>
       <%= display_field([:note],              {:multiple=>TRUE}) %>
