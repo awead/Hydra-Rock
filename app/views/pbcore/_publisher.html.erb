@@ -8,7 +8,7 @@
 <li>
   <% if params[:action] == "edit" %>
     <!-- multiple needs to be explicitly set to FALSE. For some reason, it's getting set to TRUE -->
-    <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name], {:size=>"20", :multiple=>FALSE}) %>
+    <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name], {:size=>40, :multiple=>FALSE}) %>
     <%= publisher_select(publisher_counter) %>
     <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :role ], :hidden=>TRUE, :multiple=>FALSE) %>
     <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :role, :ref], :hidden=>TRUE, :multiple=>FALSE) %>

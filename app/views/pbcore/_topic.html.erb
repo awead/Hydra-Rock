@@ -7,7 +7,7 @@
 
 <li>
   <% if params[:action] == "edit" %>
-    <%= fedora_text_field(@document_fedora, "descMetadata", [{:topic=>topic_counter}], {:size=>"20", :multiple=>FALSE}) %>
+    <%= fedora_text_field(@document_fedora, "descMetadata", [{:topic=>topic_counter}], {:size=>40, :multiple=>FALSE}) %>
     <%= fedora_select(@document_fedora, "descMetadata", [{:topic=>topic_counter}, :ref], :choices=>Relators.lc, :include_blank => true).html_safe %>
   <% else %>
     <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:topic=>topic_counter}]) %>

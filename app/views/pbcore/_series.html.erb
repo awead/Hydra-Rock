@@ -7,7 +7,7 @@
 
 <li>
   <% if params[:action] == "edit" %>
-    <%= fedora_text_field(@document_fedora, "descMetadata", [{:series=>series_counter}, :name], {:size=>"20", :multiple=>FALSE}) %>
+    <%= fedora_text_field(@document_fedora, "descMetadata", [{:series=>series_counter}, :name], {:size=>80, :multiple=>FALSE}) %>
   <% else %>
     <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:series=>series_counter}, :name] ) %>
   <% end %>
