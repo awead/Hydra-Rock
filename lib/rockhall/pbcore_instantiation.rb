@@ -80,7 +80,6 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
           xml.instantiationDataRate(:unitsOfMeasure=>"")
           xml.instantiationDate(:dateType=>"created")
           xml.instantiationDigital(:source=>"EBU file formats", :ref=>"http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm")
-          xml.instantiationLocation
           xml.instantiationGenerations(:source=>"PBCore instantiationGenerations", :ref=>"")
           xml.instantiationColors(:source=>"PBCore instantiationColors", :ref=>"")
           xml.instantiationDuration
