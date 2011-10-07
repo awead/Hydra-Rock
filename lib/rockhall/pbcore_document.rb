@@ -195,7 +195,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 
           # Notes
           xml.instantiationAnnotation(:annotationType=>"note") {
-            xml.text "Copies from original can be made upon request.\nSpeak to an archivist for fees and specifications."
+            xml.text "Copies from original can be made upon request. Speak to an archivist for fees and specifications."
           }
 
         }

@@ -70,6 +70,8 @@ Feature:
     And I should see "ARC.0002"
     And I should see "Accession Number:"
     And I should see "LA.2003.01.001"
+    And I should see "Location:"
+    And I should see "2809 Woodland Ave."
     And I should see "Note:"
     And I should see "Testing a note addition"
     And I should see "Depositor:"
