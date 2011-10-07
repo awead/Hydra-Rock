@@ -5,7 +5,6 @@
     <instantiationDataRate unitsOfMeasure=""/>
     <instantiationDate dateType="created"/>
     <instantiationDigital source="EBU file formats" ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm"/>
-    <instantiationLocation/>
     <instantiationGenerations source="PBCore instantiationGenerations" ref=""/>
     <instantiationColors source="PBCore instantiationColors" ref=""/>
     <instantiationDuration/>
