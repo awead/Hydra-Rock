@@ -9,6 +9,8 @@
     <h2 id="content" class="section-title">Content</h2>
     <div id="document_editor">
       <%= render :partial => "archival_videos/edit/document", :locals => {:content_type => "archival_video"} %>
+      <h3 class="twiddle">Delete Fields</h3>
+      <%= delete_field_button %>
     </div>
 
     <h2 id="original" class="section-title">Original</h2>
@@ -59,8 +61,7 @@
           </li>
         <% end %>
       </ul>
-      <h3 class="twiddle">Delete Fields</h3>
-      <%= delete_field_button %>
+
     </div>
   </div>
 
