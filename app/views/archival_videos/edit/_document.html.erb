@@ -6,9 +6,9 @@
 
   <fieldset id="document_fields">
     <dl>
-      <%= display_field([:full_title], { :name=>"Title" }) %>
-      <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true}) %>
-      <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true}) %>
+      <%= display_field([:full_title], { :name=>"Title", :size=>80 }) %>
+      <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true, :size=>80 }) %>
+      <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true, :size=>80 }) %>
       <%= display_field([:episode],    { :multiple=>true}) %>
 
       <%= display_field([:language]) %>
@@ -29,7 +29,7 @@
 
       <%= display_field([:coverage, :event],  { :name => "Event Location" }) %>
       <%= display_field([:coverage, :date],   { :name => "Event Date" }) %>
-      <%= display_field([:note],              { :multiple=>true }) %>
+      <%= display_field([:note],              { :multiple=>true, :size=>80 }) %>
       <%= display_field([:caption]) %>
 
       <%= display_field([:entity], { :multiple=>true}) %>
