@@ -24,7 +24,7 @@
           <div class="yui-u first">
             <h2 class="site_title">Hydra</h2>
             <h3 class="site_title">Digital asset management system</h3>
-            <h1 class="site_title"><%= link_to application_name, "/" %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>".html_safe : "" %></h1>
+            <h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>".html_safe : "" %></h1>
           </div>
           <div class="yui-u user_util_links">
             <%= render :partial=>'/user_util_links' %>
