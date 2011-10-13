@@ -23,4 +23,5 @@ group :development, :test do
   #gem 'aruba'
   gem 'factory_girl'
   gem 'bcrypt-ruby'
+  gem 'rest-client'
 end
