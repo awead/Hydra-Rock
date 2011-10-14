@@ -2,7 +2,8 @@
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
   # ==> Mailer Configuration
-  # Configure the e-mail address which will be shown in DeviseMailer.
+  # Configure the e-mail address which will be shown in Devise::Mailer,
+  # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
@@ -35,7 +36,7 @@ Devise.setup do |config|
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [ :email ]
-  
+
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
@@ -61,18 +62,21 @@ Devise.setup do |config|
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
-  config.stretches = 10
+  #
+  # Limiting the stretches to just one in testing will increase the performance of
+  # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
+  # a value less than 10 in other environments.
+  config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "40fed9821e9573dc64ddaeb0db4a9be161c66477af8b7e421cbfe3b7216dd39ca52348d886b8f0eac9322aec252dd20fa9925848d50df96ddc51714ed6549c71"
+  # config.pepper = "6687829ac840d9447b021ee2dd63811aeccdb81171572e9e27d22711aa7d478a1786b388be1ef380282ba4ec15a8aa89703ae476f04ab8210e66e8f736162482"
 
   # ==> Configuration for :confirmable
-  # The time you want to give your user to confirm his account. During this time
-  # he will be able to access your application without confirming. Default is 0.days
-  # When confirm_within is zero, the user won't be able to sign in without confirming.
-  # You can use this to let your user access some features of your application
-  # without confirming the account, but blocking it after a certain period
-  # (ie 2 days).
+  # A period that the user is allowed to access the website even without
+  # confirming his account. For instance, if set to 2.days, the user will be
+  # able to access the website for two days without confirming his account,
+  # access will be blocked just in the third day. Default is 0.days, meaning
+  # the user cannot access the website without confirming his account.
   # config.confirm_within = 2.days
 
   # Defines which key will be used when confirming an account
@@ -100,8 +104,10 @@ Devise.setup do |config|
   # Range for password length. Default is 6..128.
   # config.password_length = 6..128
 
-  # Regex to use to validate the email address
-  # config.email_regexp = /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
+  # Email regex used to validate email formats. It simply asserts that
+  # an one (and only one) @ exists in the given string. This is mainly
+  # to give user feedback and not to assert the e-mail validity.
+  # config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
