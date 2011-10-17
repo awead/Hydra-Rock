@@ -6,22 +6,22 @@
 
   <fieldset id="document_fields">
     <dl>
-      <%= display_field([:full_title], { :name=>"Title", :size=>80 }) %>
-      <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true, :size=>80 }) %>
-      <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true, :size=>80 }) %>
+      <%= display_field([:full_title], { :name=>"Title", :size=>60 }) %>
+      <%= display_field([:sub_title],  { :name=>"Subtitle", :multiple=>true, :size=>60 }) %>
+      <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true, :size=>60 }) %>
       <%= display_field([:episode],    { :multiple=>true}) %>
 
       <%= display_field([:language]) %>
 
       <dt>
-        <label for="summary">Summary:</label>
+        <label for="summary">Summary</label>
       </dt>
       <dd class="field">
         <%= fedora_text_area(@document_fedora, "descMetadata", [:summary], :multiple=>FALSE) %>
       </dd>
 
       <dt>
-        <label for="contents">Table of Contents:</label>
+        <label for="contents">Table of Contents</label>
       </dt>
       <dd class="field">
         <%= fedora_text_area(@document_fedora, "descMetadata", [:contents], :multiple=>FALSE) %>
@@ -29,7 +29,7 @@
 
       <%= display_field([:coverage, :event],  { :name => "Event Location" }) %>
       <%= display_field([:coverage, :date],   { :name => "Event Date" }) %>
-      <%= display_field([:note],              { :multiple=>true, :size=>80 }) %>
+      <%= display_field([:note],              { :multiple=>true, :size=>60 }) %>
       <%= display_field([:caption]) %>
 
       <%= display_field([:entity], { :multiple=>true}) %>

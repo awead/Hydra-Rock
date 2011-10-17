@@ -14,13 +14,13 @@
       <%= display_field([:item, :relation, :accession_number], { :name => "Accession Number" }) %>
 
       <dt>
-        <label for="item_location">Location:</label>
+        <label for="item_location">Location</label>
       </dt>
       <dd class="field">
         <%= fedora_text_area(@document_fedora, "descMetadata", [:item, :location], :multiple=>FALSE) %>
       </dd>
 
-      <%= display_field([:item, :note], { :name => "Note", :size=>80, :multiple=>TRUE }) %>
+      <%= display_field([:item, :note], { :name => "Note", :size=>60, :multiple=>TRUE }) %>
 
     </dl>
   </fieldset>

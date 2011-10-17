@@ -47,7 +47,7 @@ module RockhallAssetsHelper
     # Put it all together
     result = String.new
     if opts[:inline]
-      result << "<dt>#{field}:</dt>"
+      result << "<dt>#{field}</dt>"
       result << "<dd class=\"field\">"
       result << "<ul>"
     end
@@ -57,7 +57,7 @@ module RockhallAssetsHelper
       elsif opts[:area]
         result << value
       else
-        result << "<dt>#{field}:</dt>" unless opts[:hidden]
+        result << "<dt>#{field}</dt>" unless opts[:hidden]
         result << "<dd class=\"field\">#{value}</dd>"
       end
     end
