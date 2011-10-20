@@ -22,6 +22,12 @@ class ExternalVideo < ActiveFedora::Base
     m.field 'notes', :text
   end
 
+  def initialize( attrs={} )
+    super
+    # Anyone in the archivist group has edit rights
+    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+  end
+
   # augments add_named_datastream to put file information in descMetadata
   def add_named_datastream(name,opts={})
     super

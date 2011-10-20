@@ -24,6 +24,8 @@ class ArchivalVideo < ActiveFedora::Base
 
   def initialize( attrs={} )
     super
+    # Anyone in the archivist group has edit rights
+    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
   end
 
   def remove_file_objects
@@ -48,17 +50,16 @@ class ArchivalVideo < ActiveFedora::Base
       ev = ExternalVideo.new
       opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
       if opts[:checksum].nil?
-        ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory, :checksumType=>"SHA-1")
+        ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
       else
-        ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory, :checksumType=>"SHA-1", :checksum=>opts[:checksum])
+        ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory, :checksumType=>"MD5", :checksum=>opts[:checksum])
       end
       ev.apply_depositor_metadata(Blacklight.config[:video][:depositor])
 
-      if type.eql?("preservation")
-        ev.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-      else
-        ev.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
-      end
+      # No content will automatically be publically available
+      #unless type.eql?("preservation")
+      #  ev.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
+      #end
 
       self.file_objects_append(ev)
       self.save
