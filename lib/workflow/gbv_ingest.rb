@@ -6,15 +6,21 @@ class GbvIngest
   attr_accessor :parent, :sip, :force
 
   def initialize(sip,opts={})
-    @force = FALSE
+    if opts[:force].nil?
+      @force = FALSE
+    else
+      @force = TRUE
+    end
+
     if sip.valid?
+      @sip = sip
+    elsif sip.info[:barcode]
       @sip = sip
     else
       raise "Invalid sip"
     end
 
-    if opts[:force]
-      @force = TRUE
+    if @force
       av = ArchivalVideo.load_instance(sip.pid)
       av.remove_file_objects unless av.file_objects.empty?
       ActiveFedora::Base.load_instance(sip.pid).delete
@@ -37,13 +43,13 @@ class GbvIngest
     dst_name = new_name(@sip.pid,@sip.data[:access][:h264][:file],{ :type => ["access", "h264"] })
     dst = File.join(Blacklight.config[:video][:location], "access", dst_name)
     move_content(src,dst,{:force=>@force})
-    @parent.ingest(dst_name,{:type=>"access",:format=>"h264"})
+    @parent.ingest(dst_name,{:type=>"access",:format=>"h264",:checksum=>@sip.data[:access][:h264][:checksum]})
 
     src = File.join(@sip.info[:root], @sip.data[:preservation][:original][:file])
     dst_name = new_name(@sip.pid,@sip.data[:preservation][:original][:file],{ :type => ["preservation", "original"] })
     dst = File.join(Blacklight.config[:video][:location], "preservation", dst_name)
     move_content(src,dst,{:force=>@force})
-    @parent.ingest(dst_name,{:format=>"original"})
+    @parent.ingest(dst_name,{:format=>"original",:checksum=>@sip.data[:preservation][:original][:checksum]})
 
     return true
 

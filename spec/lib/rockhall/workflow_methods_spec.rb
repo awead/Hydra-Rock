@@ -14,9 +14,9 @@ describe Rockhall::WorkflowMethods do
   describe "new_name" do
 
     it "should return the new name of an access file" do
-      old_name = "111111111_access.avi"
+      old_name = "111111111_access.mp4"
       pid      = "rrhof:1234"
-      new_name = "rrhof_1234_access.avi"
+      new_name = "rrhof_1234_access.mp4"
       test     = @wf.new_name(pid,old_name,{ :type => ["access"] })
       test.should == new_name
     end
@@ -78,8 +78,8 @@ describe Rockhall::WorkflowMethods do
   describe "get_file" do
 
     it "should return a filename if it exists" do
-      path = "spec/fixtures/rockhall/sips/11111111/11111111_access.avi"
-      @wf.get_file(path).should == "11111111_access.avi"
+      path = "spec/fixtures/rockhall/sips/11111111/11111111_access.mp4"
+      @wf.get_file(path).should == "11111111_access.mp4"
     end
 
     it "should return nil if a file doesn't exist" do
@@ -92,8 +92,8 @@ describe Rockhall::WorkflowMethods do
   describe "get_checksum" do
 
     it "should return the checksum string from a given file" do
-      path = "spec/fixtures/rockhall/sips/11111111/11111111_access.avi.sha"
-      @wf.get_checksum(path).should == "001b0290f1b323622e475a954bc6caa021904f1c"
+      path = "spec/fixtures/rockhall/sips/11111111/11111111_access.mp4.md5"
+      @wf.get_checksum(path).should == "1951cfc1a30b453a6e45036e60df4382"
     end
 
     it "should return nil if the file doesn't exist" do

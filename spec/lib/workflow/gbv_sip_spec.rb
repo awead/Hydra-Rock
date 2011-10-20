@@ -27,16 +27,17 @@ describe Workflow::GbvSip do
     end
 
     it "should have a hash of access files and checksums" do
-      @sip.data[:access][:h264][:file].should == "11111111_access.avi"
-      @sip.data[:access][:h264][:checksum].should == "001b0290f1b323622e475a954bc6caa021904f1c"
+      @sip.data[:access][:h264][:file].should == "11111111_access.mp4"
+      @sip.data[:access][:h264][:checksum].should == "1951cfc1a30b453a6e45036e60df4382"
     end
 
     it "should have a hash of preservation files and checksums" do
       @sip.data[:preservation].should be_a_kind_of(Hash)
-      @sip.data[:preservation][:original][:file].should == "11111111_pres.avi"
-      @sip.data[:preservation][:original][:checksum].should == "5d8b67b8fe684d3602d8706378579e1578201840"
+      @sip.data[:preservation][:original][:file].should == "11111111_preservation.mov"
+      @sip.data[:preservation][:original][:checksum].should == "99140de52a49873a68868037c8afcc5c"
     end
 
   end
+
 
 end

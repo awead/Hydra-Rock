@@ -33,14 +33,14 @@ class GbvSip
     @data = {
       :access => {
         :h264 => {
-          :file     => get_file(File.join(@info[:root], "#{@info[:barcode]}_access.avi")),
-          :checksum => get_checksum(File.join(@info[:root], "#{@info[:barcode]}_access.avi.sha"))
+          :file     => get_file(File.join(@info[:root], "#{@info[:barcode]}_access.mp4")),
+          :checksum => get_checksum(File.join(@info[:root], "#{@info[:barcode]}_access.mp4.md5"))
         }
       },
       :preservation => {
         :original => {
-          :file     => get_file(File.join(@info[:root], "#{@info[:barcode]}_pres.avi")),
-          :checksum => get_checksum(File.join(@info[:root], "#{@info[:barcode]}_pres.avi.sha"))
+          :file     => get_file(File.join(@info[:root], "#{@info[:barcode]}_preservation.mov")),
+          :checksum => get_checksum(File.join(@info[:root], "#{@info[:barcode]}_preservation.mov.md5"))
         }
       }
     }
@@ -63,10 +63,10 @@ class GbvSip
     errors << "Incorrect number of files detected" unless Dir.new(self.info[:root]).entries.count == 7 # because "." and ".." count as entries
 
     if errors.length > 0
-      logger.info("SIP in invalid: #{errors.join(" -- ")}")
+      logger.info("SIP #{self.info[:barcode]} in invalid: #{errors.join(" -- ")}")
       return false
     else
-      logger.info("SIP is valid")
+      logger.info("SIP #{self.info[:barcode]} is valid")
       return true
     end
   end

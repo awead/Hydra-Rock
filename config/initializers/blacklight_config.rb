@@ -255,7 +255,7 @@ Blacklight.configure(:shared) do |config|
   config[:video] = {
     :location  => "/Users/adamw/Sites/video",
     :host      => "http://localhost/~adamw/video",
-    :depositor => "archivist1"
+    :depositor => "awead@rockhall.org"
   }
 
   config[:hostname]       = "http://george.rockhall.org/hydrangea"
