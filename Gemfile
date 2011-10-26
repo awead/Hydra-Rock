@@ -3,10 +3,11 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.10'
 
 gem 'blacklight', '~> 3.0.0'
-gem 'hydra-head', :path => "/Users/adamw/Projects/Rails/hydra/hydra-head"
+gem 'hydra-head', :path => "gems/hydra-head"
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
-gem 'bagit'
+gem 'bagit', :path => "gems/bagit"
+gem 'semver' # for BagIt compatibility
 
 group :development, :test do
   gem 'solrizer-fedora', '>=1.0.1'
