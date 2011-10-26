@@ -253,8 +253,8 @@ Blacklight.configure(:shared) do |config|
   # -----------------------------------------------------------------------
 
   config[:video] = {
-    :location  => "/Users/adamw/Sites/video",
-    :host      => "http://localhost/~adamw/video",
+    :location  => "/Users/adamw/Sites/bag",
+    :host      => "http://localhost/~adamw/bag",
     :depositor => "awead@rockhall.org"
   }
 

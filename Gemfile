@@ -6,6 +6,7 @@ gem 'blacklight', '~> 3.0.0'
 gem 'hydra-head', :path => "/Users/adamw/Projects/Rails/hydra/hydra-head"
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
+gem 'bagit'
 
 group :development, :test do
   gem 'solrizer-fedora', '>=1.0.1'
