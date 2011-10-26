@@ -39,37 +39,6 @@ class ArchivalVideo < ActiveFedora::Base
     end
   end
 
-
-  def ingest(file,opts={})
-
-    opts[:type].nil? ? type = "preservation" : type = opts[:type]
-    location  = File.join(Blacklight.config[:video][:host], type, file)
-    directory = File.join(Blacklight.config[:video][:location], type)
-
-    begin
-      ev = ExternalVideo.new
-      opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
-      if opts[:checksum].nil?
-        ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
-      else
-        ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory, :checksumType=>"MD5", :checksum=>opts[:checksum])
-      end
-      ev.apply_depositor_metadata(Blacklight.config[:video][:depositor])
-
-      # No content will automatically be publically available
-      #unless type.eql?("preservation")
-      #  ev.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
-      #end
-
-      self.file_objects_append(ev)
-      self.save
-    rescue Exception=>e
-      raise "Failed to add #{type} datastream: #{e}"
-    end
-
-    return nil
-  end
-
   def external_video(type)
       self.file_objects.each do |obj|
         if type.to_s == obj.label
