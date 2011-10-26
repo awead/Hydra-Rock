@@ -38,21 +38,32 @@ class GbvIngest
   end
 
   def process
-
-    src = File.join(@sip.info[:root], @sip.data[:access][:h264][:file])
-    dst_name = new_name(@sip.pid,@sip.data[:access][:h264][:file],{ :type => ["access", "h264"] })
-    dst = File.join(Blacklight.config[:video][:location], "access", dst_name)
-    move_content(src,dst,{:force=>@force})
-    @parent.ingest(dst_name,{:type=>"access",:format=>"h264",:checksum=>@sip.data[:access][:h264][:checksum]})
-
-    src = File.join(@sip.info[:root], @sip.data[:preservation][:original][:file])
-    dst_name = new_name(@sip.pid,@sip.data[:preservation][:original][:file],{ :type => ["preservation", "original"] })
-    dst = File.join(Blacklight.config[:video][:location], "preservation", dst_name)
-    move_content(src,dst,{:force=>@force})
-    @parent.ingest(dst_name,{:format=>"original",:checksum=>@sip.data[:preservation][:original][:checksum]})
-
+    if self.sip.has_barcode?
+      base = new_name(self.sip.pid,self.sip.info[:barcode])
+      FileUtils.mv(File.join(Blacklight.config[:video][:location], self.sip.info[:barcode]), File.join(Blacklight.config[:video][:location], base))
+    else
+      base = sip.info[:barcode]
+    end
+    self.ingest(base,sip.info[:access],"access",{:format=>"h264"}) unless @parent.videos[:h264]
+    self.ingest(base,sip.info[:preservation],"preservation",{:format=>"original"}) unless @parent.videos[:original]
     return true
+  end
 
+  def ingest(base,file,type,opts={})
+
+    location  = File.join(Blacklight.config[:video][:host], base, "data", file)
+    directory = File.join(Blacklight.config[:video][:location], base, "data")
+
+    begin
+      ev = ExternalVideo.new
+      opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
+      ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
+      ev.apply_depositor_metadata(Blacklight.config[:video][:depositor])
+      @parent.file_objects_append(ev)
+      @parent.save
+    rescue Exception=>e
+      raise "Failed to add #{type} datastream: #{e}"
+    end
   end
 
 

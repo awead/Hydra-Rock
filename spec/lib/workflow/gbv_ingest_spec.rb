@@ -24,13 +24,15 @@ describe Workflow::GbvIngest do
 
   end
 
-  describe "processing new sips" do
+  describe "processing new sips adding new file types" do
 
     it "should process a sip" do
       @ing.process.should be_true
       @ing.parent.file_objects.count.should == 2
       @ing.parent.file_objects.first.label.should == "h264"
       @ing.parent.file_objects.last.label.should == "original"
+      @ing.process.should be_true
+      @ing.parent.file_objects.count.should == 2
     end
 
   end
@@ -60,31 +62,9 @@ describe Workflow::GbvIngest do
 
     end
 
-    it "should raise an exeception if the destination file exists" do
-      @ing = Workflow::GbvIngest.new(@sip)
-      lambda { @ing.process }.should raise_error(RuntimeError)
-    end
 
   end
 
-  describe "invalid sips" do
-
-    it "forcing will try to process a sip without an xml file" do
-      pending "Necessary?"
-      no_xml = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/33333333")
-      no_xml.valid?.should be_false
-      force_ing = Workflow::GbvIngest.new(no_xml)
-      force_ing.process.should be_true
-      force_ing.parent.file_objects.count.should == 2
-      force_ing.parent.file_objects.first.label.should == "h264"
-      force_ing.parent.file_objects.last.label.should == "original"
-      av = ArchivalVideo.load_instance(no_xml.pid)
-      av.remove_file_objects
-      ActiveFedora::Base.load_instance(no_xml.pid).delete
-    end
-
-
-  end
 
   # is there an object in the Fedora already with this sip?
   #  - pass a field and value to search
