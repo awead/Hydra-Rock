@@ -1,6 +1,0 @@
-<pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
-<pbcoreTitle annotation="title as seen on-screen" titleType="Full">Title from Fake SIP</pbcoreTitle>
-  <pbcoreInstantiation>
-    <instantiationIdentifier annotation="barcode" source="rockhall">11111111</instantiationIdentifier>
-  </pbcoreInstantiation>
-</pbcoreDescriptionDocument>

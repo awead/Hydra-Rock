@@ -8,42 +8,20 @@
 # > sip.valid?
 # => true
 # ---------------------------------------------------------------
-
 module Workflow
 class GbvSip
 
   include Rockhall::WorkflowMethods
 
-  attr_accessor :info, :data
-
-  # :root, :preservation, :access, :xml, :barcode, :title
+  attr_accessor :root, :base
 
   def initialize(path)
     unless File.exists?(path)
       raise "Specified path does not exist"
     end
 
-    @info = {
-      :root    => path,
-      :barcode => File.basename(path),
-      :xml     => get_file(File.join(path, "#{File.basename(path)}.xml"))
-    }
-
-    # Define our data structure
-    @data = {
-      :access => {
-        :h264 => {
-          :file     => get_file(File.join(@info[:root], "#{@info[:barcode]}_access.mp4")),
-          :checksum => get_checksum(File.join(@info[:root], "#{@info[:barcode]}_access.mp4.md5"))
-        }
-      },
-      :preservation => {
-        :original => {
-          :file     => get_file(File.join(@info[:root], "#{@info[:barcode]}_preservation.mov")),
-          :checksum => get_checksum(File.join(@info[:root], "#{@info[:barcode]}_preservation.mov.md5"))
-        }
-      }
-    }
+    self.root = path
+    self.base = File.basename(path)
 
   end
 
@@ -51,56 +29,61 @@ class GbvSip
 
     errors = Array.new
 
-    # Check file contents
-    errors << "H264 file is missing" if self.data[:access][:h264][:file].nil?
-    errors << "No checksum for H264 file" if self.data[:access][:h264][:checksum].nil?
-    errors << "Original preservation file is missing" if self.data[:preservation][:original][:file].nil?
-    errors << "No checksum for original preservation file" if self.data[:preservation][:original][:checksum].nil?
-
     # Check required fields
-    errors << "Barcode does not match xml" unless self.has_barcode?
-    errors << "Title not found" unless self.has_title?
-    errors << "Incorrect number of files detected" unless Dir.new(self.info[:root]).entries.count == 7 # because "." and ".." count as entries
+    errors << "No barcode found"     unless self.barcode
+    errors << "Title not found"      unless self.title
+    errors << "No access file"       unless self.access
+    errors << "No preservation file" unless self.preservation
 
     if errors.length > 0
-      logger.info("SIP #{self.info[:barcode]} in invalid: #{errors.join(" -- ")}")
+      logger.info("SIP #{self.base} in invalid: #{errors.join(" -- ")}")
       return false
     else
-      logger.info("SIP #{self.info[:barcode]} is valid")
+      logger.info("SIP #{self.base} is valid")
       return true
     end
   end
 
   def doc
-    file = File.new(File.join(self.info[:root], self.info[:xml]))
-    doc = Rockhall::PbcoreDocument.from_xml(file)
-  end
-
-  def has_barcode?
-    unless self.info[:xml].nil?
-      if self.doc.get_values([:item, :barcode]).first == self.info[:barcode]
-        return true
-      else
-        return false
-      end
+    file  = File.join(self.root, "*.xml")
+    files = Dir.glob(file)
+    if files.length > 0
+      doc = Workflow::GbvDocument.from_xml(File.new(files.first))
     end
   end
 
-  def has_title?
-    unless self.info[:xml].nil?
-      if self.doc.get_values([:full_title]).length > 0
-        self.info[:title] = self.doc.get_values([:full_title]).first
-        return true
-      else
-        return false
-      end
+  def barcode
+    unless self.doc.nil?
+      return self.doc.barcode
+    end
+  end
+
+  def title
+    unless self.doc.nil?
+      return self.doc.title
+    end
+  end
+
+  def access
+    file  = File.join(self.root, "data", "*_access.mp4")
+    files = Dir.glob(file)
+    if files.length == 1
+      return File.basename(files.first)
+    end
+  end
+
+  def preservation
+    file  = File.join(self.root, "data", "*_preservation.mov")
+    files = Dir.glob(file)
+    if files.length == 1
+      return File.basename(files.first)
     end
   end
 
   def pid
     solr_params = Hash.new
     solr_params[:fl] = "id"
-    solr_params[:q]  = "item_barcode_t:#{self.info[:barcode]}"
+    solr_params[:q]  = "item_barcode_t:#{self.barcode}"
     solr_params[:qt] = "document"
     solr_response = Blacklight.solr.find(solr_params)
     if solr_response[:response][:numFound] == 0
