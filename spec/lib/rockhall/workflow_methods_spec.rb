@@ -37,6 +37,14 @@ describe Rockhall::WorkflowMethods do
       test.should == new_name
     end
 
+    it "should rename a folder" do
+      old_name = "12345678"
+      pid      = "rrhof:1234"
+      new_name = "rrhof_1234"
+      test     = @wf.new_name(pid,old_name)
+      test.should == new_name
+    end
+
   end
 
   describe "move_content" do
@@ -78,8 +86,8 @@ describe Rockhall::WorkflowMethods do
   describe "get_file" do
 
     it "should return a filename if it exists" do
-      path = "spec/fixtures/rockhall/sips/11111111/11111111_access.mp4"
-      @wf.get_file(path).should == "11111111_access.mp4"
+      path = "spec/fixtures/rockhall/sips/39156042439369/data/39156042439369_access.mp4"
+      @wf.get_file(path).should == "39156042439369_access.mp4"
     end
 
     it "should return nil if a file doesn't exist" do
@@ -89,18 +97,5 @@ describe Rockhall::WorkflowMethods do
 
   end
 
-  describe "get_checksum" do
-
-    it "should return the checksum string from a given file" do
-      path = "spec/fixtures/rockhall/sips/11111111/11111111_access.mp4.md5"
-      @wf.get_checksum(path).should == "1951cfc1a30b453a6e45036e60df4382"
-    end
-
-    it "should return nil if the file doesn't exist" do
-      path = "my/bogus/checksum.sha"
-      @wf.get_checksum(path).should be_nil
-    end
-
-  end
 
 end
