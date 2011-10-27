@@ -260,6 +260,7 @@ Blacklight.configure(:shared) do |config|
 
   config[:hostname]       = "http://george.rockhall.org/hydrangea"
   config[:solr_discovery] = "localhost:8984/solr/blacklight-dev"
+  config[:pid_space]      = "changeme"
 
 end
 

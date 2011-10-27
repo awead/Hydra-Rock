@@ -11,20 +11,34 @@ describe Workflow::GbvSip do
       @sip.should be_a_kind_of(Workflow::GbvSip)
       @sip.valid?.should be_true
     end
-
-    it "should intialize an invalid sip" do
-      sip = Workflow::GbvSip.new("tmp")
-      sip.should be_a_kind_of(Workflow::GbvSip)
-      sip.valid?.should be_false
-    end
-
   end
 
-  describe "the xml doc" do
-    it "should be nil if it doesn't exist" do
-      sip = Workflow::GbvSip.new("tmp")
-      sip.doc.should be_nil
-    end
+  describe "an invalid sip" do
+
+      before(:each) do
+        @invalid = Workflow::GbvSip.new("tmp")
+      end
+
+      it "should not be valid" do
+        @invalid.should be_a_kind_of(Workflow::GbvSip)
+        @invalid.valid?.should be_false
+      end
+
+      it "should have a nil xml file" do
+        @invalid.doc.should be_nil
+      end
+
+      it "should have a nil barcode and title, as well as a nill access and preservation file" do
+        @invalid.title.should be_nil
+        @invalid.barcode.should be_nil
+        @invalid.preservation.should be_nil
+        @invalid.access.should be_nil
+      end
+
+      it "should return false when prepared" do
+        @invalid.prepare.should be_false
+      end
+
   end
 
   describe "a valid sip" do
@@ -51,5 +65,36 @@ describe Workflow::GbvSip do
 
   end
 
+  describe "preparing a sip" do
+
+    before(:each) do
+      FileUtils.cp_r(@sip.root,Blacklight.config[:video][:location])
+      Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+      solrizer = Solrizer::Fedora::Solrizer.new
+      solrizer.solrize_objects
+    end
+
+    after(:each) do
+      globs = Dir.glob(File.join(Blacklight.config[:video][:location], "*"))
+      globs.each do |g|
+        FileUtils.rm_r(g)
+      end
+      Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+      solrizer = Solrizer::Fedora::Solrizer.new
+      solrizer.solrize_objects
+    end
+
+    it "should prepare it for ingestion" do
+      copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], @sip.base))
+      copy.valid?.should be_true
+      copy.pid.should be_nil
+      copy.prepare
+      copy.base.should == copy.pid.gsub(/:/,"_")
+      copy_check = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], copy.base))
+      copy_check.valid?.should be_true
+      copy_check.pid.should == copy.pid
+    end
+
+  end
 
 end

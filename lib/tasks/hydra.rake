@@ -13,7 +13,7 @@ namespace :hydra do
     desc "Cleans out your fedora repository"
     task :fedora_clean => :environment do
 
-      Hydrangea::JettyCleaner.clean("changeme")
+      Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
 
     end
 

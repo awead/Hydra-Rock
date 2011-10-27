@@ -2,81 +2,67 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Workflow::GbvIngest do
 
-  before(:each) do
-    @sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/11111111")
-    @ing = Workflow::GbvIngest.new(@sip)
+  before(:all) do
+    globs = Dir.glob(File.join(Blacklight.config[:video][:location], "*"))
+    globs.each do |g|
+      FileUtils.rm_r(g)
+    end
+    Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+    solrizer = Solrizer::Fedora::Solrizer.new
+    solrizer.solrize_objects
   end
 
-  after(:each) do
-    av = ArchivalVideo.load_instance(@sip.pid)
-    av.remove_file_objects
-    ActiveFedora::Base.load_instance(@sip.pid).delete
+  after(:all) do
+    globs = Dir.glob(File.join(Blacklight.config[:video][:location], "*"))
+    globs.each do |g|
+      FileUtils.rm_r(g)
+    end
+    Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+    solrizer = Solrizer::Fedora::Solrizer.new
+    solrizer.solrize_objects
   end
 
-  describe "initialize" do
+  describe "the entire ingestion process" do
 
-    it "should initialize a new sip" do
-      @ing.sip.should be_a_kind_of(Workflow::GbvSip)
-      @ing.parent.should be_a_kind_of(ArchivalVideo)
-      @ing.sip.pid.should == @ing.parent.pid
-      @ing.parent.file_objects.should be_empty
+    it "should prepare a sip and ingest in into Fedora" do
+      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
+      FileUtils.cp_r(sip.root,Blacklight.config[:video][:location])
+      copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], sip.base))
+      copy.prepare
+      ing = Workflow::GbvIngest.new(copy)
+      ing.parent.file_objects.empty?.should be_true
+      ing.process
+      ing.parent.file_objects.length.should == 2
+    end
+
+    it "should not add additional files" do
+      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
+      copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], sip.pid.gsub(/:/,"_")))
+      copy.prepare.should be_false
+      ing = Workflow::GbvIngest.new(copy)
+      ing.parent.file_objects.length.should == 2
+      first_pid = ing.parent.file_objects.first.pid
+      last_pid  = ing.parent.file_objects.last.pid
+      ing.process
+      ing.parent.file_objects.length.should == 2
+      first_pid.should == ing.parent.file_objects.first.pid
+      last_pid.should  == ing.parent.file_objects.last.pid
+    end
+
+    it "should remove existing files and re-add them when forced" do
+      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
+      copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], sip.pid.gsub(/:/,"_")))
+      copy.prepare.should be_false
+      ing = Workflow::GbvIngest.new(copy)
+      ing.parent.file_objects.length.should == 2
+      first_pid = ing.parent.file_objects.first.pid
+      last_pid  = ing.parent.file_objects.last.pid
+      ing.process({:force => TRUE})
+      ing.parent.file_objects.length.should == 2
+      first_pid.should_not == ing.parent.file_objects.first.pid
+      last_pid.should_not  == ing.parent.file_objects.last.pid
     end
 
   end
-
-  describe "processing new sips adding new file types" do
-
-    it "should process a sip" do
-      @ing.process.should be_true
-      @ing.parent.file_objects.count.should == 2
-      @ing.parent.file_objects.first.label.should == "h264"
-      @ing.parent.file_objects.last.label.should == "original"
-      @ing.process.should be_true
-      @ing.parent.file_objects.count.should == 2
-    end
-
-  end
-
-  describe "dealing with existing content" do
-
-    before(:each) do
-      @ing.process
-    end
-
-    it "should re-process an existing sip" do
-
-      # Get a list of existing objects, both parent and children
-      pidList = Array.new
-      pidList << @ing.parent.pid
-      @ing.parent.file_objects.each { |obj| pidList << obj.pid }
-
-      # Forcing a new ingest shoud remove all existing objects
-      new_ingest = Workflow::GbvIngest.new(@sip,{:force=>TRUE})
-      pidList.each do |pid|
-        lambda { ActiveFedora::Base.load_instance(pid) }.should raise_error(ActiveFedora::ObjectNotFoundError)
-      end
-
-      # And reprocess
-      new_ingest.process.should be_true
-      new_ingest.parent.file_objects.count.should == 2
-
-    end
-
-
-  end
-
-
-  # is there an object in the Fedora already with this sip?
-  #  - pass a field and value to search
-  #  - create the object if there isn't
-  #  - abort if the object already has video (unless force option)
-
-  # force option:
-  #  - removes existing video objects from fedora and the filesystem?
-  #  - re-runs
-
-  # attach external video content to main object
-
-
 
 end
