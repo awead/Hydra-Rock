@@ -3,20 +3,12 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe Workflow::GbvIngest do
 
   before(:all) do
-    globs = Dir.glob(File.join(Blacklight.config[:video][:location], "*"))
-    globs.each do |g|
-      FileUtils.rm_r(g)
-    end
     Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
     solrizer = Solrizer::Fedora::Solrizer.new
     solrizer.solrize_objects
   end
 
   after(:all) do
-    globs = Dir.glob(File.join(Blacklight.config[:video][:location], "*"))
-    globs.each do |g|
-      FileUtils.rm_r(g)
-    end
     Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
     solrizer = Solrizer::Fedora::Solrizer.new
     solrizer.solrize_objects
@@ -61,6 +53,9 @@ describe Workflow::GbvIngest do
       ing.parent.file_objects.length.should == 2
       first_pid.should_not == ing.parent.file_objects.first.pid
       last_pid.should_not  == ing.parent.file_objects.last.pid
+
+      # Clean-up
+      FileUtils.rm_r(File.join(Blacklight.config[:video][:location], sip.pid.gsub(/:/,"_")))
     end
 
   end

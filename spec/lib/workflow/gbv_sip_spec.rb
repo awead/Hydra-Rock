@@ -68,23 +68,19 @@ describe Workflow::GbvSip do
   describe "preparing a sip" do
 
     before(:each) do
-      FileUtils.cp_r(@sip.root,Blacklight.config[:video][:location])
       Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
       solrizer = Solrizer::Fedora::Solrizer.new
       solrizer.solrize_objects
     end
 
     after(:each) do
-      globs = Dir.glob(File.join(Blacklight.config[:video][:location], "*"))
-      globs.each do |g|
-        FileUtils.rm_r(g)
-      end
       Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
       solrizer = Solrizer::Fedora::Solrizer.new
       solrizer.solrize_objects
     end
 
     it "should prepare it for ingestion" do
+      FileUtils.cp_r(@sip.root,Blacklight.config[:video][:location])
       copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], @sip.base))
       copy.valid?.should be_true
       copy.pid.should be_nil
@@ -93,6 +89,7 @@ describe Workflow::GbvSip do
       copy_check = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], copy.base))
       copy_check.valid?.should be_true
       copy_check.pid.should == copy.pid
+      FileUtils.rm_r(File.join(Blacklight.config[:video][:location], copy.base))
     end
 
   end
