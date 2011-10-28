@@ -89,7 +89,7 @@ describe Workflow::GbvSip do
       copy_check = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], copy.base))
       copy_check.valid?.should be_true
       copy_check.pid.should == copy.pid
-      FileUtils.rm_r(File.join(RH_CONFIG["location"], copy.base))
+      FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.base))
     end
 
   end

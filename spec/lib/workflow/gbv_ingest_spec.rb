@@ -55,7 +55,7 @@ describe Workflow::GbvIngest do
       last_pid.should_not  == ing.parent.file_objects.last.pid
 
       # Clean-up
-      FileUtils.rm_r(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
+      FileUtils.rm_rf(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
     end
 
   end
