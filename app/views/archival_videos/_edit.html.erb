@@ -36,15 +36,12 @@
 
     <h2 id="permissions" class="section-title">Set Permissions</h2>
      <div id="permissions_editor">
-      <%= render :partial => "permissions/index", :locals => {:document => document, :asset_id=>params[:id]} %>
+      <%= render :partial => "permissions/permissions_form", :locals => {:document => document, :asset_id=>params[:id]} %>
     </div>
 
   </div>
 </div>
 <% sidebar_items << capture do %>
-
-  <%= button_to "Delete this video", { :action => "delete", :id => @document[:id] },
-      :confirm => "Are you sure?", :method => :delete %>
 
   <div class="fixed_sidebar">
     <div class="float_sidebar">
