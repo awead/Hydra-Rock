@@ -245,22 +245,4 @@ Blacklight.configure(:shared) do |config|
     'oai_dc_xml' => { :content_type => 'text/xml' }
   }
 
-  # -----------------------------------------------------------------------
-  # Rockhall config section
-  #
-  # This could go in its own file at some point...
-  #
-  # -----------------------------------------------------------------------
-
-  config[:video] = {
-    :location  => "/Users/adamw/Sites/bag",
-    :host      => "http://localhost/~adamw/bag",
-    :depositor => "awead@rockhall.org"
-  }
-
-  config[:hostname]       = "http://george.rockhall.org/hydrangea"
-  config[:solr_discovery] = "localhost:8984/solr/blacklight-dev"
-  config[:pid_space]      = "changeme"
-
 end
-

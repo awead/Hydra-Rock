@@ -58,7 +58,7 @@ class Rockhall::Discovery
   end
 
   def self.solr_connect
-    solr = RSolr.connect :url => Blacklight.config[:solr_discovery]
+    solr = RSolr.connect :url => RH_CONFIG["solr_discovery"]
   end
 
 end

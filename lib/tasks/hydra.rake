@@ -13,7 +13,10 @@ namespace :hydra do
     desc "Cleans out your fedora repository"
     task :fedora_clean => :environment do
 
-      Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+      # You really don't want to do this in production
+      unless Rails.env == "production"
+        Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      end
 
     end
 

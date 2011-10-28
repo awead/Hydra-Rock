@@ -68,28 +68,28 @@ describe Workflow::GbvSip do
   describe "preparing a sip" do
 
     before(:each) do
-      Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
       solrizer = Solrizer::Fedora::Solrizer.new
       solrizer.solrize_objects
     end
 
     after(:each) do
-      Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
       solrizer = Solrizer::Fedora::Solrizer.new
       solrizer.solrize_objects
     end
 
     it "should prepare it for ingestion" do
-      FileUtils.cp_r(@sip.root,Blacklight.config[:video][:location])
-      copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], @sip.base))
+      FileUtils.cp_r(@sip.root,RH_CONFIG["location"])
+      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.base))
       copy.valid?.should be_true
       copy.pid.should be_nil
       copy.prepare
       copy.base.should == copy.pid.gsub(/:/,"_")
-      copy_check = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], copy.base))
+      copy_check = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], copy.base))
       copy_check.valid?.should be_true
       copy_check.pid.should == copy.pid
-      FileUtils.rm_r(File.join(Blacklight.config[:video][:location], copy.base))
+      FileUtils.rm_r(File.join(RH_CONFIG["location"], copy.base))
     end
 
   end

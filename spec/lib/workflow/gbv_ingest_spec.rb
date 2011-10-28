@@ -3,13 +3,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe Workflow::GbvIngest do
 
   before(:all) do
-    Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+    Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
     solrizer = Solrizer::Fedora::Solrizer.new
     solrizer.solrize_objects
   end
 
   after(:all) do
-    Hydrangea::JettyCleaner.clean(Blacklight.config[:pid_space])
+    Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
     solrizer = Solrizer::Fedora::Solrizer.new
     solrizer.solrize_objects
   end
@@ -18,8 +18,8 @@ describe Workflow::GbvIngest do
 
     it "should prepare a sip and ingest in into Fedora" do
       sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
-      FileUtils.cp_r(sip.root,Blacklight.config[:video][:location])
-      copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], sip.base))
+      FileUtils.cp_r(sip.root,RH_CONFIG["location"])
+      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], sip.base))
       copy.prepare
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.file_objects.empty?.should be_true
@@ -29,7 +29,7 @@ describe Workflow::GbvIngest do
 
     it "should not add additional files" do
       sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
-      copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], sip.pid.gsub(/:/,"_")))
+      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
       copy.prepare.should be_false
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.file_objects.length.should == 2
@@ -43,7 +43,7 @@ describe Workflow::GbvIngest do
 
     it "should remove existing files and re-add them when forced" do
       sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
-      copy = Workflow::GbvSip.new(File.join(Blacklight.config[:video][:location], sip.pid.gsub(/:/,"_")))
+      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
       copy.prepare.should be_false
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.file_objects.length.should == 2
@@ -55,7 +55,7 @@ describe Workflow::GbvIngest do
       last_pid.should_not  == ing.parent.file_objects.last.pid
 
       # Clean-up
-      FileUtils.rm_r(File.join(Blacklight.config[:video][:location], sip.pid.gsub(/:/,"_")))
+      FileUtils.rm_r(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
     end
 
   end

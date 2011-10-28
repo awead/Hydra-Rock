@@ -1,0 +1,20 @@
+defaults: &defaults
+  location:       /Users/adamw/Sites/bag
+  host:           http://localhost/~adamw/bag
+  depositor:      awead@rockhall.org
+  hostname:       http://george.rockhall.org/hydrangea
+  solr_discovery: localhost:8984/solr/blacklight-dev
+  pid_space:      changeme
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+  location:       /Users/adamw/Sites/test
+  host:           http://localhost/~adamw/test
+
+production:
+  <<: *defaults
+  location:       /production/folder
+  host:           http://production_host/webfolder

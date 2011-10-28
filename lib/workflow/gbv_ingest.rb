@@ -23,14 +23,14 @@ class GbvIngest
   def ingest(base,file,type,opts={})
 
     # Point to file locations in the BagIt bag
-    location  = File.join(Blacklight.config[:video][:host], base, "data", file)
-    directory = File.join(Blacklight.config[:video][:location], base, "data")
+    location  = File.join(RH_CONFIG["host"], base, "data", file)
+    directory = File.join(RH_CONFIG["location"], base, "data")
 
     begin
       ev = ExternalVideo.new
       opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
       ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
-      ev.apply_depositor_metadata(Blacklight.config[:video][:depositor])
+      ev.apply_depositor_metadata(RH_CONFIG["depositor"])
       @parent.file_objects_append(ev)
       @parent.save
     rescue Exception=>e

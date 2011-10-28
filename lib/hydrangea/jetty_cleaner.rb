@@ -1,6 +1,7 @@
 class Hydrangea::JettyCleaner
 
   def self.clean(namespace=nil)
+    raise "You're trying to clean out your production Fedora instance!!" if Rails.env == "production"
     objects = Fedora::Repository.instance.find_objects(:limit=>1000000)
 
     objects.each do |obj|
