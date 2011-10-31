@@ -41,7 +41,7 @@ class GbvSip
   end
 
   def prepare
-    unless barcodes_match
+    unless barcodes_match?
       logger.info("XML barcode does not match folder name")
       return false
     end
@@ -116,7 +116,7 @@ class GbvSip
     end
   end
 
-  def barcodes_match
+  def barcodes_match?
     if self.barcode == self.base
       return true
     else

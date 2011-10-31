@@ -97,9 +97,9 @@ describe Workflow::GbvSip do
   describe "when barcodes are mis-matched" do
 
     it "the xml barcode does not match the folder name" do
-      @sip.barcodes_match.should be_true
+      @sip.barcodes_match?.should be_true
       mismatch = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/22222222")
-      mismatch.barcodes_match.should be_false
+      mismatch.barcodes_match?.should be_false
     end
 
   end
