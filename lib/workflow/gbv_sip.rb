@@ -40,17 +40,26 @@ class GbvSip
     end
   end
 
-  def prepare
-    unless barcodes_match?
-      logger.info("XML barcode does not match folder name")
+  def prepare(opts={})
+    unless barcodes_match? or opts[:force]
+      logger.warn("XML barcode does not match folder name")
       return false
     end
-    return false if self.pid
+    if self.pid and !opts[:force]
+      logger.warn("Pid already exists")
+      return false
+    end
     return false unless self.valid?
 
-    # Create new video object
-    begin
+    if self.base.match(/^#{RH_CONFIG["pid_space"]}/)
+      # Create new object from given pid
+      av = ArchivalVideo.load_instance(self.base.gsub(/_/,":"))
+    else
+      # Create new video object
       av = ArchivalVideo.new
+    end
+
+    begin
       ds = av.datastreams_in_memory["descMetadata"]
       ds.update_indexed_attributes( {[:item, :barcode] => {"0" => self.barcode}} )
       ds.update_indexed_attributes( {[:full_title]     => {"0" => self.title}} )
