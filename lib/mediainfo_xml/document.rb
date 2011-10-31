@@ -1,5 +1,7 @@
-module Mediainfo
-class FullDocument < ActiveFedora::NokogiriDatastream
+require 'mediainfo'
+
+module MediainfoXml
+class Document < ActiveFedora::NokogiriDatastream
 
   set_terminology do |t|
     t.root(:path=>"Mediainfo", :namespace_prefix=>nil)
@@ -190,7 +192,8 @@ class FullDocument < ActiveFedora::NokogiriDatastream
 
   def self.from_file(file)
     f = File.new(file)
-    xml = `mediainfo --Output=XML --Full #{f.path}`
+    info = Mediainfo.new f
+    xml = info.raw_response
     if xml.empty?
       raise "Mediainfo xml is empty"
     end

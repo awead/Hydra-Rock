@@ -8,6 +8,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'bagit', :path => "gems/bagit"
 gem 'semver' # for BagIt compatibility
+gem 'mediainfo'
 
 group :development, :test do
   gem 'solrizer-fedora', '>=1.0.1'

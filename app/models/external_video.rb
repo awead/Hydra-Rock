@@ -16,6 +16,9 @@ class ExternalVideo < ActiveFedora::Base
   has_metadata :name => "descMetadata", :type => Rockhall::PbcoreInstantiation do |m|
   end
 
+  has_metadata :name => "mediaInfo", :type => MediainfoXml::Document do |m|
+  end
+
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'collection', :string
     m.field 'depositor', :string
