@@ -16,6 +16,7 @@ module RockhallAssetsHelper
     return result
   end
 
+
   def display_field(path,opts={})
 
     # Default to descMetadata
@@ -73,6 +74,7 @@ module RockhallAssetsHelper
     end
   end
 
+
   def display_legend(path,opts={})
     result = String.new
     unless get_values_from_datastream(@document_fedora,"descMetadata", path).first.empty?
@@ -85,9 +87,16 @@ module RockhallAssetsHelper
     return result
   end
 
+
   def asset_link(type)
     @document_fedora.external_video(type.to_sym).datastreams_in_memory["ACCESS1"].label
   end
+
+  def asset_path(type)
+    filename = @document_fedora.external_video(:h264).datastreams_in_memory["descMetadata"].get_values(:name)
+    return File.join(@document_fedora.pid.gsub(/:/,"_"),"data",filename)
+  end
+
 
   def display_all_assets
     results = String.new
@@ -100,6 +109,7 @@ module RockhallAssetsHelper
     end
     return results.html_safe
   end
+
 
   def add_field_button(type,content_type,opts={})
     results = String.new
@@ -167,6 +177,7 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+
   def publisher_select(node)
     results = String.new
     results << "<select class=\"publisher_select\" name=\"publisher_select_#{node.to_s}\" id=\"publisher_select_#{node.to_s}\" onchange=\"updatePublisher('#{node.to_s}')\">"
@@ -181,6 +192,7 @@ module RockhallAssetsHelper
     results << "</select>"
     return results.html_safe
   end
+
 
   def toc_links
     results = String.new
@@ -197,17 +209,20 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+
   def contributor_link(counter)
     role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role])
     ref  = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role, :ref])
     return link_to(role.to_s, ref.to_s).html_safe
   end
 
+
   def publisher_link(counter)
     role = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role])
     ref  = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role, :ref])
     return link_to(role.to_s, ref.to_s).html_safe
   end
+
 
   def get_subjects
     results = String.new
@@ -221,6 +236,7 @@ module RockhallAssetsHelper
     end
     return results.html_safe
   end
+
 
   def show_auto_fields
     results = String.new
@@ -261,5 +277,6 @@ module RockhallAssetsHelper
 
     return results.html_safe
   end
+
 
 end
