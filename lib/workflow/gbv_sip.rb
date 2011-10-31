@@ -41,6 +41,10 @@ class GbvSip
   end
 
   def prepare
+    unless barcodes_match
+      logger.info("XML barcode does not match folder name")
+      return false
+    end
     return false if self.pid
     return false unless self.valid?
 
@@ -109,6 +113,14 @@ class GbvSip
       return solr_response[:response][:docs][0][:id]
     else
       raise "Barcode search returned more than one document, when there should be only 0 or 1"
+    end
+  end
+
+  def barcodes_match
+    if self.barcode == self.base
+      return true
+    else
+      return false
     end
   end
 
