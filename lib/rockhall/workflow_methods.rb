@@ -28,6 +28,14 @@ module Rockhall::WorkflowMethods
     end
   end
 
+  def parse_date(s)
+    begin
+      date = DateTime.parse(s)
+    rescue
+      return nil
+    end
+    return date.strftime("%Y-%m-%d")
+  end
 
 end
 

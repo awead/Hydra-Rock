@@ -34,16 +34,24 @@ class GbvIngest
 
     begin
       ev = ExternalVideo.new
+      ds = ev.datastreams_in_memory["descMetadata"]
       opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
       ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
       ev.apply_depositor_metadata(RH_CONFIG["depositor"])
       ev.datastreams_in_memory["mediaInfo"].ng_xml = ng_info
+      # apply additional tech data from gbv xml
+      if type == "preservation"
+        ds.update_indexed_attributes( {[:date] => {"0" => @sip.create_date}} ) unless @sip.create_date.nil?
+      end
       @parent.file_objects_append(ev)
       @parent.save
     rescue Exception=>e
       raise "Failed to add #{type} datastream: #{e}"
     end
+
+
   end
+
 
 end
 end

@@ -65,6 +65,35 @@ describe Workflow::GbvSip do
 
   end
 
+  describe "additional metadata from a sip" do
+
+    it "should have a date of the original recording" do
+      @sip.orig_date.should == "2007-07-09"
+    end
+
+    it "should have a video standard" do
+      @sip.standard.should == "NTSC"
+    end
+
+    it "should have condition notes" do
+      @sip.condition.should == "Bars and tone at end of program"
+    end
+
+    it "should have an original tape format" do
+      @sip.format.should == "Betacam"
+    end
+
+    it "should have cleaning notes" do
+      @sip.cleaning.should be_nil
+    end
+
+    it "should have a creation date" do
+      # exemplar from xml is 10/12/2011
+      @sip.create_date.should == "2011-10-12"
+    end
+
+  end
+
   describe "preparing a sip" do
 
     before(:each) do
@@ -103,4 +132,12 @@ describe Workflow::GbvSip do
     end
 
   end
+
+  describe "when a field is empty" do
+    it "the xml will be blank" do
+      false_sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/22222222")
+      false_sip.valid?.should be_false
+    end
+  end
+
 end
