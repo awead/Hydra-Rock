@@ -38,6 +38,17 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
         t.link(:path=>"rightsLink")
       }
 
+      # Instantitation annotiations
+      t.inst_chksum_type(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"checksum type" })
+      t.inst_chksum_value(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"checksum value" })
+      t.inst_device(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"playback device" })
+      t.inst_capture_soft(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"capture software" })
+      t.inst_trans_soft(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"transcoding software" })
+      t.inst_operator(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"operator" })
+      t.inst_trans_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"transfer notes" })
+      t.inst_vendor(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"vendor name" })
+      t.inst_cond_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"condition notes" })
+      t.inst_clean_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"cleaning notes" })
       t.inst_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"note" })
 
     }
@@ -63,6 +74,16 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.rights_summary(:ref=>[:inst, :inst_rights, :summary])
     t.rights_link(:ref=>[:inst, :inst_rights, :link])
     t.note(:ref=>[:inst, :inst_note])
+    t.chksum_type(:ref=>[:inst, :inst_chksum_type])
+    t.chksum_value(:ref=>[:inst, :inst_chksum_value])
+    t.device(:ref=>[:inst, :inst_device])
+    t.capture_soft(:ref=>[:inst, :inst_capture_soft])
+    t.trans_soft(:ref=>[:inst, :inst_trans_soft])
+    t.operator(:ref=>[:inst, :inst_operator])
+    t.trans_note(:ref=>[:inst, :inst_trans_note])
+    t.vendor(:ref=>[:inst, :inst_vendor])
+    t.cond_note(:ref=>[:inst, :inst_cond_note])
+    t.clean_note(:ref=>[:inst, :inst_clean_note])
 
   end
 

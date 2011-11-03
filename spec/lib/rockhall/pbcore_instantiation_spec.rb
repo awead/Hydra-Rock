@@ -35,6 +35,16 @@ describe Rockhall::PbcoreInstantiation do
         [:link],
         [:rights_summary],
         [:rights_link],
+        [:chksum_type],
+        [:chksum_value],
+        [:device],
+        [:capture_soft],
+        [:trans_soft],
+        [:operator],
+        [:trans_note],
+        [:vendor],
+        [:cond_note],
+        [:clean_note],
         [:note]
       ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"
