@@ -82,8 +82,8 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.operator(:ref=>[:inst, :inst_operator])
     t.trans_note(:ref=>[:inst, :inst_trans_note])
     t.vendor(:ref=>[:inst, :inst_vendor])
-    t.cond_note(:ref=>[:inst, :inst_cond_note])
-    t.clean_note(:ref=>[:inst, :inst_clean_note])
+    t.condition(:ref=>[:inst, :inst_cond_note])
+    t.cleaning(:ref=>[:inst, :inst_clean_note])
 
   end
 

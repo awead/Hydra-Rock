@@ -43,8 +43,8 @@ describe Rockhall::PbcoreInstantiation do
         [:operator],
         [:trans_note],
         [:vendor],
-        [:cond_note],
-        [:clean_note],
+        [:condition],
+        [:cleaning],
         [:note]
       ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"

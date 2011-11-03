@@ -42,7 +42,11 @@ class GbvIngest
       # apply additional tech data from gbv xml
       if type == "preservation"
         ds.update_indexed_attributes( {[:date] => {"0" => @sip.create_date}} ) unless @sip.create_date.nil?
+        ds.update_indexed_attributes( {[:condition] => {"0" => @sip.condition}} ) unless @sip.condition.nil?
+        ds.update_indexed_attributes( {[:cleaning] => {"0" => @sip.cleaning}} ) unless @sip.cleaning.nil?
       end
+      # TODO: access file tech data? Date, I think, should be added...
+      ds.update_indexed_attributes( {[:vendor] => {"0" => "George Blood Audio and Video"}} )
       @parent.file_objects_append(ev)
       @parent.save
     rescue Exception=>e

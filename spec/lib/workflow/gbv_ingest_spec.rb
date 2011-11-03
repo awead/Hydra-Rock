@@ -25,6 +25,22 @@ describe Workflow::GbvIngest do
       ing.parent.file_objects.empty?.should be_true
       ing.process
       ing.parent.file_objects.length.should == 2
+
+      # Check metadata
+      ds = ing.parent.datastreams_in_memory["descMetadata"]
+      ds.get_values([:coverage, :date]).first.should == "2007-07-09"
+
+      original = ExternalVideo.load_instance(ing.parent.videos[:original])
+      o_ds = original.datastreams_in_memory["descMetadata"]
+      o_ds.get_values([:date]).first.should == "2011-10-12"
+      o_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
+      o_ds.get_values([:cleaning]).first.should be_nil
+      o_ds.get_values([:condition]).first.should == "Bars and tone at end of program"
+
+      access = ExternalVideo.load_instance(ing.parent.videos[:h264])
+      a_ds = original.datastreams_in_memory["descMetadata"]
+      a_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
+
     end
 
     it "should not add additional files" do
