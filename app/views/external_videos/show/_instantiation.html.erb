@@ -1,7 +1,17 @@
 <fieldset id="instantiation_fields">
   <dl>
     <%= display_field([:name]) %>
+    <%= display_field([:date]) %>
     <%= display_field([:generation]) %>
+
+    <%= display_field([:device],         { :name=>"Device" }) %>
+    <%= display_field([:capture_soft],   { :name=>"Capture Software" }) %>
+    <%= display_field([:trans_soft],     { :name=>"Transcoding Software" }) %>
+    <%= display_field([:operator],       { :name=>"Operator" }) %>
+    <%= display_field([:trans_note],     { :name=>"Transfer Notes" }) %>
+    <%= display_field([:vendor],         { :name=>"Vendor" }) %>
+    <%= display_field([:condition],      { :name=>"Condition" }) %>
+    <%= display_field([:cleaning],       { :name=>"Cleaning" }) %>
 
     <%= show_auto_fields %>
 
