@@ -14,12 +14,42 @@ class GbvIngest
     @parent = ArchivalVideo.load_instance(sip.pid)
   end
 
+  # runs the first time to process a new sip that doesn't exist in Fedora
   def process(opts={})
-    if opts[:force]
-      @parent.remove_file_objects unless @parent.file_objects.empty?
-    end
     self.ingest(@sip.base, @sip.access,       "access",       {:format=>"h264"})     unless @parent.videos[:h264]
     self.ingest(@sip.base, @sip.preservation, "preservation", {:format=>"original"}) unless @parent.videos[:original]
+  end
+
+  # parent object exists in Fedora and has child objects that need to be reingested
+  def reprocess(opts={})
+    @parent.remove_file_objects unless @parent.file_objects.empty?
+    self.process
+  end
+
+  # updates metadata in parent and child objects from metadata in GBV xml
+  def update(opts={})
+    # Fields in parent
+    av = ArchivalVideo.load_instance(sip.pid)
+    p_ds = av.datastreams_in_memory["descMetadata"]
+    p_ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => @sip.barcode}} )
+    p_ds.update_indexed_attributes( {[:full_title]      => {"0" => @sip.title}} )
+    p_ds.update_indexed_attributes( {[:coverage, :date] => {"0" => @sip.orig_date}} ) unless @sip.orig_date.nil?
+    av.save
+
+    # Fields in preservation video object
+    original = ExternalVideo.load_instance(av.videos[:original])
+    o_ds = original.datastreams_in_memory["descMetadata"]
+    o_ds.update_indexed_attributes( {[:date]      => {"0" => @sip.create_date}} ) unless @sip.create_date.nil?
+    o_ds.update_indexed_attributes( {[:condition] => {"0" => @sip.condition}} )   unless @sip.condition.nil?
+    o_ds.update_indexed_attributes( {[:cleaning]  => {"0" => @sip.cleaning}} )    unless @sip.cleaning.nil?
+    o_ds.update_indexed_attributes( {[:vendor]    => {"0" => "George Blood Audio and Video"}} )
+    original.save
+
+    access = ExternalVideo.load_instance(av.videos[:h264])
+    a_ds = original.datastreams_in_memory["descMetadata"]
+    a_ds.update_indexed_attributes( {[:vendor] => {"0" => "George Blood Audio and Video"}} )
+    access.save
+
   end
 
   def ingest(base,file,type,opts={})

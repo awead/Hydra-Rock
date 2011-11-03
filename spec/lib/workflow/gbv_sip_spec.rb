@@ -36,7 +36,7 @@ describe Workflow::GbvSip do
       end
 
       it "should return false when prepared" do
-        @invalid.prepare.should be_false
+        lambda { @invalid.prepare }.should raise_error(RuntimeError)
       end
 
   end
@@ -121,6 +121,22 @@ describe Workflow::GbvSip do
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.base))
     end
 
+  end
+
+  describe "reusing a sip" do
+
+    after(:each) do
+      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      solrizer = Solrizer::Fedora::Solrizer.new
+      solrizer.solrize_objects
+    end
+
+    it "should use the previously defined pid" do
+      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
+      sip.base = RH_CONFIG["pid_space"] + "_10"
+      sip.reuse
+      sip.pid.should == RH_CONFIG["pid_space"] + ":10"
+    end
   end
 
   describe "when barcodes are mis-matched" do

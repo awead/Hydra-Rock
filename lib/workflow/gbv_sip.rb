@@ -41,25 +41,16 @@ class GbvSip
   end
 
   def prepare(opts={})
-    unless barcodes_match? or opts[:force]
-      logger.warn("XML barcode does not match folder name")
-      return false
+    unless barcodes_match?
+      raise "XML barcode does not match folder name"
     end
-    if self.pid and !opts[:force]
-      logger.warn("Pid already exists")
-      return false
+    if self.pid
+      raise "Pid already exists"
     end
-    return false unless self.valid?
-
-    if self.base.match(/^#{RH_CONFIG["pid_space"]}/)
-      # Create new object from given pid
-      av = ArchivalVideo.load_instance(self.base.gsub(/_/,":"))
-    else
-      # Create new video object
-      av = ArchivalVideo.new
-    end
+    raise "Invalid sip" unless self.valid?
 
     begin
+      av = ArchivalVideo.new
       ds = av.datastreams_in_memory["descMetadata"]
       ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
       ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
@@ -70,11 +61,31 @@ class GbvSip
       raise "Failed create new video object: #{e}"
     end
 
-    # Rename sip using object pid
+    # Rename sip using the new object pid
     new_name = av.pid.gsub(/:/,"_")
     FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
     self.base = new_name
     self.root = File.join(File.dirname(self.root), new_name)
+  end
+
+  # Prepares a sip resuing the pid provided by the directory name
+  def reuse
+    unless self.base.match(/^#{RH_CONFIG["pid_space"]}_/)
+      raise "Invalid pid format used in base directory name"
+    end
+    raise "Invalid sip" unless self.valid?
+
+    begin
+      av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
+      ds = av.datastreams_in_memory["descMetadata"]
+      ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
+      ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
+      ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.orig_date}} ) unless self.orig_date.nil?
+      # TODO: standard and carrier are too problematic to include because they require ref and source attributes
+      av.save
+    rescue Exception=>e
+      raise "Failed create new video object: #{e}"
+    end
 
   end
 
