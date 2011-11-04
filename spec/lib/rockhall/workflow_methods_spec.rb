@@ -106,6 +106,8 @@ describe Rockhall::WorkflowMethods do
 
     it "should return nil if the string is un-parse-able" do
       @wf.parse_date("foo").should be_nil
+      @wf.parse_date("").should be_nil
+      @wf.parse_date(nil).should be_nil
     end
 
   end

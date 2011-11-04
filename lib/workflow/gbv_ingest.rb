@@ -33,15 +33,15 @@ class GbvIngest
     p_ds = av.datastreams_in_memory["descMetadata"]
     p_ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => @sip.barcode}} )
     p_ds.update_indexed_attributes( {[:full_title]      => {"0" => @sip.title}} )
-    p_ds.update_indexed_attributes( {[:coverage, :date] => {"0" => @sip.orig_date}} ) unless @sip.orig_date.nil?
+    p_ds.update_indexed_attributes( {[:coverage, :date] => {"0" => @sip.info(:orig_date)}} ) unless @sip.info(:orig_date).nil?
     av.save
 
     # Fields in preservation video object
     original = ExternalVideo.load_instance(av.videos[:original])
     o_ds = original.datastreams_in_memory["descMetadata"]
-    o_ds.update_indexed_attributes( {[:date]      => {"0" => @sip.create_date}} ) unless @sip.create_date.nil?
-    o_ds.update_indexed_attributes( {[:condition] => {"0" => @sip.condition}} )   unless @sip.condition.nil?
-    o_ds.update_indexed_attributes( {[:cleaning]  => {"0" => @sip.cleaning}} )    unless @sip.cleaning.nil?
+    o_ds.update_indexed_attributes( {[:date]      => {"0" => @sip.info(:p_create_date)}} )  unless @sip.info(:p_create_date).nil?
+    o_ds.update_indexed_attributes( {[:condition] => {"0" => @sip.info(:condition)}} )      unless @sip.info(:condition).nil?
+    o_ds.update_indexed_attributes( {[:cleaning]  => {"0" => @sip.info(:cleaning)}} )       unless @sip.info(:cleaning).nil?
     o_ds.update_indexed_attributes( {[:vendor]    => {"0" => "George Blood Audio and Video"}} )
     original.save
 
@@ -71,9 +71,9 @@ class GbvIngest
       ev.datastreams_in_memory["mediaInfo"].ng_xml = ng_info
       # apply additional tech data from gbv xml
       if type == "preservation"
-        ds.update_indexed_attributes( {[:date] => {"0" => @sip.create_date}} ) unless @sip.create_date.nil?
-        ds.update_indexed_attributes( {[:condition] => {"0" => @sip.condition}} ) unless @sip.condition.nil?
-        ds.update_indexed_attributes( {[:cleaning] => {"0" => @sip.cleaning}} ) unless @sip.cleaning.nil?
+        ds.update_indexed_attributes( {[:date]      => {"0" => @sip.info(:p_create_date)}} )  unless @sip.info(:p_create_date).nil?
+        ds.update_indexed_attributes( {[:condition] => {"0" => @sip.info(:condition)}} )      unless @sip.info(:condition).nil?
+        ds.update_indexed_attributes( {[:cleaning]  => {"0" => @sip.info(:cleaning)}} )       unless @sip.info(:cleaning).nil?
       end
       # TODO: access file tech data? Date, I think, should be added...
       ds.update_indexed_attributes( {[:vendor] => {"0" => "George Blood Audio and Video"}} )

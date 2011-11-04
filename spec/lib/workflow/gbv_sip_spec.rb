@@ -67,29 +67,28 @@ describe Workflow::GbvSip do
 
   describe "additional metadata from a sip" do
 
-    it "should have a date of the original recording" do
-      @sip.orig_date.should == "2007-07-09"
+    it "should include fields that are not in MediaInfo" do
+      @sip.info(:orig_date).should == "2007-07-09"
+      @sip.info(:condition).should == "Bars and tone at end of program"
+      @sip.info(:format).should == "Betacam"
+      @sip.info(:cleaning).should be_nil
+      @sip.info(:p_create_date).should == "2011-10-12" # exemplar from xml is 10/12/2011
+      @sip.info(:p_extension).should == ".mov"
+      @sip.info(:p_codec).should == "AJA v210"
+      @sip.info(:capture_soft).should == "Apple FCP 7 (ver 7.0.3)"
+      @sip.info(:p_operator).should == "TMu"
+      @sip.info(:a_create_date).should == "2011-10-12" # exemplar from xml is 10/12/2011
+      @sip.info(:a_extension).should == ".mp4"
+      @sip.info(:a_codec).should == "MPEG4"
+      @sip.info(:a_audio_bit_depth).should == "16"
+      @sip.info(:trans_soft).should == "MPEG Streamclip 1.92"
+      @sip.info(:trans_note).should be_nil
+      @sip.info(:a_operator).should == "TMu"
     end
 
-    it "should have a video standard" do
-      @sip.standard.should == "NTSC"
-    end
-
-    it "should have condition notes" do
-      @sip.condition.should == "Bars and tone at end of program"
-    end
-
-    it "should have an original tape format" do
-      @sip.format.should == "Betacam"
-    end
-
-    it "should have cleaning notes" do
-      @sip.cleaning.should be_nil
-    end
-
-    it "should have a creation date" do
-      # exemplar from xml is 10/12/2011
-      @sip.create_date.should == "2011-10-12"
+    it "should also have the playback device" do
+      pending "Awaiting updated xml from George Blood"
+      @sip.info(:device).should == "Sony PVW-2800"
     end
 
   end
@@ -140,13 +139,11 @@ describe Workflow::GbvSip do
   end
 
   describe "when barcodes are mis-matched" do
-
     it "the xml barcode does not match the folder name" do
       @sip.barcodes_match?.should be_true
       mismatch = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/22222222")
       mismatch.barcodes_match?.should be_false
     end
-
   end
 
   describe "when a field is empty" do

@@ -16,52 +16,109 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   end
 
+  def respond(value)
+    unless value.empty?
+      return value
+    end
+  end
+
+  # Fields from xml file, listed by column id
+
+  # A
   def barcode
     unless self.data[0].match(/^3[0-9]+$/).nil?
       return self.data[0]
     end
   end
 
+  # B
   def title
-    unless self.data[1].empty?
-      return self.data[1]
-    end
+    return respond(self.data[1])
   end
 
+  # C
   def orig_date
-    unless self.data[2].empty?
-      return parse_date(self.data[2])
-    end
+    return parse_date(self.data[2])
   end
 
-  def standard
-    unless self.data[3].empty?
-      return self.data[3]
-    end
-  end
-
+  # E
   def condition
-    unless self.data[4].empty?
-      return self.data[4]
-    end
+    return respond(self.data[4])
   end
 
+  # F
   def format
-    unless self.data[5].empty?
-      return self.data[5]
-    end
+    return respond(self.data[5])
   end
 
+  # G
   def cleaning
-    unless self.data[6].empty?
-      return self.data[6]
-    end
+    return respond(self.data[6])
   end
 
-  def create_date
-    unless self.data[8].empty?
-      return parse_date(self.data[8])
-    end
+  # I
+  def p_create_date
+    return parse_date(self.data[8])
+  end
+
+  # J
+  def p_extension
+    return respond(self.data[9])
+  end
+
+  # N
+  def p_codec
+    return respond(self.data[13])
+  end
+
+  # AG
+  def device
+    return respond(self.data[32])
+  end
+
+  # AH
+  def capture_soft
+    return respond(self.data[33])
+  end
+
+  # AJ
+  def p_operator
+    return respond(self.data[35])
+  end
+
+  # AM
+  def a_create_date
+    return parse_date(self.data[38])
+  end
+
+  # AN
+  def a_extension
+    return respond(self.data[39])
+  end
+
+  # BA
+  def a_codec
+    return respond(self.data[52])
+  end
+
+  # BG
+  def a_audio_bit_depth
+    return respond(self.data[58])
+  end
+
+  # BK
+  def trans_soft
+    return respond(self.data[62])
+  end
+
+  # BL
+  def trans_note
+    return respond(self.data[63])
+  end
+
+  # BM
+  def a_operator
+    return respond(self.data[64])
   end
 
 end

@@ -54,7 +54,7 @@ class GbvSip
       ds = av.datastreams_in_memory["descMetadata"]
       ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
       ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
-      ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.orig_date}} ) unless self.orig_date.nil?
+      ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
       # TODO: standard and carrier are too problematic to include because they require ref and source attributes
       av.save
     rescue Exception=>e
@@ -80,13 +80,12 @@ class GbvSip
       ds = av.datastreams_in_memory["descMetadata"]
       ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
       ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
-      ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.orig_date}} ) unless self.orig_date.nil?
+      ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
       # TODO: standard and carrier are too problematic to include because they require ref and source attributes
       av.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
-
   end
 
   def doc
@@ -97,51 +96,24 @@ class GbvSip
     end
   end
 
+  # grab fields from GBV xml file as defined in Workflow::GbvDocument
+  def info(field)
+    unless self.doc.nil?
+      return self.doc.send(field.to_sym)
+    end
+  end
+
+  # barcode is requried so it gets its own method
   def barcode
     unless self.doc.nil?
       return self.doc.barcode
     end
   end
 
+  # title is required so it gets its own method
   def title
     unless self.doc.nil?
       return self.doc.title
-    end
-  end
-
-  def orig_date
-    unless self.doc.nil?
-      return self.doc.orig_date
-    end
-  end
-
-  def standard
-    unless self.doc.nil?
-      return self.doc.standard
-    end
-  end
-
-  def condition
-    unless self.doc.nil?
-      return self.doc.condition
-    end
-  end
-
-  def format
-    unless self.doc.nil?
-      return self.doc.format
-    end
-  end
-
-  def cleaning
-    unless self.doc.nil?
-      return self.doc.cleaning
-    end
-  end
-
-  def create_date
-    unless self.doc.nil?
-      return self.doc.create_date
     end
   end
 
