@@ -2,7 +2,6 @@
   <pbcoreInstantiation>
     <instantiationIdentifier source="rockhall" annotation="file name"/>
     <instantiationFileSize unitsOfMeasure=""/>
-    <instantiationDataRate unitsOfMeasure=""/>
     <instantiationDate dateType="created"/>
     <instantiationDigital source="EBU file formats" ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm"/>
     <instantiationGenerations source="PBCore instantiationGenerations" ref=""/>
@@ -12,5 +11,13 @@
       <rightsSummary/>
       <rightsLink/>
     </instantiationRights>
+    <instantiationEssenceTrack>
+      <essenceTrackType source="PBCore essenceTrackType">Video</essenceTrackType>
+      <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+    </instantiationEssenceTrack>
+    <instantiationEssenceTrack>
+      <essenceTrackType source="PBCore essenceTrackType">Audio</essenceTrackType>
+      <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+    </instantiationEssenceTrack>
   </pbcoreInstantiation>
 </pbcoreDescriptionDocument>

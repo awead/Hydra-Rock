@@ -39,15 +39,13 @@ class GbvIngest
     # Fields in preservation video object
     original = ExternalVideo.load_instance(av.videos[:original])
     o_ds = original.datastreams_in_memory["descMetadata"]
-    o_ds.update_indexed_attributes( {[:date]      => {"0" => @sip.info(:p_create_date)}} )  unless @sip.info(:p_create_date).nil?
-    o_ds.update_indexed_attributes( {[:condition] => {"0" => @sip.info(:condition)}} )      unless @sip.info(:condition).nil?
-    o_ds.update_indexed_attributes( {[:cleaning]  => {"0" => @sip.info(:cleaning)}} )       unless @sip.info(:cleaning).nil?
-    o_ds.update_indexed_attributes( {[:vendor]    => {"0" => "George Blood Audio and Video"}} )
+    update_preservation_fields(o_ds)
     original.save
 
+    # Fields in access video object
     access = ExternalVideo.load_instance(av.videos[:h264])
     a_ds = original.datastreams_in_memory["descMetadata"]
-    a_ds.update_indexed_attributes( {[:vendor] => {"0" => "George Blood Audio and Video"}} )
+    update_access_fields(a_ds)
     access.save
 
   end
@@ -70,12 +68,8 @@ class GbvIngest
       ev.apply_depositor_metadata(RH_CONFIG["depositor"])
       ev.datastreams_in_memory["mediaInfo"].ng_xml = ng_info
       # apply additional tech data from gbv xml
-      if type == "preservation"
-        ds.update_indexed_attributes( {[:date]      => {"0" => @sip.info(:p_create_date)}} )  unless @sip.info(:p_create_date).nil?
-        ds.update_indexed_attributes( {[:condition] => {"0" => @sip.info(:condition)}} )      unless @sip.info(:condition).nil?
-        ds.update_indexed_attributes( {[:cleaning]  => {"0" => @sip.info(:cleaning)}} )       unless @sip.info(:cleaning).nil?
-      end
-      # TODO: access file tech data? Date, I think, should be added...
+      update_preservation_fields(ds) if type == "preservation"
+      update_access_fields(ds) if type == "access"
       ds.update_indexed_attributes( {[:vendor] => {"0" => "George Blood Audio and Video"}} )
       @parent.file_objects_append(ev)
       @parent.save
@@ -84,6 +78,26 @@ class GbvIngest
     end
 
 
+  end
+
+  def update_preservation_fields(ds)
+    ds.update_indexed_attributes( {[:date]                                 => {"0" => @sip.info(:p_create_date)}} )     unless @sip.info(:p_create_date).nil?
+    ds.update_indexed_attributes( {[:condition]                            => {"0" => @sip.info(:condition)}} )         unless @sip.info(:condition).nil?
+    ds.update_indexed_attributes( {[:cleaning]                             => {"0" => @sip.info(:cleaning)}} )          unless @sip.info(:cleaning).nil?
+    ds.update_indexed_attributes( {[:file_format]                          => {"0" => @sip.info(:p_file_format)}} )     unless @sip.info(:p_file_format).nil?
+    ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :codec]     => {"0" => @sip.info(:p_video_codec)}} )     unless @sip.info(:p_video_codec).nil?
+    ds.update_indexed_attributes( {[:capture_soft]                         => {"0" => @sip.info(:capture_soft)}} )      unless @sip.info(:capture_soft).nil?
+    ds.update_indexed_attributes( {[:operator]                             => {"0" => @sip.info(:p_operator)}} )        unless @sip.info(:p_operator).nil?
+  end
+
+  def update_access_fields(ds)
+    ds.update_indexed_attributes( {[:date]                                 => {"0" => @sip.info(:a_create_date)}} )     unless @sip.info(:a_create_date).nil?
+    ds.update_indexed_attributes( {[:file_format]                          => {"0" => @sip.info(:a_file_format)}} )     unless @sip.info(:a_file_format).nil?
+    ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>1}, :codec]     => {"0" => @sip.info(:a_audio_codec)}} )     unless @sip.info(:a_audio_codec).nil?
+    ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>1}, :bit_depth] => {"0" => @sip.info(:a_audio_bit_depth)}} ) unless @sip.info(:a_audio_bit_depth).nil?
+    ds.update_indexed_attributes( {[:trans_soft]                           => {"0" => @sip.info(:trans_soft)}} )        unless @sip.info(:trans_soft).nil?
+    ds.update_indexed_attributes( {[:trans_note]                           => {"0" => @sip.info(:a_trans_note)}} )      unless @sip.info(:a_trans_note).nil?
+    ds.update_indexed_attributes( {[:operator]                             => {"0" => @sip.info(:a_operator)}} )        unless @sip.info(:a_operator).nil?
   end
 
 

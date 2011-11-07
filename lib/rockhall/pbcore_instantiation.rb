@@ -15,13 +15,9 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
         t.ref(:path=>{:attribute=>"ref"})
       }
 
-      t.inst_type(:path=>"instantiationDigital")
+      t.inst_file_format(:path=>"instantiationDigital", :attributes=>{ :source=>"EBU file formats" })
 
       t.inst_size(:path=>"instantiationFileSize") {
-        t.units(:path=>{:attribute=>"unitsOfMeasure"})
-      }
-
-      t.inst_rate(:path=>"instantiationDataRate") {
         t.units(:path=>{:attribute=>"unitsOfMeasure"})
       }
 
@@ -51,6 +47,24 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
       t.inst_clean_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"cleaning notes" })
       t.inst_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"note" })
 
+      # Essence track information
+      t.essence(:path=>"instantiationEssenceTrack") {
+        t.type_(:path=>"essenceTrackType", :attributes=>{ :source=>"PBCore essenceTrackType" })
+        t.codec(:path=>"esscenceTrackStandard")
+        t.encoding(:path=>"essenceTrackEncoding", :attributes=>{ :source=>"PBCore essenceTrackEncoding" })
+        t.bit_rate(:path=>"essenceTrackDataRate") {
+          t.unit(:path=>{:attribute=>"unitsOfMeasure"})
+        }
+        t.frame_rate(:path=>"essenceTrackFrameRate", :attributes=>{ :unitsOfMeasure=>"fps" })
+        t.frame_size(:path=>"essenceTrackFrameSize", :attributes=>{ :source=>"PBcore essenceTrackFrameSize" })
+        t.sample_rate(:path=>"essenceTrackSamplingRate") {
+          t.unit(:path=>{:attribute=>"unitsOfMeasure" })
+        }
+        t.bit_depth(:path=>"essenceTrackBitDepth" )
+        t.ratio(:path=>"essenceTrackAspectRatio", :attributes=>{ :source=>"PBcore essenceTrackAspectRatio" })
+        t.audio_channels(:path=>"essenceAnnotation", :attributes=>{ :annotationType=>"number of audio channels" })
+      }
+
     }
 
     # Flatten it out a bit...
@@ -59,12 +73,9 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.generation(:ref=>[:inst, :inst_generation]) {
       t.ref(:ref=>[:inst, :inst_generation, :ref])
     }
-    t.type_(:ref=>[:inst, :inst_type])
+    t.file_format(:ref=>[:inst, :inst_file_format])
     t.size(:ref=>[:inst, :inst_size]) {
       t.units(:ref=>[:inst, :inst_size, :units])
-    }
-    t.rate(:ref=>[:inst, :inst_rate]) {
-      t.units(:ref=>[:inst, :inst_rate, :units])
     }
     t.colors(:ref=>[:inst, :inst_colors]) {
       t.ref(:ref=>[:inst, :inst_colors, :ref])
@@ -85,6 +96,14 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.condition(:ref=>[:inst, :inst_cond_note])
     t.cleaning(:ref=>[:inst, :inst_clean_note])
 
+    # Video essence fields
+    # TODO proxy and path methods (see http://hudson.projecthydra.org/job/om/Documentation/file.COMMON_OM_PATTERNS.html)
+    #t.video_codec ?? [{:inst=>0}, {:essence=>0}, :codec] for now
+    #t.audio_codec ?? [{:inst=>0}, {:essence=>1}, :codec] for now
+    #t.video_bit_rate
+    #t.audio_bit_rate
+
+
   end
 
   def self.xml_template
@@ -98,7 +117,6 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
 
           xml.instantiationIdentifier(:source=>"rockhall", :annotation=>"file name")
           xml.instantiationFileSize(:unitsOfMeasure=>"")
-          xml.instantiationDataRate(:unitsOfMeasure=>"")
           xml.instantiationDate(:dateType=>"created")
           xml.instantiationDigital(:source=>"EBU file formats", :ref=>"http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm")
           xml.instantiationGenerations(:source=>"PBCore instantiationGenerations", :ref=>"")
@@ -108,6 +126,21 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
           xml.instantiationRights {
             xml.rightsSummary
             xml.rightsLink
+          }
+
+          xml.instantiationEssenceTrack {
+            xml.essenceTrackType(:source=>"PBCore essenceTrackType") {
+              xml.text "Video"
+            }
+            xml.essenceTrackDataRate(:unitsOfMeasure=>"")
+
+          }
+
+          xml.instantiationEssenceTrack {
+            xml.essenceTrackType(:source=>"PBCore essenceTrackType") {
+              xml.text "Audio"
+            }
+            xml.essenceTrackDataRate(:unitsOfMeasure=>"")
           }
 
         }

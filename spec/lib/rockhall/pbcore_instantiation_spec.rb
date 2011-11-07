@@ -24,11 +24,9 @@ describe Rockhall::PbcoreInstantiation do
         [:date],
         [:generation],
         [:generation, :ref],
-        [:type],
+        [:file_format],
         [:size],
         [:size, :units],
-        [:rate],
-        [:rate, :units],
         [:colors],
         [:colors, :ref],
         [:duration],
@@ -65,6 +63,21 @@ describe Rockhall::PbcoreInstantiation do
     end
   end
 
+  describe "essence fields" do
 
+    it "should be different for audio and video tracks" do
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :type]).first.should == "Video"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :type]).first.should == "Audio"
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :bit_rate] => {"0" => "video bit rate"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :bit_rate] => {"0" => "audio bit rate"}} )
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate]).first.should == "video bit rate"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should == "audio bit rate"
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :encoding] => {"0" => "video encoding"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :encoding] => {"0" => "audio encoding"}} )
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :encoding]).first.should == "video encoding"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should == "audio encoding"
+    end
+
+  end
 
 end
