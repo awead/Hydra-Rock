@@ -26,34 +26,83 @@ describe Workflow::GbvIngest do
       ing.process
       ing.parent.file_objects.length.should == 2
 
-      # Check metadata
+      # Check parent object fields
       ds = ing.parent.datastreams_in_memory["descMetadata"]
       ds.get_values([:coverage, :date]).first.should == "2007-07-09"
 
+      # Preservation file
       original = ExternalVideo.load_instance(ing.parent.videos[:original])
       o_ds = original.datastreams_in_memory["descMetadata"]
-      o_ds.get_values([:date]).first.should == "2011-10-12"
-      o_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
-      o_ds.get_values([:cleaning]).first.should be_nil
-      o_ds.get_values([:condition]).first.should == "Bars and tone at end of program"
-      o_ds.get_values([:file_format]).first.should == "mov"
-      # Preservation video codec
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :codec]).first.should == "AJA v210"
-      o_ds.get_values([:capture_soft]).first.should == "Apple FCP 7 (ver 7.0.3)"
-      o_ds.get_values([:operator]).first.should == "TMu"
 
+      # Instantiation fields
+      o_ds.get_values([:date]).first.should         == "2011-10-12"
+      o_ds.get_values([:vendor]).first.should       == "George Blood Audio and Video"
+      o_ds.get_values([:cleaning]).first.should     be_nil
+      o_ds.get_values([:condition]).first.should    == "Bars and tone at end of program"
+      o_ds.get_values([:file_format]).first.should  == "mov"
+      o_ds.get_values([:capture_soft]).first.should == "Apple FCP 7 (ver 7.0.3)"
+      o_ds.get_values([:operator]).first.should     == "TMu"
+      o_ds.get_values([:trans_note]).first.should   be_nil
+      o_ds.get_values([:device]).first.should       == "Sony PVW-2800"
+
+      # Preservation: Video essence track fields
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :codec]).first.should           == "AJA v210"
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate]).first.should        == "224"
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate, :unit]).first.should == "Mbps"
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_depth]).first.should       == "10"
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should      == "29.97"
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "720 x 486"
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
+
+      # Do these go under essence or under instantation?
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :chroma]).first.should == "4:2:2"
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :colors]).first.should == "YUV"
+
+      # Audio essence track fields
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :codec]).first.should               == "in24"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should            == "PCM"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should            == "1152"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate, :unit]).first.should     == "Kbps"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate]).first.should         == "48"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate, :unit]).first.should  == "kHz"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_depth]).first.should           == "24"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :audio_channels]).first.should      == "2"
+
+
+      # Access file
       access = ExternalVideo.load_instance(ing.parent.videos[:h264])
       a_ds = access.datastreams_in_memory["descMetadata"]
+
+      # Access: Instantiation fields
       a_ds.get_values([:date]).first.should == "2011-10-12"
       a_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
       a_ds.get_values([:file_format]).first.should == "mp4"
-      # Access audio codec
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :codec]).first.should == "MPEG4"
-      # Access audio bit depth
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_depth]).first.should == "16"
       a_ds.get_values([:trans_soft]).first.should == "MPEG Streamclip 1.92"
       a_ds.get_values([:trans_note]).first.should be_nil
       a_ds.get_values([:operator]).first.should == "TMu"
+
+      # Access: Video essence track fields
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :codec]).first.should           == "avc1"
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate]).first.should        == "2507"
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate, :unit]).first.should == "Kbps"
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_depth]).first.should       == "8"
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should      == "29.97"
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "640 x 480"
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
+
+      # Do these go under essence or under instantation?
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :chroma]).first.should == "4:2:0"
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :colors]).first.should == "YUV"
+
+      # Audio essence track fields
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :codec]).first.should               == "MPEG4"
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should            == "AAC"
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should            == "256"
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate, :unit]).first.should     == "Kbps"
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate]).first.should         == "48"
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate, :unit]).first.should  == "kHz"
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_depth]).first.should           == "16"
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :audio_channels]).first.should      == "2"
 
     end
 
