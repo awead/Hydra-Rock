@@ -43,7 +43,9 @@ describe Rockhall::PbcoreInstantiation do
         [:vendor],
         [:condition],
         [:cleaning],
-        [:note]
+        [:note],
+        [:chroma],
+        [:color_space]
       ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"
         @object_ds.update_indexed_attributes( {pointer=>{"0"=>test_val}} )

@@ -85,7 +85,7 @@ class GbvIngest
     ds.update_indexed_attributes( {[:condition]                            => {"0" => @sip.info(:condition)}} )         unless @sip.info(:condition).nil?
     ds.update_indexed_attributes( {[:cleaning]                             => {"0" => @sip.info(:cleaning)}} )          unless @sip.info(:cleaning).nil?
     ds.update_indexed_attributes( {[:file_format]                          => {"0" => @sip.info(:p_file_format)}} )     unless @sip.info(:p_file_format).nil?
-    ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :codec]     => {"0" => @sip.info(:p_video_codec)}} )     unless @sip.info(:p_video_codec).nil?
+    ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :encoding]  => {"0" => @sip.info(:p_video_codec)}} )     unless @sip.info(:p_video_codec).nil?
     ds.update_indexed_attributes( {[:capture_soft]                         => {"0" => @sip.info(:capture_soft)}} )      unless @sip.info(:capture_soft).nil?
     ds.update_indexed_attributes( {[:operator]                             => {"0" => @sip.info(:p_operator)}} )        unless @sip.info(:p_operator).nil?
   end
@@ -93,7 +93,7 @@ class GbvIngest
   def update_access_fields(ds)
     ds.update_indexed_attributes( {[:date]                                 => {"0" => @sip.info(:a_create_date)}} )     unless @sip.info(:a_create_date).nil?
     ds.update_indexed_attributes( {[:file_format]                          => {"0" => @sip.info(:a_file_format)}} )     unless @sip.info(:a_file_format).nil?
-    ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>1}, :codec]     => {"0" => @sip.info(:a_audio_codec)}} )     unless @sip.info(:a_audio_codec).nil?
+    ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>1}, :encoding]  => {"0" => @sip.info(:a_audio_codec)}} )     unless @sip.info(:a_audio_codec).nil?
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>1}, :bit_depth] => {"0" => @sip.info(:a_audio_bit_depth)}} ) unless @sip.info(:a_audio_bit_depth).nil?
     ds.update_indexed_attributes( {[:trans_soft]                           => {"0" => @sip.info(:trans_soft)}} )        unless @sip.info(:trans_soft).nil?
     ds.update_indexed_attributes( {[:trans_note]                           => {"0" => @sip.info(:a_trans_note)}} )      unless @sip.info(:a_trans_note).nil?

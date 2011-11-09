@@ -46,11 +46,13 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
       t.inst_cond_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"condition notes" })
       t.inst_clean_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"cleaning notes" })
       t.inst_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"note" })
+      t.inst_color_space(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"color space" })
+      t.inst_chroma(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"chroma" })
 
       # Essence track information
       t.essence(:path=>"instantiationEssenceTrack") {
         t.type_(:path=>"essenceTrackType", :attributes=>{ :source=>"PBCore essenceTrackType" })
-        t.codec(:path=>"esscenceTrackStandard")
+        t.standard(:path=>"essenceTrackStandard")
         t.encoding(:path=>"essenceTrackEncoding", :attributes=>{ :source=>"PBCore essenceTrackEncoding" })
         t.bit_rate(:path=>"essenceTrackDataRate") {
           t.unit(:path=>{:attribute=>"unitsOfMeasure"})
@@ -95,6 +97,8 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.vendor(:ref=>[:inst, :inst_vendor])
     t.condition(:ref=>[:inst, :inst_cond_note])
     t.cleaning(:ref=>[:inst, :inst_clean_note])
+    t.color_space(:ref=>[:inst, :inst_color_space])
+    t.chroma(:ref=>[:inst, :inst_chroma])
 
     # Video essence fields
     # TODO proxy and path methods (see http://hudson.projecthydra.org/job/om/Documentation/file.COMMON_OM_PATTERNS.html)
