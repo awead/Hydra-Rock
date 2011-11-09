@@ -42,5 +42,12 @@ module Rockhall::WorkflowMethods
       return r.gsub(/ /,"").gsub(/[xX]/, ":")
     end
   end
+
+  def parse_size(s)
+    if s.match(/^\d(.+)\d$/)
+      return s.downcase
+    end
+  end
+
 end
 

@@ -118,7 +118,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # S - Pres Master: Video Frame Size (pixels: W x H)
   def p_frame_size
-    return respond(self.data[18])
+    return parse_size(self.data[18])
   end
 
   # T - Pres Master: Video Aspect Ratio (W:H)
@@ -268,7 +268,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # AW - Access Copy: Video Frame Size (pixels: W x H)
   def a_frame_size
-    return respond(self.data[48])
+    return parse_size(self.data[48])
   end
 
   # AX - Access Copy: Video Aspect Ratio (W:H)

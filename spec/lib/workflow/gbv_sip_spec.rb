@@ -114,7 +114,7 @@ describe Workflow::GbvSip do
       @sip.info(:a_video_bit_rate_units).should   == "Kbps"
       @sip.info(:a_video_bit_depth).should        == "8"
       @sip.info(:a_frame_rate).should             == "29.97"
-      @sip.info(:a_frame_size).should             == "640 X 480"
+      @sip.info(:a_frame_size).should             == "640 x 480"
       @sip.info(:a_ratio).should                  == "4:3"
       @sip.info(:a_chroma).should                 == "4:2:0"
       @sip.info(:a_color).should                  == "YUV"

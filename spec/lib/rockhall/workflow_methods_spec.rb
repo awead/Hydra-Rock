@@ -124,5 +124,16 @@ describe Rockhall::WorkflowMethods do
 
   end
 
+  describe "parsing a size" do
+
+    it "should return the correct formatted size" do
+      #@wf.parse_size("123x123").should = "123 x 123"
+      #@wf.parse_size("123X123").should = "123 x 123"
+      @wf.parse_size("123 X 123").should == "123 x 123"
+      @wf.parse_size("foo").should be_nil
+    end
+
+  end
+
 
 end
