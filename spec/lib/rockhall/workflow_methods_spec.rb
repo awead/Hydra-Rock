@@ -112,5 +112,17 @@ describe Rockhall::WorkflowMethods do
 
   end
 
+  describe "parsing a ratio" do
+
+    it "should return 4:3 when given 4 x 3 or 4 X 3" do
+      @wf.parse_ratio("4 X 3").should == "4:3"
+      @wf.parse_ratio("4 x 3").should == "4:3"
+      @wf.parse_ratio("4x3").should == "4:3"
+      @wf.parse_ratio("4X3").should == "4:3"
+      @wf.parse_ratio("foo").should be_nil
+    end
+
+  end
+
 
 end

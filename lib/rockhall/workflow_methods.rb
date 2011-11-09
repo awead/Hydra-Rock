@@ -37,5 +37,10 @@ module Rockhall::WorkflowMethods
     return date.strftime("%Y-%m-%d")
   end
 
+  def parse_ratio(r)
+    if r.match(/^\d(.+)\d$/)
+      return r.gsub(/ /,"").gsub(/[xX]/, ":")
+    end
+  end
 end
 

@@ -123,7 +123,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # T - Pres Master: Video Aspect Ratio (W:H)
   def p_ratio
-    return respond(self.data[19])
+    return parse_ratio(self.data[19])
   end
 
   # U - Pres Master: Video Chroma Subsampling
@@ -273,7 +273,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # AX - Access Copy: Video Aspect Ratio (W:H)
   def a_ratio
-    return respond(self.data[49])
+    return parse_ratio(self.data[49])
   end
 
   # AY - Access Copy: Video Chroma Subsampling
