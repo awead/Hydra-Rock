@@ -85,7 +85,7 @@ describe Workflow::GbvSip do
       @sip.info(:p_video_bit_depth).should        == "10"
       # frame rate pending (see below)
       # frame size pending (see below)
-      @sip.info(:p_ratio).should                  == "4 X 3"
+      @sip.info(:p_ratio).should                  == "4:3"
       @sip.info(:p_chroma).should                 == "4:2:2"
       @sip.info(:p_colors).should                 == "YUV"
       @sip.info(:p_audio_codec).should            == "in24"
@@ -134,13 +134,15 @@ describe Workflow::GbvSip do
       @sip.info(:a_vendor).should                 == "George Blood Audio and Video"
     end
 
-    it "should also have the playback device and video frame rate" do
-      pending "Awaiting updated xml from George Blood"
+    it "should also have the playback device, video frame rate and frame size" do
+      #pending "Awaiting updated xml from George Blood"
       @sip.info(:device).should        == "Sony PVW-2800"
-      @sip.info(:p_frame_rate).should  == "???"
+      @sip.info(:p_frame_rate).should  == "29.97"
       @sip.info(:p_frame_size).should  == "720 x 486"
-      @sip.info(:p_audio_sample_rate_unit).should == "kHz"
+    end
 
+    it "may not have the correct audio sample rate unit" do
+      @sip.info(:p_audio_sample_rate_unit).should_not == "kHz"
     end
 
   end
