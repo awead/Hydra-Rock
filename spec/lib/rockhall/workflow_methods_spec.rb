@@ -135,17 +135,22 @@ describe Rockhall::WorkflowMethods do
 
   end
 
-  describe "parsing a codec" do
+  describe "parsing a standards and encodings" do
 
-    it "should return the correctly named codec" do
-      @wf.parse_codec("PCM").should       == "Linear Pulse Code Modulation"
-      @wf.parse_codec("avc1").should      == "H.264/MPEG-4 AVC"
-      @wf.parse_codec("AAC").should       == "MPEG-4: AAC"
-      @wf.parse_codec("MPEG4").should     == "MPEG4"
-      @wf.parse_codec("in24").should      == "in24"
-      @wf.parse_codec("AJA v210").should  == "AJA v210"
-      @wf.parse_codec("foo").should       == "foo"
-      @wf.parse_codec(nil).should         be_nil
+    it "should return the correctly named standard from the Metadata registry" do
+      @wf.parse_standard("PCM").should    == "Linear PCM Audio"
+      @wf.parse_standard("foo").should    == "foo"
+      @wf.parse_standard(nil).should      be_nil
+    end
+
+    it "should return the correctly named encoding from the Metadata registry" do
+      @wf.parse_encoding("PCM").should       == "Linear Pulse Code Modulation"
+      @wf.parse_encoding("avc1").should      == "H.264/MPEG-4 AVC"
+      @wf.parse_encoding("MPEG4").should     == "MPEG-4: AAC"
+      @wf.parse_encoding("in24").should      == "in24"
+      @wf.parse_encoding("AJA v210").should  == "AJA v210"
+      @wf.parse_encoding("foo").should       == "foo"
+      @wf.parse_encoding(nil).should         be_nil
     end
 
   end

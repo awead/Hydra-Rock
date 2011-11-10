@@ -93,7 +93,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # N - Pres Master: Video Codec
   def p_video_codec
-    return parse_codec(self.data[13])
+    return parse_encoding(self.data[13])
   end
 
   # O - Pres Master: Video Bit Rate Value
@@ -137,15 +137,15 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
   end
 
   # W - Pres Master: Audio Codec
-  # Note: this is slightly misleading. On the video side, this field is used for the NTSC standard.
-  # and here is technically isn't a standard but is another name for code, ie. in24 or MPEG4.
-  def p_audio_standard
-    return respond(self.data[22])
+  # See: http://bernie.rockhall.org/confluence/display/archives/Metadata+for+Digital+Items
+  def p_audio_encoding
+    return parse_encoding(self.data[22])
   end
 
   # X  - Pres Master: Audio Data Encoding
-  def p_audio_encoding
-    return parse_codec(self.data[23])
+  # See: http://bernie.rockhall.org/confluence/display/archives/Metadata+for+Digital+Items?&#comments
+  def p_audio_standard
+    return parse_standard(self.data[23])
   end
 
   # Y  - Pres Master: Audio Bit Rate Value
@@ -245,7 +245,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # AR - Access Copy: Video Codec
   def a_video_codec
-    return parse_codec(self.data[43])
+    return parse_encoding(self.data[43])
   end
 
   # AS - Access Copy: Video Bit Rate Value
@@ -290,13 +290,13 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # BA - Access Copy: Audio Codec
   # See note for field W
-  def a_audio_standard
-    return respond(self.data[52])
+  def a_audio_encoding
+    return parse_encoding(self.data[52])
   end
 
   # BB - Access Copy: Audio Data Encoding
-  def a_audio_encoding
-    return parse_codec(self.data[53])
+  def a_audio_standard
+    return parse_standard(self.data[53])
   end
 
   # BC - Access Copy: Audio Bit Rate Value

@@ -60,8 +60,8 @@ describe Workflow::GbvIngest do
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
 
       # Preservation: Audio essence track fields
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :standard]).first.should            == "in24"
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should            == "Linear Pulse Code Modulation"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :standard]).first.should            == "Linear PCM Audio"
+      o_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should            == "in24"
       o_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should            == "1152"
       o_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate, :unit]).first.should     == "Kbps"
       o_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate]).first.should         == "48"
@@ -95,6 +95,7 @@ describe Workflow::GbvIngest do
       a_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
 
       # Access: Audio essence track fields
+      a_ds.get_values([{:inst=>0}, {:essence=>1}, :standard]).first.should            == "AAC"
       a_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should            == "MPEG-4: AAC"
       a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should            == "256"
       a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate, :unit]).first.should     == "Kbps"
