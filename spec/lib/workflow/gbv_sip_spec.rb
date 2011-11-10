@@ -88,8 +88,8 @@ describe Workflow::GbvSip do
       @sip.info(:p_ratio).should                  == "4:3"
       @sip.info(:p_chroma).should                 == "4:2:2"
       @sip.info(:p_colors).should                 == "YUV"
-      @sip.info(:p_audio_codec).should            == "in24"
-      @sip.info(:p_audio_encoding).should         == "PCM"
+      @sip.info(:p_audio_standard).should         == "in24"
+      @sip.info(:p_audio_encoding).should         == "Linear Pulse Code Modulation"
       @sip.info(:p_audio_bit_rate).should         == "1152"
       @sip.info(:p_audio_bit_rate_unit).should    == "Kbps"
       @sip.info(:p_audio_sample_rate).should      == "48"
@@ -103,13 +103,13 @@ describe Workflow::GbvSip do
       @sip.info(:p_trans_note).should             be_nil
       @sip.info(:p_operator).should               == "TMu"
       @sip.info(:p_vendor).should                 == "George Blood Audio and Video"
-      @sip.info(:a_name).should                   == "39156042439369"
+      @sip.info(:a_name).should                   == "39156042439369_access"
       @sip.info(:a_create_date).should            == "2011-10-12" # exemplar from xml is 10/12/2011
       @sip.info(:a_file_format).should            == "mp4"
       @sip.info(:a_size).should                   == "1,057.96"
       @sip.info(:a_size_units).should             == "MB"
       @sip.info(:a_duration).should               == "0:50:47"
-      @sip.info(:a_video_codec).should            == "avc1"
+      @sip.info(:a_video_codec).should            == "H.264/MPEG-4 AVC"
       @sip.info(:a_video_bit_rate).should         == "2507"
       @sip.info(:a_video_bit_rate_units).should   == "Kbps"
       @sip.info(:a_video_bit_depth).should        == "8"
@@ -118,12 +118,12 @@ describe Workflow::GbvSip do
       @sip.info(:a_ratio).should                  == "4:3"
       @sip.info(:a_chroma).should                 == "4:2:0"
       @sip.info(:a_color).should                  == "YUV"
-      @sip.info(:a_audio_codec).should            == "MPEG4"
-      @sip.info(:a_audio_encoding).should         == "AAC"
+      @sip.info(:a_audio_standard).should         == "MPEG4"
+      @sip.info(:a_audio_encoding).should         == "MPEG-4: AAC"
       @sip.info(:a_audio_bit_rate).should         == "256"
       @sip.info(:a_audio_bit_rate_unit).should    == "Kbps"
-      @sip.info(:a_audio_sample_rate).should      == "48"
-      @sip.info(:a_audio_sample_rate_unit).should == "Khz"
+      @sip.info(:a_audio_sample_rate).should      == "48.0"
+      @sip.info(:a_audio_sample_rate_unit).should == "kHz"
       @sip.info(:a_audio_bit_depth).should        == "16"
       @sip.info(:a_audio_channels).should         == "2"
       @sip.info(:a_checksum_type).should          == "md5"
@@ -135,14 +135,10 @@ describe Workflow::GbvSip do
     end
 
     it "should also have the playback device, video frame rate and frame size" do
-      #pending "Awaiting updated xml from George Blood"
-      @sip.info(:device).should        == "Sony PVW-2800"
+      @sip.info(:device).should        == "Sony PVW-2800; 20040"
       @sip.info(:p_frame_rate).should  == "29.97"
       @sip.info(:p_frame_size).should  == "720 x 486"
-    end
-
-    it "may not have the correct audio sample rate unit" do
-      @sip.info(:p_audio_sample_rate_unit).should_not == "kHz"
+      @sip.info(:p_audio_sample_rate_unit).should == "kHz"
     end
 
   end
