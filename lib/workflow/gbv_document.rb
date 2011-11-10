@@ -93,7 +93,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # N - Pres Master: Video Codec
   def p_video_codec
-    return respond(self.data[13])
+    return parse_codec(self.data[13])
   end
 
   # O - Pres Master: Video Bit Rate Value
@@ -137,13 +137,15 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
   end
 
   # W - Pres Master: Audio Codec
-  def p_audio_codec
+  # Note: this is slightly misleading. On the video side, this field is used for the NTSC standard.
+  # and here is technically isn't a standard but is another name for code, ie. in24 or MPEG4.
+  def p_audio_standard
     return respond(self.data[22])
   end
 
   # X  - Pres Master: Audio Data Encoding
   def p_audio_encoding
-    return respond(self.data[23])
+    return parse_codec(self.data[23])
   end
 
   # Y  - Pres Master: Audio Bit Rate Value
@@ -156,12 +158,12 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
     return respond(self.data[25])
   end
 
-  # AA - Pres Master: Audio Sampling Rate Value
+  # AA - Pres Master: Audio Sampling Rate
   def p_audio_sample_rate
     return respond(self.data[26])
   end
 
-  # AB - Pres Master: Audio Sampling Rate (kHz)
+  # AB - Pres Master: Audio Sampling Rate Unit
   def p_audio_sample_rate_unit
     return respond(self.data[27])
   end
@@ -243,7 +245,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
 
   # AR - Access Copy: Video Codec
   def a_video_codec
-    return respond(self.data[43])
+    return parse_codec(self.data[43])
   end
 
   # AS - Access Copy: Video Bit Rate Value
@@ -287,13 +289,14 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
   end
 
   # BA - Access Copy: Audio Codec
-  def a_audio_codec
+  # See note for field W
+  def a_audio_standard
     return respond(self.data[52])
   end
 
   # BB - Access Copy: Audio Data Encoding
   def a_audio_encoding
-    return respond(self.data[53])
+    return parse_codec(self.data[53])
   end
 
   # BC - Access Copy: Audio Bit Rate Value
@@ -307,12 +310,12 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
   end
 
   # BE - Access Copy: Audio Sampling Rate Value
-  def a_audio_sample_rate_unit
+  def a_audio_sample_rate
     return respond(self.data[56])
   end
 
-  # BF - Access Copy: Audio Sampling Rate (kHz)
-  def a_audio_sample_rate
+  # BF - Access Copy: Audio Sampling Rate Unit(kHz)
+  def a_audio_sample_rate_unit
     return respond(self.data[57])
   end
 

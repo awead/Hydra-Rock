@@ -55,7 +55,8 @@ class GbvSip
       ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
       ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
       ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
-      # TODO: standard and carrier are too problematic to include because they require ref and source attributes
+      ds.update_indexed_attributes( {[:item, :standard] => {"0" => self.info(:standard)}} ) unless self.info(:standard).nil?
+      ds.update_indexed_attributes( {[:item, :carrier]  => {"0" => self.info(:format)}} ) unless self.info(:format).nil?
       av.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
@@ -81,7 +82,8 @@ class GbvSip
       ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
       ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
       ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
-      # TODO: standard and carrier are too problematic to include because they require ref and source attributes
+      ds.update_indexed_attributes( {[:item, :standard] => {"0" => self.info(:standard)}} ) unless self.info(:standard).nil?
+      ds.update_indexed_attributes( {[:item, :carrier]  => {"0" => self.info(:format)}} ) unless self.info(:format).nil?
       av.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"

@@ -135,5 +135,20 @@ describe Rockhall::WorkflowMethods do
 
   end
 
+  describe "parsing a codec" do
+
+    it "should return the correctly named codec" do
+      @wf.parse_codec("PCM").should       == "Linear Pulse Code Modulation"
+      @wf.parse_codec("avc1").should      == "H.264/MPEG-4 AVC"
+      @wf.parse_codec("AAC").should       == "MPEG-4: AAC"
+      @wf.parse_codec("MPEG4").should     == "MPEG4"
+      @wf.parse_codec("in24").should      == "in24"
+      @wf.parse_codec("AJA v210").should  == "AJA v210"
+      @wf.parse_codec("foo").should       == "foo"
+      @wf.parse_codec(nil).should         be_nil
+    end
+
+  end
+
 
 end

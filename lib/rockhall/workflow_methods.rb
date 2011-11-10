@@ -53,5 +53,20 @@ module Rockhall::WorkflowMethods
     end
   end
 
+  def parse_codec(t)
+    terms = Hash.new
+    terms = {
+      "PCM"  => "Linear Pulse Code Modulation",
+      "avc1" => "H.264/MPEG-4 AVC",
+      "AAC"  => "MPEG-4: AAC"
+    }
+    return nil if t.nil?
+    if terms.include?(t)
+      return terms[t]
+    else
+      return t
+    end
+  end
+
 end
 
