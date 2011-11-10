@@ -62,7 +62,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
         t.sample_rate(:path=>"essenceTrackSamplingRate") {
           t.unit(:path=>{:attribute=>"unitsOfMeasure" })
         }
-        t.bit_depth(:path=>"essenceTrackBitDepth" )
+        t.bit_depth(:path=>"essenceTrackBitDepth")
         t.ratio(:path=>"essenceTrackAspectRatio", :attributes=>{ :source=>"PBcore essenceTrackAspectRatio" })
         t.audio_channels(:path=>"essenceAnnotation", :attributes=>{ :annotationType=>"number of audio channels" })
       }
@@ -136,15 +136,25 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
             xml.essenceTrackType(:source=>"PBCore essenceTrackType") {
               xml.text "Video"
             }
+            xml.essenceTrackStandard
+            xml.essenceTrackEncoding(:source=>"PBCore essenceTrackEncoding")
             xml.essenceTrackDataRate(:unitsOfMeasure=>"")
-
+            xml.essenceTrackFrameRate(:unitsOfMeasure=>"fps")
+            xml.essenceTrackFrameSize(:source=>"PBcore essenceTrackFrameSize")
+            xml.essenceTrackBitDepth
+            xml.essenceTrackAspectRatio(:source=>"PBcore essenceTrackAspectRatio")
           }
 
           xml.instantiationEssenceTrack {
             xml.essenceTrackType(:source=>"PBCore essenceTrackType") {
               xml.text "Audio"
             }
+            xml.essenceTrackStandard
+            xml.essenceTrackEncoding(:source=>"PBCore essenceTrackEncoding")
             xml.essenceTrackDataRate(:unitsOfMeasure=>"")
+            xml.essenceTrackSamplingRate(:unitsOfMeasure=>"")
+            xml.essenceTrackBitDepth
+            xml.essenceAnnotation(:annotationType=>"number of audio channels")
           }
 
         }

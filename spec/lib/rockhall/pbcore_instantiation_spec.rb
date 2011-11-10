@@ -68,16 +68,57 @@ describe Rockhall::PbcoreInstantiation do
   describe "essence fields" do
 
     it "should be different for audio and video tracks" do
+
+      # Type
       @object_ds.get_values([{:inst=>0}, {:essence=>0}, :type]).first.should == "Video"
       @object_ds.get_values([{:inst=>0}, {:essence=>1}, :type]).first.should == "Audio"
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :bit_rate] => {"0" => "video bit rate"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :bit_rate] => {"0" => "audio bit rate"}} )
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate]).first.should == "video bit rate"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should == "audio bit rate"
+
+      # Standard
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :standard] => {"0" => "video standard"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :standard] => {"0" => "audio standard"}} )
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :standard]).first.should == "video standard"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :standard]).first.should == "audio standard"
+
+      # Encoding
       @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :encoding] => {"0" => "video encoding"}} )
       @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :encoding] => {"0" => "audio encoding"}} )
       @object_ds.get_values([{:inst=>0}, {:essence=>0}, :encoding]).first.should == "video encoding"
       @object_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should == "audio encoding"
+
+      # Bit rate
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :bit_rate] => {"0" => "video bit rate"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :bit_rate] => {"0" => "audio bit rate"}} )
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate]).first.should == "video bit rate"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should == "audio bit rate"
+
+      # Bit rate units
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :bit_rate, :unit] => {"0" => "video bit rate unit"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :bit_rate, :unit] => {"0" => "audio bit rate unit"}} )
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate, :unit]).first.should == "video bit rate unit"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate, :unit]).first.should == "audio bit rate unit"
+
+      # Bit depth
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :bit_depth] => {"0" => "10"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :bit_depth] => {"0" => "24"}} )
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_depth]).first.should       == "10"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_depth]).first.should       == "24"
+
+      # Video only
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :frame_rate] => {"0" => "frame rate"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :frame_size] => {"0" => "frame size"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :ratio] => {"0" => "ratio"}} )
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should == "frame rate"
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should == "frame size"
+      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should == "ratio"
+
+      # Audio only
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :sample_rate] => {"0" => "sample rate"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :sample_rate, :unit] => {"0" => "sample rate units"}} )
+      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :audio_channels] => {"0" => "2"}} )
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate]).first.should == "sample rate"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate, :unit]).first.should == "sample rate units"
+      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :audio_channels]).first.should == "2"
+
     end
 
   end

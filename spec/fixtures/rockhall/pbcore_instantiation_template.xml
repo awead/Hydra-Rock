@@ -1,23 +1,34 @@
-<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html" version="2.0">
+<pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreInstantiation>
-    <instantiationIdentifier source="rockhall" annotation="file name"/>
-    <instantiationFileSize unitsOfMeasure=""/>
-    <instantiationDate dateType="created"/>
-    <instantiationDigital source="EBU file formats" ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm"/>
-    <instantiationGenerations source="PBCore instantiationGenerations" ref=""/>
-    <instantiationColors source="PBCore instantiationColors" ref=""/>
-    <instantiationDuration/>
+    <instantiationIdentifier annotation="file name" source="rockhall"></instantiationIdentifier>
+    <instantiationFileSize unitsOfMeasure=""></instantiationFileSize>
+    <instantiationDate dateType="created"></instantiationDate>
+    <instantiationDigital ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm" source="EBU file formats"></instantiationDigital>
+    <instantiationGenerations ref="" source="PBCore instantiationGenerations"></instantiationGenerations>
+    <instantiationColors ref="" source="PBCore instantiationColors"></instantiationColors>
+    <instantiationDuration></instantiationDuration>
     <instantiationRights>
-      <rightsSummary/>
-      <rightsLink/>
+      <rightsSummary></rightsSummary>
+      <rightsLink></rightsLink>
     </instantiationRights>
     <instantiationEssenceTrack>
       <essenceTrackType source="PBCore essenceTrackType">Video</essenceTrackType>
+      <essenceTrackStandard></essenceTrackStandard>
+      <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
       <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+      <essenceTrackFrameRate unitsOfMeasure="fps"></essenceTrackFrameRate>
+      <essenceTrackFrameSize source="PBcore essenceTrackFrameSize"></essenceTrackFrameSize>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackAspectRatio source="PBcore essenceTrackAspectRatio"></essenceTrackAspectRatio>
     </instantiationEssenceTrack>
     <instantiationEssenceTrack>
       <essenceTrackType source="PBCore essenceTrackType">Audio</essenceTrackType>
+      <essenceTrackStandard></essenceTrackStandard>
+      <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
       <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+      <essenceTrackSamplingRate unitsOfMeasure=""></essenceTrackSamplingRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceAnnotation annotationType="number of audio channels"></essenceAnnotation>
     </instantiationEssenceTrack>
   </pbcoreInstantiation>
 </pbcoreDescriptionDocument>
