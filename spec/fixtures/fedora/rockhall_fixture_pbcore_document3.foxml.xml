@@ -98,7 +98,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <instantiationGenerations ref="http://pbcore.org/vocabularies/instantiationGenerations#original" source="PBCore instantiationGenerations">Original</instantiationGenerations>
     <instantiationPhysical source="PBCore instantiationPhysical">Betacam</instantiationPhysical>
     <instantiationStandard source="PBCore instantiationStandard">NTSC</instantiationStandard>
-    <instantiationIdentifier annotation="barcode" source="rockhall">39156042439369</instantiationIdentifier>
+    <instantiationIdentifier annotation="barcode" source="rockhall">[barcode removed for testing]</instantiationIdentifier>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
       <instantiationRelationIdentifier annotation="collection name" source="rockhall"></instantiationRelationIdentifier>
