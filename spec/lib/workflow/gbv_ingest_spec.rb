@@ -56,7 +56,7 @@ describe Workflow::GbvIngest do
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate, :unit]).first.should == "Mbps"
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_depth]).first.should       == "10"
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should      == "29.97"
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "720 x 486"
+      o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "720x486"
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
 
       # Preservation: Audio essence track fields
@@ -91,7 +91,7 @@ describe Workflow::GbvIngest do
       a_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate, :unit]).first.should == "Kbps"
       a_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_depth]).first.should       == "8"
       a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should      == "29.97"
-      a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "640 x 480"
+      a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "640x480"
       a_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
 
       # Access: Audio essence track fields

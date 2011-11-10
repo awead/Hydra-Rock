@@ -114,7 +114,7 @@ describe Workflow::GbvSip do
       @sip.info(:a_video_bit_rate_units).should   == "Kbps"
       @sip.info(:a_video_bit_depth).should        == "8"
       @sip.info(:a_frame_rate).should             == "29.97"
-      @sip.info(:a_frame_size).should             == "640 x 480"
+      @sip.info(:a_frame_size).should             == "640x480"
       @sip.info(:a_ratio).should                  == "4:3"
       @sip.info(:a_chroma).should                 == "4:2:0"
       @sip.info(:a_color_space).should            == "YUV"
@@ -137,7 +137,7 @@ describe Workflow::GbvSip do
     it "should also have the playback device, video frame rate and frame size" do
       @sip.info(:device).should        == "Sony PVW-2800; 20040"
       @sip.info(:p_frame_rate).should  == "29.97"
-      @sip.info(:p_frame_size).should  == "720 x 486"
+      @sip.info(:p_frame_size).should  == "720x486"
       @sip.info(:p_audio_sample_rate_unit).should == "kHz"
     end
 
