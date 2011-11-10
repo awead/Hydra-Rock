@@ -88,6 +88,9 @@ class GbvIngest
     ds.update_indexed_attributes( {[:operator]                                    => {"0" => @sip.info(:p_operator)}} )        unless @sip.info(:p_operator).nil?
     ds.update_indexed_attributes( {[:trans_note]                                  => {"0" => @sip.info(:p_trans_note)}} )      unless @sip.info(:p_trans_note).nil?
     ds.update_indexed_attributes( {[:device]                                      => {"0" => @sip.info(:device)}} )            unless @sip.info(:device).nil?
+    ds.update_indexed_attributes( {[:chroma]                                      => {"0" => @sip.info(:p_chroma)}} )          unless @sip.info(:p_chroma).nil?
+    ds.update_indexed_attributes( {[:color_space]                                 => {"0" => @sip.info(:p_color_space)}} )     unless @sip.info(:p_color_space).nil?
+
 
     ## Video essence track fields
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :standard]         => {"0" => @sip.info(:standard)}} )               unless @sip.info(:standard).nil?
@@ -98,8 +101,7 @@ class GbvIngest
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :frame_rate]       => {"0" => @sip.info(:p_frame_rate)}} )           unless @sip.info(:p_frame_rate).nil?
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :frame_size]       => {"0" => @sip.info(:p_frame_size)}} )           unless @sip.info(:p_frame_size).nil?
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :ratio]            => {"0" => @sip.info(:p_ratio)}} )                unless @sip.info(:p_ratio).nil?
-    #ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :chroma]           => {"0" => @sip.info(:p_chroma)}} )               unless @sip.info(:p_chroma).nil?
-    #ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :color_space]      => {"0" => @sip.info(:p_colors)}} )               unless @sip.info(:p_colors).nil?
+
 
     # Audio essence track fields
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>1}, :standard]           => {"0" => @sip.info(:p_audio_standard)}} )               unless @sip.info(:p_audio_standard).nil?
@@ -119,6 +121,8 @@ class GbvIngest
     ds.update_indexed_attributes( {[:trans_soft]                                  => {"0" => @sip.info(:trans_soft)}} )        unless @sip.info(:trans_soft).nil?
     ds.update_indexed_attributes( {[:operator]                                    => {"0" => @sip.info(:a_operator)}} )        unless @sip.info(:a_operator).nil?
     ds.update_indexed_attributes( {[:trans_note]                                  => {"0" => @sip.info(:a_trans_note)}} )      unless @sip.info(:a_trans_note).nil?
+    ds.update_indexed_attributes( {[:chroma]                                      => {"0" => @sip.info(:a_chroma)}} )          unless @sip.info(:a_chroma).nil?
+    ds.update_indexed_attributes( {[:color_space]                                 => {"0" => @sip.info(:a_color_space)}} )     unless @sip.info(:a_color_space).nil?
 
     # Video essence track fields
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :standard]         => {"0" => @sip.info(:standard)}} )               unless @sip.info(:standard).nil?

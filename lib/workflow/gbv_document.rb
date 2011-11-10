@@ -132,7 +132,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
   end
 
   # V - Pres Master: Video Color Space
-  def p_colors
+  def p_color_space
     return respond(self.data[21])
   end
 
@@ -284,7 +284,7 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
   end
 
   # AZ - Access Copy: Video Color Space
-  def a_color
+  def a_color_space
     return respond(self.data[51])
   end
 

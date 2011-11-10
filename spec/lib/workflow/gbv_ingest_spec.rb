@@ -46,6 +46,8 @@ describe Workflow::GbvIngest do
       o_ds.get_values([:operator]).first.should     == "TMu"
       o_ds.get_values([:trans_note]).first.should   be_nil
       o_ds.get_values([:device]).first.should       == "Sony PVW-2800; 20040"
+      o_ds.get_values([:chroma]).first.should       == "4:2:2"
+      o_ds.get_values([:color_space]).first.should  == "YUV"
 
       # Preservation: Video essence track fields
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :standard]).first.should        == "NTSC"
@@ -56,8 +58,6 @@ describe Workflow::GbvIngest do
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should      == "29.97"
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "720 x 486"
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
-      #o_ds.get_values([{:inst=>0}, {:essence=>0}, :chroma]).first.should          == "4:2:2"
-      #o_ds.get_values([{:inst=>0}, {:essence=>0}, :color_space]).first.should     == "YUV"
 
       # Preservation: Audio essence track fields
       o_ds.get_values([{:inst=>0}, {:essence=>1}, :standard]).first.should            == "in24"
@@ -81,6 +81,8 @@ describe Workflow::GbvIngest do
       a_ds.get_values([:trans_soft]).first.should   == "MPEG Streamclip 1.92"
       a_ds.get_values([:trans_note]).first.should   be_nil
       a_ds.get_values([:operator]).first.should     == "TMu"
+      a_ds.get_values([:chroma]).first.should       == "4:2:0"
+      a_ds.get_values([:color_space]).first.should  == "YUV"
 
       # Access: Video essence track fields
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :standard]).first.should        == "NTSC"
@@ -91,10 +93,6 @@ describe Workflow::GbvIngest do
       a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should      == "29.97"
       a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "640 x 480"
       a_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
-
-      # Do these go under essence or under instantation?
-      #a_ds.get_values([{:inst=>0}, {:essence=>0}, :chroma]).first.should          == "4:2:0"
-      #a_ds.get_values([{:inst=>0}, {:essence=>0}, :color_space]).first.should     == "YUV"
 
       # Access: Audio essence track fields
       a_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should            == "MPEG-4: AAC"

@@ -87,7 +87,7 @@ describe Workflow::GbvSip do
       # frame size pending (see below)
       @sip.info(:p_ratio).should                  == "4:3"
       @sip.info(:p_chroma).should                 == "4:2:2"
-      @sip.info(:p_colors).should                 == "YUV"
+      @sip.info(:p_color_space).should            == "YUV"
       @sip.info(:p_audio_standard).should         == "in24"
       @sip.info(:p_audio_encoding).should         == "Linear Pulse Code Modulation"
       @sip.info(:p_audio_bit_rate).should         == "1152"
@@ -117,7 +117,7 @@ describe Workflow::GbvSip do
       @sip.info(:a_frame_size).should             == "640 x 480"
       @sip.info(:a_ratio).should                  == "4:3"
       @sip.info(:a_chroma).should                 == "4:2:0"
-      @sip.info(:a_color).should                  == "YUV"
+      @sip.info(:a_color_space).should            == "YUV"
       @sip.info(:a_audio_standard).should         == "MPEG4"
       @sip.info(:a_audio_encoding).should         == "MPEG-4: AAC"
       @sip.info(:a_audio_bit_rate).should         == "256"
