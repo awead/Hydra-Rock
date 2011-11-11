@@ -150,7 +150,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document3_original">
     <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:ExternalVideo"></hasModel>
-    <isPartOf xmlns="info:fedora/fedora-system:def/relations-external#" rdf:resource="info:fedora/changeme:10534"></isPartOf>
+    <isPartOf xmlns="info:fedora/fedora-system:def/relations-external#" rdf:resource="info:fedora/rockhall:fixture_pbcore_document3"></isPartOf>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
@@ -281,7 +281,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <human></human>
     <machine>
       <group>archivist</group>
-      <person>awead@rockhall.org</person>
+      <person>archivist1@example.com</person>
     </machine>
   </access>
   <embargo>
@@ -296,7 +296,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-11-10T21:44:30.748Z" MIMETYPE="text/xml" SIZE="64">
 <foxml:xmlContent>
 <fields>
-  <depositor>awead@rockhall.org</depositor>
+  <depositor>archivist1@example.com</depositor>
 </fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
