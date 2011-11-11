@@ -1,5 +1,3 @@
-@wip
-
 Feature: Ingest videos
   In order to ingest digital videos into Hydra
   As as archivist
