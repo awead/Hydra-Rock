@@ -106,9 +106,10 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <instantiationFileSize unitsOfMeasure="KB">1000</instantiationFileSize>
     <instantiationDate dateType="created">2011-10-12</instantiationDate>
     <instantiationDigital ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm" source="EBU file formats">mov</instantiationDigital>
-    <instantiationGenerations ref="" source="PBCore instantiationGenerations"></instantiationGenerations>
-    <instantiationColors ref="" source="PBCore instantiationColors"></instantiationColors>
-    <instantiationDuration></instantiationDuration>
+    <instantiationGenerations ref="" source="PBCore instantiationGenerations">Copy: preservation</instantiationGenerations>
+    <instantiationMediaType ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image" source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+    <instantiationDuration>0:50:47</instantiationDuration>
     <instantiationRights>
       <rightsSummary></rightsSummary>
       <rightsLink></rightsLink>

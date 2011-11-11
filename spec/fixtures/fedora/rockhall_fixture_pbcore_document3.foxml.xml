@@ -79,7 +79,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2011-11-10T21:44:20.484Z" MIMETYPE="text/xml" SIZE="3655">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
-  <instantiationMediaType ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image" source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
   <pbcoreIdentifier annotation="Fedora ID" source="rockhall"></pbcoreIdentifier>
   <pbcoreTitle annotation="title as seen on-screen" titleType="Full">Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2.</pbcoreTitle>
   <instantiationLanguage ref="http://id.loc.gov/vocabulary/iso639-2/eng.html" source="ISO 639.2"></instantiationLanguage>
@@ -96,6 +95,8 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <pbcoreAnnotation annotationType="note"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationGenerations ref="http://pbcore.org/vocabularies/instantiationGenerations#original" source="PBCore instantiationGenerations">Original</instantiationGenerations>
+    <instantiationMediaType ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image" source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
     <instantiationPhysical source="PBCore instantiationPhysical">Betacam</instantiationPhysical>
     <instantiationStandard source="PBCore instantiationStandard">NTSC</instantiationStandard>
     <instantiationIdentifier annotation="barcode" source="rockhall">[barcode removed for testing]</instantiationIdentifier>
