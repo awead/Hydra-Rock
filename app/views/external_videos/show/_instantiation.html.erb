@@ -1,20 +1,41 @@
 <fieldset id="instantiation_fields">
   <dl>
     <%= display_field([:name]) %>
+    <%= display_file_size %>
     <%= display_field([:date]) %>
+    <%= display_field([:vendor]) %>
     <%= display_field([:generation]) %>
-
-    <%= display_field([:device],         { :name=>"Device" }) %>
+    <%= display_field([:media_type]) %>
+    <%= display_field([:colors]) %>
+    <%= display_field([:cleaning]) %>
+    <%= display_field([:condition]) %>
+    <%= display_field([:file_format]) %>
     <%= display_field([:capture_soft],   { :name=>"Capture Software" }) %>
     <%= display_field([:trans_soft],     { :name=>"Transcoding Software" }) %>
-    <%= display_field([:operator],       { :name=>"Operator" }) %>
+    <%= display_field([:operator]) %>
     <%= display_field([:trans_note],     { :name=>"Transfer Notes" }) %>
-    <%= display_field([:vendor],         { :name=>"Vendor" }) %>
-    <%= display_field([:condition],      { :name=>"Condition" }) %>
-    <%= display_field([:cleaning],       { :name=>"Cleaning" }) %>
+    <%= display_field([:device]) %>
+    <%= display_field([:chroma]) %>
+    <%= display_field([:color_space]) %>
 
-    <%= show_auto_fields %>
+    <!-- Video essence fields -->
+    <%= display_field([{:inst=>0}, {:essence=>0}, :standard],   { :name=>"Standard" }) %>
+    <%= display_field([{:inst=>0}, {:essence=>0}, :encoding],   { :name=>"Encoding" }) %>
+    <%= display_video_bit_rate %>
+    <%= display_field([{:inst=>0}, {:essence=>0}, :bit_depth],  { :name=>"Bit Depth" }) %>
+    <%= display_field([{:inst=>0}, {:essence=>0}, :frame_size], { :name=>"Frame Size" }) %>
+    <%= display_video_frame_rate %>
+    <%= display_field([{:inst=>0}, {:essence=>0}, :ratio],      { :name=>"Ratio" }) %>
 
+    <!-- Audio essence fields -->
+    <%= display_field([{:inst=>0}, {:essence=>1}, :standard],   { :name=>"Standard" }) %>
+    <%= display_field([{:inst=>0}, {:essence=>1}, :encoding],   { :name=>"Encoding" }) %>
+    <%= display_audio_bit_rate %>
+    <%= display_audio_sample_rate %>
+    <%= display_field([{:inst=>0}, {:essence=>1}, :bit_depth],      { :name=>"Bit Depth" }) %>
+    <%= display_field([{:inst=>0}, {:essence=>1}, :audio_channels], { :name=>"Audio Channels" }) %>
+
+    <!-- Editable fields -->
     <%= display_field([:rights_summary],  { :name=>"Rights Information" }) %>
     <%= display_field([:rights_link],     { :name=>"Rights Reference" }) %>
     <%= display_field([:note],            {:inline=>TRUE}) %>
