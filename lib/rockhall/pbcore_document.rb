@@ -11,7 +11,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     #
 
     t.pbc_id(:path=>"pbcoreIdentifier", :attributes=>{ :source=>"rockhall", :annotation=>"Fedora ID" })
-    t.media_type(:path=>"instantiationMediaType")
+
 
     t.full_title(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"Full", :annotation=>"title as seen on-screen" })
     t.sub_title(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"Subtitle" } )
@@ -80,12 +80,12 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.item(:path=>"pbcoreInstantiation") {
 
       # Item details
-      t.type_(:path=>"instantiationGenerations", :attributes=>{ :source=>"PBCore instantiationGenerations" }) {
-        t.ref(:path=>{:attribute=>"ref"})
-      }
+      t.media_type(:path=>"instantiationMediaType", :attributes=>{ :source=>"PBCore instantiationMediatype" })
+      t.generation(:path=>"instantiationGenerations", :attributes=>{ :source=>"PBCore instantiationGenerations" })
       t.carrier(:path=>"instantiationPhysical")
       t.standard(:path=>"instantiationStandard")
       t.barcode(:path=>"instantiationIdentifier", :attributes=>{ :source=>"rockhall", :annotation=>"barcode" })
+      t.colors(:path=>"instantiationColors", :attributes=>{ :source=>"PBCore instantiationColors" })
 
       # Collection information
       t.relation(:path=>"instantiationRelation") {
@@ -114,9 +114,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
         "xmlns"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html",
         "xsi:schemaLocation"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html") {
 
-        xml.instantiationMediaType(:source=>"PBCore instantiationMediaType", :ref=>"http://pbcore.org/vocabularies/instantiationMediaType#moving-image") {
-          xml.text "Moving image"
-        }
+
 
         xml.pbcoreIdentifier(:source=>"rockhall", :annotation=>"Fedora ID")
 
@@ -159,6 +157,12 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
           # Item details
           xml.instantiationGenerations(:source=>"PBCore instantiationGenerations", :ref=>"http://pbcore.org/vocabularies/instantiationGenerations#original") {
             xml.text "Original"
+          }
+          xml.instantiationMediaType(:source=>"PBCore instantiationMediaType", :ref=>"http://pbcore.org/vocabularies/instantiationMediaType#moving-image") {
+            xml.text "Moving image"
+          }
+          xml.instantiationColors(:source=>"PBCore instantiationColors") {
+            xml.text "Color"
           }
           xml.instantiationPhysical(:source=>"PBCore instantiationPhysical")
           xml.instantiationStandard(:source=>"PBCore instantiationStandard")

@@ -15,15 +15,15 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
         t.ref(:path=>{:attribute=>"ref"})
       }
 
+      t.media_type(:path=>"instantiationMediaType", :attributes=>{ :source=>"PBCore instantiationMediatype" })
+
       t.inst_file_format(:path=>"instantiationDigital", :attributes=>{ :source=>"EBU file formats" })
 
       t.inst_size(:path=>"instantiationFileSize") {
         t.units(:path=>{:attribute=>"unitsOfMeasure"})
       }
 
-      t.inst_colors(:path=>"instantiationColors", :attributes=>{ :source=>"PBCore instantiationColors" }) {
-        t.ref(:path=>{:attribute=>"ref"})
-      }
+      t.inst_colors(:path=>"instantiationColors", :attributes=>{ :source=>"PBCore instantiationColors" })
 
       t.inst_duration(:path=>"instantiationDuration")
 
@@ -72,16 +72,15 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     # Flatten it out a bit...
     t.name(:ref=>[:inst, :inst_name])
     t.date(:ref=>[:inst, :inst_date])
-    t.generation(:ref=>[:inst, :inst_generation]) {
+    t.generation(:ref=>[:inst, :inst_generation]){
       t.ref(:ref=>[:inst, :inst_generation, :ref])
     }
+    t.media_type(:ref=>[:inst, :media_type])
     t.file_format(:ref=>[:inst, :inst_file_format])
     t.size(:ref=>[:inst, :inst_size]) {
       t.units(:ref=>[:inst, :inst_size, :units])
     }
-    t.colors(:ref=>[:inst, :inst_colors]) {
-      t.ref(:ref=>[:inst, :inst_colors, :ref])
-    }
+    t.colors(:ref=>[:inst, :inst_colors])
     t.duration(:ref=>[:inst, :inst_duration])
     t.link(:ref=>[:inst, :inst_link])
     t.rights_summary(:ref=>[:inst, :inst_rights, :summary])
@@ -99,13 +98,11 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.cleaning(:ref=>[:inst, :inst_clean_note])
     t.color_space(:ref=>[:inst, :inst_color_space])
     t.chroma(:ref=>[:inst, :inst_chroma])
+    t.colors(:ref=>[:inst, :inst_colors])
 
     # Video essence fields
-    # TODO proxy and path methods (see http://hudson.projecthydra.org/job/om/Documentation/file.COMMON_OM_PATTERNS.html)
-    #t.video_codec ?? [{:inst=>0}, {:essence=>0}, :codec] for now
-    #t.audio_codec ?? [{:inst=>0}, {:essence=>1}, :codec] for now
-    #t.video_bit_rate
-    #t.audio_bit_rate
+    # TODO: proxy and path methods (see http://hudson.projecthydra.org/job/om/Documentation/file.COMMON_OM_PATTERNS.html)
+
 
 
   end
@@ -124,7 +121,12 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
           xml.instantiationDate(:dateType=>"created")
           xml.instantiationDigital(:source=>"EBU file formats", :ref=>"http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm")
           xml.instantiationGenerations(:source=>"PBCore instantiationGenerations", :ref=>"")
-          xml.instantiationColors(:source=>"PBCore instantiationColors", :ref=>"")
+          xml.instantiationMediaType(:source=>"PBCore instantiationMediaType", :ref=>"http://pbcore.org/vocabularies/instantiationMediaType#moving-image") {
+            xml.text "Moving image"
+          }
+          xml.instantiationColors(:source=>"PBCore instantiationColors") {
+            xml.text "Color"
+          }
           xml.instantiationDuration
 
           xml.instantiationRights {

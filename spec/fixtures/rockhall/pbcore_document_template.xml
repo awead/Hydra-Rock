@@ -1,5 +1,4 @@
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html" version="2.0">
-  <instantiationMediaType source="PBCore instantiationMediaType" ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image">Moving image</instantiationMediaType>
   <pbcoreIdentifier source="rockhall" annotation="Fedora ID"/>
   <pbcoreTitle annotation="title as seen on-screen" titleType="Full"/>
   <instantiationLanguage source="ISO 639.2" ref="http://id.loc.gov/vocabulary/iso639-2/eng.html"/>
@@ -15,7 +14,9 @@
   </pbcoreCoverage>
   <pbcoreAnnotation annotationType="note"/>
   <pbcoreInstantiation>
+    <instantiationMediaType source="PBCore instantiationMediaType" ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image">Moving image</instantiationMediaType>
     <instantiationGenerations source="PBCore instantiationGenerations" ref="http://pbcore.org/vocabularies/instantiationGenerations#original">Original</instantiationGenerations>
+    <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
     <instantiationPhysical source="PBCore instantiationPhysical"/>
     <instantiationStandard source="PBCore instantiationStandard"/>
     <instantiationIdentifier source="rockhall" annotation="barcode"/>

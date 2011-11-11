@@ -27,8 +27,6 @@ describe Rockhall::PbcoreInstantiation do
         [:file_format],
         [:size],
         [:size, :units],
-        [:colors],
-        [:colors, :ref],
         [:duration],
         [:link],
         [:rights_summary],
@@ -45,7 +43,9 @@ describe Rockhall::PbcoreInstantiation do
         [:cleaning],
         [:note],
         [:chroma],
-        [:color_space]
+        [:color_space],
+        [:media_type],
+        [:colors]
       ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"
         @object_ds.update_indexed_attributes( {pointer=>{"0"=>test_val}} )

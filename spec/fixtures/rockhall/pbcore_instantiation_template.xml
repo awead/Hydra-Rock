@@ -5,7 +5,8 @@
     <instantiationDate dateType="created"></instantiationDate>
     <instantiationDigital ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm" source="EBU file formats"></instantiationDigital>
     <instantiationGenerations ref="" source="PBCore instantiationGenerations"></instantiationGenerations>
-    <instantiationColors ref="" source="PBCore instantiationColors"></instantiationColors>
+    <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+    <instantiationMediaType source="PBCore instantiationMediaType" ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image">Moving image</instantiationMediaType>
     <instantiationDuration></instantiationDuration>
     <instantiationRights>
       <rightsSummary></rightsSummary>

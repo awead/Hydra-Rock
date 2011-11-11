@@ -21,7 +21,7 @@ describe Rockhall::PbcoreDocument do
     it "should update all of the fields in #xml_template and fields not requiring additional inserted nodes" do
       [
         [:pbc_id],
-        [:media_type],
+
         [:full_title],
         [:sub_title],
         [:alt_title],
@@ -38,8 +38,8 @@ describe Rockhall::PbcoreDocument do
         [:era],
         [:event],
         [:place],
-        [:item, :type],
-        [:item, :type, :ref],
+        [:item, :media_type],
+        [:item, :generation],
         [:item, :carrier],
         [:item, :standard],
         [:item, :barcode],
