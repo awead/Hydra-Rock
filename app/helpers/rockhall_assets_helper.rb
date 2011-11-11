@@ -29,7 +29,8 @@ module RockhallAssetsHelper
 
     # Determine field label
     if opts[:name].nil?
-      field = fedora_field_label(datastream, path, path.first.to_s.capitalize)
+      formatted_name = path.first.to_s.split(/_/).each{|word| word.capitalize!}.join(" ")
+      field = fedora_field_label(datastream, path, formatted_name)
     else
       field = fedora_field_label(datastream, path, opts[:name])
     end
@@ -236,47 +237,5 @@ module RockhallAssetsHelper
     end
     return results.html_safe
   end
-
-
-  def show_auto_fields
-    results = String.new
-    fields  = Hash.new
-    fields = {
-      "File Size"     => "unavailable",
-      "Rate"          => "unavailable",
-      "Duration"      => "unavailable",
-      "Creation Date" => "unavailable",
-      "Colors"        => "unavailable",
-      "File Type"     => "unavailable",
-    }
-
-    unless get_values_from_datastream(@document_fedora, "descMetadata", [:size]).first.empty?
-      fields["File Size"] = get_values_from_datastream(@document_fedora, "descMetadata", [:size]).first
-      unless get_values_from_datastream(@document_fedora, "descMetadata", [:size, :units]).first.empty?
-        fields["File Size"] << " (" + get_values_from_datastream(@document_fedora, "descMetadata", [:size, :units]).first + ")"
-      end
-    end
-
-    unless get_values_from_datastream(@document_fedora, "descMetadata", [:rate]).first.empty?
-      fields["Rate"] = get_values_from_datastream(@document_fedora, "descMetadata", [:rate]).first
-      if get_values_from_datastream(@document_fedora, "descMetadata", [:rate, :units]).first.empty?
-        fields["Rate"] << "(" + get_values_from_datastream(@document_fedora, "descMetadata", [:rate, :units]).first + ")"
-      end
-    end
-
-    unless get_values_from_datastream(@document_fedora, "descMetadata", [:duration]).first.empty?
-      fields["Duration"] = get_values_from_datastream(@document_fedora, "descMetadata", [:duration]).first
-    end
-
-    #TODO: get the remaining fields
-
-    fields.each do |f,v|
-      results << "<dt><label for=\"" + f.downcase.gsub(/ /,"_") + "\">" + f + ":</label></dt>"
-      results << "<dd class=\"field\">#{v}</dd>"
-    end
-
-    return results.html_safe
-  end
-
 
 end
