@@ -55,6 +55,18 @@ describe Rockhall::PbcoreInstantiation do
     end
   end
 
+  describe "default fields" do
+
+    it "like media type should be 'Moving image'" do
+      @object_ds.get_values([:media_type]).first.should == "Moving image"
+    end
+
+    it "like colors should be 'Color'" do
+      @object_ds.get_values([:colors]).first.should == "Color"
+    end
+
+  end
+
   describe "#xml_template" do
     it "should return an empty xml document matching an exmplar" do
       f = File.open("#{Rails.root.to_s}/spec/fixtures/rockhall/pbcore_instantiation_template.xml")

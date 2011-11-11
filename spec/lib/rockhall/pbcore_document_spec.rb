@@ -187,4 +187,16 @@ describe Rockhall::PbcoreDocument do
     end
   end
 
+  describe "default fields" do
+
+    it "like media type should be 'Moving image'" do
+      @object_ds.get_values([:item, :media_type]).first.should == "Moving image"
+    end
+
+    it "like colors should be 'Color'" do
+      @object_ds.get_values([:item, :colors]).first.should == "Color"
+    end
+
+  end
+
 end

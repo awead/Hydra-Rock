@@ -80,7 +80,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.item(:path=>"pbcoreInstantiation") {
 
       # Item details
-      t.media_type(:path=>"instantiationMediaType", :attributes=>{ :source=>"PBCore instantiationMediatype" })
+      t.media_type(:path=>"instantiationMediaType", :attributes=>{ :source=>"PBCore instantiationMediaType" })
       t.generation(:path=>"instantiationGenerations", :attributes=>{ :source=>"PBCore instantiationGenerations" })
       t.carrier(:path=>"instantiationPhysical")
       t.standard(:path=>"instantiationStandard")

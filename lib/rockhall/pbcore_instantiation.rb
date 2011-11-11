@@ -15,7 +15,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
         t.ref(:path=>{:attribute=>"ref"})
       }
 
-      t.media_type(:path=>"instantiationMediaType", :attributes=>{ :source=>"PBCore instantiationMediatype" })
+      t.media_type(:path=>"instantiationMediaType", :attributes=>{ :source=>"PBCore instantiationMediaType" })
 
       t.inst_file_format(:path=>"instantiationDigital", :attributes=>{ :source=>"EBU file formats" })
 
