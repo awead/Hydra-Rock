@@ -48,6 +48,10 @@ describe Workflow::GbvIngest do
       o_ds.get_values([:device]).first.should       == "Sony PVW-2800; 20040"
       o_ds.get_values([:chroma]).first.should       == "4:2:2"
       o_ds.get_values([:color_space]).first.should  == "YUV"
+      o_ds.get_values([:duration]).first.should     == "0:50:47"
+      o_ds.get_values([:colors]).first.should       == "Color"
+      o_ds.get_values([:generation]).first.should   == "Copy: preservation"
+      o_ds.get_values([:media_type]).first.should   == "Moving image"
 
       # Preservation: Video essence track fields
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :standard]).first.should        == "NTSC"
@@ -83,6 +87,10 @@ describe Workflow::GbvIngest do
       a_ds.get_values([:operator]).first.should     == "TMu"
       a_ds.get_values([:chroma]).first.should       == "4:2:0"
       a_ds.get_values([:color_space]).first.should  == "YUV"
+      a_ds.get_values([:duration]).first.should     == "0:50:47"
+      a_ds.get_values([:colors]).first.should       == "Color"
+      a_ds.get_values([:generation]).first.should   == "Copy: access"
+      a_ds.get_values([:media_type]).first.should   == "Moving image"
 
       # Access: Video essence track fields
       o_ds.get_values([{:inst=>0}, {:essence=>0}, :standard]).first.should        == "NTSC"

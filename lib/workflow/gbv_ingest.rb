@@ -90,7 +90,8 @@ class GbvIngest
     ds.update_indexed_attributes( {[:device]                                      => {"0" => @sip.info(:device)}} )            unless @sip.info(:device).nil?
     ds.update_indexed_attributes( {[:chroma]                                      => {"0" => @sip.info(:p_chroma)}} )          unless @sip.info(:p_chroma).nil?
     ds.update_indexed_attributes( {[:color_space]                                 => {"0" => @sip.info(:p_color_space)}} )     unless @sip.info(:p_color_space).nil?
-
+    ds.update_indexed_attributes( {[:duration]                                    => {"0" => @sip.info(:p_duration)}} )        unless @sip.info(:p_duration).nil?
+    ds.update_indexed_attributes( {[:generation]                                  => {"0" => "Copy: preservation"}} )
 
     ## Video essence track fields
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :standard]         => {"0" => @sip.info(:standard)}} )               unless @sip.info(:standard).nil?
@@ -123,6 +124,8 @@ class GbvIngest
     ds.update_indexed_attributes( {[:trans_note]                                  => {"0" => @sip.info(:a_trans_note)}} )      unless @sip.info(:a_trans_note).nil?
     ds.update_indexed_attributes( {[:chroma]                                      => {"0" => @sip.info(:a_chroma)}} )          unless @sip.info(:a_chroma).nil?
     ds.update_indexed_attributes( {[:color_space]                                 => {"0" => @sip.info(:a_color_space)}} )     unless @sip.info(:a_color_space).nil?
+    ds.update_indexed_attributes( {[:duration]                                    => {"0" => @sip.info(:a_duration)}} )        unless @sip.info(:a_duration).nil?
+    ds.update_indexed_attributes( {[:generation]                                  => {"0" => "Copy: access"}} )
 
     # Video essence track fields
     ds.update_indexed_attributes( {[{:inst=>0}, {:essence=>0}, :standard]         => {"0" => @sip.info(:standard)}} )               unless @sip.info(:standard).nil?
