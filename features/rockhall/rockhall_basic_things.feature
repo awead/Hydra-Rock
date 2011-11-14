@@ -5,5 +5,5 @@ Feature:
 
   Scenario: Clicking on the image logo takes you to the home page
     Given I am on the home page
-    When I follow "Test Hydra Head"
+    When I follow "Hydra Rock"
     Then I should see "Fedora management application for the digital collections at the Rock and Roll Hall of Fame"

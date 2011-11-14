@@ -2,7 +2,7 @@ module LocalBlacklightHelper
 
 
   def application_name
-    'Test Hydra Head'
+    'Hydra Rock'
   end
 
 

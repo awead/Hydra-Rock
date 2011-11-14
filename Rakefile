@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-TestHydraHead::Application.load_tasks
+HydraRock::Application.load_tasks
