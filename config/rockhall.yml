@@ -3,7 +3,7 @@ defaults: &defaults
   host:           http://localhost/~adamw/bag
   depositor:      awead@rockhall.org
   hostname:       http://george.rockhall.org/hydrangea
-  solr_discovery: localhost:8984/solr/blacklight-dev
+  solr_discovery: http://localhost:8984/solr/blacklight-dev
   pid_space:      changeme
 
 development:
