@@ -51,6 +51,7 @@ class GbvSip
 
     begin
       av = ArchivalVideo.new
+      av.label = "George Blood Audio and Video"
       ds = av.datastreams_in_memory["descMetadata"]
       ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
       ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
