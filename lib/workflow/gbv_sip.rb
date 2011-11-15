@@ -57,16 +57,21 @@ class GbvSip
       ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
       ds.update_indexed_attributes( {[:item, :standard] => {"0" => self.info(:standard)}} ) unless self.info(:standard).nil?
       ds.update_indexed_attributes( {[:item, :carrier]  => {"0" => self.info(:format)}} ) unless self.info(:format).nil?
-      av.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
 
     # Rename sip using the new object pid
-    new_name = av.pid.gsub(/:/,"_")
-    FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
-    self.base = new_name
-    self.root = File.join(File.dirname(self.root), new_name)
+    begin
+      new_name = av.pid.gsub(/:/,"_")
+      FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
+      self.base = new_name
+      self.root = File.join(File.dirname(self.root), new_name)
+    rescue Exception=>e
+      raise "Failed to rename sip with PID: #{e}"
+    end
+
+    av.save
   end
 
   # Prepares a sip resuing the pid provided by the directory name
