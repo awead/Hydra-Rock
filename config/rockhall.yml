@@ -5,6 +5,7 @@ defaults: &defaults
   hostname:       http://george.rockhall.org/hydrangea
   solr_discovery: http://localhost:8984/solr/blacklight-dev
   pid_space:      changeme
+  wowza_host:     george.rockhall.org
 
 development:
   <<: *defaults

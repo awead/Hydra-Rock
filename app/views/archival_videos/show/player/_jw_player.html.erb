@@ -7,7 +7,7 @@
 
   var flashvars = {
     file:'<%= asset_path(type) %>',
-    streamer:'rtmp://george.rockhall.org/vod'
+    streamer:'rtmp://<%= RH_CONFIG["wowza_host"] %>/vod'
   };
 
   swfobject.embedSWF('/jwplayer/player.swf','container','480','270','9.0.115','false', flashvars,
