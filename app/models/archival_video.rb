@@ -26,6 +26,7 @@ class ArchivalVideo < ActiveFedora::Base
     super
     # Anyone in the archivist group has edit rights
     self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
   end
 
   def remove_file_objects

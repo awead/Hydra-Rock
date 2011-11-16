@@ -29,6 +29,7 @@ class ExternalVideo < ActiveFedora::Base
     super
     # Anyone in the archivist group has edit rights
     self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
   end
 
   # augments add_named_datastream to put file information in descMetadata
