@@ -13,9 +13,8 @@ gem 'mediainfo'
 group :development, :test do
   gem 'solrizer-fedora', '>=1.0.1'
   gem 'ruby-debug'
-  # Oct. 17th: recent rspec 2.7 update breaks my tests
-  gem 'rspec', '< 2.7.0'
-  gem 'rspec-rails', '< 2.7.0'
+  gem 'rspec'
+  gem 'rspec-rails'
   gem 'mocha'
   gem 'generator_spec'
   gem 'cucumber-rails'
