@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.10'
 
 gem 'blacklight', '~> 3.0.0'
-gem 'hydra-head', :path => "gems/hydra-head"
+gem 'hydra-head', '=3.0.1'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'bagit', :path => "gems/bagit"
@@ -14,8 +14,8 @@ group :development, :test do
   gem 'solrizer-fedora', '>=1.0.1'
   gem 'ruby-debug'
   # Oct. 17th: recent rspec 2.7 update breaks my tests
-  gem 'rspec', '< 2.7.0'
-  gem 'rspec-rails', '< 2.7.0'
+  gem 'rspec'
+  gem 'rspec-rails'
   gem 'mocha'
   gem 'generator_spec'
   gem 'cucumber-rails'
