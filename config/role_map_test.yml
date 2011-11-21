@@ -7,6 +7,8 @@ admin_policy_object_editor:
 donor:
   - donor1@example.com
   - leland_himself@example.com
+reviewer:
+  - reviewer1@example.com
 researcher:
   - archivist1@example.com
   - researcher1@example.com

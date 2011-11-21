@@ -47,6 +47,21 @@ describe ArchivalVideo do
       end
     end
 
+    describe "apply_reviewer_metadata" do
+      it "should update the assetReview datastream for the first time" do
+        review_ds = @video.datastreams_in_memory["assetReview"]
+        fields = ['reviewer', 'date_completed', 'date_updated', 'license', 'notes'].each do |f|
+            review_ds.get_values(f.to_sym).first.should be_nil
+        end
+        @video.apply_reviewer_metadata("reviewer1@example.com","foo")
+        date = DateTime.now
+        review_ds.get_values(:reviewer).first.should == "reviewer1@example.com"
+        review_ds.get_values(:date_completed).first.should == date.strftime("%Y-%m-%d")
+        review_ds.get_values(:date_updated).first.should == date.strftime("%Y-%m-%d")
+        review_ds.get_values(:license).first.should == "foo"
+      end
+    end
+
     describe ".to_solr" do
       it "should index the right fields in solr" do
         solr_doc = @video.to_solr

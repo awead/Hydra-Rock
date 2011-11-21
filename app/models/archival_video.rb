@@ -22,10 +22,19 @@ class ArchivalVideo < ActiveFedora::Base
     m.field 'submission', :string
   end
 
+  has_metadata :name => "assetReview", :type => ActiveFedora::MetadataDatastream do |m|
+    m.field 'reviewer', :string
+    m.field 'date_completed', :string
+    m.field 'date_updated', :string
+    m.field 'license', :string
+    m.field 'notes', :text
+  end
+
   def initialize( attrs={} )
     super
-    # Anyone in the archivist group has edit rights
+    # Apply group permissions
     self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
     self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
   end
 
@@ -63,5 +72,16 @@ class ArchivalVideo < ActiveFedora::Base
     results[:unknown] = u_files
     return results
   end
+
+  def apply_reviewer_metadata(reviewer,license,opts={})
+    date = DateTime.now
+    if self.datastreams_in_memory["assetReview"].get_values(:date_completed).first.nil?
+      self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:date_completed] => { 0 => date.strftime("%Y-%m-%d")}})
+    end
+    self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:date_updated] => { 0 => date.strftime("%Y-%m-%d")}})
+    self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:reviewer] => { 0 => reviewer}})
+    self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:license] => { 0 => license}})
+  end
+
 
 end
