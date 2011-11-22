@@ -10,7 +10,7 @@
     <%= DateTime.parse(document[:system_create_dt]).in_time_zone("Eastern Time (US & Canada)").strftime("%c") %>
   </td>
   <td>
-    No. <%= link_to("Reivew", edit_reviewer_path(:id => document["id"])) %>
+    <%= get_review_status(document) %>
   </td>
   <td>
     <%= get_file_asset_count(document)%>

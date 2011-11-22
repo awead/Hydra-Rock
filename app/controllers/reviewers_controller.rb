@@ -37,7 +37,8 @@ class ReviewersController < ApplicationController
     user = current_user.login
     @document_fedora.apply_reviewer_metadata(user,params[:license],{:notes=>params["asset"]["assetReview"]["notes"]["0"]})
     @document_fedora.save
-    redirect_to({:controller => "reviewers", :action => "show"})
+    flash[:notice] = "Review changes saved."
+    redirect_to url_for(:controller => "reviewers", :action => "edit")
   end
 
 
