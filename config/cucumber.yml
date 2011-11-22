@@ -2,7 +2,7 @@
 rerun = File.file?('rerun.txt') ? IO.read('rerun.txt') : ""
 rerun_opts = rerun.to_s.strip.empty? ? "--format #{ENV['CUCUMBER_FORMAT'] || 'progress'} features" : "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} #{rerun}"
 std_opts = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'} --strict --tags ~@wip"
-require = "--require /Users/adamw/.rvm/gems/ree-1.8.7-2011.03\@hydra-head/gems/hydra-head-3.0.1/test_support/features/step_definitions"
+require = "--require features/step_definitions"
 %>
 default: <%= std_opts %> <%= require %> -r features
 wip:  <%= require %> --tags @wip:10 --wip -r features
