@@ -10,7 +10,6 @@ Description:
   Hydra should allow these users to specify these access levels and indicate whether or not
   these objects have been reviewed.
 
-  @wip
   Scenario: Reviewer logs in and checks the status of an item (DAM-123)
     Given I am logged in as "archivist1@example.com"
     And I am on the show document page for rockhall:fixture_pbcore_document3
