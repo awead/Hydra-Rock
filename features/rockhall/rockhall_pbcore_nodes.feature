@@ -54,6 +54,7 @@ Feature:
     Then I should not see "Contributor"
 
   @javascript
+  @wip
   Scenario: Use pull-down menu to update contributor role (DAM-89,90,91)
     Given I am logged in as "archivist1@example.com"
     And I create a new archival_video
