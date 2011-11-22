@@ -96,8 +96,12 @@ module RockhallAssetsHelper
   end
 
   def asset_path(type)
-    filename = @document_fedora.external_video(:h264).datastreams_in_memory["descMetadata"].get_values(:name)
-    return File.join(@document_fedora.pid.gsub(/:/,"_"),"data",filename)
+    path = String.new
+    unless @document_fedora.external_video(:h264).nil?
+      filename = @document_fedora.external_video(:h264).datastreams_in_memory["descMetadata"].get_values(:name)
+      path = File.join(@document_fedora.pid.gsub(/:/,"_"),"data",filename)
+    end
+    return path
   end
 
 
