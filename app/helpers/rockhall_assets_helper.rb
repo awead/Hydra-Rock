@@ -1,5 +1,7 @@
 module RockhallAssetsHelper
 
+  include Hydra::AccessControlsEvaluation
+
   # Render a link to delete the given asset from the repository.
   # Includes a confirmation message.
   def delete_object_link(pid, asset_type_display="asset")
@@ -255,13 +257,14 @@ module RockhallAssetsHelper
   end
 
   def get_review_status(document)
-    user_groups = RoleMapper.roles(current_user.login)
     results = String.new
-      if document[:date_completed_t].nil?
-        user_groups.include?("reviewer") ? results << link_to("No", edit_reviewer_path(:id => document[:id])) : results << "No"
-      else
-        user_groups.include?("reviewer") ? results << link_to("Yes", edit_reviewer_path(:id => document[:id])) : results << "Yes"
-      end
+    current_user.nil? ? user_groups = ["public"] : user_groups = RoleMapper.roles(current_user.login)
+
+    if document[:date_completed_t].nil?
+      user_groups.include?("reviewer") ? results << link_to("No", edit_reviewer_path(:id => document[:id])) : results << "No"
+    else
+      user_groups.include?("reviewer") ? results << link_to("Yes", edit_reviewer_path(:id => document[:id])) : results << "Yes"
+    end
     return results.html_safe
   end
 end
