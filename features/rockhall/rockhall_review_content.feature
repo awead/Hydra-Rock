@@ -25,15 +25,35 @@ Description:
     And I should see "Notes"
     And I should see "We don't have permission to show this to the public"
 
-  @wip
   Scenario: Reviewer edits the status of an item (DAM-123)
     Given I am logged in as "reviewer1@example.com"
-    And I am on the edit page for rockhall:fixture_pbcore_document3
-    Then I should see "Review This Item"
-    And I should not see "Content"
-    And I should not see "Delete Fields"
-    And I should not see "Original"
-    And I should not see "Add Fields"
-    And I should not see "Digital Files"
-    And I should not see "Rockhall Metadata"
-    And I should not see "Set Permissions"
+    And I am on the review document page for rockhall:fixture_pbcore_document3
+    Then I should see "Choose license type"
+    And the following should be selected within "form#asset_review"
+      |license | Rockhall |
+    And I should see "We don't have permission to show this to the public."
+    When I select the following within "form#asset_review"
+      |license | Public |
+    And I press "Review"
+    Then I should see "Review changes saved."
+    When I am on the review document page for rockhall:fixture_pbcore_document3
+    Then the following should be selected within "form#asset_review"
+      |license | Public |
+    When I select the following within "form#asset_review"
+      |license | Rockhall |
+    And I press "Review"
+    Then I should see "Review changes saved."
+    When I am on the review document page for rockhall:fixture_pbcore_document3
+    Then the following should be selected within "form#asset_review"
+      |license | Rockhall |
+
+  Scenario: User who is not a reviewer should not be able to review an item (DAM-123)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the review document page for rockhall:fixture_pbcore_document3
+    Then I should see "You are not allowed to review this document"
+
+  @test-out
+  Scenario: Reviewers should be redirected to the edit reivew page (DAM-123)
+    Given I am logged in as "reviewer1@example.com"
+    And I am on the edit document page for rockhall:fixture_pbcore_document3
+    Then I should see "You have been redirected to the review page for this document"

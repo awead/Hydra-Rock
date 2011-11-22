@@ -6,9 +6,9 @@ module NavigationHelpers
   # step definition in webrat_steps.rb
   #
   def path_to(page_name)
-    
+
     case page_name
-  
+
     when /the home\s?page/
       '/'
     when /the search page/
@@ -19,9 +19,9 @@ module NavigationHelpers
       edit_user_registration_path
     when /the base search page/
       '/catalog?q=&search_field=search&action=index&controller=catalog&commit=search'
-    when /the document page for id (.+)/ 
+    when /the document page for id (.+)/
       catalog_path($1)
-    when /the edit page for id (.+)/ 
+    when /the edit page for id (.+)/
       edit_catalog_path($1)
     when /the catalog index page/
       catalog_index_path
@@ -35,9 +35,11 @@ module NavigationHelpers
       edit_catalog_path($1)
     when /the show document page for (.*)$/i
       catalog_path($1)
+    when /the review document page for (.*)$/i
+      edit_reviewer_path($1)
     when /the delete confirmation page for (.*)$/i
       delete_catalog_path($1)
-      
+
     when /the file (?:asset )?list page for (.*)$/i
       asset_file_assets_path($1)
     when /the file asset creation page for (.*)$/i
@@ -50,7 +52,7 @@ module NavigationHelpers
       file_asset_path($1)
     when /the permissions page for (.*)$/i
       asset_permissions_path($1)
-    
+
     when /new (.*) page$/i
       new_asset_path(:content_type => $1)
     when /the asset (.*)$/i
@@ -58,11 +60,11 @@ module NavigationHelpers
     when /show asset page for (.*)$/i
       asset_path($1)
 
-      
+
     when /the (\d+)(?:st|nd|rd|th) (person|organization|conference) entry in (.*)$/i
       # contributor_id = "#{$2}_#{$1.to_i-1}"
       asset_contributor_path($3, $2, $1.to_i-1, :content_type=>"mods_asset")
-    
+
     when /the edit (.*) page for (.*)$/i
       edit_catalog_path($2,:wf_step=>$1)
     else
@@ -75,7 +77,7 @@ module NavigationHelpers
           "Now, go and add a mapping in #{__FILE__}"
       end
     end
-      
+
   end
 
 end
