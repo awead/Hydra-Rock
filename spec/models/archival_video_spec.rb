@@ -59,6 +59,15 @@ describe ArchivalVideo do
         review_ds.get_values(:date_completed).first.should == date.strftime("%Y-%m-%d")
         review_ds.get_values(:date_updated).first.should == date.strftime("%Y-%m-%d")
         review_ds.get_values(:license).first.should == "foo"
+        review_ds.get_values(:notes).first.should be_nil
+      end
+
+      it "should update the assetReview datastream with a note" do
+        @video.apply_reviewer_metadata("reviewer1@example.com","bar",{:notes=>"Notey note"})
+        review_ds = @video.datastreams_in_memory["assetReview"]
+        review_ds.get_values(:reviewer).first.should == "reviewer1@example.com"
+        review_ds.get_values(:license).first.should == "bar"
+        review_ds.get_values(:notes).first.should == "Notey note"
       end
     end
 
