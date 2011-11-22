@@ -156,6 +156,7 @@ library@rockhall.org</instantiationLocation>
     <human></human>
     <machine>
       <group>archivist</group>
+      <group>reviewer</group>
     </machine>
   </access>
   <embargo>

@@ -258,9 +258,9 @@ module RockhallAssetsHelper
     user_groups = RoleMapper.roles(current_user.login)
     results = String.new
       if document[:date_completed_t].nil?
-        user_groups.include?("reviwer") ? results << link_to("No", edit_reviewer_path(:id => document[:id])) : results << "No"
+        user_groups.include?("reviewer") ? results << link_to("No", edit_reviewer_path(:id => document[:id])) : results << "No"
       else
-        user_groups.include?("reviwer") ? results << link_to("Yes", edit_reviewer_path(:id => document[:id])) : results << "Yes"
+        user_groups.include?("reviewer") ? results << link_to("Yes", edit_reviewer_path(:id => document[:id])) : results << "Yes"
       end
     return results.html_safe
   end
