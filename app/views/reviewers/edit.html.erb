@@ -1,0 +1,29 @@
+<% extra_head_content << capture do -%>
+  <%= javascript_include_tag "rails.js" %>
+  <%= csrf_meta_tag %>
+<% end %>
+
+
+<div class="document_viewer" id="cover_container">
+
+  <h2>Video</h2>
+  <%= render :partial => "archival_videos/show/content" %>
+
+  <h2>Review Video</h2>
+  <%= form_tag url_for(:action=>"update", :controller=>"reviewers", :content_type=>"archival_video"),
+      :method             => "put",
+      :id                 => "properties",
+      "data-resourceType" => "archival_video",
+      "accept-charset"    => "utf-8" do %>
+
+    <h3>Choose license type</h3>
+    <%= select_tag "license", options_for_license %>
+    <%= display_field([:notes], { :datastream => "assetReview" }) %>
+
+    <%= submit_tag 'Submit Review', {:id => "submitReview"} %>
+    <span class="back_to_cat"><%= link_back_to_catalog :label=>"Cancel and return to search results" %></span>
+  <% end %>
+
+
+
+</div>

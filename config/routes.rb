@@ -29,6 +29,8 @@ HydraRock::Application.routes.draw do
   #map.connect 'assets/:asset_id/pbcore/:node/:index', :controller=>:pbcore, :action=>:destroy, :conditions => { :method => :delete }
   match "assets/:asset_id/pbcore/:node/:index" => "pbcore#destroy", :via => :delete
 
+  resources :reviewers, :only=>[:edit, :update, :show]
+
   # end of my routes
 
 

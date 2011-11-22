@@ -238,4 +238,20 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+  def options_for_license
+    results = String.new
+    licenses = ["Public", "Rockhall"]
+    current_license = @document_fedora.get_values_from_datastream('assetReview', [:license])
+
+    results << "<option></option>"
+    licenses.each do |l|
+      if l.eql?(current_license.first.to_s)
+        results << "<option selected=\"yes\">" + l + "</option>"
+      else
+        results << "<option>" + l + "</option>"
+      end
+    end
+    return results.html_safe
+  end
+
 end
