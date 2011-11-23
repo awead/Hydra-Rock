@@ -29,9 +29,9 @@ describe Workflow::GbvIngest do
       # Check parent object fields
       ing.parent.label.should == "George Blood Audio and Video"
       ds = ing.parent.datastreams_in_memory["descMetadata"]
-      ds.get_values([:coverage, :date]).first.should  == "2007-07-09"
-      ds.get_values([:item, :standard]).first.should  == "NTSC"
-      ds.get_values([:item, :carrier]).first.should   == "Betacam"
+      ds.get_values([:creation_date]).first.should  == "2007-07-09"
+      ds.get_values([:standard]).first.should  == "NTSC"
+      ds.get_values([:format]).first.should   == "Betacam"
 
       # Preservation file
       original = ExternalVideo.load_instance(ing.parent.videos[:original])
@@ -123,7 +123,7 @@ describe Workflow::GbvIngest do
 
       # Check metadata
       ds = ing.parent.datastreams_in_memory["descMetadata"]
-      ds.get_values([:coverage, :date]).first.should == "2007-07-09"
+      ds.get_values([:creation_date]).first.should == "2007-07-09"
 
       original = ExternalVideo.load_instance(ing.parent.videos[:original])
       o_ds = original.datastreams_in_memory["descMetadata"]

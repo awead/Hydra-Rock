@@ -53,11 +53,7 @@ class GbvSip
       av = ArchivalVideo.new
       av.label = "George Blood Audio and Video"
       ds = av.datastreams_in_memory["descMetadata"]
-      ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
-      ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
-      ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
-      ds.update_indexed_attributes( {[:item, :standard] => {"0" => self.info(:standard)}} ) unless self.info(:standard).nil?
-      ds.update_indexed_attributes( {[:item, :carrier]  => {"0" => self.info(:format)}} ) unless self.info(:format).nil?
+      self.update_fields(ds)
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
@@ -85,11 +81,7 @@ class GbvSip
     begin
       av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
       ds = av.datastreams_in_memory["descMetadata"]
-      ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => self.barcode}} )
-      ds.update_indexed_attributes( {[:full_title]      => {"0" => self.title}} )
-      ds.update_indexed_attributes( {[:coverage, :date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
-      ds.update_indexed_attributes( {[:item, :standard] => {"0" => self.info(:standard)}} ) unless self.info(:standard).nil?
-      ds.update_indexed_attributes( {[:item, :carrier]  => {"0" => self.info(:format)}} ) unless self.info(:format).nil?
+      self.update_fields(ds)
       av.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
@@ -143,7 +135,7 @@ class GbvSip
 
   def pid
     return nil unless self.barcode
-    solr_params = { :fl => "id", :q  => "item_barcode_t:#{self.barcode}", :qt => "document" }
+    solr_params = { :fl => "id", :q  => "barcode_t:#{self.barcode}", :qt => "document" }
     solr_response = Blacklight.solr.find(solr_params)
     if solr_response[:response][:numFound] == 0
       return nil
@@ -160,6 +152,14 @@ class GbvSip
     else
       return false
     end
+  end
+
+  def update_fields(ds)
+    ds.update_indexed_attributes( {[:barcode]       => {"0" => self.barcode}} )
+    ds.update_indexed_attributes( {[:main_title]    => {"0" => self.title}} )
+    ds.update_indexed_attributes( {[:creation_date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
+    ds.update_indexed_attributes( {[:standard]      => {"0" => self.info(:standard)}} ) unless self.info(:standard).nil?
+    ds.update_indexed_attributes( {[:format]        => {"0" => self.info(:format)}} ) unless self.info(:format).nil?
   end
 
 end

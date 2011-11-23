@@ -31,11 +31,11 @@ class GbvIngest
     # Fields in parent
     av = ArchivalVideo.load_instance(sip.pid)
     p_ds = av.datastreams_in_memory["descMetadata"]
-    p_ds.update_indexed_attributes( {[:item, :barcode]  => {"0" => @sip.barcode}} )
-    p_ds.update_indexed_attributes( {[:full_title]      => {"0" => @sip.title}} )
-    p_ds.update_indexed_attributes( {[:coverage, :date] => {"0" => @sip.info(:orig_date)}} ) unless @sip.info(:orig_date).nil?
-    p_ds.update_indexed_attributes( {[:item, :standard] => {"0" => @sip.info(:standard)}} ) unless @sip.info(:standard).nil?
-    p_ds.update_indexed_attributes( {[:item, :carrier]  => {"0" => @sip.info(:format)}} ) unless @sip.info(:format).nil?
+    p_ds.update_indexed_attributes( {[:barcode]       => {"0" => @sip.barcode}} )
+    p_ds.update_indexed_attributes( {[:main_title]    => {"0" => @sip.title}} )
+    p_ds.update_indexed_attributes( {[:creation_date] => {"0" => @sip.info(:orig_date)}} ) unless @sip.info(:orig_date).nil?
+    p_ds.update_indexed_attributes( {[:standard]      => {"0" => @sip.info(:standard)}} ) unless @sip.info(:standard).nil?
+    p_ds.update_indexed_attributes( {[:format]        => {"0" => @sip.info(:format)}} ) unless @sip.info(:format).nil?
     av.save
 
     # Fields in preservation video object

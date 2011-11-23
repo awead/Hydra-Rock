@@ -16,7 +16,8 @@ describe Workflow::GbvSip do
   describe "an invalid sip" do
 
       before(:each) do
-        @invalid = Workflow::GbvSip.new("tmp")
+        FileUtils.mkdir("tmp/invalid_sip") unless File.directory?("tmp/invalid_sip")
+        @invalid = Workflow::GbvSip.new("tmp/invalid_sip")
       end
 
       it "should not be valid" do
@@ -42,7 +43,6 @@ describe Workflow::GbvSip do
   end
 
   describe "a valid sip" do
-
     it "should have an xml file" do
       @sip.doc.should be_a_kind_of(Workflow::GbvDocument)
     end
@@ -52,7 +52,7 @@ describe Workflow::GbvSip do
     end
 
     it "should have a preservation file" do
-       @sip.preservation.should == "39156042439369_preservation.mov"
+      @sip.preservation.should == "39156042439369_preservation.mov"
     end
 
     it "should have a title" do
