@@ -102,21 +102,21 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
       t.inst_clean_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"Cleaning Notes" })
     }
     # Individual field names:
-    t.creation_date(:ref=>[:pbcoreInstantiation, :instantiationDate])
-    t.barcode(:ref=>[:pbcoreInstantiation, :instantiationIdentifier])
-    t.repository(:ref=>[:pbcoreInstantiation, :instantiationLocation])
-    t.format(:ref=>[:pbcoreInstantiation, :instantiationPhysical])
-    t.standard(:ref=>[:pbcoreInstantiation, :instantiationStandard])
-    t.media_type(:ref=>[:pbcoreInstantiation, :instantiationMediaType])
-    t.generation(:ref=>[:pbcoreInstantiation, :instantiationGenerations])
-    t.colors(:ref=>[:pbcoreInstantiation, :instantiationColors])
-    t.archival_collection(:ref=>[:pbcoreInstantiation, :instantiationRelation, :arc_collection])
-    t.archival_series(:ref=>[:pbcoreInstantiation, :instantiationRelation, :arc_series])
-    t.collection_number(:ref=>[:pbcoreInstantiation, :instantiationRelation, :col_number])
-    t.accession_number(:ref=>[:pbcoreInstantiation, :instantiationRelation, :acc_number])
-    t.usage(:ref=>[:pbcoreInstantiation, :instantiationRights, :rightsSummary])
-    t.condition_note(:ref=>[:pbcoreInstantiation, :inst_cond_note])
-    t.cleaning_note(:ref=>[:pbcoreInstantiation, :inst_clean_note])
+    t.creation_date(:proxy=>[:pbcoreInstantiation, :instantiationDate])
+    t.barcode(:proxy=>[:pbcoreInstantiation, :instantiationIdentifier])
+    t.repository(:proxy=>[:pbcoreInstantiation, :instantiationLocation])
+    t.format(:proxy=>[:pbcoreInstantiation, :instantiationPhysical])
+    t.standard(:proxy=>[:pbcoreInstantiation, :instantiationStandard])
+    t.media_type(:proxy=>[:pbcoreInstantiation, :instantiationMediaType])
+    t.generation(:proxy=>[:pbcoreInstantiation, :instantiationGenerations])
+    t.colors(:proxy=>[:pbcoreInstantiation, :instantiationColors])
+    t.archival_collection(:proxy=>[:pbcoreInstantiation, :instantiationRelation, :arc_collection])
+    t.archival_series(:proxy=>[:pbcoreInstantiation, :instantiationRelation, :arc_series])
+    t.collection_number(:proxy=>[:pbcoreInstantiation, :instantiationRelation, :col_number])
+    t.accession_number(:proxy=>[:pbcoreInstantiation, :instantiationRelation, :acc_number])
+    t.usage(:proxy=>[:pbcoreInstantiation, :instantiationRights, :rightsSummary])
+    t.condition_note(:proxy=>[:pbcoreInstantiation, :inst_cond_note])
+    t.cleaning_note(:proxy=>[:pbcoreInstantiation, :inst_clean_note])
 
     #
     # pbcorePart fields
@@ -192,8 +192,6 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
           xml.instantiationLocation {
             xml.text "Rock and Roll Hall of Fame and Museum,\n2809 Woodland Ave.,\nCleveland, OH, 44115\n216-515-1956\nlibrary@rockhall.org"
           }
-          xml.instantiationPhysical(:source=>"PBCore instantiationPhysical")
-          xml.instantiationStandard
           xml.instantiationMediaType(:source=>"PBCore instantiationMediaType") {
             xml.text "Moving image"
           }
@@ -227,11 +225,6 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
             }
             xml.instantiationRelationIdentifier(:annotation=>"Accession Number")
           }
-          xml.instantiationRights {
-            xml.rightsSummary
-          }
-          xml.instantiationAnnotation(:annotationType=>"Condition Notes")
-          xml.instantiationAnnotation(:annotationType=>"Cleaning Notes")
 
         }
 

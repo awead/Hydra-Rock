@@ -115,6 +115,11 @@ describe Rockhall::PbcoreDocument do
       @object_ds.update_indexed_attributes({ [:translation] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:subject] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:genre] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:condition_note] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:cleaning_note] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:format] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:standard] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:usage] => { 0 => "inserted" }} )
 
       # Load example fixture
       f = File.open("#{Rails.root.to_s}/spec/fixtures/rockhall/pbcore_document_template.xml")

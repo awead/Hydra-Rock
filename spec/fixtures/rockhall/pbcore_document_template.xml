@@ -42,8 +42,8 @@
 Cleveland, OH, 44115
 216-515-1956
 library@rockhall.org</instantiationLocation>
-    <instantiationPhysical source="PBCore instantiationPhysical"/>
-    <instantiationStandard/>
+    <instantiationPhysical source="PBCore instantiationPhysical">inserted</instantiationPhysical>
+    <instantiationStandard>inserted</instantiationStandard>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
     <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
     <instantiationColors>Color</instantiationColors>
@@ -64,10 +64,10 @@ library@rockhall.org</instantiationLocation>
       <instantiationRelationIdentifier annotation="Accession Number"/>
     </instantiationRelation>
     <instantiationRights>
-      <rightsSummary/>
+      <rightsSummary>inserted</rightsSummary>
     </instantiationRights>
-    <instantiationAnnotation annotationType="Condition Notes"/>
-    <instantiationAnnotation annotationType="Cleaning Notes"/>
+    <instantiationAnnotation annotationType="Condition Notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Cleaning Notes">inserted</instantiationAnnotation>
   </pbcoreInstantiation>
   <pbcoreAnnotation annotationType="Notes"/>
 </pbcoreDescriptionDocument>
