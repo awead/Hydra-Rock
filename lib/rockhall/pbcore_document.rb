@@ -4,102 +4,100 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 	include Rockhall::PbcoreMethods
 
   set_terminology do |t|
-    t.root(:path=>"pbcoreDescriptionDocument", #:xmlns => '', :namespace_prefix => nil)
-      :xmlns=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html",
-      :schema=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html"
-    )
+    t.root(:path=>"pbcoreDescriptionDocument", :xmlns => '', :namespace_prefix=>nil)
 
     #
     #  pbcoreDescription fields
     #
-    t.pbc_id(:path=>"pbcoreIdentifier", :attributes=>{ :source=>"rock hall", :annotation=>"Fedora ID" })
+    t.pbc_id(:path=>"pbcoreIdentifier", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :source=>"rock hall", :annotation=>"Fedora ID" })
 
-    t.main_title(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"main" })
-    t.alternative_title(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"alternative" })
-    t.chapter(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"chapter" })
-    t.episode(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"episode" })
-    t.label(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"label" })
-    t.segment(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"segment" })
-    t.subtitle(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"subtitle" })
-    t.track(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"track" })
-    t.translation(:path=>"pbcoreTitle", :attributes=>{ :titleType=>"translation" })
+    t.main_title(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"main" })
+    t.alternative_title(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"alternative" })
+    t.chapter(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"chapter" })
+    t.episode(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"episode" })
+    t.label(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"label" })
+    t.segment(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"segment" })
+    t.subtitle(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"subtitle" })
+    t.track(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"track" })
+    t.translation(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"translation" })
 
-    t.description(:path=>"descriptionType", :attributes=>{ :descriptionTypesource=>"pbcoreDescription/descriptionType",
+    t.description(:path=>"descriptionType", :namespace_prefix=>nil, :attributes=>{ :descriptionTypesource=>"pbcoreDescription/descriptionType",
       :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description",
       :annotation=>"main"}
     )
 
-    t.contents(:path=>"pbcoreDescription", :attributes=>{ :descriptionType=>"Table of Contents",
+    t.contents(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"Table of Contents",
       :descriptionTypeSource=>"pbcoreDescription/descriptionType",
       :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" }
     )
 
-    t.subject(:path=>"pbcoreSubject")
+    t.subject(:path=>"pbcoreSubject", :namespace_prefix=>nil)
 
-    t.genre(:path=>"pbcoreGenre")
+    t.genre(:path=>"pbcoreGenre", :namespace_prefix=>nil)
 
     # Series field
-    t.pbcoreRelation {
-      t.pbcoreRelationIdentifier(:attributes=>{ :annotation=>"Event Series" })
+    t.pbcoreRelation(:namespace_prefix=>nil) {
+      t.pbcoreRelationIdentifier(:namespace_prefix=>nil, :attributes=>{ :annotation=>"Event Series" })
     }
     t.series(:ref=>[:pbcoreRelation, :pbcoreRelationIdentifier])
 
     # Terms for time and place
-    t.pbcore_coverage(:path=>"pbcoreCoverage") {
-      t.coverage(:path=>"coverage")
+    t.pbcore_coverage(:path=>"pbcoreCoverage", :namespace_prefix=>nil) {
+      t.coverage(:path=>"coverage", :namespace_prefix=>nil)
     }
     t.spatial(:ref => :pbcore_coverage,
       :path=>'pbcoreCoverage[coverageType="Spatial"]',
       :namespace_prefix=>nil
     )
     t.temporal(:ref => :pbcore_coverage,
-      :path=>'pbcoreDescriptionDocument/pbcoreCoverage[coverageType="Temporal"]'
+      :path=>'pbcoreDescriptionDocument/pbcoreCoverage[coverageType="Temporal"]',
+      :namespace_prefix=>nil
     )
     t.event_place(:proxy=>[:spatial, :coverage])
     t.event_time(:proxy=>[:temporal, :coverage])
 
     # Contributor names and roles
-    t.pbcoreContributor {
-      t.contributor
-      t.contributorRole(:attributes=>{ :source=>"MARC relator terms" })
+    t.pbcoreContributor(:namespace_prefix=>nil) {
+      t.contributor(:namespace_prefix=>nil)
+      t.contributorRole(:namespace_prefix=>nil, :attributes=>{ :source=>"MARC relator terms" })
     }
     t.contributor_name(:ref=>[:pbcoreContributor, :contributor])
     t.contributor_role(:ref=>[:pbcoreContributor, :contributorRole])
 
     # Publisher names and roles
-    t.pbcorePublisher {
-      t.publisher
-      t.publisherRole(:attributes=>{ :source=>"PBcore publisherRole" })
+    t.pbcorePublisher(:namespace_prefix=>nil) {
+      t.publisher(:namespace_prefix=>nil)
+      t.publisherRole(:namespace_prefix=>nil, :attributes=>{ :source=>"PBcore publisherRole" })
     }
     t.publisher_name(:ref=>[:pbcorePublisher, :publisher])
     t.publisher_role(:ref=>[:pbcorePublisher, :publisherRole])
 
-    t.note(:path=>"pbcoreAnnotation", :atttributes=>{ :annotationType=>"Notes" })
+    t.note(:path=>"pbcoreAnnotation", :namespace_prefix=>nil, :atttributes=>{ :annotationType=>"Notes" })
 
 
     #
     # pbcoreInstantiation fields for the physical item
     #
-    t.pbcoreInstantiation {
-      t.instantiationDate(:attributes=>{ :dateType=>"creation date" })
-      t.instantiationIdentifier
-      t.instantiationLocation
-      t.instantiationPhysical(:attributes=>{ :source=>"PBCore instantiationPhysical" })
-      t.instantiationStandard
-      t.instantiationMediaType(:attributes=>{ :source=>"PBCore instantiationMediaType" })
-      t.instantiationGenerations(:attributes=>{ :source=>"PBCore instantiationGenerations" })
-      t.instantiationColors
-      t.instantiationRelation {
-        t.arc_collection(:path=>"instantiationRelationIdentifier", :attributes=>{ :annotation=>"Archival Collection" })
-        t.arc_series(:path=>"instantiationRelationIdentifier", :attributes=>{ :annotation=>"Archival Series" })
-        t.col_number(:path=>"instantiationRelationIdentifier", :attributes=>{ :annotation=>"Collection Number" })
-        t.acc_number(:path=>"instantiationRelationIdentifier", :attributes=>{ :annotation=>"Accession Number" })
+    t.pbcoreInstantiation(:namespace_prefix=>nil) {
+      t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"creation date" })
+      t.instantiationIdentifier(:namespace_prefix=>nil)
+      t.instantiationLocation(:namespace_prefix=>nil)
+      t.instantiationPhysical(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationPhysical" })
+      t.instantiationStandard(:namespace_prefix=>nil)
+      t.instantiationMediaType(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationMediaType" })
+      t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
+      t.instantiationColors(:namespace_prefix=>nil)
+      t.instantiationRelation(:namespace_prefix=>nil) {
+        t.arc_collection(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Archival Collection" })
+        t.arc_series(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Archival Series" })
+        t.col_number(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Collection Number" })
+        t.acc_number(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Accession Number" })
       }
-      t.instantiationRights {
-        t.rightsSummary
+      t.instantiationRights(:namespace_prefix=>nil) {
+        t.rightsSummary(:namespace_prefix=>nil)
       }
-      t.inst_cond_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"Condition Notes" })
-      t.inst_clean_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"Cleaning Notes" })
+      t.inst_cond_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Condition Notes" })
+      t.inst_clean_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Cleaning Notes" })
     }
     # Individual field names:
     t.creation_date(:proxy=>[:pbcoreInstantiation, :instantiationDate])
@@ -121,14 +119,14 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     #
     # pbcorePart fields
     #
-    t.pbcorePart {
-      t.pbcoreTitle(:attributes=>{ :titleType=>"song", :annotation=>"Part Title" })
-      t.pbcoreIdentifier(:attributes=>{ :source=>"rock hall", :annotation=>"Part Number" })
-      t.pbcoreDescription(:attributes=>{ :descriptionType=>"Description",
+    t.pbcorePart(:namespace_prefix=>nil) {
+      t.pbcoreTitle(:namespace_prefix=>nil, :attributes=>{ :titleType=>"song", :annotation=>"Part Title" })
+      t.pbcoreIdentifier(:namespace_prefix=>nil, :attributes=>{ :source=>"rock hall", :annotation=>"Part Number" })
+      t.pbcoreDescription(:namespace_prefix=>nil, :attributes=>{ :descriptionType=>"Description",
         :descriptionTypesource=>"pbcoreDescription/descriptionType",
         :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" }
       )
-      t.pbcoreContributor {
+      t.pbcoreContributor(:namespace_prefix=>nil) {
         t.contributor(:attributes=>{ :annotation=>"Part Contributor" })
         t.contributorRole(:attributes=>{ :source=>"MARC relator terms" })
       }
@@ -146,7 +144,6 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     builder = Nokogiri::XML::Builder.new do |xml|
 
       xml.pbcoreDescriptionDocument(:version=>"2.0", "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
-        "xmlns"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html",
         "xsi:schemaLocation"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html") {
 
         xml.pbcoreIdentifier(:source=>"rock hall", :annotation=>"Fedora ID")

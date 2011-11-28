@@ -35,8 +35,8 @@ describe Rockhall::PbcoreDocument do
         [:subject],
         [:genre],
         [:series],
-        [{:pbcore_coverage=>0}, :coverage], # until [:event_place] works
-        [{:pbcore_coverage=>1}, :coverage], # until [:event_time] works
+        [:event_place],
+        [:event_time],
         [:contributor_name],
         [:contributor_role],
         [:publisher_name],
@@ -59,7 +59,7 @@ describe Rockhall::PbcoreDocument do
         [:cleaning_note]
       ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"
-        @object_ds.update_indexed_attributes( {pointer=>{"0"=>test_val}} )
+        @object_ds.update_values( {pointer=>{"0"=>test_val}} )
         @object_ds.get_values(pointer).first.should == test_val
         @object_ds.get_values(pointer).length.should == 1
       end
@@ -99,7 +99,6 @@ describe Rockhall::PbcoreDocument do
 
   describe "#xml_template" do
     it "should return an empty xml document matching an exmplar" do
-
       # insert additional nodes
       @object_ds.insert_node("pbcorePublisher")
       @object_ds.insert_node("pbcoreContributor")
@@ -168,18 +167,6 @@ describe Rockhall::PbcoreDocument do
       end
     end
 
-    it "should add and remove existing nodes" do
-      pending "No existing nodes needed to add"
-      ["note"].each do |type|
-        @object_ds.find_by_terms(type.to_sym).count.should == 1
-        @object_ds.insert_node(type.to_sym)
-        @object_ds.find_by_terms(type.to_sym).count.should == 2
-        @object_ds.remove_node(type.to_sym, "1")
-        @object_ds.find_by_terms(type.to_sym).count.should == 1
-        @object_ds.remove_node(type.to_sym, "0")
-        @object_ds.find_by_terms(type.to_sym).count.should == 0
-      end
-    end
   end
 
   describe "default fields" do
