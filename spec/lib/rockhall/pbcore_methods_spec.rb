@@ -11,7 +11,7 @@ describe Rockhall::PbcoreMethods do
     end
   end
 
-  describe "#pbcoreContributor_template" do
+  describe "#contributor_template" do
     it "should insert a contributor xml template" do
       xml = '
         <pbcoreContributor>
@@ -19,12 +19,12 @@ describe Rockhall::PbcoreMethods do
           <contributorRole source="MARC relator terms"/>
         </pbcoreContributor>
       '
-      node = MethodTest.pbcoreContributor_template
+      node = MethodTest.contributor_template
       EquivalentXml.equivalent?(xml, node.to_xml, opts = { :element_order => false, :normalize_whitespace => true }).should be_true
     end
   end
 
-  describe "#pbcorePublisher_template" do
+  describe "#publisher_template" do
     it "should insert a publisher xml template" do
       xml = '
         <pbcorePublisher>
@@ -32,7 +32,7 @@ describe Rockhall::PbcoreMethods do
           <publisherRole source="PBCore publisherRole"/>
         </pbcorePublisher>
       '
-      node = MethodTest.pbcorePublisher_template
+      node = MethodTest.publisher_template
       EquivalentXml.equivalent?(xml, node.to_xml, opts = { :element_order => false, :normalize_whitespace => true }).should be_true
     end
   end

@@ -58,18 +58,18 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 
     # Contributor names and roles
     t.pbcoreContributor(:namespace_prefix=>nil) {
-      t.contributor(:namespace_prefix=>nil)
+      t.contributor_name(:path=>"contributor", :namespace_prefix=>nil)
       t.contributorRole(:namespace_prefix=>nil, :attributes=>{ :source=>"MARC relator terms" })
     }
-    t.contributor_name(:ref=>[:pbcoreContributor, :contributor])
+    t.contributor(:ref=>[:pbcoreContributor, :contributor_name])
     t.contributor_role(:ref=>[:pbcoreContributor, :contributorRole])
 
     # Publisher names and roles
     t.pbcorePublisher(:namespace_prefix=>nil) {
-      t.publisher(:namespace_prefix=>nil)
+      t.publisher_name(:path=>"publisher", :namespace_prefix=>nil)
       t.publisherRole(:namespace_prefix=>nil, :attributes=>{ :source=>"PBcore publisherRole" })
     }
-    t.publisher_name(:ref=>[:pbcorePublisher, :publisher])
+    t.publisher(:ref=>[:pbcorePublisher, :publisher_name])
     t.publisher_role(:ref=>[:pbcorePublisher, :publisherRole])
 
     t.note(:path=>"pbcoreAnnotation", :namespace_prefix=>nil, :atttributes=>{ :annotationType=>"Notes" })

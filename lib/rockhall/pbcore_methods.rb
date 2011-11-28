@@ -5,7 +5,7 @@ module Rockhall::PbcoreMethods
 
   module ClassMethods
 
-    def pbcorePublisher_template(opts={})
+    def publisher_template(opts={})
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.pbcorePublisher {
           xml.publisher
@@ -15,7 +15,7 @@ module Rockhall::PbcoreMethods
       return builder.doc.root
     end
 
-    def pbcoreContributor_template(opts={})
+    def contributor_template(opts={})
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.pbcoreContributor {
           xml.contributor
