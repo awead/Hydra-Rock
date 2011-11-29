@@ -3,7 +3,6 @@ Feature:
   As a public user
   I need to view the content of a video
 
-  @wip
   Scenario: search for a video (DAM-83)
     Given I am on the home page
     And I fill in "q" with "rockhall:fixture_pbcore_document1"
@@ -11,7 +10,6 @@ Feature:
     Then I should see a link to "the show document page for rockhall:fixture_pbcore_document1"
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
 
-  @wip
   Scenario: search for a video barcode (DAM-83)
     Given I am on the home page
     And I fill in "q" with "39156042551098"
@@ -25,17 +23,15 @@ Feature:
     Then I should see "Video"
     And I should see "Title"
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
-    And I should see "Alt. Title"
+    And I should see "Alternative Title"
     And I should see "[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99."
     And I should see "Series"
     And I should see "Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999."
-    And I should see "Language"
-    And I should see "English"
     And I should see "Summary"
     And I should see "(1 of 3) Uncut performances and award presentations from the 1999 ceremony."
-    And I should see "Event Location"
+    And I should see "Event Place"
     And I should see "New York, NY"
-    And I should see "Event Date"
+    And I should see "Event Time"
     And I should see "1999-03-15"
     And I should see "Note"
     And I should see "http://rockhall.com/inductees/ceremonies/1999/"

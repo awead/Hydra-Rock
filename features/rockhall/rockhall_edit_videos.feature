@@ -3,13 +3,11 @@ Feature:
   As a library staff user
   I need to edit the metadata of a video
 
-  @wip
-  Scenario: edit video object (DAM-83)
+  Scenario: edit video object (DAM-131)
     Given I am logged in as "archivist1@example.com"
     And I am on the edit document page for rockhall:fixture_pbcore_document1
     And I should see "Content"
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
-    And I should see "English"
     And I should see "(1 of 3) Uncut performances and award presentations from the 1999 ceremony."
     And I should see "New York, NY"
     And I should see "1999-03-15"

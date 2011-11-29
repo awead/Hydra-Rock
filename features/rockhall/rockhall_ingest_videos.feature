@@ -13,8 +13,7 @@ Narrative:
     Given I am on the show document page for rockhall:fixture_pbcore_document3
     Then I should see "You do not have sufficient access privileges to read this document, which has been marked private."
 
-  @wip
-  Scenario: Members of the archivist group have edit rights
+  Scenario: Members of the archivist group have edit rights (DAM-131)
     Given I am logged in as "archivist1@example.com"
     And I am on the show document page for rockhall:fixture_pbcore_document3
     Then I should see "Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2."
@@ -22,7 +21,6 @@ Narrative:
     And I should see "Betacam"
     And I should see "NTSC"
     And I should see "Rock and Roll Hall of Fame and Museum, 2809 Woodland Ave., Cleveland, OH, 44115 216-515-1956 library@rockhall.org"
-    And I should see "Copies from original can be made upon request. Speak to an archivist for fees and specifications."
 
   Scenario: View all the fields of the original preservation video file
     Given I am logged in as "archivist1@example.com"
