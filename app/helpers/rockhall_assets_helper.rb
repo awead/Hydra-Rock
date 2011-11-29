@@ -218,13 +218,13 @@ module RockhallAssetsHelper
 
 
   def contributor_link(counter)
-    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor_role=>counter}])
+    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role])
     return link_to(role.to_s, Relators.marc[role.to_s]).html_safe
   end
 
 
   def publisher_link(counter)
-    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher_role=>counter}])
+    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role])
     return link_to(role.to_s, Relators.pbcore[role.to_s]).html_safe
   end
 
