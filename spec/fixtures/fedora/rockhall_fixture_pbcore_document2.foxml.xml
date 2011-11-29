@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE=""/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-11-29T18:35:35.821Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-11-29T18:38:02.433Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-11-29T20:39:34.103Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-11-29T18:35:35.821Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -70,12 +70,28 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-11-29T18:38:02.433Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyObject</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-29T20:39:34.070Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-29T20:39:34.103Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-11-29T18:35:35.821Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="343">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-11-29T18:35:35.821Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="362">
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:identifier>rockhall:fixture_pbcore_document2</dc:identifier>
@@ -187,9 +203,63 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.2" LABEL="" CREATED="2011-11-29T20:39:34.103Z" MIMETYPE="text/xml" SIZE="3781">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
+  <pbcoreTitle titleType="main">Pre-Ingest Video</pbcoreTitle>
+  <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage>Cleveland, OH</coverage>
+    <coverageType annotation="Event Place">Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage>2011-04-12</coverage>
+    <coverageType annotation="Event Date">Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">Video fixture object used for testing. No video files should be present.</pbcoreAnnotation>
+  <pbcoreInstantiation>
+    <instantiationDate dateType="creation date"></instantiationDate>
+    <instantiationIdentifier></instantiationIdentifier>
+    <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+2809 Woodland Ave.,
+Cleveland, OH, 44115
+216-515-1956
+library@rockhall.org</instantiationLocation>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRights></instantiationRights>
+    <instantiationLanguage>English</instantiationLanguage>
+  </pbcoreInstantiation>
+  <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">This is a sample record of a video that has not been ingested or reviewed yet.</descriptionType>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-11-29T18:35:35.942Z" MIMETYPE="text/xml" SIZE="278">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-11-29T18:35:35.942Z" MIMETYPE="text/xml" SIZE="297">
 <foxml:xmlContent>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document2">

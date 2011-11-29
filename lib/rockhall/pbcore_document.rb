@@ -86,6 +86,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
       t.instantiationStandard(:namespace_prefix=>nil)
       t.instantiationMediaType(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationMediaType" })
       t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
+      t.instantiationLanguage(:namespace_prefix=>nil)
       t.instantiationColors(:namespace_prefix=>nil)
       t.instantiationRelation(:namespace_prefix=>nil) {
         t.arc_collection(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Archival Collection" })
@@ -107,6 +108,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.standard(:proxy=>[:pbcoreInstantiation, :instantiationStandard])
     t.media_type(:proxy=>[:pbcoreInstantiation, :instantiationMediaType])
     t.generation(:proxy=>[:pbcoreInstantiation, :instantiationGenerations])
+    t.language(:proxy=>[:pbcoreInstantiation, :instantiationLanguage])
     t.colors(:proxy=>[:pbcoreInstantiation, :instantiationColors])
     t.archival_collection(:proxy=>[:pbcoreInstantiation, :instantiationRelation, :arc_collection])
     t.archival_series(:proxy=>[:pbcoreInstantiation, :instantiationRelation, :arc_series])
@@ -194,6 +196,9 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
           }
           xml.instantiationGenerations(:source=>"PBCore instantiationGenerations") {
             xml.text "Original"
+          }
+          xml.instantiationLanguage {
+            xml.text "English"
           }
           xml.instantiationColors {
             xml.text "Color"

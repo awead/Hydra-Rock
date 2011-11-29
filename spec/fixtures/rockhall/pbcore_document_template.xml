@@ -54,6 +54,7 @@ library@rockhall.org</instantiationLocation>
     <instantiationStandard>inserted</instantiationStandard>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
     <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
+    <instantiationLanguage>English</instantiationLanguage>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>

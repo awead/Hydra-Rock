@@ -49,6 +49,7 @@ describe Rockhall::PbcoreDocument do
         [:standard],
         [:media_type],
         [:generation],
+        [:language],
         [:colors],
         [:archival_collection],
         [:archival_series],
