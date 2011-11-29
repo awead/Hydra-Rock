@@ -17,24 +17,24 @@
       <%= display_field([:translation], { :multiple=>true, :size=>60 }) %>
 
       <dt>
-        <label for="summary">Description</label>
+        <label for="summary">Summary</label>
       </dt>
       <dd class="field">
-        <%= fedora_text_area(@document_fedora, "descMetadata", [:description], :multiple=>FALSE) %>
+        <%= fedora_text_area(@document_fedora, "descMetadata", [:summary], :multiple=>FALSE) %>
       </dd>
 
       <dt>
-        <label for="contents">Contents</label>
+        <label for="contents">Parts List</label>
       </dt>
       <dd class="field">
-        <%= fedora_text_area(@document_fedora, "descMetadata", [:contents], :multiple=>FALSE) %>
+        <%= fedora_text_area(@document_fedora, "descMetadata", [:parts_list], :multiple=>FALSE) %>
       </dd>
 
       <%= display_field([:subject], {:multiple=>true}) %>
       <%= display_field([:genre], {:multiple=>true}) %>
-      <%= display_field([:series], {:inline=>true}) %>
+      <%= display_field([:event_series], {:inline=>true}) %>
       <%= display_field([:event_place]) %>
-      <%= display_field([:event_time]) %>
+      <%= display_field([:event_date]) %>
 
       <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
       <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>

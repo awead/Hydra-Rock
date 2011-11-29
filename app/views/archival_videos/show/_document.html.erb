@@ -11,13 +11,13 @@
     <%= display_field([:track], {:multiple=>true}) %>
     <%= display_field([:translation], {:multiple=>true}) %>
 
-    <%= display_field([:description]) %>
-    <%= display_field([:contents]) %>
+    <%= display_field([:summary]) %>
+    <%= display_field([:parts_list]) %>
     <%= display_field([:subject], {:multiple=>true}) %>
     <%= display_field([:genre], {:multiple=>true}) %>
-    <%= display_field([:series], {:inline=>true}) %>
+    <%= display_field([:event_series], {:inline=>true}) %>
     <%= display_field([:event_place]) %>
-    <%= display_field([:event_time]) %>
+    <%= display_field([:event_date]) %>
     <%= display_field([:note], {:inline=>true}) %>
 
     <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>

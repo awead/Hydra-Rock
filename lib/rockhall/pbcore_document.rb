@@ -21,12 +21,12 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.track(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"track" })
     t.translation(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"translation" })
 
-    t.description(:path=>"descriptionType", :namespace_prefix=>nil, :attributes=>{ :descriptionTypesource=>"pbcoreDescription/descriptionType",
+    t.summary(:path=>"descriptionType", :namespace_prefix=>nil, :attributes=>{ :descriptionTypesource=>"pbcoreDescription/descriptionType",
       :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description",
       :annotation=>"main"}
     )
 
-    t.contents(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"Table of Contents",
+    t.parts_list(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"Table of Contents",
       :descriptionTypeSource=>"pbcoreDescription/descriptionType",
       :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" }
     )
@@ -39,7 +39,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.pbcoreRelation(:namespace_prefix=>nil) {
       t.pbcoreRelationIdentifier(:namespace_prefix=>nil, :attributes=>{ :annotation=>"Event Series" })
     }
-    t.series(:ref=>[:pbcoreRelation, :pbcoreRelationIdentifier])
+    t.event_series(:ref=>[:pbcoreRelation, :pbcoreRelationIdentifier])
 
     # Terms for time and place
     t.pbcore_coverage(:path=>"pbcoreCoverage", :namespace_prefix=>nil) {
@@ -54,7 +54,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
       :namespace_prefix=>nil
     )
     t.event_place(:proxy=>[:spatial, :coverage])
-    t.event_time(:proxy=>[:temporal, :coverage])
+    t.event_date(:proxy=>[:temporal, :coverage])
 
     # Contributor names and roles
     t.contributor(:path=>"pbcoreContributor", :namespace_prefix=>nil) {
@@ -242,8 +242,8 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     solr_doc.merge!(:title_display => self.find_by_terms(:main_title).text)
     solr_doc.merge!(:title_addl_display => self.find_by_terms(:alternative_title).text)
     solr_doc.merge!(:heading_display => self.find_by_terms(:main_title).text)
-    solr_doc.merge!(:summary_display => self.find_by_terms(:description).text)
-    solr_doc.merge!(:pub_date_display => self.find_by_terms(:event_time).text)
+    solr_doc.merge!(:summary_display => self.find_by_terms(:summary).text)
+    solr_doc.merge!(:pub_date_display => self.find_by_terms(:event_date).text)
     solr_doc.merge!(:publisher_display => gather_terms(self.find_by_terms(:publisher_name)))
     solr_doc.merge!(:contributors_display => gather_terms(self.find_by_terms(:contributor_name)))
     solr_doc.merge!(:subject_display => gather_terms(self.find_by_terms(:subject)))
@@ -265,13 +265,13 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     solr_doc.merge!(:genre_facet => gather_terms(self.find_by_terms(:genre)))
     solr_doc.merge!(:name_facet => gather_terms(self.find_by_terms(:contributor_name)))
     solr_doc.merge!(:topic_facet => gather_terms(self.find_by_terms(:subject)))
-    solr_doc.merge!(:series_facet => gather_terms(self.find_by_terms(:series)))
+    solr_doc.merge!(:series_facet => gather_terms(self.find_by_terms(:event_series)))
 		solr_doc.merge!(:collection_facet => self.find_by_terms(:archival_collection).first.text.strip)
 
 
 
     # Extract 4-digit year
-    date = self.find_by_terms(:event_time).first.text.strip
+    date = self.find_by_terms(:event_date).first.text.strip
     unless date.nil? or date.empty?
 		  solr_doc.merge!(:pub_date => DateTime.parse(date).strftime("%Y"))
 		end
