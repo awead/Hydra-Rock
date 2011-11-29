@@ -3,6 +3,7 @@ Feature:
   As a public user
   I need to view the content of a video
 
+  @wip
   Scenario: search for a video (DAM-83)
     Given I am on the home page
     And I fill in "q" with "rockhall:fixture_pbcore_document1"
@@ -10,6 +11,7 @@ Feature:
     Then I should see a link to "the show document page for rockhall:fixture_pbcore_document1"
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
 
+  @wip
   Scenario: search for a video barcode (DAM-83)
     Given I am on the home page
     And I fill in "q" with "39156042551098"
@@ -17,6 +19,7 @@ Feature:
     Then I should see a link to "the show document page for rockhall:fixture_pbcore_document1"
     And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
 
+  @wip
   Scenario: Viewable metadata (DAM-83)
     Given I am on the show document page for rockhall:fixture_pbcore_document1
     Then I should see "Video"
@@ -79,6 +82,7 @@ Feature:
     And I should see "original"
     And I should see "h264"
 
+  @wip
   Scenario: Videos not ingested yet (DAM-83)
     Given I am on the show document page for rockhall:fixture_pbcore_document2
     Then I should see "Content" within ".section-title"

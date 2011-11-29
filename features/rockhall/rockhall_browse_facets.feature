@@ -3,6 +3,7 @@ Feature:
   As a public user
   I need to browse different facets
 
+  @wip
   Scenario: Facets available from pbcore fixture document1 (DAM-83)
     Given I am on the home page
     Then I should see "Springsteen, Bruce"

@@ -13,6 +13,7 @@ Narrative:
     Given I am on the show document page for rockhall:fixture_pbcore_document3
     Then I should see "You do not have sufficient access privileges to read this document, which has been marked private."
 
+  @wip
   Scenario: Members of the archivist group have edit rights
     Given I am logged in as "archivist1@example.com"
     And I am on the show document page for rockhall:fixture_pbcore_document3

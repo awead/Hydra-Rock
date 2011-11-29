@@ -3,6 +3,7 @@ Feature:
   As a library staff user
   I need to edit the metadata of a video
 
+  @wip
   Scenario: edit video object (DAM-83)
     Given I am logged in as "archivist1@example.com"
     And I am on the edit document page for rockhall:fixture_pbcore_document1
