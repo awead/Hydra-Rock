@@ -30,6 +30,14 @@
     <contributor/>
     <contributorRole source="MARC relator terms"/>
   </pbcoreContributor>
+    <pbcoreContributor>
+    <contributor/>
+    <contributorRole source="MARC relator terms"/>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher/>
+    <publisherRole source="PBCore publisherRole"/>
+  </pbcorePublisher>
   <pbcorePublisher>
     <publisher/>
     <publisherRole source="PBCore publisherRole"/>

@@ -22,16 +22,16 @@ describe ArchivalVideo do
 
     describe "#insert_node" do
       it "should insert a new node into the existing xml" do
-        node, index = @video.insert_node("pbcoreContributor")
+        node, index = @video.insert_node("contributor")
         index.should == 0
       end
     end
 
     describe "#remove_node" do
       it "should remove a node from the existing xml" do
-        node, index = @video.insert_node("pbcoreContributor")
+        node, index = @video.insert_node("contributor")
         index.should == 0
-        @video.remove_node("pbcoreContributor","0")
+        @video.remove_node("contributor","0")
       end
     end
 

@@ -57,20 +57,20 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.event_time(:proxy=>[:temporal, :coverage])
 
     # Contributor names and roles
-    t.pbcoreContributor(:namespace_prefix=>nil) {
-      t.contributor_name(:path=>"contributor", :namespace_prefix=>nil)
-      t.contributorRole(:namespace_prefix=>nil, :attributes=>{ :source=>"MARC relator terms" })
+    t.contributor(:path=>"pbcoreContributor", :namespace_prefix=>nil) {
+      t.name_(:path=>"contributor", :namespace_prefix=>nil)
+      t.role_(:path=>"contributorRole", :namespace_prefix=>nil, :attributes=>{ :source=>"MARC relator terms" })
     }
-    t.contributor(:ref=>[:pbcoreContributor, :contributor_name])
-    t.contributor_role(:ref=>[:pbcoreContributor, :contributorRole])
+    t.contributor_name(:proxy=>[:contributor, :name])
+    t.contributor_role(:proxy=>[:contributor, :role])
 
     # Publisher names and roles
-    t.pbcorePublisher(:namespace_prefix=>nil) {
-      t.publisher_name(:path=>"publisher", :namespace_prefix=>nil)
-      t.publisherRole(:namespace_prefix=>nil, :attributes=>{ :source=>"PBcore publisherRole" })
+    t.publisher(:path=>"pbcorePublisher", :namespace_prefix=>nil) {
+      t.name_(:path=>"publisher", :namespace_prefix=>nil)
+      t.role_(:path=>"publisherRole", :namespace_prefix=>nil, :attributes=>{ :source=>"PBcore publisherRole" })
     }
-    t.publisher(:ref=>[:pbcorePublisher, :publisher_name])
-    t.publisher_role(:ref=>[:pbcorePublisher, :publisherRole])
+    t.publisher_name(:proxy=>[:publisher, :name])
+    t.publisher_role(:proxy=>[:publisher, :role])
 
     t.note(:path=>"pbcoreAnnotation", :namespace_prefix=>nil, :atttributes=>{ :annotationType=>"Notes" })
 

@@ -37,9 +37,9 @@ describe Rockhall::PbcoreDocument do
         [:series],
         [:event_place],
         [:event_time],
-        [:contributor],
+        [:contributor_name],
         [:contributor_role],
-        [:publisher],
+        [:publisher_name],
         [:publisher_role],
         [:note],
         [:creation_date],
@@ -69,9 +69,9 @@ describe Rockhall::PbcoreDocument do
       @object_ds.insert_node("publisher")
       @object_ds.insert_node("contributor")
       [
-        [:publisher],
+        [:publisher_name],
         [:publisher_role],
-        [:contributor],
+        [:contributor_name],
         [:contributor_role]
       ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"
@@ -84,13 +84,13 @@ describe Rockhall::PbcoreDocument do
     it "should differentiate between multiple added nodes" do
       @object_ds.insert_node(:contributor)
       @object_ds.insert_node(:contributor)
-      @object_ds.update_indexed_attributes( {[:contributor] => { 0 => "first contributor" }} )
-      @object_ds.update_indexed_attributes( {[:contributor] => { 1 => "second contributor" }} )
+      @object_ds.update_indexed_attributes( {[:contributor_name] => { 0 => "first contributor" }} )
+      @object_ds.update_indexed_attributes( {[:contributor_name] => { 1 => "second contributor" }} )
       @object_ds.update_indexed_attributes( {[:contributor_role] => { 0 => "first contributor role" }} )
       @object_ds.update_indexed_attributes( {[:contributor_role] => { 1 => "second contributor role" }} )
       @object_ds.get_values(:contributor).length.should == 2
-      @object_ds.get_values(:contributor)[0].should == "first contributor"
-      @object_ds.get_values(:contributor)[1].should == "second contributor"
+      @object_ds.get_values(:contributor_name)[0].should == "first contributor"
+      @object_ds.get_values(:contributor_name)[1].should == "second contributor"
       @object_ds.get_values(:contributor_role)[0].should == "first contributor role"
       @object_ds.get_values(:contributor_role)[1].should == "second contributor role"
     end
@@ -100,6 +100,8 @@ describe Rockhall::PbcoreDocument do
   describe "#xml_template" do
     it "should return an empty xml document matching an exmplar" do
       # insert additional nodes
+      @object_ds.insert_node("publisher")
+      @object_ds.insert_node("contributor")
       @object_ds.insert_node("publisher")
       @object_ds.insert_node("contributor")
 
