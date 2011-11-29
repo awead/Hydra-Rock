@@ -136,7 +136,7 @@ module RockhallAssetsHelper
   def delete_field_button
     results = String.new
     results << "<ul>"
-    ["contributor","publisher","genre","topic","series"].each do |type|
+    ["contributor","publisher"].each do |type|
       # Note: we have to call the datastream method directly otherwise the helper method returns 1
       types = @document_fedora.get_values_from_datastream('descMetadata', [type.to_sym]).length
       if types > 0
@@ -218,16 +218,14 @@ module RockhallAssetsHelper
 
 
   def contributor_link(counter)
-    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role])
-    ref  = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role, :ref])
-    return link_to(role.to_s, ref.to_s).html_safe
+    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor_role=>counter}])
+    return link_to(role.to_s, Relators.marc[role.to_s]).html_safe
   end
 
 
   def publisher_link(counter)
-    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role])
-    ref  = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role, :ref])
-    return link_to(role.to_s, ref.to_s).html_safe
+    role = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher_role=>counter}])
+    return link_to(role.to_s, Relators.pbcore[role.to_s]).html_safe
   end
 
 

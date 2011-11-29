@@ -50,7 +50,7 @@
       <h3 class="twiddle">Add Fields</h3>
       <ul>
         <!-- Buttons for inserting and deleting field sets -->
-        <% ["contributor","publisher","genre","topic","series"].each do |type| %>
+        <% ["contributor","publisher"].each do |type| %>
           <li>
           <%= form_tag url_for(:action=>"create", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type) do %>
             <%= submit_tag "Add #{type}", {:id => "add#{type.capitalize}"} %>

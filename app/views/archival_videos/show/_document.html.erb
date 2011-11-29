@@ -1,25 +1,29 @@
 <fieldset id="document_fields">
 
   <dl>
-    <%= display_field([:full_title], { :name=>"Title" }) %>
-    <%= display_field([:sub_title],  { :name=>"Subtitle", :inline=>true}) %>
-    <%= display_field([:alt_title],  { :name=>"Alt. Title", :multiple=>true}) %>
-    <%= display_field([:episode],    { :inline=>true}) %>
-    <%= display_field([:series],     { :inline=>true}) %>
+    <%= display_field([:main_title]) %>
+    <%= display_field([:alternative_title], {:multiple=>true}) %>
+    <%= display_field([:chapter], {:multiple=>true}) %>
+    <%= display_field([:episode], {:multiple=>true}) %>
+    <%= display_field([:label], {:multiple=>true}) %>
+    <%= display_field([:segment], {:multiple=>true}) %>
+    <%= display_field([:subtitle], {:multiple=>true}) %>
+    <%= display_field([:track], {:multiple=>true}) %>
+    <%= display_field([:translation], {:multiple=>true}) %>
 
-    <%= display_field([:language]) %>
-    <%= display_field([:summary]) %>
-    <%= display_field([:contents],          { :name=>"Table of Contents" }) %>
-    <%= display_field([:coverage, :event],  { :name => "Event Location" }) %>
-    <%= display_field([:coverage, :date],   { :name => "Event Date" }) %>
-    <%= display_field([:note],              { :inline=>true }) %>
-    <%= display_field([:caption]) %>
+    <%= display_field([:description]) %>
+    <%= display_field([:contents]) %>
+    <%= display_field([:subject], {:multiple=>true}) %>
+    <%= display_field([:genre], {:multiple=>true}) %>
+    <%= display_field([:series], {:inline=>true}) %>
+    <%= display_field([:event_place]) %>
+    <%= display_field([:event_time]) %>
+    <%= display_field([:note], {:inline=>true}) %>
 
     <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
     <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
-    <%= render :partial=>"pbcore/header", :locals => {:node=>"series"} %>
 
-    <%= render :partial=>"archival_videos/show/subjects" %>
+
 
   </dl>
 </fieldset>
