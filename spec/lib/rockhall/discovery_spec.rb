@@ -27,7 +27,7 @@ describe Rockhall::Discovery do
 
     it "should return a list of current documents" do
       docs = Rockhall::Discovery.get_objects
-      docs.count.should == 2
+      docs.count.should == 1
     end
 
     it "should return an updated list of new videos" do
@@ -35,13 +35,13 @@ describe Rockhall::Discovery do
       av.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
       av.save
       docs = Rockhall::Discovery.get_objects
-      docs.count.should == 3
+      docs.count.should == 2
     end
 
     it "should update the Blacklight index with new videos" do
       Rockhall::Discovery.update
       docs = Rockhall::Discovery.get_objects({:remote=>TRUE})
-      docs.count.should == 3
+      docs.count.should == 2
     end
 
   end
