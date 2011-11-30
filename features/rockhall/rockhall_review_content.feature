@@ -13,17 +13,17 @@ Description:
   Scenario: Reviewer logs in and checks the status of an item (DAM-123)
     Given I am logged in as "archivist1@example.com"
     And I am on the show document page for rockhall:fixture_pbcore_document3
-    Then I should see "Review Information"
-    And I should see "Reviewer"
-    And I should see "reviewer1@example.com"
-    And I should see "Date Completed"
-    And I should see "2011-11-29"
-    And I should see "Date Updated"
-    And I should see "2011-11-29"
-    And I should see "License"
-    And I should see "Rockhall"
-    And I should see "Notes"
-    And I should see "We don't have permission to show this to the public"
+    Then I should see the heading "Review Information"
+    And I should see the field title "reviewer" contain "Reviewer"
+    And I should see the field content "reviewer" contain "reviewer1@example.com"
+    And I should see the field title "date_completed" contain "Date Completed"
+    And I should see the field content "date_completed" contain "2011-11-29"
+    And I should see the field title "date_updated" contain "Date Updated"
+    And I should see the field content "date_updated" contain "2011-11-29"
+    And I should see the field title "license" contain "License"
+    And I should see the field content "license" contain "Rockhall"
+    And I should see the field title "abstract" contain "Abstract"
+    And I should see the field content "abstract" contain "We don't have permission to show this to the public"
 
   Scenario: Reviewer edits the status of an item (DAM-123)
     Given I am logged in as "reviewer1@example.com"

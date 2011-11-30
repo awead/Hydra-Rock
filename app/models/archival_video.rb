@@ -27,7 +27,7 @@ class ArchivalVideo < ActiveFedora::Base
     m.field 'date_completed', :string
     m.field 'date_updated', :string
     m.field 'license', :string
-    m.field 'notes', :text
+    m.field 'abstract', :text
   end
 
   def initialize( attrs={} )
@@ -78,8 +78,8 @@ class ArchivalVideo < ActiveFedora::Base
     if self.datastreams_in_memory["assetReview"].get_values(:date_completed).first.nil?
       self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:date_completed] => { 0 => date.strftime("%Y-%m-%d")}})
     end
-    unless opts[:notes].nil?
-      self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:notes] => { 0 => opts[:notes]}})
+    unless opts[:abstract].nil?
+      self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:abstract] => { 0 => opts[:abstract]}})
     end
     self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:date_updated] => { 0 => date.strftime("%Y-%m-%d")}})
     self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:reviewer] => { 0 => reviewer}})

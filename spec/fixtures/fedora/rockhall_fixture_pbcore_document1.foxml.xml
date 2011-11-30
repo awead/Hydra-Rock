@@ -2265,9 +2265,13 @@ library@rockhall.org</instantiationLocation>
     <instantiationDate dateType="creation date">1999-03-15</instantiationDate>
     <instantiationIdentifier>39156042551098</instantiationIdentifier>
     <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+
 2809 Woodland Ave.,
+
 Cleveland, OH, 44115
+
 216-515-1956
+
 library@rockhall.org</instantiationLocation>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
     <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
@@ -2414,7 +2418,7 @@ library@rockhall.org</instantiationLocation>
 <foxml:xmlContent>
 <fields>
   <date_updated>2011-11-29</date_updated>
-  <notes>We have permission to show this video to the public.</notes>
+  <abstract>We have permission to show this video to the public.</abstract>
   <reviewer>reviewer1@example.com</reviewer>
   <license>Public</license>
   <date_completed>2011-11-29</date_completed>

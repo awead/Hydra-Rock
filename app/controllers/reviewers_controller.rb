@@ -34,9 +34,8 @@ class ReviewersController < ApplicationController
     af_model = retrieve_af_model(params[:content_type], :default=>ArchivalVideo)
     @document_fedora = af_model.find(params[:id])
     logger.info "Applying licence #{params[:license]}"
-    logger.info "Note should be: #{params[:asset][:assetReview][:notes][0]}"
     user = current_user.login
-    @document_fedora.apply_reviewer_metadata(user,params[:license],{:notes=>params["asset"]["assetReview"]["notes"]["0"]})
+    @document_fedora.apply_reviewer_metadata(user,params[:license],{:abstract=>params["asset"]["assetReview"]["abstract"]["0"]})
     @document_fedora.save
     flash[:notice] = "Review changes saved."
     redirect_to url_for(:controller => "reviewers", :action => "edit")

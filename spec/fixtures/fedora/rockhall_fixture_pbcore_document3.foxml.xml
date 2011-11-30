@@ -312,9 +312,13 @@ library@rockhall.org</instantiationLocation>
     <instantiationDate dateType="creation date">2007-07-09</instantiationDate>
     <instantiationIdentifier>[removed for testing]</instantiationIdentifier>
     <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+
 2809 Woodland Ave.,
+
 Cleveland, OH, 44115
+
 216-515-1956
+
 library@rockhall.org</instantiationLocation>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
     <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
@@ -406,7 +410,7 @@ library@rockhall.org</instantiationLocation>
 <foxml:datastreamVersion ID="assetReview.1" LABEL="" CREATED="2011-11-29T17:47:35.146Z" MIMETYPE="text/xml" SIZE="258">
 <foxml:xmlContent>
 <fields>
-  <notes>We don&apos;t have permission to show this to the public.</notes>
+  <abstract>We don&apos;t have permission to show this to the public.</abstract>
   <date_completed>2011-11-29</date_completed>
   <license>Rockhall</license>
   <reviewer>reviewer1@example.com</reviewer>
@@ -417,7 +421,7 @@ library@rockhall.org</instantiationLocation>
 <foxml:datastreamVersion ID="assetReview.2" LABEL="" CREATED="2011-11-29T20:27:47.437Z" MIMETYPE="text/xml" SIZE="256">
 <foxml:xmlContent>
 <fields>
-  <notes>We don&apos;t have permission to show this to the public.</notes>
+  <abstract>We don&apos;t have permission to show this to the public.</abstract>
   <date_completed>2011-11-29</date_completed>
   <date_updated>2011-11-29</date_updated>
   <license>Public</license>
@@ -428,7 +432,7 @@ library@rockhall.org</instantiationLocation>
 <foxml:datastreamVersion ID="assetReview.3" LABEL="" CREATED="2011-11-29T20:27:49.830Z" MIMETYPE="text/xml" SIZE="258">
 <foxml:xmlContent>
 <fields>
-  <notes>We don&apos;t have permission to show this to the public.</notes>
+  <abstract>We don&apos;t have permission to show this to the public.</abstract>
   <date_completed>2011-11-29</date_completed>
   <date_updated>2011-11-29</date_updated>
   <license>Rockhall</license>
@@ -439,7 +443,7 @@ library@rockhall.org</instantiationLocation>
 <foxml:datastreamVersion ID="assetReview.4" LABEL="" CREATED="2011-11-29T20:29:42.253Z" MIMETYPE="text/xml" SIZE="256">
 <foxml:xmlContent>
 <fields>
-  <notes>We don&apos;t have permission to show this to the public.</notes>
+  <abstract>We don&apos;t have permission to show this to the public.</abstract>
   <date_completed>2011-11-29</date_completed>
   <date_updated>2011-11-29</date_updated>
   <license>Public</license>
@@ -450,7 +454,7 @@ library@rockhall.org</instantiationLocation>
 <foxml:datastreamVersion ID="assetReview.5" LABEL="" CREATED="2011-11-29T20:29:44.366Z" MIMETYPE="text/xml" SIZE="258">
 <foxml:xmlContent>
 <fields>
-  <notes>We don&apos;t have permission to show this to the public.</notes>
+  <abstract>We don&apos;t have permission to show this to the public.</abstract>
   <date_completed>2011-11-29</date_completed>
   <date_updated>2011-11-29</date_updated>
   <license>Rockhall</license>

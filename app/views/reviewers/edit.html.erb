@@ -20,7 +20,7 @@
 
     <h3>Choose license type</h3>
     <%= select_tag "license", options_for_license %>
-    <%= display_field([:notes], { :datastream => "assetReview" }) %>
+    <%= display_field([:abstract], { :datastream => "assetReview" }) %>
 
     <%= submit_tag 'Submit Review', {:id => "submitReview"} %>
     <span class="back_to_cat"><%= link_back_to_catalog :label=>"Cancel and return to search results" %></span>
