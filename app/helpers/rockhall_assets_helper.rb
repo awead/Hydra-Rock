@@ -29,14 +29,6 @@ module RockhallAssetsHelper
       return nil
     end
 
-    # Determine field label
-    if opts[:name].nil?
-      formatted_name = path.first.to_s.split(/_/).each{|word| word.capitalize!}.join(" ")
-      field = fedora_field_label(datastream, path, formatted_name)
-    else
-      field = fedora_field_label(datastream, path, opts[:name])
-    end
-
     # Determine id
     if opts[:id]
       id = opts[:id]
@@ -55,27 +47,45 @@ module RockhallAssetsHelper
       values = get_values_from_datastream(@document_fedora, datastream, path)
     end
 
-    # Put it all together
-    result = String.new
-    if opts[:inline]
-      result << "<dt id=\"#{id}\">#{field}</dt>"
-      result << "<dd id=\"#{id}\" class=\"field\">"
-      result << "<ul>"
-    end
-    values.each do |value|
-      if opts[:inline]
-        result << "<li class=\"field\">" + value + "</li>"
-      elsif opts[:area]
-        result << value
+    # Determine field label
+    if opts[:name].nil?
+      cap_name = path.first.to_s.split(/_/).each{|word| word.capitalize!}.join(" ")
+      if params[:action] == "edit"
+        formatted_name = cap_name
       else
-        result << "<dt id=\"#{id}\">#{field}</dt>" unless opts[:hidden]
-        result << "<dd id=\"#{id}\" class=\"field\">#{value}</dd>"
+        values.count > 1 ? formatted_name = cap_name.pluralize : formatted_name = cap_name
+      end
+    else
+      if params[:action] == "edit"
+        formatted_name = opts[:name]
+      else
+        values.count > 1 ? formatted_name = opts[:name].pluralize : formatted_name = opts[:name]
       end
     end
-    if opts[:inline]
-      result << "</dd>"
+    field = fedora_field_label(datastream, path, formatted_name)
+
+    # Put it all together
+    result = String.new
+    if params[:action] == "edit"
+      values.each do |value|
+        result << "<dt id=\"#{id}\">#{field}</dt>" unless opts[:hidden]
+        result << "<dd id=\"#{id}\" class=\"field\">"+ value + "</dd>"
+      end
+    else
+      result << "<dt id=\"#{id}\">#{field}</dt>" unless opts[:hidden]
+      result << "<dd id=\"#{id}\" class=\"field\">"
+      result << "<ul>"
+      values.each do |value|
+        if opts[:area]
+          result << value
+        else
+          result << "<li class=\"field\">" + value + "</li>"
+        end
+      end
       result << "</ul>"
+      result << "</dd>"
     end
+
 
     if opts[:area]
       return field.html_safe + result.html_safe
