@@ -66,13 +66,12 @@ module RockhallAssetsHelper
 
     # Put it all together
     result = String.new
+    result << "<dt><label for=\"#{id}\">#{field}</label></dt>" unless opts[:hidden]
     if params[:action] == "edit"
       values.each do |value|
-        result << "<dt id=\"#{id}\">#{field}</dt>" unless opts[:hidden]
         result << "<dd id=\"#{id}\" class=\"field\">"+ value + "</dd>"
       end
     else
-      result << "<dt id=\"#{id}\">#{field}</dt>" unless opts[:hidden]
       result << "<dd id=\"#{id}\" class=\"field\">"
       result << "<ul>"
       values.each do |value|
