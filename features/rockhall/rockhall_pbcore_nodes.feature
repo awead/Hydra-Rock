@@ -3,8 +3,7 @@ Feature:
   As a library staff user
   I need add and remove different pbcore nodes from documents
 
-  @wip
-  Scenario: Add a new nodes enter information (DAM-88,91)
+  Scenario: Add a new nodes enter information (DAM-131)
     Given I am logged in as "archivist1@example.com"
     And I create a new archival_video
     And I press "Add contributor"
@@ -25,53 +24,23 @@ Feature:
     Then I should see "Jane Doe"
     And I press "Delete Jane Doe"
     Then I should not see "Publisher"
-    And I press "Add genre"
-    Then I should see "Genre"
-    And I fill in "asset[descMetadata][genre_0][0]" with "Test Genre"
-    And I select "concept" from "asset[descMetadata][genre_0_ref][0]"
-    And I press "Save Document"
-    Then I should see "Test Genre"
-    And I press "Delete Test Genre"
-    Then I should not see "Genre:"
-    And I press "Add topic"
-    Then I should see "Topic"
-    And I fill in "asset[descMetadata][topic_0][0]" with "Test Topic"
-    And I select "concept" from "asset[descMetadata][topic_0_ref][0]"
-    And I press "Save Document"
-    Then I should see "Test Topic"
-    And I press "Delete Test Topic"
-    Then I should not see "Topic"
-    And I press "Add series"
-    Then I should see "Series"
-    And I fill in "asset[descMetadata][series_0_name][0]" with "Test series"
-    And I press "Save Document"
-    Then I should see "Test series"
-    And I press "Delete Test series"
-    Then I should not see "Series"
     And I press "Add contributor"
     Then I should see "Contributor"
     And I press "Delete #1"
     Then I should not see "Contributor"
 
   @javascript
-  @wip
   Scenario: Use pull-down menu to update contributor role (DAM-89,90,91)
     Given I am logged in as "archivist1@example.com"
     And I create a new archival_video
     And I press "Add contributor"
-    When I select "performer" from "contributor_select_0"
+    When I select "performer" from "contributor_0_role"
     And I press "Save Document"
     Then I should see "performer"
     And I press "Add publisher"
-    When I select "presenter" from "publisher_select_0"
+    When I select "presenter" from "publisher_0_role"
     And I press "Save Document"
     Then I should see "presenter"
-    And I follow "Browse"
-    Then I should not see "http://id.loc.gov/vocabulary/relators/prf"
-    And I should not see "Contributor Role:"
-    And I should not see "Contributor Ref:"
+    And I follow "Switch to browse view"
     And I should see "performer"
-    And I should not see "http://pbcore.org/vocabularies/publisherRole#presenter"
-    And I should not see "Publisher Role:"
-    And I should not see "Publisher Ref:"
     And I should see "presenter"

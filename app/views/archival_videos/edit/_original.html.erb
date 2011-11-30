@@ -32,5 +32,7 @@
 
     </dl>
   </fieldset>
+  <% # This is a hack that makes Hydra redirect to the edit page after a save %>
+  <%= hidden_field_tag(:wf_step, "foo") %>
   <%= submit_tag 'Save Original', {:id => "submitOriginal"} %>
 <% end %>

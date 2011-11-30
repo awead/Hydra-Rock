@@ -52,7 +52,6 @@ Description:
     And I am on the review document page for rockhall:fixture_pbcore_document3
     Then I should see "You are not allowed to review this document"
 
-  @test-out
   Scenario: Reviewers should be redirected to the edit reivew page (DAM-123)
     Given I am logged in as "reviewer1@example.com"
     And I am on the edit document page for rockhall:fixture_pbcore_document3
