@@ -37,6 +37,13 @@ module RockhallAssetsHelper
       field = fedora_field_label(datastream, path, opts[:name])
     end
 
+    # Determine id
+    if opts[:id]
+      id = opts[:id]
+    else
+      id = path.flatten.to_s
+    end
+
     # Show or edit
     if params[:action] == "edit"
       if opts[:area]
@@ -51,8 +58,8 @@ module RockhallAssetsHelper
     # Put it all together
     result = String.new
     if opts[:inline]
-      result << "<dt>#{field}</dt>"
-      result << "<dd class=\"field\">"
+      result << "<dt id=\"#{id}\">#{field}</dt>"
+      result << "<dd id=\"#{id}\" class=\"field\">"
       result << "<ul>"
     end
     values.each do |value|
@@ -61,8 +68,8 @@ module RockhallAssetsHelper
       elsif opts[:area]
         result << value
       else
-        result << "<dt>#{field}</dt>" unless opts[:hidden]
-        result << "<dd class=\"field\">#{value}</dd>"
+        result << "<dt id=\"#{id}\">#{field}</dt>" unless opts[:hidden]
+        result << "<dd id=\"#{id}\" class=\"field\">#{value}</dd>"
       end
     end
     if opts[:inline]
