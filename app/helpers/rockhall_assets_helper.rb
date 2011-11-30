@@ -169,38 +169,6 @@ module RockhallAssetsHelper
   end
 
 
-  def contributor_select(node)
-    results = String.new
-    results << "<select class=\"contributor_select\" name=\"contributor_select_#{node.to_s}\" id=\"contributor_select_#{node.to_s}\" onchange=\"updateContributor('#{node.to_s}')\">"
-    results << "<option value=\"\"></option>"
-    Relators.marc.each do |k, v|
-      if get_values_from_datastream(@document_fedora,'descMetadata', [{:contributor=>node}, :role]).first == k
-        results << "<option value=\"#{v}\" selected>#{k}</option>"
-      else
-        results << "<option value=\"#{v}\">#{k}</option>"
-      end
-    end
-    results << "</select>"
-    return results.html_safe
-  end
-
-
-  def publisher_select(node)
-    results = String.new
-    results << "<select class=\"publisher_select\" name=\"publisher_select_#{node.to_s}\" id=\"publisher_select_#{node.to_s}\" onchange=\"updatePublisher('#{node.to_s}')\">"
-    results << "<option value=\"\"></option>"
-    Relators.pbcore.each do |k, v|
-      if get_values_from_datastream(@document_fedora,'descMetadata', [{:publisher=>node}, :role]).first == k
-        results << "<option value=\"#{v}\" selected>#{k}</option>"
-      else
-        results << "<option value=\"#{v}\">#{k}</option>"
-      end
-    end
-    results << "</select>"
-    return results.html_safe
-  end
-
-
   def toc_links
     results = String.new
     results << "<ul>"
@@ -228,19 +196,6 @@ module RockhallAssetsHelper
     return role.to_s
   end
 
-
-  def get_subjects
-    results = String.new
-
-    ["entity","era","place","event"].each do |type|
-      if @document_fedora.get_values_from_datastream('descMetadata', [type.to_sym]).length > 0
-        get_values_from_datastream(@document_fedora, "descMetadata", [type.to_sym]).each do |t|
-          results << "<li>#{t}</li>"
-        end
-      end
-    end
-    return results.html_safe
-  end
 
   def options_for_license
     results = String.new
