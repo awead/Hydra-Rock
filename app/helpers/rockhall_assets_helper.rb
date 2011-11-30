@@ -215,7 +215,7 @@ module RockhallAssetsHelper
 
   def options_for_license
     results = String.new
-    licenses = ["Public", "Rockhall"]
+    licenses = ["Publically available", "Restricted to Rockhall use only", "Not available"]
     current_license = @document_fedora.get_values_from_datastream('assetReview', [:license])
 
     results << "<option></option>"
