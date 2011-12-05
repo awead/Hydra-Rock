@@ -2,7 +2,7 @@
 <config>
   <!-- For complete comments from the Solr project example solrconfig.xml:
       http://svn.apache.org/repos/asf/lucene/dev/trunk/solr/example/solr/conf/solrconfig.xml
-    See also:
+    See also:  
       http://wiki.apache.org/solr/SolrConfigXml
   -->
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
@@ -26,7 +26,7 @@
     <maxFieldLength>10000</maxFieldLength>
     <unlockOnStartup>false</unlockOnStartup>
   </mainIndex>
-
+  
   <jmx />
 
   <!-- the default high-performance update handler -->
@@ -75,59 +75,128 @@
                  etagSeed="Solr">
     </httpCaching>
   </requestDispatcher>
-
+  
   <requestHandler name="standard" class="solr.SearchHandler">
      <lst name="defaults">
        <str name="echoParams">explicit</str>
      </lst>
   </requestHandler>
 
-  <!-- For complete comments from the Solr project example solrconfig.xml:
-      http://svn.apache.org/repos/asf/lucene/dev/trunk/solr/example/solr/conf/solrconfig.xml
-    See also:
-      http://wiki.apache.org/solr/SolrConfigXml
-  -->
+  <!-- Searching ("All Fields") -->
+    <requestHandler name="search" class="solr.SearchHandler" default="true">
+      <lst name="defaults">
+        <str name="defType">dismax</str>
+        <str name="echoParams">explicit</str>      
+        <str name="q.alt">*:*</str>
+        <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+        <!-- this qf and pf are used by default, if not otherwise specified by
+             client. The default blacklight_config will use these for the
+             "keywords" search. See the author_qf/author_pf, title_qf, etc 
+             below, which the default blacklight_config will specify for
+             those searches. You may also be interested in:
+             http://wiki.apache.org/solr/LocalParams
+        -->
+        <str name="qf">
+          id
+          title_t^25000
+          text
+          active_fedora_model_s
+          object_type_facet
+        </str>
+        <str name="pf">
+          id
+          title_t^250000
+          text^10
+          active_fedora_model_s
+          object_type_facet
+        </str>
+        <str name="author_qf">
+          author_unstem_search^200
+          author_addl_unstem_search^50
+          author_t^20
+          author_addl_t
+        </str>
+        <str name="author_pf">
+          author_unstem_search^2000
+          author_addl_unstem_search^500
+          author_t^200
+          author_addl_t^10
+        </str>
+        <str name="title_qf">
+          title_unstem_search^50000
+          subtitle_unstem_search^25000
+          title_addl_unstem_search^10000
+          title_t^5000
+          subtitle_t^2500
+          title_addl_t^100
+          title_added_entry_unstem_search^50
+          title_added_entry_t^10
+          title_series_unstem_search^5
+          title_series_t
+        </str>
+        <str name="title_pf">
+          title_unstem_search^500000
+          subtitle_unstem_search^250000
+          title_addl_unstem_search^100000
+          title_t^50000
+          subtitle_t^25000
+          title_addl_t^1000
+          title_added_entry_unstem_search^500
+          title_added_entry_t^100
+          title_series_t^50
+          title_series_unstem_search^10
+        </str>
+        <str name="subject_qf">
+          subject_topic_unstem_search^200
+          subject_unstem_search^125
+          subject_topic_facet^100
+          subject_t^50
+          subject_addl_unstem_search^10
+          subject_addl_t
+        </str>
+        <str name="subject_pf">
+          subject_topic_unstem_search^2000
+          subject_unstem_search^1250
+          subject_t^1000
+          subject_topic_facet^500
+          subject_addl_unstem_search^100
+          subject_addl_t^10
+        </str>
 
-  <requestHandler name="search" class="solr.SearchHandler" default="true">
-    <lst name="defaults">
-      <!-- Making defType lucene to exclude file assets -->
-      <str name="defType">lucene</str>
-      <!-- lucene params -->
-      <str name="df">has_model_s</str>
-      <str name="q.op">AND</str>
-      <!-- dismax params -->
-      <str name="mm"> 2&lt;-1 5&lt;-2 6&lt;90% </str>
-      <str name="q.alt">*:*</str>
-      <str name="qf_dismax">id^0.8 id_t^0.8 title_t^0.3 mods_t^0.2</str>
-      <str name="pf_dismax">id^0.9  id_t^0.9 title_t^0.5 mods_t^0.2</str>
-      <int name="ps">100</int>
-      <float name="tie">0.01</float>
-      <!-- general -->
-      <str name="facet">on</str>
-      <str name="facet.mincount">1</str>
-	    <str name="echoParams">explicit</str>
-      <str name="fl">
-        id,title_t,date_t,year_facet,month_facet,has_model_s,has_collection_member_s,is_part_of_s,system_create_dt,
-        person_0_role_t,person_1_role_t,person_2_role_t,person_3_role_t,person_4_role_t,person_5_role_t,person_6_role_t,
-        person_7_role_t,person_8_role_t,person_9_role_t,
-        person_0_first_name_t,person_1_first_name_t,person_2_first_name_t,person_3_first_name_t,person_4_first_name_t,
-        person_5_first_name_t,person_6_first_name_t,person_7_first_name_t,person_8_first_name_t,person_9_first_name_t,
-        person_0_last_name_t,person_1_last_name_t,person_2_last_name_t,person_3_last_name_t,person_4_last_name_t,
-        person_5_last_name_t,person_6_last_name_t,person_7_last_name_t,person_8_last_name_t,person_9_last_name_t,
-        status_t,subject_t,depositor_t,
-				journal_title_info_t,journal_issue_publication_date_t,
-				journal_issue_pages_end_t,journal_issue_volume_t,journal_title_info_main_title_t,journal_issue_pages_start_t,
-				journal_issue_start_page_t, journal_issue_end_page_t, abstract_t,
-        person_0_institution_t,person_1_institution_t,person_2_institution_t,person_3_institution_t,person_4_institution_t,person_5_institution_t,person_institution_role_t,
-        person_7_institution_t,person_8_institution_t,person_9_institution_t,
-        mods_gps_t, mods_region_t, mods_site_t, mods_ecosystem_t,
-        mods_timespan_start_t, mods_timespan_end_t, description_t, mods_title_info_main_title_t, mods_0_title_info_0_main_title_t, embargo_release_date_dt, note_t,
-        object_type_facet, department_facet, peer_reviewed_facet,
-        format
-      </str>
-    </lst>
-  </requestHandler>
 
+        <int name="ps">3</int>
+        <float name="tie">0.01</float>
+
+        <!-- NOT using marc_display because it is large and will slow things down for search results -->
+        <str name="fl">
+          *,score
+        </str>
+
+        <str name="facet">true</str>
+        <str name="facet.mincount">1</str>
+        <str name="facet.limit">10</str>
+        <str name="facet.field">format</str>
+        <str name="facet.field">lc_1letter_facet</str>
+        <str name="facet.field">lc_alpha_facet</str>
+        <str name="facet.field">lc_b4cutter_facet</str>
+        <str name="facet.field">language_facet</str>
+        <str name="facet.field">pub_date</str>
+        <str name="facet.field">subject_era_facet</str>
+        <str name="facet.field">subject_geo_facet</str>
+        <str name="facet.field">subject_topic_facet</str>
+
+        <str name="spellcheck">true</str>
+        <str name="spellcheck.dictionary">default</str>
+        <str name="spellcheck.onlyMorePopular">true</str>
+        <str name="spellcheck.extendedResults">true</str>
+        <str name="spellcheck.collate">false</str>
+        <str name="spellcheck.count">5</str>
+      </lst>
+      <arr name="last-components">
+        <str>spellcheck</str>
+      </arr>
+    </requestHandler>
+    
   <requestHandler name="public_search" class="solr.SearchHandler" >
     <lst name="defaults">
       <!-- Making defType lucene to exclude file assets -->
@@ -138,6 +207,8 @@
       <!-- dismax params -->
       <str name="mm"> 2&lt;-1 5&lt;-2 6&lt;90% </str>
       <str name="q.alt">*:*</str>
+      <str name="qf">id^0.8 id_t^0.8 format text^0.3 journal_issn_t</str>
+      <str name="pf">id^0.9  id_t^0.9 text^0.5 journal_issn_t</str>
       <str name="qf_dismax">id^0.8 id_t^0.8 format text^0.3</str>
       <str name="pf_dismax">id^0.9  id_t^0.9 text^0.5</str>
       <int name="ps">100</int>
@@ -147,27 +218,16 @@
       <str name="facet.mincount">1</str>
 	    <str name="echoParams">explicit</str>
       <str name="fl">
-        id,text,title_t,date_t,year_facet,month_facet,medium_t,series_facet,box_facet,folder_facet,has_model_s,has_collection_member_s,system_create_dt,
-        person_0_role_t,person_1_role_t,person_2_role_t,person_3_role_t,person_4_role_t,person_5_role_t,person_6_role_t,person_7_role_t,person_8_role_t,person_9_role_t,
-        person_0_first_name_t,person_1_first_name_t,person_2_first_name_t,person_3_first_name_t,person_4_first_name_t,person_5_first_name_t,person_6_first_name_t,person_7_first_name_t,person_8_first_name_t,person_9_first_name_t,
-        person_0_last_name_t,person_1_last_name_t,person_2_last_name_t,person_3_last_name_t,person_4_last_name_t,person_5_last_name_t,person_6_last_name_t,person_7_last_name_t,person_8_last_name_t,person_9_last_name_t,depositor_t,
-
-        journal_title_info_t, journal_title_info_main_title_t, journal_issue_publication_date_t, journal_issue_pages_start_t, journal_issue_pages_end_t, journal_issue_volume_t, journal_issue_start_page_t, journal_issue_end_page_t, abstract_t,
-        person_0_institution_t,person_1_institution_t,person_2_institution_t,person_3_institution_t,person_4_institution_t,person_5_institution_t,person_institution_role_t,
-        person_7_institution_t,person_8_institution_t,person_9_institution_t,
-        mods_gps_t, mods_region_t, mods_site_t, mods_ecosystem_t,
-        mods_timespan_start_t, mods_timespan_end_t, description_t, mods_title_info_t,mods_0_title_info_0_main_title_t, embargo_release_date_dt, note_t,
-        object_type_facet, department_facet, peer_reviewed_facet,
-        format
+       *,score
       </str>
     </lst>
   </requestHandler>
-
+  
   <requestHandler name="fulltext" class="solr.SearchHandler" >
     <lst name="defaults">
       <str name="defType">dismax</str>
       <str name="facet">on</str>
-      <str name="facet.mincount">1</str>
+      <str name="facet.mincount">1</str> 
       <str name="echoParams">explicit</str>
       <float name="tie">0.01</float>
       <str name="qf">id^0.8 id_t^0.8 format text^0.3</str>
@@ -180,10 +240,10 @@
       <str name="q.alt">*:*</str>
     </lst>
   </requestHandler>
-
-  <!--
+  
+  <!-- 
     Hydra Permissions request Handler
-    For requests to get just the permissions related info about a document
+    For requests to get just the permissions related info about a document 
   -->
   <requestHandler name="permissions" class="solr.SearchHandler" >
     <lst name="defaults">
@@ -201,7 +261,7 @@
       </str>
     </lst>
   </requestHandler>
-
+  
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
   <requestHandler name="document" class="solr.SearchHandler" >
     <lst name="defaults">
@@ -210,7 +270,7 @@
       <str name="rows">1</str>
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
 
-      <!-- facets on for a single document response??? -->
+      <!-- facets on for a single document response??? -->      
       <str name="facet">on</str>
 	    <str name="facet.mincount">1</str>
 
@@ -231,7 +291,7 @@
 
     </lst>
   </requestHandler>
-
+  
    <!-- The spell check component can return a list of alternative spelling
   suggestions.  -->
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
@@ -276,7 +336,7 @@
       <str>spellcheck</str>
     </arr>
   </requestHandler>
-
+ 
   <!-- a search component that enables you to configure the top results for
        a given query regardless of the normal lucene scoring.-->
   <searchComponent name="elevator" class="solr.QueryElevationComponent" >
@@ -284,7 +344,7 @@
     <str name="queryFieldType">string</str>
     <str name="config-file">elevate.xml</str>
   </searchComponent>
-
+ 
   <!-- a request handler utilizing the elevator component -->
   <requestHandler name="/elevate" class="solr.SearchHandler" startup="lazy">
     <lst name="defaults">
@@ -312,8 +372,8 @@
      <str name="echoHandler">true</str>
     </lst>
   </requestHandler>
-
-  <!--
+  
+  <!-- 
   <queryResponseWriter name="xml" class="org.apache.solr.request.XMLResponseWriter" default="true"/>
   <queryResponseWriter name="json" class="org.apache.solr.request.JSONResponseWriter"/>
   <queryResponseWriter name="ruby" class="org.apache.solr.request.RubyResponseWriter"/>
@@ -321,11 +381,11 @@
 
   <!-- XSLT response writer transforms the XML output by any xslt file found
        in Solr's conf/xslt directory.  Changes to xslt files are checked for
-       every xsltCacheLifetimeSeconds.
+       every xsltCacheLifetimeSeconds.  
    -->
   <queryResponseWriter name="xslt" class="org.apache.solr.request.XSLTResponseWriter">
     <int name="xsltCacheLifetimeSeconds">5</int>
-  </queryResponseWriter>
+  </queryResponseWriter> 
 
   <admin>
     <defaultQuery>hydra</defaultQuery>
