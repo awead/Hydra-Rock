@@ -1,109 +1,120 @@
 module Rockhall
 class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
 
-	include Rockhall::PbcoreMethods
+  include Rockhall::PbcoreMethods
 
   # Note: this is not a complete PBcore document, just an instantiation node
   set_terminology do |t|
-    t.root(:path=>"pbcoreDescriptionDocument", :xmlns=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html", :schema=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html")
+    t.root(:path=>"pbcoreDescriptionDocument", :xmlns => '', :namespace_prefix=>nil)
 
-    t.inst(:path=>"pbcoreInstantiation") {
+    t.pbcoreInstantiation(:namespace_prefix=>nil) {
 
-      t.inst_name(:path=>"instantiationIdentifier", :attributes=>{ :source=>"rockhall", :annotation=>"file name" })
-      t.inst_date(:path=>"instantiationDate", :attributes=>{ :dateType=>"created" })
-      t.inst_generation(:path=>"instantiationGenerations", :attributes=>{ :source=>"PBCore instantiationGenerations" }) {
-        t.ref(:path=>{:attribute=>"ref"})
+      t.instantiationIdentifier(:namespace_prefix=>nil)
+      t.instantiationFileSize(:namespace_prefix=>nil) {
+        t.units(:path=>{:attribute=>"unitsOfMeasure"}, :namespace_prefix=>nil)
+      }
+      t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"creation date" })
+      t.instantiationDigital(:namespace_prefix=>nil, :attributes=>{ :source=>"EBU file formats" })
+      t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
+      t.instantiationColors(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationColors" })
+      t.instantiationMediaType(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationMediaType" })
+      t.instantiationDuration(:namespace_prefix=>nil)
+
+      t.instantiationRights(:namespace_prefix=>nil) {
+        t.rightsSummary(:namespace_prefix=>nil)
       }
 
-      t.media_type(:path=>"instantiationMediaType", :attributes=>{ :source=>"PBCore instantiationMediaType" })
-
-      t.inst_file_format(:path=>"instantiationDigital", :attributes=>{ :source=>"EBU file formats" })
-
-      t.inst_size(:path=>"instantiationFileSize") {
-        t.units(:path=>{:attribute=>"unitsOfMeasure"})
+      t.instantiationEssenceTrack(:namespace_prefix=>nil) {
+        t.essenceTrackStandard(:namespace_prefix=>nil)
+        t.essenceTrackEncoding( :namespace_prefix=>nil, :attributes=>{ :source=>"PBCore essenceTrackEncoding" })
+        t.essenceTrackDataRate(:namespace_prefix=>nil) {
+          t.units(:path=>{:attribute=>"unitsOfMeasure"}, :namespace_prefix=>nil)
+        }
+        t.essenceTrackFrameRate(:namespace_prefix=>nil, :attributes=>{ :unitsOfMeasure=>"fps" })
+        t.essenceTrackFrameSize(:namespace_prefix=>nil, :attributes=>{ :source=>"PBcore essenceTrackFrameSize" })
+        t.essenceTrackBitDepth(:namespace_prefix=>nil)
+        t.essenceTrackAspectRatio(:namespace_prefix=>nil, :attributes=>{ :source=>"PBcore essenceTrackAspectRatio" })
+        t.essenceTrackSamplingRate(:namespace_prefix=>nil) {
+          t.units(:path=>{:attribute=>"unitsOfMeasure"}, :namespace_prefix=>nil)
+        }
+        t.essenceTrackAnnotation( :namespace_prefix=>nil, :attributes=>{ :annotationType=>"number of audio channels" })
       }
-
-      t.inst_colors(:path=>"instantiationColors", :attributes=>{ :source=>"PBCore instantiationColors" })
-
-      t.inst_duration(:path=>"instantiationDuration")
-
-      t.inst_link(:path=>"instantiationLocation")
-
-      t.inst_rights(:path=>"instantiationRights") {
-        t.summary(:path=>"rightsSummary")
-        t.link(:path=>"rightsLink")
-      }
+      t.video_essence(:ref => [:pbcoreInstantiation, :instantiationEssenceTrack],
+        :path=>'instantiationEssenceTrack[essenceTrackType="Video"]',
+        :namespace_prefix=>nil
+      )
+      t.audio_essence(:ref => [:pbcoreInstantiation, :instantiationEssenceTrack],
+        :path=>'instantiationEssenceTrack[essenceTrackType="Audio"]',
+        :namespace_prefix=>nil
+      )
 
       # Instantitation annotiations
-      t.inst_chksum_type(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"checksum type" })
-      t.inst_chksum_value(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"checksum value" })
-      t.inst_device(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"playback device" })
-      t.inst_capture_soft(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"capture software" })
-      t.inst_trans_soft(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"transcoding software" })
-      t.inst_operator(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"operator" })
-      t.inst_trans_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"transfer notes" })
-      t.inst_vendor(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"vendor name" })
-      t.inst_cond_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"condition notes" })
-      t.inst_clean_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"cleaning notes" })
-      t.inst_note(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"note" })
-      t.inst_color_space(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"color space" })
-      t.inst_chroma(:path=>"instantiationAnnotation", :attributes=>{ :annotationType=>"chroma" })
-
-      # Essence track information
-      t.essence(:path=>"instantiationEssenceTrack") {
-        t.type_(:path=>"essenceTrackType", :attributes=>{ :source=>"PBCore essenceTrackType" })
-        t.standard(:path=>"essenceTrackStandard")
-        t.encoding(:path=>"essenceTrackEncoding", :attributes=>{ :source=>"PBCore essenceTrackEncoding" })
-        t.bit_rate(:path=>"essenceTrackDataRate") {
-          t.unit(:path=>{:attribute=>"unitsOfMeasure"})
-        }
-        t.frame_rate(:path=>"essenceTrackFrameRate", :attributes=>{ :unitsOfMeasure=>"fps" })
-        t.frame_size(:path=>"essenceTrackFrameSize", :attributes=>{ :source=>"PBcore essenceTrackFrameSize" })
-        t.sample_rate(:path=>"essenceTrackSamplingRate") {
-          t.unit(:path=>{:attribute=>"unitsOfMeasure" })
-        }
-        t.bit_depth(:path=>"essenceTrackBitDepth")
-        t.ratio(:path=>"essenceTrackAspectRatio", :attributes=>{ :source=>"PBcore essenceTrackAspectRatio" })
-        t.audio_channels(:path=>"essenceAnnotation", :attributes=>{ :annotationType=>"number of audio channels" })
-      }
+      t.inst_chksum_type(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"checksum type" })
+      t.inst_chksum_value(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"checksum value" })
+      t.inst_device(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"playback device" })
+      t.inst_capture_soft(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"capture software" })
+      t.inst_trans_soft(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"transcoding software" })
+      t.inst_operator(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"operator" })
+      t.inst_trans_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"transfer notes" })
+      t.inst_vendor(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"vendor name" })
+      t.inst_cond_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"condition notes" })
+      t.inst_clean_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"cleaning notes" })
+      t.inst_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"note" })
+      t.inst_color_space(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"color space" })
+      t.inst_chroma(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"chroma" })
 
     }
 
-    # Flatten it out a bit...
-    t.name(:ref=>[:inst, :inst_name])
-    t.date(:ref=>[:inst, :inst_date])
-    t.generation(:ref=>[:inst, :inst_generation]){
-      t.ref(:ref=>[:inst, :inst_generation, :ref])
-    }
-    t.media_type(:ref=>[:inst, :media_type])
-    t.file_format(:ref=>[:inst, :inst_file_format])
-    t.size(:ref=>[:inst, :inst_size]) {
-      t.units(:ref=>[:inst, :inst_size, :units])
-    }
-    t.colors(:ref=>[:inst, :inst_colors])
-    t.duration(:ref=>[:inst, :inst_duration])
-    t.link(:ref=>[:inst, :inst_link])
-    t.rights_summary(:ref=>[:inst, :inst_rights, :summary])
-    t.rights_link(:ref=>[:inst, :inst_rights, :link])
-    t.note(:ref=>[:inst, :inst_note])
-    t.chksum_type(:ref=>[:inst, :inst_chksum_type])
-    t.chksum_value(:ref=>[:inst, :inst_chksum_value])
-    t.device(:ref=>[:inst, :inst_device])
-    t.capture_soft(:ref=>[:inst, :inst_capture_soft])
-    t.trans_soft(:ref=>[:inst, :inst_trans_soft])
-    t.operator(:ref=>[:inst, :inst_operator])
-    t.trans_note(:ref=>[:inst, :inst_trans_note])
-    t.vendor(:ref=>[:inst, :inst_vendor])
-    t.condition(:ref=>[:inst, :inst_cond_note])
-    t.cleaning(:ref=>[:inst, :inst_clean_note])
-    t.color_space(:ref=>[:inst, :inst_color_space])
-    t.chroma(:ref=>[:inst, :inst_chroma])
-    t.colors(:ref=>[:inst, :inst_colors])
+    #
+    # Here are the actual references to the fields
+    #
 
-    # Video essence fields
-    # TODO: proxy and path methods (see http://hudson.projecthydra.org/job/om/Documentation/file.COMMON_OM_PATTERNS.html)
+    t.name(:proxy=>[:pbcoreInstantiation, :instantiationIdentifier])
+    t.date(:proxy=>[:pbcoreInstantiation, :instantiationDate])
+    t.generation(:proxy=>[:pbcoreInstantiation, :instantiationGenerations])
+    t.media_type(:proxy=>[:pbcoreInstantiation, :instantiationMediaType])
+    t.file_format(:proxy=>[:pbcoreInstantiation, :instantiationDigital])
+    t.size(:proxy=>[:pbcoreInstantiation, :instantiationFileSize])
+    t.size_units(:proxy=>[:pbcoreInstantiation, :instantiationFileSize, :units])
+    t.colors(:proxy=>[:pbcoreInstantiation, :instantiationColors])
+    t.duration(:proxy=>[:pbcoreInstantiation, :instantiationDuration])
+    t.rights_summary(:proxy=>[:pbcoreInstantiation, :instantiationRights, :rightsSummary])
 
+    # Proxies to annotation fields
+    # These are also all inserted fields and are not in the template
+    t.note(:proxy=>[:pbcoreInstantiation, :inst_note])
+    t.checksum_type(:proxy=>[:pbcoreInstantiation, :inst_chksum_type])
+    t.checksum_value(:proxy=>[:pbcoreInstantiation, :inst_chksum_value])
+    t.device(:proxy=>[:pbcoreInstantiation, :inst_device])
+    t.capture_soft(:proxy=>[:pbcoreInstantiation, :inst_capture_soft])
+    t.trans_soft(:proxy=>[:pbcoreInstantiation, :inst_trans_soft])
+    t.operator(:proxy=>[:pbcoreInstantiation, :inst_operator])
+    t.trans_note(:proxy=>[:pbcoreInstantiation, :inst_trans_note])
+    t.vendor(:proxy=>[:pbcoreInstantiation, :inst_vendor])
+    t.condition(:proxy=>[:pbcoreInstantiation, :inst_cond_note])
+    t.cleaning(:proxy=>[:pbcoreInstantiation, :inst_clean_note])
+    t.color_space(:proxy=>[:pbcoreInstantiation, :inst_color_space])
+    t.chroma(:proxy=>[:pbcoreInstantiation, :inst_chroma])
 
+    # Proxies to video essence fields
+    t.video_standard(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackStandard])
+    t.video_encoding(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackEncoding])
+    t.video_bit_rate(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackDataRate])
+    t.video_bit_rate_units(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackDataRate, :units])
+    t.frame_rate(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackFrameRate])
+    t.frame_size(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackFrameSize])
+    t.video_bit_depth(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackBitDepth])
+    t.aspect_ratio(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackAspectRatio])
+
+    # Proxies to audio essence fields
+    t.audio_standard(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackStandard])
+    t.audio_encoding(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackEncoding])
+    t.audio_bit_rate(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackDataRate])
+    t.audio_bit_rate_units(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackDataRate, :units])
+    t.audio_sample_rate(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackSamplingRate])
+    t.audio_sample_rate_units(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackSamplingRate, :units])
+    t.audio_bit_depth(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackBitDepth])
+    t.audio_channels(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackAnnotation])
 
   end
 
@@ -111,17 +122,16 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     builder = Nokogiri::XML::Builder.new do |xml|
 
       xml.pbcoreDescriptionDocument(:version=>"2.0", "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
-        "xmlns"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html",
         "xsi:schemaLocation"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html") {
 
         xml.pbcoreInstantiation {
 
-          xml.instantiationIdentifier(:source=>"rockhall", :annotation=>"file name")
+          xml.instantiationIdentifier
           xml.instantiationFileSize(:unitsOfMeasure=>"")
-          xml.instantiationDate(:dateType=>"created")
-          xml.instantiationDigital(:source=>"EBU file formats", :ref=>"http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm")
-          xml.instantiationGenerations(:source=>"PBCore instantiationGenerations", :ref=>"")
-          xml.instantiationMediaType(:source=>"PBCore instantiationMediaType", :ref=>"http://pbcore.org/vocabularies/instantiationMediaType#moving-image") {
+          xml.instantiationDate(:dateType=>"creation date")
+          xml.instantiationDigital(:source=>"EBU file formats")
+          xml.instantiationGenerations(:source=>"PBCore instantiationGenerations")
+          xml.instantiationMediaType(:source=>"PBCore instantiationMediaType") {
             xml.text "Moving image"
           }
           xml.instantiationColors(:source=>"PBCore instantiationColors") {
@@ -131,7 +141,6 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
 
           xml.instantiationRights {
             xml.rightsSummary
-            xml.rightsLink
           }
 
           xml.instantiationEssenceTrack {
@@ -156,7 +165,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
             xml.essenceTrackDataRate(:unitsOfMeasure=>"")
             xml.essenceTrackSamplingRate(:unitsOfMeasure=>"")
             xml.essenceTrackBitDepth
-            xml.essenceAnnotation(:annotationType=>"number of audio channels")
+            xml.essenceTrackAnnotation(:annotationType=>"number of audio channels")
           }
 
         }

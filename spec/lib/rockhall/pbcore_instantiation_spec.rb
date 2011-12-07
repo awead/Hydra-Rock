@@ -23,16 +23,16 @@ describe Rockhall::PbcoreInstantiation do
         [:name],
         [:date],
         [:generation],
-        [:generation, :ref],
+        [:media_type],
         [:file_format],
         [:size],
-        [:size, :units],
+        [:size_units],
+        [:colors],
         [:duration],
-        [:link],
         [:rights_summary],
-        [:rights_link],
-        [:chksum_type],
-        [:chksum_value],
+        [:note],
+        [:checksum_type],
+        [:checksum_value],
         [:device],
         [:capture_soft],
         [:trans_soft],
@@ -41,11 +41,24 @@ describe Rockhall::PbcoreInstantiation do
         [:vendor],
         [:condition],
         [:cleaning],
-        [:note],
-        [:chroma],
         [:color_space],
-        [:media_type],
-        [:colors]
+        [:chroma],
+        [:video_standard],
+        [:video_encoding],
+        [:video_bit_rate],
+        [:video_bit_rate_units],
+        [:frame_rate],
+        [:frame_size],
+        [:video_bit_depth],
+        [:aspect_ratio],
+        [:audio_standard],
+        [:audio_encoding],
+        [:audio_bit_rate],
+        [:audio_bit_rate_units],
+        [:audio_sample_rate],
+        [:audio_sample_rate_units],
+        [:audio_bit_depth],
+        [:audio_channels],
       ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"
         @object_ds.update_indexed_attributes( {pointer=>{"0"=>test_val}} )
@@ -69,67 +82,49 @@ describe Rockhall::PbcoreInstantiation do
 
   describe "#xml_template" do
     it "should return an empty xml document matching an exmplar" do
+
+      # insert optional fields
+      @object_ds.update_indexed_attributes({ [:checksum_type] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:note] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:checksum_value] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:device] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:capture_soft] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:trans_soft] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:operator] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:trans_note] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:vendor] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:condition] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:cleaning] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:color_space] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:chroma] => { 0 => "inserted" }} )
+
+      # Load example fixture
       f = File.open("#{Rails.root.to_s}/spec/fixtures/rockhall/pbcore_instantiation_template.xml")
       ref_node = Nokogiri::XML(f)
       f.close
+
+      # Nokogiri-fy our sample document
       sample_node = Nokogiri::XML(@object_ds.to_xml)
+
+      # Save this for later...
+      out = File.new("tmp/pbcore_instantiation_sample.xml", "w")
+      out.write(sample_node.to_s)
+      out.close
+
       EquivalentXml.equivalent?(ref_node, sample_node, opts = { :element_order => false, :normalize_whitespace => true }).should be_true
     end
   end
 
   describe "essence fields" do
 
-    it "should be different for audio and video tracks" do
-
-      # Type
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :type]).first.should == "Video"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :type]).first.should == "Audio"
+    it "shoud have different essenceTrackStandard nodes" do
 
       # Standard
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :standard] => {"0" => "video standard"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :standard] => {"0" => "audio standard"}} )
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :standard]).first.should == "video standard"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :standard]).first.should == "audio standard"
+      @object_ds.update_indexed_attributes({ [:video_standard] => { 0 => "video standard" }} )
+      @object_ds.update_indexed_attributes({ [:audio_standard] => { 0 => "audio standard" }} )
+      @object_ds.get_values([{:pbcoreInstantiation=>0}, {:instantiationEssenceTrack=>0}, :essenceTrackStandard]).first.should == "video standard"
+      @object_ds.get_values([{:pbcoreInstantiation=>0}, {:instantiationEssenceTrack=>1}, :essenceTrackStandard]).first.should == "audio standard"
 
-      # Encoding
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :encoding] => {"0" => "video encoding"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :encoding] => {"0" => "audio encoding"}} )
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :encoding]).first.should == "video encoding"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should == "audio encoding"
-
-      # Bit rate
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :bit_rate] => {"0" => "video bit rate"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :bit_rate] => {"0" => "audio bit rate"}} )
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate]).first.should == "video bit rate"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should == "audio bit rate"
-
-      # Bit rate units
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :bit_rate, :unit] => {"0" => "video bit rate unit"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :bit_rate, :unit] => {"0" => "audio bit rate unit"}} )
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate, :unit]).first.should == "video bit rate unit"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate, :unit]).first.should == "audio bit rate unit"
-
-      # Bit depth
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :bit_depth] => {"0" => "10"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :bit_depth] => {"0" => "24"}} )
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_depth]).first.should       == "10"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_depth]).first.should       == "24"
-
-      # Video only
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :frame_rate] => {"0" => "frame rate"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :frame_size] => {"0" => "frame size"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>0}, :ratio] => {"0" => "ratio"}} )
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should == "frame rate"
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should == "frame size"
-      @object_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should == "ratio"
-
-      # Audio only
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :sample_rate] => {"0" => "sample rate"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :sample_rate, :unit] => {"0" => "sample rate units"}} )
-      @object_ds.update_indexed_attributes({ [{:inst=>0}, {:essence=>1}, :audio_channels] => {"0" => "2"}} )
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate]).first.should == "sample rate"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate, :unit]).first.should == "sample rate units"
-      @object_ds.get_values([{:inst=>0}, {:essence=>1}, :audio_channels]).first.should == "2"
 
     end
 

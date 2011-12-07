@@ -1,35 +1,48 @@
-<pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+<?xml version="1.0"?>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreInstantiation>
-    <instantiationIdentifier annotation="file name" source="rockhall"></instantiationIdentifier>
-    <instantiationFileSize unitsOfMeasure=""></instantiationFileSize>
-    <instantiationDate dateType="created"></instantiationDate>
-    <instantiationDigital ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm" source="EBU file formats"></instantiationDigital>
-    <instantiationGenerations ref="" source="PBCore instantiationGenerations"></instantiationGenerations>
+    <instantiationIdentifier/>
+    <instantiationFileSize unitsOfMeasure=""/>
+    <instantiationDate dateType="creation date"/>
+    <instantiationDigital source="EBU file formats"/>
+    <instantiationGenerations source="PBCore instantiationGenerations"/>
     <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
-    <instantiationMediaType source="PBCore instantiationMediaType" ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image">Moving image</instantiationMediaType>
-    <instantiationDuration></instantiationDuration>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationDuration/>
     <instantiationRights>
-      <rightsSummary></rightsSummary>
-      <rightsLink></rightsLink>
+      <rightsSummary/>
     </instantiationRights>
     <instantiationEssenceTrack>
       <essenceTrackType source="PBCore essenceTrackType">Video</essenceTrackType>
-      <essenceTrackStandard></essenceTrackStandard>
-      <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
-      <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
-      <essenceTrackFrameRate unitsOfMeasure="fps"></essenceTrackFrameRate>
-      <essenceTrackFrameSize source="PBcore essenceTrackFrameSize"></essenceTrackFrameSize>
-      <essenceTrackBitDepth></essenceTrackBitDepth>
-      <essenceTrackAspectRatio source="PBcore essenceTrackAspectRatio"></essenceTrackAspectRatio>
+      <essenceTrackStandard/>
+      <essenceTrackEncoding source="PBCore essenceTrackEncoding"/>
+      <essenceTrackDataRate unitsOfMeasure=""/>
+      <essenceTrackFrameRate unitsOfMeasure="fps"/>
+      <essenceTrackFrameSize source="PBcore essenceTrackFrameSize"/>
+      <essenceTrackBitDepth/>
+      <essenceTrackAspectRatio source="PBcore essenceTrackAspectRatio"/>
     </instantiationEssenceTrack>
     <instantiationEssenceTrack>
       <essenceTrackType source="PBCore essenceTrackType">Audio</essenceTrackType>
-      <essenceTrackStandard></essenceTrackStandard>
-      <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
-      <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
-      <essenceTrackSamplingRate unitsOfMeasure=""></essenceTrackSamplingRate>
-      <essenceTrackBitDepth></essenceTrackBitDepth>
-      <essenceAnnotation annotationType="number of audio channels"></essenceAnnotation>
+      <essenceTrackStandard/>
+      <essenceTrackEncoding source="PBCore essenceTrackEncoding"/>
+      <essenceTrackDataRate unitsOfMeasure=""/>
+      <essenceTrackSamplingRate unitsOfMeasure=""/>
+      <essenceTrackBitDepth/>
+      <essenceTrackAnnotation annotationType="number of audio channels"/>
     </instantiationEssenceTrack>
+    <instantiationAnnotation annotationType="checksum type">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="checksum value">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="playback device">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="capture software">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="transcoding software">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="operator">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="transfer notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="vendor name">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="condition notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="cleaning notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="note">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="color space">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="chroma">inserted</instantiationAnnotation>
   </pbcoreInstantiation>
 </pbcoreDescriptionDocument>

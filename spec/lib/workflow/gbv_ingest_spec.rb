@@ -55,24 +55,24 @@ describe Workflow::GbvIngest do
       o_ds.get_values([:media_type]).first.should   == "Moving image"
 
       # Preservation: Video essence track fields
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :standard]).first.should        == "NTSC"
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :encoding]).first.should        == "AJA v210"
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate]).first.should        == "224"
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate, :unit]).first.should == "Mbps"
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_depth]).first.should       == "10"
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should      == "29.97"
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "720x486"
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
+      o_ds.get_values([:video_standard]).first.should        == "NTSC"
+      o_ds.get_values([:video_encoding]).first.should        == "AJA v210"
+      o_ds.get_values([:video_bit_rate]).first.should        == "224"
+      o_ds.get_values([:video_bit_rate_units]).first.should == "Mbps"
+      o_ds.get_values([:video_bit_depth]).first.should       == "10"
+      o_ds.get_values([:frame_rate]).first.should      == "29.97"
+      o_ds.get_values([:frame_size]).first.should      == "720x486"
+      o_ds.get_values([:aspect_ratio]).first.should           == "4:3"
 
       # Preservation: Audio essence track fields
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :standard]).first.should            == "Linear PCM Audio"
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should            == "in24"
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should            == "1152"
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate, :unit]).first.should     == "Kbps"
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate]).first.should         == "48"
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate, :unit]).first.should  == "kHz"
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_depth]).first.should           == "24"
-      o_ds.get_values([{:inst=>0}, {:essence=>1}, :audio_channels]).first.should      == "2"
+      o_ds.get_values([:audio_standard]).first.should            == "Linear PCM Audio"
+      o_ds.get_values([:audio_encoding]).first.should            == "in24"
+      o_ds.get_values([:audio_bit_rate]).first.should            == "1152"
+      o_ds.get_values([:audio_bit_rate_units]).first.should     == "Kbps"
+      o_ds.get_values([:audio_sample_rate]).first.should         == "48"
+      o_ds.get_values([:audio_sample_rate_units]).first.should  == "kHz"
+      o_ds.get_values([:audio_bit_depth]).first.should           == "24"
+      o_ds.get_values([:audio_channels]).first.should      == "2"
 
 
       # Access file
@@ -94,24 +94,24 @@ describe Workflow::GbvIngest do
       a_ds.get_values([:media_type]).first.should   == "Moving image"
 
       # Access: Video essence track fields
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :standard]).first.should        == "NTSC"
-      a_ds.get_values([{:inst=>0}, {:essence=>0}, :encoding]).first.should        == "H.264/MPEG-4 AVC"
-      a_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate]).first.should        == "2507"
-      a_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_rate, :unit]).first.should == "Kbps"
-      a_ds.get_values([{:inst=>0}, {:essence=>0}, :bit_depth]).first.should       == "8"
-      a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_rate]).first.should      == "29.97"
-      a_ds.get_values([{:inst=>0}, {:essence=>0}, :frame_size]).first.should      == "640x480"
-      a_ds.get_values([{:inst=>0}, {:essence=>0}, :ratio]).first.should           == "4:3"
+      o_ds.get_values([:video_standard]).first.should        == "NTSC"
+      a_ds.get_values([:video_encoding]).first.should        == "H.264/MPEG-4 AVC"
+      a_ds.get_values([:video_bit_rate]).first.should        == "2507"
+      a_ds.get_values([:video_bit_rate_units]).first.should == "Kbps"
+      a_ds.get_values([:video_bit_depth]).first.should       == "8"
+      a_ds.get_values([:frame_rate]).first.should      == "29.97"
+      a_ds.get_values([:frame_size]).first.should      == "640x480"
+      a_ds.get_values([:aspect_ratio]).first.should           == "4:3"
 
       # Access: Audio essence track fields
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :standard]).first.should            == "AAC"
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should            == "MPEG-4: AAC"
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate]).first.should            == "256"
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_rate, :unit]).first.should     == "Kbps"
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate]).first.should         == "48.0"
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :sample_rate, :unit]).first.should  == "kHz"
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_depth]).first.should           == "16"
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :audio_channels]).first.should      == "2"
+      a_ds.get_values([:audio_standard]).first.should            == "AAC"
+      a_ds.get_values([:audio_encoding]).first.should            == "MPEG-4: AAC"
+      a_ds.get_values([:audio_bit_rate]).first.should            == "256"
+      a_ds.get_values([:audio_bit_rate_units]).first.should     == "Kbps"
+      a_ds.get_values([:audio_sample_rate]).first.should         == "48.0"
+      a_ds.get_values([:audio_sample_rate_units]).first.should  == "kHz"
+      a_ds.get_values([:audio_bit_depth]).first.should           == "16"
+      a_ds.get_values([:audio_channels]).first.should      == "2"
 
     end
 
@@ -133,7 +133,7 @@ describe Workflow::GbvIngest do
       o_ds.get_values([:condition]).first.should == "Bars and tone at end of program"
       o_ds.get_values([:file_format]).first.should == "mov"
       # Preservation video codec
-      o_ds.get_values([{:inst=>0}, {:essence=>0}, :encoding]).first.should == "AJA v210"
+      o_ds.get_values([:video_encoding]).first.should == "AJA v210"
       o_ds.get_values([:capture_soft]).first.should == "Apple FCP 7 (ver 7.0.3)"
       o_ds.get_values([:operator]).first.should == "TMu"
 
@@ -142,9 +142,9 @@ describe Workflow::GbvIngest do
       a_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
       a_ds.get_values([:file_format]).first.should == "mp4"
       # Access audio codec
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :encoding]).first.should == "MPEG-4: AAC"
+      a_ds.get_values([:audio_encoding]).first.should == "MPEG-4: AAC"
       # Access audio bit depth
-      a_ds.get_values([{:inst=>0}, {:essence=>1}, :bit_depth]).first.should == "16"
+      a_ds.get_values([:audio_bit_depth]).first.should == "16"
       a_ds.get_values([:trans_soft]).first.should == "MPEG Streamclip 1.92"
       a_ds.get_values([:trans_note]).first.should be_nil
       a_ds.get_values([:operator]).first.should == "TMu"
