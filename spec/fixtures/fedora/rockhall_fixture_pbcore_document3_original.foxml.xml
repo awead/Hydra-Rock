@@ -100,19 +100,18 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2011-11-10T21:44:30.572Z" MIMETYPE="text/xml" SIZE="3121">
 <foxml:xmlContent>
-<pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreInstantiation>
-    <instantiationIdentifier annotation="file name" source="rockhall">39156042439369_preservation.mov</instantiationIdentifier>
+    <instantiationIdentifier>39156042439369_preservation.mov</instantiationIdentifier>
     <instantiationFileSize unitsOfMeasure="KB">1000</instantiationFileSize>
-    <instantiationDate dateType="created">2011-10-12</instantiationDate>
-    <instantiationDigital ref="http://www.ebu.ch/metadata/cs/web/ebu_FileFormatCS_p.xml.htm" source="EBU file formats">mov</instantiationDigital>
-    <instantiationGenerations ref="" source="PBCore instantiationGenerations">Copy: preservation</instantiationGenerations>
-    <instantiationMediaType ref="http://pbcore.org/vocabularies/instantiationMediaType#moving-image" source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationDate dateType="creation date">2011-10-12</instantiationDate>
+    <instantiationDigital source="EBU file formats">mov</instantiationDigital>
+    <instantiationGenerations source="PBCore instantiationGenerations">Copy: preservation</instantiationGenerations>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
     <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
     <instantiationDuration>0:50:47</instantiationDuration>
     <instantiationRights>
-      <rightsSummary></rightsSummary>
-      <rightsLink></rightsLink>
+      <rightsSummary/>
     </instantiationRights>
     <instantiationEssenceTrack>
       <essenceTrackType source="PBCore essenceTrackType">Video</essenceTrackType>
@@ -131,16 +130,16 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
       <essenceTrackDataRate unitsOfMeasure="Kbps">1152</essenceTrackDataRate>
       <essenceTrackSamplingRate unitsOfMeasure="kHz">48</essenceTrackSamplingRate>
       <essenceTrackBitDepth>24</essenceTrackBitDepth>
-      <essenceAnnotation annotationType="number of audio channels">2</essenceAnnotation>
+      <essenceTrackAnnotation annotationType="number of audio channels">2</essenceTrackAnnotation>
     </instantiationEssenceTrack>
+    <instantiationAnnotation annotationType="condition notes">Bars and tone at end of program</instantiationAnnotation>
+    <instantiationAnnotation annotationType="capture software">Apple FCP 7 (ver 7.0.3)</instantiationAnnotation>
+    <instantiationAnnotation annotationType="operator">TMu</instantiationAnnotation>
+    <instantiationAnnotation annotationType="playback device">Sony PVW-2800; 20040</instantiationAnnotation>
+    <instantiationAnnotation annotationType="chroma">4:2:2</instantiationAnnotation>
+    <instantiationAnnotation annotationType="color space">YUV</instantiationAnnotation>
+    <instantiationAnnotation annotationType="vendor name">George Blood Audio and Video</instantiationAnnotation>
   </pbcoreInstantiation>
-  <instantiationAnnotation annotationType="condition notes">Bars and tone at end of program</instantiationAnnotation>
-  <instantiationAnnotation annotationType="capture software">Apple FCP 7 (ver 7.0.3)</instantiationAnnotation>
-  <instantiationAnnotation annotationType="operator">TMu</instantiationAnnotation>
-  <instantiationAnnotation annotationType="playback device">Sony PVW-2800; 20040</instantiationAnnotation>
-  <instantiationAnnotation annotationType="chroma">4:2:2</instantiationAnnotation>
-  <instantiationAnnotation annotationType="color space">YUV</instantiationAnnotation>
-  <instantiationAnnotation annotationType="vendor name">George Blood Audio and Video</instantiationAnnotation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>

@@ -6,9 +6,8 @@
 
   <fieldset id="instantiation_fields">
     <dl>
-      <%= display_field([:rights_summary],    { :name=>"Rights Information" }) %>
-      <%= display_field([:rights_link],       { :name=>"Rights Reference" }) %>
-      <%= display_field([:note],              {:multiple=>TRUE}) %>
+      <%= display_field([:rights_summary]) %>
+      <%= display_field([:note], {:multiple=>TRUE}) %>
     </dl>
   </fieldset>
   <%= submit_tag 'Save File', {:id => "submitDocument"} %>

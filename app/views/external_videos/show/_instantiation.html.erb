@@ -19,25 +19,24 @@
     <%= display_field([:color_space]) %>
 
     <!-- Video essence fields -->
-    <%= display_field([{:inst=>0}, {:essence=>0}, :standard],   { :name=>"Standard" }) %>
-    <%= display_field([{:inst=>0}, {:essence=>0}, :encoding],   { :name=>"Encoding" }) %>
+    <%= display_field([:video_standard]) %>
+    <%= display_field([:video_encoding]) %>
     <%= display_video_bit_rate %>
-    <%= display_field([{:inst=>0}, {:essence=>0}, :bit_depth],  { :name=>"Bit Depth" }) %>
-    <%= display_field([{:inst=>0}, {:essence=>0}, :frame_size], { :name=>"Frame Size" }) %>
+    <%= display_field([:video_bit_depth]) %>
+    <%= display_field([:frame_size])%>
     <%= display_video_frame_rate %>
-    <%= display_field([{:inst=>0}, {:essence=>0}, :ratio],      { :name=>"Ratio" }) %>
+    <%= display_field([:aspect_ratio]) %>
 
     <!-- Audio essence fields -->
-    <%= display_field([{:inst=>0}, {:essence=>1}, :standard],   { :name=>"Standard" }) %>
-    <%= display_field([{:inst=>0}, {:essence=>1}, :encoding],   { :name=>"Encoding" }) %>
+    <%= display_field([:audio_standard]) %>
+    <%= display_field([:audio_encoding]) %>
     <%= display_audio_bit_rate %>
     <%= display_audio_sample_rate %>
-    <%= display_field([{:inst=>0}, {:essence=>1}, :bit_depth],      { :name=>"Bit Depth" }) %>
-    <%= display_field([{:inst=>0}, {:essence=>1}, :audio_channels], { :name=>"Audio Channels" }) %>
+    <%= display_field([:audio_bit_depth]) %>
+    <%= display_field([:audio_channels]) %>
 
     <!-- Editable fields -->
-    <%= display_field([:rights_summary],  { :name=>"Rights Information" }) %>
-    <%= display_field([:rights_link],     { :name=>"Rights Reference" }) %>
-    <%= display_field([:note],            {:inline=>TRUE}) %>
+    <%= display_field([:rights_summary]) %>
+    <%= display_field([:note]) %>
   </dl>
 </fieldset>
