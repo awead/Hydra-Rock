@@ -25,6 +25,7 @@ Description:
     And I should see the field title "abstract" contain "Abstract"
     And I should see the field content "abstract" contain "We don't have permission to show this to the public"
 
+  @wip
   Scenario: Reviewer edits the status of an item (DAM-123)
     Given I am logged in as "reviewer1@example.com"
     And I am on the review document page for rockhall:fixture_pbcore_document3
