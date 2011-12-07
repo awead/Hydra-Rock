@@ -187,20 +187,20 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date">2007-07-09</instantiationDate>
     <instantiationIdentifier>39156042439369</instantiationIdentifier>
@@ -214,19 +214,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationStandard>NTSC</instantiationStandard>
     <instantiationPhysical source="PBCore instantiationPhysical">Betacam</instantiationPhysical>
@@ -240,20 +240,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date">2007-07-09</instantiationDate>
     <instantiationIdentifier>[removed for testing]</instantiationIdentifier>
@@ -267,19 +267,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationStandard>NTSC</instantiationStandard>
     <instantiationPhysical source="PBCore instantiationPhysical">Betacam</instantiationPhysical>
@@ -294,20 +294,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date">2007-07-09</instantiationDate>
     <instantiationIdentifier>[removed for testing]</instantiationIdentifier>
@@ -325,19 +325,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationStandard>NTSC</instantiationStandard>
     <instantiationPhysical source="PBCore instantiationPhysical">Betacam</instantiationPhysical>

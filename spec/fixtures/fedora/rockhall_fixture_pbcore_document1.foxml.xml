@@ -442,20 +442,20 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main"></pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -469,19 +469,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
 </pbcoreDescriptionDocument>
@@ -493,20 +493,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -520,19 +520,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -545,20 +545,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -572,19 +572,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -601,20 +601,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -628,19 +628,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -661,20 +661,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -688,19 +688,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -722,20 +722,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -749,19 +749,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -787,20 +787,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -814,19 +814,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -856,20 +856,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -883,19 +883,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -929,20 +929,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -956,19 +956,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1006,20 +1006,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1033,19 +1033,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1087,20 +1087,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1114,19 +1114,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1172,20 +1172,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1199,19 +1199,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1261,20 +1261,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1288,19 +1288,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1354,20 +1354,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1381,19 +1381,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1447,20 +1447,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1474,19 +1474,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1541,20 +1541,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1568,19 +1568,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1637,20 +1637,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1664,19 +1664,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1735,20 +1735,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -1762,19 +1762,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</descriptionType>
@@ -1835,20 +1835,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date">1999-03-15</instantiationDate>
     <instantiationIdentifier>39156042551098</instantiationIdentifier>
@@ -1862,19 +1862,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection">ARC.0002</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection">ARC.0002</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number">LA.2003.01.001</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number">LA.2003.01.001</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRights></instantiationRights>
     <instantiationStandard>NTSC</instantiationStandard>
@@ -1938,20 +1938,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage>New York, NY</coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage>1999-03-15</coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date">1999-03-15</instantiationDate>
     <instantiationIdentifier>39156042551098</instantiationIdentifier>
@@ -1965,19 +1965,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection">ARC.0002</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection">ARC.0002</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number">LA.2003.01.001</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number">LA.2003.01.001</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRights></instantiationRights>
     <instantiationStandard>NTSC</instantiationStandard>
@@ -2041,20 +2041,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage>New York, NY</coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage>1999-03-15</coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date">1999-03-15</instantiationDate>
     <instantiationIdentifier>39156042551098</instantiationIdentifier>
@@ -2068,19 +2068,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection">Rock and Roll Hall of Fame and Museum Records - Education &amp; Public Programs Division</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection">Rock and Roll Hall of Fame and Museum Records - Education &amp; Public Programs Division</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series">Audiovisual Materials</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series">Audiovisual Materials</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number">ARC.0002</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number">ARC.0002</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number">LA.2003.01.001</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number">LA.2003.01.001</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRights></instantiationRights>
     <instantiationStandard>NTSC</instantiationStandard>
@@ -2144,20 +2144,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage>New York, NY</coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage>1999-03-15</coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date">1999-03-15</instantiationDate>
     <instantiationIdentifier>39156042551098</instantiationIdentifier>
@@ -2171,19 +2171,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series">Audiovisual Materials</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series">Audiovisual Materials</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number">ARC.0002</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number">ARC.0002</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number">LA.2003.01.001</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number">LA.2003.01.001</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRights></instantiationRights>
     <instantiationStandard>NTSC</instantiationStandard>
@@ -2247,20 +2247,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage>New York, NY</coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage>1999-03-15</coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date">1999-03-15</instantiationDate>
     <instantiationIdentifier>39156042551098</instantiationIdentifier>
@@ -2278,19 +2278,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series">Audiovisual Materials</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series">Audiovisual Materials</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number">ARC.0002</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number">ARC.0002</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number">LA.2003.01.001</instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number">LA.2003.01.001</instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRights></instantiationRights>
     <instantiationStandard>NTSC</instantiationStandard>

@@ -11,20 +11,20 @@
   <pbcoreTitle titleType="track">inserted</pbcoreTitle>
   <pbcoreTitle titleType="translation">inserted</pbcoreTitle>
   <pbcoreDescription descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" annotation="main"/>
-  <pbcoreDescription descriptionType="table of contents" source="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" annotation="Parts List"/>
+  <pbcoreDescription descriptionType="table of contents" source="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" annotation="parts list"/>
   <pbcoreSubject>inserted</pbcoreSubject>
   <pbcoreGenre>inserted</pbcoreGenre>
   <pbcoreRelation>
     <pbcoreRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"/>
+    <pbcoreRelationIdentifier annotation="event series"/>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage/>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage/>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
   <pbcoreContributor>
     <contributor/>
@@ -58,25 +58,25 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"/>
+      <instantiationRelationIdentifier annotation="archival collection"/>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"/>
+      <instantiationRelationIdentifier annotation="archival series"/>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"/>
+      <instantiationRelationIdentifier annotation="collection number"/>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"/>
+      <instantiationRelationIdentifier annotation="accession number"/>
     </instantiationRelation>
     <instantiationRights>
       <rightsSummary>inserted</rightsSummary>
     </instantiationRights>
-    <instantiationAnnotation annotationType="Condition Notes">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="Cleaning Notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="condition notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="cleaning notes">inserted</instantiationAnnotation>
   </pbcoreInstantiation>
-  <pbcoreAnnotation annotationType="Notes"/>
+  <pbcoreAnnotation annotationType="notes"/>
 </pbcoreDescriptionDocument>

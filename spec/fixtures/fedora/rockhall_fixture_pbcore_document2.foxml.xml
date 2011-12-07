@@ -106,20 +106,20 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main"></pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage></coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes"></pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -133,19 +133,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
 </pbcoreDescriptionDocument>
@@ -157,20 +157,20 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Pre-Ingest Video</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage>Cleveland, OH</coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage>2011-04-12</coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes">Video fixture object used for testing. No video files should be present.</pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes">Video fixture object used for testing. No video files should be present.</pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
@@ -184,19 +184,19 @@ library@rockhall.org</instantiationLocation>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
   </pbcoreInstantiation>
   <descriptionType annotation="main" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description">This is a sample record of a video that has not been ingested or reviewed yet.</descriptionType>
@@ -209,46 +209,50 @@ library@rockhall.org</instantiationLocation>
   <pbcoreIdentifier annotation="Fedora ID" source="rock hall"></pbcoreIdentifier>
   <pbcoreTitle titleType="main">Pre-Ingest Video</pbcoreTitle>
   <pbcoreDescription annotation="main" descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"></pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreDescription annotation="parts list" descriptionType="table of contents" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" source="pbcoreDescription/descriptionType"></pbcoreDescription>
   <pbcoreRelation>
     <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series"></pbcoreRelationIdentifier>
+    <pbcoreRelationIdentifier annotation="event series"></pbcoreRelationIdentifier>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage>Cleveland, OH</coverage>
-    <coverageType annotation="Event Place">Spatial</coverageType>
+    <coverageType annotation="event place">Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage>2011-04-12</coverage>
-    <coverageType annotation="Event Date">Temporal</coverageType>
+    <coverageType annotation="event date">Temporal</coverageType>
   </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes">Video fixture object used for testing. No video files should be present.</pbcoreAnnotation>
+  <pbcoreAnnotation annotationType="notes">Video fixture object used for testing. No video files should be present.</pbcoreAnnotation>
   <pbcoreInstantiation>
     <instantiationDate dateType="creation date"></instantiationDate>
     <instantiationIdentifier></instantiationIdentifier>
     <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+
 2809 Woodland Ave.,
+
 Cleveland, OH, 44115
+
 216-515-1956
+
 library@rockhall.org</instantiationLocation>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
     <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
     <instantiationColors>Color</instantiationColors>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival collection"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="archival series"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="collection number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRelation>
       <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="accession number"></instantiationRelationIdentifier>
     </instantiationRelation>
     <instantiationRights></instantiationRights>
     <instantiationLanguage>English</instantiationLanguage>
