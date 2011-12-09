@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier source="Rock and Roll Hall of Fame and Museum"/>
+  <pbcoreTitle/>
+  <pbcoreDescription/>
   <pbcoreInstantiation>
     <instantiationIdentifier source="Rock and Roll Hall of Fame and Museum"/>
     <instantiationDate dateType="creation date"/>

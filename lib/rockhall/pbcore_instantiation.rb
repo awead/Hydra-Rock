@@ -126,6 +126,12 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
       xml.pbcoreDescriptionDocument("xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
         "xsi:schemaLocation"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html") {
 
+        # These fields are only added so that this document will be validated.  However, they
+        # shouldn't be used for anything else here because they're in the parent Fedora object
+        xml.pbcoreIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
+        xml.pbcoreTitle
+        xml.pbcoreDescription
+
         xml.pbcoreInstantiation {
 
           xml.instantiationIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
