@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html" version="2.0">
-  <pbcoreIdentifier source="rock hall" annotation="Fedora ID"/>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="Fedora ID" source="Rock and Roll Hall of Fame and Museum"/>
   <pbcoreTitle titleType="main"/>
   <pbcoreTitle titleType="alternative">inserted</pbcoreTitle>
   <pbcoreTitle titleType="chapter">inserted</pbcoreTitle>
@@ -10,27 +10,27 @@
   <pbcoreTitle titleType="subtitle">inserted</pbcoreTitle>
   <pbcoreTitle titleType="track">inserted</pbcoreTitle>
   <pbcoreTitle titleType="translation">inserted</pbcoreTitle>
-  <pbcoreDescription descriptionType="Description" descriptionTypesource="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" annotation="main"/>
-  <pbcoreDescription descriptionType="table of contents" source="pbcoreDescription/descriptionType" ref="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" annotation="parts list"/>
   <pbcoreSubject>inserted</pbcoreSubject>
+  <pbcoreDescription descriptionType="description" annotation="main" descriptionTypeSource="pbcoreDescription/descriptionType" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"/>
+  <pbcoreDescription descriptionType="table of contents" annotation="parts list" descriptionTypeSource="pbcoreDescription/descriptionType" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents"/>
   <pbcoreGenre>inserted</pbcoreGenre>
   <pbcoreRelation>
-    <pbcoreRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
     <pbcoreRelationIdentifier annotation="event series"/>
   </pbcoreRelation>
   <pbcoreCoverage>
     <coverage/>
-    <coverageType annotation="event place">Spatial</coverageType>
+    <coverageType>Spatial</coverageType>
   </pbcoreCoverage>
   <pbcoreCoverage>
     <coverage/>
-    <coverageType annotation="event date">Temporal</coverageType>
+    <coverageType>Temporal</coverageType>
   </pbcoreCoverage>
   <pbcoreContributor>
     <contributor/>
     <contributorRole source="MARC relator terms"/>
   </pbcoreContributor>
-    <pbcoreContributor>
+  <pbcoreContributor>
     <contributor/>
     <contributorRole source="MARC relator terms"/>
   </pbcoreContributor>
@@ -43,38 +43,36 @@
     <publisherRole source="PBCore publisherRole"/>
   </pbcorePublisher>
   <pbcoreInstantiation>
+    <instantiationIdentifier source="Rock and Roll Hall of Fame and Museum"/>
     <instantiationDate dateType="creation date"/>
-    <instantiationIdentifier/>
+    <instantiationPhysical source="PBCore instantiationPhysical">inserted</instantiationPhysical>
+    <instantiationStandard>inserted</instantiationStandard>
     <instantiationLocation>Rock and Roll Hall of Fame and Museum,
 2809 Woodland Ave.,
 Cleveland, OH, 44115
 216-515-1956
 library@rockhall.org</instantiationLocation>
-    <instantiationPhysical source="PBCore instantiationPhysical">inserted</instantiationPhysical>
-    <instantiationStandard>inserted</instantiationStandard>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
     <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
-    <instantiationLanguage>English</instantiationLanguage>
     <instantiationColors>Color</instantiationColors>
+    <instantiationLanguage>eng</instantiationLanguage>
     <instantiationRelation>
-      <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
       <instantiationRelationIdentifier annotation="archival collection"/>
     </instantiationRelation>
     <instantiationRelation>
-      <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
       <instantiationRelationIdentifier annotation="archival series"/>
     </instantiationRelation>
     <instantiationRelation>
-      <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
       <instantiationRelationIdentifier annotation="collection number"/>
     </instantiationRelation>
     <instantiationRelation>
-      <instantiationRelationType source="PBCore relationType" ref="http://pbcore.org/vocabularies/relationType#is-part-of">Is Part Of</instantiationRelationType>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
       <instantiationRelationIdentifier annotation="accession number"/>
     </instantiationRelation>
-    <instantiationRights>
-      <rightsSummary>inserted</rightsSummary>
-    </instantiationRights>
+    <instantiationRights><rightsSummary>inserted</rightsSummary></instantiationRights>
     <instantiationAnnotation annotationType="condition notes">inserted</instantiationAnnotation>
     <instantiationAnnotation annotationType="cleaning notes">inserted</instantiationAnnotation>
   </pbcoreInstantiation>

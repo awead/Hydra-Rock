@@ -21,17 +21,19 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.track(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"track" })
     t.translation(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"translation" })
 
-    t.summary(:path=>"descriptionType", :namespace_prefix=>nil, :attributes=>{ :descriptionTypesource=>"pbcoreDescription/descriptionType",
-      :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description",
+    t.subject(:path=>"pbcoreSubject", :namespace_prefix=>nil)
+
+    t.summary(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"description",
+      :descriptionTypeSource=>"pbcoreDescription/descriptionType",
+      :descriptionTypeRef=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description",
       :annotation=>"main"}
     )
 
-    t.parts_list(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"Table of Contents",
+    t.parts_list(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"table of contents",
       :descriptionTypeSource=>"pbcoreDescription/descriptionType",
-      :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" }
+      :descriptionTypeRef=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents",
+      :annotation=>"parts list" }
     )
-
-    t.subject(:path=>"pbcoreSubject", :namespace_prefix=>nil)
 
     t.genre(:path=>"pbcoreGenre", :namespace_prefix=>nil)
 
@@ -74,20 +76,19 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 
     t.note(:path=>"pbcoreAnnotation", :namespace_prefix=>nil, :atttributes=>{ :annotationType=>"notes" })
 
-
     #
     # pbcoreInstantiation fields for the physical item
     #
     t.pbcoreInstantiation(:namespace_prefix=>nil) {
+      t.instantiationIdentifier(:namespace_prefix=>nil, :attributes=>{ :source=>"Rock and Roll Hall of Fame and Museum" })
       t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"creation date" })
-      t.instantiationIdentifier(:namespace_prefix=>nil)
-      t.instantiationLocation(:namespace_prefix=>nil)
       t.instantiationPhysical(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationPhysical" })
       t.instantiationStandard(:namespace_prefix=>nil)
+      t.instantiationLocation(:namespace_prefix=>nil)
       t.instantiationMediaType(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationMediaType" })
       t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
-      t.instantiationLanguage(:namespace_prefix=>nil)
       t.instantiationColors(:namespace_prefix=>nil)
+      t.instantiationLanguage(:namespace_prefix=>nil)
       t.instantiationRelation(:namespace_prefix=>nil) {
         t.arc_collection(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"archival collection" })
         t.arc_series(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"archival series" })
@@ -145,19 +146,19 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
   def self.xml_template
     builder = Nokogiri::XML::Builder.new do |xml|
 
-      xml.pbcoreDescriptionDocument(:version=>"2.0", "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
+      xml.pbcoreDescriptionDocument("xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
         "xsi:schemaLocation"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html") {
 
-        xml.pbcoreIdentifier(:source=>"rock hall", :annotation=>"Fedora ID")
+        xml.pbcoreIdentifier(:source=>"Rock and Roll Hall of Fame and Museum", :annotation=>"Fedora ID")
         xml.pbcoreTitle(:titleType=>"main")
-        xml.pbcoreDescription(:descriptionType=>"Description",
-          :descriptionTypesource=>"pbcoreDescription/descriptionType",
-          :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description",
+        xml.pbcoreDescription(:descriptionType=>"description",
+          :descriptionTypeSource=>"pbcoreDescription/descriptionType",
+          :descriptionTypeRef=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description",
           :annotation=>"main"
         )
         xml.pbcoreDescription(:descriptionType=>"table of contents",
-          :source=>"pbcoreDescription/descriptionType",
-          :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents",
+          :descriptionTypeSource=>"pbcoreDescription/descriptionType",
+          :descriptionTypeRef=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents",
           :annotation=>"parts list"
         )
         xml.pbcoreRelation {
@@ -168,13 +169,13 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
         }
         xml.pbcoreCoverage {
           xml.coverage
-          xml.coverageType(:annotation=>"event place") {
+          xml.coverageType {
             xml.text "Spatial"
           }
         }
         xml.pbcoreCoverage {
           xml.coverage
-          xml.coverageType(:annotation=>"event date") {
+          xml.coverageType {
             xml.text "Temporal"
           }
         }
@@ -186,8 +187,8 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
         xml.pbcoreInstantiation {
 
           # Item details
+          xml.instantiationIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
           xml.instantiationDate(:dateType=>"creation date")
-          xml.instantiationIdentifier
           xml.instantiationLocation {
             xml.text "Rock and Roll Hall of Fame and Museum,\n2809 Woodland Ave.,\nCleveland, OH, 44115\n216-515-1956\nlibrary@rockhall.org"
           }
@@ -198,7 +199,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
             xml.text "Original"
           }
           xml.instantiationLanguage {
-            xml.text "English"
+            xml.text "eng"
           }
           xml.instantiationColors {
             xml.text "Color"
