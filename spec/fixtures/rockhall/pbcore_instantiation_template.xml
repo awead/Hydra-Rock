@@ -1,29 +1,27 @@
 <?xml version="1.0"?>
-<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreInstantiation>
-    <instantiationIdentifier/>
-    <instantiationFileSize unitsOfMeasure=""/>
+    <instantiationIdentifier source="Rock and Roll Hall of Fame and Museum"/>
     <instantiationDate dateType="creation date"/>
     <instantiationDigital source="EBU file formats"/>
-    <instantiationGenerations source="PBCore instantiationGenerations"/>
-    <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+    <instantiationLocation/>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationGenerations source="PBCore instantiationGenerations"/>
+    <instantiationFileSize unitsOfMeasure=""/>
     <instantiationDuration/>
-    <instantiationRights>
-      <rightsSummary/>
-    </instantiationRights>
+    <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
     <instantiationEssenceTrack>
-      <essenceTrackType source="PBCore essenceTrackType">Video</essenceTrackType>
+      <essenceTrackType>Video</essenceTrackType>
       <essenceTrackStandard/>
       <essenceTrackEncoding source="PBCore essenceTrackEncoding"/>
       <essenceTrackDataRate unitsOfMeasure=""/>
       <essenceTrackFrameRate unitsOfMeasure="fps"/>
-      <essenceTrackFrameSize source="PBcore essenceTrackFrameSize"/>
       <essenceTrackBitDepth/>
+      <essenceTrackFrameSize source="PBcore essenceTrackFrameSize"/>
       <essenceTrackAspectRatio source="PBcore essenceTrackAspectRatio"/>
     </instantiationEssenceTrack>
     <instantiationEssenceTrack>
-      <essenceTrackType source="PBCore essenceTrackType">Audio</essenceTrackType>
+      <essenceTrackType>Audio</essenceTrackType>
       <essenceTrackStandard/>
       <essenceTrackEncoding source="PBCore essenceTrackEncoding"/>
       <essenceTrackDataRate unitsOfMeasure=""/>
@@ -31,6 +29,9 @@
       <essenceTrackBitDepth/>
       <essenceTrackAnnotation annotationType="number of audio channels"/>
     </instantiationEssenceTrack>
+    <instantiationRights>
+      <rightsSummary/>
+    </instantiationRights>
     <instantiationAnnotation annotationType="checksum type">inserted</instantiationAnnotation>
     <instantiationAnnotation annotationType="checksum value">inserted</instantiationAnnotation>
     <instantiationAnnotation annotationType="playback device">inserted</instantiationAnnotation>

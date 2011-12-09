@@ -21,6 +21,7 @@ describe Rockhall::PbcoreInstantiation do
     it "should update all of the fields in #xml_template and fields not requiring additional inserted nodes" do
       [
         [:name],
+        [:location],
         [:date],
         [:generation],
         [:media_type],

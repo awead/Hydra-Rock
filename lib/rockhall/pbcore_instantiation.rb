@@ -9,13 +9,14 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
 
     t.pbcoreInstantiation(:namespace_prefix=>nil) {
 
-      t.instantiationIdentifier(:namespace_prefix=>nil)
+      t.instantiationIdentifier(:namespace_prefix=>nil, :attributes=>{ :source=>"Rock and Roll Hall of Fame and Museum" })
+      t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"creation date" })
+      t.instantiationDigital(:namespace_prefix=>nil, :attributes=>{ :source=>"EBU file formats" })
+      t.instantiationLocation(:namespace_prefix=>nil)
+      t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
       t.instantiationFileSize(:namespace_prefix=>nil) {
         t.units(:path=>{:attribute=>"unitsOfMeasure"}, :namespace_prefix=>nil)
       }
-      t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"creation date" })
-      t.instantiationDigital(:namespace_prefix=>nil, :attributes=>{ :source=>"EBU file formats" })
-      t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
       t.instantiationColors(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationColors" })
       t.instantiationMediaType(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationMediaType" })
       t.instantiationDuration(:namespace_prefix=>nil)
@@ -70,6 +71,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     #
 
     t.name(:proxy=>[:pbcoreInstantiation, :instantiationIdentifier])
+    t.location(:proxy=>[:pbcoreInstantiation, :instantiationLocation])
     t.date(:proxy=>[:pbcoreInstantiation, :instantiationDate])
     t.generation(:proxy=>[:pbcoreInstantiation, :instantiationGenerations])
     t.media_type(:proxy=>[:pbcoreInstantiation, :instantiationMediaType])
@@ -121,43 +123,40 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
   def self.xml_template
     builder = Nokogiri::XML::Builder.new do |xml|
 
-      xml.pbcoreDescriptionDocument(:version=>"2.0", "xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
+      xml.pbcoreDescriptionDocument("xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
         "xsi:schemaLocation"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html") {
 
         xml.pbcoreInstantiation {
 
-          xml.instantiationIdentifier
-          xml.instantiationFileSize(:unitsOfMeasure=>"")
+          xml.instantiationIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
           xml.instantiationDate(:dateType=>"creation date")
           xml.instantiationDigital(:source=>"EBU file formats")
-          xml.instantiationGenerations(:source=>"PBCore instantiationGenerations")
+          xml.instantiationLocation
           xml.instantiationMediaType(:source=>"PBCore instantiationMediaType") {
             xml.text "Moving image"
           }
+          xml.instantiationGenerations(:source=>"PBCore instantiationGenerations")
+          xml.instantiationFileSize(:unitsOfMeasure=>"")
+          xml.instantiationDuration
           xml.instantiationColors(:source=>"PBCore instantiationColors") {
             xml.text "Color"
           }
-          xml.instantiationDuration
-
-          xml.instantiationRights {
-            xml.rightsSummary
-          }
 
           xml.instantiationEssenceTrack {
-            xml.essenceTrackType(:source=>"PBCore essenceTrackType") {
+            xml.essenceTrackType {
               xml.text "Video"
             }
             xml.essenceTrackStandard
             xml.essenceTrackEncoding(:source=>"PBCore essenceTrackEncoding")
             xml.essenceTrackDataRate(:unitsOfMeasure=>"")
             xml.essenceTrackFrameRate(:unitsOfMeasure=>"fps")
-            xml.essenceTrackFrameSize(:source=>"PBcore essenceTrackFrameSize")
             xml.essenceTrackBitDepth
+            xml.essenceTrackFrameSize(:source=>"PBcore essenceTrackFrameSize")
             xml.essenceTrackAspectRatio(:source=>"PBcore essenceTrackAspectRatio")
           }
 
           xml.instantiationEssenceTrack {
-            xml.essenceTrackType(:source=>"PBCore essenceTrackType") {
+            xml.essenceTrackType {
               xml.text "Audio"
             }
             xml.essenceTrackStandard
@@ -167,6 +166,11 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
             xml.essenceTrackBitDepth
             xml.essenceTrackAnnotation(:annotationType=>"number of audio channels")
           }
+
+          xml.instantiationRights {
+            xml.rightsSummary
+          }
+
 
         }
 
