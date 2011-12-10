@@ -69,7 +69,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     # Publisher names and roles
     t.publisher(:path=>"pbcorePublisher", :namespace_prefix=>nil) {
       t.name_(:path=>"publisher", :namespace_prefix=>nil)
-      t.role_(:path=>"publisherRole", :namespace_prefix=>nil, :attributes=>{ :source=>"PBcore publisherRole" })
+      t.role_(:path=>"publisherRole", :namespace_prefix=>nil, :attributes=>{ :source=>"PBCore publisherRole" })
     }
     t.publisher_name(:proxy=>[:publisher, :name])
     t.publisher_role(:proxy=>[:publisher, :role])

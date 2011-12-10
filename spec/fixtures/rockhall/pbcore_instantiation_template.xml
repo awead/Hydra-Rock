@@ -20,8 +20,8 @@
       <essenceTrackDataRate unitsOfMeasure=""/>
       <essenceTrackFrameRate unitsOfMeasure="fps"/>
       <essenceTrackBitDepth/>
-      <essenceTrackFrameSize source="PBcore essenceTrackFrameSize"/>
-      <essenceTrackAspectRatio source="PBcore essenceTrackAspectRatio"/>
+      <essenceTrackFrameSize source="PBCore essenceTrackFrameSize"/>
+      <essenceTrackAspectRatio source="PBCore essenceTrackAspectRatio"/>
     </instantiationEssenceTrack>
     <instantiationEssenceTrack>
       <essenceTrackType>Audio</essenceTrackType>

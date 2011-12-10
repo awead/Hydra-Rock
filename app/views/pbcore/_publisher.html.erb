@@ -1,17 +1,12 @@
-<%
-  # On create: publisher_counter and publisher variables come from the controller
-  # On edit: they come from the defaults in the render call
-  publisher_name = get_values_from_datastream(@document_fedora,'descMetadata', [{:publisher_name=>publisher_counter}]).first
-  base_id = "publisher_#{publisher_counter}"
-%>
-
 <li>
   <% if params[:action] == "edit" %>
     <!-- multiple needs to be explicitly set to FALSE. For some reason, it's getting set to TRUE -->
     <%= fedora_text_field(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name], {:size=>40, :multiple=>FALSE}) %>
     <%= fedora_select(@document_fedora,"descMetadata", [{:publisher=>publisher_counter}, :role], :choices=>Relators.pbcore.keys.sort).html_safe %>
   <% else %>
-    <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name]) %>,
-    <%= publisher_link(publisher_counter) %>
+    <span>
+      <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name]) %>,
+      <%= publisher_link(publisher_counter) %>
+    </span>
   <% end %>
 </li>

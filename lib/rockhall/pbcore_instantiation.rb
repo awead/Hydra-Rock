@@ -3,7 +3,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
 
   include Rockhall::PbcoreMethods
 
-  # Note: this is not a complete PBcore document, just an instantiation node
+  # Note: this is not a complete PBCore document, just an instantiation node
   set_terminology do |t|
     t.root(:path=>"pbcoreDescriptionDocument", :xmlns => '', :namespace_prefix=>nil)
 
@@ -32,9 +32,9 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
           t.units(:path=>{:attribute=>"unitsOfMeasure"}, :namespace_prefix=>nil)
         }
         t.essenceTrackFrameRate(:namespace_prefix=>nil, :attributes=>{ :unitsOfMeasure=>"fps" })
-        t.essenceTrackFrameSize(:namespace_prefix=>nil, :attributes=>{ :source=>"PBcore essenceTrackFrameSize" })
+        t.essenceTrackFrameSize(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore essenceTrackFrameSize" })
         t.essenceTrackBitDepth(:namespace_prefix=>nil)
-        t.essenceTrackAspectRatio(:namespace_prefix=>nil, :attributes=>{ :source=>"PBcore essenceTrackAspectRatio" })
+        t.essenceTrackAspectRatio(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore essenceTrackAspectRatio" })
         t.essenceTrackSamplingRate(:namespace_prefix=>nil) {
           t.units(:path=>{:attribute=>"unitsOfMeasure"}, :namespace_prefix=>nil)
         }
@@ -157,8 +157,8 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
             xml.essenceTrackDataRate(:unitsOfMeasure=>"")
             xml.essenceTrackFrameRate(:unitsOfMeasure=>"fps")
             xml.essenceTrackBitDepth
-            xml.essenceTrackFrameSize(:source=>"PBcore essenceTrackFrameSize")
-            xml.essenceTrackAspectRatio(:source=>"PBcore essenceTrackAspectRatio")
+            xml.essenceTrackFrameSize(:source=>"PBCore essenceTrackFrameSize")
+            xml.essenceTrackAspectRatio(:source=>"PBCore essenceTrackAspectRatio")
           }
 
           xml.instantiationEssenceTrack {
