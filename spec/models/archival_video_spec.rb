@@ -81,7 +81,7 @@ describe ArchivalVideo do
 
   describe "#videos" do
     it "should return a hash of videos" do
-      av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_document1")
+      av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_document3")
       av.file_objects.count.should == 2
       av.videos.should be_kind_of(Hash)
     end
