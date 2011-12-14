@@ -9,6 +9,7 @@ gem 'devise'
 gem 'bagit', :path => "gems/bagit"
 gem 'semver' # for BagIt compatibility
 gem 'mediainfo'
+gem 'rsolr', '1.0.2'
 
 group :development, :test do
   gem 'solrizer-fedora', '>=1.0.1'
