@@ -99,7 +99,7 @@ describe Rockhall::PbcoreDocument do
   end
 
   describe "#xml_template" do
-    it "should return an empty xml document matching an exmplar" do
+    it "should return an empty xml document matching a valid exmplar" do
       # insert additional nodes
       @object_ds.insert_node("publisher")
       @object_ds.insert_node("contributor")
@@ -119,24 +119,23 @@ describe Rockhall::PbcoreDocument do
       @object_ds.update_indexed_attributes({ [:genre] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:condition_note] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:cleaning_note] => { 0 => "inserted" }} )
-      @object_ds.update_indexed_attributes({ [:format] => { 0 => "inserted" }} )
-      @object_ds.update_indexed_attributes({ [:standard] => { 0 => "inserted" }} )
-      @object_ds.update_indexed_attributes({ [:usage] => { 0 => "inserted" }} )
 
       # Load example fixture
       f = File.open("#{Rails.root.to_s}/spec/fixtures/rockhall/pbcore_document_template.xml")
       ref_node = Nokogiri::XML(f)
       f.close
 
-      # Nokogiri-fy our sample document
+      # Nokogiri-fy our sample document and reorder nodes
       sample_node = Nokogiri::XML(@object_ds.to_xml)
+      reordered = Rockhall::Pbcore.reorder_document(sample_node)
 
       # Save this for later...
       out = File.new("tmp/pbcore_document_sample.xml", "w")
-      out.write(sample_node.to_s)
+      out.write(reordered.to_s)
       out.close
 
-      EquivalentXml.equivalent?(ref_node, sample_node, opts = { :element_order => false, :normalize_whitespace => true }).should be_true
+      EquivalentXml.equivalent?(ref_node, reordered, opts = { :element_order => true, :normalize_whitespace => true }).should be_true
+      Rockhall::Pbcore.validate(reordered).should be_empty
 
     end
   end

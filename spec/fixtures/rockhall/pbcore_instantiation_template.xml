@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
-  <pbcoreIdentifier source="Rock and Roll Hall of Fame and Museum"/>
+<pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"/>
   <pbcoreTitle/>
   <pbcoreDescription/>
   <pbcoreInstantiation>
-    <instantiationIdentifier source="Rock and Roll Hall of Fame and Museum"/>
-    <instantiationDate dateType="creation date"/>
+    <instantiationIdentifier annotation="Filename" source="Rock and Roll Hall of Fame and Museum"/>
+    <instantiationDate dateType="created"/>
     <instantiationDigital source="EBU file formats"/>
     <instantiationLocation/>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
@@ -30,23 +30,23 @@
       <essenceTrackDataRate unitsOfMeasure=""/>
       <essenceTrackSamplingRate unitsOfMeasure=""/>
       <essenceTrackBitDepth/>
-      <essenceTrackAnnotation annotationType="number of audio channels"/>
+      <essenceTrackAnnotation annotationType="Number of Audio Channels"/>
     </instantiationEssenceTrack>
     <instantiationRights>
       <rightsSummary/>
     </instantiationRights>
-    <instantiationAnnotation annotationType="checksum type">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="checksum value">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="playback device">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="capture software">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="transcoding software">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="operator">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="transfer notes">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="vendor name">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="condition notes">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="cleaning notes">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="note">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="color space">inserted</instantiationAnnotation>
-    <instantiationAnnotation annotationType="chroma">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Checksum Type">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Checksum Value">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Playback Device">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Capture Software">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Transcoding Software">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Operator">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Transfer Notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Vendor Name">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Condition Notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Cleaning Notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Notes">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Color Space">inserted</instantiationAnnotation>
+    <instantiationAnnotation annotationType="Chroma">inserted</instantiationAnnotation>
   </pbcoreInstantiation>
 </pbcoreDescriptionDocument>

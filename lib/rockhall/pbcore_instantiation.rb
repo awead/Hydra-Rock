@@ -9,8 +9,8 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
 
     t.pbcoreInstantiation(:namespace_prefix=>nil) {
 
-      t.instantiationIdentifier(:namespace_prefix=>nil, :attributes=>{ :source=>"Rock and Roll Hall of Fame and Museum" })
-      t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"creation date" })
+      t.instantiationIdentifier(:namespace_prefix=>nil, :attributes=>{ :annotation=>"Filename", :source=>"Rock and Roll Hall of Fame and Museum" })
+      t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"created" })
       t.instantiationDigital(:namespace_prefix=>nil, :attributes=>{ :source=>"EBU file formats" })
       t.instantiationLocation(:namespace_prefix=>nil)
       t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
@@ -38,7 +38,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
         t.essenceTrackSamplingRate(:namespace_prefix=>nil) {
           t.units(:path=>{:attribute=>"unitsOfMeasure"}, :namespace_prefix=>nil)
         }
-        t.essenceTrackAnnotation( :namespace_prefix=>nil, :attributes=>{ :annotationType=>"number of audio channels" })
+        t.essenceTrackAnnotation( :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Number of Audio Channels" })
       }
       t.video_essence(:ref => [:pbcoreInstantiation, :instantiationEssenceTrack],
         :path=>'instantiationEssenceTrack[essenceTrackType="Video"]',
@@ -50,19 +50,19 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
       )
 
       # Instantitation annotiations
-      t.inst_chksum_type(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"checksum type" })
-      t.inst_chksum_value(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"checksum value" })
-      t.inst_device(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"playback device" })
-      t.inst_capture_soft(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"capture software" })
-      t.inst_trans_soft(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"transcoding software" })
-      t.inst_operator(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"operator" })
-      t.inst_trans_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"transfer notes" })
-      t.inst_vendor(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"vendor name" })
-      t.inst_cond_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"condition notes" })
-      t.inst_clean_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"cleaning notes" })
-      t.inst_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"note" })
-      t.inst_color_space(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"color space" })
-      t.inst_chroma(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"chroma" })
+      t.inst_chksum_type(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Checksum Type" })
+      t.inst_chksum_value(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Checksum Value" })
+      t.inst_device(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Playback Device" })
+      t.inst_capture_soft(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Capture Software" })
+      t.inst_trans_soft(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Transcoding Software" })
+      t.inst_operator(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Operator" })
+      t.inst_trans_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Transfer Notes" })
+      t.inst_vendor(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Vendor Name" })
+      t.inst_cond_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Condition Notes" })
+      t.inst_clean_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Cleaning Notes" })
+      t.inst_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Notes" })
+      t.inst_color_space(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Color Space" })
+      t.inst_chroma(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Chroma" })
 
     }
 
@@ -128,14 +128,14 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
 
         # These fields are only added so that this document will be validated.  However, they
         # shouldn't be used for anything else here because they're in the parent Fedora object
-        xml.pbcoreIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
+        xml.pbcoreIdentifier(:annotation=>"PID", :source=>"Rock and Roll Hall of Fame and Museum")
         xml.pbcoreTitle
         xml.pbcoreDescription
 
         xml.pbcoreInstantiation {
 
-          xml.instantiationIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
-          xml.instantiationDate(:dateType=>"creation date")
+          xml.instantiationIdentifier(:annotation=>"Filename", :source=>"Rock and Roll Hall of Fame and Museum")
+          xml.instantiationDate(:dateType=>"created")
           xml.instantiationDigital(:source=>"EBU file formats")
           xml.instantiationLocation
           xml.instantiationMediaType(:source=>"PBCore instantiationMediaType") {
@@ -170,13 +170,12 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
             xml.essenceTrackDataRate(:unitsOfMeasure=>"")
             xml.essenceTrackSamplingRate(:unitsOfMeasure=>"")
             xml.essenceTrackBitDepth
-            xml.essenceTrackAnnotation(:annotationType=>"number of audio channels")
+            xml.essenceTrackAnnotation(:annotationType=>"Number of Audio Channels")
           }
 
           xml.instantiationRights {
             xml.rightsSummary
           }
-
 
         }
 

@@ -9,37 +9,37 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     #
     #  pbcoreDescription fields
     #
-    t.pbc_id(:path=>"pbcoreIdentifier", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :source=>"rock hall", :annotation=>"Fedora ID" })
+    t.pbc_id(:path=>"pbcoreIdentifier", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :source=>"Rock and Roll Hall of Fame and Museum", :annotation=>"PID" })
 
-    t.main_title(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"main" })
-    t.alternative_title(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"alternative" })
-    t.chapter(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"chapter" })
-    t.episode(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"episode" })
-    t.label(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"label" })
-    t.segment(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"segment" })
-    t.subtitle(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"subtitle" })
-    t.track(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"track" })
-    t.translation(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"translation" })
+    t.main_title(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"Main" })
+    t.alternative_title(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"Alternative" })
+    t.chapter(:path=>"pbcoreTitle", :namespace_prefix=>nil, :namespace_prefix=>nil, :attributes=>{ :titleType=>"Chapter" })
+    t.episode(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"Episode" })
+    t.label(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"Label" })
+    t.segment(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"Segment" })
+    t.subtitle(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"Subtitle" })
+    t.track(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"Track" })
+    t.translation(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"Translation" })
 
     t.subject(:path=>"pbcoreSubject", :namespace_prefix=>nil)
 
-    t.summary(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"description",
+    t.summary(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"Description",
       :descriptionTypeSource=>"pbcoreDescription/descriptionType",
       :descriptionTypeRef=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description",
-      :annotation=>"main"}
+      :annotation=>"Summary"}
     )
 
-    t.parts_list(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"table of contents",
+    t.parts_list(:path=>"pbcoreDescription", :namespace_prefix=>nil, :attributes=>{ :descriptionType=>"Table of Contents",
       :descriptionTypeSource=>"pbcoreDescription/descriptionType",
       :descriptionTypeRef=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents",
-      :annotation=>"parts list" }
+      :annotation=>"Parts List" }
     )
 
     t.genre(:path=>"pbcoreGenre", :namespace_prefix=>nil)
 
     # Series field
     t.pbcoreRelation(:namespace_prefix=>nil) {
-      t.pbcoreRelationIdentifier(:namespace_prefix=>nil, :attributes=>{ :annotation=>"event series" })
+      t.pbcoreRelationIdentifier(:namespace_prefix=>nil, :attributes=>{ :annotation=>"Event Series" })
     }
     t.event_series(:ref=>[:pbcoreRelation, :pbcoreRelationIdentifier])
 
@@ -74,32 +74,32 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.publisher_name(:proxy=>[:publisher, :name])
     t.publisher_role(:proxy=>[:publisher, :role])
 
-    t.note(:path=>"pbcoreAnnotation", :namespace_prefix=>nil, :atttributes=>{ :annotationType=>"notes" })
+    t.note(:path=>"pbcoreAnnotation", :namespace_prefix=>nil, :atttributes=>{ :annotationType=>"Notes" })
 
     #
     # pbcoreInstantiation fields for the physical item
     #
     t.pbcoreInstantiation(:namespace_prefix=>nil) {
-      t.instantiationIdentifier(:namespace_prefix=>nil, :attributes=>{ :source=>"Rock and Roll Hall of Fame and Museum" })
-      t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"creation date" })
+      t.instantiationIdentifier(:namespace_prefix=>nil, :attributes=>{ :annotation=>"Barcode", :source=>"Rock and Roll Hall of Fame and Museum" })
+      t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"created" })
       t.instantiationPhysical(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationPhysical" })
       t.instantiationStandard(:namespace_prefix=>nil)
       t.instantiationLocation(:namespace_prefix=>nil)
       t.instantiationMediaType(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationMediaType" })
       t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
       t.instantiationColors(:namespace_prefix=>nil)
-      t.instantiationLanguage(:namespace_prefix=>nil)
+      t.instantiationLanguage(:namespace_prefix=>nil, :attributes=>{ :source=>"ISO 639.2", :ref=>"http://www.loc.gov/standards/iso639-2/php/code_list.php" })
       t.instantiationRelation(:namespace_prefix=>nil) {
-        t.arc_collection(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"archival collection" })
-        t.arc_series(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"archival series" })
-        t.col_number(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"collection number" })
-        t.acc_number(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"accession number" })
+        t.arc_collection(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Archival collection" })
+        t.arc_series(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Archival Series" })
+        t.col_number(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Collection Number" })
+        t.acc_number(:path=>"instantiationRelationIdentifier", :namespace_prefix=>nil, :attributes=>{ :annotation=>"Accession Number" })
       }
       t.instantiationRights(:namespace_prefix=>nil) {
         t.rightsSummary(:namespace_prefix=>nil)
       }
-      t.inst_cond_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"condition notes" })
-      t.inst_clean_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"cleaning notes" })
+      t.inst_cond_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Condition Notes" })
+      t.inst_clean_note(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Cleaning Notes" })
     }
     # Individual field names:
     t.creation_date(:proxy=>[:pbcoreInstantiation, :instantiationDate])
@@ -149,37 +149,37 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
       xml.pbcoreDescriptionDocument("xmlns:xsi"=>"http://www.w3.org/2001/XMLSchema-instance",
         "xsi:schemaLocation"=>"http://www.pbcore.org/PBCore/PBCoreNamespace.html") {
 
-        xml.pbcoreIdentifier(:source=>"Rock and Roll Hall of Fame and Museum", :annotation=>"Fedora ID")
-        xml.pbcoreTitle(:titleType=>"main")
-        xml.pbcoreDescription(:descriptionType=>"description",
+        xml.pbcoreIdentifier(:source=>"Rock and Roll Hall of Fame and Museum", :annotation=>"PID")
+        xml.pbcoreTitle(:titleType=>"Main")
+        xml.pbcoreDescription(:descriptionType=>"Description",
           :descriptionTypeSource=>"pbcoreDescription/descriptionType",
           :descriptionTypeRef=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description",
-          :annotation=>"main"
+          :annotation=>"Summary"
         )
-        xml.pbcoreDescription(:descriptionType=>"table of contents",
+        xml.pbcoreDescription(:descriptionType=>"Table of Contents",
           :descriptionTypeSource=>"pbcoreDescription/descriptionType",
           :descriptionTypeRef=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents",
-          :annotation=>"parts list"
+          :annotation=>"Parts List"
         )
         xml.pbcoreRelation {
           xml.pbcoreRelationType(:source=>"PBCore relationType", :ref=>"http://pbcore.org/vocabularies/relationType#is-part-of") {
             xml.text "Is Part Of"
           }
-          xml.pbcoreRelationIdentifier(:annotation=>"event series")
+          xml.pbcoreRelationIdentifier(:annotation=>"Event Series")
         }
         xml.pbcoreCoverage {
-          xml.coverage
+          xml.coverage(:annotation=>"Event Place")
           xml.coverageType {
             xml.text "Spatial"
           }
         }
         xml.pbcoreCoverage {
-          xml.coverage
+          xml.coverage(:annotation=>"Event Date")
           xml.coverageType {
             xml.text "Temporal"
           }
         }
-        xml.pbcoreAnnotation(:annotationType=>"notes")
+        xml.pbcoreAnnotation(:annotationType=>"Notes")
 
         #
         # Default physical item
@@ -187,8 +187,10 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
         xml.pbcoreInstantiation {
 
           # Item details
-          xml.instantiationIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
-          xml.instantiationDate(:dateType=>"creation date")
+          xml.instantiationIdentifier(:annotation=>"Barcode", :source=>"Rock and Roll Hall of Fame and Museum")
+          xml.instantiationDate(:dateType=>"created")
+          xml.instantiationPhysical(:source=>"PBCore instantiationPhysical")
+          xml.instantiationStandard
           xml.instantiationLocation {
             xml.text "Rock and Roll Hall of Fame and Museum,\n2809 Woodland Ave.,\nCleveland, OH, 44115\n216-515-1956\nlibrary@rockhall.org"
           }
@@ -198,35 +200,38 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
           xml.instantiationGenerations(:source=>"PBCore instantiationGenerations") {
             xml.text "Original"
           }
-          xml.instantiationLanguage {
-            xml.text "eng"
-          }
           xml.instantiationColors {
             xml.text "Color"
           }
-          xml.instantiationRelation {
-            xml.instantiationRelationType(:source=>"PBCore relationType", :ref=>"http://pbcore.org/vocabularies/relationType#is-part-of") {
-              xml.text "Is Part Of"
-            }
-            xml.instantiationRelationIdentifier(:annotation=>"archival collection")
+          xml.instantiationLanguage(:source=>"ISO 639.2", :ref=>"http://www.loc.gov/standards/iso639-2/php/code_list.php") {
+            xml.text "eng"
           }
           xml.instantiationRelation {
             xml.instantiationRelationType(:source=>"PBCore relationType", :ref=>"http://pbcore.org/vocabularies/relationType#is-part-of") {
               xml.text "Is Part Of"
             }
-            xml.instantiationRelationIdentifier(:annotation=>"archival series")
+            xml.instantiationRelationIdentifier(:annotation=>"Archival Collection")
           }
           xml.instantiationRelation {
             xml.instantiationRelationType(:source=>"PBCore relationType", :ref=>"http://pbcore.org/vocabularies/relationType#is-part-of") {
               xml.text "Is Part Of"
             }
-            xml.instantiationRelationIdentifier(:annotation=>"collection number")
+            xml.instantiationRelationIdentifier(:annotation=>"Archival Series")
           }
           xml.instantiationRelation {
             xml.instantiationRelationType(:source=>"PBCore relationType", :ref=>"http://pbcore.org/vocabularies/relationType#is-part-of") {
               xml.text "Is Part Of"
             }
-            xml.instantiationRelationIdentifier(:annotation=>"accession number")
+            xml.instantiationRelationIdentifier(:annotation=>"Collection Number")
+          }
+          xml.instantiationRelation {
+            xml.instantiationRelationType(:source=>"PBCore relationType", :ref=>"http://pbcore.org/vocabularies/relationType#is-part-of") {
+              xml.text "Is Part Of"
+            }
+            xml.instantiationRelationIdentifier(:annotation=>"Accession Number")
+          }
+          xml.instantiationRights {
+            xml.rightsSummary
           }
 
         }

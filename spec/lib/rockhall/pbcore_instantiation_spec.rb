@@ -104,15 +104,17 @@ describe Rockhall::PbcoreInstantiation do
       ref_node = Nokogiri::XML(f)
       f.close
 
-      # Nokogiri-fy our sample document
+      # Nokogiri-fy our sample document and add in namespace
       sample_node = Nokogiri::XML(@object_ds.to_xml)
+      with_namespace = Rockhall::Pbcore.insert_pbcore_namespace(sample_node)
 
       # Save this for later...
       out = File.new("tmp/pbcore_instantiation_sample.xml", "w")
-      out.write(sample_node.to_s)
+      out.write(with_namespace.to_s)
       out.close
 
-      EquivalentXml.equivalent?(ref_node, sample_node, opts = { :element_order => false, :normalize_whitespace => true }).should be_true
+      EquivalentXml.equivalent?(ref_node, with_namespace, opts = { :element_order => false, :normalize_whitespace => true }).should be_true
+      Rockhall::Pbcore.validate(with_namespace).should be_empty
     end
   end
 
@@ -125,7 +127,6 @@ describe Rockhall::PbcoreInstantiation do
       @object_ds.update_indexed_attributes({ [:audio_standard] => { 0 => "audio standard" }} )
       @object_ds.get_values([{:pbcoreInstantiation=>0}, {:instantiationEssenceTrack=>0}, :essenceTrackStandard]).first.should == "video standard"
       @object_ds.get_values([{:pbcoreInstantiation=>0}, {:instantiationEssenceTrack=>1}, :essenceTrackStandard]).first.should == "audio standard"
-
 
     end
 
