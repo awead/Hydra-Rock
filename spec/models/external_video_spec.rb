@@ -1,11 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require "active_fedora"
 
 describe ExternalVideo do
 
   before(:each) do
-    Fedora::Repository.stubs(:instance).returns(stub_everything())
-    @video = ExternalVideo.new
+    @video = ExternalVideo.new nil
     @video.stubs(:create_date).returns("2008-07-02T05:09:42.015Z")
     @video.stubs(:modified_date).returns("2008-09-29T21:21:52.892Z")
   end

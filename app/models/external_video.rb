@@ -28,8 +28,8 @@ class ExternalVideo < ActiveFedora::Base
   def initialize( attrs={} )
     super
     # Anyone in the archivist group has edit rights
-    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
   end
 
   # augments add_named_datastream to put file information in descMetadata
@@ -44,9 +44,9 @@ class ExternalVideo < ActiveFedora::Base
       size = ""
       units = ""
     end
-    datastreams_in_memory["descMetadata"].update_indexed_attributes([:size] => size)
-    datastreams_in_memory["descMetadata"].update_indexed_attributes([:size, :units] => units)
-    datastreams_in_memory["descMetadata"].update_indexed_attributes([:name] => opts[:label])
+    datastreams["descMetadata"].update_indexed_attributes([:size] => size)
+    datastreams["descMetadata"].update_indexed_attributes([:size, :units] => units)
+    datastreams["descMetadata"].update_indexed_attributes([:name] => opts[:label])
   end
 
   # Duplicated methods from FileAsset

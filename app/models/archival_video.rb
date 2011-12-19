@@ -33,9 +33,9 @@ class ArchivalVideo < ActiveFedora::Base
   def initialize( attrs={} )
     super
     # Apply group permissions
-    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
-    self.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
   end
 
   def remove_file_objects
@@ -65,8 +65,8 @@ class ArchivalVideo < ActiveFedora::Base
       if obj.label.nil?
         u_files << obj.pid
       else
-        results[obj.label.to_sym] = obj.pid if obj.datastreams_in_memory.keys.include?("PRESERVATION1")
-        results[obj.label.to_sym] = obj.pid if obj.datastreams_in_memory.keys.include?("ACCESS1")
+        results[obj.label.to_sym] = obj.pid if obj.datastreams.keys.include?("PRESERVATION1")
+        results[obj.label.to_sym] = obj.pid if obj.datastreams.keys.include?("ACCESS1")
       end
     end
     results[:unknown] = u_files
@@ -75,15 +75,15 @@ class ArchivalVideo < ActiveFedora::Base
 
   def apply_reviewer_metadata(reviewer,license,opts={})
     date = DateTime.now
-    if self.datastreams_in_memory["assetReview"].get_values(:date_completed).first.nil?
-      self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:date_completed] => { 0 => date.strftime("%Y-%m-%d")}})
+    if self.datastreams["assetReview"].get_values(:date_completed).first.nil?
+      self.datastreams["assetReview"].update_indexed_attributes({[:date_completed] => { 0 => date.strftime("%Y-%m-%d")}})
     end
     unless opts[:abstract].nil?
-      self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:abstract] => { 0 => opts[:abstract]}})
+      self.datastreams["assetReview"].update_indexed_attributes({[:abstract] => { 0 => opts[:abstract]}})
     end
-    self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:date_updated] => { 0 => date.strftime("%Y-%m-%d")}})
-    self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:reviewer] => { 0 => reviewer}})
-    self.datastreams_in_memory["assetReview"].update_indexed_attributes({[:license] => { 0 => license}})
+    self.datastreams["assetReview"].update_indexed_attributes({[:date_updated] => { 0 => date.strftime("%Y-%m-%d")}})
+    self.datastreams["assetReview"].update_indexed_attributes({[:reviewer] => { 0 => reviewer}})
+    self.datastreams["assetReview"].update_indexed_attributes({[:license] => { 0 => license}})
   end
 
 
