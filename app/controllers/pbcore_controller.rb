@@ -1,9 +1,6 @@
-require 'mediashelf/active_fedora_helper'
-
 class PbcoreController < ApplicationController
 
   include MediaShelf::ActiveFedoraHelper
-  before_filter :require_solr, :require_fedora
 
   def create
     af_model = retrieve_af_model(params[:content_type], :default=>ArchivalVideo)
