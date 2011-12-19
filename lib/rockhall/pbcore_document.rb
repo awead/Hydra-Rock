@@ -290,10 +290,10 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     solr_doc.merge!(:name_facet => gather_terms(self.find_by_terms(:contributor_name)))
     solr_doc.merge!(:topic_facet => gather_terms(self.find_by_terms(:subjects)))
     solr_doc.merge!(:series_facet => gather_terms(self.find_by_terms(:event_series)))
-    # TODO: not sure why this isn't working (DAM-141)
-    #solr_doc.merge!(:collection_facet => self.find_by_terms(:archival_collection).first.text.strip)
 
-
+    unless self.find_by_terms(:archival_collection).nil?
+      solr_doc.merge!(:collection_facet => self.find_by_terms(:archival_collection).text)
+    end
 
     # Extract 4-digit year
     date = self.find_by_terms(:event_date).first.text.strip
