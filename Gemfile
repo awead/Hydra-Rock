@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '~> 3.0.10'
 
 gem 'blacklight', '~> 3.0.0'
-gem 'hydra-head', '=3.0.1'
+gem 'hydra-head'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'bagit', :path => "gems/bagit"
@@ -12,7 +12,7 @@ gem 'mediainfo'
 gem 'rsolr', '1.0.2'
 
 group :development, :test do
-  gem 'solrizer-fedora', '>=1.0.1'
+  gem 'solrizer-fedora', '>=1.2.0'
   gem 'ruby-debug'
   gem 'rspec'
   gem 'rspec-rails'
