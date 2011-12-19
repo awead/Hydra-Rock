@@ -30,8 +30,14 @@
         <%= fedora_text_area(@document_fedora, "descMetadata", [:parts_list], :multiple=>FALSE) %>
       </dd>
 
-      <%= display_field([:subject], {:multiple=>true}) %>
-      <%= display_field([:genre], {:multiple=>true}) %>
+      <%= display_field([:lc_subject], {:name=>"LC Subject", :multiple=>true}) %>
+      <%= display_field([:lc_name], {:name=>"LC Name", :multiple=>true}) %>
+      <%= display_field([:rh_subject], {:name=>"Rockhall Subject", :multiple=>true}) %>
+
+      <%= display_field([:getty_genre], {:multiple=>true}) %>
+      <%= display_field([:lc_genre], {:name=>"LC Genre", :multiple=>true}) %>
+      <%= display_field([:lc_subject_genre], {:name=>"LC Subject Genre", :multiple=>true}) %>
+
       <%= display_field([:event_series], {:inline=>true}) %>
       <%= display_field([:event_place]) %>
       <%= display_field([:event_date]) %>

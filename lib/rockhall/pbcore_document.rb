@@ -21,6 +21,10 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     t.track(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"Track" })
     t.translation(:path=>"pbcoreTitle", :namespace_prefix=>nil, :attributes=>{ :titleType=>"Translation" })
 
+    # This is only to display all subjects
+    t.subjects(:path=>"pbcoreSubject", :namespace_prefix=>nil)
+
+    # Individual subject types defined for entry
     t.lc_subject(:path=>"pbcoreSubject", :namespace_prefix=>nil, :attributes=>{ :source=>"Library of Congress Subject Headings", :ref=>"http://id.loc.gov/authorities/subjects.html" })
     t.lc_name(:path=>"pbcoreSubject", :namespace_prefix=>nil, :attributes=>{ :source=>"Library of Congress Name Authority File", :ref=>"http://id.loc.gov/authorities/names" })
     t.rh_subject(:path=>"pbcoreSubject", :namespace_prefix=>nil, :attributes=>{ :source=>"Rock and Roll Hall of Fame and Museum" })
@@ -37,6 +41,10 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
       :annotation=>"Parts List" }
     )
 
+    # This is only to display all genres
+    t.genres(:path=>"pbcoreGenre", :namespace_prefix=>nil)
+
+    # Individual genre types defined for entry
     t.getty_genre(:path=>"pbcoreGenre", :namespace_prefix=>nil, :attributes=>{ :source=>"The Getty Research Institute Art and Architecture Thesaurus", :ref=>"http://www.getty.edu/research/tools/vocabularies/aat/index.html" })
     t.lc_genre(:path=>"pbcoreGenre", :namespace_prefix=>nil, :attributes=>{ :source=>"Library of Congress Genre/Form Terms", :ref=>"http://id.loc.gov/authorities/genreForms.html" })
     t.lc_subject_genre(:path=>"pbcoreGenre", :namespace_prefix=>nil, :attributes=>{ :source=>"Library of Congress Subject Headings", :ref=>"http://id.loc.gov/authorities/subjects.html" })
@@ -262,8 +270,8 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     solr_doc.merge!(:pub_date_display => self.find_by_terms(:event_date).text)
     solr_doc.merge!(:publisher_display => gather_terms(self.find_by_terms(:publisher_name)))
     solr_doc.merge!(:contributors_display => gather_terms(self.find_by_terms(:contributor_name)))
-    solr_doc.merge!(:subject_display => gather_terms(self.find_by_terms(:lc_subject)))
-    solr_doc.merge!(:genre_display => gather_terms(self.find_by_terms(:lc_genre)))
+    solr_doc.merge!(:subject_display => gather_terms(self.find_by_terms(:subjects)))
+    solr_doc.merge!(:genre_display => gather_terms(self.find_by_terms(:genres)))
 
     # Blacklight facets - these are the same facet fields used in our Blacklight app
     # for consistency and so they'll show up when we export records from Hydra into BL:
@@ -278,9 +286,9 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     #   lc_1letter_facet
     #   genre_facet
     solr_doc.merge!(:material_facet => "Digital")
-    solr_doc.merge!(:genre_facet => gather_terms(self.find_by_terms(:lc_genre)))
+    solr_doc.merge!(:genre_facet => gather_terms(self.find_by_terms(:genres)))
     solr_doc.merge!(:name_facet => gather_terms(self.find_by_terms(:contributor_name)))
-    solr_doc.merge!(:topic_facet => gather_terms(self.find_by_terms(:lc_subject)))
+    solr_doc.merge!(:topic_facet => gather_terms(self.find_by_terms(:subjects)))
     solr_doc.merge!(:series_facet => gather_terms(self.find_by_terms(:event_series)))
     # TODO: not sure why this isn't working (DAM-141)
     #solr_doc.merge!(:collection_facet => self.find_by_terms(:archival_collection).first.text.strip)

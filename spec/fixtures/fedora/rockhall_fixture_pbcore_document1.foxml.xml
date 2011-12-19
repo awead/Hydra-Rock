@@ -491,8 +491,8 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
@@ -551,11 +551,11 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -613,12 +613,12 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -676,13 +676,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -740,13 +740,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -808,13 +808,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -880,13 +880,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -956,13 +956,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -1036,13 +1036,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -1120,13 +1120,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -1208,13 +1208,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -1300,13 +1300,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -1396,13 +1396,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -1496,13 +1496,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor>Springsteen, Bruce</contributor>
     <contributorRole source="MARC relator terms">recipient</contributorRole>
@@ -1596,13 +1596,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor>Springsteen, Bruce</contributor>
     <contributorRole source="MARC relator terms">recipient</contributorRole>
@@ -1696,13 +1696,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor>Springsteen, Bruce</contributor>
     <contributorRole source="MARC relator terms">recipient</contributorRole>
@@ -1800,13 +1800,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor>Springsteen, Bruce</contributor>
     <contributorRole source="MARC relator terms">recipient</contributorRole>
@@ -1905,13 +1905,13 @@ library@rockhall.org</instantiationLocation>
       <rightsSummary></rightsSummary>
     </instantiationRights>
   </pbcoreInstantiation>
-  <pbcoreGenre>Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject>Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre>Rock concert films.</pbcoreGenre>
-  <pbcoreSubject>Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject>Inductee</pbcoreSubject>
-  <pbcoreSubject>Rock musicians.</pbcoreSubject>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
   <pbcoreContributor>
     <contributor>Springsteen, Bruce</contributor>
     <contributorRole source="MARC relator terms">recipient</contributorRole>

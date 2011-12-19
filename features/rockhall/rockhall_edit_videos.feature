@@ -12,8 +12,5 @@ Feature:
     And I should see "New York, NY"
     And I should see "1999-03-15"
     And I should see "http://rockhall.com/inductees/ceremonies/1999/"
-    And I should see "original"
-    And I should see "h264"
-    And I should see "Rockhall"
     And I should see "Set Permissions"
 

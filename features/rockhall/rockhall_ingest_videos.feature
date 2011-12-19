@@ -26,7 +26,7 @@ Narrative:
     Given I am logged in as "archivist1@example.com"
     And I am on the show document page for rockhall:fixture_pbcore_document3_original
     Then I should see "39156042439369_preservation.mov"
-    And I should see "1000 (KB)"
+    And I should see "0"
     And I should see "2011-10-12"
     And I should see "George Blood Audio and Video"
     And I should see "Copy: preservation"
@@ -57,7 +57,7 @@ Narrative:
     Given I am logged in as "archivist1@example.com"
     And I am on the show document page for rockhall:fixture_pbcore_document3_h264
     Then I should see "39156042439369_access.mp4"
-    And I should see "1000 (KB)"
+    And I should see "0"
     And I should see "2011-10-12"
     And I should see "George Blood Audio and Video"
     And I should see "Copy: access"
