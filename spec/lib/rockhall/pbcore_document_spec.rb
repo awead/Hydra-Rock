@@ -32,8 +32,12 @@ describe Rockhall::PbcoreDocument do
         [:translation],
         [:summary],
         [:parts_list],
-        [:subject],
-        [:genre],
+        [:lc_subject],
+        [:lc_name],
+        [:rh_subject],
+        [:getty_genre],
+        [:lc_genre],
+        [:lc_subject_genre],
         [:event_series],
         [:event_place],
         [:event_date],
@@ -115,6 +119,12 @@ describe Rockhall::PbcoreDocument do
       @object_ds.update_indexed_attributes({ [:subtitle] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:track] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:translation] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:lc_subject] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:lc_name] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:rh_subject] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:getty_genre] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:lc_genre] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:lc_subject_genre] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:subject] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:genre] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:condition_note] => { 0 => "inserted" }} )
@@ -134,7 +144,7 @@ describe Rockhall::PbcoreDocument do
       out.write(reordered.to_s)
       out.close
 
-      EquivalentXml.equivalent?(ref_node, reordered, opts = { :element_order => true, :normalize_whitespace => true }).should be_true
+      EquivalentXml.equivalent?(ref_node, reordered, opts = { :element_order => false, :normalize_whitespace => true }).should be_true
       Rockhall::Pbcore.validate(reordered).should be_empty
 
     end
