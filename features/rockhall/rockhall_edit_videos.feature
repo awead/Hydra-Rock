@@ -7,11 +7,8 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     And I am on the edit document page for rockhall:fixture_pbcore_document1
     And I should see "Content"
-    And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
-    And I should see "[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99."
+    And the "main_title" field within "#main_title" should contain "Rock and Roll Hall of Fame induction ceremony. Part 1."
     And I should see "(1 of 3) Uncut performances and award presentations from the 1999 ceremony."
-    And show me the page
-    And I should see "New York, NY"
-    And I should see "1999-03-15"
-    And I should see "http://rockhall.com/inductees/ceremonies/1999/"
+    And the "event_place" field within "#event_place" should contain "New York, NY"
+    And the "event_date" field within "#event_date" should contain "1999-03-15"
     And I should see "Set Permissions"
