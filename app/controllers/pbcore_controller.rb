@@ -1,3 +1,7 @@
+# -*- encoding : utf-8 -*-
+require 'blacklight/catalog'
+require 'mediashelf/active_fedora_helper'
+
 class PbcoreController < ApplicationController
 
   include MediaShelf::ActiveFedoraHelper
