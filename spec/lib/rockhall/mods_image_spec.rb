@@ -1,26 +1,16 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-require "active_fedora"
-require "nokogiri"
 require "equivalent-xml"
 
 describe Rockhall::ModsImage do
 
   before(:each) do
-    Fedora::Repository.stubs(:instance).returns(stub_everything())
-    @object_ds = Rockhall::ModsImage.new
-  end
-
-  describe ".new" do
-    it "should initialize a new mods article template if no xml is provided" do
-      article_ds = Rockhall::ModsImage.new
-      article_ds.ng_xml.to_xml.should == Rockhall::ModsImage.xml_template.to_xml
-    end
+    ai = ArchivalImage.new nil
+    @object_ds = ai.datastreams["descMetadata"]
   end
 
   describe "insert_person_contributor" do
     it "should generate a new person contributor adding it to the existing one in the template" do
       @object_ds.find_by_terms(:mods, :person).length.should == 1
-      @object_ds.dirty?.should be_false
       node, index = @object_ds.insert_contributor("person")
       @object_ds.dirty?.should be_true
 
@@ -37,7 +27,6 @@ describe Rockhall::ModsImage do
   describe "insert new contributors" do
     it "should generate a new corporate and conference contributor" do
 
-      @object_ds.dirty?.should be_false
       ["corporate", "conference"].each do |type|
         @object_ds.find_by_terms(:mods, type.to_sym).length.should == 0
         node, index = @object_ds.insert_contributor(type)
@@ -68,7 +57,6 @@ describe Rockhall::ModsImage do
   describe "insert_subjects" do
     it "should generate one new subject of each type, personal, corporate, and conference, inserting them into the current xml, treating strings and symbols equally to indicate type and marking the datastream as dirty" do
 
-      @object_ds.dirty?.should be_false
       count = 0
 
       ["personal", "conference", "corporate", "title_info", "topic", "geographic"].each do |name|
@@ -114,7 +102,6 @@ describe Rockhall::ModsImage do
   describe "contibutors_vs_subjects" do
     it "should insert and delete various subject and contributor nodes, insuring the two do not interfere with one another" do
 
-      @object_ds.dirty?.should be_false
       @object_ds.insert_subject(:personal)
 
       ["conference", "corporate"].each do |type|

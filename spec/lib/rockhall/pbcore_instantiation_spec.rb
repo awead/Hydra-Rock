@@ -1,20 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-require "active_fedora"
-require "nokogiri"
 require "equivalent-xml"
 
 describe Rockhall::PbcoreInstantiation do
 
   before(:each) do
-    Fedora::Repository.stubs(:instance).returns(stub_everything())
-    @object_ds = Rockhall::PbcoreInstantiation.new
-  end
-
-  describe ".new" do
-    it "should initialize a new PBCore instantiation template if no xml is provided" do
-      article_ds = Rockhall::PbcoreInstantiation.new
-      article_ds.ng_xml.to_xml.should == Rockhall::PbcoreInstantiation.xml_template.to_xml
-    end
+    #Fedora::Repository.stubs(:instance).returns(stub_everything())
+    ev = ExternalVideo.new nil
+    @object_ds = ev.datastreams["descMetadata"]
   end
 
   describe ".update_indexed_attributes" do

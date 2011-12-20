@@ -1,6 +1,4 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-require "active_fedora"
-require "nokogiri"
 require "equivalent-xml"
 
 describe Rockhall::ModsContributors do
@@ -12,8 +10,7 @@ describe Rockhall::ModsContributors do
   end
 
   before(:each) do
-    #Fedora::Repository.stubs(:instance).returns(stub_everything())
-    @contributor = ContributorTest.new
+    @contributor = ContributorTest.new nil, nil
   end
 
   describe "#person_template" do
