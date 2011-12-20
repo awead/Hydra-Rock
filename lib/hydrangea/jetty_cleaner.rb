@@ -1,28 +1,25 @@
 class Hydrangea::JettyCleaner
 
-  def self.clean(namespace=nil)
+  def self.clean(pidspace=nil)
     raise "You're trying to clean out your production Fedora instance!!" if Rails.env == "production"
-    objects = Fedora::Repository.instance.find_objects(:limit=>1000000)
 
-    objects.each do |obj|
-      case obj
-      when ActiveFedora::Base
-        puts "deleting #{obj.pid}"
-      when Fedora::FedoraObject
-        puts "found FedoraObject #{obj.pid}"
-        if namespace
-          if obj.pid.match(/^#{namespace}:/)
-            puts "deleting #{obj.pid} from namespace #{namespace}"
-            ActiveFedora::Base.load_instance( obj.pid ).delete
-          end
-        else
-          puts "deleting #{obj.pid}"
-          ActiveFedora::Base.load_instance( obj.pid ).delete
-        end
+    solr_params = Hash.new
+    solr_params[:fl]   = "id"
+    solr_params[:qt]   = "standard"
+    solr_params[:rows] = 1000
+    solr_params[:q]    = "*:*"
+    solr_response = Blacklight.solr.find(solr_params)
+    docs = solr_response.docs.collect {|doc| SolrDocument.new(doc, solr_response)}
+
+    docs.each do |doc|
+      namespace, number = doc.id.split(/:/)
+      if namespace == pidspace or pidspace.nil?
+        puts "Deleting #{doc.id}"
+        ActiveFedora::Base.load_instance( doc.id ).delete
       else
-        puts "#{obj.pid} is a #{obj.class}. Could not load and delete it."
+        puts "Keeping #{doc.id}"
       end
     end
-    nil
   end
+
 end
