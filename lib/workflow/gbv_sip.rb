@@ -52,7 +52,7 @@ class GbvSip
     begin
       av = ArchivalVideo.new
       av.label = "George Blood Audio and Video"
-      ds = av.datastreams_in_memory["descMetadata"]
+      ds = av.datastreams["descMetadata"]
       self.update_fields(ds)
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
@@ -80,7 +80,7 @@ class GbvSip
 
     begin
       av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
-      ds = av.datastreams_in_memory["descMetadata"]
+      ds = av.datastreams["descMetadata"]
       self.update_fields(ds)
       av.save
     rescue Exception=>e

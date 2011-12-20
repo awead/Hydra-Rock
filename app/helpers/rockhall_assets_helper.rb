@@ -108,13 +108,13 @@ module RockhallAssetsHelper
 
 
   def asset_link(type)
-    @document_fedora.external_video(type.to_sym).datastreams_in_memory["ACCESS1"].label
+    @document_fedora.external_video(type.to_sym).datastreams["ACCESS1"].label
   end
 
   def asset_path(type)
     path = String.new
     unless @document_fedora.external_video(:h264).nil?
-      filename = @document_fedora.external_video(:h264).datastreams_in_memory["descMetadata"].get_values(:name)
+      filename = @document_fedora.external_video(:h264).datastreams["descMetadata"].get_values(:name)
       path = File.join(@document_fedora.pid.gsub(/:/,"_"),"data",filename)
     end
     return path
@@ -180,7 +180,7 @@ module RockhallAssetsHelper
 
 
   def display_fieldset(type,opts={})
-    collection = @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(type)
+    collection = @document_fedora.datastreams["descMetadata"].find_by_terms(type)
     render :partial=>"pbcore/#{type.to_s}", :collection=>collection
   end
 

@@ -28,14 +28,14 @@ describe Workflow::GbvIngest do
 
       # Check parent object fields
       ing.parent.label.should == "George Blood Audio and Video"
-      ds = ing.parent.datastreams_in_memory["descMetadata"]
+      ds = ing.parent.datastreams["descMetadata"]
       ds.get_values([:creation_date]).first.should  == "2007-07-09"
       ds.get_values([:standard]).first.should  == "NTSC"
       ds.get_values([:format]).first.should   == "Betacam"
 
       # Preservation file
       original = ExternalVideo.load_instance(ing.parent.videos[:original])
-      o_ds = original.datastreams_in_memory["descMetadata"]
+      o_ds = original.datastreams["descMetadata"]
 
       # Preservation: Instantiation fields
       o_ds.get_values([:date]).first.should         == "2011-10-12"
@@ -77,7 +77,7 @@ describe Workflow::GbvIngest do
 
       # Access file
       access = ExternalVideo.load_instance(ing.parent.videos[:h264])
-      a_ds = access.datastreams_in_memory["descMetadata"]
+      a_ds = access.datastreams["descMetadata"]
 
       # Access: Instantiation fields
       a_ds.get_values([:date]).first.should         == "2011-10-12"
@@ -122,11 +122,11 @@ describe Workflow::GbvIngest do
       ing.update
 
       # Check metadata
-      ds = ing.parent.datastreams_in_memory["descMetadata"]
+      ds = ing.parent.datastreams["descMetadata"]
       ds.get_values([:creation_date]).first.should == "2007-07-09"
 
       original = ExternalVideo.load_instance(ing.parent.videos[:original])
-      o_ds = original.datastreams_in_memory["descMetadata"]
+      o_ds = original.datastreams["descMetadata"]
       o_ds.get_values([:date]).first.should == "2011-10-12"
       o_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
       o_ds.get_values([:cleaning]).first.should be_nil
@@ -138,7 +138,7 @@ describe Workflow::GbvIngest do
       o_ds.get_values([:operator]).first.should == "TMu"
 
       access = ExternalVideo.load_instance(ing.parent.videos[:h264])
-      a_ds = access.datastreams_in_memory["descMetadata"]
+      a_ds = access.datastreams["descMetadata"]
       a_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
       a_ds.get_values([:file_format]).first.should == "mp4"
       # Access audio codec

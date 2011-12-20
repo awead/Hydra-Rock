@@ -30,7 +30,7 @@ class GbvIngest
   def update(opts={})
     # Fields in parent
     av = ArchivalVideo.load_instance(sip.pid)
-    p_ds = av.datastreams_in_memory["descMetadata"]
+    p_ds = av.datastreams["descMetadata"]
     p_ds.update_indexed_attributes( {[:barcode]       => {"0" => @sip.barcode}} )
     p_ds.update_indexed_attributes( {[:main_title]    => {"0" => @sip.title}} )
     p_ds.update_indexed_attributes( {[:creation_date] => {"0" => @sip.info(:orig_date)}} ) unless @sip.info(:orig_date).nil?
@@ -40,13 +40,13 @@ class GbvIngest
 
     # Fields in preservation video object
     original = ExternalVideo.load_instance(av.videos[:original])
-    o_ds = original.datastreams_in_memory["descMetadata"]
+    o_ds = original.datastreams["descMetadata"]
     update_preservation_fields(o_ds)
     original.save
 
     # Fields in access video object
     access = ExternalVideo.load_instance(av.videos[:h264])
-    a_ds = original.datastreams_in_memory["descMetadata"]
+    a_ds = original.datastreams["descMetadata"]
     update_access_fields(a_ds)
     access.save
   end
@@ -62,11 +62,11 @@ class GbvIngest
 
     begin
       ev = ExternalVideo.new
-      ds = ev.datastreams_in_memory["descMetadata"]
+      ds = ev.datastreams["descMetadata"]
       opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
       ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
       ev.apply_depositor_metadata(RH_CONFIG["depositor"])
-      ev.datastreams_in_memory["mediaInfo"].ng_xml = ng_info
+      ev.datastreams["mediaInfo"].ng_xml = ng_info
       # apply additional tech data from gbv xml
       update_preservation_fields(ds) if type == "preservation"
       update_access_fields(ds) if type == "access"

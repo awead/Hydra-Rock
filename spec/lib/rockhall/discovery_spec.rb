@@ -32,7 +32,7 @@ describe Rockhall::Discovery do
 
     it "should return an updated list of new videos" do
       av = ArchivalVideo.new
-      av.datastreams_in_memory["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
+      av.datastreams["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
       av.save
       docs = Rockhall::Discovery.get_objects
       docs.count.should == 2

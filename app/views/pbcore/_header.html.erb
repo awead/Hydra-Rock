@@ -1,6 +1,6 @@
-<% unless @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(node.to_sym).empty? %>
+<% unless @document_fedora.datastreams["descMetadata"].find_by_terms(node.to_sym).empty? %>
 <dt>
-  <% count = @document_fedora.datastreams_in_memory["descMetadata"].find_by_terms(node.to_sym).count %>
+  <% count = @document_fedora.datastreams["descMetadata"].find_by_terms(node.to_sym).count %>
   <% count > 1 ? label = node.capitalize.pluralize : label = node.capitalize %>
   <label for="<%= node %>"><%= label %></label>
 </dt>

@@ -71,7 +71,6 @@ describe Rockhall::WorkflowMethods do
     end
 
     it "should not overwrite existing files with force set to FALSE" do
-      pending "Overly pendantic?"
       FileUtils.touch @dst
       lambda { @wf.move_content(@src,@dst,{:force=>FALSE}) }.should raise_error(RuntimeError)
     end
