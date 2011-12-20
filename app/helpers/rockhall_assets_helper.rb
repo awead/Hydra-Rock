@@ -41,7 +41,7 @@ module RockhallAssetsHelper
       if opts[:area]
         values = fedora_text_area(@document_fedora, datastream, path, :multiple=>opts[:multiple])
       else
-        values = fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden], :size=>opts[:size])
+        values = local_fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden], :size=>opts[:size])
       end
     else
       values = get_values_from_datastream(@document_fedora, datastream, path)
