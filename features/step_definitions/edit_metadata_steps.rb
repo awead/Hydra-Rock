@@ -1,4 +1,3 @@
-require "hydra/fixture_loader"
 # This is the post-submission complement to "I fill in the following" from web_steps.rb
 Then /^the following (should contain|contain|should not contain|do not contain):$/ do |bool,table|
   # table is a Cucumber::Ast::Table
@@ -18,14 +17,14 @@ end
 When /^I select the following(?: within "([^"]*)")?$/ do |scope_selector, table|
   # table is a Cucumber::Ast::Table
   table.rows_hash.each do |field_selector, value|
-    step %{I select "#{value}" from "#{field_selector}" within "#{scope_selector}"}
+    Given %{I select "#{value}" from "#{field_selector}" within "#{scope_selector}"}
   end
 end
 
 Then /^the following should be selected(?: within "([^"]*)")?$/ do |scope_selector, table|
   # table is a Cucumber::Ast::Table
   table.rows_hash.each do |field_selector, value|
-    step %{"#{value}" should be selected from "#{field_selector}" within "#{scope_selector}"}
+    Then %{"#{value}" should be selected from "#{field_selector}" within "#{scope_selector}"}
     # Then %{the "#{field_selector}" field within "#{scope_selector}" should contain "#{value}"}
   end
 end
@@ -48,8 +47,8 @@ Then /^I should see a "([^"]*)" button(?: within "([^"]*)")?$/ do |button_locato
 end
 
 Given /^that "([^"]*)" has been loaded into fedora$/ do |pid|
-  Hydra::FixtureLoader.new('test_support/fixtures').reload(pid)
-
+  ActiveFedora::FixtureLoader.new('test_support/fixtures').reload(pid)
+  
 end
 
 
