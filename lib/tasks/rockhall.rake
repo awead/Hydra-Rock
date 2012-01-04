@@ -8,6 +8,21 @@ namespace :rockhall do
 
     desc "Delete everything from Fedora and reindex our fixtures in both development and test"
     task :reload_fixtures => :environment do
+
+      # Re-sync solrs
+      ENV["RAILS_ENV"] = "development"
+      Rake::Task["hydra:jetty:solr_clean"].invoke
+      Rake::Task["hydra:jetty:solr_clean"].reenable
+      ENV["RAILS_ENV"] = "test"
+      Rake::Task["hydra:jetty:solr_clean"].invoke
+      Rake::Task["hydra:jetty:solr_clean"].reenable
+      ENV["RAILS_ENV"] = "development"
+      Rake::Task["solrizer:fedora:solrize_objects"].invoke
+      Rake::Task["solrizer:fedora:solrize_objects"].reenable
+      ENV["RAILS_ENV"] = "test"
+      Rake::Task["solrizer:fedora:solrize_objects"].invoke
+      Rake::Task["solrizer:fedora:solrize_objects"].reenable
+
       Hydrangea::JettyCleaner.clean()
 
       contents = Dir.entries("spec/fixtures/fedora/")
@@ -19,6 +34,7 @@ namespace :rockhall do
         end
       end
 
+      # Re-sync solrs just to be safe
       ENV["RAILS_ENV"] = "development"
       Rake::Task["hydra:jetty:solr_clean"].invoke
       Rake::Task["hydra:jetty:solr_clean"].reenable
