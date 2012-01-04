@@ -30,6 +30,8 @@
       <%= display_field([:condition_note], {:inline=>TRUE}) %>
       <%= display_field([:cleaning_note], {:inline=>TRUE}) %>
 
+      <%= display_field([:abstract], { :datastream => "assetReview" }) %>
+
     </dl>
   </fieldset>
   <% # This is a hack that makes Hydra redirect to the edit page after a save %>

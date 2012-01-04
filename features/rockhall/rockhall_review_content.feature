@@ -57,3 +57,22 @@ Description:
     Given I am logged in as "reviewer1@example.com"
     And I am on the edit document page for rockhall:fixture_pbcore_document3
     Then I should see "You have been redirected to the review page for this document"
+
+  @wip
+  Scenario: Reviewer metdata getting wiped out (DAM-148)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the edit document page for rockhall:fixture_pbcore_document3
+    And I fill in "asset[descMetadata][alternative_title][0]" with "Fake alt title"
+    And I press "Save Document"
+    And I fill in "asset[descMetadata][condition_note][0]" with "Fake note"
+    And I press "Save Original"
+    When I follow "Switch to browse view"
+    Then I should see "Fake alt title"
+    And I should see "Fake note"
+    And I should see the field title "reviewer" contain "Reviewer"
+    And I should see the field content "reviewer" contain "reviewer1@example.com"
+    And I should see the field title "abstract" contain "Abstract"
+    And I should see the field content "abstract" contain "We don't have permission to show this to the public"
+
+
+
