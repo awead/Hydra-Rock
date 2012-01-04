@@ -24,11 +24,18 @@ class ArchivalVideo < ActiveFedora::Base
 
   has_metadata :name => "assetReview", :type => ActiveFedora::MetadataDatastream do |m|
     m.field 'reviewer', :string
+    m.field 'complete', :string
     m.field 'date_completed', :string
     m.field 'date_updated', :string
     m.field 'license', :string
     m.field 'abstract', :text
   end
+
+  #delegate :reviewer,       :to=>'assetReview', :at=>[:reviewer]
+  #delegate :date_updated,   :to=>'assetReview', :at=>[:date_updated]
+  #delegate :date_completed, :to=>'assetReview', :at=>[:date_completed]
+  #delegate :complete,       :to=>'assetReview', :at=>[:complete]
+
 
   def initialize( attrs={} )
     super
@@ -73,17 +80,10 @@ class ArchivalVideo < ActiveFedora::Base
     return results
   end
 
-  def apply_reviewer_metadata(reviewer,license,opts={})
-    date = DateTime.now
-    if self.datastreams["assetReview"].get_values(:date_completed).first.nil?
-      self.datastreams["assetReview"].update_indexed_attributes({[:date_completed] => { 0 => date.strftime("%Y-%m-%d")}})
-    end
-    unless opts[:abstract].nil?
-      self.datastreams["assetReview"].update_indexed_attributes({[:abstract] => { 0 => opts[:abstract]}})
-    end
-    self.datastreams["assetReview"].update_indexed_attributes({[:date_updated] => { 0 => date.strftime("%Y-%m-%d")}})
+  # deprecated
+  def apply_reviewer_metadata(reviewer,opts={})
+    self.datastreams["assetReview"].update_indexed_attributes({[:date_updated] => { 0 => DateTime.now.strftime("%Y-%m-%d")}})
     self.datastreams["assetReview"].update_indexed_attributes({[:reviewer] => { 0 => reviewer}})
-    self.datastreams["assetReview"].update_indexed_attributes({[:license] => { 0 => license}})
   end
 
 

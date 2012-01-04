@@ -18,9 +18,27 @@
       "data-resourceType" => "archival_video",
       "accept-charset"    => "utf-8" do %>
 
-    <h3>Choose license type</h3>
-    <%= select_tag "license", options_for_license %>
-    <%= display_field([:abstract], { :datastream => "assetReview" }) %>
+    <dt>
+      <label for="license">License</label>
+    </dt>
+    <dd class="field">
+      <%= fedora_select(@document_fedora,"assetReview", [:license], :choices=>options_for_license.sort).html_safe %>
+    </dd>
+
+    <dt>
+      <label for="abstract">Abstract</label>
+    </dt>
+    <dd class="field">
+      <%= fedora_text_area(@document_fedora, "assetReview", [:abstract], :multiple=>FALSE) %>
+    </dd>
+
+    <dt>
+      <label for="completed">Complete?</label>
+    </dt>
+    <dd class="field">
+      <% #check_box_tag 'complete' %>
+      <%= fedora_select(@document_fedora, "assetReview", [:complete], :choices=>["yes","no"]).html_safe %>
+    </dd>
 
     <%= submit_tag 'Submit Review', {:id => "submitReview"} %>
     <span class="back_to_cat"><%= link_back_to_catalog :label=>"Cancel and return to search results" %></span>

@@ -226,7 +226,7 @@ module RockhallAssetsHelper
         results << "<option>" + l + "</option>"
       end
     end
-    return results.html_safe
+    return licenses
   end
 
   def get_review_status(document)
