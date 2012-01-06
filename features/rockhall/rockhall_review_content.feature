@@ -16,37 +16,32 @@ Description:
     Then I should see the heading "Review Information"
     And I should see the field title "reviewer" contain "Reviewer"
     And I should see the field content "reviewer" contain "reviewer1@example.com"
-    And I should see the field title "date_completed" contain "Date Completed"
-    And I should see the field content "date_completed" contain "2011-11-29"
+    And I should see the field title "complete" contain "Complete"
+    And I should see the field content "complete" contain "yes"
     And I should see the field title "date_updated" contain "Date Updated"
     And I should see the field content "date_updated" contain "2011-11-29"
     And I should see the field title "license" contain "License"
-    And I should see the field content "license" contain "Rockhall"
+    And I should see the field content "license" contain "Rockhall Use Only"
     And I should see the field title "abstract" contain "Abstract"
     And I should see the field content "abstract" contain "We don't have permission to show this to the public"
 
-  @wip
   Scenario: Reviewer edits the status of an item (DAM-123)
     Given I am logged in as "reviewer1@example.com"
     And I am on the review document page for rockhall:fixture_pbcore_document3
-    Then I should see "Choose license type"
+    Then I should see "License"
     And the following should be selected within "form#asset_review"
-      |license | Rockhall |
+      | license | Rockhall Use Only |
     And I should see "We don't have permission to show this to the public."
+    And the following should be selected within "form#asset_review"
+      | complete | yes |
     When I select the following within "form#asset_review"
-      |license | Public |
-    And I press "Review"
-    Then I should see "Review changes saved."
-    When I am on the review document page for rockhall:fixture_pbcore_document3
-    Then the following should be selected within "form#asset_review"
-      |license | Public |
-    When I select the following within "form#asset_review"
-      |license | Rockhall |
-    And I press "Review"
-    Then I should see "Review changes saved."
-    When I am on the review document page for rockhall:fixture_pbcore_document3
-    Then the following should be selected within "form#asset_review"
-      |license | Rockhall |
+      | license | Publicaly Available |
+    And I select the following within "form#asset_review"
+      | complete | no |
+    And I press "Submit Review"
+    Then I should see the field content "complete" contain "no"
+    And I should see the field content "license" contain "Publicaly Available"
+    And I should see the field content "date_updated" contain the current date
 
   Scenario: User who is not a reviewer should not be able to review an item (DAM-123)
     Given I am logged in as "archivist1@example.com"
@@ -72,6 +67,7 @@ Description:
     And I should see the field content "reviewer" contain "reviewer1@example.com"
     And I should see the field title "abstract" contain "Abstract"
     And I should see the field content "abstract" contain "We don't have permission to show this to the public"
+
 
 
 

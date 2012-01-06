@@ -15,7 +15,7 @@ class ReviewersController < ApplicationController
   before_filter :enforce_access_controls
   before_filter :enforce_viewing_context_for_show_requests, :only=>:show
   before_filter :enforce_review_controls, :only=>:edit
-  after_filter :apply_reviewer_metadata, :only=>:update
+  before_filter :apply_reviewer_metadata, :only=>:update
   # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params
   #include MediaShelf::ActiveFedoraHelper
@@ -34,14 +34,6 @@ class ReviewersController < ApplicationController
     end
   end
 
-  def update
-    af_model = retrieve_af_model(params[:content_type], :default=>ArchivalVideo)
-    @document_fedora = af_model.find(params[:id])
-    @document_fedora.apply_reviewer_metadata(current_user.login)
-    @document_fedora.save
-    super
-  end
-
   def enforce_review_controls
     user_groups = RoleMapper.roles(current_user.login)
     unless user_groups.include?("reviewer")
@@ -51,16 +43,8 @@ class ReviewersController < ApplicationController
   end
 
   def apply_reviewer_metadata
-    #@document.reviewer = current_user.login
-    #@document.date_updated = DateTime.now.strftime("%Y-%m-%d")
-
-    logger.info("\n\n\n\n\n\n\n\nParameters are: \n\n\n\n\n\n\n\n #{params.inspect} \n\n\n\n\n\n\n\n\n\n\n")
-
-    #if @document.complete.first == "yes"
-    #  @document.date_completed = DateTime.now.strftime("%Y-%m-%d")
-    #else
-    #  @document.date_completed = []
-    #end
+    @document.reviewer = current_user.login
+    @document.date_updated = DateTime.now.strftime("%Y-%m-%d")
   end
 
 end

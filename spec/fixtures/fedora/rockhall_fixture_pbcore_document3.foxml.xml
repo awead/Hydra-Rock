@@ -200,13 +200,11 @@ library@rockhall.org</instantiationLocation>
 <foxml:datastreamVersion ID="assetReview.0" LABEL="" CREATED="2011-12-14T17:40:11.881Z" MIMETYPE="text/xml" SIZE="19">
 <foxml:xmlContent>
 <fields>
-<reviewer>reviewer1@example.com</reviewer>
-<abstract>
-We don't have permission to show this to the public.
-</abstract>
-<date_completed>2011-11-29</date_completed>
-<license>Rockhall</license>
-<date_updated>2011-11-29</date_updated>
+  <reviewer>reviewer1@example.com</reviewer>
+  <abstract>We don't have permission to show this to the public.</abstract>
+  <complete>yes</complete>
+  <license>Rockhall Use Only</license>
+  <date_updated>2011-11-29</date_updated>
 </fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>

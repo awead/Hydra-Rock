@@ -212,29 +212,12 @@ module RockhallAssetsHelper
     return role.to_s
   end
 
-
-  def options_for_license
-    results = String.new
-    licenses = ["Publically available", "Restricted to Rockhall use only", "Not available"]
-    current_license = @document_fedora.get_values_from_datastream('assetReview', [:license])
-
-    results << "<option></option>"
-    licenses.each do |l|
-      if l.eql?(current_license.first.to_s)
-        results << "<option selected=\"yes\">" + l + "</option>"
-      else
-        results << "<option>" + l + "</option>"
-      end
-    end
-    return licenses
-  end
-
   def get_review_status(document)
     results = String.new
-    if document[:date_completed_t].nil?
-      results << "No"
+    if document[:complete_t].nil?
+      results << "no"
     else
-      results << "Yes"
+      results << document[:complete_t].first
     end
     return results.html_safe
   end

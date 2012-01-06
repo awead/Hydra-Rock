@@ -22,7 +22,7 @@
       <label for="license">License</label>
     </dt>
     <dd class="field">
-      <%= fedora_select(@document_fedora,"assetReview", [:license], :choices=>options_for_license.sort).html_safe %>
+      <%= fedora_select(@document_fedora,"assetReview", [:license], :choices=>[nil,"Publicaly Available", "Rockhall Use Only", "No Usage Granted"]).html_safe %>
     </dd>
 
     <dt>
@@ -36,8 +36,7 @@
       <label for="completed">Complete?</label>
     </dt>
     <dd class="field">
-      <% #check_box_tag 'complete' %>
-      <%= fedora_select(@document_fedora, "assetReview", [:complete], :choices=>["yes","no"]).html_safe %>
+      <%= fedora_select(@document_fedora, "assetReview", [:complete], :choices=>[nil,"yes","no"]).html_safe %>
     </dd>
 
     <%= submit_tag 'Submit Review', {:id => "submitReview"} %>

@@ -2058,10 +2058,10 @@ library@rockhall.org</instantiationLocation>
 <foxml:xmlContent>
 <fields>
   <reviewer>reviewer1@example.com</reviewer>
-  <date_completed>2011-12-14</date_completed>
-  <date_updated>2011-12-14</date_updated>
+  <date_updated>2011-11-29</date_updated>
+  <complete>yes</complete>
   <abstract>We have permission to show this video to the public.</abstract>
-  <license>Publically available</license>
+  <license>Publicaly Available</license>
 </fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>

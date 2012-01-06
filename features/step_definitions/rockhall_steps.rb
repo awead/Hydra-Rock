@@ -44,3 +44,6 @@ Then /^I should see the heading "([^"]*)"$/ do |arg1|
   page.should have_xpath("//*/h2[@class='section-title']", :text => arg1)
 end
 
+Then /^I should see the field content "([^"]*)" contain the current date$/ do |arg1|
+  page.should have_xpath("//dd[@id='#{arg1}']", :text => DateTime.now.strftime("%Y-%m-%d"))
+end
