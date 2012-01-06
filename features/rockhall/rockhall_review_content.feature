@@ -35,12 +35,12 @@ Description:
     And the following should be selected within "form#asset_review"
       | complete | yes |
     When I select the following within "form#asset_review"
-      | license | Publicaly Available |
+      | license | Publicly Available |
     And I select the following within "form#asset_review"
       | complete | no |
     And I press "Submit Review"
     Then I should see the field content "complete" contain "no"
-    And I should see the field content "license" contain "Publicaly Available"
+    And I should see the field content "license" contain "Publicly Available"
     And I should see the field content "date_updated" contain the current date
 
   Scenario: User who is not a reviewer should not be able to review an item (DAM-123)
