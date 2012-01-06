@@ -58,7 +58,6 @@ Description:
     And I am on the edit document page for rockhall:fixture_pbcore_document3
     Then I should see "You have been redirected to the review page for this document"
 
-  @wip
   Scenario: Reviewer metdata getting wiped out (DAM-148)
     Given I am logged in as "archivist1@example.com"
     And I am on the edit document page for rockhall:fixture_pbcore_document3
