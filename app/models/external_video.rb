@@ -3,6 +3,8 @@ require 'hydra'
 class ExternalVideo < ActiveFedora::Base
 
   include Hydra::ModelMethods
+  include ActiveFedora::Relationships
+  include ActiveFedora::DatastreamCollections
 
   has_relationship "is_member_of_collection", :has_collection_member, :inbound => true
   has_bidirectional_relationship "part_of", :is_part_of, :has_part

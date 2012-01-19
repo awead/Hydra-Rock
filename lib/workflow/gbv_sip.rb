@@ -51,9 +51,11 @@ class GbvSip
 
     begin
       av = ArchivalVideo.new
+      av.save
       av.label = "George Blood Audio and Video"
       ds = av.datastreams["descMetadata"]
       self.update_fields(ds)
+      av.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
@@ -68,7 +70,6 @@ class GbvSip
       raise "Failed to rename sip with PID: #{e}"
     end
 
-    av.save
   end
 
   # Prepares a sip resuing the pid provided by the directory name

@@ -5,6 +5,9 @@ class ArchivalVideo < ActiveFedora::Base
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
+  include ActiveFedora::FileManagement
+  include ActiveFedora::Relationships
+  include ActiveFedora::DatastreamCollections
 
   has_relationship "objects", :is_part_of, :inbound => true
 

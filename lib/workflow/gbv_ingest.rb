@@ -62,6 +62,7 @@ class GbvIngest
 
     begin
       ev = ExternalVideo.new
+      ev.save
       ds = ev.datastreams["descMetadata"]
       opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
       ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
