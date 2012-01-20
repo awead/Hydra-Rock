@@ -5,7 +5,9 @@ class ArchivalImage < ActiveFedora::Base
   include Hydra::GenericImage
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
-  include ActiveFedora::Relationships
+
+  # These will need to be included to avoid deprecation warnings is later versions of HH
+  #include ActiveFedora::Relationships
 
   has_relationship "objects", :is_part_of, :inbound => true
 
