@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '~> 3.0.10'
 
-gem 'blacklight', '~> 3.0.0'
+gem 'blacklight', '~> 3.1.2'
 gem 'hydra-head'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
