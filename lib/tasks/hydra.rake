@@ -5,6 +5,7 @@ namespace :hydra do
     desc "Deletes everytyhing from the solr index"
     task :solr_clean => :environment do
 
+      ActiveFedora.init unless Thread.current[:repo]
       Blacklight.solr.delete_by_query("*:*")
       Blacklight.solr.commit
 
