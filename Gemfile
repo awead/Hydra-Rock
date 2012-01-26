@@ -7,7 +7,6 @@ gem 'hydra-head', '~> 3.2.2'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'bagit'
-gem 'semver' # for BagIt compatibility
 gem 'mediainfo'
 gem 'rsolr', '1.0.2'
 
