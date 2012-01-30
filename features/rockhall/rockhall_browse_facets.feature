@@ -24,3 +24,9 @@ Feature:
     Given I am on the home page
     Then I should see a facet for "Year"
     And I should not see a facet for "Publication Year"
+
+  Scenario: Priority facet (DAM-155)
+    Given I am logged in as "reviewer1@example.com"
+    Then I should see a facet for "Priority"
+    And I should see the facet term "normal"
+    And I should see the facet term "high"
