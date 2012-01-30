@@ -8,6 +8,7 @@ class AssetReview < ActiveFedora::NokogiriDatastream
     t.complete
     t.abstract
     t.license
+    t.priority
   end
 
   def self.xml_template
@@ -20,6 +21,9 @@ class AssetReview < ActiveFedora::NokogiriDatastream
         }
         xml.abstract
         xml.license
+        xml.priority {
+         xml.text "normal"
+        }
       }
     end
     return builder.doc

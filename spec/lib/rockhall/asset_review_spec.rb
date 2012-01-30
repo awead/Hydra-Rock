@@ -15,7 +15,8 @@ describe Rockhall::AssetReview do
         [:date_updated],
         [:complete],
         [:abstract],
-        [:license]
+        [:license],
+        [:priority],
       ].each do |pointer|
         test_val = "#{pointer.last.to_s} value"
         @object_ds.update_values( {pointer=>{"0"=>test_val}} )
@@ -32,6 +33,11 @@ describe Rockhall::AssetReview do
       f.close
       sample_node = Nokogiri::XML(@object_ds.to_xml)
       EquivalentXml.equivalent?(ref_node, sample_node, opts = { :element_order => false, :normalize_whitespace => true }).should be_true
+    end
+
+    it "should have fields defaulted to certain values" do
+      @object_ds.complete.first.should == "no"
+      @object_ds.priority.first.should == "normal"
     end
   end
 
