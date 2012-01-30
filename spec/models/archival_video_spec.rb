@@ -54,10 +54,12 @@ describe ArchivalVideo do
       it "should be set in the model" do
         @video.reviewer.first.should be_empty
         @video.date_updated.first.should be_empty
+        @video.complete.first.should == "no"
         @video.reviewer = "Dufus McGee"
         @video.date_updated = "now"
         @video.reviewer.first.should == "Dufus McGee"
         @video.date_updated.first.should == "now"
+
       end
     end
 

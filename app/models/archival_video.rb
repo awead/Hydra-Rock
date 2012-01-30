@@ -40,6 +40,7 @@ class ArchivalVideo < ActiveFedora::Base
 
   delegate :reviewer,       :to=>'assetReview', :at=>[:reviewer]
   delegate :date_updated,   :to=>'assetReview', :at=>[:date_updated]
+  delegate :complete,       :to=>'assetReview', :at=>[:complete]
 
   def initialize( attrs={} )
     super
