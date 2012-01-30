@@ -29,6 +29,11 @@
     </dl>
     <% end %>
 
+    <h2 id="asset_review" class="section-title">Asset Review</h2>
+    <div id="asset_review_editor">
+      <%= render :partial => "archival_videos/edit/review", :locals => {:content_type => "archival_video"} %>
+    </div>
+
     <h2 id="rockhall" class="section-title">Rockhall Metadata</h2>
     <div id="rockhall_editor">
       <%= render :partial => "archival_videos/edit/rockhall", :locals => {:content_type => "archival_video"} %>

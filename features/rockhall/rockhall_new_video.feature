@@ -54,4 +54,6 @@ Feature:
     And I should see "Submission"
     And I should see "Access Restrictions"
     And I should see a "Save Description" button
+    And the following should be selected within "form#asset_review"
+      | priority | normal |
 

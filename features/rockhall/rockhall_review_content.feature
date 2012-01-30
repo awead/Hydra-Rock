@@ -24,24 +24,27 @@ Description:
     And I should see the field content "license" contain "Rockhall Use Only"
     And I should see the field title "abstract" contain "Abstract"
     And I should see the field content "abstract" contain "We don't have permission to show this to the public"
+    And I should see the field title "priority" contain "Priority"
+    And I should see the field content "priority" contain "high"
 
   Scenario: Reviewer edits the status of an item (DAM-123)
     Given I am logged in as "reviewer1@example.com"
     And I am on the review document page for rockhall:fixture_pbcore_document3
     Then I should see "License"
-    And the following should be selected within "form#asset_review"
-      | license | Rockhall Use Only |
     And I should see "We don't have permission to show this to the public."
     And the following should be selected within "form#asset_review"
       | complete | yes |
+      | priority | high |
+      | license | Rockhall Use Only |
     When I select the following within "form#asset_review"
-      | license | Publicly Available |
-    And I select the following within "form#asset_review"
       | complete | no |
+      | priority | low |
+      | license | Publicly Available |
     And I press "Submit Review"
     Then I should see the field content "complete" contain "no"
     And I should see the field content "license" contain "Publicly Available"
     And I should see the field content "date_updated" contain the current date
+    And I should see the field content "priority" contain "low"
 
   Scenario: User who is not a reviewer should not be able to review an item (DAM-123)
     Given I am logged in as "archivist1@example.com"

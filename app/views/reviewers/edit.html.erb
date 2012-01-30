@@ -33,10 +33,17 @@
     </dd>
 
     <dt>
+      <label for="priority">Priority</label>
+    </dt>
+    <dd class="field">
+      <%= fedora_select(@document_fedora, "assetReview", [:priority], :choices=>["low","normal","high"]).html_safe %>
+    </dd>
+
+    <dt>
       <label for="completed">Complete?</label>
     </dt>
     <dd class="field">
-      <%= fedora_select(@document_fedora, "assetReview", [:complete], :choices=>[nil,"yes","no"]).html_safe %>
+      <%= fedora_select(@document_fedora, "assetReview", [:complete], :choices=>["yes","no"]).html_safe %>
     </dd>
 
     <%= submit_tag 'Submit Review', {:id => "submitReview"} %>

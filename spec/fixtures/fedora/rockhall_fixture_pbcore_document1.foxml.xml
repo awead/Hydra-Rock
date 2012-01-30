@@ -2062,6 +2062,7 @@ library@rockhall.org</instantiationLocation>
   <complete>yes</complete>
   <abstract>We have permission to show this video to the public.</abstract>
   <license>Publicly Available</license>
+  <priority>normal</priority>
 </fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>

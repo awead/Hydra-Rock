@@ -205,6 +205,7 @@ library@rockhall.org</instantiationLocation>
   <complete>yes</complete>
   <license>Rockhall Use Only</license>
   <date_updated>2011-11-29</date_updated>
+  <priority>high</priority>
 </fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>

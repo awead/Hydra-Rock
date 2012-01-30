@@ -1,0 +1,18 @@
+<%= form_tag url_for(:action=>"update", :controller=>"assets", :content_type=>"archival_video"),
+      :method             => "put",
+      :id                 => "asset_review",
+      "data-resourceType" => "archival_video",
+      "accept-charset"    => "utf-8" do %>
+
+  <fieldset id="asset_review">
+    <dt>
+      <label for="priority">Priority</label>
+    </dt>
+    <dd class="field">
+      <%= fedora_select(@document_fedora, "assetReview", [:priority], :choices=>["low","normal","high"]).html_safe %>
+    </dd>
+  </fieldset>
+  <% # This is a hack that makes Hydra redirect to the edit page after a save %>
+  <%= hidden_field_tag(:wf_step, "foo") %>
+  <%= submit_tag 'Save Review Information', {:id => "submitDescription"} %>
+<% end %>
