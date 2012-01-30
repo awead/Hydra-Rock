@@ -29,5 +29,11 @@ class AssetReview < ActiveFedora::NokogiriDatastream
     return builder.doc
   end
 
+  def to_solr(solr_doc=Solr::Document.new)
+    super(solr_doc)
+    solr_doc.merge!(:reviewer_facet => self.find_by_terms(:reviewer).first.text)
+    return solr_doc
+  end
+
 end
 end

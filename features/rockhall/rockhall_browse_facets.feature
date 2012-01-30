@@ -30,3 +30,9 @@ Feature:
     Then I should see a facet for "Priority"
     And I should see the facet term "normal"
     And I should see the facet term "high"
+
+  Scenario: Reveiwer facet (DAM-158)
+    Given I am logged in as "reviewer1@example.com"
+    And I am on the home page
+    Then I should see a facet for "Reviewer"
+    And I should see the facet term "reviewer1@example.com"
