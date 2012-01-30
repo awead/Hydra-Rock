@@ -12,11 +12,15 @@ Feature:
     And I should see "Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999."
     And I should see "Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division."
 
-  @wip
-  Scenario: Review status and 4-digit year facet
+  Scenario: Review status and 4-digit year facet (DAM-152,154)
     Given I am logged in as "reviewer1@example.com"
-    Then I should see "Status"
-    And I should see "yes"
-    And I should see "no"
-    And I should see "Creation Date"
-    And I should see "2007"
+    Then I should see a facet for "Status"
+    And I should see the facet term "yes"
+    And I should see the facet term "no"
+    And I should see a facet for "Year"
+    And I should see the facet term "2007"
+
+  Scenario: "Publication Year" Facet Rename (DAM-153)
+    Given I am on the home page
+    Then I should see a facet for "Year"
+    And I should not see a facet for "Publication Year"

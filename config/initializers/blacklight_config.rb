@@ -57,7 +57,6 @@ Blacklight.configure(:shared) do |config|
     ]),
     :labels => {
       "format"            => "Format",
-      "pub_date"          => "Publication Year",
       "name_facet"        => "Name",
       "topic_facet"       => "Topic",
       "genre_facet"       => "Genre",
@@ -65,7 +64,7 @@ Blacklight.configure(:shared) do |config|
       "collection_facet"  => "Collection",
       "language_facet"    => "Language",
       "complete_t"        => "Review Status",
-      "create_date_facet" => "Creation Date"
+      "create_date_facet" => "Year"
     },
     # Setting a limit will trigger Blacklight's 'more' facet values link.
     # * If left unset, then all facet values returned by solr will be displayed.

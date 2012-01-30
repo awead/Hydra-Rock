@@ -9,6 +9,17 @@ Then /^I should see a facet for "([^"]*)"$/ do |arg1|
 
 end
 
+Then /^I should not see a facet for "([^"]*)"$/ do |arg1|
+  regexp = Regexp.new(arg1)
+
+  if page.respond_to? :should
+    page.should_not have_xpath('//h3', :text => regexp)
+  else
+    assert !page.has_xpath?('//h3', :text => regexp)
+  end
+end
+
+
 Then /^I should see the facet term "([^"]*)"$/ do |arg1|
   regexp = Regexp.new(arg1)
 
