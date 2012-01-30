@@ -8,7 +8,6 @@
     <dl>
       <%= display_field([:notes], { :datastream => "properties", :name => "Internal Notes", :multiple => TRUE }) %>
       <%= display_field([:depositor], { :datastream => "properties" }) %>
-      <%= display_field([:collection], { :datastream => "properties" }) %>
     </dl>
   </fieldset>
   <%= submit_tag 'Save Description', {:id => "submitDescription"} %>

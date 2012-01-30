@@ -24,7 +24,7 @@ class ExternalVideo < ActiveFedora::Base
   end
 
   has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
-    m.field 'collection', :string
+    m.field 'collection', :string # TODO: delete this field from all objects
     m.field 'depositor', :string
     m.field 'notes', :text
   end
