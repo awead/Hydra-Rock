@@ -27,12 +27,15 @@ class ArchivalVideo < ActiveFedora::Base
     m.field 'submission', :string
   end
 
-  has_metadata :name => "assetReview", :type => ActiveFedora::MetadataDatastream do |m|
-    m.field 'reviewer', :string
-    m.field 'complete', :string
-    m.field 'date_updated', :string
-    m.field 'license', :string
-    m.field 'abstract', :text
+#   has_metadata :name => "assetReview", :type => ActiveFedora::MetadataDatastream do |m|
+#     m.field 'reviewer', :string
+#     m.field 'complete', :string
+#     m.field 'date_updated', :string
+#     m.field 'license', :string
+#     m.field 'abstract', :text
+#   end
+
+  has_metadata :name => "assetReview", :type => Rockhall::AssetReview do |m|
   end
 
   delegate :reviewer,       :to=>'assetReview', :at=>[:reviewer]

@@ -52,8 +52,8 @@ describe ArchivalVideo do
 
     describe "delegate fields" do
       it "should be set in the model" do
-        @video.reviewer.should be_empty
-        @video.date_updated.should be_empty
+        @video.reviewer.first.should be_empty
+        @video.date_updated.first.should be_empty
         @video.reviewer = "Dufus McGee"
         @video.date_updated = "now"
         @video.reviewer.first.should == "Dufus McGee"
