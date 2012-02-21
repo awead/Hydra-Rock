@@ -1,5 +1,5 @@
 <% #asset creation is "disabled" in production for now see DAM-100 %>
-<% unless Rails.env == "production" %>
+<% if allow_asset_creation %>
 <div id="select-item-box">
   <a class="add-new-asset" href="#">Add a New Asset</a>
   <ul id="select-item-list">

@@ -1,7 +1,7 @@
 Feature:
-  In order to prepare existing analog video content for ingestion
-  As a library staff user
-  I need to catalog the original analog item
+  In order to prepare existing analog or digital video content for ingestion
+  As a archivist or reviewer
+  I need to created a new record for the video
 
   Scenario: Create new video object (DAM-128)
     Given I am logged in as "archivist1@example.com"
@@ -56,4 +56,3 @@ Feature:
     And I should see a "Save Description" button
     And the following should be selected within "form#asset_review"
       | priority | normal |
-

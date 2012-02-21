@@ -221,4 +221,13 @@ module RockhallAssetsHelper
     end
     return results.html_safe
   end
+
+  def allow_asset_creation
+    unless current_user.nil?
+      user_groups = RoleMapper.roles(current_user.login)
+      if user_groups.include?("archivist") or user_groups.include?("reviewer")
+        return TRUE
+      end
+    end
+  end
 end
