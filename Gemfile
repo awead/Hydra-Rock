@@ -1,27 +1,39 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.0.10'
+gem 'rails', '~> 3.2.1'
+gem 'sass-rails', "  ~> 3.2.3"
 
-gem 'blacklight', '~> 3.1.0'
-gem 'hydra-head', '~> 3.2.2'
+gem 'blacklight'
+gem 'hydra-head', :path => "gems/hydra-head"
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'bagit'
 gem 'mediainfo'
-gem 'rsolr', '1.0.2'
+gem 'jquery-rails'
+gem 'rspec-rails'
+gem "devise"
 
+group :assets do
+  gem 'coffee-rails', "~> 3.2.1"
+  gem 'uglifier', '>= 1.0.3'
+end
+
+# Bundle gems for the local environment. Make sure to
+# put test-only gems in this group so their generators
+# and rake tasks are available in development mode:
 group :development, :test do
-  gem 'solrizer-fedora', '>=1.2.0'
-  gem 'ruby-debug'
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem 'mocha'
-  gem 'generator_spec'
-  gem 'cucumber-rails'
+  gem 'webrat'
+  gem 'cucumber'
   gem 'database_cleaner'
+  gem 'cucumber-rails'
   gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'factory_girl'
-  gem 'bcrypt-ruby'
-  gem 'rest-client'
+end
+
+group :cucumber do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'spork'
+  gem 'launchy'    # So you can do Then show me the page
 end
