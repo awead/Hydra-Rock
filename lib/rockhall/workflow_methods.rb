@@ -28,9 +28,19 @@ module Rockhall::WorkflowMethods
     end
   end
 
+  # Assumes American-style date format:
+  # mm/dd/year where year is either 2 or 4 digits
   def parse_date(s)
     begin
-      date = DateTime.parse(s)
+      if s =~ /^(\d{1,2})\/(\d{1,2})\/([2-9]{1}\d{1})$/
+        date = DateTime.parse("#{$2}/#{$1}/19#{$3}")
+      elsif s =~ /^(\d{1,2})\/(\d{1,2})\/([0-1]{1}\d{1})$/
+        date = DateTime.parse("#{$2}/#{$1}/20#{$3}")
+      elsif s =~ /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
+        date = DateTime.parse("#{$2}/#{$1}/#{$3}")
+      else
+        date = DateTime.parse(s)
+      end
     rescue
       return nil
     end
