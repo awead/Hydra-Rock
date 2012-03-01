@@ -9,9 +9,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'bagit'
 gem 'mediainfo'
-gem 'jquery-rails'
-gem 'rspec-rails'
-gem "devise"
 
 group :assets do
   gem 'coffee-rails', "~> 3.2.1"
@@ -22,11 +19,22 @@ end
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem 'webrat'
-  gem 'cucumber'
-  gem 'database_cleaner'
-  gem 'cucumber-rails'
+  gem 'bcrypt-ruby'
   gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'factory_girl'
+  gem 'generator_spec'
+  gem 'jquery-rails'
+  gem 'mocha'
+  gem 'rest-client'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'ruby-debug19'
+  gem 'solrizer-fedora', '>=1.2.0'
+  gem 'webrat'
 end
 
 group :cucumber do
