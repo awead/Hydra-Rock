@@ -51,13 +51,17 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'object_type_facet', :label => 'Format'
-    config.add_facet_field 'pub_date', :label => 'Publication Year'
-    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
-    config.add_facet_field 'language_facet', :label => 'Language', :limit => true
-    config.add_facet_field 'lc_1letter_facet', :label => 'Call Number'
-    config.add_facet_field 'subject_geo_facet', :label => 'Region'
-    config.add_facet_field 'subject_era_facet', :label => 'Era'
+    config.add_facet_field 'format',              :label => 'Format'
+    config.add_facet_field 'topic_facet',         :label => 'Topic'
+    config.add_facet_field 'name_facet',          :label => 'Name'
+    config.add_facet_field 'series_facet',        :label => 'Event/Series'
+    config.add_facet_field 'language_facet',      :label => 'Language',     :limit => true
+    config.add_facet_field 'genre_facet',         :label => 'Genre'
+    config.add_facet_field 'collection_facet',    :label => 'Collection'
+    config.add_facet_field 'complete_t',          :label => 'Review Status'
+    config.add_facet_field 'create_date_facet',   :label => 'Year'
+    config.add_facet_field 'priority_t',          :label => 'Priority'
+    config.add_facet_field 'reviewer_facet',      :label => 'Reviewer'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
