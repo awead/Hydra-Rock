@@ -31,7 +31,22 @@ class AssetReview < ActiveFedora::NokogiriDatastream
 
   def to_solr(solr_doc=Solr::Document.new)
     super(solr_doc)
-    solr_doc.merge!(:reviewer_facet => self.find_by_terms(:reviewer).first.text)
+
+    # DAM-168: Default values for asset_review fields
+    # These fields were added later, so existing objects don't have them.  Here we set their
+    # values to defaults.
+    if self.find_by_terms(:complete).nil?
+      solr_doc.merge!(:complete_t => "no")
+    end
+    if self.find_by_terms(:priority).nil?
+      solr_doc.merge!(:priority_t => "normal")
+    end
+
+    # Facets
+    unless self.find_by_terms(:reviewer).nil?
+      solr_doc.merge!(:reviewer_facet => self.find_by_terms(:reviewer).text)
+    end
+
     return solr_doc
   end
 
