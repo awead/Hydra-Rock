@@ -44,10 +44,10 @@ if Hydra.respond_to?(:configure)
                               {:name => "contributor", :edit_partial => "generic_content_objects/contributor_form", :show_partial => "generic_contents/show_contributors"}
                              ],
         # Not wired up yet
-        :archival_video   => [{:name => "document",    :edit_partial => "archival_videos/edit/_document.html.erb",  :show_partial => "archival_videos/show/_document.html.erb"},
-                              {:name => "original",    :edit_partial => "archival_videos/edit/_original.html.erb",  :show_partial => "archival_videos/show/_original.html.erb"},
-                              {:name => "permissions",     :edit_partial => "permissions/permissions_form",     :show_partial => "mods_assets/show_permissions"}
-                             ]
+        :archival_videos   => [{:name => "document",    :edit_partial => "archival_videos/edit/document",  :show_partial => "archival_videos/show/document"},
+                               {:name => "original",    :edit_partial => "archival_videos/edit/original",  :show_partial => "archival_videos/show/original"},
+                               {:name => "permissions", :edit_partial => "permissions/permissions_form",   :show_partial => "mods_assets/show_permissions"}
+                              ]
       }
 
     # This specifies the solr field names of permissions-related fields.

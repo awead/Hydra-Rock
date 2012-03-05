@@ -1,6 +1,7 @@
 module LocalHydraFedoraMetadataHelper
 
   include Hydra::HydraFedoraMetadataHelperBehavior
+  include Hydra::HydraHelperBehavior
 
   # This is based on fedora_text_field
   def local_fedora_text_field(resource, datastream_name, field_key, opts={})

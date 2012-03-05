@@ -5,6 +5,7 @@ class ArchivalVideo < ActiveFedora::Base
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
+  include Hydra::SubmissionWorkflow
 
   # These will need to be included to avoid deprecation warnings is later versions of HH
   #include ActiveFedora::FileManagement

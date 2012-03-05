@@ -38,11 +38,7 @@ module RockhallAssetsHelper
 
     # Show or edit
     if params[:action] == "edit"
-      if opts[:area]
-        values = fedora_text_area(@document_fedora, datastream, path, :multiple=>opts[:multiple])
-      else
-        values = local_fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden], :size=>opts[:size])
-      end
+      values = local_fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden], :size=>opts[:size])
     else
       values = get_values_from_datastream(@document_fedora, datastream, path)
     end
