@@ -3,7 +3,8 @@
   <%= hidden_field_tag("_method","put") %>
 
   <fieldset id="original_fields">
-    <legend>Original Fields</legend>
+    <legend>Original Item</legend>
+    <p class="legend-caption">Fields that describe the original item, such as the videocasette or tape.</p>
     <%= display_field([:creation_date], {:multiple=>false, :required=>true}) %>
     <%= display_field([:barcode], {:multiple=>false, :required=>false}) %>
 
@@ -18,10 +19,20 @@
     <%= display_field([:generation], {:multiple=>false, :required=>false}) %>
     <%= display_field([:language], {:multiple=>false, :required=>false}) %>
     <%= display_field([:colors], {:multiple=>false, :required=>false}) %>
+  </fieldset>
+
+  <fieldset id="archival_fields">
+    <legend>Archival Information</legend>
+    <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
     <%= display_field([:archival_collection], {:multiple=>false, :required=>false}) %>
     <%= display_field([:archival_series], {:multiple=>false, :required=>false}) %>
     <%= display_field([:collection_number], {:multiple=>false, :required=>false}) %>
     <%= display_field([:accession_number], {:multiple=>false, :required=>false}) %>
+  </fieldset>
+
+  <fieldset id="condition_fields">
+    <legend>Item Condition</legend>
+    <p class="legend-caption">Enter any relevant information about the condition of the original item or its usage restrictions.</p>
     <%= display_field([:usage], {:multiple=>false, :required=>false}) %>
     <%= display_field([:condition_note], {:multiple=>false, :required=>false}) %>
     <%= display_field([:cleaning_note], {:multiple=>false, :required=>false}) %>

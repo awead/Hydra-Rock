@@ -4,15 +4,15 @@
 
   <fieldset id="contributors">
     <legend>Contributors</legend>
+    <p class="legend-caption">Use the buttons on the left to add contributors and their roles</p>
     <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
   </fieldset>
 
   <fieldset id="publishers">
     <legend>Publishers</legend>
+    <p class="legend-caption">Use the buttons on the left to add publishers and their roles</p>
     <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
   </fieldset>
-
-
 
   <!--
     TODO: Add radio button here that allows you to change the workflow step.  If the workflow step
@@ -26,7 +26,6 @@
 
 <h3 class="twiddle">Delete Fields</h3>
 <%= delete_field_button %>
-
 
 <% sidebar_items << capture do %>
 
@@ -44,7 +43,6 @@
           </li>
         <% end %>
       </ul>
-
     </div>
   </div>
 
