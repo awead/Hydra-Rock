@@ -15,7 +15,7 @@ class PbcoreController < ApplicationController
 
     partial_name = "pbcore/edit/#{type}"
     respond_to do |format|
-      format.html { redirect_to catalog_path(:id=>params[:asset_id]) }
+      format.html { redirect_to edit_catalog_path(:id=>params[:asset_id], :wf_step=>params[:wf_step]) }
       format.js   { render :partial=>partial_name, :locals=>{"#{type}".to_sym =>node, "#{type}_counter".to_sym =>index}, :layout=>false }
     end
 
