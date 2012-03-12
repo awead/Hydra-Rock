@@ -21,8 +21,6 @@ module RockhallAssetsHelper
 
   def display_field(path,opts={})
 
-
-
     # Default to descMetadata
     opts[:datastream].nil? ? datastream = "descMetadata" : datastream = opts[:datastream]
 
@@ -69,11 +67,6 @@ module RockhallAssetsHelper
     result << "<p id=\"#{id}\" class=\"fedora-text-field\">" + field unless opts[:hidden]
     values.each do |value|
       result << value
-    end
-    if opts[:multiple]
-      result << "<p class=\"fedora-text-field-add\">"
-      result << fedora_text_field_insert_link(datastream, path)
-      result << "</p>"
     end
     return result.html_safe
   end
