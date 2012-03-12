@@ -13,6 +13,7 @@
   </fieldset>
 
 
+
   <!--
     TODO: Add radio button here that allows you to change the workflow step.  If the workflow step
     is null, then the page will save and reload, allowing you to add additional fields.
@@ -22,6 +23,10 @@
   <%= submit_tag("Continue", :name=>"continue") %>
 
 <% end %>
+
+<h3 class="twiddle">Delete Fields</h3>
+<%= delete_field_button %>
+
 
 <% sidebar_items << capture do %>
 
@@ -39,6 +44,7 @@
           </li>
         <% end %>
       </ul>
+
     </div>
   </div>
 

@@ -145,7 +145,7 @@ module RockhallAssetsHelper
           name = value.empty? ? " #" + (index + 1).to_s : " " + value
           results << "<li>"
           results << button_to(("Delete " + name.strip).truncate(28),
-                      {:action=>"destroy", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type, :index=>index},
+                      {:action=>"destroy", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type, :index=>index, :wf_step=>params[:wf_step]},
                       :method => :delete)
           results << "</li>"
           index = index + 1
