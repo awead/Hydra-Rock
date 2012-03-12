@@ -1,38 +1,34 @@
-<%= form_tag url_for(:action=>"update", :controller=>"assets", :content_type=>"archival_video"),
-      :method             => "put",
-      :id                 => "descMetadata",
-      "data-resourceType" => "archival_video",
-      "accept-charset"    => "utf-8" do %>
+<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"archival_video", :"accept-charset"=>"utf-8") do -%>
 
-  <fieldset id="title_fields">
-    <dl>
-      <%= display_field([:creation_date]) %>
-      <%= display_field([:barcode]) %>
+  <%= hidden_field_tag("_method","put") %>
 
-      <dt>
-        <label for="item_location">Repository</label>
-      </dt>
-      <dd class="field">
-        <%= fedora_text_area(@document_fedora, "descMetadata", [:repository], :multiple=>FALSE) %>
-      </dd>
+  <fieldset id="original_fields">
+    <legend>Original Fields</legend>
+    <%= display_field([:creation_date], {:multiple=>false, :required=>true}) %>
+    <%= display_field([:barcode], {:multiple=>false, :required=>false}) %>
 
-      <%= display_field([:format]) %>
-      <%= display_field([:standard]) %>
-      <%= display_field([:media_type]) %>
-      <%= display_field([:generation]) %>
-      <%= display_field([:language]) %>
-      <%= display_field([:colors]) %>
-      <%= display_field([:archival_collection]) %>
-      <%= display_field([:archival_series]) %>
-      <%= display_field([:collection_number]) %>
-      <%= display_field([:accession_number]) %>
-      <%= display_field([:usage]) %>
-      <%= display_field([:condition_note], {:inline=>TRUE}) %>
-      <%= display_field([:cleaning_note], {:inline=>TRUE}) %>
+    <p id="item_location_field" class="fedora-text-area">
+      <%= fedora_field_label("descMetadata", [:repository], "Repository:") %>
+      <%= fedora_text_area(@document_fedora, "descMetadata", [:repository], :multiple=>false, :required=>false) %>
+    </p>
 
-    </dl>
+    <%= display_field([:format], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:standard], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:media_type], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:generation], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:language], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:colors], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:archival_collection], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:archival_series], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:collection_number], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:accession_number], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:usage], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:condition_note], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:cleaning_note], {:multiple=>false, :required=>false}) %>
   </fieldset>
-  <% # This is a hack that makes Hydra redirect to the edit page after a save %>
-  <%= hidden_field_tag(:wf_step, "foo") %>
-  <%= submit_tag 'Save Original', {:id => "submitOriginal"} %>
+
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= hidden_field_tag(:content_type,"archival_video") %>
+  <%= submit_tag("Continue", :name=>"continue") %>
+
 <% end %>

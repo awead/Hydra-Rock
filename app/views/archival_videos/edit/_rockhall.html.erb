@@ -1,18 +1,16 @@
-<%= form_tag url_for(:action=>"update", :controller=>"assets", :content_type=>"archival_video"),
-      :method             => "put",
-      :id                 => "properties",
-      "data-resourceType" => "archival_video",
-      "accept-charset"    => "utf-8" do %>
+<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"archival_video", :"accept-charset"=>"utf-8") do -%>
 
-  <fieldset id="properties">
-    <dl>
-      <%= display_field([:notes], { :datastream => "properties", :name => "Internal Notes", :multiple => TRUE }) %>
-      <%= display_field([:depositor], { :datastream => "properties" }) %>
-      <%= display_field([:submission], { :datastream => "properties", :multiple => TRUE }) %>
-      <%= display_field([:access], { :datastream => "properties", :name => "Access Restrictions" }) %>
-    </dl>
+  <%= hidden_field_tag("_method","put") %>
+
+  <fieldset id="rockhall_fields">
+    <legend>Rockhall Fields</legend>
+    <%= display_field([:notes], { :datastream => "properties", :name => "Internal Notes", :multiple=>true, :required=>false }) %>
+    <%= display_field([:submission], { :datastream => "properties", :name => "File Submissions", :multiple=>true, :required=>false }) %>
+    <%= display_field([:access], { :datastream => "properties", :name => "Access Restrictions", :multiple=>false, :required=>false }) %>
   </fieldset>
-  <% # This is a hack that makes Hydra redirect to the edit page after a save %>
-  <%= hidden_field_tag(:wf_step, "foo") %>
-  <%= submit_tag 'Save Description', {:id => "submitDescription"} %>
+
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= hidden_field_tag(:content_type,"archival_video") %>
+  <%= submit_tag("Continue", :name=>"continue") %>
+
 <% end %>

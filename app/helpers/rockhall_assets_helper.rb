@@ -21,6 +21,8 @@ module RockhallAssetsHelper
 
   def display_field(path,opts={})
 
+
+
     # Default to descMetadata
     opts[:datastream].nil? ? datastream = "descMetadata" : datastream = opts[:datastream]
 
@@ -38,7 +40,7 @@ module RockhallAssetsHelper
 
     # Show or edit
     if params[:action] == "edit"
-      values = local_fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden], :size=>opts[:size])
+      values = fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :required=>opts[:required])
     else
       values = get_values_from_datastream(@document_fedora, datastream, path)
     end
@@ -61,32 +63,19 @@ module RockhallAssetsHelper
     field = fedora_field_label(datastream, path, formatted_name)
 
     # Put it all together
+    # <p id="title_field" class="fedora-text-field"><%= fedora_field_label("descMetadata", [:title_info, :main_title], "Title:") %>
+    # <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false, :required=>true) %></p>
     result = String.new
-    result << "<dt><label for=\"#{id}\">#{field}</label></dt>" unless opts[:hidden]
-    if params[:action] == "edit"
-      values.each do |value|
-        result << "<dd id=\"#{id}\" class=\"field\">"+ value + "</dd>"
-      end
-    else
-      result << "<dd id=\"#{id}\" class=\"field\">"
-      result << "<ul>"
-      values.each do |value|
-        if opts[:area]
-          result << value
-        else
-          result << "<li class=\"field\">" + value + "</li>"
-        end
-      end
-      result << "</ul>"
-      result << "</dd>"
+    result << "<p id=\"#{id}\" class=\"fedora-text-field\">" + field unless opts[:hidden]
+    values.each do |value|
+      result << value
     end
-
-
-    if opts[:area]
-      return field.html_safe + result.html_safe
-    else
-      return result.html_safe
+    if opts[:multiple]
+      result << "<p class=\"fedora-text-field-add\">"
+      result << fedora_text_field_insert_link(datastream, path)
+      result << "</p>"
     end
+    return result.html_safe
   end
 
 
