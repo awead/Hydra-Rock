@@ -1,0 +1,44 @@
+<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"archival_video", :"accept-charset"=>"utf-8") do -%>
+
+  <%= hidden_field_tag("_method","put") %>
+
+  <fieldset id="subjects">
+    <legend>Subject Fields</legend>
+    <%= display_field([:lc_subject], {:name=>"LC Subject", :multiple=>true, :required=>false}) %>
+    <%= display_field([:lc_name], {:name=>"LC Name", :multiple=>true, :required=>false}) %>
+    <%= display_field([:rh_subject], {:name=>"Rockhall Subject", :multiple=>true, :required=>false}) %>
+  </fieldset>
+
+  <fieldset id="genres">
+    <legend>Genre Fields</legend>
+    <%= display_field([:getty_genre], {:multiple=>true, :required=>false}) %>
+    <%= display_field([:lc_genre], {:name=>"LC Genre", :multiple=>true, :required=>false}) %>
+    <%= display_field([:lc_subject_genre], {:name=>"LC Subject Genre", :multiple=>true, :required=>false}) %>
+  </fieldset>
+
+  <fieldset id="event_fields">
+    <legend>Event Fields</legend>
+    <p class="legend-caption">Information about the series in which this event occurred.</p>
+    <%= display_field([:event_series], {:multiple=>true, :required=>false}) %>
+    <%= display_field([:event_place], {:multiple=>true, :required=>false}) %>
+    <%= display_field([:event_date], {:multiple=>true, :required=>false}) %>
+  </fieldset>
+
+  <% #render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
+  <% #render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
+
+
+  <!--
+    TODO: Add radio button here that allows you to change the workflow step.  If the workflow step
+    is null, then the page will save and reload, allowing you to add additional fields.
+  -->
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= hidden_field_tag(:content_type,"archival_video") %>
+  <%= submit_tag("Continue", :name=>"continue") %>
+
+<% end %>
+
+
+
+
+

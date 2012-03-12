@@ -1,0 +1,29 @@
+<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"archival_video", :"accept-charset"=>"utf-8") do -%>
+
+  <%= hidden_field_tag("_method","put") %>
+
+  <fieldset id="contributors">
+    <legend>Contributors</legend>
+    <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
+  </fieldset>
+
+  <fieldset id="publishers">
+    <legend>Publishers</legend>
+    <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
+  </fieldset>
+
+
+  <!--
+    TODO: Add radio button here that allows you to change the workflow step.  If the workflow step
+    is null, then the page will save and reload, allowing you to add additional fields.
+  -->
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= hidden_field_tag(:content_type,"archival_video") %>
+  <%= submit_tag("Continue", :name=>"continue") %>
+
+<% end %>
+
+
+
+
+

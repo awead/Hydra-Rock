@@ -46,10 +46,12 @@ if Hydra.respond_to?(:configure)
 
         # :show_partial option doesn't seem to be wired up.  Show partial will be the same for each wf step.
         :archival_videos   => [
-          {:name => "document",    :edit_partial => "archival_videos/edit/document",  :show_partial => "archival_videos/show/document"},
-          {:name => "original",    :edit_partial => "archival_videos/edit/original",  :show_partial => "archival_videos/show/original"},
-          {:name => "rockhall",    :edit_partial => "archival_videos/edit/rockhall",  :show_partial => "archival_videos/show/original"},
-          {:name => "permissions", :edit_partial => "permissions/permissions_form",   :show_partial => "mods_assets/show_permissions"}
+          {:name => "titles",      :edit_partial => "archival_videos/edit/titles",   :show_partial => "archival_videos/show/document"},
+          {:name => "subjects",    :edit_partial => "archival_videos/edit/subjects", :show_partial => "archival_videos/show/document"},
+          {:name => "persons",     :edit_partial => "archival_videos/edit/persons",  :show_partial => "archival_videos/show/document"},
+          {:name => "original",    :edit_partial => "archival_videos/edit/original", :show_partial => "archival_videos/show/original"},
+          {:name => "rockhall",    :edit_partial => "archival_videos/edit/rockhall", :show_partial => "archival_videos/show/original"},
+          {:name => "permissions", :edit_partial => "permissions/permissions_form",  :show_partial => "mods_assets/show_permissions"}
         ]
       }
 
