@@ -296,7 +296,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     end
 
     # Extract 4-digit year for creation date
-		create = self.find_by_terms(:creation_date).first.text.strip
+		create = self.find_by_terms(:creation_date).text.strip
 		unless create.nil? or create.empty?
 		  solr_doc.merge!(:create_date_facet => DateTime.parse(create).strftime("%Y"))
 		end
