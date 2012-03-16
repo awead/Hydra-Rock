@@ -61,12 +61,19 @@ module RockhallAssetsHelper
     field = fedora_field_label(datastream, path, formatted_name)
 
     # Put it all together
-    # <p id="title_field" class="fedora-text-field"><%= fedora_field_label("descMetadata", [:title_info, :main_title], "Title:") %>
-    # <%= fedora_text_field(@document_fedora,"descMetadata", [:title_info, :main_title], :multiple=>false, :required=>true) %></p>
     result = String.new
-    result << "<p id=\"#{id}\" class=\"fedora-text-field\">" + field unless opts[:hidden]
-    values.each do |value|
-      result << value
+    if params[:action] == "edit"
+      result << "<p id=\"#{id}\" class=\"fedora-text-field\">" + field unless opts[:hidden]
+      values.each do |value|
+        result << value
+      end
+    else
+      result << "<dt><label for=\"#{id}\">" + formatted_name + "</label></dt>"
+      result << "<dd id=\"#{id}\" class=\"field\"><ul>"
+      values.each do |value|
+        result << "<li>" + value + "</li>"
+      end
+      result << "</ul></dd>"
     end
     return result.html_safe
   end
@@ -208,4 +215,6 @@ module RockhallAssetsHelper
       end
     end
   end
+
+
 end

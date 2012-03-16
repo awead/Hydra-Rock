@@ -38,8 +38,9 @@
     <%= display_field([:cleaning_note], {:multiple=>false, :required=>false}) %>
   </fieldset>
 
-  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= hidden_field_tag(:wf_step,params["wf_step"]) %>
   <%= hidden_field_tag(:content_type,"archival_video") %>
-  <%= submit_tag("Continue", :name=>"continue") %>
+  <%= submit_tag("Submit", :name=>"submit") %>
+  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
 
 <% end %>

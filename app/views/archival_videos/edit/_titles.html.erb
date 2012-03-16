@@ -37,15 +37,12 @@
 
   </fieldset>
 
-  <!--
-    TODO: Add radio button here that allows you to change the workflow step.  If the workflow step
-    is null, then the page will save and reload, allowing you to add additional fields.
-  -->
   <h3>Proceed to next step?</h3>
-  <%= radio_button_tag("wf_step", "no", :checked=>true) %> No <br/>
-  <%= radio_button_tag("wf_step", params[:wf_step]) %> Yes <br/>
+  <%= radio_button_tag(:wf_step, "no", :checked=>true) %> No <br/>
+  <%= radio_button_tag(:wf_step, "titles") %> Yes <br/>
   <%= hidden_field_tag(:content_type,"archival_video") %>
   <%= submit_tag("Submit", :name=>"submit") %>
+  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
 
 <% end %>
 

@@ -14,13 +14,10 @@
     <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
   </fieldset>
 
-  <!--
-    TODO: Add radio button here that allows you to change the workflow step.  If the workflow step
-    is null, then the page will save and reload, allowing you to add additional fields.
-  -->
-  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= hidden_field_tag(:wf_step,params["wf_step"]) %>
   <%= hidden_field_tag(:content_type,"archival_video") %>
-  <%= submit_tag("Continue", :name=>"continue") %>
+  <%= submit_tag("Submit", :name=>"submit") %>
+  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
 
 <% end %>
 
@@ -29,8 +26,6 @@
 
 <% sidebar_items << capture do %>
 
-  <div class="fixed_sidebar">
-    <div class="float_sidebar">
       <h3 class="twiddle">Add Fields</h3>
       <ul>
         <!-- Buttons for inserting and deleting field sets -->
@@ -43,8 +38,6 @@
           </li>
         <% end %>
       </ul>
-    </div>
-  </div>
 
 <% end %>
 
