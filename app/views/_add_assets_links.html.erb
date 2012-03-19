@@ -1,20 +1,8 @@
-<% #asset creation is "disabled" in production for now see DAM-100 %>
 <% if allow_asset_creation %>
 <div id="select-item-box">
   <a class="add-new-asset" href="#">Add a New Asset</a>
   <ul id="select-item-list">
-    <li>
-      <%= link_to_create_asset 'Add a Basic MODS Asset', 'mods_asset' %>
-    </li>
-    <li>
-      <%= link_to_create_asset 'Add an Image', 'generic_image' %>
-    </li>
-    <li>
-      <%= link_to_create_asset 'Add Generic Content', 'generic_content' %>
-    </li>
-    <li>
-      <%= link_to_create_asset 'Add archival video', 'archival_video' %>
-    </li>
+    <%= list_available_assets_to_create %>
   </ul>
 </div>
 <% end %>
