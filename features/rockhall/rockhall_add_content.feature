@@ -21,7 +21,7 @@ Feature: Add rockhall content
     And I am on the home page
     Then I should not see "Add a New Asset"
 
-  Scenario: Allowed groups should be able to create new contetn (BL-163)
+  Scenario: Allowed groups should be able to create new content (BL-163)
     Given I am logged in as "reviewer1@example.com"
     And I am on the home page
     Then I should see "Add a New Asset"
