@@ -4,16 +4,12 @@
 
   <fieldset id="subjects">
     <legend>Subject Fields</legend>
-    <%= display_field([:lc_subject], {:name=>"LC Subject", :multiple=>true, :required=>false}) %>
-    <%= display_field([:lc_name], {:name=>"LC Name", :multiple=>true, :required=>false}) %>
-    <%= display_field([:rh_subject], {:name=>"Rockhall Subject", :multiple=>true, :required=>false}) %>
+    <%= display_field([:lc_subject], {:name=>"LCSH Topic", :multiple=>true, :required=>false}) %>
   </fieldset>
 
   <fieldset id="genres">
     <legend>Genre Fields</legend>
-    <%= display_field([:getty_genre], {:multiple=>true, :required=>false}) %>
-    <%= display_field([:lc_genre], {:name=>"LC Genre", :multiple=>true, :required=>false}) %>
-    <%= display_field([:lc_subject_genre], {:name=>"LC Subject Genre", :multiple=>true, :required=>false}) %>
+    <%= display_field([:lc_genre], {:name=>"LCGFT", :multiple=>true, :required=>false}) %>
   </fieldset>
 
   <fieldset id="event_fields">

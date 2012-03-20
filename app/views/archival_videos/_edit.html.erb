@@ -2,7 +2,7 @@
 
 <% unless params[:new_asset] %>
   <% sidebar_items << capture do %>
-    <h3 class="twiddle">Go to Workflow step</h3>
+    <h3 class="twiddle">Select Workflow step</h3>
     <%= form_tag(url_for(edit_catalog_path)) do -%>
       <%= radio_button_tag(:wf_step, "titles") %> Titles <br/>
       <%= radio_button_tag(:wf_step, "subjects") %> Subjects <br/>
@@ -11,7 +11,7 @@
       <%= radio_button_tag(:wf_step, "rockhall") %> Rockhall <br/>
       <%= radio_button_tag(:wf_step, "permissions") %> Permissions <br/>
       <%= hidden_field_tag(:content_type,"archival_video") %>
-      <%= submit_tag("Submit", :name=>"submit") %>
+      <%= submit_tag("Go to", :name=>"submit") %>
     <% end %>
   <% end %>
 <% end %>

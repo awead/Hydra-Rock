@@ -41,10 +41,10 @@ Description:
       | priority | low |
       | license | Publicly Available |
     And I press "Submit Review"
-    Then I should see the field content "complete" contain "no"
-    And I should see the field content "license" contain "Publicly Available"
-    And I should see the field content "date_updated" contain the current date
-    And I should see the field content "priority" contain "low"
+    Then the following should be selected within "form#asset_review"
+      | complete | no |
+      | priority | low |
+      | license | Publicly Available |
 
   Scenario: User who is not a reviewer should not be able to review an item (DAM-123)
     Given I am logged in as "archivist1@example.com"
@@ -60,9 +60,11 @@ Description:
     Given I am logged in as "archivist1@example.com"
     And I am on the edit document page for rockhall:fixture_pbcore_document3
     And I fill in "asset[descMetadata][alternative_title][0]" with "Fake alt title"
-    And I press "Save Document"
+    And I press "Submit"
+    When I choose "wf_step_original"
+    And I press "Go to"
     And I fill in "asset[descMetadata][condition_note][0]" with "Fake note"
-    And I press "Save Original"
+    And I press "Submit"
     When I follow "Switch to browse view"
     Then I should see "Fake alt title"
     And I should see "Fake note"

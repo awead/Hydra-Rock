@@ -2,10 +2,15 @@
 
   <%= hidden_field_tag("_method","put") %>
 
+  <fieldset id="date_fields">
+    <legend>Date</legend>
+    <p class="legend-caption">Enter the date the item was first created or filmed.  Use YYYY-MM-DD for the format.</p>
+      <%= display_field([:creation_date], {:multiple=>false, :required=>true}) %>
+  </fieldset>
+
   <fieldset id="original_fields">
     <legend>Original Item</legend>
     <p class="legend-caption">Fields that describe the original item, such as the videocasette or tape.</p>
-    <%= display_field([:creation_date], {:multiple=>false, :required=>true}) %>
     <%= display_field([:barcode], {:multiple=>false, :required=>false}) %>
 
     <p id="item_location_field" class="fedora-text-area">
