@@ -36,3 +36,11 @@ Feature:
     And I am on the home page
     Then I should see a facet for "Reviewer"
     And I should see the facet term "reviewer1@example.com"
+
+  Scenario: Original video format facet (DAM-166)
+    Given I am on the home page
+    Then I should see a facet for "Content Type"
+    And I should see the facet term "Video"
+    And I should see a facet for "Media Format"
+    And I should see the facet term "Betacam"
+

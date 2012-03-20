@@ -25,11 +25,14 @@ module NavigationHelpers
       edit_catalog_path($1)
     when /the catalog index page/
       catalog_index_path
-    # Add more mappings here.
-    # Here is a more fancy example:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
+
+    # Workflow steps
+    when /the first workflow edit page for (.+)/
+      edit_catalog_path($1)
+    when /the subjects workflow edit page for (.+)/
+      edit_catalog_path(:id => $1, :wf_step => "subjects")
+    when /the persons workflow edit page for (.+)/
+      edit_catalog_path(:id => $1, :wf_step => "persons")
 
     when /the edit document page for (.*)$/i
       edit_catalog_path($1)

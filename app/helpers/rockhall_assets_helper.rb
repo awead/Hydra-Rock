@@ -38,11 +38,7 @@ module RockhallAssetsHelper
 
     # Show or edit
     if params[:action] == "edit"
-      if opts[:area]
-        values = fedora_text_area(@document_fedora, datastream, path, :multiple=>opts[:multiple])
-      else
-        values = local_fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :hidden=>opts[:hidden], :size=>opts[:size])
-      end
+      values = fedora_text_field(@document_fedora, datastream, path, :multiple=>opts[:multiple], :required=>opts[:required])
     else
       values = get_values_from_datastream(@document_fedora, datastream, path)
     end
@@ -66,31 +62,20 @@ module RockhallAssetsHelper
 
     # Put it all together
     result = String.new
-    result << "<dt><label for=\"#{id}\">#{field}</label></dt>" unless opts[:hidden]
     if params[:action] == "edit"
+      result << "<p id=\"#{id}\" class=\"fedora-text-field\">" + field unless opts[:hidden]
       values.each do |value|
-        result << "<dd id=\"#{id}\" class=\"field\">"+ value + "</dd>"
+        result << value
       end
     else
-      result << "<dd id=\"#{id}\" class=\"field\">"
-      result << "<ul>"
+      result << "<dt><label for=\"#{id}\">" + formatted_name + "</label></dt>"
+      result << "<dd id=\"#{id}\" class=\"field\"><ul>"
       values.each do |value|
-        if opts[:area]
-          result << value
-        else
-          result << "<li class=\"field\">" + value + "</li>"
-        end
+        result << "<li>" + value + "</li>"
       end
-      result << "</ul>"
-      result << "</dd>"
+      result << "</ul></dd>"
     end
-
-
-    if opts[:area]
-      return field.html_safe + result.html_safe
-    else
-      return result.html_safe
-    end
+    return result.html_safe
   end
 
 
@@ -167,7 +152,7 @@ module RockhallAssetsHelper
           name = value.empty? ? " #" + (index + 1).to_s : " " + value
           results << "<li>"
           results << button_to(("Delete " + name.strip).truncate(28),
-                      {:action=>"destroy", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type, :index=>index},
+                      {:action=>"destroy", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type, :index=>index, :wf_step=>params[:wf_step]},
                       :method => :delete)
           results << "</li>"
           index = index + 1
@@ -202,14 +187,22 @@ module RockhallAssetsHelper
 
 
   def contributor_link(counter)
+    result = String.new
     role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role])
-    return role.to_s
+    unless role.first.blank?
+      result = ", " + role.to_s
+    end
+    return result.to_s
   end
 
 
   def publisher_link(counter)
+    result = String.new
     role = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role])
-    return role.to_s
+    unless role.first.blank?
+      result = ", " + role.to_s
+    end
+    return result.to_s
   end
 
   def get_review_status(document)
@@ -230,4 +223,26 @@ module RockhallAssetsHelper
       end
     end
   end
+
+  def list_available_assets_to_create
+    results = String.new
+    results << "<li>"
+    results << link_to_create_asset('Add archival video', 'archival_video')
+    results << "</li>"
+    user_groups = RoleMapper.roles(current_user.login)
+    if user_groups.include?("archivist")
+      results << "<li>"
+      results << link_to_create_asset('Add a Basic MODS Asset', 'mods_asset')
+      results << "</li>"
+      results << "<li>"
+      results << link_to_create_asset('Add an Image', 'generic_image')
+      results << "</li>"
+      results << "<li>"
+      results << link_to_create_asset('Add Generic Content', 'generic_content')
+      results << "</li>"
+    end
+    return results.html_safe
+  end
+
+
 end

@@ -275,28 +275,19 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 
     # Blacklight facets - these are the same facet fields used in our Blacklight app
     # for consistency and so they'll show up when we export records from Hydra into BL:
-    #   format
-    #   collection_facet
-    #   material_facet
-    #   pub_date
-    #   topic_facet
-    #   name_facet
-    #   series_facet
-    #   language_facet
-    #   lc_1letter_facet
-    #   genre_facet
     solr_doc.merge!(:material_facet => "Digital")
     solr_doc.merge!(:genre_facet => gather_terms(self.find_by_terms(:genres)))
     solr_doc.merge!(:name_facet => gather_terms(self.find_by_terms(:contributor_name)))
     solr_doc.merge!(:topic_facet => gather_terms(self.find_by_terms(:subjects)))
     solr_doc.merge!(:series_facet => gather_terms(self.find_by_terms(:event_series)))
+    solr_doc.merge!(:format_facet => gather_terms(self.find_by_terms(:format)))
 
     unless self.find_by_terms(:archival_collection).nil?
       solr_doc.merge!(:collection_facet => self.find_by_terms(:archival_collection).text)
     end
 
     # Extract 4-digit year for creation date
-		create = self.find_by_terms(:creation_date).first.text.strip
+		create = self.find_by_terms(:creation_date).text.strip
 		unless create.nil? or create.empty?
 		  solr_doc.merge!(:create_date_facet => DateTime.parse(create).strftime("%Y"))
 		end

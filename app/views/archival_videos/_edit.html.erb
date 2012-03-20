@@ -1,70 +1,17 @@
-<% extra_head_content << capture do -%>
-  <%= javascript_include_tag "rails.js" %>
-  <%= csrf_meta_tag %>
-<% end %>
+<%= render_submission_workflow_step -%>
 
-<div class="document_viewer" id="cover_container">
-  <div class="multipleEdit">
-
-    <h2 id="content" class="section-title">Content</h2>
-    <div id="document_editor">
-      <%= render :partial => "archival_videos/edit/document", :locals => {:content_type => "archival_video"} %>
-      <h3 class="twiddle">Delete Fields</h3>
-      <%= delete_field_button %>
-    </div>
-
-    <h2 id="original" class="section-title">Original</h2>
-    <div id="original_editor">
-      <%= render :partial => "archival_videos/edit/original", :locals => {:content_type => "archival_video"} %>
-    </div>
-
-    <% if @document_fedora.file_objects.count > 0 %>
-    <h2 id="digital" class="section-title">Digital Files</h2>
-    <dl>
-      <fieldset id="all_videos">
-        <dl>
-          <%= display_all_assets %>
-        </dl>
-      </fieldset>
-    </dl>
+<% unless params[:new_asset] %>
+  <% sidebar_items << capture do %>
+    <h3 class="twiddle">Select Workflow step</h3>
+    <%= form_tag(url_for(edit_catalog_path)) do -%>
+      <%= radio_button_tag(:wf_step, "titles") %> Titles <br/>
+      <%= radio_button_tag(:wf_step, "subjects") %> Subjects <br/>
+      <%= radio_button_tag(:wf_step, "persons") %> Persons <br/>
+      <%= radio_button_tag(:wf_step, "original") %> Original <br/>
+      <%= radio_button_tag(:wf_step, "rockhall") %> Rockhall <br/>
+      <%= radio_button_tag(:wf_step, "permissions") %> Permissions <br/>
+      <%= hidden_field_tag(:content_type,"archival_video") %>
+      <%= submit_tag("Go to", :name=>"submit") %>
     <% end %>
-
-    <h2 id="asset_review" class="section-title">Asset Review</h2>
-    <div id="asset_review_editor">
-      <%= render :partial => "archival_videos/edit/review", :locals => {:content_type => "archival_video"} %>
-    </div>
-
-    <h2 id="rockhall" class="section-title">Rockhall Metadata</h2>
-    <div id="rockhall_editor">
-      <%= render :partial => "archival_videos/edit/rockhall", :locals => {:content_type => "archival_video"} %>
-    </div>
-
-    <h2 id="permissions" class="section-title">Set Permissions</h2>
-     <div id="permissions_editor">
-      <%= render :partial => "permissions/permissions_form", :locals => {:document => document, :asset_id=>params[:id]} %>
-    </div>
-
-  </div>
-</div>
-<% sidebar_items << capture do %>
-
-  <div class="fixed_sidebar">
-    <div class="float_sidebar">
-      <h3 class="twiddle">Navigation</h3>
-      <%= toc_links %>
-      <h3 class="twiddle">Add Fields</h3>
-      <ul>
-        <!-- Buttons for inserting and deleting field sets -->
-        <% ["contributor","publisher"].each do |type| %>
-          <li>
-          <%= form_tag url_for(:action=>"create", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"archival_video", :node=>type) do %>
-            <%= submit_tag "Add #{type}", {:id => "add#{type.capitalize}"} %>
-          <% end %>
-          </li>
-        <% end %>
-      </ul>
-
-    </div>
-  </div>
-
+  <% end %>
 <% end %>

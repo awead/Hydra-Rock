@@ -7,7 +7,7 @@ class ArchivalImage < ActiveFedora::Base
   include Rockhall::ModelMethods
 
   # These will need to be included to avoid deprecation warnings is later versions of HH
-  #include ActiveFedora::Relationships
+  include ActiveFedora::Relationships
 
   has_relationship "objects", :is_part_of, :inbound => true
 
