@@ -8,9 +8,9 @@ class ArchivalVideo < ActiveFedora::Base
   include Hydra::SubmissionWorkflow
 
   # These will need to be included to avoid deprecation warnings is later versions of HH
-  #include ActiveFedora::FileManagement
-  #include ActiveFedora::Relationships
-  #include ActiveFedora::DatastreamCollections
+  include ActiveFedora::FileManagement
+  include ActiveFedora::Relationships
+  include ActiveFedora::DatastreamCollections
 
   has_relationship "objects", :is_part_of, :inbound => true
 
