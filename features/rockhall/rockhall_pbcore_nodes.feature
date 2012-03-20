@@ -49,3 +49,22 @@ Feature:
     And I follow "Switch to browse view"
     And I should see "performer"
     And I should see "presenter"
+
+  Scenario: Null roles (DAM-169)
+    Given I am logged in as "archivist1@example.com"
+    And I create a new archival_video
+    And I fill in "asset[descMetadata][main_title][0]" with "Sample Main Title for null roles"
+    And I press "Submit"
+    And I choose "wf_step_persons"
+    And I press "Go to"
+    Then I should see "Contributors"
+    And I press "Add contributor"
+    And I press "Add publisher"
+    And I fill in "asset[descMetadata][contributor_0_name][0]" with "John Doe"
+    And I fill in "asset[descMetadata][publisher_0_name][0]" with "No One"
+    And I press "Submit"
+    When I follow "Switch to browse view"
+    Then I should see "John Doe"
+    And I should see "No One"
+    And I should not see "John Doe,"
+    And I should not see "No One,"

@@ -5,7 +5,7 @@
     <%= fedora_select(@document_fedora,"descMetadata", [{:publisher=>publisher_counter}, :role], :choices=>Relators.pbcore.keys.sort).html_safe %>
   <% else %>
     <span>
-      <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name]) %>,
+      <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>publisher_counter}, :name]) %>
       <%= publisher_link(publisher_counter) %>
     </span>
   <% end %>

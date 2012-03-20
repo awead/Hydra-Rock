@@ -5,7 +5,7 @@
     <%= fedora_select(@document_fedora,"descMetadata", [{:contributor=>contributor_counter}, :role], :choices=>Relators.marc.keys.sort).html_safe %>
   <% else %>
     <span>
-      <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>contributor_counter}, :name]) %>,
+      <%= get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>contributor_counter}, :name]) %>
       <%= contributor_link(contributor_counter) %>
     </span>
   <% end %>

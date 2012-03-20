@@ -187,14 +187,22 @@ module RockhallAssetsHelper
 
 
   def contributor_link(counter)
+    result = String.new
     role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role])
-    return role.to_s
+    unless role.first.blank?
+      result = ", " + role.to_s
+    end
+    return result.to_s
   end
 
 
   def publisher_link(counter)
+    result = String.new
     role = get_values_from_datastream(@document_fedora, "descMetadata", [{:publisher=>counter}, :role])
-    return role.to_s
+    unless role.first.blank?
+      result = ", " + role.to_s
+    end
+    return result.to_s
   end
 
   def get_review_status(document)
