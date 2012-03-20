@@ -45,6 +45,7 @@ Blacklight.configure(:shared) do |config|
   config[:facet] = {
     :field_names => (facet_fields = [
       "format",
+      "format_facet",
       "pub_date",
       "topic_facet",
       "name_facet",
@@ -58,7 +59,8 @@ Blacklight.configure(:shared) do |config|
       "reviewer_facet"
     ]),
     :labels => {
-      "format"            => "Format",
+      "format"            => "Content Type",
+      "format_facet"      => "Media Format",
       "name_facet"        => "Name",
       "topic_facet"       => "Topic",
       "genre_facet"       => "Genre",
