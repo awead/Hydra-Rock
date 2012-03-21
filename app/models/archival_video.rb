@@ -79,4 +79,22 @@ class ArchivalVideo < ActiveFedora::Base
     return results
   end
 
+  def access_file
+    unless self.external_video(:h264).nil?
+      return self.external_video(:h264).datastreams["descMetadata"].get_values(:name)
+    end
+  end
+
+  def access_format
+    unless self.external_video(:h264).nil?
+      return self.external_video(:h264).datastreams["descMetadata"].get_values(:video_encoding)
+    end
+  end
+
+  def addl_solr_fields
+    solr_doc = Hash.new
+    solr_doc.merge!(:access_file_s => self.access_file)
+    solr_doc.merge!(:format_dtl_display => self.access_format)
+  end
+
 end

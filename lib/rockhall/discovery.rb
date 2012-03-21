@@ -36,7 +36,9 @@ class Rockhall::Discovery
       retrieve[:q]  = 'id:"' + doc.id + '"'
       retrieve[:qt] = "document"
       response = Blacklight.solr.find(retrieve)
-      solr.add response["response"]["docs"].first
+      solr_doc = response["response"]["docs"].first
+      solr_doc.merge!(addl_solr_fields(doc.id))
+      solr.add solr_doc
       solr.commit
     end
   end
@@ -53,6 +55,11 @@ class Rockhall::Discovery
 
   def self.solr_connect
     RSolr::Ext.connect({:url => RH_CONFIG["solr_discovery"]})
+  end
+
+  def self.addl_solr_fields(id)
+    av = ArchivalVideo.load_instance(id)
+    return av.addl_solr_fields
   end
 
 end
