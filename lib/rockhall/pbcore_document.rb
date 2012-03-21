@@ -325,7 +325,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
   def gather_terms(terms)
     results = Array.new
     terms.each { |r| results << r.text }
-    return results
+    return results.compact.uniq
   end
 
 end
