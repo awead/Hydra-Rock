@@ -33,7 +33,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'ruby-debug19'
-  gem 'solrizer-fedora', '>=1.2.0'
+  gem 'solrizer-fedora', '=2.0.0.rc2'
   gem 'webrat'
 end
 

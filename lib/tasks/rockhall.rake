@@ -10,43 +10,28 @@ namespace :rockhall do
     task :reload_fixtures => :environment do
 
       # Re-sync solrs
-#       ENV["RAILS_ENV"] = "development"
-#       Rake::Task["hydra:jetty:solr_clean"].invoke
-#       Rake::Task["hydra:jetty:solr_clean"].reenable
-#       ENV["RAILS_ENV"] = "test"
-#       Rake::Task["hydra:jetty:solr_clean"].invoke
-#       Rake::Task["hydra:jetty:solr_clean"].reenable
-#       ENV["RAILS_ENV"] = "development"
-#       Rake::Task["solrizer:fedora:solrize_objects"].invoke
-#       Rake::Task["solrizer:fedora:solrize_objects"].reenable
-#       ENV["RAILS_ENV"] = "test"
-#       Rake::Task["solrizer:fedora:solrize_objects"].invoke
-#       Rake::Task["solrizer:fedora:solrize_objects"].reenable
+      ENV["RAILS_ENV"] = "development"
+      Rake::Task["hydra:jetty:solr_clean"].invoke
+      Rake::Task["hydra:jetty:solr_clean"].reenable
+      ENV["RAILS_ENV"] = "development"
+      Rake::Task["solrizer:fedora:solrize_objects"].invoke
+      Rake::Task["solrizer:fedora:solrize_objects"].reenable
 
       Hydrangea::JettyCleaner.clean()
 
       contents = Dir.glob("spec/fixtures/fedora/*.xml")
       contents.each do |file|
-          fixture = File.new(file, "r")
-          result = ActiveFedora::RubydoraConnection.instance.connection.ingest(:file=>fixture.read)
-          if result
-            puts "The object has been loaded as #{result.body}"
-          end
+        ENV["foxml"] = file
+        Rake::Task["repo:load"].invoke
+        Rake::Task["repo:load"].reenable
       end
 
-      # Re-sync solrs just to be safe
-#       ENV["RAILS_ENV"] = "development"
-#       Rake::Task["hydra:jetty:solr_clean"].invoke
-#       Rake::Task["hydra:jetty:solr_clean"].reenable
-#       ENV["RAILS_ENV"] = "test"
-#       Rake::Task["hydra:jetty:solr_clean"].invoke
-#       Rake::Task["hydra:jetty:solr_clean"].reenable
-#       ENV["RAILS_ENV"] = "development"
-#       Rake::Task["solrizer:fedora:solrize_objects"].invoke
-#       Rake::Task["solrizer:fedora:solrize_objects"].reenable
-#       ENV["RAILS_ENV"] = "test"
-#       Rake::Task["solrizer:fedora:solrize_objects"].invoke
-#       Rake::Task["solrizer:fedora:solrize_objects"].reenable
+      ENV["RAILS_ENV"] = "test"
+      Rake::Task["hydra:jetty:solr_clean"].invoke
+      Rake::Task["hydra:jetty:solr_clean"].reenable
+      ENV["RAILS_ENV"] = "test"
+      Rake::Task["solrizer:fedora:solrize_objects"].invoke
+      Rake::Task["solrizer:fedora:solrize_objects"].reenable
 
     end
 
