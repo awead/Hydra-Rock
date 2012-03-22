@@ -1,4 +1,3 @@
-require 'mediashelf/active_fedora_helper'
 class Rockhall::Discovery
 
   include Hydra::RepositoryController
