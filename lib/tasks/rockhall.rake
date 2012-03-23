@@ -21,11 +21,9 @@ namespace :rockhall do
 
       contents = Dir.glob("spec/fixtures/fedora/*.xml")
       contents.each do |file|
-          fixture = File.new(file, "r")
-          result = ActiveFedora::RubydoraConnection.instance.connection.ingest(:file=>fixture.read)
-          if result
-            puts "The object has been loaded as #{result.body}"
-          end
+        ENV["foxml"] = file
+        Rake::Task["repo:load"].invoke
+        Rake::Task["repo:load"].reenable
       end
 
       # Re-sync all the solrs
