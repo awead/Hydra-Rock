@@ -2,8 +2,8 @@ defaults: &defaults
   location:       /Users/adamw/Sites/bag
   host:           http://localhost/~adamw/bag
   depositor:      awead@rockhall.org
-  hostname:       http://george.rockhall.org/hydrangea
-  solr_discovery: http://localhost:8984/solr/blacklight-dev
+  hostname:       http://localhost:3000/
+  solr_discovery: http://localhost:8985/solr/blacklight-dev
   pid_space:      changeme
   wowza_host:     george.rockhall.org
 

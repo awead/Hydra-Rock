@@ -2,6 +2,7 @@ module Relators
 
   def self.marc
     {
+      ""              => "",
       "annotator"     => "http://id.loc.gov/vocabulary/relators/ann",
       "artist"        => "http://id.loc.gov/vocabulary/relators/art",
       "author"        => "http://id.loc.gov/vocabulary/relators/aut",
@@ -30,6 +31,7 @@ module Relators
 
   def self.pbcore
     {
+      ""                 => "",
       "presenter"        => "http://pbcore.org/vocabularies/publisherRole#presenter",
       "copyright holder" => "http://pbcore.org/vocabularies/publisherRole#copyright-holder",
       "distributor"      => "http://pbcore.org/vocabularies/publisherRole#distributor",

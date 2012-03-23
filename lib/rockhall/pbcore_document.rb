@@ -263,46 +263,56 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     solr_doc.merge!(:title_t => self.find_by_terms(:main_title).text)
 
     # Specific fields for Blacklight export
+
+    # Title fields
     solr_doc.merge!(:title_display => self.find_by_terms(:main_title).text)
-    solr_doc.merge!(:title_addl_display => self.find_by_terms(:alternative_title).text)
+    ["alternative_title", "chapter", "episode", "label", "segment", "subtitle", "track", "translation"].each do |addl_title|
+      solr_doc.merge!(:title_addl_display => self.find_by_terms(addl_title.to_sym).text)
+    end
     solr_doc.merge!(:heading_display => self.find_by_terms(:main_title).text)
+
+    # Individual fields
     solr_doc.merge!(:summary_display => self.find_by_terms(:summary).text)
     solr_doc.merge!(:pub_date_display => self.find_by_terms(:event_date).text)
     solr_doc.merge!(:publisher_display => gather_terms(self.find_by_terms(:publisher_name)))
     solr_doc.merge!(:contributors_display => gather_terms(self.find_by_terms(:contributor_name)))
     solr_doc.merge!(:subject_display => gather_terms(self.find_by_terms(:subjects)))
     solr_doc.merge!(:genre_display => gather_terms(self.find_by_terms(:genres)))
+    solr_doc.merge!(:series_display => gather_terms(self.find_by_terms(:event_series)))
+    solr_doc.merge!(:physical_dtl_display => gather_terms(self.find_by_terms(:format)))
+    solr_doc.merge!(:recinfo_display => gather_terms(self.find_by_terms(:event_place)))
+    solr_doc.merge!(:recinfo_display => gather_terms(self.find_by_terms(:event_date)))
+    solr_doc.merge!(:contents_display => gather_terms(self.find_by_terms(:parts_list)))
+    solr_doc.merge!(:notes_display => gather_terms(self.find_by_terms(:note)))
+    solr_doc.merge!(:access_display => gather_terms(self.find_by_terms(:usage)))
+    solr_doc.merge!(:collection_display => gather_terms(self.find_by_terms(:archival_collection)))
 
     # Blacklight facets - these are the same facet fields used in our Blacklight app
     # for consistency and so they'll show up when we export records from Hydra into BL:
-    #   format
-    #   collection_facet
-    #   material_facet
-    #   pub_date
-    #   topic_facet
-    #   name_facet
-    #   series_facet
-    #   language_facet
-    #   lc_1letter_facet
-    #   genre_facet
     solr_doc.merge!(:material_facet => "Digital")
     solr_doc.merge!(:genre_facet => gather_terms(self.find_by_terms(:genres)))
     solr_doc.merge!(:name_facet => gather_terms(self.find_by_terms(:contributor_name)))
-    solr_doc.merge!(:topic_facet => gather_terms(self.find_by_terms(:subjects)))
+    solr_doc.merge!(:subject_topic_facet => gather_terms(self.find_by_terms(:subjects)))
     solr_doc.merge!(:series_facet => gather_terms(self.find_by_terms(:event_series)))
+    solr_doc.merge!(:format_facet => gather_terms(self.find_by_terms(:format)))
+    solr_doc.merge!(:collection_facet => gather_terms(self.find_by_terms(:archival_collection)))
 
-    unless self.find_by_terms(:archival_collection).nil?
-      solr_doc.merge!(:collection_facet => self.find_by_terms(:archival_collection).text)
+    # TODO: map PBcore's three-letter language codes to full language names
+    # Right now, everything's English.
+    if self.find_by_terms(:language).text.match("eng")
+      solr_doc.merge!(:language_facet => "English")
+      solr_doc.merge!(:language_display => "English")
+    else
+      solr_doc.merge!(:language_facet => "Unknown")
+      solr_doc.merge!(:language_display => "Unknown")
     end
 
-    # Extract 4-digit year for creation date
-		create = self.find_by_terms(:creation_date).first.text.strip
+    # Extract 4-digit year for creation date facet in Hydra and pub_date facet in Blacklight
+		create = self.find_by_terms(:creation_date).text.strip
 		unless create.nil? or create.empty?
 		  solr_doc.merge!(:create_date_facet => DateTime.parse(create).strftime("%Y"))
+		  solr_doc.merge!(:pub_date => DateTime.parse(create).strftime("%Y"))
 		end
-
-		# Create link to item in Hydra
-		solr_doc.merge!(:resource_link_display => File.join(RH_CONFIG["hostname"], "catalog", self.pid)) if self.pid
 
 		# For full text, we stuff it into the mods_t field which is already configured for Mods doucments
 		solr_doc.merge!(:mods_t => self.ng_xml.text)
@@ -315,7 +325,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
   def gather_terms(terms)
     results = Array.new
     terms.each { |r| results << r.text }
-    return results
+    return results.compact.uniq
   end
 
 end

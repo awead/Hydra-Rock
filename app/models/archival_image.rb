@@ -2,10 +2,10 @@ require "hydra"
 
 class ArchivalImage < ActiveFedora::Base
 
+  include ActiveFedora::Relationships
   include Hydra::GenericImage
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
-  include ActiveFedora::Relationships
 
   has_relationship "objects", :is_part_of, :inbound => true
 

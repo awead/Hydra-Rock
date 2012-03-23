@@ -10,7 +10,7 @@ describe PbcoreController do
         mock_document.expects(:save)
         ArchivalVideo.expects(:find).with("_PID_").returns(mock_document)
         post :create, :asset_id=>"_PID_", :controller=>"pbcore", :content_type=>"archival_video", :node=>type
-        response.should redirect_to catalog_path(:id=>"_PID_")
+        response.should redirect_to edit_catalog_path(:id=>"_PID_")
       end
     end
   end
