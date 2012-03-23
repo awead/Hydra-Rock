@@ -21,7 +21,7 @@ describe Rockhall::Discovery do
 
     it "should delete all ArchivalVideos from the remote Blacklight index" do
       Rockhall::Discovery.delete_objects
-      docs = Rockhall::Discovery.get_objects
+      docs = Rockhall::Discovery.get_objects({:remote=>TRUE})
       docs.should be_empty
     end
 
