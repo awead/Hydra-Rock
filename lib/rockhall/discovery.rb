@@ -45,7 +45,7 @@ class Rockhall::Discovery
   # delete any ActiveFedora objects from the Blacklight index
   def self.delete_objects
     solr = solr_connect
-    docs = get_objects({:remote=>TRUE})
+    docs = get_objects
     docs.each do |r|
       solr.delete_by_id r["id"]
       solr.commit
