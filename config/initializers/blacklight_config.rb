@@ -55,6 +55,7 @@ Blacklight.configure(:shared) do |config|
       "complete_t",
       "create_date_facet",
       "priority_t",
+      "depositor_facet",
       "reviewer_facet"
     ]),
     :labels => {
@@ -69,6 +70,7 @@ Blacklight.configure(:shared) do |config|
       "complete_t"          => "Review Status",
       "create_date_facet"   => "Year",
       "priority_t"          => "Priority",
+      "depositor_facet"     => "Depositor",
       "reviewer_facet"      => "Reviewer"
     },
     # Setting a limit will trigger Blacklight's 'more' facet values link.
