@@ -35,11 +35,8 @@ describe ArchivalVideo do
     describe "apply_depositor_metadata" do
       it "should set depositor info in the properties and rightsMetadata datastreams" do
         rights_ds = @video.datastreams["rightsMetadata"]
-        prop_ds = @video.datastreams["properties"]
-
-        node, index = @video.apply_depositor_metadata("Depositor Name")
-
-        prop_ds.depositor_values.should == ["Depositor Name"]
+        @video.apply_depositor_metadata("Depositor Name")
+        @video.depositor.should == ["Depositor Name"]
         rights_ds.get_values([:edit_access, :person]).should == ["Depositor Name"]
       end
     end

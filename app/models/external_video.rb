@@ -23,17 +23,20 @@ class ExternalVideo < ActiveFedora::Base
   has_metadata :name => "mediaInfo", :type => MediainfoXml::Document do |m|
   end
 
-  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
-    m.field 'collection', :string # TODO: delete this field from all objects
-    m.field 'depositor', :string
-    m.field 'notes', :text
+  has_metadata :name => "properties", :type => Rockhall::Properties do |m|
   end
+  delegate :depositor, :to=>'properties', :at=>[:depositor]
 
   def initialize( attrs={} )
     super
     # Anyone in the archivist group has edit rights
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
+  end
+
+  def apply_depositor_metadata(depositor_id)
+    self.depositor = depositor_id
+    super
   end
 
   # augments add_named_datastream to put file information in descMetadata

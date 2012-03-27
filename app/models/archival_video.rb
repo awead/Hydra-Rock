@@ -20,17 +20,12 @@ class ArchivalVideo < ActiveFedora::Base
   has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDocument do |m|
   end
 
-  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
-    m.field 'collection', :string # TODO: delete this field from all objects
-    m.field 'depositor', :string
-    m.field 'notes', :text
-    m.field 'access', :string
-    m.field 'submission', :string
+  has_metadata :name => "properties", :type => Rockhall::Properties do |m|
   end
+  delegate :depositor, :to=>'properties', :at=>[:depositor]
 
   has_metadata :name => "assetReview", :type => Rockhall::AssetReview do |m|
   end
-
   delegate :reviewer,       :to=>'assetReview', :at=>[:reviewer]
   delegate :date_updated,   :to=>'assetReview', :at=>[:date_updated]
   delegate :complete,       :to=>'assetReview', :at=>[:complete]
@@ -42,6 +37,11 @@ class ArchivalVideo < ActiveFedora::Base
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
+  end
+
+  def apply_depositor_metadata(depositor_id)
+    self.depositor = depositor_id
+    super
   end
 
   def remove_file_objects
