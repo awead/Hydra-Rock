@@ -229,6 +229,9 @@ module RockhallAssetsHelper
     results << "<li>"
     results << link_to_create_asset('Add archival video', 'archival_video')
     results << "</li>"
+    results << "<li>"
+    results << link_to_create_asset('Add digital video', 'digital_video')
+    results << "</li>"
     user_groups = RoleMapper.roles(current_user.login)
     if user_groups.include?("archivist")
       results << "<li>"

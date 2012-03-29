@@ -1,0 +1,11 @@
+<fieldset id="properties">
+  <dl>
+
+    <%= display_field([:notes], { :datastream => "properties", :name => "Internal Notes", :inline => TRUE }) %>
+    <%= display_field([:depositor], { :datastream => "properties" }) %>
+    <%= display_field([:submission], { :datastream => "properties", :inline => TRUE }) %>
+    <%= display_field([:access], { :datastream => "properties", :name => "Access Restrictions" }) %>
+
+  </dl>
+</fieldset>
+
