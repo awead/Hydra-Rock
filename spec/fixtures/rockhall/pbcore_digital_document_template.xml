@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<pbcoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"/>
+  <pbcoreTitle titleType="Main"/>
+  <pbcoreTitle titleType="Alternative">inserted</pbcoreTitle>
+  <pbcoreTitle titleType="Chapter">inserted</pbcoreTitle>
+  <pbcoreTitle titleType="Episode">inserted</pbcoreTitle>
+  <pbcoreTitle titleType="Label">inserted</pbcoreTitle>
+  <pbcoreTitle titleType="Segment">inserted</pbcoreTitle>
+  <pbcoreTitle titleType="Subtitle">inserted</pbcoreTitle>
+  <pbcoreTitle titleType="Track">inserted</pbcoreTitle>
+  <pbcoreTitle titleType="Translation">inserted</pbcoreTitle>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">inserted</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Name Authority File" ref="http://id.loc.gov/authorities/names">inserted</pbcoreSubject>
+  <pbcoreSubject source="Rock and Roll Hall of Fame and Museum">inserted</pbcoreSubject>
+  <pbcoreDescription descriptionType="Description" annotation="Summary" descriptionTypeSource="pbcoreDescription/descriptionType" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description"/>
+  <pbcoreDescription descriptionType="Table of Contents" annotation="Parts List" descriptionTypeSource="pbcoreDescription/descriptionType" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents"/>
+  <pbcoreGenre source="The Getty Research Institute Art and Architecture Thesaurus" ref="http://www.getty.edu/research/tools/vocabularies/aat/index.html">inserted</pbcoreGenre>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">inserted</pbcoreGenre>
+  <pbcoreGenre source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">inserted</pbcoreGenre>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series"/>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Collection"/>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Series"/>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Collection Number"/>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Accession Number"/>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place"/>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date"/>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreContributor>
+    <contributor/>
+    <contributorRole source="MARC relator terms"/>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor/>
+    <contributorRole source="MARC relator terms"/>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher/>
+    <publisherRole source="PBCore publisherRole"/>
+  </pbcorePublisher>
+  <pbcorePublisher>
+    <publisher/>
+    <publisherRole source="PBCore publisherRole"/>
+  </pbcorePublisher>
+  <pbcoreRightsSummary/>
+  <pbcoreAnnotation annotationType="Notes"/>
+</pbcoreDescriptionDocument>

@@ -12,6 +12,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
       t.instantiationIdentifier(:namespace_prefix=>nil, :attributes=>{ :annotation=>"Filename", :source=>"Rock and Roll Hall of Fame and Museum" })
       t.instantiationDate(:namespace_prefix=>nil, :attributes=>{ :dateType=>"created" })
       t.instantiationDigital(:namespace_prefix=>nil, :attributes=>{ :source=>"EBU file formats" })
+      t.instantiationStandard(:namespace_prefix=>nil)
       t.instantiationLocation(:namespace_prefix=>nil)
       t.instantiationGenerations(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationGenerations" })
       t.instantiationFileSize(:namespace_prefix=>nil) {
@@ -19,6 +20,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
       }
       t.instantiationColors(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationColors" })
       t.instantiationMediaType(:namespace_prefix=>nil, :attributes=>{ :source=>"PBCore instantiationMediaType" })
+      t.instantiationLanguage(:namespace_prefix=>nil, :attributes=>{ :source=>"ISO 639.2", :ref=>"http://www.loc.gov/standards/iso639-2/php/code_list.php" })
       t.instantiationDuration(:namespace_prefix=>nil)
 
       t.instantiationRights(:namespace_prefix=>nil) {
@@ -82,8 +84,7 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.duration(:proxy=>[:pbcoreInstantiation, :instantiationDuration])
     t.rights_summary(:proxy=>[:pbcoreInstantiation, :instantiationRights, :rightsSummary])
 
-    # Proxies to annotation fields
-    # These are also all inserted fields and are not in the template
+    # Proxies to annotation fields and other fields that are not in the template
     t.note(:proxy=>[:pbcoreInstantiation, :inst_note])
     t.checksum_type(:proxy=>[:pbcoreInstantiation, :inst_chksum_type])
     t.checksum_value(:proxy=>[:pbcoreInstantiation, :inst_chksum_value])
@@ -97,6 +98,8 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.cleaning(:proxy=>[:pbcoreInstantiation, :inst_clean_note])
     t.color_space(:proxy=>[:pbcoreInstantiation, :inst_color_space])
     t.chroma(:proxy=>[:pbcoreInstantiation, :inst_chroma])
+    t.standard(:proxy=>[:pbcoreInstantiation, :instantiationStandard])
+    t.language(:proxy=>[:pbcoreInstantiation, :instantiationLanguage])
 
     # Proxies to video essence fields
     t.video_standard(:proxy=>[:pbcoreInstantiation, :video_essence, :essenceTrackStandard])
