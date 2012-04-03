@@ -46,17 +46,17 @@ class RockhallSip
     raise "Invalid sip" unless self.valid?
 
     begin
-      av = DigitalVideo.new
-      av.save
-      av.label = "Rock and Roll Hall of Fame Library and Archives"
-      av.save
+      dv = DigitalVideo.new
+      dv.save
+      dv.label = "Rock and Roll Hall of Fame Library and Archives"
+      dv.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
 
     # Rename sip using the new object pid
     begin
-      new_name = av.pid.gsub(/:/,"_")
+      new_name = dv.pid.gsub(/:/,"_")
       FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
       self.base = new_name
       self.root = File.join(File.dirname(self.root), new_name)
@@ -74,10 +74,8 @@ class RockhallSip
     raise "Invalid sip" unless self.valid?
 
     begin
-      av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
-      ds = av.datastreams["descMetadata"]
-      self.update_fields(ds)
-      av.save
+      dv = DigitalVideo.new({:pid=>self.base.gsub(/_/,":")})
+      dv.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
@@ -88,8 +86,14 @@ class RockhallSip
   def access
     file  = File.join(self.root, "data", "*_access.mp4")
     files = Dir.glob(file)
-    if files.length == 1
-      return File.basename(files.first)
+    results = Array.new
+    files.each do |file|
+      results << File.basename(file)
+    end
+    if results.empty?
+      return nil
+    else
+      return results
     end
   end
 
@@ -100,7 +104,11 @@ class RockhallSip
     files.each do |file|
       results << File.basename(file)
     end
-    return results
+    if results.empty?
+      return nil
+    else
+      return results
+    end
   end
 
   def pid

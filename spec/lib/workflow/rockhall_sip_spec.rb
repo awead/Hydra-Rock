@@ -26,8 +26,8 @@ describe Workflow::RockhallSip do
       end
 
 
-      it "should have a nill access files and an empty array of preservation files" do
-        @invalid.preservation.should be_empty
+      it "should have a nill access files and preservation files" do
+        @invalid.preservation.should be_nil
         @invalid.access.should be_nil
       end
 
@@ -39,8 +39,8 @@ describe Workflow::RockhallSip do
 
   describe "a valid sip" do
 
-    it "should have an access file" do
-      @sip.access.should == "content_access.mp4"
+    it "should have three access files" do
+      @sip.access.length.should == 3
     end
 
     it "should have three preservation files" do
@@ -80,14 +80,13 @@ describe Workflow::RockhallSip do
 
   describe "reusing a sip" do
 
-    #after(:each) do
-    #  Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
-    #  solrizer = Solrizer::Fedora::Solrizer.new
-    #  solrizer.solrize_objects
-    #end
+    after(:each) do
+      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      solrizer = Solrizer::Fedora::Solrizer.new
+      solrizer.solrize_objects
+    end
 
     it "should use the previously defined pid" do
-      pending
       sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
       sip.base = RH_CONFIG["pid_space"] + "_10"
       sip.reuse
