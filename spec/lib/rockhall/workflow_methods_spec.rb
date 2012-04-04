@@ -101,6 +101,7 @@ describe Rockhall::WorkflowMethods do
     it "should return a formatted date from a valid string" do
       @wf.parse_date("2011-01-01").should == "2011-01-01"
       @wf.parse_date("10/11/2011").should == "2011-10-11"
+      @wf.parse_date("Wed Apr 04 14:47:15 -0400 2012").should == "2012-04-04"
     end
 
     it "should return nil if the string is un-parse-able" do

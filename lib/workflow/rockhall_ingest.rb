@@ -58,6 +58,7 @@ class RockhallIngest
     # Point to file locations in the BagIt bag
     location  = File.join(RH_CONFIG["host"], base, "data", file)
     directory = File.join(RH_CONFIG["location"], base, "data")
+    mtime = parse_date(File.new(File.join(directory, file)).mtime.to_s)
 
     # Get tech data using MediaInfo
     info      = Mediainfo.new File.join(directory, file)
@@ -72,6 +73,7 @@ class RockhallIngest
       ev.apply_depositor_metadata(RH_CONFIG["depositor"])
       ev.datastreams["mediaInfo"].ng_xml = ng_info
       ev.vendor = "Rock and Roll Hall of Fame Library and Archives"
+      ev.date = mtime
       @parent.file_objects_append(ev)
       @parent.save
     rescue Exception=>e

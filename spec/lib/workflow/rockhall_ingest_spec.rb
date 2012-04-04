@@ -34,14 +34,48 @@ describe Workflow::RockhallIngest do
         ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
         ev.label.should == "h264"
         ev.generation.first.should == "Copy: access"
+        ev.date.first.should match /^2012/
+        ev.size.first.first.should == "0"
+        ev.media_type.first.should == "Moving image"
+        ev.colors.first.should == "Color"
       end
+
+      # Check access video order
+      ing.parent.videos[:h264][0].name.first.should     == "content_001_access.mp4"
+      ing.parent.videos[:h264][0].next.first.should     == "content_002_access.mp4"
+      ing.parent.videos[:h264][0].previous.first.should be_nil
+
+      ing.parent.videos[:h264][1].name.first.should     == "content_002_access.mp4"
+      ing.parent.videos[:h264][1].next.first.should     == "content_003_access.mp4"
+      ing.parent.videos[:h264][1].previous.first.should == "content_001_access.mp4"
+
+      ing.parent.videos[:h264][2].name.first.should     == "content_003_access.mp4"
+      ing.parent.videos[:h264][2].next.first.should     be_nil
+      ing.parent.videos[:h264][2].previous.first.should == "content_002_access.mp4"
 
       # Check preservation videos
       ing.parent.videos[:original].each do |ev|
         ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
         ev.label.should == "original"
         ev.generation.first.should == "original"
+        ev.date.first.should match /^2012/
+        ev.size.first.first.should == "0"
+        ev.media_type.first.should == "Moving image"
+        ev.colors.first.should == "Color"
       end
+
+      # Check preservation video order
+      ing.parent.videos[:original][0].name.first.should     == "content_001_preservation.mov"
+      ing.parent.videos[:original][0].next.first.should     == "content_002_preservation.mov"
+      ing.parent.videos[:original][0].previous.first.should be_nil
+
+      ing.parent.videos[:original][1].name.first.should     == "content_002_preservation.mov"
+      ing.parent.videos[:original][1].next.first.should     == "content_003_preservation.mov"
+      ing.parent.videos[:original][1].previous.first.should == "content_001_preservation.mov"
+
+      ing.parent.videos[:original][2].name.first.should     == "content_003_preservation.mov"
+      ing.parent.videos[:original][2].next.first.should     be_nil
+      ing.parent.videos[:original][2].previous.first.should == "content_002_preservation.mov"
 
       # Reprocess
       copy_sip = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))

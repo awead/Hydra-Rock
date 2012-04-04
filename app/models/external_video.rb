@@ -24,6 +24,13 @@ class ExternalVideo < ActiveFedora::Base
   delegate :vendor,     :to=>"descMetadata", :at=>[:vendor]
   delegate :next,       :to=>"descMetadata", :at=>[:next]
   delegate :previous,   :to=>"descMetadata", :at=>[:previous]
+  delegate :name,       :to=>"descMetadata", :at=>[:name]
+  delegate :size,       :to=>"descMetadata", :at=>[:size]
+  delegate :size_units, :to=>"descMetadata", :at=>[:size_units]
+  delegate :date,       :to=>"descMetadata", :at=>[:date]
+  delegate :media_type, :to=>"descMetadata", :at=>[:media_type]
+  delegate :colors,     :to=>"descMetadata", :at=>[:colors]
+
 
   has_metadata :name => "mediaInfo", :type => MediainfoXml::Document do |m|
   end
@@ -56,9 +63,9 @@ class ExternalVideo < ActiveFedora::Base
       size = ""
       units = ""
     end
-    datastreams["descMetadata"].update_indexed_attributes([:size] => size)
-    datastreams["descMetadata"].update_indexed_attributes([:size, :units] => units)
-    datastreams["descMetadata"].update_indexed_attributes([:name] => opts[:label])
+    self.size       = size
+    self.size_units = size_units
+    self.name       = opts[:label]
   end
 
   # Duplicated methods from FileAsset
