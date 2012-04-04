@@ -93,6 +93,12 @@ describe Rockhall::PbcoreInstantiation do
       @object_ds.update_indexed_attributes({ [:standard] => { 0 => "inserted" }} )
       @object_ds.update_indexed_attributes({ [:language] => { 0 => "inserted" }} )
 
+      # insert optional nodes and set to sample values
+      @object_ds.insert_node("next", {:root => "pbcoreInstantiation"})
+      @object_ds.insert_node("previous", {:root => "pbcoreInstantiation"})
+      @object_ds.update_indexed_attributes({ [:next] => { 0 => "inserted" }} )
+      @object_ds.update_indexed_attributes({ [:previous] => { 0 => "inserted" }} )
+
       # Load example fixture
       f = File.open("#{Rails.root.to_s}/spec/fixtures/rockhall/pbcore_instantiation_template.xml")
       ref_node = Nokogiri::XML(f)

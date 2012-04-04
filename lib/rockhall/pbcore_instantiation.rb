@@ -51,6 +51,20 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
         :namespace_prefix=>nil
       )
 
+      t.instantiationRelation(:namespace_prefix=>nil) {
+        t.instantiationRelationIdentifier(:namespace_prefix=>nil, :attributes=>{ :source=>"Rock and Roll Hall of Fame and Museum" })
+      }
+      # The file we're describing at the root of this document preceeds the file marked "next"
+      t.next_inst(:ref => [:pbcoreInstantiation, :instantiationRelation],
+      :path=>'instantiationRelation[instantiationRelationType="Precedes in Sequence"]',
+      :namespace_prefix=>nil
+      )
+      # The file we're describing at the root of this document comes after the file marked "previous"
+      t.previous_inst(:ref => [:pbcoreInstantiation, :instantiationRelation],
+      :path=>'instantiationRelation[instantiationRelationType="Follows in Sequence"]',
+      :namespace_prefix=>nil
+      )
+
       # Instantitation annotiations
       t.inst_chksum_type(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Checksum Type" })
       t.inst_chksum_value(:path=>"instantiationAnnotation", :namespace_prefix=>nil, :attributes=>{ :annotationType=>"Checksum Value" })
@@ -120,6 +134,10 @@ class PbcoreInstantiation < ActiveFedora::NokogiriDatastream
     t.audio_sample_rate_units(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackSamplingRate, :units])
     t.audio_bit_depth(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackBitDepth])
     t.audio_channels(:proxy=>[:pbcoreInstantiation, :audio_essence, :essenceTrackAnnotation])
+
+    # Proxies to the relation fields
+    t.next_(:proxy=>[:pbcoreInstantiation, :next_inst, :instantiationRelationIdentifier])
+    t.previous_(:proxy=>[:pbcoreInstantiation, :previous_inst, :instantiationRelationIdentifier])
 
   end
 

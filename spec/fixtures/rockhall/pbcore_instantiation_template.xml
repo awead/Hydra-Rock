@@ -34,6 +34,14 @@
       <essenceTrackBitDepth/>
       <essenceTrackAnnotation annotationType="Number of Audio Channels"/>
     </instantiationEssenceTrack>
+    <instantiationRelation>
+      <instantiationRelationType annotation="One of a multi-part instantiation">Follows in Sequence</instantiationRelationType>
+      <instantiationRelationIdentifier source="Rock and Roll Hall of Fame and Museum">inserted</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType annotation="One of a multi-part instantiation">Precedes in Sequence</instantiationRelationType>
+      <instantiationRelationIdentifier source="Rock and Roll Hall of Fame and Museum">inserted</instantiationRelationIdentifier>
+    </instantiationRelation>
     <instantiationRights>
       <rightsSummary/>
     </instantiationRights>
