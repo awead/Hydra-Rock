@@ -16,7 +16,9 @@ class RockhallIngest
 
   # runs the first time to process a new sip that doesn't exist in Fedora
   def process(opts={})
-    self.ingest(@sip.base, @sip.access,       "access",       {:format=>"h264"}) unless @parent.videos[:h264]
+    @sip.access.each do |aces|
+      self.ingest(@sip.base, aces, "access", {:format=>"h264"})
+    end
     @sip.preservation.each do |pres|
       self.ingest(@sip.base, pres, "preservation", {:format=>"original"})
     end
@@ -26,31 +28,6 @@ class RockhallIngest
   def reprocess(opts={})
     @parent.remove_file_objects unless @parent.file_objects.empty?
     self.process
-  end
-
-  # updates metadata in parent and child objects from metadata in GBV xml
-  def update(opts={})
-    # Fields in parent
-    av = ArchivalVideo.load_instance(sip.pid)
-    p_ds = av.datastreams["descMetadata"]
-    p_ds.update_indexed_attributes( {[:barcode]       => {"0" => @sip.barcode}} )
-    p_ds.update_indexed_attributes( {[:main_title]    => {"0" => @sip.title}} )
-    p_ds.update_indexed_attributes( {[:creation_date] => {"0" => @sip.info(:orig_date)}} ) unless @sip.info(:orig_date).nil?
-    p_ds.update_indexed_attributes( {[:standard]      => {"0" => @sip.info(:standard)}} ) unless @sip.info(:standard).nil?
-    p_ds.update_indexed_attributes( {[:format]        => {"0" => @sip.info(:format)}} ) unless @sip.info(:format).nil?
-    av.save
-
-    # Fields in preservation video object
-    original = ExternalVideo.load_instance(av.videos[:original])
-    o_ds = original.datastreams["descMetadata"]
-    update_preservation_fields(o_ds)
-    original.save
-
-    # Fields in access video object
-    access = ExternalVideo.load_instance(av.videos[:h264])
-    a_ds = original.datastreams["descMetadata"]
-    update_access_fields(a_ds)
-    access.save
   end
 
   def ingest(base,file,type,opts={})
@@ -70,9 +47,6 @@ class RockhallIngest
       ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
       ev.apply_depositor_metadata(RH_CONFIG["depositor"])
       ev.datastreams["mediaInfo"].ng_xml = ng_info
-      # apply additional tech data from gbv xml
-      #update_preservation_fields(ds) if type == "preservation"
-      #update_access_fields(ds) if type == "access"
       ds.update_indexed_attributes( {[:vendor] => {"0" => "Rock and Roll Hall of Fame Library and Archives"}} )
       @parent.file_objects_append(ev)
       @parent.save
