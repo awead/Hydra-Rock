@@ -28,18 +28,31 @@ describe Workflow::RockhallIngest do
 
       # Check parent object fields
       ing.parent.label.should == "Rock and Roll Hall of Fame Library and Archives"
-      ds = ing.parent.datastreams["descMetadata"]
+
+      # Check access videos
+      ing.parent.videos[:h264].each do |ev|
+        ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
+        ev.label.should == "h264"
+        ev.generation.first.should == "Copy: access"
+      end
+
+      # Check preservation videos
+      ing.parent.videos[:original].each do |ev|
+        ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
+        ev.label.should == "original"
+        ev.generation.first.should == "original"
+      end
 
       # Reprocess
       copy_sip = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))
       re_ing = Workflow::RockhallIngest.new(copy_sip)
       re_ing.parent.file_objects.length.should == 6
-      #first_pid = ing.parent.file_objects.first.pid
-      #last_pid  = ing.parent.file_objects.last.pid
+      first_pid = re_ing.parent.file_objects.first.pid
+      last_pid  = re_ing.parent.file_objects.last.pid
       re_ing.reprocess
       re_ing.parent.file_objects.length.should == 6
-      #first_pid.should_not == ing.parent.file_objects.first.pid
-      #last_pid.should_not  == ing.parent.file_objects.last.pid
+      first_pid.should_not == re_ing.parent.file_objects.first.pid
+      last_pid.should_not  == re_ing.parent.file_objects.last.pid
 
       # Clean-up
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))

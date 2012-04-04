@@ -43,8 +43,40 @@ describe Workflow::RockhallSip do
       @sip.access.length.should == 3
     end
 
+    it "should have access files in the correct order" do
+      @sip.access.should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
+    end
+
+    it "should return the next access file in list" do
+      @sip.next_access("content_001_access.mp4").should == "content_002_access.mp4"
+      @sip.next_access("content_002_access.mp4").should == "content_003_access.mp4"
+      @sip.next_access("content_003_access.mp4").should be_nil
+    end
+
+    it "should return the previous access file in the list" do
+      @sip.previous_access("content_001_access.mp4").should be_nil
+      @sip.previous_access("content_002_access.mp4").should == "content_001_access.mp4"
+      @sip.previous_access("content_003_access.mp4").should == "content_002_access.mp4"
+    end
+
     it "should have three preservation files" do
       @sip.preservation.length.should == 3
+    end
+
+    it "should have preservation files in the correct order" do
+      @sip.preservation.should == ["content_001_preservation.mov", "content_002_preservation.mov", "content_003_preservation.mov"]
+    end
+
+    it "should return the next preservation file in list" do
+      @sip.next_preservation("content_001_preservation.mov").should == "content_002_preservation.mov"
+      @sip.next_preservation("content_002_preservation.mov").should == "content_003_preservation.mov"
+      @sip.next_preservation("content_003_preservation.mov").should be_nil
+    end
+
+    it "should return the previous preservation file in the list" do
+      @sip.previous_preservation("content_001_preservation.mov").should be_nil
+      @sip.previous_preservation("content_002_preservation.mov").should == "content_001_preservation.mov"
+      @sip.previous_preservation("content_003_preservation.mov").should == "content_002_preservation.mov"
     end
 
   end

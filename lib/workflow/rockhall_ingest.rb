@@ -16,11 +16,35 @@ class RockhallIngest
 
   # runs the first time to process a new sip that doesn't exist in Fedora
   def process(opts={})
+
+    # Process each access file
     @sip.access.each do |aces|
-      self.ingest(@sip.base, aces, "access", {:format=>"h264"})
+      ev = self.ingest(@sip.base, aces, "access", {:format=>"h264"} )
+      ev.generation = "Copy: access"
+      if @sip.next_access(aces)
+        ev.datastreams["descMetadata"].insert_node("next", {:root => "pbcoreInstantiation"})
+        ev.next = @sip.next_access(aces).to_s
+      end
+      if @sip.previous_access(aces)
+        ev.datastreams["descMetadata"].insert_node("previous", {:root => "pbcoreInstantiation"})
+        ev.previous = @sip.previous_access(aces).to_s
+      end
+      ev.save
     end
+
+    # Process each preservation file
     @sip.preservation.each do |pres|
-      self.ingest(@sip.base, pres, "preservation", {:format=>"original"})
+      ev = self.ingest(@sip.base, pres, "preservation", {:format=>"original"} )
+      ev.generation = "original"
+      if @sip.next_preservation(pres)
+        ev.datastreams["descMetadata"].insert_node("next", {:root => "pbcoreInstantiation"})
+        ev.next = @sip.next_preservation(pres).to_s
+      end
+      if @sip.previous_preservation(pres)
+        ev.datastreams["descMetadata"].insert_node("previous", {:root => "pbcoreInstantiation"})
+        ev.previous = @sip.previous_preservation(pres).to_s
+      end
+      ev.save
     end
   end
 
@@ -47,14 +71,14 @@ class RockhallIngest
       ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
       ev.apply_depositor_metadata(RH_CONFIG["depositor"])
       ev.datastreams["mediaInfo"].ng_xml = ng_info
-      ds.update_indexed_attributes( {[:vendor] => {"0" => "Rock and Roll Hall of Fame Library and Archives"}} )
+      ev.vendor = "Rock and Roll Hall of Fame Library and Archives"
       @parent.file_objects_append(ev)
       @parent.save
     rescue Exception=>e
       raise "Failed to add #{type} datastream: #{e}"
     end
+    return ev
   end
-
 
 end
 end

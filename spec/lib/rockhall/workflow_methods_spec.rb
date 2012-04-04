@@ -154,5 +154,40 @@ describe Rockhall::WorkflowMethods do
 
   end
 
+  describe "#get_next" do
+
+    it "should return the next index when given the current index and the legnth of the array" do
+      @wf.get_next(0,2).should == 1
+      @wf.get_next(1,3).should == 2
+      @wf.get_next(2,4).should == 3
+      @wf.get_next(3,5).should == 4
+    end
+
+    it "should return nil if the given index is the same as the array length" do
+      @wf.get_next(0,1).should be_nil
+      @wf.get_next(1,2).should be_nil
+      @wf.get_next(2,3).should be_nil
+      @wf.get_next(3,4).should be_nil
+    end
+
+  end
+
+  describe "#get_previous" do
+
+    it "should return the previous index when given the current index and the legnth of the array" do
+      @wf.get_previous(1,2).should == 0
+      @wf.get_previous(2,3).should == 1
+      @wf.get_previous(3,4).should == 2
+      @wf.get_previous(4,5).should == 3
+    end
+
+    it "should return nil if current index is zero" do
+      @wf.get_previous(0,1).should be_nil
+      @wf.get_previous(0,2).should be_nil
+      @wf.get_previous(0,3).should be_nil
+      @wf.get_previous(0,4).should be_nil
+    end
+
+  end
 
 end

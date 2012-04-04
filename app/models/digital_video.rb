@@ -69,18 +69,19 @@ class DigitalVideo < ActiveFedora::Base
     results = Hash.new
     u_files = Array.new
     p_files = Array.new
+    a_files = Array.new
     self.file_objects.each do |obj|
-      if obj.label.nil?
-        u_files << obj.pid
+      if obj.datastreams.keys.include?("PRESERVATION1")
+        p_files << obj
+      elsif obj.datastreams.keys.include?("ACCESS1")
+        a_files << obj
       else
-        if obj.datastreams.keys.include?("PRESERVATION1")
-          p_files << obj.pid
-        end
-        results[obj.label.to_sym] = obj.pid if obj.datastreams.keys.include?("ACCESS1")
+        u_files << obj
       end
     end
-    results[:unknown] = u_files
+    results[:unknown]  = u_files
     results[:original] = p_files
+    results[:h264]     = a_files
     return results
   end
 

@@ -93,7 +93,21 @@ class RockhallSip
     if results.empty?
       return nil
     else
-      return results
+      return results.sort
+    end
+  end
+
+  def next_access(file)
+    next_index = self.get_next(self.access.index(file), self.access.length)
+    unless next_index.nil?
+      return self.access[next_index]
+    end
+  end
+
+  def previous_access(file)
+    previous_index = self.get_previous(self.access.index(file), self.access.length)
+    unless previous_index.nil?
+      return self.access[previous_index]
     end
   end
 
@@ -107,7 +121,21 @@ class RockhallSip
     if results.empty?
       return nil
     else
-      return results
+      return results.sort
+    end
+  end
+
+  def next_preservation(file)
+    next_index = self.get_next(self.preservation.index(file), self.preservation.length)
+    unless next_index.nil?
+      return self.preservation[next_index]
+    end
+  end
+
+  def previous_preservation(file)
+    previous_index = self.get_previous(self.preservation.index(file), self.preservation.length)
+    unless previous_index.nil?
+      return self.preservation[previous_index]
     end
   end
 

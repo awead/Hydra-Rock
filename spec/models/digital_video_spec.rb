@@ -65,7 +65,7 @@ describe DigitalVideo do
   describe "#videos" do
     it "should return a hash of videos" do
       av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_digital_document1")
-      av.file_objects.count.should == 4
+      av.file_objects.count.should == 6
       av.videos.should be_kind_of(Hash)
     end
   end
