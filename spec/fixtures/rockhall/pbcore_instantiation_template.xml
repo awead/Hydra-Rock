@@ -7,12 +7,14 @@
     <instantiationIdentifier annotation="Filename" source="Rock and Roll Hall of Fame and Museum"/>
     <instantiationDate dateType="created"/>
     <instantiationDigital source="EBU file formats"/>
+    <instantiationStandard>inserted</instantiationStandard>
     <instantiationLocation/>
     <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
     <instantiationGenerations source="PBCore instantiationGenerations"/>
     <instantiationFileSize unitsOfMeasure=""/>
     <instantiationDuration/>
     <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+    <instantiationLanguage source="ISO 639.2" ref="http://www.loc.gov/standards/iso639-2/php/code_list.php">inserted</instantiationLanguage>
     <instantiationEssenceTrack>
       <essenceTrackType>Video</essenceTrackType>
       <essenceTrackStandard/>
@@ -32,6 +34,14 @@
       <essenceTrackBitDepth/>
       <essenceTrackAnnotation annotationType="Number of Audio Channels"/>
     </instantiationEssenceTrack>
+    <instantiationRelation>
+      <instantiationRelationType annotation="One of a multi-part instantiation">Follows in Sequence</instantiationRelationType>
+      <instantiationRelationIdentifier source="Rock and Roll Hall of Fame and Museum">inserted</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType annotation="One of a multi-part instantiation">Precedes in Sequence</instantiationRelationType>
+      <instantiationRelationIdentifier source="Rock and Roll Hall of Fame and Museum">inserted</instantiationRelationIdentifier>
+    </instantiationRelation>
     <instantiationRights>
       <rightsSummary/>
     </instantiationRights>

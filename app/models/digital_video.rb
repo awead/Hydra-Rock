@@ -1,6 +1,6 @@
 require "hydra"
 
-class ArchivalVideo < ActiveFedora::Base
+class DigitalVideo < ActiveFedora::Base
 
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
@@ -17,7 +17,7 @@ class ArchivalVideo < ActiveFedora::Base
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata
 
-  has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDocument do |m|
+  has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDigitalDocument do |m|
   end
 
   has_metadata :name => "properties", :type => Rockhall::Properties do |m|

@@ -98,8 +98,8 @@ module RockhallAssetsHelper
 
   def asset_path(type)
     path = String.new
-    unless @document_fedora.external_video(:h264).nil?
-      filename = @document_fedora.external_video(:h264).datastreams["descMetadata"].get_values(:name)
+    unless @document_fedora.external_video(:h264).first.nil?
+      filename = @document_fedora.external_video(:h264).first.datastreams["descMetadata"].get_values(:name)
       path = File.join(@document_fedora.pid.gsub(/:/,"_"),"data",filename)
     end
     return path
@@ -110,9 +110,14 @@ module RockhallAssetsHelper
     results = String.new
     videos = @document_fedora.videos
     videos.keys.each do |type|
+      count = 1
       unless @document_fedora.videos[type].empty?
-        results << "<dt>" + type.to_s + "</dt>"
-        results << "<dd>" + link_to("File information", catalog_path(@document_fedora.videos[type])) + "</dd>"
+        @document_fedora.videos[type].each do |video|
+          results << "<dt>" + type.to_s + " " + count.to_s + "</dt>"
+          results << "<dd>" + link_to("File information", catalog_path(video.pid)) + "</dd>"
+          #results << "<dd>" + video.class.to_s + "</dd>"
+          count = count + 1
+        end
       end
     end
     return results.html_safe
@@ -228,6 +233,9 @@ module RockhallAssetsHelper
     results = String.new
     results << "<li>"
     results << link_to_create_asset('Add archival video', 'archival_video')
+    results << "</li>"
+    results << "<li>"
+    results << link_to_create_asset('Add digital video', 'digital_video')
     results << "</li>"
     user_groups = RoleMapper.roles(current_user.login)
     if user_groups.include?("archivist")

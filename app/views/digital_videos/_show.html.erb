@@ -6,20 +6,17 @@
     <% end %>
 
     <h2 id="content" class="section-title">Content</h2>
-    <%= render :partial => "archival_videos/show/document", :locals => {:content_type => "archival_video"} %>
-
-    <h2 id="original" class="section-title">Original</h2>
-    <%= render :partial => "archival_videos/show/original", :locals => {:content_type => "archival_video"} %>
+    <%= render :partial => "digital_videos/show/document", :locals => {:content_type => "digital_video"} %>
 
     <h2 id="rockhall" class="section-title">Rockhall</h2>
-    <%= render :partial => "archival_videos/show/rockhall", :locals => {:content_type => "archival_video"} %>
+    <%= render :partial => "digital_videos/show/rockhall", :locals => {:content_type => "digital_video"} %>
 
     <h2 id="rockhall" class="section-title">Review Information</h2>
-    <%= render :partial => "archival_videos/show/review", :locals => {:content_type => "archival_video"} %>
+    <%= render :partial => "digital_videos/show/review", :locals => {:content_type => "digital_video"} %>
 
     <% if @document_fedora.file_objects.count > 0 %>
       <h2 id="files" class="section-title"><a href="#">All Files</a></h2>
-      <%= render :partial => "archival_videos/show/all", :locals => {:content_type => "archival_video"} %>
+      <%= render :partial => "digital_videos/show/all", :locals => {:content_type => "digital_video"} %>
     <% end %>
 
 </div>

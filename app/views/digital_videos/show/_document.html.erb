@@ -1,0 +1,35 @@
+<fieldset id="document_fields">
+
+  <dl>
+    <%= display_field([:main_title]) %>
+    <%= display_field([:alternative_title], {:multiple=>true}) %>
+    <%= display_field([:chapter], {:multiple=>true}) %>
+    <%= display_field([:episode], {:multiple=>true}) %>
+    <%= display_field([:label], {:multiple=>true}) %>
+    <%= display_field([:segment], {:multiple=>true}) %>
+    <%= display_field([:subtitle], {:multiple=>true}) %>
+    <%= display_field([:track], {:multiple=>true}) %>
+    <%= display_field([:translation], {:multiple=>true}) %>
+
+    <%= display_field([:summary]) %>
+    <%= display_field([:parts_list]) %>
+    <%= display_field([:subjects], {:multiple=>true}) %>
+    <%= display_field([:genres], {:multiple=>true}) %>
+    <%= display_field([:event_series], {:inline=>true}) %>
+    <%= display_field([:event_place]) %>
+    <%= display_field([:event_date]) %>
+    <%= display_field([:note], {:inline=>true}) %>
+
+    <%= display_field([:archival_collection]) %>
+    <%= display_field([:archival_series]) %>
+    <%= display_field([:collection_number]) %>
+    <%= display_field([:accession_number]) %>
+    <%= display_field([:usage]) %>
+
+    <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
+    <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
+
+
+
+  </dl>
+</fieldset>

@@ -52,6 +52,14 @@ if Hydra.respond_to?(:configure)
           {:name => "original",    :edit_partial => "archival_videos/edit/original", :show_partial => "archival_videos/show/original"},
           {:name => "rockhall",    :edit_partial => "archival_videos/edit/rockhall", :show_partial => "archival_videos/show/original"},
           {:name => "permissions", :edit_partial => "permissions/permissions_form",  :show_partial => "mods_assets/show_permissions"}
+        ],
+        :digital_videos   => [
+          {:name => "titles",      :edit_partial => "digital_videos/edit/titles",     :show_partial => "digital_videos/show/document"},
+          {:name => "subjects",    :edit_partial => "digital_videos/edit/subjects",   :show_partial => "digital_videos/show/document"},
+          {:name => "persons",     :edit_partial => "digital_videos/edit/persons",    :show_partial => "digital_videos/show/document"},
+          {:name => "collection",  :edit_partial => "digital_videos/edit/collection", :show_partial => "digital_videos/show/original"},
+          {:name => "rockhall",    :edit_partial => "digital_videos/edit/rockhall",   :show_partial => "digital_videos/show/original"},
+          {:name => "permissions", :edit_partial => "permissions/permissions_form",   :show_partial => "mods_assets/show_permissions"}
         ]
       }
 
