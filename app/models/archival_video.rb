@@ -56,12 +56,13 @@ class ArchivalVideo < ActiveFedora::Base
   end
 
   def external_video(type)
-      self.file_objects.each do |obj|
-        if type.to_s == obj.label
-          return obj
-        end
+    results = Array.new
+    self.file_objects.each do |obj|
+      if type.to_s == obj.label
+        results << obj
       end
-      return nil
+    end
+    return results
   end
 
   def videos
@@ -80,14 +81,14 @@ class ArchivalVideo < ActiveFedora::Base
   end
 
   def access_file
-    unless self.external_video(:h264).nil?
-      return self.external_video(:h264).datastreams["descMetadata"].get_values(:name)
+    unless self.external_video(:h264).first.nil?
+      return self.external_video(:h264).first.datastreams["descMetadata"].get_values(:name)
     end
   end
 
   def access_format
-    unless self.external_video(:h264).nil?
-      return self.external_video(:h264).datastreams["descMetadata"].get_values(:video_encoding)
+    unless self.external_video(:h264).first.nil?
+      return self.external_video(:h264).first.datastreams["descMetadata"].get_values(:video_encoding)
     end
   end
 
