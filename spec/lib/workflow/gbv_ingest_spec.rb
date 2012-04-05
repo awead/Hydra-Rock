@@ -34,7 +34,7 @@ describe Workflow::GbvIngest do
       ds.get_values([:format]).first.should   == "Betacam"
 
       # Preservation file
-      original = ExternalVideo.load_instance(ing.parent.videos[:original])
+      original = ExternalVideo.load_instance(ing.parent.videos[:original].first.pid)
       o_ds = original.datastreams["descMetadata"]
 
       # Preservation: Instantiation fields
@@ -76,7 +76,7 @@ describe Workflow::GbvIngest do
 
 
       # Access file
-      access = ExternalVideo.load_instance(ing.parent.videos[:h264])
+      access = ExternalVideo.load_instance(ing.parent.videos[:h264].first.pid)
       a_ds = access.datastreams["descMetadata"]
 
       # Access: Instantiation fields
@@ -125,7 +125,7 @@ describe Workflow::GbvIngest do
       ds = ing.parent.datastreams["descMetadata"]
       ds.get_values([:creation_date]).first.should == "2007-07-09"
 
-      original = ExternalVideo.load_instance(ing.parent.videos[:original])
+      original = ExternalVideo.load_instance(ing.parent.videos[:original].first.pid)
       o_ds = original.datastreams["descMetadata"]
       o_ds.get_values([:date]).first.should == "2011-10-12"
       o_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
@@ -137,7 +137,7 @@ describe Workflow::GbvIngest do
       o_ds.get_values([:capture_soft]).first.should == "Apple FCP 7 (ver 7.0.3)"
       o_ds.get_values([:operator]).first.should == "TMu"
 
-      access = ExternalVideo.load_instance(ing.parent.videos[:h264])
+      access = ExternalVideo.load_instance(ing.parent.videos[:h264].first.pid)
       a_ds = access.datastreams["descMetadata"]
       a_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
       a_ds.get_values([:file_format]).first.should == "mp4"

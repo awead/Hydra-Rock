@@ -16,8 +16,8 @@ class GbvIngest
 
   # runs the first time to process a new sip that doesn't exist in Fedora
   def process(opts={})
-    self.ingest(@sip.base, @sip.access,       "access",       {:format=>"h264"})     unless @parent.videos[:h264]
-    self.ingest(@sip.base, @sip.preservation, "preservation", {:format=>"original"}) unless @parent.videos[:original]
+    self.ingest(@sip.base, @sip.access,       "access",       {:format=>"h264"})     unless @parent.videos[:h264].first
+    self.ingest(@sip.base, @sip.preservation, "preservation", {:format=>"original"}) unless @parent.videos[:original].first
   end
 
   # parent object exists in Fedora and has child objects that need to be reingested
@@ -39,13 +39,13 @@ class GbvIngest
     av.save
 
     # Fields in preservation video object
-    original = ExternalVideo.load_instance(av.videos[:original])
+    original = ExternalVideo.load_instance(av.videos[:original].first.pid)
     o_ds = original.datastreams["descMetadata"]
     update_preservation_fields(o_ds)
     original.save
 
     # Fields in access video object
-    access = ExternalVideo.load_instance(av.videos[:h264])
+    access = ExternalVideo.load_instance(av.videos[:h264].first.pid)
     a_ds = original.datastreams["descMetadata"]
     update_access_fields(a_ds)
     access.save
