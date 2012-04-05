@@ -1,0 +1,53 @@
+/* player container */
+#player {
+  background:#000 url(/media/img/home/flow_eye.jpg) center center no-repeat;
+  width:550px;
+  height:350px;
+  cursor:pointer;
+  -moz-outline-radius:4px;
+  margin: 0 auto;
+  margin-top: 12px;
+}
+
+/* playlist */
+#playlist {
+  margin: 0 auto;
+  margin-top:15px;
+  width: 550px;
+}
+
+/* playlist item */
+#playlist div {
+  float:left;
+  color:#fff;
+  background-color: #333;
+  text-align:center;
+  width:174px;
+  height:86px;
+  padding:25px 0px;
+  font-size:22px;
+  margin-right: 12px;
+  cursor:pointer;
+}
+
+#playlist div:last-child {
+  margin-right:0;
+}
+
+/* mouseover state */
+#playlist div:hover {
+  background-color: #666;
+}
+
+/* clicked state */
+#playlist div.playing, #playlist div.paused {
+  background-color: #fff;
+  color: #000;
+}
+
+/* active item */
+#playlist div:active {
+  cursor:default;
+  background-color: #ededed;
+  color: #444;
+}

@@ -1,0 +1,49 @@
+<%
+  javascript_includes << [ "flowplayer-3.2.8.min.js", "flowplayer.playlist-3.2.8.min.js", "jquery.tools.min.js" ]
+  stylesheet_links << [ "flowplayer-style.css" ]
+%>
+
+
+<!-- player container-->
+<div id="player">&nbsp;</div>
+
+<!-- the playlist -->
+<div id="playlist" class="clearfix" style="display:none">
+    <div>${title}</div>
+</div>
+
+<!-- let rest of the page float normally -->
+<br clear="all" />
+
+<script type="text/javascript">
+  $f("player", "../flowplayer-3.2.9.swf", {
+  // the playlist
+  playlist: [
+    <%= flowplayer_playlist %>
+  ],
+
+  // each clip on the playlist uses the rtmp plugin
+  clip: {
+    provider: 'rtmp'
+  },
+
+  // the rtmp plugin
+  plugins: {
+    rtmp: {
+      url:              '../flowplayer.rtmp-3.2.9.swf',
+      netConnectionUrl: 'rtmp://<%= RH_CONFIG["wowza_host"] %>/vod'
+    },
+
+    // include playlist buttons in the controlbar
+    controls: {
+      playlist: true
+    }
+  }
+
+}).playlist("#playlist");
+$("#playlist").show();
+
+</script>
+
+
+

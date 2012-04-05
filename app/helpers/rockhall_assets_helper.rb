@@ -122,6 +122,20 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+  def flowplayer_playlist
+    results = Array.new
+    videos = @document_fedora.videos
+    count = 1
+    unless @document_fedora.videos[:h264].empty?
+      @document_fedora.videos[:h264].each do |video|
+        path = File.join(@document_fedora.pid.gsub(/:/,"_"),"data",video.name)
+        results << "{title: 'Part #{count.to_s}', url: 'mp4:#{path}'}"
+        count = count + 1
+      end
+    end
+    return results.join(",").to_s
+  end
+
 
   def add_field_button(type,content_type,opts={})
     results = String.new

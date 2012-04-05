@@ -5,7 +5,7 @@ defaults: &defaults
   hostname:       http://localhost:3000/
   solr_discovery: http://localhost:8985/solr/blacklight-dev
   pid_space:      changeme
-  wowza_host:     george.rockhall.org
+  wowza_host:     streaming.rockhall.org
 
 development:
   <<: *defaults
