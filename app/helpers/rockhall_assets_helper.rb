@@ -110,9 +110,14 @@ module RockhallAssetsHelper
     results = String.new
     videos = @document_fedora.videos
     videos.keys.each do |type|
+      count = 1
       unless @document_fedora.videos[type].empty?
-        results << "<dt>" + type.to_s + "</dt>"
-        results << "<dd>" + link_to("File information", catalog_path(@document_fedora.videos[type])) + "</dd>"
+        @document_fedora.videos[type].each do |video|
+          results << "<dt>" + type.to_s + " " + count.to_s + "</dt>"
+          #results << "<dd>" + link_to("File information", catalog_path(@document_fedora.videos[type])) + "</dd>"
+          results << "<dd>" + video.class.to_s + "</dd>"
+          count = count + 1
+        end
       end
     end
     return results.html_safe
