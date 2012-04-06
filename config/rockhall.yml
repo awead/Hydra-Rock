@@ -6,6 +6,7 @@ defaults: &defaults
   solr_discovery: http://localhost:8985/solr/blacklight-dev
   pid_space:      changeme
   wowza_host:     localhost
+  video_player:   flowplayer
 
 development:
   <<: *defaults

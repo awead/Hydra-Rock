@@ -1,6 +1,11 @@
+#video_box {
+  background: #000;
+  padding: 10px 0px 10px 0px;
+}
+
 /* player container */
 #player {
-  background:#000 url(/media/img/home/flow_eye.jpg) center center no-repeat;
+  background:#000 url(../images/video-splash.png) center center no-repeat;
   width:550px;
   height:350px;
   cursor:pointer;
@@ -12,7 +17,7 @@
 /* playlist */
 #playlist {
   margin: 0 auto;
-  margin-top:15px;
+  margin-top:5px;
   width: 550px;
 }
 
@@ -22,11 +27,11 @@
   color:#fff;
   background-color: #333;
   text-align:center;
-  width:174px;
-  height:86px;
-  padding:25px 0px;
-  font-size:22px;
-  margin-right: 12px;
+  width:180px;
+  height:16px;
+  padding:5px 0px;
+  font-size:14px;
+  margin-right: 5px;
   cursor:pointer;
 }
 

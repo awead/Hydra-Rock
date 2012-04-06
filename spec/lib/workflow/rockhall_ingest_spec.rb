@@ -35,7 +35,7 @@ describe Workflow::RockhallIngest do
         ev.label.should == "h264"
         ev.generation.first.should == "Copy: access"
         ev.date.first.should match /^2012/
-        ev.size.first.first.should == "0"
+        ev.size.first.should == "240"
         ev.media_type.first.should == "Moving image"
         ev.colors.first.should == "Color"
       end

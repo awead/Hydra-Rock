@@ -1,19 +1,24 @@
 <%
   javascript_includes << [ "flowplayer-3.2.8.min.js", "flowplayer.playlist-3.2.8.min.js", "jquery.tools.min.js" ]
-  stylesheet_links << [ "flowplayer-style.css" ]
+  stylesheet_links    << [ "flowplayer-style.css" ]
 %>
 
+<div id="video_box">
 
 <!-- player container-->
 <div id="player">&nbsp;</div>
 
 <!-- the playlist -->
-<div id="playlist" class="clearfix" style="display:none">
+<%  if @document_fedora.videos[:h264].count > 1 %>
+  <div id="playlist" class="clearfix" style="display:none">
     <div>${title}</div>
-</div>
+  </div>
+<% end %>
 
 <!-- let rest of the page float normally -->
 <br clear="all" />
+
+</div>
 
 <script type="text/javascript">
   $f("player", "../flowplayer-3.2.9.swf", {
