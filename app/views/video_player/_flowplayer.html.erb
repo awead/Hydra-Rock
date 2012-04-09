@@ -21,7 +21,7 @@
 </div>
 
 <script type="text/javascript">
-  $f("player", "../flowplayer-3.2.9.swf", {
+  $f("player", "<%= root_path %>flowplayer-3.2.9.swf", {
   // the playlist
   playlist: [
     <%= flowplayer_playlist %>
@@ -35,7 +35,7 @@
   // the rtmp plugin
   plugins: {
     rtmp: {
-      url:              '../flowplayer.rtmp-3.2.9.swf',
+      url:              '<%= root_path %>flowplayer.rtmp-3.2.9.swf',
       netConnectionUrl: 'rtmp://<%= RH_CONFIG["wowza_host"] %>/vod'
     },
 
