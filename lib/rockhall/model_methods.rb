@@ -39,7 +39,7 @@ module Rockhall::ModelMethods
   def remove_file_objects
     if self.file_objects.count > 0
       self.file_objects.each do |obj|
-        ActiveFedora::Base.load_instance(obj.pid).delete
+        ActiveFedora::Base.find(obj.pid).delete
       end
       return true
     else

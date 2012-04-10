@@ -11,7 +11,7 @@ class GbvIngest
     raise "Invalid sip" unless sip.valid?
     raise "SIP has no PID.  Did you prepare it?" if sip.pid.nil?
     @sip = sip
-    @parent = ArchivalVideo.load_instance(sip.pid)
+    @parent = ArchivalVideo.find(sip.pid)
   end
 
   # runs the first time to process a new sip that doesn't exist in Fedora
@@ -29,7 +29,7 @@ class GbvIngest
   # updates metadata in parent and child objects from metadata in GBV xml
   def update(opts={})
     # Fields in parent
-    av = ArchivalVideo.load_instance(sip.pid)
+    av = ArchivalVideo.find(sip.pid)
     p_ds = av.datastreams["descMetadata"]
     p_ds.update_indexed_attributes( {[:barcode]       => {"0" => @sip.barcode}} )
     p_ds.update_indexed_attributes( {[:main_title]    => {"0" => @sip.title}} )
@@ -39,13 +39,13 @@ class GbvIngest
     av.save
 
     # Fields in preservation video object
-    original = ExternalVideo.load_instance(av.videos[:original].first.pid)
+    original = ExternalVideo.find(av.videos[:original].first.pid)
     o_ds = original.datastreams["descMetadata"]
     update_preservation_fields(o_ds)
     original.save
 
     # Fields in access video object
-    access = ExternalVideo.load_instance(av.videos[:h264].first.pid)
+    access = ExternalVideo.find(av.videos[:h264].first.pid)
     a_ds = original.datastreams["descMetadata"]
     update_access_fields(a_ds)
     access.save
