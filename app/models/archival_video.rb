@@ -12,8 +12,7 @@ class ArchivalVideo < ActiveFedora::Base
 
   has_relationship "objects", :is_part_of, :inbound => true
 
-  # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata
+  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
 
   has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDocument do |m|
   end

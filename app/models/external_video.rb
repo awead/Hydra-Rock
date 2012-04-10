@@ -13,7 +13,7 @@ class ExternalVideo < ActiveFedora::Base
   has_datastream :name=>"access", :type=>ActiveFedora::Datastream, :controlGroup=>'E'
   has_datastream :name=>"preservation", :type=>ActiveFedora::Datastream, :controlGroup=>'E'
 
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata
+  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
 
   has_metadata :name => "descMetadata", :type => Rockhall::PbcoreInstantiation do |m|
   end
