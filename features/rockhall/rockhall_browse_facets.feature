@@ -44,3 +44,7 @@ Feature:
     And I should see a facet for "Media Format"
     And I should see the facet term "Betacam"
 
+  Scenario: Facet for depositor (DAM-172)
+    Given I am on the home page
+    Then I should see a facet for "Depositor"
+

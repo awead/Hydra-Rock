@@ -17,21 +17,36 @@ class ExternalVideo < ActiveFedora::Base
 
   has_metadata :name => "descMetadata", :type => Rockhall::PbcoreInstantiation do |m|
   end
+  delegate :generation, :to=>"descMetadata", :at=>[:generation]
+  delegate :format,     :to=>"descMetadata", :at=>[:file_format]
+  delegate :vendor,     :to=>"descMetadata", :at=>[:vendor]
+  delegate :next,       :to=>"descMetadata", :at=>[:next]
+  delegate :previous,   :to=>"descMetadata", :at=>[:previous]
+  delegate :name,       :to=>"descMetadata", :at=>[:name]
+  delegate :size,       :to=>"descMetadata", :at=>[:size]
+  delegate :size_units, :to=>"descMetadata", :at=>[:size_units]
+  delegate :date,       :to=>"descMetadata", :at=>[:date]
+  delegate :media_type, :to=>"descMetadata", :at=>[:media_type]
+  delegate :colors,     :to=>"descMetadata", :at=>[:colors]
+
 
   has_metadata :name => "mediaInfo", :type => MediainfoXml::Document do |m|
   end
 
-  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
-    m.field 'collection', :string # TODO: delete this field from all objects
-    m.field 'depositor', :string
-    m.field 'notes', :text
+  has_metadata :name => "properties", :type => Rockhall::Properties do |m|
   end
+  delegate :depositor, :to=>'properties', :at=>[:depositor]
 
   def initialize( attrs={} )
     super
     # Anyone in the archivist group has edit rights
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
+  end
+
+  def apply_depositor_metadata(depositor_id)
+    self.depositor = depositor_id
+    super
   end
 
   # augments add_named_datastream to put file information in descMetadata
@@ -46,9 +61,9 @@ class ExternalVideo < ActiveFedora::Base
       size = ""
       units = ""
     end
-    datastreams["descMetadata"].update_indexed_attributes([:size] => size)
-    datastreams["descMetadata"].update_indexed_attributes([:size, :units] => units)
-    datastreams["descMetadata"].update_indexed_attributes([:name] => opts[:label])
+    self.size       = size
+    self.size_units = size_units
+    self.name       = opts[:label]
   end
 
   # Duplicated methods from FileAsset

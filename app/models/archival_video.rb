@@ -18,17 +18,12 @@ class ArchivalVideo < ActiveFedora::Base
   has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDocument do |m|
   end
 
-  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
-    m.field 'collection', :string # TODO: delete this field from all objects
-    m.field 'depositor', :string
-    m.field 'notes', :text
-    m.field 'access', :string
-    m.field 'submission', :string
+  has_metadata :name => "properties", :type => Rockhall::Properties do |m|
   end
+  delegate :depositor, :to=>'properties', :at=>[:depositor]
 
   has_metadata :name => "assetReview", :type => Rockhall::AssetReview do |m|
   end
-
   delegate :reviewer,       :to=>'assetReview', :at=>[:reviewer]
   delegate :date_updated,   :to=>'assetReview', :at=>[:date_updated]
   delegate :complete,       :to=>'assetReview', :at=>[:complete]
@@ -40,59 +35,6 @@ class ArchivalVideo < ActiveFedora::Base
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
-  end
-
-  def remove_file_objects
-    if self.file_objects.count > 0
-      self.file_objects.each do |obj|
-        ActiveFedora::Base.load_instance(obj.pid).delete
-      end
-      return true
-    else
-      return false
-    end
-  end
-
-  def external_video(type)
-      self.file_objects.each do |obj|
-        if type.to_s == obj.label
-          return obj
-        end
-      end
-      return nil
-  end
-
-  def videos
-    results = Hash.new
-    u_files = Array.new
-    self.file_objects.each do |obj|
-      if obj.label.nil?
-        u_files << obj.pid
-      else
-        results[obj.label.to_sym] = obj.pid if obj.datastreams.keys.include?("PRESERVATION1")
-        results[obj.label.to_sym] = obj.pid if obj.datastreams.keys.include?("ACCESS1")
-      end
-    end
-    results[:unknown] = u_files
-    return results
-  end
-
-  def access_file
-    unless self.external_video(:h264).nil?
-      return self.external_video(:h264).datastreams["descMetadata"].get_values(:name)
-    end
-  end
-
-  def access_format
-    unless self.external_video(:h264).nil?
-      return self.external_video(:h264).datastreams["descMetadata"].get_values(:video_encoding)
-    end
-  end
-
-  def addl_solr_fields
-    solr_doc = Hash.new
-    solr_doc.merge!(:access_file_s => self.access_file)
-    solr_doc.merge!(:format_dtl_display => self.access_format)
   end
 
 end

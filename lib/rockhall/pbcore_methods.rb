@@ -25,6 +25,30 @@ module Rockhall::PbcoreMethods
       return builder.doc.root
     end
 
+    def previous_template(opts={})
+      builder = Nokogiri::XML::Builder.new do |xml|
+        xml.instantiationRelation {
+          xml.instantiationRelationType(:annotation=>"One of a multi-part instantiation") {
+            xml.text "Follows in Sequence"
+          }
+          xml.instantiationRelationIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
+        }
+      end
+      return builder.doc.root
+    end
+
+    def next_template(opts={})
+      builder = Nokogiri::XML::Builder.new do |xml|
+        xml.instantiationRelation {
+          xml.instantiationRelationType(:annotation=>"One of a multi-part instantiation") {
+            xml.text "Precedes in Sequence"
+          }
+          xml.instantiationRelationIdentifier(:source=>"Rock and Roll Hall of Fame and Museum")
+        }
+      end
+      return builder.doc.root
+    end
+
  end
 
   def self.included(klass)
@@ -42,7 +66,11 @@ module Rockhall::PbcoreMethods
 
     unless nodeset.nil?
       if nodeset.empty?
-        self.ng_xml.root.add_child(node)
+        if opts[:root]
+          self.find_by_terms(opts[:root].to_sym).first.add_child(node)
+        else
+          self.ng_xml.root.add_child(node)
+        end
         index = 0
       else
         nodeset.after(node)

@@ -9,7 +9,7 @@
 
   <a href="<%= catalog_path(params[:id], :viewing_context=>'browse') %>" class="browse toggle">Switch to browse view</a>
   <h2>Video</h2>
-  <%= render :partial => "archival_videos/show/content" %>
+  <%= render_video_player %>
 
   <h2>Review Video</h2>
   <%= form_tag url_for(:action=>"update", :controller=>"reviewers", :content_type=>"archival_video"),

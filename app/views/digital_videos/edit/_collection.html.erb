@@ -1,0 +1,25 @@
+<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"digital_video", :"accept-charset"=>"utf-8") do -%>
+
+  <%= hidden_field_tag("_method","put") %>
+
+  <fieldset id="archival_fields">
+    <legend>Archival Information</legend>
+    <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
+    <%= display_field([:archival_collection], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:archival_series], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:collection_number], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:accession_number], {:multiple=>false, :required=>false}) %>
+  </fieldset>
+
+  <fieldset id="usage_fields">
+    <legend>Use Restrictions</legend>
+    <p class="legend-caption">Enter any relevant information about the condition of the original item or its usage restrictions.</p>
+    <%= display_field([:usage], {:multiple=>false, :required=>false}) %>
+  </fieldset>
+
+  <%= hidden_field_tag(:wf_step,params["wf_step"]) %>
+  <%= hidden_field_tag(:content_type,"digital_video") %>
+  <%= submit_tag("Submit", :name=>"submit") %>
+  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
+
+<% end %>

@@ -1,0 +1,58 @@
+#video_box {
+  background: #000;
+  padding: 10px 0px 10px 0px;
+}
+
+/* player container */
+#player {
+  background:#000 url(../images/video-splash.png) center center no-repeat;
+  width:550px;
+  height:350px;
+  cursor:pointer;
+  -moz-outline-radius:4px;
+  margin: 0 auto;
+  margin-top: 12px;
+}
+
+/* playlist */
+#playlist {
+  margin: 0 auto;
+  margin-top:5px;
+  width: 550px;
+}
+
+/* playlist item */
+#playlist div {
+  float:left;
+  color:#fff;
+  background-color: #333;
+  text-align:center;
+  width:180px;
+  height:16px;
+  padding:5px 0px;
+  font-size:14px;
+  margin-right: 5px;
+  cursor:pointer;
+}
+
+#playlist div:last-child {
+  margin-right:0;
+}
+
+/* mouseover state */
+#playlist div:hover {
+  background-color: #666;
+}
+
+/* clicked state */
+#playlist div.playing, #playlist div.paused {
+  background-color: #fff;
+  color: #000;
+}
+
+/* active item */
+#playlist div:active {
+  cursor:default;
+  background-color: #ededed;
+  color: #444;
+}

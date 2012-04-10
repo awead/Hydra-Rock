@@ -88,5 +88,21 @@ module Rockhall::WorkflowMethods
     end
   end
 
+  def get_next(index, length)
+    last_index = length - 1
+    next_index = index + 1
+    if index == last_index
+      return nil
+    else
+      return next_index
+    end
+  end
+
+  def get_previous(index, length)
+    unless index == 0
+      previous = index - 1
+    end
+  end
+
 end
 

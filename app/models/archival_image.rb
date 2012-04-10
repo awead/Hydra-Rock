@@ -16,15 +16,16 @@ class ArchivalImage < ActiveFedora::Base
   has_metadata :name => "descMetadata", :type => Rockhall::ModsImage do |m|
   end
 
-  # A place to put extra metadata values
-  has_metadata :name => "properties", :type => ActiveFedora::MetadataDatastream do |m|
-    m.field 'collection', :string
-    m.field 'depositor', :string
-    m.field 'notes', :text
-    m.field 'access', :string
+  has_metadata :name => "properties", :type => Rockhall::Properties do |m|
   end
+  delegate :depositor, :to=>'properties', :at=>[:depositor]
 
   def initialize( attrs={} )
+    super
+  end
+
+  def apply_depositor_metadata(depositor_id)
+    self.depositor = depositor_id
     super
   end
 

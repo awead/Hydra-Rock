@@ -1,0 +1,59 @@
+<%
+  javascript_includes << [ "flowplayer-3.2.8.min.js", "flowplayer.playlist-3.2.8.min.js", "jquery.tools.min.js" ]
+  stylesheet_links    << [ "flowplayer-style.css" ]
+%>
+
+<div id="video_box">
+
+<!-- player container-->
+<div id="player">&nbsp;</div>
+
+<!-- the playlist -->
+<%  if @document_fedora.videos[:h264].count > 1 %>
+  <div id="playlist" class="clearfix" style="display:none">
+    <div>${title}</div>
+  </div>
+<% end %>
+
+<!-- let rest of the page float normally -->
+<br clear="all" />
+
+</div>
+
+<script type="text/javascript">
+  $f("player", "<%= root_path %>flowplayer-3.2.9.swf", {
+  // the playlist
+  playlist: [
+    <%= flowplayer_playlist %>
+  ],
+
+  // each clip on the playlist uses the rtmp plugin
+  clip: {
+    provider: 'rtmp'
+  },
+
+  // the rtmp plugin
+  plugins: {
+    rtmp: {
+      url:              '<%= root_path %>flowplayer.rtmp-3.2.9.swf',
+      netConnectionUrl: 'rtmp://<%= RH_CONFIG["wowza_host"] %>/vod'
+    },
+
+    // include playlist buttons in the controlbar
+    controls: {
+      playlist: true,
+      tooltips: {
+        buttons: true,
+      },
+      tooltipColor: '#EFD2D2',
+      tooltipTextColor: '#BE4646'
+    }
+  }
+
+}).playlist("#playlist");
+$("#playlist").show();
+
+</script>
+
+
+
