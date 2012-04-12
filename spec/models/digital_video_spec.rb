@@ -72,12 +72,13 @@ describe DigitalVideo do
 
   describe "#addl_solr_fields" do
     it "should return a hash of additional fields that will be included in the solr discovery export" do
-      pending "Need a digital video fixture"
-      av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_document3")
+      av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_digital_document1")
       addl_doc = av.addl_solr_fields
       addl_doc.should be_kind_of(Hash)
-      addl_doc.to_s.should match("39156042439369_access.mp4")
-      addl_doc.to_s.should match("H.264/MPEG-4 AVC")
+      addl_doc[:access_file_s].should be_kind_of(Array)
+      addl_doc[:access_file_s].should == [["content_001_access.mp4"], ["content_002_access.mp4"], ["content_003_access.mp4"]]
+      # TODO: get fields from mediainfo into PBCore
+      #addl_doc[:format_dtl_display].should == [["H.264/MPEG-4 AVC"]]
     end
   end
 
