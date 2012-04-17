@@ -235,5 +235,8 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+  def get_video_asset_count(document)
+    return "todo..."
+  end
 
 end
