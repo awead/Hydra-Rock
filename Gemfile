@@ -24,8 +24,6 @@ group :development, :test do
   gem 'bcrypt-ruby'
   gem 'capybara'
   gem 'capybara-webkit'
-  gem 'cucumber'
-  gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'generator_spec'
@@ -40,10 +38,8 @@ group :development, :test do
 end
 
 group :cucumber do
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'cucumber-rails'
   gem 'cucumber'
+  gem 'cucumber-rails'
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
 end
