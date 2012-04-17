@@ -105,6 +105,7 @@ describe Workflow::RockhallSip do
       copy_check = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], copy.base))
       copy_check.valid?.should be_true
       copy_check.pid.should == copy.pid
+      copy_check.prepare # this tests the update process
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.base))
     end
 

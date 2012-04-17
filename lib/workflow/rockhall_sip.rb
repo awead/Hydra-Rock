@@ -39,34 +39,20 @@ class RockhallSip
     end
   end
 
-  def prepare(opts={})
-    if self.pid
-      raise "Pid already exists"
-    end
+  # Prepares a sip for ingestion
+  def prepare
     raise "Invalid sip" unless self.valid?
-
-    begin
-      dv = DigitalVideo.new
-      dv.save
-      dv.label = "Rock and Roll Hall of Fame Library and Archives"
-      dv.save
-    rescue Exception=>e
-      raise "Failed create new video object: #{e}"
+    if self.pid
+      update
+    else
+      create
     end
-
-    # Rename sip using the new object pid
-    begin
-      new_name = dv.pid.gsub(/:/,"_")
-      FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
-      self.base = new_name
-      self.root = File.join(File.dirname(self.root), new_name)
-    rescue Exception=>e
-      raise "Failed to rename sip with PID: #{e}"
-    end
-
   end
 
   # Prepares a sip resuing the pid provided by the directory name
+  # You should use this if the object is deleted from Fedora but
+  # you still have the sip and want to recreated the object using
+  # its original pid.
   def reuse
     unless self.base.match(/^#{RH_CONFIG["pid_space"]}_/)
       raise "Invalid pid format used in base directory name"
@@ -80,8 +66,6 @@ class RockhallSip
       raise "Failed create new video object: #{e}"
     end
   end
-
-
 
   def access
     file  = File.join(self.root, "data", "*_access.mp4")
@@ -149,6 +133,43 @@ class RockhallSip
       return solr_response[:response][:docs][0][:id]
     end
   end
+
+  private
+
+  # Creates a new sip from a given directory
+  def create(opts={})
+    begin
+      dv = DigitalVideo.new
+      dv.save
+      dv.label = "Rock and Roll Hall of Fame Library and Archives"
+      dv.save
+    rescue Exception=>e
+      raise "Failed create new video object: #{e}"
+    end
+
+    # Rename sip using the new object pid
+    begin
+      new_name = dv.pid.gsub(/:/,"_")
+      FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
+      self.base = new_name
+      self.root = File.join(File.dirname(self.root), new_name)
+    rescue Exception=>e
+      raise "Failed to rename sip with PID: #{e}"
+    end
+
+  end
+
+  # Updates a sip if the parent object was previously created
+  def update
+    begin
+      dv = DigitalVideo.load_instance(self.pid)
+      dv.label = "Rock and Roll Hall of Fame Library and Archives"
+      dv.save
+    rescue Exception=>e
+      raise "Failed update video object: #{e}"
+    end
+  end
+
 
 end
 end

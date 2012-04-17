@@ -17,7 +17,7 @@ class Rockhall::Discovery
       solr = solr_connect
       solr_response = solr.find(solr_params)
     else
-      solr_params[:q]    = 'access_group_t:public AND has_model_s:"info:fedora/afmodel:ArchivalVideo"'
+      solr_params[:q]    = 'access_group_t:public'
       solr_response = Blacklight.solr.find(solr_params)
     end
 

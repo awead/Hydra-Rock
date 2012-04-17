@@ -96,7 +96,11 @@ module Rockhall::ModelMethods
   # that need to be included when an object is exported to another solr index.
   def addl_solr_fields
     solr_doc = Hash.new
-    solr_doc.merge!(:access_file_s => self.access_file)
+    access_videos = Array.new
+    self.videos[:h264].each do |ev|
+      access_videos << ev.name
+    end
+    solr_doc.merge!(:access_file_s => access_videos)
     solr_doc.merge!(:format_dtl_display => self.access_format)
   end
 
