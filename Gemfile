@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~>3.2.2'
+gem 'rails', '~>3.2.3'
 gem 'sass-rails', "  ~> 3.2.3"
 
 gem 'blacklight'
-gem 'hydra-head', :path => "gems/hydra-head"
+#gem 'hydra-head', :path => "gems/hydra-head"
+gem 'hydra-head'
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
@@ -33,7 +34,8 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'ruby-debug19'
-  gem 'solrizer-fedora', :path => 'gems/solrizer-fedora'
+  #gem 'solrizer-fedora', :path => 'gems/solrizer-fedora'
+  gem 'solrizer-fedora'
   gem 'webrat'
 end
 
