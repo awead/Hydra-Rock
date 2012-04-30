@@ -64,9 +64,7 @@ module RockhallAssetsHelper
     result = String.new
     if params[:action] == "edit"
       result << "<p id=\"#{id}\" class=\"fedora-text-field\">" + field unless opts[:hidden]
-      values.each do |value|
-        result << value
-      end
+      result << values
     else
       result << "<dt><label for=\"#{id}\">" + formatted_name + "</label></dt>"
       result << "<dd id=\"#{id}\" class=\"field\"><ul>"
