@@ -1,0 +1,12 @@
+<div class="accordion-group">
+  <div class="accordion-heading">
+    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%= facet_field.field %>_twiddle">
+      <%= facet_field.label -%>
+    </a>
+  </div>
+  <div id="<%= facet_field.field %>_twiddle" class="accordion-body collapse" style="height: 0px; ">
+    <div class="accordion-inner">
+      <%= yield %>
+    </div>
+  </div>
+</div>
