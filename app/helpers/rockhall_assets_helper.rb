@@ -66,7 +66,7 @@ module RockhallAssetsHelper
       result << "<p id=\"#{id}\" class=\"fedora-text-field\">" + field unless opts[:hidden]
       result << values
     else
-      result << "<dt><label for=\"#{id}\">" + formatted_name + "</label></dt>"
+      result << "<dt id=\"#{id}\">" + formatted_name + "</dt>"
       result << "<dd id=\"#{id}\" class=\"field\"><ul>"
       values.each do |value|
         result << "<li>" + value + "</li>"
