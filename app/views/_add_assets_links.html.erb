@@ -1,8 +1,15 @@
 <% if allow_asset_creation %>
-<div id="select-item-box">
-  <a class="add-new-asset" href="#">Add a New Asset</a>
-  <ul id="select-item-list">
-    <%= list_available_assets_to_create %>
+
+  <ul class="nav">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        Add a New Asset
+        <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <%= list_available_assets_to_create %>
+      </ul>
+    </li>
   </ul>
-</div>
+
 <% end %>

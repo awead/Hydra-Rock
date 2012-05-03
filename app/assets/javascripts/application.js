@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 // Required by Hydra
 //= require 'jquery.ui.datepicker.js'
 

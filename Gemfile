@@ -16,6 +16,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails', '~> 1.0.0'
   gem 'compass-susy-plugin', '~> 0.9.0'
+  gem 'twitter-bootstrap-rails'
+  gem 'therubyracer'
 end
 
 # Bundle gems for the local environment. Make sure to

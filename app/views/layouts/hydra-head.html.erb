@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title><%= h(@page_title || application_name) %></title>
+    <link href="<%= opensearch_catalog_url(:format => 'xml') %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <%= raw(render_head_content) %>
+	</head>
+
+  <body class="<%= render_body_class %>">
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="<%= root_path %>"><%= application_name %></a>
+          <div class="nav-collapse">
+            <%= render :partial => '/user_util_links' %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- document row -->
+      <div class="row">
+        <div class="span3">
+          <%= sidebar_items.join('').html_safe %>
+        </div>
+        <div class="span9">
+          <%= render :partial=>'/flash_msg' %>
+          <%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>".html_safe : "" %>
+          <%= yield %>
+        </div>
+      </div>
+
+      <!-- footer row -->
+      <div class="row">
+        <div class="span12">
+          <div class="contact_info"></div>
+          <div class="aux_links"></div>
+          <div id="footer_notices">
+            <div id="bottom_text">
+              <div id="hydra_logo"><%= image_tag('hydra/powered_by_hydra.png', :width => 80, :height => 50, :alt => "Hydra logo") %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+
+</html>
