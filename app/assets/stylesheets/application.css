@@ -14,7 +14,7 @@
  *= require_self
  *
  * Required by Hydra
- *= require 'hydra/styles'
+ * require 'hydra/styles'
 
  *= require_tree .
 */
