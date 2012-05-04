@@ -1,7 +1,4 @@
 /*
- * Required by Blacklight:
- *= require 'jquery/ui-lightness/jquery-ui-1.8.1.custom.css'
- *
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -12,9 +9,14 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *
- * Required by Hydra
- * require 'hydra/styles'
-
  *= require_tree .
 */
+
+// temporary fix for compass_twitter_bootstrap
+@function e($raw-css) {
+    @return #{$raw-css}
+}
+
+
+@import "compass_twitter_bootstrap";
+@import "compass_twitter_bootstrap/layouts";
