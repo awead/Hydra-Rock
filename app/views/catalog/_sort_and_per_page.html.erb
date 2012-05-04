@@ -1,4 +1,4 @@
-<div id="sortAndPerPage">
+<div id="sortAndPerPage" class="well">
 	<% unless @response.response['numFound'] < 2 %>
   	<%= form_tag catalog_index_path, :method=>:get, :class=>"form-inline pull-left" do %>
   		<%= label_tag(:per_page, "Show") %>
