@@ -39,7 +39,6 @@
         </div>
         <div class="span9">
           <%= render :partial=>'/flash_msg' %>
-          <%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>".html_safe : "" %>
           <%= yield %>
         </div>
       </div>
