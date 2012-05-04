@@ -1,5 +1,6 @@
   <%= form_tag catalog_index_path, :method => :get, :class => "well form-search" do %>
-    Search for: <%= text_field_tag :q, params[:q], :class => "q input-medium search-query" %>
+    <%= label_tag(:search_field, "Search for ") %>
+    <%= text_field_tag :q, params[:q], :class => "q input-medium search-query" %>
     <% unless search_fields.empty? %>
       <%= label_tag(:search_field, " in ") %>
       <%= select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => "Targeted search options", :class=>"search_field") %>
