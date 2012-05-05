@@ -48,3 +48,23 @@
     }
   }
 }
+
+.pageEntriesInfo {
+  @extend .well;
+  #startOverLink {
+    @extend .btn;
+    @extend .btn-danger;
+  }
+}
+
+#sortAndPerPage {
+  @extend .well;
+  .per_page {
+    @extend .form-inline;
+    @extend .pull-left;
+  }
+  .sort {
+    @extend .form-inline;
+    @extend .pull-right;
+  }
+}
