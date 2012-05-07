@@ -11,7 +11,7 @@ class RockhallIngest
     raise "Invalid sip" unless sip.valid?
     raise "SIP has no PID.  Did you prepare it?" if sip.pid.nil?
     @sip = sip
-    @parent = DigitalVideo.load_instance(sip.pid)
+    @parent = (eval sip.get_model).load_instance(sip.pid)
   end
 
   # runs the first time to process a new sip that doesn't exist in Fedora
