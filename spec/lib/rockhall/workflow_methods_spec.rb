@@ -196,10 +196,10 @@ describe Rockhall::WorkflowMethods do
     it "should return the name of the model of a given pid" do
       av = ArchivalVideo.new
       av.save
-      av.get_model(av.pid).should == "ArchivalVideo"
+      av.get_model.should == "ArchivalVideo"
       dv = DigitalVideo.new
       dv.save
-      dv.get_model(dv.pid).should == "DigitalVideo"
+      dv.get_model.should == "DigitalVideo"
     end
 
   end

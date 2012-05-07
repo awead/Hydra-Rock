@@ -162,8 +162,7 @@ class RockhallSip
   # Updates a sip if the parent object was previously created
   def update
     begin
-      model = self.get_model(self.pid)
-      obj = (eval model).load_instance(self.pid)
+      obj = (eval self.get_model).load_instance(self.pid)
       obj.label = "Rock and Roll Hall of Fame Library and Archives"
       obj.save
     rescue Exception=>e
