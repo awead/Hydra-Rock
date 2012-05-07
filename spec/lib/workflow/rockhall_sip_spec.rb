@@ -109,6 +109,19 @@ describe Workflow::RockhallSip do
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.base))
     end
 
+    it "should prepare previously created sips" do
+      sip = Workflow::RockhallSip.new("spec/fixtures/rockhall/sips/fixture_15895")
+      sip.valid?.should be_true
+      obj = ArchivalVideo.load_instance(sip.pid)
+      obj.label.should be_empty
+      sip.prepare
+      obj = ArchivalVideo.load_instance(sip.pid)
+      obj.label.should == "Rock and Roll Hall of Fame Library and Archives"
+      # Reset label to empty
+      obj.label = ""
+      obj.save
+    end
+
   end
 
   describe "reusing a sip" do

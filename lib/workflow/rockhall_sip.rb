@@ -162,9 +162,10 @@ class RockhallSip
   # Updates a sip if the parent object was previously created
   def update
     begin
-      dv = DigitalVideo.load_instance(self.pid)
-      dv.label = "Rock and Roll Hall of Fame Library and Archives"
-      dv.save
+      model = self.get_model(self.pid)
+      obj = (eval model).load_instance(self.pid)
+      obj.label = "Rock and Roll Hall of Fame Library and Archives"
+      obj.save
     rescue Exception=>e
       raise "Failed update video object: #{e}"
     end

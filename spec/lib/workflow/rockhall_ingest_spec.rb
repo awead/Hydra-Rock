@@ -94,4 +94,17 @@ describe Workflow::RockhallIngest do
 
   end
 
+  describe "ingesting a sip using an ArchivalVideo parent object" do
+
+    it "should initialize using ArchivalVideo" do
+      sip = Workflow::RockhallSip.new("spec/fixtures/rockhall/sips/fixture_15895")
+      sip.valid?.should be_true
+
+
+
+
+    end
+
+  end
+
 end

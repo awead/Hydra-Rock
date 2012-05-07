@@ -94,5 +94,10 @@ module Rockhall::WorkflowMethods
     end
   end
 
+  def get_model(pid)
+    af = ActiveFedora::Base.load_instance(pid)
+    model = af.relationships(:has_model).first.split(":").last
+  end
+
 end
 
