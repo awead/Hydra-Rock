@@ -19,6 +19,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'compass_twitter_bootstrap'
   gem 'therubyracer'
+  gem 'jquery-rails'
 end
 
 # Bundle gems for the local environment. Make sure to
@@ -31,7 +32,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'generator_spec'
-  gem 'jquery-rails'
+
   gem 'mocha'
   gem 'rest-client'
   gem 'rspec'
