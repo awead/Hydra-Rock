@@ -29,7 +29,7 @@ Version 2.0.0
 
 /* Placement of Control Items */
 .hu-css .vjs-controls > div.vjs-play-control       { width: 33px; left: 0px; }
-.hu-css .vjs-controls > div.vjs-progress-control   { width: left: 84px; right: 0; }
+.hu-css .vjs-controls > div.vjs-progress-control   { width: 0px; left: 84px; right: 0; }
 .hu-css .vjs-controls > div.vjs-time-control       { width: 84px; left: 0px; }
 .hu-css .vjs-controls > div.vjs-volume-control     { width: 43px; right: 44px; }
 .hu-css .vjs-controls > div.vjs-fullscreen-control { width: 43px; right: 0px; }
