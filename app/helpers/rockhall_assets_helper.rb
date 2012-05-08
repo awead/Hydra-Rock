@@ -2,6 +2,21 @@ module RockhallAssetsHelper
 
   include Hydra::AccessControlsEvaluation
 
+
+  # Overrides
+
+  def edit_and_browse_links
+    result = "<li><span>"
+    if params[:action] == "edit"
+      result << "<i class=\"icon-eye-open\"></i><a href=\"#{catalog_path(@document[:id], :viewing_context=>"browse")}\">Switch to browse view</a>"
+    else
+      result << "<i class=\"icon-edit\"></i><a href=\"#{edit_catalog_path(@document[:id], :viewing_context=>"edit")}\">Switch to edit view</a>"
+    end
+    result << "</span></li>"
+    return result.html_safe
+  end
+
+
   # Render a link to delete the given asset from the repository.
   # Includes a confirmation message.
   def delete_object_link(pid, asset_type_display="asset")
@@ -156,22 +171,6 @@ module RockhallAssetsHelper
   end
 
 
-  def toc_links
-    results = String.new
-    results << "<ul>"
-    results << "<li><a href=\"#\">Top</a></li>"
-    ["content","original","digital","rockhall","permissions"].each do |anchor|
-      if params[:action] == "edit"
-        results << "<li>" + link_to(anchor.capitalize, edit_catalog_path(@document_fedora, :anchor=>anchor)) + "</li>"
-      else
-        results << "<li>" + link_to(anchor.capitalize, catalog_path(@document_fedora, :anchor=>anchor)) + "</li>"
-      end
-    end
-    results << "</ul>"
-    return results.html_safe
-  end
-
-
   def contributor_link(counter)
     result = String.new
     role = get_values_from_datastream(@document_fedora, "descMetadata", [{:contributor=>counter}, :role])
@@ -236,5 +235,28 @@ module RockhallAssetsHelper
   def get_video_asset_count(document)
     return "todo..."
   end
+
+  def display_sidebar_nav(model)
+    steps = Array.new
+    Hydra.config[:submission_workflow][model.to_sym].each { |x| steps << x[:name] }
+    params[:wf_step] = "titles" if params[:wf_step].nil?
+
+    results = String.new
+    results << "<ul class=\"nav nav-list\">"
+    results << "<li class=\"nav-header\">Available workflow steps</li>"
+    steps.each do |step|
+      if params[:wf_step] == step
+        results << "<li class=\"active\">"
+      else
+        results << "<li>"
+      end
+      results << "<a href=\"" + url_for(edit_catalog_path(:wf_step=>step)) + "\">" + step.capitalize + "</a>"
+      results<< "</li>"
+    end
+    results << "</ul>"
+    return results.html_safe
+  end
+
+
 
 end
