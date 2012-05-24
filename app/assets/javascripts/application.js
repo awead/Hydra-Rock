@@ -14,9 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 
-// Keep out everything else for now
-// require jquery-ui
-// require blacklight/blacklight
-// require 'jquery.ui.datepicker.js'
+//= require jquery-ui
+//= require blacklight/blacklight
+//= require 'jquery.ui.datepicker.js'
 
 //= require_tree .
