@@ -1,0 +1,15 @@
+<%# if vals is zero we create an empty array to loop over for output %>
+<% if vals.count == 0 %>
+  <% vals = [''] %>
+<% end %>
+<% vals.each_with_index do |v, index| %>
+  <div class="control-group" <% if index == 0%> id="additional_<%= t %>_clone" <% end %>>
+    <div class="controls">
+      <%= f.text_field :title, :name=>"archival_video[#{t}][]", :value=>v, :class=>"edit span6" %>
+      <% if index == 0 %>
+        <%= f.submit :value => "+", :name=> "additional_#{t}", :id => "additional_#{t}_submit", :class => "adder btn-info btn-mini"  %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<div id="additional_<%= t %>_elements"></div>

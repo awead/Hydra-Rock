@@ -1,0 +1,9 @@
+<h1><%= @video.main_title.first %></h1>
+
+<%= render_submission_workflow_step -%>
+
+<% unless params[:new_asset] %>
+  <% sidebar_items << capture do %>
+    <%= display_sidebar_nav("archival_videos") %>
+  <% end %>
+<% end %>
