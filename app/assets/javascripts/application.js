@@ -14,10 +14,12 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 // Required by Hydra
-//= require 'jquery.ui.datepicker.js'
+// require 'jquery.ui.datepicker.js'
+// require 'hydra-head.js'
+// require 'jquery.form.js'
 
 //
 // Required by Blacklight
-//= require jquery-ui
-//= require blacklight/blacklight
-//= require_tree .
+// require jquery-ui
+// require blacklight/blacklight
+// require_tree .
