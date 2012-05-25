@@ -1,0 +1,17 @@
+<h1>New Archival Video</h1>
+
+<%= form_for @video, :html => {:class => 'form-vertical'} do |f| %>
+
+  <fieldset id="required_title">
+    <legend>Required Title</legend>
+    <p class="legend-caption">
+      A single, main title is required.  This may be the title of the event or program, it
+      may be the title as it appears on the source tape
+    </p>
+    <%= f.label :main_title, :class=>"field" %>
+    <%= f.text_field :main_title, :value => @video.main_title.first, :class => "edit span6" %>
+  </fieldset>
+
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
+<% end %>

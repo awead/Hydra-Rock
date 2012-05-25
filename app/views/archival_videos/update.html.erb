@@ -1,1 +1,10 @@
+<%= edit_and_show_links %>
+
+<h2>Parameters</h2>
 <%= params.inspect %>
+
+
+<h2>Archival Video</h2>
+<% params[:archival_video].each do |f| %>
+  <%= f.class %>
+<% end %>

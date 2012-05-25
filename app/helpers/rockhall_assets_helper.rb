@@ -2,17 +2,16 @@ module RockhallAssetsHelper
 
   include Hydra::AccessControlsEvaluation
 
-
-  # Overrides
-
-  def edit_and_browse_links
-    result = "<li><span>"
+  def edit_and_show_links
+    result = "<span>"
     if params[:action] == "edit"
-      result << "<i class=\"icon-eye-open\"></i><a href=\"#{catalog_path(@document[:id], :viewing_context=>"browse")}\">Switch to browse view</a>"
+      result << "<i class=\"icon-eye-open\"></i> "
+      result << link_to("Switch to browse view", archival_video_path(params[:id]))
     else
-      result << "<i class=\"icon-edit\"></i><a href=\"#{edit_catalog_path(@document[:id], :viewing_context=>"edit")}\">Switch to edit view</a>"
+      result << "<i class=\"icon-edit\"></i> "
+      result << link_to("Switch to edit view", edit_archival_video_path(params[:id]))
     end
-    result << "</span></li>"
+    result << "</span>"
     return result.html_safe
   end
 
@@ -212,7 +211,7 @@ module RockhallAssetsHelper
   def list_available_assets_to_create
     results = String.new
     results << "<li>"
-    results << link_to_create_asset('Add archival video', 'archival_video')
+    results << link_to('Add archival video', new_archival_video_path)
     results << "</li>"
     results << "<li>"
     results << link_to_create_asset('Add digital video', 'digital_video')

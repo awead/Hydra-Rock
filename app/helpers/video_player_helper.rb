@@ -2,10 +2,14 @@ module VideoPlayerHelper
 
 
   def render_video_player
-    if RH_CONFIG["video_player"].nil?
-      render :partial => "video_player/jw_player"
+    if @video.file_objects.count > 0
+      if RH_CONFIG["video_player"].nil?
+        render :partial => "video_player/jw_player"
+      else
+        render :partial => "video_player/#{RH_CONFIG["video_player"]}"
+      end
     else
-      render :partial => "video_player/#{RH_CONFIG["video_player"]}"
+      return "Video not available"
     end
   end
 
