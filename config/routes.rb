@@ -7,4 +7,5 @@ HydraRock::Application.routes.draw do
   devise_for :users
 
   resources :archival_videos
+  resources :digital_videos
 end
