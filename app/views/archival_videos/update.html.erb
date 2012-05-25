@@ -5,6 +5,10 @@
 
 
 <h2>Archival Video</h2>
-<% params[:archival_video].each do |f| %>
-  <%= f.class %>
+<%= params[:archival_video].class %><br/>
+<% params[:archival_video].each do |k,v| %>
+  Field: <%= k %> is <%= v.inspect %> <br/>
 <% end %>
+
+<h2>What will get updated is:</h2>
+<%= @changes.inspect %>

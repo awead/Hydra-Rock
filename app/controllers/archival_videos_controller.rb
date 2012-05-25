@@ -40,21 +40,29 @@ class ArchivalVideosController < ApplicationController
   end
 
   def update
-    #@video = ArchivalVideo.find(params[:id])
-    #if @video.update_attributes(params[:archival_video])
-      #
-    #else
-    #  redirect_to edit_archival_video_path
-    #end
-    # dirty = FALSE
-    #params[:archival_video].each do |k,v|
-    #  unless params[:archival_video][k.to_sym].first.empty? or params[:archival_video][k.to_sym] == @video.send(k).join
-    #    @video.send("#{k}=".to_sym, v)
-    #    dirty = TRUE
-    #    logger.warn("\n\n\n\n\n\n\n\n\n I'M DIRTY!!!!!!!!!!!!!!!")
-    #  end
-    #end
-    #@video.save if dirty
+    @video = ArchivalVideo.find(params[:id])
+    changes = changed_fields(params)
+    if changes.empty?
+      redirect_to(@video, :notice => 'No changes saved')
+    else
+      @video.update_attributes(changes)
+      if @video.save
+        redirect_to(@video, :notice => 'Video was updated successfully')
+      else
+        redirect_to(@video, :notice => 'Error: Unable to save changes')
+      end
+    end
+  end
+
+  def changed_fields(params)
+    changes = Hash.new
+    video = ArchivalVideo.find(params[:id])
+    params[:archival_video].each do |k,v|
+      unless video.send(k.to_sym) == v or (video.send(k.to_sym).empty? and v.first.empty?) or (v.sort.uniq.count > video.send(k.to_sym).count and v.sort.uniq.first.empty?)
+        changes.store(k,v)
+      end
+    end
+    return changes
   end
 
 end

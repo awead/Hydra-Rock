@@ -3,7 +3,12 @@ module RockhallAssetsHelper
   include Hydra::AccessControlsEvaluation
 
   def edit_and_show_links
-    result = "<span>"
+    result = String.new
+    result << "<ul>"
+    result = "<li><span><i class=\"icon-arrow-left\"></i>"
+    result << link_back_to_catalog(:label=>'Return to search results')
+    result << "</span></li>"
+    result << "<li><span>"
     if params[:action] == "edit"
       result << "<i class=\"icon-eye-open\"></i> "
       result << link_to("Switch to browse view", archival_video_path(params[:id]))
@@ -11,7 +16,7 @@ module RockhallAssetsHelper
       result << "<i class=\"icon-edit\"></i> "
       result << link_to("Switch to edit view", edit_archival_video_path(params[:id]))
     end
-    result << "</span>"
+    result << "</span></li></ul>"
     return result.html_safe
   end
 
@@ -33,7 +38,24 @@ module RockhallAssetsHelper
   end
 
 
-  def display_field(path,opts={})
+  def display_field(field,opts={})
+    results = String.new
+    return nil if @video.send(field.to_sym).empty? or @video.send(field.to_sym).first.empty?
+    # Determine field label
+    if opts[:name].nil?
+      cap_name = field.to_s.split(/_/).each{|word| word.capitalize!}.join(" ")
+      @video.send(field.to_sym).count > 1 ? formatted_name = cap_name.pluralize : formatted_name = cap_name
+    else
+      @video.send(field.to_sym).count > 1 ? formatted_name = opts[:name].pluralize : formatted_name = opts[:name]
+    end
+    results << "<dt>" + formatted_name + "</dt>"
+    @video.send(field.to_sym).each do |v|
+      results << "<dd>" + v + "</dd>"
+    end
+    return results.html_safe
+  end
+
+  def deprecated_display_field(path,opts={})
 
     # Default to descMetadata
     opts[:datastream].nil? ? datastream = "descMetadata" : datastream = opts[:datastream]

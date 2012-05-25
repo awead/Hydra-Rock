@@ -4,7 +4,7 @@
     <legend>Required Title</legend>
     <p class="legend-caption">A single, main title is required.  This may be the title of the event or program, it may be the title as it appears on the source tape</p>
     <%= f.label :main_title, :class=>"field" %>
-    <%= f.text_field :main_title, :value => @video.main_title.first, :class => "edit span6" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"main_title", :f=>f, :vals=>@video.main_title, :multiple=>FALSE } %>
   </fieldset>
 
   <fieldset id="optional_titles">
@@ -12,7 +12,7 @@
     <p class="legend-caption">Additional title fields are optional, but you may add as many as needed.</p>
      <% ["alternative_title", "chapter", "episode", "label", "segment", "subtitle", "track", "translation"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
-      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t) } %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>TRUE } %>
     <% end %>
   </fieldset>
 
