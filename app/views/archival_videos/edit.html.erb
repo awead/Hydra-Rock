@@ -2,9 +2,12 @@
 
 <%= render_submission_workflow_step -%>
 
+<% navbar_items << capture do %>
+  <%= edit_and_show_links %>
+<% end %>
+
 <% unless params[:new_asset] %>
   <% sidebar_items << capture do %>
-    <%= edit_and_show_links %>
     <%= display_sidebar_nav("archival_videos") %>
   <% end %>
 <% end %>

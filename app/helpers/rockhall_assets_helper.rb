@@ -4,19 +4,17 @@ module RockhallAssetsHelper
 
   def edit_and_show_links
     result = String.new
-    result << "<ul>"
-    result = "<li><span><i class=\"icon-arrow-left\"></i>"
-    result << link_back_to_catalog(:label=>'Return to search results')
-    result << "</span></li>"
-    result << "<li><span>"
-    if params[:action] == "edit"
-      result << "<i class=\"icon-eye-open\"></i> "
-      result << link_to("Switch to browse view", archival_video_path(params[:id]))
-    else
-      result << "<i class=\"icon-edit\"></i> "
-      result << link_to("Switch to edit view", edit_archival_video_path(params[:id]))
+    if current_user
+      result << "<li>"
+      if params[:action] == "edit"
+        #result << "<i class=\"icon-eye-open\"></i> "
+        result << link_to("View", archival_video_path(params[:id]))
+      else
+        #result << "<i class=\"icon-edit\"></i> "
+        result << link_to("Edit", edit_archival_video_path(params[:id]))
+      end
+      result << "</li>"
     end
-    result << "</span></li></ul>"
     return result.html_safe
   end
 

@@ -17,15 +17,27 @@
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </a>
           <a class="brand" href="<%= root_path %>"><%= application_name %></a>
           <div class="nav-collapse">
             <%= render :partial => '/user_util_links' %>
           </div>
+          <ul class="nav pull-right">
 
+            <%= form_tag catalog_index_path, :method => :get, :class => "navbar-search" do %>
+              <%= text_field_tag :q, params[:q], :class => "q span2 search-query", :placeholder =>"Search" %>
+              <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %>
+            <% end %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Search <b class="caret"></b></a>
+              <ul class="dropdown-menu"
+                <li><%= link_back_to_catalog %></li>
+                <li><%= link_to "Selected Items (#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0})", folder_index_path %></li>
+                <li><%= link_to "Search History", search_history_path %></li>
+              </ul>
+            </li>
+            <%= render :partial=>"/user_acct_links" %>
+          </ul>
         </div>
       </div>
     </div>

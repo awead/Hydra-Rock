@@ -1,9 +1,7 @@
 module LocalBlacklightHelper
 
-
   def application_name
-    'Hydra Rock'
+    'Hydra'
   end
-
 
 end

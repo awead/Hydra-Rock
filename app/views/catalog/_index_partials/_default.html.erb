@@ -4,7 +4,7 @@
   </td>
   <td>
     <% #link_to(document[:title_display].first, eval(document_type(document).underscore + "_path")) %>
-    <%= link_to(document[:title_display].first, archival_video_path(document[:id])) %>
+    <%= link_to((document[:title_display].nil? ? "[No title]" : document[:title_display].first) , archival_video_path(document[:id])) %>
   </td>
   <td>
     <%= (document_type(document) || "Unknown") %>
