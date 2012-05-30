@@ -2,10 +2,11 @@
 <% if vals.count == 0 %>
   <% vals = [''] %>
 <% end %>
+<% required = false if defined?(required).nil? %>
 <% vals.each_with_index do |v, index| %>
   <div class="control-group" <% if index == 0%> id="additional_<%= t %>_clone" <% end %>>
     <div class="controls">
-      <%= f.text_field :title, :name=>"archival_video[#{t}][]", :value=>v, :class=>"edit span6" %>
+      <%= f.text_field :title, :name=>"archival_video[#{t}][]", :value=>v, :class=>"edit span6", :required=>required %>
       <% if index == 0 and multiple %>
         <%= f.submit :value => "+", :name=> "additional_#{t}", :id => "additional_#{t}_submit", :class => "adder btn-info btn-mini"  %>
       <% end %>
