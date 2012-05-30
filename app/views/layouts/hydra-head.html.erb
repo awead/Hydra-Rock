@@ -46,13 +46,20 @@
 
       <!-- document row -->
       <div class="row">
-        <div class="span3">
-          <div class="well"><%= sidebar_items.join('').html_safe %></div>
-        </div>
-        <div class="span9">
-          <%= render :partial=>'/flash_msg' %>
-          <%= yield %>
-        </div>
+        <% if sidebar_items.empty? %>
+          <div class="span12">
+            <%= render :partial=>'/flash_msg' %>
+            <%= yield %>
+          </div>
+        <% else %>
+          <div class="span3">
+            <div class="well"><%= sidebar_items.join('').html_safe %></div>
+          </div>
+          <div class="span9">
+            <%= render :partial=>'/flash_msg' %>
+            <%= yield %>
+          </div>
+        <% end %>
       </div>
 
       <!-- footer row -->
@@ -60,7 +67,7 @@
         <div class="span12">
           <div class="contact_info"></div>
           <div class="aux_links"></div>
-          <div id="footer_notices">
+          <div id="footer_notices" class="well">
             <div id="bottom_text">
               <div id="hydra_logo"><%= image_tag('hydra/powered_by_hydra.png', :width => 80, :height => 50, :alt => "Hydra logo") %></div>
             </div>
