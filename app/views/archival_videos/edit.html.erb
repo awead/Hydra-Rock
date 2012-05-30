@@ -4,6 +4,7 @@
 
 <% navbar_items << capture do %>
   <%= edit_and_show_links %>
+  <%= button_to 'Delete', archival_videos_path(params[:id]), :class => "btn-small btn-danger", :form => { :class=>"navbar-search"}, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>
 
 <% unless params[:new_asset] %>
