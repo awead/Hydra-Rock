@@ -2,23 +2,6 @@ module RockhallAssetsHelper
 
   include Hydra::AccessControlsEvaluation
 
-  def edit_and_show_links
-    result = String.new
-    if current_user
-      result << "<li>"
-      if params[:action] == "edit"
-        #result << "<i class=\"icon-eye-open\"></i> "
-        result << link_to("View", archival_video_path(params[:id]))
-      else
-        #result << "<i class=\"icon-edit\"></i> "
-        result << link_to("Edit", edit_archival_video_path(params[:id]))
-      end
-      result << "</li>"
-    end
-    return result.html_safe
-  end
-
-
   # Render a link to delete the given asset from the repository.
   # Includes a confirmation message.
   def delete_object_link(pid, asset_type_display="asset")
