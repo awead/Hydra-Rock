@@ -238,26 +238,7 @@ module RockhallAssetsHelper
     return "todo..."
   end
 
-  def display_sidebar_nav(model)
-    steps = Array.new
-    Hydra.config[:submission_workflow][model.to_sym].each { |x| steps << x[:name] }
-    params[:wf_step] = "titles" if params[:wf_step].nil?
 
-    results = String.new
-    results << "<ul class=\"nav nav-list\">"
-    results << "<li class=\"nav-header\">Available workflow steps</li>"
-    steps.each do |step|
-      if params[:wf_step] == step
-        results << "<li class=\"active\">"
-      else
-        results << "<li>"
-      end
-      results << "<a href=\"" + url_for(edit_catalog_path(:wf_step=>step)) + "\">" + step.capitalize + "</a>"
-      results<< "</li>"
-    end
-    results << "</ul>"
-    return results.html_safe
-  end
 
 
 
