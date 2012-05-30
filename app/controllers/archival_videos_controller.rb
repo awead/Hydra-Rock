@@ -1,5 +1,6 @@
 class ArchivalVideosController < ApplicationController
   include Hydra::Controller
+  include Hydra::Assets
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
 
   def edit
