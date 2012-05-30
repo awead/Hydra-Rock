@@ -3,12 +3,9 @@
 <%= render_submission_workflow_step -%>
 
 <% navbar_items << capture do %>
+  <% unless params[:new_asset] %>
+    <%= workflow_dropdown("archival_videos") %>
+  <% end %>
   <%= edit_and_show_links %>
   <%= button_to 'Delete', archival_videos_path(params[:id]), :class => "btn-small btn-danger", :form => { :class=>"navbar-search"}, :confirm => 'Are you sure?', :method => :delete %>
-<% end %>
-
-<% unless params[:new_asset] %>
-  <% sidebar_items << capture do %>
-    <%= display_sidebar_nav("archival_videos") %>
-  <% end %>
 <% end %>

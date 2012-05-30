@@ -23,21 +23,22 @@ module RockhallNavbarHelper
   end
 
   # navigation links to the other edit partials
-  def display_sidebar_nav(model)
+  def workflow_dropdown(model)
     steps = Array.new
     Hydra.config[:submission_workflow][model.to_sym].each { |x| steps << x[:name] }
     params[:wf_step] = "titles" if params[:wf_step].nil?
 
     results = String.new
-    results << "<ul class=\"nav nav-list\">"
-    results << "<li class=\"nav-header\">Available workflow steps</li>"
+    results << '<li class="dropdown">'
+    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Available workflow steps <b class="caret"></b></a>'
+    results << '<ul class="dropdown-menu">'
     steps.each do |step|
       if params[:wf_step] == step
         results << "<li class=\"active\">"
       else
         results << "<li>"
       end
-      results << "<a href=\"" + url_for(edit_catalog_path(:wf_step=>step)) + "\">" + step.capitalize + "</a>"
+      results << "<a href=\"" + url_for(edit_archival_video_path(:wf_step=>step)) + "\">" + step.capitalize + "</a>"
       results<< "</li>"
     end
     results << "</ul>"
