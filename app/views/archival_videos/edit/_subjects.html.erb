@@ -1,0 +1,32 @@
+<%= form_for @video, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
+
+  <fieldset id="subjects">
+    <legend>Library of Congress Subject Headings</legend>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"lc_subject", :f=>f, :vals=>@video.lc_subject, :multiple=>TRUE } %>
+  </fieldset>
+
+  <fieldset id="genres">
+    <legend>LCGFT</legend>
+    <p class="legend-caption">Library of Congress genre form terms</p>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"lc_genre", :f=>f, :vals=>@video.lc_genre, :multiple=>TRUE } %>
+  </fieldset>
+
+  <fieldset id="event_fields">
+    <legend>Event Fields</legend>
+    <p class="legend-caption">Information about the series in which this event occurred.</p>
+    <%= f.label :event_series, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_series", :f=>f, :vals=>@video.event_series, :multiple=>TRUE } %>
+    <%= f.label :event_place, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_place", :f=>f, :vals=>@video.event_place, :multiple=>TRUE } %>
+    <%= f.label :event_date, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_date", :f=>f, :vals=>@video.event_date, :multiple=>TRUE } %>
+  </fieldset>
+
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
+<% end %>
+
+
+
+
+
