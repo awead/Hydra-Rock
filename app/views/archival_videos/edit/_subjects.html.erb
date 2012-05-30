@@ -15,9 +15,9 @@
   <fieldset id="event_fields">
     <legend>Event Fields</legend>
     <p class="legend-caption">Information about the series in which this event occurred.</p>
-    <%= display_field([:event_series], {:multiple=>true, :required=>false}) %>
-    <%= display_field([:event_place], {:multiple=>true, :required=>false}) %>
-    <%= display_field([:event_date], {:multiple=>true, :required=>false}) %>
+    <%= display_field([:event_series], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:event_place], {:multiple=>false, :required=>false}) %>
+    <%= display_field([:event_date], {:multiple=>false, :required=>false}) %>
   </fieldset>
 
   <h3>Proceed to next step?</h3>
