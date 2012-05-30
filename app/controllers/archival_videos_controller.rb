@@ -1,6 +1,5 @@
 class ArchivalVideosController < ApplicationController
   include Hydra::Controller
-  include Hydra::Assets
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
 
   def edit
@@ -53,6 +52,16 @@ class ArchivalVideosController < ApplicationController
         redirect_to(@video, :notice => 'Error: Unable to save changes')
       end
     end
+  end
+
+  def destroy
+    af = ActiveFedora::Base.find(params[:id], :cast=>true)
+    assets = af.destroy_child_assets
+    af.delete
+    msg = "Deleted #{params[:id]}"
+    msg.concat(" and associated file_asset(s): #{assets.join(", ")}") unless assets.empty?
+    flash[:notice]= msg
+    redirect_to catalog_index_path()
   end
 
   def changed_fields(params)
