@@ -15,11 +15,11 @@
     <legend>Event Fields</legend>
     <p class="legend-caption">Information about the series in which this event occurred.</p>
     <%= f.label :event_series, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_series", :f=>f, :vals=>@video.event_series, :multiple=>TRUE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_series", :f=>f, :vals=>@video.event_series, :multiple=>FALSE } %>
     <%= f.label :event_place, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_place", :f=>f, :vals=>@video.event_place, :multiple=>TRUE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_place", :f=>f, :vals=>@video.event_place, :multiple=>FALSE } %>
     <%= f.label :event_date, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_date", :f=>f, :vals=>@video.event_date, :multiple=>TRUE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_date", :f=>f, :vals=>@video.event_date, :multiple=>FALSE } %>
   </fieldset>
 
   <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
