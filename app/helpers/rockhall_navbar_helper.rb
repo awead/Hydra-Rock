@@ -9,15 +9,13 @@ module RockhallNavbarHelper
   def edit_and_show_links
     result = String.new
     if current_user
-      result << "<li>"
       if params[:action] == "edit"
-        #result << "<i class=\"icon-eye-open\"></i> "
+        result << "<li>"
         result << link_to("View", archival_video_path(params[:id]))
+        result << "</li>"
       else
-        #result << "<i class=\"icon-edit\"></i> "
-        result << link_to("Edit", edit_archival_video_path(params[:id]))
+        result << workflow_dropdown("archival_videos")
       end
-      result << "</li>"
     end
     return result.html_safe
   end
@@ -30,10 +28,10 @@ module RockhallNavbarHelper
 
     results = String.new
     results << '<li class="dropdown">'
-    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Available workflow steps <b class="caret"></b></a>'
+    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Edit <b class="caret"></b></a>'
     results << '<ul class="dropdown-menu">'
     steps.each do |step|
-      if params[:wf_step] == step
+      if params[:wf_step] == step and params[:action] == "edit"
         results << "<li class=\"active\">"
       else
         results << "<li>"
