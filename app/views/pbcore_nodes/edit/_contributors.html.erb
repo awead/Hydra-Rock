@@ -1,0 +1,19 @@
+<% document.contributor_name.each_index do |index| %>
+  <%= text_field_tag "archival_video[contributor_name][#{index.to_s}]", document.contributor_name[index],
+                     :id => ("contributor_name_" + index.to_s), :class=>"edit span3" %>
+  <%= select_tag "archival_video[contributor_role][#{index.to_s}]",
+                 options_for_select(Relators.marc.keys.sort, document.contributor_role[index]),
+                 {:id => ("contributor_name_" + index.to_s)} %>
+  <%-
+      # TODO: Rails is being stupid. I have to create this url manually instead of
+      # ---------------
+      # link_to 'Delete', pbcore_node_path({:node=>"contributor", :index=>index}),
+      # :remote => true, :method => :delete
+      # ---------------
+      # However, if I set remote => false to the link that adds the contributor, the
+      # above works.
+  -%>
+   <a href="/pbcore_nodes/<%= params[:id] %>?index=<%= index.to_s %>&amp;node=contributor" data-method="delete" data-remote="true" rel="nofollow">Delete</a>
+
+  <br/>
+<% end %>

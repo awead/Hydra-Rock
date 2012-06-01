@@ -43,5 +43,19 @@ module RockhallNavbarHelper
     return results.html_safe
   end
 
+  def add_dropdown
+    results = String.new
+    results << '<li class="dropdown">'
+    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Add <b class="caret"></b></a>'
+    results << '<ul class="dropdown-menu">'
+    ["contributor","publisher"].each do |type|
+      results << '<li>'
+      results << link_to(type.capitalize, new_pbcore_node_path(params.merge!({:node=>type})), :remote=>true)
+      results << '</li>'
+    end
+    results << '</ul>'
+    results << '</li>'
+    return results.html_safe
+  end
 
 end

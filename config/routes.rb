@@ -8,4 +8,6 @@ HydraRock::Application.routes.draw do
 
   resources :archival_videos
   resources :digital_videos
+  resources :pbcore_nodes, :only => [:new, :destroy]
+
 end

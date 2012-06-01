@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe PbcoreController do
+describe PbcoreNodesController do
 
   describe "create" do
     it "should support adding new PBcore nodes" do
@@ -10,7 +10,7 @@ describe PbcoreController do
         mock_document.expects(:save)
         ArchivalVideo.expects(:find).with("_PID_").returns(mock_document)
         post :create, :asset_id=>"_PID_", :controller=>"pbcore", :content_type=>"archival_video", :node=>type
-        response.should redirect_to edit_catalog_path(:id=>"_PID_")
+        response.should redirect_to edit_archival_video_path(:id=>"_PID_")
       end
     end
   end
