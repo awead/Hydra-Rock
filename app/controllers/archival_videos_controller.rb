@@ -2,6 +2,8 @@ class ArchivalVideosController < ApplicationController
   include Hydra::Controller
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
 
+  before_filter :enforce_access_controls
+
   def edit
     @video = ArchivalVideo.find(params[:id])
     respond_to do |format|
@@ -28,6 +30,7 @@ class ArchivalVideosController < ApplicationController
 
   def create
     @video = ArchivalVideo.new(params[:archival_video])
+    @video.apply_depositor_metadata(current_user.login)
     respond_to do |format|
       if @video.save
         format.html { redirect_to(@video, :notice => 'Post was successfully created.') }
