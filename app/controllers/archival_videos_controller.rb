@@ -43,13 +43,13 @@ class ArchivalVideosController < ApplicationController
     @video = ArchivalVideo.find(params[:id])
     changes = changed_fields(params)
     if changes.empty?
-      redirect_to(@video, :notice => 'No changes saved')
+      redirect_to(edit_archival_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'No changes saved')
     else
       @video.update_attributes(changes)
       if @video.save
-        redirect_to(@video, :notice => 'Video was updated successfully')
+        redirect_to(edit_archival_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
       else
-        redirect_to(@video, :notice => 'Error: Unable to save changes')
+        redirect_to(edit_archival_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Error: Unable to save changes')
       end
     end
   end
@@ -66,6 +66,7 @@ class ArchivalVideosController < ApplicationController
 
   def changed_fields(params)
     changes = Hash.new
+    return changes if params[:archival_video].nil?
     video = ArchivalVideo.find(params[:id])
     params[:archival_video].each do |k,v|
       unless video.send(k.to_sym) == v or (video.send(k.to_sym).empty? and v.first.empty?) or (v.sort.uniq.count > video.send(k.to_sym).count and v.sort.uniq.first.empty?)

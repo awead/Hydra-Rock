@@ -1,4 +1,4 @@
-<%= form_for @video, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
+<%= form_for @video, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="subjects">
     <legend>Library of Congress Subject Headings</legend>
