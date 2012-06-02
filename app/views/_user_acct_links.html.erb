@@ -21,12 +21,12 @@
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
     <ul class="dropdown-menu navbar-serach" style="padding: 15px; padding-bottom: 0px;">
-      <%= form_for("user", :url => user_session_path) do |f| %>
+      <%= form_for("user", :url => user_session_path, :html=>{:class=>"form-inline"}) do |f| %>
         <%= f.text_field :email, {:placeholder => "Email"} %>
         <%= f.password_field :password, {:placeholder => "Password"} %>
         <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-        <%= f.submit 'Sign in', {:class => "btn btn-primary"} %>
+        <%= f.label :remember_me %><br/>
+        <%= f.submit 'Sign in', {:class => "btn btn-primary span3"} %>
         <%= link_to "Forgot your password?", new_password_path('user') %>
       <% end %>
     </ul>
