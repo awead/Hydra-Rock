@@ -5,8 +5,8 @@ module RockhallNavbarHelper
     @navbar_items ||= []
   end
 
-  # edit and view links for items
-  def edit_and_show_links
+  # navbar items if a user is logged in
+  def render_user_navbar
     result = String.new
     if current_user
       if params[:action] == "edit"
@@ -16,6 +16,11 @@ module RockhallNavbarHelper
       else
         result << workflow_dropdown("archival_videos")
       end
+      result << "<li>"
+      result << button_to('Delete', archival_video_path(params[:id]),
+                :class => "btn-small btn-danger", :form => { :class=>"navbar-search"},
+                :confirm => 'Are you sure?', :method => :delete)
+      result << "</li>"
     end
     return result.html_safe
   end

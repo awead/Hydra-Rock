@@ -6,8 +6,5 @@
   <% unless params[:new_asset] %>
     <%= workflow_dropdown("archival_videos") %>
   <% end %>
-  <%= edit_and_show_links %>
-  <%= button_to 'Delete', archival_video_path(params[:id]),
-                :class => "btn-small btn-danger", :form => { :class=>"navbar-search"},
-                :confirm => 'Are you sure?', :method => :delete %>
+  <%= render_user_navbar %>
 <% end %>
