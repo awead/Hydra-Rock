@@ -49,6 +49,7 @@ class ArchivalVideosController < ApplicationController
       redirect_to(edit_archival_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'No changes saved')
     else
       @video.update_attributes(changes)
+      logger.info("Updating these fields: #{changes.inspect}")
       if @video.save
         redirect_to(edit_archival_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
       else
