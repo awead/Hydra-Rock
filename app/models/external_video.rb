@@ -72,7 +72,7 @@ class ExternalVideo < ActiveFedora::Base
   # deletes the object identified by pid if it does not have any objects asserting has_collection_member
   def self.garbage_collect(pid)
     begin
-      obj = ExternalVideo.load_instance(pid)
+      obj = ExternalVideo.find(pid)
       if obj.containers.empty?
         obj.delete
       end

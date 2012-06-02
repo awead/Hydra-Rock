@@ -1,0 +1,29 @@
+<%= form_for @video, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
+
+  <fieldset id="contributors">
+    <legend>Contributors</legend>
+    <p class="legend-caption">Choose "Add" from the menu to add contributors to this record</p>
+    <div id="contributors_form">
+      <%= render :partial => "pbcore_nodes/edit/contributors", :locals => { :document => @video } %>
+    </div>
+  </fieldset>
+
+  <fieldset id="publishers">
+    <legend>Publishers</legend>
+    <p class="legend-caption">Choose "Add" from the menu to add publishers to this record</p>
+    <div id="publishers_form">
+      <%= render :partial => "pbcore_nodes/edit/publishers", :locals => { :document => @video } %>
+    </div>
+  </fieldset>
+
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
+<% end %>
+
+<% navbar_items << capture do %>
+  <%= add_dropdown %>
+<% end %>
+
+
+
+

@@ -17,15 +17,27 @@
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </a>
           <a class="brand" href="<%= root_path %>"><%= application_name %></a>
           <div class="nav-collapse">
             <%= render :partial => '/user_util_links' %>
           </div>
+          <ul class="nav pull-right">
 
+            <%= form_tag catalog_index_path, :method => :get, :class => "navbar-search" do %>
+              <%= text_field_tag :q, params[:q], :class => "q span2 search-query", :placeholder =>"Search" %>
+              <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %>
+            <% end %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Search <b class="caret"></b></a>
+              <ul class="dropdown-menu"
+                <li><%= link_back_to_catalog %></li>
+                <li><%= link_to "Selected Items (#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0})", folder_index_path %></li>
+                <li><%= link_to "Search History", search_history_path %></li>
+              </ul>
+            </li>
+            <%= render :partial=>"/user_acct_links" %>
+          </ul>
         </div>
       </div>
     </div>
@@ -34,13 +46,20 @@
 
       <!-- document row -->
       <div class="row">
-        <div class="span3">
-          <div class="well"><%= sidebar_items.join('').html_safe %></div>
-        </div>
-        <div class="span9">
-          <%= render :partial=>'/flash_msg' %>
-          <%= yield %>
-        </div>
+        <% if sidebar_items.empty? %>
+          <div class="span12">
+            <%= render :partial=>'/flash_msg' %>
+            <%= yield %>
+          </div>
+        <% else %>
+          <div class="span3">
+            <div class="well"><%= sidebar_items.join('').html_safe %></div>
+          </div>
+          <div class="span9">
+            <%= render :partial=>'/flash_msg' %>
+            <%= yield %>
+          </div>
+        <% end %>
       </div>
 
       <!-- footer row -->
@@ -48,7 +67,7 @@
         <div class="span12">
           <div class="contact_info"></div>
           <div class="aux_links"></div>
-          <div id="footer_notices">
+          <div id="footer_notices" class="well">
             <div id="bottom_text">
               <div id="hydra_logo"><%= image_tag('hydra/powered_by_hydra.png', :width => 80, :height => 50, :alt => "Hydra logo") %></div>
             </div>

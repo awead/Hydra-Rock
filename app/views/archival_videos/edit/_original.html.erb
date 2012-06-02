@@ -1,0 +1,41 @@
+<%= form_for @video, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
+
+  <fieldset id="date_fields">
+    <legend>Date</legend>
+    <p class="legend-caption">Enter the date the item was first created or filmed.  Use YYYY-MM-DD for the format.</p>
+    <%= f.label :creation_date, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"creation_date", :f=>f, :vals=>@video.creation_date, :multiple=>FALSE } %>
+  </fieldset>
+
+  <fieldset id="original_fields">
+    <legend>Original Item</legend>
+    <p class="legend-caption">Fields that describe the original item, such as the videocasette or tape.</p>
+    <% ["barcode", "format", "standard", "media_type", "generation", "language", "colors"].each do |t| %>
+      <%= f.label t.to_sym, :class=>"field" %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
+    <% end %>
+    <%= f.label :repository, :class=>"field" %>
+    <%= f.text_area :repository, :name=>"archival_video[repository][]", :value=>@video.repository.first, :cols => "40", :rows => "5", :class=>"edit" %>
+  </fieldset>
+
+  <fieldset id="archival_fields">
+    <legend>Archival Information</legend>
+    <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
+    <% ["archival_collection", "archival_series", "collection_number", "accession_number"].each do |t| %>
+      <%= f.label t.to_sym, :class=>"field" %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
+    <% end %>
+  </fieldset>
+
+  <fieldset id="condition_fields">
+    <legend>Item Condition</legend>
+    <p class="legend-caption">Enter any relevant information about the condition of the original item or its usage restrictions.</p>
+    <% ["usage", "condition_note", "cleaning_note"].each do |t| %>
+      <%= f.label t.to_sym, :class=>"field" %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
+    <% end %>
+  </fieldset>
+
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
+<% end %>

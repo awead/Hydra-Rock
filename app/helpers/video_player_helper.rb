@@ -2,17 +2,21 @@ module VideoPlayerHelper
 
 
   def render_video_player
-    if RH_CONFIG["video_player"].nil?
-      render :partial => "video_player/jw_player"
+    if @video.file_objects.count > 0
+      if RH_CONFIG["video_player"].nil?
+        render :partial => "video_player/jw_player"
+      else
+        render :partial => "video_player/#{RH_CONFIG["video_player"]}"
+      end
     else
-      render :partial => "video_player/#{RH_CONFIG["video_player"]}"
+      return "Video not available"
     end
   end
 
 
   def display_all_assets
     results = String.new
-    videos = @document_fedora.videos
+    videos = @video.videos
     videos.keys.each do |type|
       count = 1
       unless @document_fedora.videos[type].empty?
@@ -28,11 +32,11 @@ module VideoPlayerHelper
 
   def flowplayer_playlist
     results = Array.new
-    videos = @document_fedora.videos
+    videos = @video.videos
     count = 1
-    unless @document_fedora.videos[:h264].empty?
-      @document_fedora.videos[:h264].each do |video|
-        path = File.join(@document_fedora.pid.gsub(/:/,"_"),"data",video.name)
+    unless @video.videos[:h264].empty?
+      @video.videos[:h264].each do |video|
+        path = File.join(@video.pid.gsub(/:/,"_"),"data",video.name)
         results << "{title: 'Part #{count.to_s}', url: 'mp4:#{path}'}"
         count = count + 1
       end

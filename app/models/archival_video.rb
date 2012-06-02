@@ -12,10 +12,12 @@ class ArchivalVideo < ActiveFedora::Base
 
   has_relationship "objects", :is_part_of, :inbound => true
 
-  delegate :reviewer,             :to=>'assetReview', :at=>[:reviewer]
-  delegate :date_updated,         :to=>'assetReview', :at=>[:date_updated]
-  delegate :complete,             :to=>'assetReview', :at=>[:complete]
-  delegate :priority,             :to=>'assetReview', :at=>[:priority]
+  delegate :reviewer,             :to=> :assetReview
+  delegate :date_updated,         :to=> :assetReview
+  delegate :complete,             :to=> :assetReview
+  delegate :priority,             :to=> :assetReview
+  delegate :license,              :to=> :assetReview
+  delegate :abstract,             :to=> :assetReview
   delegate :main_title,           :to=> :descMetadata
   delegate :alternative_title,    :to=> :descMetadata
   delegate :chapter,              :to=> :descMetadata
@@ -28,11 +30,13 @@ class ArchivalVideo < ActiveFedora::Base
   delegate :lc_subject,           :to=> :descMetadata
   delegate :lc_name,              :to=> :descMetadata
   delegate :rh_subject,           :to=> :descMetadata
+  delegate :subjects,             :to=> :descMetadata
   delegate :summary,              :to=> :descMetadata
   delegate :parts_list,           :to=> :descMetadata
   delegate :getty_genre,          :to=> :descMetadata
   delegate :lc_genre,             :to=> :descMetadata
   delegate :lc_subject_genre,     :to=> :descMetadata
+  delegate :genres,               :to=> :descMetadata
   delegate :event_series,         :to=> :descMetadata
   delegate :event_place,          :to=> :descMetadata
   delegate :event_date,           :to=> :descMetadata
@@ -57,6 +61,8 @@ class ArchivalVideo < ActiveFedora::Base
   delegate :usage,                :to=> :descMetadata
   delegate :condition_note,       :to=> :descMetadata
   delegate :cleaning_note,        :to=> :descMetadata
+  delegate :depositor,            :to=> :properties
+  delegate :notes,                :to=> :properties
 
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata

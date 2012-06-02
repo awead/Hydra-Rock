@@ -2,8 +2,9 @@
 
 <%= render_submission_workflow_step -%>
 
-<% unless params[:new_asset] %>
-  <% sidebar_items << capture do %>
-    <%= display_sidebar_nav("archival_videos") %>
+<% navbar_items << capture do %>
+  <% unless params[:new_asset] %>
+    <%= workflow_dropdown("archival_videos") %>
   <% end %>
+  <%= render_user_navbar %>
 <% end %>

@@ -2,21 +2,6 @@ module RockhallAssetsHelper
 
   include Hydra::AccessControlsEvaluation
 
-
-  # Overrides
-
-  def edit_and_browse_links
-    result = "<li><span>"
-    if params[:action] == "edit"
-      result << "<i class=\"icon-eye-open\"></i><a href=\"#{catalog_path(@document[:id], :viewing_context=>"browse")}\">Switch to browse view</a>"
-    else
-      result << "<i class=\"icon-edit\"></i><a href=\"#{edit_catalog_path(@document[:id], :viewing_context=>"edit")}\">Switch to edit view</a>"
-    end
-    result << "</span></li>"
-    return result.html_safe
-  end
-
-
   # Render a link to delete the given asset from the repository.
   # Includes a confirmation message.
   def delete_object_link(pid, asset_type_display="asset")
@@ -34,7 +19,24 @@ module RockhallAssetsHelper
   end
 
 
-  def display_field(path,opts={})
+  def display_field(field,opts={})
+    results = String.new
+    return nil if @video.send(field.to_sym).empty? or @video.send(field.to_sym).first.empty?
+    # Determine field label
+    if opts[:name].nil?
+      cap_name = field.to_s.split(/_/).each{|word| word.capitalize!}.join(" ")
+      @video.send(field.to_sym).count > 1 ? formatted_name = cap_name.pluralize : formatted_name = cap_name
+    else
+      @video.send(field.to_sym).count > 1 ? formatted_name = opts[:name].pluralize : formatted_name = opts[:name]
+    end
+    results << "<dt>" + formatted_name + "</dt>"
+    @video.send(field.to_sym).each do |v|
+      results << "<dd>" + v + "</dd>"
+    end
+    return results.html_safe
+  end
+
+  def deprecated_display_field(path,opts={})
 
     # Default to descMetadata
     opts[:datastream].nil? ? datastream = "descMetadata" : datastream = opts[:datastream]
@@ -212,21 +214,21 @@ module RockhallAssetsHelper
   def list_available_assets_to_create
     results = String.new
     results << "<li>"
-    results << link_to_create_asset('Add archival video', 'archival_video')
+    results << link_to('Archival Video', new_archival_video_path)
     results << "</li>"
     results << "<li>"
-    results << link_to_create_asset('Add digital video', 'digital_video')
+    results << link_to_create_asset('Digital Video', 'digital_video')
     results << "</li>"
     user_groups = RoleMapper.roles(current_user.login)
     if user_groups.include?("archivist")
       results << "<li>"
-      results << link_to_create_asset('Add a Basic MODS Asset', 'mods_asset')
+      results << link_to_create_asset('Basic MODS Asset', 'mods_asset')
       results << "</li>"
       results << "<li>"
-      results << link_to_create_asset('Add an Image', 'generic_image')
+      results << link_to_create_asset('Image', 'generic_image')
       results << "</li>"
       results << "<li>"
-      results << link_to_create_asset('Add Generic Content', 'generic_content')
+      results << link_to_create_asset('Generic Content', 'generic_content')
       results << "</li>"
     end
     return results.html_safe
@@ -236,26 +238,7 @@ module RockhallAssetsHelper
     return "todo..."
   end
 
-  def display_sidebar_nav(model)
-    steps = Array.new
-    Hydra.config[:submission_workflow][model.to_sym].each { |x| steps << x[:name] }
-    params[:wf_step] = "titles" if params[:wf_step].nil?
 
-    results = String.new
-    results << "<ul class=\"nav nav-list\">"
-    results << "<li class=\"nav-header\">Available workflow steps</li>"
-    steps.each do |step|
-      if params[:wf_step] == step
-        results << "<li class=\"active\">"
-      else
-        results << "<li>"
-      end
-      results << "<a href=\"" + url_for(edit_catalog_path(:wf_step=>step)) + "\">" + step.capitalize + "</a>"
-      results<< "</li>"
-    end
-    results << "</ul>"
-    return results.html_safe
-  end
 
 
 

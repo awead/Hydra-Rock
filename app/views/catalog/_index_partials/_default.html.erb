@@ -3,7 +3,8 @@
     <%= image_tag("rockhall/video_icon.png", :size=>"50x50") %>
   </td>
   <td>
-    <%= link_to_document(document, :label => blacklight_config.show.heading.to_sym, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+    <% #link_to(document[:title_display].first, eval(document_type(document).underscore + "_path")) %>
+    <%= link_to((document[:title_display].nil? ? "[No title]" : document[:title_display].first) , archival_video_path(document[:id])) %>
   </td>
   <td>
     <%= (document_type(document) || "Unknown") %>

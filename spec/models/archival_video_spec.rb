@@ -64,7 +64,7 @@ describe ArchivalVideo do
 
   describe "#videos" do
     it "should return a hash of videos" do
-      av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_document3")
+      av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
       av.file_objects.count.should == 2
       av.videos.should be_kind_of(Hash)
     end
@@ -72,7 +72,7 @@ describe ArchivalVideo do
 
   describe "#addl_solr_fields" do
     it "should return a hash of additional fields that will be included in the solr discovery export" do
-      av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_document3")
+      av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
       addl_doc = av.addl_solr_fields
       addl_doc.should be_kind_of(Hash)
       addl_doc.to_s.should match("39156042439369_access.mp4")

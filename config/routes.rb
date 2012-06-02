@@ -7,4 +7,7 @@ HydraRock::Application.routes.draw do
   devise_for :users
 
   resources :archival_videos
+  resources :digital_videos
+  resources :pbcore_nodes, :only => [:new, :destroy]
+
 end

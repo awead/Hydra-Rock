@@ -162,7 +162,7 @@ class RockhallSip
   # Updates a sip if the parent object was previously created
   def update
     begin
-      dv = DigitalVideo.load_instance(self.pid)
+      dv = DigitalVideo.find(self.pid)
       dv.label = "Rock and Roll Hall of Fame Library and Archives"
       dv.save
     rescue Exception=>e
