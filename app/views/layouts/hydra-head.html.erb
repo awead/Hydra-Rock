@@ -60,10 +60,10 @@
             <%= yield %>
           </div>
         <% else %>
-          <div class="span3">
+          <div class="span4">
             <div class="well"><%= sidebar_items.join('').html_safe %></div>
           </div>
-          <div class="span9">
+          <div class="span8">
             <%= render :partial=>'/flash_msg' %>
             <%= yield %>
           </div>
