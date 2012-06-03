@@ -11,7 +11,7 @@ module RockhallNavbarHelper
     if current_user
       if params[:action] == "edit"
         result << "<li>"
-        result << link_to("View", archival_video_path(params[:id]))
+        result << '<a href="' + url_for(archival_video_path(params[:id])) + '"> <i class="icon-eye-open"></i> View </a>'
         result << "</li>"
       else
         result << workflow_dropdown("archival_videos")
@@ -33,7 +33,7 @@ module RockhallNavbarHelper
 
     results = String.new
     results << '<li class="dropdown">'
-    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Edit <b class="caret"></b></a>'
+    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil"></i> Edit <b class="caret"></b></a>'
     results << '<ul class="dropdown-menu">'
     steps.each do |step|
       if params[:wf_step] == step and params[:action] == "edit"
@@ -51,7 +51,7 @@ module RockhallNavbarHelper
   def add_dropdown
     results = String.new
     results << '<li class="dropdown">'
-    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Add <b class="caret"></b></a>'
+    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-plus"></i> Add <b class="caret"></b></a>'
     results << '<ul class="dropdown-menu">'
     ["contributor","publisher"].each do |type|
       results << '<li>'
