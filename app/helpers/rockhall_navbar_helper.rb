@@ -63,4 +63,30 @@ module RockhallNavbarHelper
     return results.html_safe
   end
 
+  def next_previous_dropdown
+    result = String.new
+    if @previous_document || @next_document
+      result << '<li class="dropdown">'
+      result << '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'
+      result << '<i class="icon-folder-open"></i>'
+      result << 'Document ' + session[:search][:counter].to_s + ' of ' + format_num(session[:search][:total])
+      result << '<b class="caret"></b>'
+      result << '</a>'
+      result << '<ul class="dropdown-menu">'
+      if @previous_document
+        result << '<li>'
+        result << link_to_previous_document(@previous_document)
+        result << '</li>'
+      end
+      if  @next_document
+        result << '<li>'
+        result << link_to_next_document(@next_document)
+        result << '</li>'
+      end
+      result << '</ul>'
+      result << '</li>'
+    end
+    return result.html_safe
+  end
+
 end

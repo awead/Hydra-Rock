@@ -1,8 +1,12 @@
 class ArchivalVideosController < ApplicationController
+  include Blacklight::Catalog
+  include Hydra::Catalog
   include Hydra::Controller
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
 
+
   before_filter :enforce_access_controls
+  #before_filter :search_session, :history_session
 
   def edit
     @video = ArchivalVideo.find(params[:id])
@@ -23,7 +27,7 @@ class ArchivalVideosController < ApplicationController
   def show
     @video = ArchivalVideo.find(params[:id])
     respond_to do |format|
-      format.html  # show.html.erb
+      format.html  { setup_next_and_previous_documents }
       format.json  { render :json => @video }
     end
   end

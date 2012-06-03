@@ -17,6 +17,11 @@ class CatalogController < ApplicationController
   # Enforcing reviewer controls
   prepend_before_filter :enforce_review_controls, :only=>:edit
 
+  #--------------------------------------------------------------------------------------
+  #
+  # Blacklight configuriation
+  #
+
   configure_blacklight do |config|
     config.default_solr_params = {
       :qt => 'search',
@@ -171,6 +176,17 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
+  end
+
+  #
+  # end of Blacklight configuration
+  #
+  #--------------------------------------------------------------------------------------
+
+  def update
+    adjust_for_results_view
+    session[:search][:counter] = params[:counter]
+    redirect_to archival_video_path(params[:id])
   end
 
   # Right now, anyone in the review group gets redirected to the reviewers edit page

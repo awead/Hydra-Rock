@@ -1,20 +1,20 @@
 <tr>
   <td>
-    <%= image_tag("rockhall/video_icon.png", :size=>"50x50") %>
+    <%= image_tag("rockhall/#{document_type(document).underscore}.png", :size=>"30x30") %>
   </td>
   <td>
-    <%= link_to((document[:title_display].nil? ? "[No title]" : document[:title_display].first) , archival_video_path(document[:id])) %>
+    <%= link_to_document document,
+                         :label => document_show_link_field,
+                         :counter => (counter + 1 + @response.params[:start].to_i) %>
   </td>
-  <td>
-    <%= (document_type(document) || "Unknown") %>
+  <td style="white-space: nowrap">
+    <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>
   </td>
-  <td>
-    <%= DateTime.parse(document.fetch(:system_create_dt,nil)).to_time %>
-  </td>
-  <td>
+  <td style="text-align: center">
     <%= get_review_status(document) %>
   </td>
-  <td>
-    <%= get_video_asset_count(document)%>
+  <td style="text-align: center">
+    todo
+    <% #render :partial => "catalog/folder_control" %>
   </td>
 </tr>
