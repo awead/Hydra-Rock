@@ -1,12 +1,13 @@
 PATH
   remote: gems/hydra-head
   specs:
-    hydra-head (4.0.1)
+    hydra-head (4.0.3)
       RedCloth (= 4.2.9)
       active-fedora (~> 4.1)
       blacklight (~> 3.4.2)
       block_helpers
       cancan
+      deprecation
       devise
       jquery-rails
       rails (~> 3.2.3)
@@ -124,6 +125,8 @@ GEM
       nokogiri (>= 1.5.0)
     daemons (1.1.8)
     database_cleaner (0.7.2)
+    deprecation (0.0.3)
+      activesupport
     devise (2.1.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.7)
