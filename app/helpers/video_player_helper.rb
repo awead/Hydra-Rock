@@ -13,7 +13,6 @@ module VideoPlayerHelper
     end
   end
 
-
   def display_all_assets
     results = String.new
     videos = @video.videos
