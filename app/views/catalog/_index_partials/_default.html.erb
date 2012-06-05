@@ -3,9 +3,8 @@
     <%= image_tag("rockhall/#{document_type(document).underscore}.png", :size=>"30x30") %>
   </td>
   <td>
-    <%= link_to_document document,
-                         :label => document_show_link_field,
-                         :counter => (counter + 1 + @response.params[:start].to_i) %>
+    <%= link_to(document[:heading_display].first, archival_video_path(document[:id]),
+                :"data-counter" => (counter + 1 + @response.params[:start].to_i)) %>
   </td>
   <td style="white-space: nowrap">
     <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>

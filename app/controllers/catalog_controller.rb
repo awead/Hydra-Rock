@@ -183,12 +183,6 @@ class CatalogController < ApplicationController
   #
   #--------------------------------------------------------------------------------------
 
-  def update
-    adjust_for_results_view
-    session[:search][:counter] = params[:counter]
-    redirect_to archival_video_path(params[:id])
-  end
-
   # Right now, anyone in the review group gets redirected to the reviewers edit page
   def enforce_review_controls
     user_groups = RoleMapper.roles(current_user.login)

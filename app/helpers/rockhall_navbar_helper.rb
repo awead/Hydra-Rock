@@ -75,12 +75,12 @@ module RockhallNavbarHelper
       result << '<ul class="dropdown-menu">'
       if @previous_document
         result << '<li>'
-        result << link_to_previous_document(@previous_document)
+        result << link_to('<i class="icon-arrow-left"></i> Previous'.html_safe, archival_video_path(@previous_document[:id]), :'data-counter' => session[:search][:counter].to_i - 1)
         result << '</li>'
       end
       if  @next_document
         result << '<li>'
-        result << link_to_next_document(@next_document)
+        result << link_to('<i class="icon-arrow-right"></i> Next'.html_safe, archival_video_path(@next_document[:id]), :'data-counter' => session[:search][:counter].to_i + 1)
         result << '</li>'
       end
       result << '</ul>'

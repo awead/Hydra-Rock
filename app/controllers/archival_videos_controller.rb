@@ -4,14 +4,15 @@ class ArchivalVideosController < ApplicationController
   include Hydra::Controller
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
 
-
+  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
   before_filter :enforce_access_controls
+  #before_filter :enforce_viewing_context_for_show_requests, :only=>[:show]
   #before_filter :search_session, :history_session
 
   def edit
     @video = ArchivalVideo.find(params[:id])
     respond_to do |format|
-      format.html  # edit.html.erb
+      format.html  { setup_next_and_previous_documents }
       format.json  { render :json => @video }
     end
   end
@@ -25,6 +26,8 @@ class ArchivalVideosController < ApplicationController
   end
 
   def show
+    update_session
+    session[:viewing_context] = "browse"
     @video = ArchivalVideo.find(params[:id])
     respond_to do |format|
       format.html  { setup_next_and_previous_documents }
@@ -47,10 +50,11 @@ class ArchivalVideosController < ApplicationController
   end
 
   def update
+    update_session
     @video = ArchivalVideo.find(params[:id])
     changes = changed_fields(params)
     if changes.empty?
-      redirect_to(edit_archival_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'No changes saved')
+      redirect_to(edit_archival_video_path(@video, :wf_step=>params[:wf_step]))
     else
       @video.update_attributes(changes)
       logger.info("Updating these fields: #{changes.inspect}")
@@ -82,6 +86,12 @@ class ArchivalVideosController < ApplicationController
       end
     end
     return changes
+  end
+
+  def update_session
+    logger.info "Updating session with parameters:" + params.inspect
+    session[:search][:counter] = params[:counter] unless params[:counter].nil?
+    logger.info "Session now: " + session.inspect
   end
 
 end
