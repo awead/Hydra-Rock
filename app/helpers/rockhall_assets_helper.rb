@@ -48,4 +48,12 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+  # Used in catalog#index when we have to get from the catalog controller to the
+  # controller that handles our asset
+  def get_asset_path(document)
+    model = document[:has_model_s].first.split(":").last.underscore
+    logger.info("Model: --> " + model)
+    method = model + "_path"
+    return send(method, document[:id]).html_safe
+  end
 end
