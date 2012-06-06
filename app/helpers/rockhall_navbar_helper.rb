@@ -6,15 +6,15 @@ module RockhallNavbarHelper
   end
 
   # navbar items if a user is logged in
-  def render_user_navbar
+  def render_user_navbar(model)
     result = String.new
     if current_user
       if params[:action] == "edit"
         result << "<li>"
-        result << '<a href="' + url_for(archival_video_path(params[:id])) + '"> <i class="icon-eye-open"></i> View </a>'
+        result << link_to_asset('<i class="icon-eye-open"></i> View </a>'.html_safe, model)
         result << "</li>"
       else
-        result << workflow_dropdown("archival_videos")
+        result << workflow_dropdown(model)
       end
       result << "<li>"
       result << button_to('Delete', archival_video_path(params[:id]),
@@ -41,7 +41,7 @@ module RockhallNavbarHelper
       else
         results << "<li>"
       end
-      results << "<a href=\"" + url_for(edit_archival_video_path(:wf_step=>step)) + "\">" + step.capitalize + "</a>"
+      results << "<a href=\"" + url_for( send(("edit_" + model.singularize + "_path"), :wf_step=>step) ) + "\">" + step.capitalize + "</a>"
       results<< "</li>"
     end
     results << "</ul>"
@@ -75,12 +75,16 @@ module RockhallNavbarHelper
       result << '<ul class="dropdown-menu">'
       if @previous_document
         result << '<li>'
-        result << link_to('<i class="icon-arrow-left"></i> Previous'.html_safe, archival_video_path(@previous_document[:id]), :'data-counter' => session[:search][:counter].to_i - 1)
+        result << link_to('<i class="icon-arrow-left"></i> Previous'.html_safe,
+                          url_for_asset_from_solr_doc(@previous_document),
+                          :'data-counter' => session[:search][:counter].to_i - 1)
         result << '</li>'
       end
       if  @next_document
         result << '<li>'
-        result << link_to('<i class="icon-arrow-right"></i> Next'.html_safe, archival_video_path(@next_document[:id]), :'data-counter' => session[:search][:counter].to_i + 1)
+        result << link_to('<i class="icon-arrow-right"></i> Next'.html_safe,
+                          url_for_asset_from_solr_doc(@next_document),
+                          :'data-counter' => session[:search][:counter].to_i + 1)
         result << '</li>'
       end
       result << '</ul>'

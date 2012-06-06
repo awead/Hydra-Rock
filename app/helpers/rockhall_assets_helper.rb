@@ -48,12 +48,24 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+  def url_for_edit_asset(model,opts={})
+    url_for(send(("edit_" + model.singularize + "_path"), opts))
+  end
+
   def link_to_edit_asset
 
   end
 
-  def link_to_asset
+  def url_for_asset(model,opts={})
+    url_for(send((model.singularize + "_path"), opts))
+  end
 
+  # Returns link for a given model
+  def link_to_asset(body,model,url_opts={},html={})
+    result = String.new
+    result << '<a href="' + url_for_asset(model,url_opts) + '">'
+    result << body
+    result << '</a>'
   end
 
 
