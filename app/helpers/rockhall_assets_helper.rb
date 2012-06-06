@@ -48,11 +48,21 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
-  # Used in catalog#index when we have to get from the catalog controller to the
-  # controller that handles our asset
-  def get_asset_path(document)
-    model = document[:has_model_s].first.split(":").last.underscore
-    logger.info("Model: --> " + model)
+  def link_to_edit_asset
+
+  end
+
+  def link_to_asset
+
+  end
+
+
+  # Used in catalog#index or anywhere else where we have a solr document, but we
+  # don't know what the model of our asset is.
+  # requires: hydra_assets_helper_behavior#document_type
+  def url_for_asset_from_solr_doc(document,opts={})
+    model = document_type(document).underscore
+    logger.info("get_asset_path_from_solr_doc = " + model)
     method = model + "_path"
     return send(method, document[:id]).html_safe
   end

@@ -3,15 +3,15 @@
     <%= image_tag("rockhall/#{document_type(document).underscore}.png", :size=>"30x30") %>
   </td>
   <td>
-    <%= link_to((document[:heading_display].nil? ? document[:id] : document[:heading_display].first),
-                get_asset_path(document),
+    <%= link_to(get_heading_display_from_solr_doc(document),
+                url_for_asset_from_solr_doc(document),
                 :"data-counter" => (counter + 1 + @response.params[:start].to_i)) %>
   </td>
   <td style="white-space: nowrap">
     <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>
   </td>
   <td style="text-align: center">
-    <%= get_review_status(document) %>
+    <%= get_review_status_from_solr_doc(document) %>
   </td>
   <td style="text-align: center">
     todo

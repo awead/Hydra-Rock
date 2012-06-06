@@ -17,7 +17,7 @@ module RockhallDisplayHelper
     return results.html_safe
   end
 
-  def get_review_status(document)
+  def get_review_status_from_solr_doc(document)
     results = String.new
     if document[:complete_t].nil?
       results << "no"
@@ -25,6 +25,14 @@ module RockhallDisplayHelper
       results << document[:complete_t].first
     end
     return results.html_safe
+  end
+
+  def get_heading_display_from_solr_doc(document)
+    if document[blacklight_config.index.show_link].nil?
+      return document[:id]
+    else
+      return document[blacklight_config.index.show_link].first
+    end
   end
 
 end
