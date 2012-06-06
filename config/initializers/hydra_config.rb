@@ -59,7 +59,7 @@ if Hydra.respond_to?(:configure)
           {:name => "persons",     :edit_partial => "digital_videos/edit/persons",    :show_partial => "digital_videos/show/document"},
           {:name => "collection",  :edit_partial => "digital_videos/edit/collection", :show_partial => "digital_videos/show/original"},
           {:name => "rockhall",    :edit_partial => "digital_videos/edit/rockhall",   :show_partial => "digital_videos/show/original"},
-          {:name => "permissions", :edit_partial => "permissions/permissions_form",   :show_partial => "mods_assets/show_permissions"}
+          {:name => "permissions", :edit_partial => "shared/edit/permissions",   :show_partial => "mods_assets/show_permissions"}
         ]
       }
 
