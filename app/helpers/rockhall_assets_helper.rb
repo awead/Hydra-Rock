@@ -60,8 +60,14 @@ module RockhallAssetsHelper
   # Used in catalog#index or anywhere else where we have a solr document, but we
   # don't know what the model of our asset is.
   # requires: hydra_assets_helper_behavior#document_type
+  #
+  # TODO: blackight_config is empty in archival_videos controller
   def url_for_asset_from_solr_doc(document,opts={})
-    model = document_type(document).underscore
+    if document_type(document).empty?
+      model = document[:has_model_s].first.gsub("info:fedora/afmodel:","").underscore
+    else
+      model = document_type(document).underscore
+    end
     logger.info("get_asset_path_from_solr_doc = " + model)
     method = model + "_path"
     return send(method, document[:id]).html_safe

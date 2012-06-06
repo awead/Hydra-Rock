@@ -29,8 +29,8 @@ class CatalogController < ApplicationController
     }
 
     # solr field configuration for search results/index views
-    config.index.show_link = 'title_t'
-    config.index.record_display_type = 'has_model_s'
+    config.index.show_link            = 'heading_display'
+    config.index.record_display_type  = 'has_model_s'
 
     # solr field configuration for document/show views
     config.show.html_title = 'title_t'
