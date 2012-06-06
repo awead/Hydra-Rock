@@ -1,5 +1,3 @@
-require "hydra"
-
 class DigitalVideo < ActiveFedora::Base
 
   include Hydra::ModelMethods

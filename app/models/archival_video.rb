@@ -1,5 +1,3 @@
-require "hydra"
-
 class ArchivalVideo < ActiveFedora::Base
 
   include ActiveFedora::DatastreamCollections
@@ -64,19 +62,10 @@ class ArchivalVideo < ActiveFedora::Base
   delegate :depositor,            :to=> :properties
   delegate :notes,                :to=> :properties
 
-
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-
-  has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDocument do |m|
-  end
-
-  has_metadata :name => "properties", :type => Rockhall::Properties do |m|
-  end
-  delegate :depositor, :to=>'properties', :at=>[:depositor]
-
-  has_metadata :name => "assetReview", :type => Rockhall::AssetReview do |m|
-  end
-
+  has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDocument
+  has_metadata :name => "properties", :type => Rockhall::Properties
+  has_metadata :name => "assetReview", :type => Rockhall::AssetReview
 
   def initialize( attrs={} )
     super
