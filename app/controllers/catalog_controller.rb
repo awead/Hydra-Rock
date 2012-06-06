@@ -13,6 +13,7 @@ class CatalogController < ApplicationController
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.solr_search_params_logic << :exclude_unwanted_models
+  CatalogController.solr_search_params_logic << :exclude_my_unwanted_models
 
   # Enforcing reviewer controls
   prepend_before_filter :enforce_review_controls, :only=>:edit
@@ -190,6 +191,11 @@ class CatalogController < ApplicationController
       flash[:notice] = "You have been redirected to the review page for this document"
       redirect_to url_for(:controller=>"reviewers", :action=>"edit")
     end
+  end
+
+  def exclude_my_unwanted_models(solr_parameters, user_parameters)
+    solr_parameters[:fq] ||= []
+    solr_parameters[:fq] << "-has_model_s:\"info:fedora/afmodel:ExternalVideo\""
   end
 
 end
