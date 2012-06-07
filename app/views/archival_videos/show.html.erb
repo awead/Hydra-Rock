@@ -9,11 +9,7 @@
 <%= render :partial => "shared/show/rockhall" %>
 <%= render :partial => "shared/show/review" %>
 
-<% if @video.file_objects.count > 0 %>
-  <h2 id="files" class="section-title">Files</h2>
-  <%= render :partial => "shared/show/all", :locals => {:content_type => "digital_video"} %>
-<% end %>
-
 <% navbar_items << capture do %>
   <%= render_user_navbar("archival_videos") %>
+  <%= video_links_dropdown %>
 <% end %>

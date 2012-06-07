@@ -9,6 +9,7 @@ class ExternalVideo < ActiveFedora::Base
   has_relationship "is_member_of_collection", :has_collection_member, :inbound => true
   has_bidirectional_relationship "part_of", :is_part_of, :has_part
 
+  delegate :name,       :to=> :descMetadata
   delegate :generation, :to=> :descMetadata
   delegate :format,     :to=> :descMetadata
   delegate :vendor,     :to=> :descMetadata
