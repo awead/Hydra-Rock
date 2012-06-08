@@ -1,14 +1,11 @@
-<%= form_tag url_for(:action=>"update", :controller=>"assets", :content_type=>"external_video"),
-      :method             => "put",
-      :id                 => "properties",
-      "data-resourceType" => "archival_video",
-      "accept-charset"    => "utf-8" do %>
+<%= form_for @video, :url => external_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
-  <fieldset id="properties">
-    <dl>
-      <%= display_field([:notes], { :datastream => "properties", :name => "Internal Notes", :multiple => TRUE }) %>
-      <%= display_field([:depositor], { :datastream => "properties" }) %>
-    </dl>
+  <fieldset id="rockhall_fields">
+    <legend>Rockhall Fields</legend>
+    <%= f.label :notes, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"notes", :f=>f, :vals=>@video.notes, :multiple=>TRUE } %>
   </fieldset>
-  <%= submit_tag 'Save Description', {:id => "submitDescription"} %>
+
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
 <% end %>

@@ -60,6 +60,11 @@ if Hydra.respond_to?(:configure)
           {:name => "collection",  :edit_partial => "digital_videos/edit/collection", :show_partial => "digital_videos/show/original"},
           {:name => "rockhall",    :edit_partial => "digital_videos/edit/rockhall",   :show_partial => "digital_videos/show/original"},
           {:name => "permissions", :edit_partial => "shared/edit/permissions",   :show_partial => "mods_assets/show_permissions"}
+        ],
+        :external_videos   => [
+          {:name => "file",        :edit_partial => "external_videos/edit/instantiation",     :show_partial => "digital_videos/show/document"},
+          {:name => "rockhall",    :edit_partial => "external_videos/edit/rockhall",          :show_partial => "digital_videos/show/original"},
+          {:name => "permissions", :edit_partial => "shared/edit/permissions",                :show_partial => "mods_assets/show_permissions"}
         ]
       }
 

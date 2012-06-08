@@ -1,11 +1,12 @@
 <h1><%= @video.name.first %></h1>
 
-<h2 id="digital" class="section-title">Digital File</h2>
-<%# render :partial => "external_videos/edit/instantiation", :locals => {:content_type => "external_video"} %>
+<%= render_submission_workflow_step -%>
 
-<h2 id="rockhall" class="section-title">Rockhall Metadata</h2>
-<%# render :partial => "external_videos/edit/rockhall", :locals => {:content_type => "external_video"} %>
-
-
-
+<% navbar_items << capture do %>
+  <li>
+    <%= link_to('<i class="icon-arrow-left"></i> Parent'.html_safe, url_for_parent_video ) %>
+  </li>
+  <%= workflow_dropdown("external_videos") %>
+  <%= render_user_navbar("external_videos") %>
+<% end %>
 
