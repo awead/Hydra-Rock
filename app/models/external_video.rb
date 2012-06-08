@@ -52,6 +52,7 @@ class ExternalVideo < ActiveFedora::Base
   delegate :audio_bit_depth,         :to => :descMetadata
   delegate :audio_channels,          :to => :descMetadata
   delegate :depositor,               :to=> :properties
+  delegate :notes,                   :to=> :properties
 
   # Object will have either an access or a perservation datastream but not both
   has_datastream :name=>"access",       :type=>ActiveFedora::Datastream, :controlGroup=>'E'
