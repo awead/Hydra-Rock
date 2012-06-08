@@ -30,7 +30,7 @@ class ExternalVideosController < ApplicationController
     @video = ExternalVideo.find(params[:id])
     changes = changed_fields(params)
     if changes.empty?
-      redirect_to(edit_external_video_path(@video, :wf_step=>params[:wf_step]))
+      redirect_to(edit_external_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Changes: ' + params.inspect)
     else
       @video.update_attributes(changes)
       logger.info("Updating these fields: #{changes.inspect}")
@@ -44,9 +44,9 @@ class ExternalVideosController < ApplicationController
 
   def changed_fields(params)
     changes = Hash.new
-    return changes if params[:external_video].nil?
+    return changes if params[:document_fields].nil?
     video = ExternalVideo.find(params[:id])
-    params[:external_video].each do |k,v|
+    params[:document_fields].each do |k,v|
       unless video.send(k.to_sym) == v or (video.send(k.to_sym).empty? and v.first.empty?) or (v.sort.uniq.count > video.send(k.to_sym).count and v.sort.uniq.first.empty?)
         changes.store(k,v)
       end

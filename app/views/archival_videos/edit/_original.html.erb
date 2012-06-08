@@ -15,7 +15,7 @@
       <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
     <% end %>
     <%= f.label :repository, :class=>"field" %>
-    <%= f.text_area :repository, :name=>"archival_video[repository][]", :value=>@video.repository.first, :cols => "40", :rows => "5", :class=>"edit" %>
+    <%= f.text_area :repository, :name=>"document_fields[repository][]", :value=>@video.repository.first, :cols => "40", :rows => "5", :class=>"edit" %>
   </fieldset>
 
   <fieldset id="archival_fields">
