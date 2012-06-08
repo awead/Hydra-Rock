@@ -51,8 +51,7 @@ class ExternalVideo < ActiveFedora::Base
   delegate :audio_sample_rate_units, :to => :descMetadata
   delegate :audio_bit_depth,         :to => :descMetadata
   delegate :audio_channels,          :to => :descMetadata
-
-  delegate :depositor,  :to=> :properties
+  delegate :depositor,               :to=> :properties
 
   # Object will have either an access or a perservation datastream but not both
   has_datastream :name=>"access",       :type=>ActiveFedora::Datastream, :controlGroup=>'E'
@@ -79,6 +78,56 @@ class ExternalVideo < ActiveFedora::Base
       end
     rescue
     end
+  end
+
+  # This is just an array of all the field names for this model so I don't have to
+  # keep listing them all the time
+  def field_names
+    r = Array.new
+    r << "name"
+    r << "location"
+    r << "date"
+    r << "generation"
+    r << "media_type"
+    r << "file_format"
+    r << "size"
+    r << "size_units"
+    r << "colors"
+    r << "duration"
+    r << "rights_summary"
+    r << "note"
+    r << "checksum_type"
+    r << "checksum_value"
+    r << "device"
+    r << "capture_soft"
+    r << "trans_soft"
+    r << "operator"
+    r << "trans_note"
+    r << "vendor"
+    r << "condition"
+    r << "cleaning"
+    r << "color_space"
+    r << "chroma"
+    r << "standard"
+    r << "language"
+    r << "video_standard"
+    r << "video_encoding"
+    r << "video_bit_rate"
+    r << "video_bit_rate_units"
+    r << "frame_rate"
+    r << "frame_size"
+    r << "video_bit_depth"
+    r << "aspect_ratio"
+    r << "audio_standard"
+    r << "audio_encoding"
+    r << "audio_bit_rate"
+    r << "audio_bit_rate_units"
+    r << "audio_sample_rate"
+    r << "audio_sample_rate_units"
+    r << "audio_bit_depth"
+    r << "audio_channels"
+    r << "depositor"
+    return r
   end
 
 end

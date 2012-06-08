@@ -9,20 +9,9 @@
 <%= render :partial => "shared/show/rockhall" %>
 <%= render :partial => "shared/show/review" %>
 
-<h2 id="content" class="section-title">Video Files</h2>
-<fieldset id="original_video_files">
-<legend>Preservation Video</legend>
-  <dl class="dl-horizontal">
-    <% ["name", "location"].each do |field| %>
-      <dt><%= field.gsub(/_/," ").capitalize %></dt>
-      <dd><%= @video.videos[:original].first.send(field.to_sym).first %></dd>
-    <% end %>
-
-
-  </dl>
-
-
-</fieldset>
+<% unless @video.file_objects.empty? %>
+  <%= render :partial => "shared/show/files_table" %>
+<% end %>
 
 
 <% navbar_items << capture do %>
