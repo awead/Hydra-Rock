@@ -1,0 +1,13 @@
+<h1><%= @video.label.capitalize %> Video File</h1>
+
+<h2><%= @video.name.first %></h2>
+
+<%= render :partial => "external_videos/show/instantiation" %>
+<%= render :partial => "external_videos/show/rockhall" %>
+
+<% navbar_items << capture do %>
+  <li>
+    <%= link_to('<i class="icon-arrow-left"></i> Parent'.html_safe, url_for_parent_video ) %>
+  </li>
+  <%= render_user_navbar("external_videos") %>
+<% end %>

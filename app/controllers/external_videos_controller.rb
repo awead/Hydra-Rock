@@ -17,16 +17,7 @@ class ExternalVideosController < ApplicationController
     end
   end
 
-  def new
-    @video = ExternalVideo.new
-    respond_to do |format|
-      format.html  # new.html.erb
-      format.json  { render :json => @video }
-    end
-  end
-
   def show
-    update_session
     session[:viewing_context] = "browse"
     @video = ExternalVideo.find(params[:id])
     respond_to do |format|
@@ -35,22 +26,7 @@ class ExternalVideosController < ApplicationController
     end
   end
 
-  def create
-    @video = ExternalVideo.new(params[:external_video])
-    @video.apply_depositor_metadata(current_user.login)
-    respond_to do |format|
-      if @video.save
-        format.html { redirect_to(@video, :notice => 'Post was successfully created.') }
-        format.json { render :json => @video, :status => :created, :location => @video }
-      else
-        format.html { render :action => "new" }
-        format.json { render :json => @video.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
   def update
-    update_session
     @video = ExternalVideo.find(params[:id])
     changes = changed_fields(params)
     if changes.empty?
@@ -66,16 +42,6 @@ class ExternalVideosController < ApplicationController
     end
   end
 
-  def destroy
-    af = ActiveFedora::Base.find(params[:id], :cast=>true)
-    assets = af.destroy_child_assets
-    af.delete
-    msg = "Deleted #{params[:id]}"
-    msg.concat(" and associated file_asset(s): #{assets.join(", ")}") unless assets.empty?
-    flash[:notice]= msg
-    redirect_to catalog_index_path()
-  end
-
   def changed_fields(params)
     changes = Hash.new
     return changes if params[:external_video].nil?
@@ -86,12 +52,6 @@ class ExternalVideosController < ApplicationController
       end
     end
     return changes
-  end
-
-  def update_session
-    logger.info "Updating session with parameters:" + params.inspect
-    session[:search][:counter] = params[:counter] unless params[:counter].nil?
-    logger.info "Session now: " + session.inspect
   end
 
 end
