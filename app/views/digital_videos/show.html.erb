@@ -9,7 +9,7 @@
 <%= render :partial => "shared/show/review" %>
 
 <% unless @video.file_objects.empty? %>
-  <%= render :partial => "shared/show/files_table" %>
+  <% # render :partial => "shared/show/files_table" %>
 <% end %>
 
 <% navbar_items << capture do %>
