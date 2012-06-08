@@ -1,37 +1,44 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require 'factory_girl'
+#require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require 'spec_helper'
 
 describe ArchivalVideosController do
 
-  before do
+  include Devise::TestHelpers
 
-    request.env['WEBAUTH_USER'] = 'dude'
-  end
+  describe "when the user is not logged in" do
 
-  describe "new" do
-    before do
-      #FactoryGirl.find_definitions
-      #@user = FactoryGirl.create(:user)
-      #sign_in @user
-      @video = ArchivalVideo.new
-      ArchivalVideo.stubs(:new).returns(@video)
-    end
-    it "should create a new archival video" do
+    it "should redirect me to the login page" do
       get :new
-      #response.should redirect_to edit_catalog_path(@asset, :new_asset=>true)
-    end
-
-    it "should not allow you to create a video if you're not logged in" do
-      pending
+      assert_redirected_to new_user_session_path
+      post :create
+      assert_redirected_to new_user_session_path
     end
 
   end
 
-  describe "changed_fields" do
-    it "should return an array of only the fields that have changed" do
-      pending
-    end
-  end
+  describe "when the user is logged in" do
 
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      user = Factory.create(:user)
+      sign_in user
+    end
+
+    describe "new" do
+      it "should render a new page" do
+        get :new
+        assert_response :success
+        assigns[:video].should be_kind_of ArchivalVideo
+      end
+    end
+
+    describe "#create" do
+      it "should save a new archival video" do
+        post :create, :archival_video => {:main_title => "Fake title"}
+        assert_equal 'Video was successfully created.', flash[:notice]
+      end
+    end
+
+  end
 
 end
