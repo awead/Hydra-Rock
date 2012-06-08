@@ -52,8 +52,11 @@ module RockhallAssetsHelper
     url_for(send(("edit_" + model.singularize + "_path"), opts))
   end
 
-  def link_to_edit_asset
-
+  def link_to_edit_asset(body,model,url_opts={},html={})
+    result = String.new
+    result << '<a href="' + url_for_edit_asset(model,url_opts) + '">'
+    result << body
+    result << '</a>'
   end
 
   def url_for_asset(model,opts={})
@@ -66,6 +69,13 @@ module RockhallAssetsHelper
     result << '<a href="' + url_for_asset(model,url_opts) + '">'
     result << body
     result << '</a>'
+  end
+
+  # Returns link to the parent video from an external video object
+  def url_for_parent_video
+    model = @video.part_of.first.class.to_s.underscore.pluralize
+    pid   = @video.part_of.first.pid
+    return url_for_asset(model, {:id=>pid}).html_safe
   end
 
 

@@ -14,7 +14,13 @@ module RockhallNavbarHelper
         result << link_to_asset('<i class="icon-eye-open"></i> View </a>'.html_safe, model)
         result << "</li>"
       else
-        result << workflow_dropdown(model)
+        if Hydra.config[:submission_workflow][model.to_sym].nil?
+          result << "<li>"
+          result << link_to_edit_asset('<i class="icon-pencil"></i> Edit </a>'.html_safe, model)
+          result << "</li>"
+        else
+          result << workflow_dropdown(model)
+        end
       end
       result << "<li>"
       result << button_to('Delete', archival_video_path(params[:id]),
