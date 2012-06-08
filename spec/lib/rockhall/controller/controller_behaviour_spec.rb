@@ -24,6 +24,25 @@ describe Rockhall::Controller::ControllerBehaviour do
 
   end
 
+  describe "changed_fields" do
+
+    before :each do
+      @params = Hash.new
+      @params[:id] = "rockhall:fixture_pbcore_document1"
+      @params[:document_fields] = Hash.new
+    end
+
+    it "should return empty when there aren't any changes" do
+      @controller.changed_fields(@params).should be_empty
+    end
+
+    it "should return names of changed fields" do
+      @params[:document_fields][:main_title] = ["My Title"]
+      results = @controller.changed_fields(@params)
+      results[:main_title].first.should == "My Title"
+    end
+
+  end
 
 
 
