@@ -51,6 +51,8 @@ class ExternalVideo < ActiveFedora::Base
   delegate :audio_sample_rate_units, :to => :descMetadata
   delegate :audio_bit_depth,         :to => :descMetadata
   delegate :audio_channels,          :to => :descMetadata
+  delegate :next,                    :to => :descMetadata
+  delegate :previous,                :to => :descMetadata
   delegate :depositor,               :to=> :properties
   delegate :notes,                   :to=> :properties
 
@@ -70,15 +72,46 @@ class ExternalVideo < ActiveFedora::Base
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
   end
 
+  # augments add_named_datastream to put file information in descMetadata
+  def add_named_datastream(name,opts={})
+    super
+    file = File.new(File.join(opts[:directory], opts[:label]))
+    if file.respond_to?(:size)
+      (size, units) = bits_to_human_readable(file.size)
+    elsif file.kind_of?(File)
+      (size, units) = bits_to_human_readable(File.size(file))
+    else
+      size = ""
+      units = ""
+    end
+    self.size       = size
+    self.size_units = size_units
+    self.name       = opts[:label]
+  end
+
   # deletes the object identified by pid if it does not have any objects asserting has_collection_member
+  # Originally duplicated from FileAssets
   def self.garbage_collect(pid)
     begin
-      obj = self.find(pid)
+      obj = ExternalVideo.load_instance(pid)
       if obj.containers.empty?
         obj.delete
       end
     rescue
     end
+  end
+
+  # @num file size in bits
+  # Returns a human readable filesize and unit of measure (ie. automatically chooses 'bytes','KB','MB','GB','TB')
+  # Based on a bit of python code posted here: http://blogmag.net/blog/read/38/Print_human_readable_file_size
+  def bits_to_human_readable(num)
+      ['bytes','KB','MB','GB','TB'].each do |x|
+        if num < 1024.0
+          return "#{num.to_i}", "#{x}"
+        else
+          num = num/1024.0
+        end
+      end
   end
 
   # This is just an array of all the field names for this model so I don't have to
