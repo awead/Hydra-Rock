@@ -3,6 +3,7 @@ class DigitalVideosController < ApplicationController
   include Hydra::Catalog
   include Hydra::Controller
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
+  include Rockhall::Controller::ControllerBehaviour
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
   before_filter :enforce_access_controls
@@ -74,24 +75,6 @@ class DigitalVideosController < ApplicationController
     msg.concat(" and associated file_asset(s): #{assets.join(", ")}") unless assets.empty?
     flash[:notice]= msg
     redirect_to catalog_index_path()
-  end
-
-  def changed_fields(params)
-    changes = Hash.new
-    return changes if params[:digital_video].nil?
-    video = DigitalVideo.find(params[:id])
-    params[:digital_video].each do |k,v|
-      unless video.send(k.to_sym) == v or (video.send(k.to_sym).empty? and v.first.empty?) or (v.sort.uniq.count > video.send(k.to_sym).count and v.sort.uniq.first.empty?)
-        changes.store(k,v)
-      end
-    end
-    return changes
-  end
-
-  def update_session
-    logger.info "Updating session with parameters:" + params.inspect
-    session[:search][:counter] = params[:counter] unless params[:counter].nil?
-    logger.info "Session now: " + session.inspect
   end
 
 end

@@ -3,6 +3,8 @@ class ExternalVideosController < ApplicationController
   include Hydra::Catalog
   include Hydra::Controller
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
+  include Rockhall::Controller::ControllerBehaviour
+
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
   before_filter :enforce_access_controls
@@ -40,18 +42,6 @@ class ExternalVideosController < ApplicationController
         redirect_to(edit_external_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Error: Unable to save changes')
       end
     end
-  end
-
-  def changed_fields(params)
-    changes = Hash.new
-    return changes if params[:document_fields].nil?
-    video = ExternalVideo.find(params[:id])
-    params[:document_fields].each do |k,v|
-      unless video.send(k.to_sym) == v or (video.send(k.to_sym).empty? and v.first.empty?) or (v.sort.uniq.count > video.send(k.to_sym).count and v.sort.uniq.first.empty?)
-        changes.store(k,v)
-      end
-    end
-    return changes
   end
 
 end
