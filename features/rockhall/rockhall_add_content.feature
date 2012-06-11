@@ -35,17 +35,14 @@ Feature: Add rockhall content
   Scenario: Reviewers need to add new video objects (DAM-159)
     Given I am logged in as "reviewer1@example.com"
     And I create a new archival_video
-    Then I should see "Review Video"
-    And I should see "Abstract"
-    And the following should be selected within "form#asset_review"
-      | priority | normal |
-    And the following should be selected within "form#asset_review"
-      | complete | no |
+    Then I should see "New Archival Video"
+    And I should see "Main title"
 
   Scenario: Groups can only add certain content types (DAM-164)
     Given I am logged in as "reviewer1@example.com"
-    Then I should see "Add archival video"
-    And I should not see "Add Generic Content"
+    Then I should see "Archival Video"
+    Then I should see "Digital Video"
+    And I should not see "Basic MODS Asset"
     Given I am logged in as "archivist1@example.com"
-    Then I should see "Add archival video"
-    And I should see "Add Generic Content"
+    Then I should see "Archival Video"
+    And I should see "Generic Content"
