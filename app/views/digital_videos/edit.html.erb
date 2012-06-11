@@ -6,5 +6,5 @@
   <% unless params[:new_asset] %>
     <%= workflow_dropdown("digital_videos") %>
   <% end %>
-  <%= render_user_navbar("digital_videos") %>
+  <%= render_user_navbar("digital_videos", {:delete=>TRUE}) %>
 <% end %>
