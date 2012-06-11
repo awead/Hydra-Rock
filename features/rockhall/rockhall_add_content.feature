@@ -27,10 +27,10 @@ Feature: Add rockhall content
   Scenario: Allowed groups should be able to create new content (DAM-163)
     Given I am logged in as "reviewer1@example.com"
     And I am on the home page
-    Then I should see "Add a New Asset"
+    Then I should see the "New" dropdown menu
     Given I am logged in as "archivist1@example.com"
     And I am on the home page
-    Then I should see "Add a New Asset"
+    Then I should see the "New" dropdown menu
 
   Scenario: Reviewers need to add new video objects (DAM-159)
     Given I am logged in as "reviewer1@example.com"
