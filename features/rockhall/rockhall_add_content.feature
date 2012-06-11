@@ -6,7 +6,7 @@ Feature: Add rockhall content
   Scenario: Add archival video (DAM-83)
     Given I am logged in as "archivist1@example.com"
     And I am on the home page
-    Then I should see "Add archival video"
+    Then I should see "Archival Video"
 
   Scenario: Disallowed groups should not be able to create assets (DAM-163)
     Given I am logged in as "researcher1@example.com"
