@@ -56,6 +56,11 @@ module NavigationHelpers
     when /the permissions page for (.*)$/i
       asset_permissions_path($1)
 
+    when /new archival_video page/
+      new_archival_video_path
+    when /new digital_video page/
+      new_digital_video_path
+
     when /new (.*) page$/i
       new_asset_path(:content_type => $1)
     when /the asset (.*)$/i

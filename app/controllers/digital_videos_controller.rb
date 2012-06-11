@@ -7,6 +7,7 @@ class DigitalVideosController < ApplicationController
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
   before_filter :enforce_access_controls
+  before_filter :enforce_asset_creation_restrictions, :only=>:new
   #before_filter :enforce_viewing_context_for_show_requests, :only=>[:show]
   #before_filter :search_session, :history_session
 
