@@ -10,5 +10,6 @@ HydraRock::Application.routes.draw do
   resources :digital_videos
   resources :external_videos
   resources :pbcore_nodes, :only => [:new , :destroy]
+  resources :reviewers, :only => [:edit, :show]
 
 end

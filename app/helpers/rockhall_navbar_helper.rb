@@ -6,7 +6,7 @@ module RockhallNavbarHelper
   end
 
   # navbar items if a user is logged in
-  def render_user_navbar(model)
+  def render_user_navbar(model, opts={})
     result = String.new
     if current_user
       if params[:action] == "edit"
@@ -14,7 +14,7 @@ module RockhallNavbarHelper
         result << link_to_asset('<i class="icon-eye-open"></i> View </a>'.html_safe, model)
         result << "</li>"
       else
-        if Hydra.config[:submission_workflow][model.to_sym].nil?
+        if Hydra.config[:submission_workflow][model.to_sym].nil? or RoleMapper.roles(current_user.login).include?("reviewer")
           result << "<li>"
           result << link_to_edit_asset('<i class="icon-pencil"></i> Edit </a>'.html_safe, model)
           result << "</li>"
@@ -22,11 +22,13 @@ module RockhallNavbarHelper
           result << workflow_dropdown(model)
         end
       end
-      result << "<li>"
-      result << button_to('Delete', archival_video_path(params[:id]),
-                :class => "btn-small btn-danger", :form => { :class=>"navbar-search"},
-                :confirm => 'Are you sure?', :method => :delete)
-      result << "</li>"
+      unless opts[:delete].nil?
+        result << "<li>"
+        result << button_to('Delete', archival_video_path(params[:id]),
+                  :class => "btn-small btn-danger", :form => { :class=>"navbar-search"},
+                  :confirm => 'Are you sure?', :method => :delete)
+        result << "</li>"
+      end
     end
     return result.html_safe
   end
