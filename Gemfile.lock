@@ -6,9 +6,10 @@ PATH
       active-fedora (~> 4.1)
       blacklight (~> 3.4.2)
       block_helpers
-      cancan
       deprecation
       devise
+      hydra-access-controls
+      hydra-mods (>= 0.0.4)
       jquery-rails
       rails (~> 3.2.3)
       sanitize
@@ -153,6 +154,13 @@ GEM
     hike (1.2.1)
     httpi (0.9.7)
       rack
+    hydra-access-controls (0.0.1)
+      active-fedora
+      activesupport
+      cancan
+      deprecation
+    hydra-mods (0.0.4)
+      active-fedora (~> 4.1)
     i18n (0.6.0)
     journey (1.0.3)
     jquery-rails (2.0.2)
