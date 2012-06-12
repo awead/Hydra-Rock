@@ -8,3 +8,4 @@ jetty/*
 spec/fixtures/rockhall/sips/rockhall_fixture_pbcore_document1/info.dat
 gems
 test_support/fixtures
+public/cucumber.html
