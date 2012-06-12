@@ -15,4 +15,6 @@
     <%= render :partial => "shared/edit/field", :locals => { :t=>"usage", :f=>f, :vals=>@video.usage, :multiple=>FALSE } %>
   </fieldset>
 
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
 <% end %>

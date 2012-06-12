@@ -1,6 +1,6 @@
-<dt>Contributors</dt>
+<dt id="contributor">Contributors</dt>
 <% document.contributor_name.each_index do |index| %>
-  <dd>
+  <dd id="contributor">
     <%= document.contributor_name[index] %>
     <% if document.contributor_role[index] %>
       (<%= document.contributor_role[index] %>)

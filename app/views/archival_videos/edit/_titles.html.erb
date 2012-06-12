@@ -25,11 +25,7 @@
     <%= f.text_area :parts_list, :id=>"parts_list", :name=>"document_fields[parts_list][]", :value => @video.parts_list.first, :class=>"edit span5" %>
     <%= f.label :note, :class=>"field" %>
     <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@video.note, :multiple=>TRUE } %>
-
-
-
   </fieldset>
-
 
   <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 

@@ -1,6 +1,6 @@
-<dt>Publishers</dt>
+<dt id="publisher">Publishers</dt>
 <% document.publisher_name.each_index do |index| %>
-  <dd>
+  <dd id="publisher">
     <%= document.publisher_name[index] %>
     <% if document.publisher_role[index] %>
       (<%= document.publisher_role[index] %>)

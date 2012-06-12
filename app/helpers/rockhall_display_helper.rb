@@ -10,9 +10,9 @@ module RockhallDisplayHelper
     else
       @video.send(field.to_sym).count > 1 ? formatted_name = opts[:name].pluralize : formatted_name = opts[:name]
     end
-    results << "<dt>" + formatted_name + "</dt>"
+    results << "<dt id=\"#{field.to_s}\">" + formatted_name + "</dt>"
     @video.send(field.to_sym).each do |v|
-      results << "<dd>" + v + "</dd>"
+      results << "<dd id=\"#{field.to_s}\">" + v + "</dd>"
     end
     return results.html_safe
   end
