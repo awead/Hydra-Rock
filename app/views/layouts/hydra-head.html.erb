@@ -57,10 +57,20 @@
       <!-- document row -->
       <div class="row">
         <% if sidebar_items.empty? %>
-          <div class="span12">
-            <%= render :partial=>'/flash_msg' %>
-            <%= yield %>
-          </div>
+          <% if player_column.empty? %>
+            <div class="span12">
+              <%= render :partial=>'/flash_msg' %>
+              <%= yield %>
+            </div>
+          <% else %>
+            <div class="span6">
+              <%= player_column.join('').html_safe %>
+            </div>
+            <div class="span6">
+              <%= render :partial=>'/flash_msg' %>
+              <%= yield %>
+            </div>
+          <% end %>
         <% else %>
           <div class="span4">
             <div class="well"><%= sidebar_items.join('').html_safe %></div>

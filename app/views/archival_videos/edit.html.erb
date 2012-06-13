@@ -1,4 +1,8 @@
-<h1><%= @video.main_title.first %></h1>
+<div class="well"><h1><%= @video.main_title.first %></h1></div>
+
+<% player_column << capture do %>
+  <%= render_video_player %>
+<% end %>
 
 <%= render_submission_workflow_step -%>
 

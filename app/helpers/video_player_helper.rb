@@ -1,5 +1,9 @@
 module VideoPlayerHelper
 
+  # define a player column that we can display when needed
+  def player_column
+    @player_column ||= []
+  end
 
   def render_video_player
     if @video.file_objects.count > 0
