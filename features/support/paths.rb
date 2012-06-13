@@ -57,15 +57,15 @@ module NavigationHelpers
       asset_permissions_path($1)
 
     # Archival videos
-    when /view archival_video page for (.*)/i
+    when /show archival video page for (.*)/i
       archival_video_path($1)
-    when /new archival_video page/
+    when /new archival video page/
       new_archival_video_path
     when /edit archival video page for (.*)/i
       edit_archival_video_path($1)
 
     # External Videos
-    when /view external_video page for (.*)/i
+    when /show external video page for (.*)/i
       external_video_path($1)
 
     # Digital Videos

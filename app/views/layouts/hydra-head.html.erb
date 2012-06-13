@@ -27,12 +27,14 @@
           <!-- Navbar: Search and login/account -->
           <ul class="nav pull-right">
             <%= form_tag catalog_index_path, :method => :get, :class => "navbar-search" do %>
-              <%= text_field_tag :q, params[:q], :class => "q span2 search-query", :placeholder => (session[:search][:q].nil? ? "search for ..." : session[:search][:q]) %>
+              <%= text_field_tag :q, params[:q], :class => "q span2 search-query", :placeholder => (session[:search][:q].nil? ? "Search, hit <Enter>" : session[:search][:q]) %>
               <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %>
+              <% # Can't get send_keys to work in Capybara, so we have a hidden submit button %>
+              <%= submit_tag "Search", :class=>"hidden" %>
             <% end %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="icon-search"></i> Search <b class="caret"></b>
+                <i class="icon-search"></i> Results <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <% unless session[:search][:q].nil? and session[:search][:f].nil? %>

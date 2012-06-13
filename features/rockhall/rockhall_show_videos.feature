@@ -3,23 +3,14 @@ Feature:
   As a public user
   I need to view the content of a video
 
-  Scenario: search for a video (DAM-83)
-    Given I am on the home page
-    And I fill in "q" with "rockhall:fixture_pbcore_document1"
-    When I press "submit"
-    Then I should see a link to "the show document page for rockhall:fixture_pbcore_document1"
-    And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
-
-  Scenario: search for a video barcode (DAM-83)
-    Given I am on the home page
-    And I fill in "q" with "39156042551098"
-    When I press "submit"
-    Then I should see a link to "the show document page for rockhall:fixture_pbcore_document1"
-    And I should see "Rock and Roll Hall of Fame induction ceremony. Part 1."
-
   Scenario: Viewable metadata (DAM-131)
-    Given I am on the show document page for rockhall:fixture_pbcore_document1
-    And I should see the heading "Content"
+    Given I am on the show archival video page for rockhall:fixture_pbcore_document1
+    And I should see the heading "Titles"
+    And I should see the heading "Description"
+    And I should see the heading "Persons"
+    And I should see the heading "Video Tape"
+    And I should see the heading "Internal Information"
+    And I should see the heading "Review"
     And I should see the field title "main_title" contain "Main Title"
     And I should see the field content "main_title" contain "Rock and Roll Hall of Fame induction ceremony. Part 1."
     And I should see the field title "alternative_title" contain "Alternative Title"
@@ -54,7 +45,6 @@ Feature:
     And I should see the field content "contributor" contain "Pickett, Wilson"
     And I should see the field title "publisher" contain "Publisher"
     And I should see the field content "publisher" contain "Rock and Roll Hall of Fame Foundation"
-    And I should see the heading "Original"
     And I should see the field title "creation_date" contain "Creation Date"
     And I should see the field content "creation_date" contain "1999-03-15"
     And I should see the field title "barcode" contain "Barcode"
@@ -81,10 +71,8 @@ Feature:
     And I should see the field content "collection_number" contain "ARC.0002"
     And I should see the field title "accession_number" contain "Accession Number"
     And I should see the field content "accession_number" contain "LA.2003.01.001"
-    And I should see the heading "Rockhall"
     And I should see the field title "depositor" contain "Depositor"
     And I should see the field content "depositor" contain "archivist1@example.com"
-    And I should see the heading "Review Information"
     And I should see the field title "reviewer" contain "Reviewer"
     And I should see the field content "reviewer" contain "reviewer1@example.com"
     And I should see the field title "license" contain "License"

@@ -6,7 +6,7 @@ Feature:
   Scenario: Create new video object (DAM-169)
     Given I am logged in as "archivist1@example.com"
     And I am on the home page
-    And I create a new archival_video
+    And I create a new archival video
     And I should see "Required Title"
     And I fill in "archival_video[main_title]" with "Sample Main Title"
     When I press "Save Changes"

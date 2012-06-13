@@ -36,7 +36,7 @@ Then /^I should be able to follow "([^"]*)"$/ do |link|
 end
 
 Then /^I should see the field title "([^"]*)" contain "([^"]*)"$/ do |arg1, arg2|
-  page.should have_xpath("//label[@for='#{arg1}']", :text => arg2)
+  page.should have_xpath("//dt[@id='#{arg1}']", :text => arg2)
 end
 
 Then /^I should see the field content "([^"]*)" contain "([^"]*)"$/ do |arg1, arg2|
@@ -52,9 +52,14 @@ Then /^I should see "([^"]*)" in italics$/ do |arg1|
 end
 
 Then /^I should see the heading "([^"]*)"$/ do |arg1|
-  page.should have_xpath("//*/h2[@class='section-title']", :text => arg1)
+  page.should have_xpath("//*/legend", :text => arg1)
 end
 
 Then /^I should see the field content "([^"]*)" contain the current date$/ do |arg1|
   page.should have_xpath("//dd[@id='#{arg1}']", :text => DateTime.now.strftime("%Y-%m-%d"))
+end
+
+When /^I hit the enter key$/ do
+  input = find("#q")
+  input.base.invoke('keypress', false, false, false, false, 13, nil)
 end

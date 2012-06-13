@@ -11,7 +11,7 @@ Feature: Add rockhall content
   Scenario: Disallowed groups should not be able to create assets (DAM-163)
     Given I am logged in as "researcher1@example.com"
     And I am on the home page
-    And I create a new archival_video
+    And I create a new archival video
     Then I should see "You are not allowed to create new content"
     Given I am on the home page
     And I create a new digital_video
@@ -34,7 +34,7 @@ Feature: Add rockhall content
 
   Scenario: Reviewers need to add new video objects (DAM-159)
     Given I am logged in as "reviewer1@example.com"
-    And I create a new archival_video
+    And I create a new archival video
     Then I should see "New Archival Video"
     And I should see "Main title"
 

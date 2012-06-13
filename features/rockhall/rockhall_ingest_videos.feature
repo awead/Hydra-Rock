@@ -15,7 +15,7 @@ Narrative:
 
   Scenario: Members of the archivist group have edit rights (DAM-131)
     Given I am logged in as "archivist1@example.com"
-    And I am on the view archival_video page for rockhall:fixture_pbcore_document3
+    And I am on the show archival video page for rockhall:fixture_pbcore_document3
     Then I should see "Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2."
     And I should see "2007-07-09"
     And I should see "Betacam"
@@ -24,7 +24,7 @@ Narrative:
 
   Scenario: View all the fields of the original preservation video file
     Given I am logged in as "archivist1@example.com"
-    And I am on the view external_video page for rockhall:fixture_pbcore_document3_original
+    And I am on the show external video page for rockhall:fixture_pbcore_document3_original
     Then I should see "39156042439369_preservation.mov"
     And I should see "0"
     And I should see "2011-10-12"
@@ -55,7 +55,7 @@ Narrative:
 
   Scenario: View all the fields of the access h264 video file
     Given I am logged in as "archivist1@example.com"
-    And I am on the view external_video page for rockhall:fixture_pbcore_document3_h264
+    And I am on the show external video page for rockhall:fixture_pbcore_document3_h264
     Then I should see "39156042439369_access.mp4"
     And I should see "0"
     And I should see "2011-10-12"
