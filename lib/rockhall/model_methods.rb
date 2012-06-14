@@ -104,4 +104,11 @@ module Rockhall::ModelMethods
     solr_doc.merge!(:format_dtl_display => self.access_format)
   end
 
+  def apply_default_permissions
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
+    self.save
+  end
+
 end

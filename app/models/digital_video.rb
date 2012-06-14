@@ -8,6 +8,8 @@ class DigitalVideo < ActiveFedora::Base
   include ActiveFedora::Relationships
   include ActiveFedora::DatastreamCollections
 
+  after_create :apply_default_permissions
+
   has_relationship "objects", :is_part_of, :inbound => true
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
@@ -55,13 +57,5 @@ class DigitalVideo < ActiveFedora::Base
   delegate :usage,                :to=> :descMetadata
   delegate :depositor,            :to=> :properties
   delegate :notes,                :to=> :properties
-
-  def initialize( attrs={} )
-    super
-    # Apply group permissions
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
-  end
 
 end

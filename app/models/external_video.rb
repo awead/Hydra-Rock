@@ -6,8 +6,19 @@ class ExternalVideo < ActiveFedora::Base
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
 
+  after_create :apply_default_permissions
+
   has_relationship "is_member_of_collection", :has_collection_member, :inbound => true
   has_bidirectional_relationship "part_of", :is_part_of, :has_part
+
+  # Object will have either an access or a perservation datastream but not both
+  has_datastream :name=>"access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name=>"preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+
+  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
+  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreInstantiation
+  has_metadata :name => "mediaInfo",      :type => MediainfoXml::Document
+  has_metadata :name => "properties",     :type => Rockhall::Properties
 
   delegate :name,                    :to => :descMetadata
   delegate :location,                :to => :descMetadata
@@ -55,22 +66,6 @@ class ExternalVideo < ActiveFedora::Base
   delegate :previous,                :to => :descMetadata
   delegate :depositor,               :to=> :properties
   delegate :notes,                   :to=> :properties
-
-  # Object will have either an access or a perservation datastream but not both
-  has_datastream :name=>"access",       :type=>ActiveFedora::Datastream, :controlGroup=>'E'
-  has_datastream :name=>"preservation", :type=>ActiveFedora::Datastream, :controlGroup=>'E'
-
-  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreInstantiation
-  has_metadata :name => "mediaInfo",      :type => MediainfoXml::Document
-  has_metadata :name => "properties",     :type => Rockhall::Properties
-
-  def initialize( attrs={} )
-    super
-    # Anyone in the archivist group has edit rights
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
-  end
 
   # augments add_named_datastream to put file information in descMetadata
   def add_named_datastream(name,opts={})

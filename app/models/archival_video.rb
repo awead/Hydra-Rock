@@ -8,7 +8,14 @@ class ArchivalVideo < ActiveFedora::Base
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
 
+  after_create :apply_default_permissions
+
   has_relationship "objects", :is_part_of, :inbound => true
+
+  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
+  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreDocument
+  has_metadata :name => "properties",     :type => Rockhall::Properties
+  has_metadata :name => "assetReview",    :type => Rockhall::AssetReview
 
   delegate :reviewer,             :to=> :assetReview
   delegate :date_updated,         :to=> :assetReview
@@ -61,18 +68,5 @@ class ArchivalVideo < ActiveFedora::Base
   delegate :cleaning_note,        :to=> :descMetadata
   delegate :depositor,            :to=> :properties
   delegate :notes,                :to=> :properties
-
-  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDocument
-  has_metadata :name => "properties", :type => Rockhall::Properties
-  has_metadata :name => "assetReview", :type => Rockhall::AssetReview
-
-  def initialize( attrs={} )
-    super
-    # Apply group permissions
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
-  end
 
 end
