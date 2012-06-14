@@ -13,7 +13,7 @@ module VideoPlayerHelper
         render :partial => "video_player/#{RH_CONFIG["video_player"]}"
       end
     else
-      return "Video not available"
+      render :partial => "video_player/unavailable"
     end
   end
 
