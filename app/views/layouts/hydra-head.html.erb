@@ -32,19 +32,22 @@
               <% # Can't get send_keys to work in Capybara, so we have a hidden submit button %>
               <%= submit_tag "Search", :class=>"hidden" %>
             <% end %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="icon-search"></i> Results <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <% unless session[:search][:q].nil? and session[:search][:f].nil? %>
-                  <li><%= link_back_to_catalog %></li>
-                  <li class="divider"></li>
-                <% end %>
-                <li><%= link_to "Selected Items (#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0})", folder_index_path %></li>
-                <li><%= link_to "Search History", search_history_path %></li>
-              </ul>
-            </li>
+            <% unless session[:search][:q].nil? %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-search"></i> Results <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <% unless session[:search][:q].nil? and session[:search][:f].nil? %>
+                    <li><%= link_back_to_catalog %></li>
+                    <li><a href="/catalog">Start Over</a></li>
+                    <li class="divider"></li>
+                  <% end %>
+                  <li><%= link_to "Selected Items (#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0})", folder_index_path %></li>
+                  <li><%= link_to "Search History", search_history_path %></li>
+                </ul>
+              </li>
+            <% end %>
             <%= render :partial=>"/user_acct_links" %>
           </ul>
 
