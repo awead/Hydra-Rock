@@ -55,12 +55,12 @@ Feature:
     And I fill in "document_fields[barcode][]" with "Sample barcode"
     And the "archival_video_repository" field should contain "Rock and Roll Hall of Fame and Museum"
     And I fill in "document_fields[format][]" with "Sample format"
-    And I fill in "document_fields[standard][]" with "Sample standard"
-    #  These will be fixed in DAM-122
-    #And the "media_type" field should contain "Moving image"
-    #And the "generation" field should contain "Original"
-    #And the "language" field should contain "eng"
-    #And the "colors" field should contain "Color"
+    And the following should be selected within "fieldset#original_fields"
+      | archival_video_colors | Color |
+    And I select the following within "fieldset#original_fields"
+      | archival_video_standard | NTSC |
+    And I fill in "document_fields[generation][]" with "Original"
+    And I fill in "document_fields[language][]" with "eng"
     And I fill in "document_fields[archival_collection][]" with "Sample achival collection"
     And I fill in "document_fields[archival_series][]" with "Sample achival series"
     And I fill in "document_fields[collection_number][]" with "Sample collection number"
@@ -97,7 +97,7 @@ Feature:
     And I should see the field content "barcode" contain "Sample barcode"
     And I should see the field content "repository" contain "Rock and Roll Hall of Fame and Museum"
     And I should see the field content "format" contain "Sample format"
-    And I should see the field content "standard" contain "Sample standard"
+    And I should see the field content "standard" contain "NTSC"
     And I should see the field content "media_type" contain "Moving image"
     And I should see the field content "generation" contain "Original"
     And I should see the field content "language" contain "eng"

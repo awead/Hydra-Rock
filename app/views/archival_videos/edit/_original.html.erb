@@ -11,7 +11,7 @@
     <legend>Original Item</legend>
     <p class="legend-caption">Fields that describe the original item, such as the videocasette or tape.</p>
     <%= f.label :standard, :class=>"field" %>
-    <%= f.select :standard, ["NTSC", "PAL"], {}, {:name => "document_fields[standard][]"} %>
+    <%= f.select :standard, ["", "NTSC", "PAL"], {}, {:name => "document_fields[standard][]"} %>
     <%= f.label :colors, :class=>"field" %>
     <%= f.select :colors, ["Color", "B&W", "Grayscale", "Tinted", "Toned"], {}, {:name => "document_fields[colors][]"} %>
     <% ["barcode", "format", "generation", "language"].each do |t| %>
