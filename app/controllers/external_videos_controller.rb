@@ -24,7 +24,7 @@ class ExternalVideosController < ApplicationController
     @video = ExternalVideo.find(params[:id])
     respond_to do |format|
       format.html  { setup_next_and_previous_documents }
-      format.json  { render :json => @video }
+      format.js
     end
   end
 

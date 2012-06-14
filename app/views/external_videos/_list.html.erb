@@ -1,0 +1,14 @@
+<h2>Video Files</h2>
+<ul id="video-file-list" class="nav nav-tabs nav-stacked">
+  <% @video.videos.each_key do |type| %>
+    <% unless @video.videos[type].empty? %>
+      <% @video.videos[type].each do |file| %>
+        <li id="<%= file.pid.gsub(/:/,"_") %>">
+          <%= link_to( type.to_s.capitalize,
+                       external_video_path(file.pid),
+                       :remote=>true ) %>
+        </li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
