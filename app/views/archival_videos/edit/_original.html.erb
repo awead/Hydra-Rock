@@ -10,7 +10,11 @@
   <fieldset id="original_fields">
     <legend>Original Item</legend>
     <p class="legend-caption">Fields that describe the original item, such as the videocasette or tape.</p>
-    <% ["barcode", "format", "standard", "media_type", "generation", "language", "colors"].each do |t| %>
+    <%= f.label :standard, :class=>"field" %>
+    <%= f.select :standard, ["NTSC", "PAL"], {}, {:name => "document_fields[standard][]"} %>
+    <%= f.label :colors, :class=>"field" %>
+    <%= f.select :colors, ["Color", "B&W", "Grayscale", "Tinted", "Toned"], {}, {:name => "document_fields[colors][]"} %>
+    <% ["barcode", "format", "generation", "language"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
       <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
     <% end %>
