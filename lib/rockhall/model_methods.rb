@@ -62,21 +62,18 @@ module Rockhall::ModelMethods
   # particulr datastream name.
   def videos
     results = Hash.new
-    u_files = Array.new
-    p_files = Array.new
-    a_files = Array.new
+    results[:unknown]  = Array.new
+    results[:original] = Array.new
+    results[:h264]     = Array.new
     self.file_objects.each do |obj|
       if obj.datastreams.keys.include?("PRESERVATION1")
-        p_files << obj
+        results[:original] << obj
       elsif obj.datastreams.keys.include?("ACCESS1")
-        a_files << obj
+        results[:h264] << obj
       else
-        u_files << obj
+        results[:unknown] << obj
       end
     end
-    results[:unknown]  = u_files
-    results[:original] = p_files
-    results[:h264]     = a_files
     return results
   end
 
