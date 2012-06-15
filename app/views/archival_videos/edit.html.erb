@@ -2,6 +2,9 @@
 
 <% player_column << capture do %>
   <%= render_video_player %>
+  <% unless @video.file_objects.empty? %>
+    <%= render :partial => "external_videos/list" %>
+  <% end %>
 <% end %>
 
 <%= render_submission_workflow_step -%>

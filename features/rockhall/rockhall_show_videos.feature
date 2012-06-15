@@ -77,3 +77,10 @@ Feature:
     And I should see the field content "reviewer" contain "reviewer1@example.com"
     And I should see the field title "license" contain "License"
     And I should see the field content "license" contain "Public"
+
+  Scenario: Message for unavailable video (DAM-200)
+    Given I am on the show archival video page for rockhall:fixture_pbcore_document1
+    Then I should see "Video not available"
+    Given I am logged in as "archivist1@example.com"
+    When I am on the edit archival video page for rockhall:fixture_pbcore_document1
+    Then I should see "Video not available"
