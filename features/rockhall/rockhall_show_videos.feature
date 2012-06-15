@@ -84,3 +84,10 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     When I am on the edit archival video page for rockhall:fixture_pbcore_document1
     Then I should see "Video not available"
+
+  Scenario: Display video player for digital video objects (DAM-201)
+    Given I am on the show archival video page for rockhall:fixture_pbcore_digital_document1
+    Then I should see "Part 1"
+    Given I am logged in as "archivist1@example.com"
+    When I am on the edit archival video page for rockhall:fixture_pbcore_digital_document1
+    Then I should see "Part 1"
