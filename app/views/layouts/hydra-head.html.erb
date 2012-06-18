@@ -77,6 +77,7 @@
         <% else %>
           <div class="span4">
             <div class="well"><%= sidebar_items.join('').html_safe %></div>
+            <%= render :partial => "/legend" %>
           </div>
           <div class="span8">
             <%= render :partial=>'/flash_msg' %>
