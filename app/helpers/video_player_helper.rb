@@ -5,8 +5,14 @@ module VideoPlayerHelper
     @player_column ||= []
   end
 
-  def render_video_player
-    if @video.file_objects.count > 0
+  def render_video_player(opts={})
+    # TODO: use generic variable in all controllers/views
+    if @video.nil?
+      @model = opts[:model]
+    else
+      @model = @video
+    end
+    if @model.file_objects.count > 0
       if RH_CONFIG["video_player"].nil?
         render :partial => "video_player/jw_player"
       else
@@ -35,11 +41,11 @@ module VideoPlayerHelper
 
   def flowplayer_playlist
     results = Array.new
-    videos = @video.videos
+    videos = @model.videos
     count = 1
-    unless @video.videos[:h264].empty?
-      @video.videos[:h264].each do |video|
-        path = File.join(@video.pid.gsub(/:/,"_"),"data",video.name)
+    unless @model.videos[:h264].empty?
+      @model.videos[:h264].each do |video|
+        path = File.join(@model.pid.gsub(/:/,"_"),"data",video.name)
         results << "{title: 'Part #{count.to_s}', url: 'mp4:#{path}'}"
         count = count + 1
       end

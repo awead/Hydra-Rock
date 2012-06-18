@@ -1,4 +1,8 @@
-<h1><%= @document_fedora.main_title.first %></h1>
+<div class="well"><h1><%= @document_fedora.main_title.first %></h1></div>
+
+<% player_column << capture do %>
+  <%= render_video_player({:model => @document_fedora}) %>
+<% end %>
 
 <%= form_for @document_fedora, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
 

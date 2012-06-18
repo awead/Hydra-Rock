@@ -91,3 +91,10 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     When I am on the edit archival video page for rockhall:fixture_pbcore_digital_document1
     Then I should see "Part 1"
+
+  Scenario: Video player should be available in edit mode for reviewers (DAM-205)
+    Given I am logged in as "reviewer1@example.com"
+    When I am on the edit archival video page for rockhall:fixture_pbcore_document2
+    Then I should see "Video not available"
+    When I am on the edit archival video page for rockhall:fixture_pbcore_digital_document1
+    Then I should see "Part 1"
