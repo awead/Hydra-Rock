@@ -5,6 +5,6 @@
                  options_for_select(Relators.pbcore.keys.sort, document.publisher_role[index]),
                  {:id => ("publisher_role_" + index.to_s)} %>
   <%- # TODO: see note with contributors %>
-  <a href="/pbcore_nodes/<%= params[:id] %>?index=<%= index.to_s %>&amp;node=publisher" data-method="delete" data-remote="true" rel="nofollow">Delete</a>
+  <%= link_to 'Delete', pbcore_node_path({:node=>"publisher", :index=>index}), :remote => true, :method => :delete %>
   <br/>
 <% end %>

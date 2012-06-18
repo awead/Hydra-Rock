@@ -63,7 +63,7 @@ module RockhallNavbarHelper
     results << '<ul class="dropdown-menu">'
     ["contributor","publisher"].each do |type|
       results << '<li>'
-      results << link_to(type.capitalize, new_pbcore_node_path(params.merge!({:node=>type})), :remote=>true)
+      results << link_to(type.capitalize, new_pbcore_node_path(params.merge!({:node=>type})))
       results << '</li>'
     end
     results << '</ul>'
