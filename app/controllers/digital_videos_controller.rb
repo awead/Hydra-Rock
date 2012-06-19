@@ -13,58 +13,58 @@ class DigitalVideosController < ApplicationController
   #before_filter :search_session, :history_session
 
   def edit
-    @video = DigitalVideo.find(params[:id])
+    @afdoc = DigitalVideo.find(params[:id])
     respond_to do |format|
       format.html  { setup_next_and_previous_documents }
-      format.json  { render :json => @video }
+      format.json  { render :json => @afdoc }
     end
   end
 
   def new
-    @video = DigitalVideo.new
+    @afdoc = DigitalVideo.new
     respond_to do |format|
       format.html  # new.html.erb
-      format.json  { render :json => @video }
+      format.json  { render :json => @afdoc }
     end
   end
 
   def show
     update_session
     session[:viewing_context] = "browse"
-    @video = DigitalVideo.find(params[:id])
+    @afdoc = DigitalVideo.find(params[:id])
     respond_to do |format|
       format.html  { setup_next_and_previous_documents }
-      format.json  { render :json => @video }
+      format.json  { render :json => @afdoc }
     end
   end
 
   def create
-    @video = DigitalVideo.new(params[:digital_video])
-    @video.apply_depositor_metadata(current_user.login)
+    @afdoc = DigitalVideo.new(params[:digital_video])
+    @afdoc.apply_depositor_metadata(current_user.login)
     respond_to do |format|
-      if @video.save
-        format.html { redirect_to(@video, :notice => 'Video was successfully created.') }
-        format.json { render :json => @video, :status => :created, :location => @video }
+      if @afdoc.save
+        format.html { redirect_to(@afdoc, :notice => 'Video was successfully created.') }
+        format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @video.errors, :status => :unprocessable_entity }
+        format.json { render :json => @afdoc.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   def update
     update_session
-    @video = DigitalVideo.find(params[:id])
+    @afdoc = DigitalVideo.find(params[:id])
     changes = changed_fields(params)
     if changes.empty?
-      redirect_to(edit_digital_video_path(@video, :wf_step=>params[:wf_step]))
+      redirect_to(edit_digital_video_path(@afdoc, :wf_step=>params[:wf_step]))
     else
-      @video.update_attributes(changes)
+      @afdoc.update_attributes(changes)
       logger.info("Updating these fields: #{changes.inspect}")
-      if @video.save
-        redirect_to(edit_digital_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
+      if @afdoc.save
+        redirect_to(edit_digital_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
       else
-        redirect_to(edit_digital_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Error: Unable to save changes')
+        redirect_to(edit_digital_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Error: Unable to save changes')
       end
     end
   end

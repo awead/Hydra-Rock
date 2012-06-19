@@ -12,16 +12,16 @@ class ExternalVideosController < ApplicationController
   #before_filter :search_session, :history_session
 
   def edit
-    @video = ExternalVideo.find(params[:id])
+    @afdoc = ExternalVideo.find(params[:id])
     respond_to do |format|
       format.html  { setup_next_and_previous_documents }
-      format.json  { render :json => @video }
+      format.json  { render :json => @afdoc }
     end
   end
 
   def show
     session[:viewing_context] = "browse"
-    @video = ExternalVideo.find(params[:id])
+    @afdoc = ExternalVideo.find(params[:id])
     respond_to do |format|
       format.html  { setup_next_and_previous_documents }
       format.js
@@ -29,17 +29,17 @@ class ExternalVideosController < ApplicationController
   end
 
   def update
-    @video = ExternalVideo.find(params[:id])
+    @afdoc = ExternalVideo.find(params[:id])
     changes = changed_fields(params)
     if changes.empty?
-      redirect_to(edit_external_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Changes: ' + params.inspect)
+      redirect_to(edit_external_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Changes: ' + params.inspect)
     else
-      @video.update_attributes(changes)
+      @afdoc.update_attributes(changes)
       logger.info("Updating these fields: #{changes.inspect}")
-      if @video.save
-        redirect_to(edit_external_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
+      if @afdoc.save
+        redirect_to(edit_external_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
       else
-        redirect_to(edit_external_video_path(@video, :wf_step=>params[:wf_step]), :notice => 'Error: Unable to save changes')
+        redirect_to(edit_external_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Error: Unable to save changes')
       end
     end
   end

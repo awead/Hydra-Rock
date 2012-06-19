@@ -1,10 +1,10 @@
-<%= form_for @video, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
+<%= form_for @afdoc, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="required_title">
     <legend>Required Title</legend>
     <p class="legend-caption">A single, main title is required.  This may be the title of the event or program, it may be the title as it appears on the source tape</p>
     <%= f.label :main_title, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"main_title", :f=>f, :vals=>@video.main_title, :required=>TRUE, :multiple=>FALSE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"main_title", :f=>f, :vals=>@afdoc.main_title, :required=>TRUE, :multiple=>FALSE } %>
   </fieldset>
 
   <fieldset id="optional_titles">
@@ -12,7 +12,7 @@
     <p class="legend-caption">Additional title fields are optional, but you may add as many as needed.</p>
      <% ["alternative_title", "chapter", "episode", "label", "segment", "subtitle", "track", "translation"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
-      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>TRUE } %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>TRUE } %>
     <% end %>
   </fieldset>
 
@@ -20,11 +20,11 @@
     <legend>Description</legend>
     <p class="legend-caption">Provide additional descriptive information as needed.</p>
     <%= f.label :summary, :class=>"field" %>
-    <%= f.text_area :summary, :id=>"summary", :name=>"document_fields[summary][]", :value => @video.summary.first, :class=>"edit span5" %>
+    <%= f.text_area :summary, :id=>"summary", :name=>"document_fields[summary][]", :value => @afdoc.summary.first, :class=>"edit span5" %>
     <%= f.label :parts_list, :class=>"field" %>
-    <%= f.text_area :parts_list, :id=>"parts_list", :name=>"document_fields[parts_list][]", :value => @video.parts_list.first, :class=>"edit span5" %>
+    <%= f.text_area :parts_list, :id=>"parts_list", :name=>"document_fields[parts_list][]", :value => @afdoc.parts_list.first, :class=>"edit span5" %>
     <%= f.label :note, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@video.note, :multiple=>TRUE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@afdoc.note, :multiple=>TRUE } %>
   </fieldset>
 
   <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>

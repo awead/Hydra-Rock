@@ -103,14 +103,14 @@ module RockhallNavbarHelper
 
   def video_links_dropdown
     result = String.new
-    if @video.file_objects.count > 0
+    if @afdoc.file_objects.count > 0
       result << '<li class="dropdown">'
       result << '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'
       result << '<i class="icon-facetime-video"></i> Video <b class="caret"></b></a>'
       result << '<ul class="dropdown-menu">'
-      @video.videos.keys.each do |type|
-        unless @video.videos[type.to_sym].empty?
-          @video.videos[type.to_sym].each do |obj|
+      @afdoc.videos.keys.each do |type|
+        unless @afdoc.videos[type.to_sym].empty?
+          @afdoc.videos[type.to_sym].each do |obj|
            result << '<li>'
            result << link_to( obj.name.first, external_video_path(obj.pid) )
            result << '</li>'

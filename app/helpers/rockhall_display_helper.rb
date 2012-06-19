@@ -2,16 +2,16 @@ module RockhallDisplayHelper
 
   def display_field(field,opts={})
     results = String.new
-    return nil if @video.send(field.to_sym).empty? or @video.send(field.to_sym).first.empty?
+    return nil if @afdoc.send(field.to_sym).empty? or @afdoc.send(field.to_sym).first.empty?
     # Determine field label
     if opts[:name].nil?
       cap_name = field.to_s.split(/_/).each{|word| word.capitalize!}.join(" ")
-      @video.send(field.to_sym).count > 1 ? formatted_name = cap_name.pluralize : formatted_name = cap_name
+      @afdoc.send(field.to_sym).count > 1 ? formatted_name = cap_name.pluralize : formatted_name = cap_name
     else
-      @video.send(field.to_sym).count > 1 ? formatted_name = opts[:name].pluralize : formatted_name = opts[:name]
+      @afdoc.send(field.to_sym).count > 1 ? formatted_name = opts[:name].pluralize : formatted_name = opts[:name]
     end
     results << "<dt id=\"#{field.to_s}\">" + formatted_name + "</dt>"
-    @video.send(field.to_sym).each do |v|
+    @afdoc.send(field.to_sym).each do |v|
       results << "<dd id=\"#{field.to_s}\">" + v + "</dd>"
     end
     return results.html_safe

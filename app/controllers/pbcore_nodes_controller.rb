@@ -4,16 +4,16 @@ class PbcoreNodesController < ApplicationController
 
   def new
     af_model = retrieve_af_model(params[:content_type], :default=>ArchivalVideo)
-    @document_fedora = af_model.find(params[:id])
-    node, index = @document_fedora.insert_node(params[:node])
+    @afdoc = af_model.find(params[:id])
+    node, index = @afdoc.insert_node(params[:node])
 
-    if @document_fedora.save
+    if @afdoc.save
       respond_to do |format|
         format.html { redirect_to edit_archival_video_path(params) }
-        format.js   { render :partial => "pbcore_nodes/edit/#{params[:node]}", :locals => {:document=>@document_fedora} }
+        format.js   { render :partial => "pbcore_nodes/edit/#{params[:node]}", :locals => {:document=>@afdoc} }
       end
     else
-      flash[:notice] = "Unable to insert node: #{@document_fedora.errors.inspect}"
+      flash[:notice] = "Unable to insert node: #{@afdoc.errors.inspect}"
       respond_to do |format|
         format.html { redirect_to edit_archival_video_path(params) }
         format.js
@@ -23,16 +23,16 @@ class PbcoreNodesController < ApplicationController
 
   def destroy
     af_model = retrieve_af_model(params[:content_type], :default=>ArchivalVideo)
-    @document_fedora = af_model.find(params[:id])
-    @document_fedora.remove_node(params[:node],params[:index])
+    @afdoc = af_model.find(params[:id])
+    @afdoc.remove_node(params[:node],params[:index])
 
-    if @document_fedora.save
+    if @afdoc.save
       respond_to do |format|
         format.html { redirect_to edit_archival_video_path(params) }
-        format.js   { render :partial => "pbcore_nodes/edit/#{params[:node]}", :locals => {:document=>@document_fedora} }
+        format.js   { render :partial => "pbcore_nodes/edit/#{params[:node]}", :locals => {:document=>@afdoc} }
       end
     else
-      flash[:notice] = "Unable to delete node: #{@document_fedora.errors.inspect}"
+      flash[:notice] = "Unable to delete node: #{@afdoc.errors.inspect}"
       respond_to do |format|
         format.html { redirect_to edit_archival_video_path(params) }
         format.js

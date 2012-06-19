@@ -1,18 +1,18 @@
-<%= form_for @video, :url => digital_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
+<%= form_for @afdoc, :url => digital_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="archival_fields">
     <legend>Archival Information</legend>
     <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
     <% ["archival_collection", "archival_series", "collection_number", "accession_number"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
-      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
     <% end %>
   </fieldset>
 
   <fieldset id="usage_fields">
     <legend>Use Restrictions</legend>
     <%= f.label :usage, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"usage", :f=>f, :vals=>@video.usage, :multiple=>FALSE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"usage", :f=>f, :vals=>@afdoc.usage, :multiple=>FALSE } %>
   </fieldset>
 
   <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>

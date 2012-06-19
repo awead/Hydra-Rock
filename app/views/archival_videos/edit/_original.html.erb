@@ -1,10 +1,10 @@
-<%= form_for @video, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
+<%= form_for @afdoc, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="date_fields">
     <legend>Date</legend>
     <p class="legend-caption">Enter the date the item was first created or filmed.  Use YYYY-MM-DD for the format.</p>
     <%= f.label :creation_date, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"creation_date", :f=>f, :vals=>@video.creation_date, :multiple=>FALSE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"creation_date", :f=>f, :vals=>@afdoc.creation_date, :multiple=>FALSE } %>
   </fieldset>
 
   <fieldset id="original_fields">
@@ -16,10 +16,10 @@
     <%= f.select :colors, ["Color", "B&W", "Grayscale", "Tinted", "Toned"], {}, {:name => "document_fields[colors][]"} %>
     <% ["barcode", "format", "generation", "language"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
-      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
     <% end %>
     <%= f.label :repository, :class=>"field" %>
-    <%= f.text_area :repository, :name=>"document_fields[repository][]", :value=>@video.repository.first, :cols => "40", :rows => "5", :class=>"edit" %>
+    <%= f.text_area :repository, :name=>"document_fields[repository][]", :value=>@afdoc.repository.first, :cols => "40", :rows => "5", :class=>"edit" %>
   </fieldset>
 
   <fieldset id="archival_fields">
@@ -27,7 +27,7 @@
     <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
     <% ["archival_collection", "archival_series", "collection_number", "accession_number"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
-      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
     <% end %>
   </fieldset>
 
@@ -36,7 +36,7 @@
     <p class="legend-caption">Enter any relevant information about the condition of the original item or its usage restrictions.</p>
     <% ["usage", "condition_note", "cleaning_note"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
-      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@video.send(t), :multiple=>FALSE } %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
     <% end %>
   </fieldset>
 

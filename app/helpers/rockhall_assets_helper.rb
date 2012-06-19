@@ -3,15 +3,15 @@ module RockhallAssetsHelper
   include Hydra::AccessControlsEvaluation
 
   def asset_link(type)
-    @document_fedora.external_video(type.to_sym).datastreams["ACCESS1"].label
+    @afdoc.external_video(type.to_sym).datastreams["ACCESS1"].label
   end
 
   # Only used with jw_player
   def video_asset_path(type)
     path = String.new
-    unless @document_fedora.external_video(:h264).first.nil?
-      filename = @document_fedora.external_video(:h264).first.datastreams["descMetadata"].get_values(:name)
-      path = File.join(@document_fedora.pid.gsub(/:/,"_"),"data",filename)
+    unless @afdoc.external_video(:h264).first.nil?
+      filename = @afdoc.external_video(:h264).first.datastreams["descMetadata"].get_values(:name)
+      path = File.join(@afdoc.pid.gsub(/:/,"_"),"data",filename)
     end
     return path
   end
@@ -73,8 +73,8 @@ module RockhallAssetsHelper
 
   # Returns link to the parent video from an external video object
   def url_for_parent_video
-    model = @video.part_of.first.class.to_s.underscore.pluralize
-    pid   = @video.part_of.first.pid
+    model = @afdoc.part_of.first.class.to_s.underscore.pluralize
+    pid   = @afdoc.part_of.first.pid
     return url_for_asset(model, {:id=>pid}).html_safe
   end
 
