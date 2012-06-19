@@ -4,7 +4,7 @@ PATH
     hydra-head (4.0.3)
       RedCloth (= 4.2.9)
       active-fedora (~> 4.1)
-      blacklight (~> 3.4.2)
+      blacklight (~> 3.4)
       block_helpers
       deprecation (>= 0.0.5)
       devise
