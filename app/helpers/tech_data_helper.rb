@@ -66,7 +66,9 @@ module TechDataHelper
   def display_mediainfo_field(field)
     if @afdoc.datastreams["mediaInfo"].respond_to?(field.to_sym)
       value = @afdoc.datastreams["mediaInfo"].send(field.to_sym)
-      value.is_a?(Array) ? value.first : value
+      unless value.nil?
+        value.is_a?(Array) ? value.first : value
+      end
     else
       return nil
     end

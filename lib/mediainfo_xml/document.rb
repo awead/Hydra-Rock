@@ -152,12 +152,11 @@ class Document < ActiveFedora::NokogiriDatastream
   end
 
   def video_bit_depth
-    result = String.new
-    result << self.get_values([:file, :video, :bit_depth]).first.match(/\d+/).to_s
-    if result.nil?
+    result = self.get_values([:file, :video, :bit_depth])
+    if result.empty?
       return nil
     else
-      return result
+      return result.first.match(/\d+/).to_s
     end
   end
 
