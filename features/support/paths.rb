@@ -71,6 +71,8 @@ module NavigationHelpers
     # Digital Videos
     when /new digital_video page/
       new_digital_video_path
+    when /show digital video page for (.*)/i
+      digital_video_path($1)
 
 
     when /new (.*) page$/i

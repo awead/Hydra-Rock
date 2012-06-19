@@ -2,10 +2,10 @@
 <ul id="video-file-list" class="nav nav-tabs nav-stacked">
   <% @afdoc.videos.each_key do |type| %>
     <% unless @afdoc.videos[type].empty? %>
-      <% @afdoc.videos[type].each do |file| %>
-        <li id="<%= file.pid.gsub(/:/,"_") %>">
-          <%= link_to( type.to_s.capitalize,
-                       external_video_path(file.pid),
+      <% @afdoc.videos[type].each_index do |index| %>
+        <li id="<%= @afdoc.videos[type][index].pid.gsub(/:/,"_") %>">
+          <%= link_to( (type.to_s.capitalize + " (" + (index + 1).to_s + ")"),
+                       external_video_path(@afdoc.videos[type][index].pid),
                        :remote=>true ) %>
         </li>
       <% end %>

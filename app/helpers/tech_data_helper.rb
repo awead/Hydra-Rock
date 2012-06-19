@@ -12,7 +12,7 @@ module TechDataHelper
     r << "generation"
     r << "media_type"
     r << "file_format"
-    r << "file_size"
+    r << "size"
     r << "colors"
     r << "duration"
     r << "rights_summary"
@@ -55,13 +55,26 @@ module TechDataHelper
     if TechDataHelper.instance_methods.include?(field.to_sym)
       return send field.to_sym
     else
-      return @afdoc.send(field.to_sym).first
+      if @afdoc.send(field.to_sym).empty? or @afdoc.send(field.to_sym).first.blank?
+        return display_mediainfo_field(field)
+      else
+        return @afdoc.send(field.to_sym).first
+      end
+    end
+  end
+
+  def display_mediainfo_field(field)
+    if @afdoc.datastreams["mediaInfo"].respond_to?(field.to_sym)
+      value = @afdoc.datastreams["mediaInfo"].send(field.to_sym)
+      value.is_a?(Array) ? value.first : value
+    else
+      return nil
     end
   end
 
   def format_with_units(field,unit)
     if @afdoc.send(field.to_sym).first.empty?
-      return "unavailable"
+      return nil
     else
       if @afdoc.send(unit.to_sym).first.empty?
         return @afdoc.send(field.to_sym).first
@@ -71,20 +84,27 @@ module TechDataHelper
     end
   end
 
-  def file_size
-    return format_with_units(:size,:size_units)
+  def size
+    if @afdoc.size.empty? or @afdoc.size.first == "0"
+      return display_mediainfo_field(:size)
+    else
+      return format_with_units(:size,:size_units)
+    end
   end
 
   def video_bit_rate
-    return format_with_units(:video_bit_rate,:video_bit_rate_units)
+    result = format_with_units(:video_bit_rate,:video_bit_rate_units)
+    result.nil? ? display_mediainfo_field(:video_bit_rate) : result
   end
 
   def audio_bit_rate
-    return format_with_units(:audio_bit_rate,:audio_bit_rate_units)
+    result = format_with_units(:audio_bit_rate,:audio_bit_rate_units)
+    result.nil? ? display_mediainfo_field(:audio_bit_rate) : result
   end
 
   def audio_sample_rate
-    return format_with_units(:audio_sample_rate,:audio_sample_rate_units)
+    result = format_with_units(:audio_sample_rate,:audio_sample_rate_units)
+    result.nil? ? display_mediainfo_field(:audio_sample_rate) : result
   end
 
 end

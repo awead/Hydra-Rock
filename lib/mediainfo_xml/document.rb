@@ -138,11 +138,20 @@ class Document < ActiveFedora::NokogiriDatastream
     t.color_space(:ref=>[:file, :video, :color_space], :namespace_prefix=>nil)
     t.height(:ref=>[:file, :video, :height], :namespace_prefix=>nil)
     t.width(:ref=>[:file, :video, :width], :namespace_prefix=>nil)
+    t.file_size(:ref=>[:file, :general, :file_size])
 
 
   end
 
-  def bit_depth
+  def color_space
+    self.get_values([:file, :video, :color_space])
+  end
+
+  def chroma
+    self.get_values([:file, :video, :chroma_subsampling])
+  end
+
+  def video_bit_depth
     result = String.new
     result << self.get_values([:file, :video, :bit_depth]).first.match(/\d+/).to_s
     if result.nil?
@@ -150,6 +159,18 @@ class Document < ActiveFedora::NokogiriDatastream
     else
       return result
     end
+  end
+
+  def video_bit_rate
+    self.get_values([:file, :video, :bit_rate])
+  end
+
+  def audio_bit_rate
+    self.get_values([:file, :audio, :bit_rate])
+  end
+
+  def audio_sample_rate
+    self.get_values([:file, :audio, :sampling_rate])
   end
 
   def aspect_ratio
@@ -181,16 +202,10 @@ class Document < ActiveFedora::NokogiriDatastream
   end
 
   def duration
-    results = String.new
-    self.get_values([:file, :video, :duration]).each do |v|
-      unless v.match(/^\d+:\d+:\d+\.\d+$/).nil?
-        return v
-      end
-    end
-    return nil
+    self.get_values([:file, :video, :duration])
   end
 
-  def file_size
+  def size
     self.get_values([:file, :general, :file_size])
   end
 

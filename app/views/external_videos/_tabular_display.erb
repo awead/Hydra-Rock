@@ -1,11 +1,12 @@
 <a><%= video.name.first %></a>
 <table class="table table-striped">
   <% field_names.each do |field| %>
-    <% #unless video.send(field.to_sym).first.blank? %>
+    <% value = display_tech_data_field(field) %>
+    <% unless value.nil? %>
       <tr>
         <th><%= field.gsub(/_/," ").capitalize %> </th>
-        <td><%= display_tech_data_field(field) %></td>
+        <td><%= value %></td>
       </tr>
-    <% #end %>
+    <% end %>
   <% end %>
 </table>

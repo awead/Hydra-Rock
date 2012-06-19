@@ -64,8 +64,8 @@ class ExternalVideo < ActiveFedora::Base
   delegate :audio_channels,          :to => :descMetadata
   delegate :next,                    :to => :descMetadata
   delegate :previous,                :to => :descMetadata
-  delegate :depositor,               :to=> :properties
-  delegate :notes,                   :to=> :properties
+  delegate :depositor,               :to => :properties
+  delegate :notes,                   :to => :properties
 
   # augments add_named_datastream to put file information in descMetadata
   def add_named_datastream(name,opts={})
