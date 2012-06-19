@@ -190,6 +190,10 @@ class Document < ActiveFedora::NokogiriDatastream
     return nil
   end
 
+  def file_size
+    self.get_values([:file, :general, :file_size])
+  end
+
   def self.from_file(file)
     f = File.new(file)
     info = Mediainfo.new f

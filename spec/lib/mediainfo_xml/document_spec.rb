@@ -34,6 +34,10 @@ describe MediainfoXml::Document do
       @doc.duration.should == "00:09:56.458"
     end
 
+    it "should return the file size value" do
+      @doc.file_size.last.should == "37.30 MiB"
+    end
+
   end
 
   describe "calling mediainfo command" do
