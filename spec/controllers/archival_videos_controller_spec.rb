@@ -27,7 +27,7 @@ describe ArchivalVideosController do
       it "should render a new page" do
         get :new
         assert_response :success
-        assigns[:video].should be_kind_of ArchivalVideo
+        assigns[:afdoc].should be_kind_of ArchivalVideo
       end
     end
 
