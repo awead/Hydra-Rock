@@ -8,7 +8,8 @@ Narrative:
   Technical metadata from pbcore and mediaInfo datastreams needs to be combined for display.
 
   Scenario: File size information should come from mediaInfo xml (DAM-202)
-    Given I am on the show archival video page for rockhall:fixture_pbcore_document3
+    Given I am logged in as "archivist1@example.com"
+    When I am on the show archival video page for rockhall:fixture_pbcore_document3
     And I follow "Original"
     Then I should see "80.2 GiB"
 
