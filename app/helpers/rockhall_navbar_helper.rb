@@ -11,7 +11,7 @@ module RockhallNavbarHelper
     if current_user
       if params[:action] == "edit"
         result << "<li>"
-        result << link_to_asset('<i class="icon-eye-open"></i> View </a>'.html_safe, model)
+        result << link_to('<i class="icon-eye-open"></i> View </a>'.html_safe, catalog_path(params[:id]))
         result << "</li>"
       else
         if Hydra.config[:submission_workflow][model.to_sym].nil? or RoleMapper.roles(current_user.login).include?("reviewer")
@@ -83,16 +83,28 @@ module RockhallNavbarHelper
       result << '<ul class="dropdown-menu">'
       if @previous_document
         result << '<li>'
-        result << link_to('<i class="icon-arrow-left"></i> Previous'.html_safe,
-                          url_for_asset_from_solr_doc(@previous_document),
-                          :'data-counter' => session[:search][:counter].to_i - 1)
+        if params[:action] == "edit"
+          result << link_to('<i class="icon-arrow-left"></i> Previous'.html_safe,
+                             url_for_asset_from_solr_doc(@previous_document),
+                            :'data-counter' => session[:search][:counter].to_i - 1)
+        else
+          result << link_to('<i class="icon-arrow-left"></i> Previous'.html_safe,
+                             catalog_path(@previous_document),
+                            :'data-counter' => session[:search][:counter].to_i - 1)
+        end
         result << '</li>'
       end
       if  @next_document
         result << '<li>'
-        result << link_to('<i class="icon-arrow-right"></i> Next'.html_safe,
-                          url_for_asset_from_solr_doc(@next_document),
-                          :'data-counter' => session[:search][:counter].to_i + 1)
+        if params[:action] == "edit"
+          result << link_to('<i class="icon-arrow-right"></i> Next'.html_safe,
+                            url_for_asset_from_solr_doc(@next_document),
+                            :'data-counter' => session[:search][:counter].to_i + 1)
+        else
+          result << link_to('<i class="icon-arrow-right"></i> Next'.html_safe,
+                            catalog_path(@next_document),
+                            :'data-counter' => session[:search][:counter].to_i + 1)
+        end
         result << '</li>'
       end
       result << '</ul>'

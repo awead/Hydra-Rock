@@ -3,8 +3,10 @@ source 'http://rubygems.org'
 gem 'rails', '~>3.2.3'
 gem 'sass-rails', "  ~> 3.2.3"
 
-gem 'blacklight'
+gem 'blacklight', :path => "gems/blacklight"
+#gem 'blacklight'
 gem 'hydra-head', :path => "gems/hydra-head"
+gem 'active-fedora', :path => "gems/active_fedora"
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'

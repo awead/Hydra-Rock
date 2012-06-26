@@ -1,0 +1,24 @@
+<div class="well"><h1><%= @document[:heading_display].first %></h1></div>
+
+<% player_column << capture do %>
+  <%= render_video_player_in_catalog %>
+<% end %>
+
+<h2>Catalog Record</h2>
+<dl class="dl-horizontal">
+<% document_show_fields.each do |solr_fname, field| -%>
+  <% if document.has? solr_fname %>
+	  <dt id="<%= solr_fname %>"><%= render_document_show_field_label :field => solr_fname %></dt>
+	  <% document[solr_fname.to_sym].each do |v| %>
+	    <dd id="<%= solr_fname %>"><%= v %></dd>
+	  <% end %>
+  <% end -%>
+<% end -%>
+</dl>
+
+<h2>Review Information</h2>
+<%= render :partial => "shared/show/review" %>
+
+<% navbar_items << capture do %>
+  <%= render_user_navbar("digital_videos") %>
+<% end %>

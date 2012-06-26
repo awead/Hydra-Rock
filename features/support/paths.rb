@@ -58,7 +58,7 @@ module NavigationHelpers
 
     # Archival videos
     when /show archival video page for (.*)/i
-      archival_video_path($1)
+      catalog_path($1)
     when /new archival video page/
       new_archival_video_path
     when /edit archival video page for (.*)/i
@@ -66,13 +66,15 @@ module NavigationHelpers
 
     # External Videos
     when /show external video page for (.*)/i
-      external_video_path($1)
+      catalog_path($1)
 
     # Digital Videos
     when /new digital_video page/
       new_digital_video_path
     when /show digital video page for (.*)/i
-      digital_video_path($1)
+      catalog_path($1)
+    when /edit digital video page for (.*)/i
+      edit_digital_video_path($1)
 
 
     when /new (.*) page$/i

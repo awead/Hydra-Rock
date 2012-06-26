@@ -43,7 +43,7 @@ class ArchivalVideosController < ApplicationController
     @afdoc.apply_depositor_metadata(current_user.login)
     respond_to do |format|
       if @afdoc.save
-        format.html { redirect_to(@afdoc, :notice => 'Video was successfully created.') }
+        format.html { redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was successfully created.') }
         format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
       else
         format.html { render :action => "new" }

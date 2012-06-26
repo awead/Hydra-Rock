@@ -37,9 +37,6 @@ Feature:
     When I select "presenter" from "publisher_role_0"
     And I press "Save Changes"
     Then I should see "presenter"
-    And I follow "View"
-    And I should see "(performer)"
-    And I should see "(presenter)"
 
   Scenario: Null roles (DAM-169)
     Given I am logged in as "archivist1@example.com"

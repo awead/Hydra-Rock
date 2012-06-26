@@ -18,9 +18,8 @@ module Rockhall::Controller::ControllerBehaviour
     return changes
   end
 
-
   def get_model_from_pid(id)
-    af = ActiveFedora::Base.find(id)
+    af = ActiveFedora::Base.load_instance_from_solr(id)
     af.relationships.data.each_statement do |s|
       if s.object.to_s.match("afmodel")
         model = s.object.to_s.gsub("info:fedora/afmodel:","")

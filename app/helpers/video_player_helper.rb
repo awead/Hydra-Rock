@@ -5,6 +5,13 @@ module VideoPlayerHelper
     @player_column ||= []
   end
 
+  # Displays the video player using the catalog controller
+  def render_video_player_in_catalog(opts={})
+    @afdoc = ActiveFedora::Base.load_instance_from_solr(params[:id])
+    render_video_player
+  end
+
+  # Displays the video player using a Hydra controller
   def render_video_player(opts={})
     if @afdoc.file_objects.count > 0
       if RH_CONFIG["video_player"].nil?

@@ -1,14 +1,13 @@
-# -*- encoding : utf-8 -*-
-require 'blacklight/catalog'
-
 class CatalogController < ApplicationController
 
   include Blacklight::Catalog
-  include Hydra::Catalog
+  include Hydra::AccessControlsEnforcement
 
-  # These before_filters apply the hydra access controls
-  before_filter :enforce_access_controls
-  before_filter :enforce_viewing_context_for_show_requests, :only=>:show
+  # User still needs the #update action in the catalog, so we only enforce Hydra
+  # access controls when the user tries to just view a document they don't have
+  # access to.
+  before_filter :enforce_access_controls, :only=>:show
+
   # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params
   # This filters out objects that you want to exclude from search results, like FileAssets
@@ -31,9 +30,9 @@ class CatalogController < ApplicationController
     config.index.record_display_type  = 'has_model_s'
 
     # solr field configuration for document/show views
-    config.show.html_title = 'title_t'
-    config.show.heading = 'title_t'
-    config.show.display_type = 'has_model_s'
+    config.show.html_title            = 'title_t'
+    config.show.heading               = 'title_t'
+    config.show.display_type          = 'has_model_s'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -78,32 +77,56 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'title_display', :label => 'Title:'
-    config.add_index_field 'title_vern_display', :label => 'Title:'
-    config.add_index_field 'author_display', :label => 'Author:'
-    config.add_index_field 'author_vern_display', :label => 'Author:'
-    config.add_index_field 'format', :label => 'Format:'
-    config.add_index_field 'language_facet', :label => 'Language:'
-    config.add_index_field 'published_display', :label => 'Published:'
-    config.add_index_field 'published_vern_display', :label => 'Published:'
-    config.add_index_field 'lc_callnum_display', :label => 'Call number:'
+    #config.add_index_field 'title_display',           :label => 'Title:'
+    #config.add_index_field 'title_vern_display',      :label => 'Title:'
+    #config.add_index_field 'author_display',          :label => 'Author:'
+    #config.add_index_field 'author_vern_display',     :label => 'Author:'
+    #config.add_index_field 'format',                  :label => 'Format:'
+    #config.add_index_field 'language_facet',          :label => 'Language:'
+    #config.add_index_field 'published_display',       :label => 'Published:'
+    #config.add_index_field 'published_vern_display',  :label => 'Published:'
+    #config.add_index_field 'lc_callnum_display',      :label => 'Call number:'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
-    config.add_show_field 'title_display', :label => 'Title:'
-    config.add_show_field 'title_vern_display', :label => 'Title:'
-    config.add_show_field 'subtitle_display', :label => 'Subtitle:'
-    config.add_show_field 'subtitle_vern_display', :label => 'Subtitle:'
-    config.add_show_field 'author_display', :label => 'Author:'
-    config.add_show_field 'author_vern_display', :label => 'Author:'
-    config.add_show_field 'format', :label => 'Format:'
-    config.add_show_field 'url_fulltext_display', :label => 'URL:'
-    config.add_show_field 'url_suppl_display', :label => 'More Information:'
-    config.add_show_field 'language_facet', :label => 'Language:'
-    config.add_show_field 'published_display', :label => 'Published:'
-    config.add_show_field 'published_vern_display', :label => 'Published:'
-    config.add_show_field 'lc_callnum_display', :label => 'Call number:'
-    config.add_show_field 'isbn_t', :label => 'ISBN:'
+    #
+    # These are fields that are shown via the catalog controller
+    config.add_show_field 'main_title_t',           :label => 'Main Title'
+    config.add_show_field 'alternative_title_t',    :label => 'Alternative Title'
+    config.add_show_field 'chapter_t',              :label => 'Capter'
+    config.add_show_field 'episode_t',              :label => 'Episode'
+    config.add_show_field 'label_t',                :label => 'Label'
+    config.add_show_field 'segment_t',              :label => 'Segment'
+    config.add_show_field 'subtitle_t',             :label => 'Subtitle'
+    config.add_show_field 'track_t',                :label => 'Track'
+    config.add_show_field 'translation_t',          :label => 'Translation'
+    config.add_show_field 'summary_t',              :label => 'Summary'
+    config.add_show_field 'parts_list_t',           :label => 'Parts List'
+    config.add_show_field 'note_t',                 :label => 'Note'
+    config.add_show_field 'subjects_t',             :label => 'Subject'
+    config.add_show_field 'genres_t',               :label => 'Genre'
+    config.add_show_field 'event_series_t',         :label => 'Event Series'
+    config.add_show_field 'event_place_t',          :label => 'Event Place'
+    config.add_show_field 'event_date_t',           :label => 'Event Date'
+    config.add_show_field 'contributors_display',   :label => 'Contributor'
+    config.add_show_field 'publisher_display',      :label => 'Publisher'
+    config.add_show_field 'creation_date_t',        :label => 'Creation Date'
+    config.add_show_field 'media_type_t',           :label => 'Media Type'
+    config.add_show_field 'standard_t',             :label => 'Standard'
+    config.add_show_field 'colors_t',               :label => 'Colors'
+    config.add_show_field 'barcode_t',              :label => 'Barcode'
+    config.add_show_field 'format_t',               :label => 'Format'
+    config.add_show_field 'generation_t',           :label => 'Generation'
+    config.add_show_field 'language_t',             :label => 'Language'
+    config.add_show_field 'repository_t',           :label => 'Repository'
+    config.add_show_field 'archival_collection_t',  :label => 'Archival Collection'
+    config.add_show_field 'archival_series_t',      :label => 'Archival Series'
+    config.add_show_field 'collection_number_t',    :label => 'Collection Number'
+    config.add_show_field 'accession_number_t',     :label => 'Accession Number'
+    config.add_show_field 'usage_t',                :label => 'Usage'
+    config.add_show_field 'condition_note_t',       :label => 'Condition Note'
+    config.add_show_field 'cleaning_note_t',        :label => 'Cleaning Note'
+
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -182,5 +205,6 @@ class CatalogController < ApplicationController
   # end of Blacklight configuration
   #
   #--------------------------------------------------------------------------------------
+
 
 end

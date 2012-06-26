@@ -49,6 +49,10 @@
   }
 }
 
+#showHead {
+  display: none;
+}
+
 .pageEntriesInfo {
   @extend .well;
   #startOverLink {
