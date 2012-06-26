@@ -1,19 +1,18 @@
 source 'http://rubygems.org'
 
 gem 'rails', '~>3.2.3'
-gem 'sass-rails', "  ~> 3.2.3"
+gem 'sass-rails', '~> 3.2.3'
 
-gem 'blacklight', :path => "gems/blacklight"
-#gem 'blacklight'
-gem 'hydra-head', :path => "gems/hydra-head"
-gem 'active-fedora', :path => "gems/active_fedora"
+gem 'blacklight', '~>3.4'
+gem 'hydra-head', :path => 'gems/hydra-head'
+gem 'active-fedora', :path => 'gems/active_fedora'
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
 gem 'mediainfo'
 
 group :assets do
-  gem 'coffee-rails', "~> 3.2.1"
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails', '~> 1.0.0'
   gem 'compass-susy-plugin', '~> 0.9.0'
