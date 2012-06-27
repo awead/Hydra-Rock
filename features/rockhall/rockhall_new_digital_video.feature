@@ -18,7 +18,7 @@ Feature:
     And I press "+" within "div#additional_alternative_title_clone"
     And I fill in "document_fields[chapter][]" with "Sample Chapter"
     And I fill in "document_fields[episode][]" with "Sample Episode"
-    And I fill in "document_fields[label][]" with "Sample Label"
+    And I fill in "document_fields[title_label][]" with "Sample Label"
     And I fill in "document_fields[segment][]" with "Sample Segment"
     And I fill in "document_fields[subtitle][]" with "Sample Subtitle"
     And I fill in "document_fields[track][]" with "Sample Track"

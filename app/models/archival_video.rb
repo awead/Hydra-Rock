@@ -27,7 +27,7 @@ class ArchivalVideo < ActiveFedora::Base
   delegate :alternative_title,    :to=> :descMetadata
   delegate :chapter,              :to=> :descMetadata
   delegate :episode,              :to=> :descMetadata
-  delegate :label,                :to=> :descMetadata
+  delegate :title_label,          :to=> :descMetadata, :at=>[:label]
   delegate :segment,              :to=> :descMetadata
   delegate :subtitle,             :to=> :descMetadata
   delegate :track,                :to=> :descMetadata

@@ -10,7 +10,7 @@
   <fieldset id="optional_titles">
     <legend>Optional Titles</legend>
     <p class="legend-caption">Additional title fields are optional, but you may add as many as needed.</p>
-     <% ["alternative_title", "chapter", "episode", "label", "segment", "subtitle", "track", "translation"].each do |t| %>
+     <% ["alternative_title", "chapter", "episode", "title_label", "segment", "subtitle", "track", "translation"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
       <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>TRUE } %>
     <% end %>

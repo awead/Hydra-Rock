@@ -27,7 +27,7 @@ describe Workflow::RockhallIngest do
       ing.parent.file_objects.length.should == 6
 
       # Check parent object fields
-      ing.parent.label.first.should == "Rock and Roll Hall of Fame Library and Archives"
+      ing.parent.label.should == "Rock and Roll Hall of Fame Library and Archives"
 
       # Check access videos
       ing.parent.videos[:h264].each do |ev|

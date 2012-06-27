@@ -27,7 +27,7 @@ describe Workflow::GbvIngest do
       ing.parent.file_objects.length.should == 2
 
       # Check parent object fields
-      ing.parent.label.first.should == "George Blood Audio and Video"
+      ing.parent.label.should == "George Blood Audio and Video"
       ds = ing.parent.datastreams["descMetadata"]
       ds.get_values([:creation_date]).first.should  == "2007-07-09"
       ds.get_values([:standard]).first.should  == "NTSC"
