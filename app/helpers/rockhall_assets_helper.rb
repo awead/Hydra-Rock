@@ -3,7 +3,7 @@ module RockhallAssetsHelper
   include Hydra::AccessControlsEvaluation
 
   def asset_link(type)
-    @afdoc.external_video(type.to_sym).datastreams["ACCESS1"].label
+    @afdoc.videos[type.to_sym].first.datastreams["ACCESS1"].label
   end
 
   # Only used with jw_player
