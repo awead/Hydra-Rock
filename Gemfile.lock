@@ -27,7 +27,7 @@ PATH
       block_helpers
       deprecation (>= 0.0.5)
       devise
-      hydra-access-controls
+      hydra-access-controls (>= 0.0.2)
       hydra-mods (>= 0.0.5)
       jquery-rails
       rails (~> 3.2.3)
@@ -160,7 +160,7 @@ GEM
     hike (1.2.1)
     httpi (1.0.0)
       rack
-    hydra-access-controls (0.0.1)
+    hydra-access-controls (0.0.2)
       active-fedora
       activesupport
       cancan
