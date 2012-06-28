@@ -88,3 +88,10 @@ Feature:
     And I should see the field content "accession_number_t" contain "Sample accession number"
     And I should see the field content "usage_t" contain "Sample usage note"
     And I should see the field content "depositor_t" contain "archivist1@example.com"
+
+  Scenario: Create new digital video object without a title (DAM-210)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the home page
+    And I create a new digital_video
+    When I press "Save Changes"
+    Then I should see "Main title can't be blank"

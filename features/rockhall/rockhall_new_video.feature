@@ -109,3 +109,10 @@ Feature:
     And I should see the field content "condition_note_t" contain "Sample condition note"
     And I should see the field content "cleaning_note_t" contain "Sample cleaning note"
     And I should see the field content "depositor_t" contain "archivist1@example.com"
+
+  Scenario: Create new digital video object without a title (DAM-210)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the home page
+    And I create a new archival video
+    When I press "Save Changes"
+    Then I should see "Main title can't be blank"

@@ -46,7 +46,10 @@ class ArchivalVideosController < ApplicationController
         format.html { redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was successfully created.') }
         format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
       else
-        format.html { render :action => "new" }
+        format.html {
+          flash[:alert] = @afdoc.errors.messages.values.to_s
+          render :action => "new"
+        }
         format.json { render :json => @afdoc.errors, :status => :unprocessable_entity }
       end
     end
@@ -65,7 +68,7 @@ class ArchivalVideosController < ApplicationController
       if @afdoc.save
         redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
       else
-        redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Error: Unable to save changes')
+        redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
       end
     end
   end

@@ -7,7 +7,7 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     Given I am on the edit archival video page for rockhall:fixture_pbcore_document1
     Then I should see "Required Title"
-    And the "main_title_0" field should contain "Rock and Roll Hall of Fame induction ceremony. Part 1."
+    And the "archival_video_main_title" field should contain "Rock and Roll Hall of Fame induction ceremony. Part 1."
     And the "alternative_title_0" field should contain "\[Tape label title\] Induction ceremony, line cut reel \#20A, 03\/15\/99."
     And the "summary" field should contain "\(1 of 3\) Uncut performances and award presentations from the 1999 ceremony."
     And the "note_0" field should contain "http\:\/\/rockhall\.com\/inductees\/ceremonies\/1999\/"

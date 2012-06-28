@@ -36,10 +36,10 @@ describe Rockhall::Controller::ControllerBehaviour do
       @controller.changed_fields(@params).should be_empty
     end
 
-    it "should return names of changed fields" do
-      @params[:document_fields][:main_title] = ["My Title"]
+    it "should return names of changed single-value fields" do
+      @params[:document_fields][:main_title] = "My Title"
       results = @controller.changed_fields(@params)
-      results[:main_title].first.should == "My Title"
+      results[:main_title].should == "My Title"
     end
 
   end

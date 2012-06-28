@@ -140,6 +140,7 @@ class RockhallSip
   def create(opts={})
     begin
       dv = DigitalVideo.new
+      dv.main_title = self.base.to_s
       dv.save
       dv.label = "Rock and Roll Hall of Fame Library and Archives"
       dv.save
