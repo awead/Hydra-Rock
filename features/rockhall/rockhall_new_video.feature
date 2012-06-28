@@ -129,5 +129,29 @@ Feature:
     And I press "Save Changes"
     Then I should see "Date must be in YYYY-MM-DD format"
 
+  Scenario: Partial dates in solr (DAM-212)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the home page
+    And I create a new archival video
+    And I should see "Required Title"
+    And I fill in "archival_video[main_title]" with "Sample Main Title"
+    When I press "Save Changes"
+    Then I should see "Sample Main Title"
+    When I follow "Subjects"
+    And I fill in "document_fields[event_date][]" with "1999"
+    And I press "Save Changes"
+    Then the "event_date_0" field should contain "1999"
+    And I fill in "document_fields[event_date][]" with "2003-12"
+    And I press "Save Changes"
+    Then the "event_date_0" field should contain "2003-12"
+    When I follow "Original"
+    And I fill in "document_fields[creation_date][]" with "1999"
+    And I press "Save Changes"
+    Then the "creation_date_0" field should contain "1999"
+    And I fill in "document_fields[creation_date][]" with "2003-12"
+    And I press "Save Changes"
+    Then the "creation_date_0" field should contain "2003-12"
+
+
 
 

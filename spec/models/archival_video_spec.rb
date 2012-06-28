@@ -45,6 +45,14 @@ describe ArchivalVideo do
       it "should index the right fields in solr" do
         solr_doc = @video.to_solr
       end
+      it "should allow for 4-digit date" do
+        @video.creation_date = "1999"
+        @video.to_solr[:pub_date].should == "1999"
+      end
+      it "should use an incomplete date" do
+        @video.creation_date = "2001-12"
+        @video.to_solr[:pub_date].should == "2001"
+      end
     end
 
     describe "delegate fields" do

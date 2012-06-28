@@ -38,6 +38,18 @@ module Rockhall::WorkflowMethods
         date = DateTime.parse("#{$2}/#{$1}/20#{$3}")
       elsif s =~ /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
         date = DateTime.parse("#{$2}/#{$1}/#{$3}")
+      elsif s =~ /^(\d\d\d\d)-(\d\d)$/
+        if (1...13).include?($2.to_i) and (1000...3000).include?($1.to_i)
+          return s
+        else
+          return nil
+        end
+      elsif s =~ /^(\d\d\d\d)$/
+        if (1000...3000).include?($1.to_i)
+          return s
+        else
+          return nil
+        end
       else
         date = DateTime.parse(s)
       end
@@ -45,6 +57,21 @@ module Rockhall::WorkflowMethods
       return nil
     end
     return date.strftime("%Y-%m-%d")
+  end
+
+  # Returns the 4-digit year from a string
+  def get_year(s)
+    begin
+      return DateTime.parse(s).year.to_s
+    rescue
+      if s.match(/^\d\d\d\d$/)
+        return s.to_s
+      elsif s.match(/^(\d\d\d\d)-\d\d$/)
+        return $1.to_s
+      else
+        return nil
+      end
+    end
   end
 
   def parse_ratio(r)
