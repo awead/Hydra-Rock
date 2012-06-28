@@ -32,7 +32,7 @@ Feature:
     And I fill in "document_fields[lc_genre][]" with "Sample genre"
     And I fill in "document_fields[event_series][]" with "Sample event series"
     And I fill in "document_fields[event_place][]" with "Sample event place"
-    And I fill in "document_fields[event_date][]" with "Sample event date"
+    And I fill in "document_fields[event_date][]" with "2010-02-03"
     And I press "Save Changes"
     Then I should see "Library of Congress Subject Headings"
     When I follow "Persons"
@@ -88,7 +88,7 @@ Feature:
     And I should see the field content "genres_t" contain "Sample genre"
     And I should see the field content "event_series_t" contain "Sample event series"
     And I should see the field content "event_place_t" contain "Sample event place"
-    And I should see the field content "event_date_t" contain "Sample event date"
+    And I should see the field content "event_date_t" contain "2010-02-03"
     And I should see the field content "note_t" contain "Sample note"
     And I should see the field content "contributors_display" contain "John Doe"
     And I should see the field content "publisher_display" contain "Jane Doe"
@@ -116,3 +116,18 @@ Feature:
     And I create a new archival video
     When I press "Save Changes"
     Then I should see "Main title can't be blank"
+
+  Scenario: Validate correct date format for all date fields (DAM-211)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the edit digital video page for rockhall:fixture_pbcore_document1
+    When I follow "Subjects"
+    And I fill in "document_fields[event_date][]" with "bogus date"
+    And I press "Save Changes"
+    Then I should see "Date must be in YYYY-MM-DD format"
+    When I follow "Original"
+    And I fill in "document_fields[creation_date][]" with "bogus"
+    And I press "Save Changes"
+    Then I should see "Date must be in YYYY-MM-DD format"
+
+
+

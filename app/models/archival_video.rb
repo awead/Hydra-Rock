@@ -7,6 +7,8 @@ class ArchivalVideo < ActiveFedora::Base
   include Hydra::SubmissionWorkflow
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
+  include ActiveModel::Validations
+  include Rockhall::Validations
 
   after_create :apply_default_permissions
 
@@ -31,20 +33,14 @@ class ArchivalVideo < ActiveFedora::Base
 
   # Fields with only one value
   delegate :main_title, :to=> :descMetadata, :unique=>true
+  validates_presence_of :main_title, :message => "Main title can't be blank"
 
   # label is used for the Fedora object, so we have to call our label something else
   delegate :title_label, :to=> :descMetadata, :at=>[:label]
 
   delegate_to :properties, [:depositor, :notes]
 
-  include ActiveModel::Validations
-  validates_presence_of :main_title, :message => "Main title can't be blank"
-  validate :date_format
-
-  def date_format
-    unless self.creation_date.first.blank?
-      errors.add(:creation_date, "Date must be in YYYY-MM-DD format, or YYYY-MM, or just YYYY") if parse_date(self.creation_date.first).nil?
-    end
-  end
+  validate :validate_event_date
+  validate :validate_creation_date
 
 end

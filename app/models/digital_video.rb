@@ -7,6 +7,7 @@ class DigitalVideo < ActiveFedora::Base
   include ActiveFedora::FileManagement
   include ActiveFedora::Relationships
   include ActiveFedora::DatastreamCollections
+  include Rockhall::Validations
   include ActiveModel::Validations
 
   after_create :apply_default_permissions
@@ -36,5 +37,7 @@ class DigitalVideo < ActiveFedora::Base
   delegate :title_label, :to=> :descMetadata, :at=>[:label]
 
   delegate_to :properties, [:depositor, :notes]
+
+  validate :validate_event_date
 
 end
