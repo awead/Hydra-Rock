@@ -19,3 +19,5 @@
 //= require 'jquery.ui.datepicker.js'
 
 //= require_tree .
+
+var ROOT_PATH = "/";

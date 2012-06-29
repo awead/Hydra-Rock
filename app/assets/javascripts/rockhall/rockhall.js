@@ -8,7 +8,7 @@
 // of our rails app.
 function getTerms(term) {
   var items = [];
-  jQuery.getJSON('/json/'+term+'.json', function(data) {
+  jQuery.getJSON(ROOT_PATH+'json/'+term+'.json', function(data) {
 
     $.each(data, function(key, val) {
       items.push(val);
