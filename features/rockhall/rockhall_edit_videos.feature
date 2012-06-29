@@ -37,8 +37,8 @@ Feature:
     And the "publisher_role_0" field should contain "presenter"
     When I follow "Original"
     Then I should see "Original Item"
-    And the "creation_date_0" field should contain "1999-03-15"
-    And the "barcode_0" field should contain "39156042551098"
+    And the "archival_video_creation_date" field should contain "1999-03-15"
+    And the "archival_video_barcode" field should contain "39156042551098"
     And I should see "Archival Information"
     And the "archival_collection_0" field should contain "Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division."
     When I follow "Rockhall"
@@ -60,5 +60,15 @@ Feature:
     Then I should see "Rockhall Fields"
     When I follow "Permissions"
     Then I should see "Group Permissions"
+
+  @javascript
+  Scenario: Populate fields with autocomplete data via JSON (DAM-214)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the edit archival video page for rockhall:fixture_pbcore_document1
+    And I follow "Original"
+    When I fill in "document_fields[format][]" with "Be"
+    Then I should see "Betacam"
+    And I should see "Betacam SP"
+    And I should see "Betacam SX"
 
 

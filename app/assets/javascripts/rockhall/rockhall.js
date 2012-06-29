@@ -4,16 +4,26 @@
 // $(document).ready(myFunction);
 // and define myFunction below.
 
-function updateContributor(index) {
-  var role = $('#contributor_select_' + index + ' option:selected').text()
-  var ref  = $('#contributor_select_' + index).val();
-  $('input#contributor_' + index + '_role').val(role);
-  $('input#contributor_' + index + '_role_ref').val(ref);
-}
+// Defines a simple function that parses a json file stored under public/json
+// of our rails app.
+function getTerms(term) {
+  var items = [];
+  jQuery.getJSON('/json/'+term+'.json', function(data) {
 
-function updatePublisher(index) {
-  var role = $('#publisher_select_' + index + ' option:selected').text()
-  var ref  = $('#publisher_select_' + index).val();
-  $('input#publisher_' + index + '_role').val(role);
-  $('input#publisher_' + index + '_role_ref').val(ref);
-}
+    $.each(data, function(key, val) {
+      items.push(val);
+    });
+
+  });
+  return items;
+};
+
+jQuery(document).ready(function() {
+
+
+  $('.pbcGen_auto').typeahead({ source: getTerms('pbcoreGenerations') });
+  $('.insPhy_auto').typeahead({ source: getTerms('instantiationPhysical') });
+
+
+});
+

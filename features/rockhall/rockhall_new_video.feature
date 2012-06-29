@@ -147,10 +147,15 @@ Feature:
     When I follow "Original"
     And I fill in "document_fields[creation_date][]" with "1999"
     And I press "Save Changes"
-    Then the "creation_date_0" field should contain "1999"
+    Then the "archival_video_creation_date" field should contain "1999"
     And I fill in "document_fields[creation_date][]" with "2003-12"
     And I press "Save Changes"
-    Then the "creation_date_0" field should contain "2003-12"
+    Then the "archival_video_creation_date" field should contain "2003-12"
+
+
+
+
+
 
 
 
