@@ -210,17 +210,4 @@ describe Rockhall::WorkflowMethods do
 
   end
 
-  describe "#get_model" do
-
-    it "should return the name of the model of a given pid" do
-      av = ArchivalVideo.new
-      av.save
-      av.get_model.should == "ArchivalVideo"
-      dv = DigitalVideo.new
-      dv.save
-      dv.get_model.should == "DigitalVideo"
-    end
-
-  end
-
 end
