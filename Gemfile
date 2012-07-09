@@ -29,7 +29,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'generator_spec'
-  gem 'mocha'
+  gem "mocha", :require => false
   gem 'rest-client'
   gem 'rspec'
   gem 'rspec-rails'
