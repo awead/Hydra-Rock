@@ -3,6 +3,7 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
 
 	include Rockhall::PbcoreMethods
 	include Rockhall::WorkflowMethods
+	include Rockhall::SolrMethods
 
   set_terminology do |t|
     t.root(:path=>"pbcoreDescriptionDocument", :xmlns => '', :namespace_prefix=>nil)
