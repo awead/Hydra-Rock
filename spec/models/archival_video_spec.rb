@@ -45,6 +45,14 @@ describe ArchivalVideo do
       it "should index the right fields in solr" do
         solr_doc = @video.to_solr
       end
+      it "should allow for 4-digit date" do
+        @video.creation_date = "1999"
+        @video.to_solr[:pub_date].should == "1999"
+      end
+      it "should use an incomplete date" do
+        @video.creation_date = "2001-12"
+        @video.to_solr[:pub_date].should == "2001"
+      end
     end
 
     describe "delegate fields" do
@@ -64,7 +72,7 @@ describe ArchivalVideo do
 
   describe "#videos" do
     it "should return a hash of videos" do
-      av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_document3")
+      av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
       av.file_objects.count.should == 2
       av.videos.should be_kind_of(Hash)
     end
@@ -72,7 +80,7 @@ describe ArchivalVideo do
 
   describe "#addl_solr_fields" do
     it "should return a hash of additional fields that will be included in the solr discovery export" do
-      av = ArchivalVideo.load_instance("rockhall:fixture_pbcore_document3")
+      av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
       addl_doc = av.addl_solr_fields
       addl_doc.should be_kind_of(Hash)
       addl_doc.to_s.should match("39156042439369_access.mp4")

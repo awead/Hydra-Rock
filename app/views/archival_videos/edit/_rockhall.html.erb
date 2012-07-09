@@ -1,19 +1,11 @@
-<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"archival_video", :"accept-charset"=>"utf-8") do -%>
-
-  <%= hidden_field_tag("_method","put") %>
+<%= form_for @afdoc, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="rockhall_fields">
     <legend>Rockhall Fields</legend>
-    <%= display_field([:notes], { :datastream => "properties", :name => "Internal Notes", :multiple=>true, :required=>false }) %>
-    <%= display_field([:submission], { :datastream => "properties", :name => "File Submissions", :multiple=>true, :required=>false }) %>
-    <%= display_field([:access], { :datastream => "properties", :name => "Access Restrictions", :multiple=>false, :required=>false }) %>
+    <%= f.label :notes, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"notes", :f=>f, :vals=>@afdoc.notes, :multiple=>TRUE } %>
   </fieldset>
 
-  <h3>Proceed to next step?</h3>
-  <%= radio_button_tag(:wf_step, "original", :checked=>true) %> No <br/>
-  <%= radio_button_tag(:wf_step, "rockhall") %> Yes <br/>
-  <%= hidden_field_tag(:content_type,"archival_video") %>
-  <%= submit_tag("Submit", :name=>"submit") %>
-  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 
 <% end %>

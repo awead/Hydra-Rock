@@ -99,15 +99,23 @@ describe Rockhall::WorkflowMethods do
   describe "parsing a date" do
 
     it "should return a formatted date from a valid string" do
-      @wf.parse_date("2011-01-01").should == "2011-01-01"
-      @wf.parse_date("10/11/2011").should == "2011-10-11"
-      @wf.parse_date("Wed Apr 04 14:47:15 -0400 2012").should == "2012-04-04"
+      @wf.parse_date("2011-01-01").should                       == "2011-01-01"
+      @wf.parse_date("10/11/2011").should                       == "2011-10-11"
+      @wf.parse_date("10/27/2002").should                       == "2002-10-27"
+      @wf.parse_date("03/04/98").should                         == "1998-03-04"
+      @wf.parse_date("01/02/03").should                         == "2003-01-02"
+      @wf.parse_date("Wed Apr 04 14:47:15 -0400 2012").should   == "2012-04-04"
+      @wf.parse_date("2003-06").should                          == "2003-06"
+      @wf.parse_date("1974").should                             == "1974"
     end
 
     it "should return nil if the string is un-parse-able" do
-      @wf.parse_date("foo").should be_nil
-      @wf.parse_date("").should be_nil
-      @wf.parse_date(nil).should be_nil
+      @wf.parse_date("foo").should      be_nil
+      @wf.parse_date("").should         be_nil
+      @wf.parse_date(nil).should        be_nil
+      @wf.parse_date("2001-13").should  be_nil
+      @wf.parse_date("2001-4").should   be_nil
+      @wf.parse_date("0004").should     be_nil
     end
 
   end
@@ -131,6 +139,17 @@ describe Rockhall::WorkflowMethods do
       @wf.parse_size("123X123").should == "123x123"
       @wf.parse_size("123 X 123").should == "123x123"
       @wf.parse_size("foo").should be_nil
+    end
+
+  end
+
+  describe "#get_year" do
+
+    it "should return the 4-digit year from different dates" do
+      @wf.get_year("2001").should == "2001"
+      @wf.get_year("2001-04").should == "2001"
+      @wf.get_year("2001-05-06").should == "2001"
+      @wf.get_year("foo").should  be_nil
     end
 
   end

@@ -1,51 +1,49 @@
-<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"archival_video", :"accept-charset"=>"utf-8") do -%>
-
-  <%= hidden_field_tag("_method","put") %>
+<%= form_for @afdoc, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="date_fields">
     <legend>Date</legend>
     <p class="legend-caption">Enter the date the item was first created or filmed.  Use YYYY-MM-DD for the format.</p>
-      <%= display_field([:creation_date], {:multiple=>false, :required=>true}) %>
+    <%= f.label :creation_date, :class=>"field" %>
+    <%= f.text_field :creation_date, :name=>"document_fields[creation_date][]", :value=>@afdoc.creation_date.first, :class=>" edit span2" %>
   </fieldset>
 
   <fieldset id="original_fields">
     <legend>Original Item</legend>
     <p class="legend-caption">Fields that describe the original item, such as the videocasette or tape.</p>
-    <%= display_field([:barcode], {:multiple=>false, :required=>false}) %>
-
-    <p id="item_location_field" class="fedora-text-area">
-      <%= fedora_field_label("descMetadata", [:repository], "Repository:") %>
-      <%= fedora_text_area(@document_fedora, "descMetadata", [:repository], :multiple=>false, :required=>false) %>
-    </p>
-
-    <%= display_field([:format], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:standard], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:media_type], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:generation], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:language], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:colors], {:multiple=>false, :required=>false}) %>
+    <%= f.label :standard, :class=>"field" %>
+    <%= f.select :standard, ["", "NTSC", "PAL"], {}, {:name => "document_fields[standard][]"} %>
+    <%= f.label :colors, :class=>"field" %>
+    <%= f.select :colors, ["Color", "B&W", "Grayscale", "Tinted", "Toned"], {}, {:name => "document_fields[colors][]"} %>
+    <%= f.label :generation, :class=>"field"  %>
+    <%= f.text_field :generation, :name=>"document_fields[generation][]", :value=>@afdoc.generation.first, :class=>"pbcGen_auto edit span2", "data-provide".to_sym => "typeahead"  %>
+    <%= f.label :format, :class=>"field"  %>
+    <%= f.text_field :format, :name=>"document_fields[format][]", :value=>@afdoc.format.first, :class=>"insPhy_auto edit span2", "data-provide".to_sym => "typeahead"  %>
+    <%= f.label :barcode, :class=>"field" %>
+    <%= f.text_field :barcode, :name=>"document_fields[barcode][]", :value=>@afdoc.barcode.first, :class=>" edit span2" %>
+    <%= f.label :language, :class=>"field" %>
+    <%= f.text_field :language, :name=>"document_fields[language][]", :value=>@afdoc.language.first, :class=>" edit span2" %>
+    <%= f.label :repository, :class=>"field" %>
+    <%= f.text_area :repository, :name=>"document_fields[repository][]", :value=>@afdoc.repository.first, :cols => "40", :rows => "5", :class=>"edit" %>
   </fieldset>
 
   <fieldset id="archival_fields">
     <legend>Archival Information</legend>
     <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
-    <%= display_field([:archival_collection], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:archival_series], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:collection_number], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:accession_number], {:multiple=>false, :required=>false}) %>
+    <% ["archival_collection", "archival_series", "collection_number", "accession_number"].each do |t| %>
+      <%= f.label t.to_sym, :class=>"field" %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
+    <% end %>
   </fieldset>
 
   <fieldset id="condition_fields">
     <legend>Item Condition</legend>
     <p class="legend-caption">Enter any relevant information about the condition of the original item or its usage restrictions.</p>
-    <%= display_field([:usage], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:condition_note], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:cleaning_note], {:multiple=>false, :required=>false}) %>
+    <% ["usage", "condition_note", "cleaning_note"].each do |t| %>
+      <%= f.label t.to_sym, :class=>"field" %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
+    <% end %>
   </fieldset>
 
-  <%= hidden_field_tag(:wf_step,params["wf_step"]) %>
-  <%= hidden_field_tag(:content_type,"archival_video") %>
-  <%= submit_tag("Submit", :name=>"submit") %>
-  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 
 <% end %>

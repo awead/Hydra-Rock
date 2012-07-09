@@ -1,6 +1,6 @@
 module Rockhall::ModsSubjects
 
-  include Hydra::CommonModsIndexMethods
+  include Hydra::Datastream::CommonModsIndexMethods
 
   module ClassMethods
 
@@ -8,7 +8,7 @@ module Rockhall::ModsSubjects
     def subject_template(type)
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.subject(:authority=>"lcsh") {
-        
+
           case type.to_sym
           when :personal
             xml.name(:type=> "personal") {
@@ -29,7 +29,7 @@ module Rockhall::ModsSubjects
             xml.titleInfo {
               xml.title
               xml.subTitle
-              xml.partNumber 
+              xml.partNumber
               xml.partName
             }
           when :topic
@@ -41,27 +41,27 @@ module Rockhall::ModsSubjects
           else
             raise "#{type} is not a valid argument for Rockhall::ModsImage.subject_template"
           end
-        
-        }    
+
+        }
       end
-      
+
       return builder.doc.root
     end
-    
+
   end
-  
-  
+
+
   def self.included(klass)
     klass.extend(ClassMethods)
-  end   
-  
-  
+  end
+
+
   # This method is exactly like the Hyra::ModsContributor method
   def insert_subject(type, opts={})
-    
-    node = self.class.subject_template(type.to_sym) 
+
+    node = self.class.subject_template(type.to_sym)
     nodeset = self.find_by_terms(:mods, :subject)
-    
+
     unless nodeset.nil?
       if nodeset.empty?
         self.ng_xml.root.add_child(node)
@@ -72,7 +72,7 @@ module Rockhall::ModsSubjects
       end
       self.dirty = true
     end
-    
+
     return node, index
   end
 

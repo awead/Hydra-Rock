@@ -48,3 +48,9 @@ Feature:
     Given I am on the home page
     Then I should see a facet for "Depositor"
 
+  Scenario: Clicking on facets
+    Given I am on the home page
+    And I follow "Video"
+    Then I should see "Results"
+    And I should see "Oral History Example"
+

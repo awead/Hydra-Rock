@@ -140,6 +140,7 @@ class RockhallSip
   def create(opts={})
     begin
       dv = DigitalVideo.new
+      dv.main_title = self.base.to_s
       dv.save
       dv.label = "Rock and Roll Hall of Fame Library and Archives"
       dv.save
@@ -162,9 +163,9 @@ class RockhallSip
   # Updates a sip if the parent object was previously created
   def update
     begin
-      obj = (eval self.get_model).load_instance(self.pid)
-      obj.label = "Rock and Roll Hall of Fame Library and Archives"
-      obj.save
+      dv = DigitalVideo.find(self.pid)
+      dv.label = "Rock and Roll Hall of Fame Library and Archives"
+      dv.save
     rescue Exception=>e
       raise "Failed update video object: #{e}"
     end

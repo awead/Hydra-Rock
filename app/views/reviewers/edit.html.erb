@@ -1,55 +1,45 @@
-<% extra_head_content << capture do -%>
-  <%= javascript_include_tag "rails.js" %>
-  <%= csrf_meta_tag %>
+<div class="well"><h1><%= @afdoc.main_title %></h1></div>
+
+<% player_column << capture do %>
+  <%= render_video_player({:model => @afdoc}) %>
 <% end %>
 
+<%= form_for @afdoc, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
 
+  <fieldset id="required_title">
+    <legend>Required Title</legend>
+    <p class="legend-caption">A single, main title is required.  This may be the title of the event or program, it may be the title as it appears on the source tape</p>
+    <%= f.label :main_title, :class=>"field" %>
+    <%= f.text_field :main_title, :name => "document_fields[main_title]", :class => "edit span6" %>
+  </fieldset>
 
-<div class="document_viewer" id="cover_container">
+  <fieldset id="reviewer_fields">
+    <legend>Reviewer Fields</legend>
+    <p class="legend-caption">These are the optional fields for the reviewer to fill-in</p>
+    <%= f.label :license, :class=>"field" %>
+    <%= f.select :license, [nil,"Publicly Available", "Rockhall Use Only", "No Usage Granted"],
+                 {},
+                 { :name=>"document_fields[license][]", :id=>"document_fields_license", :class=>"edit" } %>
 
-  <a href="<%= catalog_path(params[:id], :viewing_context=>'browse') %>" class="browse toggle">Switch to browse view</a>
-  <h2>Video</h2>
-  <%= render_video_player %>
+    <%= f.label :abstract, :class=>"field" %>
+    <%= f.text_area :abstract, :name=>"document_fields[abstract][]", :value => @afdoc.abstract.first, :class=>"edit span5" %>
+    <%= f.label :priority, :class=>"field" %>
+    <%= f.select :priority, ["low", "normal", "high"],
+                 {},
+                 { :name=>"document_fields[priority][]", :id=>"document_fields_priority", :class=>"edit" } %>
+    <%= f.label :complete, :class=>"field" %>
+    <%= f.select :complete, ["yes","no"],
+                 {},
+                 { :name=>"document_fields[complete][]", :id=>"document_fields_complete", :class=>"edit" } %>
 
-  <h2>Review Video</h2>
-  <%= form_tag url_for(:action=>"update", :controller=>"reviewers", :content_type=>"archival_video"),
-      :method             => "put",
-      :id                 => "asset_review",
-      "data-resourceType" => "archival_video",
-      "accept-charset"    => "utf-8" do %>
+  </fieldset>
 
-    <dt>
-      <label for="license">License</label>
-    </dt>
-    <dd class="field">
-      <%= fedora_select(@document_fedora,"assetReview", [:license], :choices=>[nil,"Publicly Available", "Rockhall Use Only", "No Usage Granted"]).html_safe %>
-    </dd>
+  <%= f.hidden_field :date_updated, { :name=>"document_fields[date_updated][]", :id=>"document_fields_date_updated", :value=>DateTime.now.strftime("%Y-%m-%d") } %>
+  <%= f.hidden_field :reviewer, { :name=>"document_fields[reviewer][]", :id=>"document_fields_reviewer", :value=>current_user.login } %>
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 
-    <dt>
-      <label for="abstract">Abstract</label>
-    </dt>
-    <dd class="field">
-      <%= fedora_text_area(@document_fedora, "assetReview", [:abstract], :multiple=>FALSE) %>
-    </dd>
+<% end %>
 
-    <dt>
-      <label for="priority">Priority</label>
-    </dt>
-    <dd class="field">
-      <%= fedora_select(@document_fedora, "assetReview", [:priority], :choices=>["low","normal","high"]).html_safe %>
-    </dd>
-
-    <dt>
-      <label for="completed">Complete?</label>
-    </dt>
-    <dd class="field">
-      <%= fedora_select(@document_fedora, "assetReview", [:complete], :choices=>["yes","no"]).html_safe %>
-    </dd>
-
-    <%= submit_tag 'Submit Review', {:id => "submitReview"} %>
-    <span class="back_to_cat"><%= link_back_to_catalog :label=>"Cancel and return to search results" %></span>
-  <% end %>
-
-
-
-</div>
+<% navbar_items << capture do %>
+  <%= render_user_navbar("reviewers") %>
+<% end %>

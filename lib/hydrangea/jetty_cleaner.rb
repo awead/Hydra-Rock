@@ -15,7 +15,7 @@ class Hydrangea::JettyCleaner
       namespace, number = doc.id.split(/:/)
       if namespace == pidspace or pidspace.nil?
         puts "Deleting #{doc.id}"
-        ActiveFedora::Base.load_instance( doc.id ).delete
+        ActiveFedora::Base.find( doc.id ).delete
       else
         puts "Keeping #{doc.id}"
       end

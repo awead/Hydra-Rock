@@ -19,7 +19,7 @@ describe MediainfoXml::Document do
     end
 
     it "should return a single number for bit depth" do
-      @doc.bit_depth.should == "8"
+      @doc.video_bit_depth.should == "8"
     end
 
     it "should return a colon ratio string for aspect ratio" do
@@ -31,7 +31,12 @@ describe MediainfoXml::Document do
     end
 
     it "should return the correct formatted string for duration" do
+      pending
       @doc.duration.should == "00:09:56.458"
+    end
+
+    it "should return the file size value" do
+      @doc.file_size.last.should == "37.30 MiB"
     end
 
   end

@@ -1,31 +1,28 @@
-<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"digital_video", :"accept-charset"=>"utf-8") do -%>
-
-  <%= hidden_field_tag("_method","put") %>
+<%= form_for @afdoc, :url => digital_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="subjects">
-    <legend>Subject Fields</legend>
-    <%= display_field([:lc_subject], {:name=>"LCSH Topic", :multiple=>true, :required=>false}) %>
+    <legend>Library of Congress Subject Headings</legend>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"lc_subject", :f=>f, :vals=>@afdoc.lc_subject, :multiple=>TRUE } %>
   </fieldset>
 
   <fieldset id="genres">
-    <legend>Genre Fields</legend>
-    <%= display_field([:lc_genre], {:name=>"LCGFT", :multiple=>true, :required=>false}) %>
+    <legend>LCGFT</legend>
+    <p class="legend-caption">Library of Congress genre form terms</p>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"lc_genre", :f=>f, :vals=>@afdoc.lc_genre, :multiple=>TRUE } %>
   </fieldset>
 
   <fieldset id="event_fields">
     <legend>Event Fields</legend>
     <p class="legend-caption">Information about the series in which this event occurred.</p>
-    <%= display_field([:event_series], {:multiple=>true, :required=>false}) %>
-    <%= display_field([:event_place], {:multiple=>true, :required=>false}) %>
-    <%= display_field([:event_date], {:multiple=>true, :required=>false}) %>
+    <%= f.label :event_series, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_series", :f=>f, :vals=>@afdoc.event_series, :multiple=>FALSE } %>
+    <%= f.label :event_place, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_place", :f=>f, :vals=>@afdoc.event_place, :multiple=>FALSE } %>
+    <%= f.label :event_date, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_date", :f=>f, :vals=>@afdoc.event_date, :multiple=>FALSE } %>
   </fieldset>
 
-  <h3>Proceed to next step?</h3>
-  <%= radio_button_tag(:wf_step, "titles", :checked=>true) %> No <br/>
-  <%= radio_button_tag(:wf_step, "subjects") %> Yes <br/>
-  <%= hidden_field_tag(:content_type,"digital_video") %>
-  <%= submit_tag("Submit", :name=>"submit") %>
-  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 
 <% end %>
 

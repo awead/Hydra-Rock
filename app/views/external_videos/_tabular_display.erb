@@ -1,0 +1,12 @@
+<a><%= video.name.first %></a>
+<table class="table table-striped">
+  <% field_names.each do |field| %>
+    <% value = display_tech_data_field(field) %>
+    <% unless value.nil? %>
+      <tr>
+        <th><%= field.gsub(/_/," ").capitalize %> </th>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

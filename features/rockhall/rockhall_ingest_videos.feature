@@ -15,18 +15,20 @@ Narrative:
 
   Scenario: Members of the archivist group have edit rights (DAM-131)
     Given I am logged in as "archivist1@example.com"
-    And I am on the show document page for rockhall:fixture_pbcore_document3
+    And I am on the edit archival video page for rockhall:fixture_pbcore_document3
     Then I should see "Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2."
-    And I should see "2007-07-09"
-    And I should see "Betacam"
-    And I should see "NTSC"
-    And I should see "Rock and Roll Hall of Fame and Museum, 2809 Woodland Ave., Cleveland, OH, 44115 216-515-1956 library@rockhall.org"
+    When I follow "Original"
+    And the following should be selected within "fieldset#original_fields"
+      | archival_video_standard | NTSC |
+      | archival_video_colors | Color |
 
+  @javascript
   Scenario: View all the fields of the original preservation video file
     Given I am logged in as "archivist1@example.com"
-    And I am on the show document page for rockhall:fixture_pbcore_document3_original
+    And I am on the edit archival video page for rockhall:fixture_pbcore_document3
+    When I follow "Original (1)"
     Then I should see "39156042439369_preservation.mov"
-    And I should see "0"
+    And I should see "80.2 GiB"
     And I should see "2011-10-12"
     And I should see "George Blood Audio and Video"
     And I should see "Copy: preservation"
@@ -44,7 +46,7 @@ Narrative:
     And I should see "224 (Mbps)"
     And I should see "10"
     And I should see "720x486"
-    And I should see "29.97 (fps)"
+    And I should see "29.97"
     And I should see "4:3"
     And I should see "Linear PCM Audio"
     And I should see "in24"
@@ -53,11 +55,13 @@ Narrative:
     And I should see "24"
     And I should see "2"
 
+  @javascript
   Scenario: View all the fields of the access h264 video file
     Given I am logged in as "archivist1@example.com"
-    And I am on the show document page for rockhall:fixture_pbcore_document3_h264
+    And I am on the edit archival video page for rockhall:fixture_pbcore_document3
+    When I follow "H264 (1)"
     Then I should see "39156042439369_access.mp4"
-    And I should see "0"
+    And I should see "1008"
     And I should see "2011-10-12"
     And I should see "George Blood Audio and Video"
     And I should see "Copy: access"
@@ -73,7 +77,7 @@ Narrative:
     And I should see "2507 (Kbps)"
     And I should see "8"
     And I should see "640x480"
-    And I should see "29.97 (fps)"
+    And I should see "29.97"
     And I should see "4:3"
     And I should see "AAC"
     And I should see "MPEG-4: AAC"
@@ -81,5 +85,3 @@ Narrative:
     And I should see "48.0 (kHz)"
     And I should see "16"
     And I should see "2"
-
-

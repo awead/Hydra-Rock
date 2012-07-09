@@ -1,42 +1,50 @@
-<fieldset id="instantiation_fields">
-  <dl>
-    <%= display_field([:name]) %>
-    <%= display_file_size %>
-    <%= display_field([:date]) %>
-    <%= display_field([:vendor]) %>
-    <%= display_field([:generation]) %>
-    <%= display_field([:media_type]) %>
-    <%= display_field([:colors]) %>
-    <%= display_field([:cleaning]) %>
-    <%= display_field([:condition]) %>
-    <%= display_field([:file_format]) %>
-    <%= display_field([:capture_soft],   { :name=>"Capture Software" }) %>
-    <%= display_field([:trans_soft],     { :name=>"Transcoding Software" }) %>
-    <%= display_field([:operator]) %>
-    <%= display_field([:trans_note],     { :name=>"Transfer Notes" }) %>
-    <%= display_field([:device]) %>
-    <%= display_field([:chroma]) %>
-    <%= display_field([:color_space]) %>
-
-    <!-- Video essence fields -->
-    <%= display_field([:video_standard]) %>
-    <%= display_field([:video_encoding]) %>
-    <%= display_video_bit_rate %>
-    <%= display_field([:video_bit_depth]) %>
-    <%= display_field([:frame_size])%>
-    <%= display_video_frame_rate %>
-    <%= display_field([:aspect_ratio]) %>
-
-    <!-- Audio essence fields -->
-    <%= display_field([:audio_standard]) %>
-    <%= display_field([:audio_encoding]) %>
-    <%= display_audio_bit_rate %>
-    <%= display_audio_sample_rate %>
-    <%= display_field([:audio_bit_depth]) %>
-    <%= display_field([:audio_channels]) %>
-
-    <!-- Editable fields -->
-    <%= display_field([:rights_summary]) %>
-    <%= display_field([:note]) %>
+<fieldset id="info_fields">
+  <legend>General Information</legend>
+  <dl class="dl-horizontal">
+    <%= display_field(:name) %>
+    <dt>Size</dt><dd><%= size %></dd>
+    <%= display_field(:date) %>
+    <%= display_field(:vendor) %>
+    <%= display_field(:generation) %>
+    <%= display_field(:media_type) %>
+    <%= display_field(:colors) %>
+    <%= display_field(:cleaning) %>
+    <%= display_field(:condition) %>
+    <%= display_field(:file_format) %>
+    <%= display_field(:capture_soft,   { :name=>"Capture Software" }) %>
+    <%= display_field(:trans_soft,     { :name=>"Transcoding Software" }) %>
+    <%= display_field(:operator) %>
+    <%= display_field(:trans_note,     { :name=>"Transfer Notes" }) %>
+    <%= display_field(:device) %>
+    <%= display_field(:chroma) %>
+    <%= display_field(:color_space) %>
+    <%= display_field(:rights_summary) %>
+    <%= display_field(:note) %>
   </dl>
 </fieldset>
+
+<fieldset id="video_fields">
+  <legend>Video Track</legend>
+  <dl class="dl-horizontal">
+    <%= display_field(:video_standard) %>
+    <%= display_field(:video_encoding) %>
+    <dt>Video Bit Rate</dt><dd><%= video_bit_rate %></dd>
+    <%= display_field(:video_bit_depth) %>
+    <%= display_field(:frame_size)%>
+    <%= display_field(:frame_rate,     { :name=>"Frame Rate (fps)" }) %>
+    <%= display_field(:aspect_ratio) %>
+  </dl>
+</fieldset>
+
+<fieldset id="audio_fields">
+  <legend>Audio Track</legend>
+  <dl class="dl-horizontal">
+    <%= display_field(:audio_standard) %>
+    <%= display_field(:audio_encoding) %>
+    <dt>Audio Bit Rate</dt><dd><%= audio_bit_rate %></dd>
+    <dt>Audio Sample Rate</dt><dd><%= audio_sample_rate %></dd>
+    <%= display_field(:audio_bit_depth) %>
+    <%= display_field(:audio_channels) %>
+  </dl>
+</fieldset>
+

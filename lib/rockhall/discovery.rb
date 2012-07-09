@@ -1,4 +1,3 @@
-require 'mediashelf/active_fedora_helper'
 class Rockhall::Discovery
 
   include Hydra::RepositoryController
@@ -58,7 +57,7 @@ class Rockhall::Discovery
   end
 
   def self.addl_solr_fields(id)
-    av = ArchivalVideo.load_instance(id)
+    av = ArchivalVideo.find(id)
     return av.addl_solr_fields
   end
 

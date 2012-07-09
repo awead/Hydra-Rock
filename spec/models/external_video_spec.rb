@@ -25,8 +25,8 @@ describe ExternalVideo do
       mock_orphan = mock("orphan file asset", :containers=>[])
       mock_orphan.expects(:delete)
 
-      ExternalVideo.expects(:load_instance).with("_non_orphan_pid_").returns(mock_non_orphan)
-      ExternalVideo.expects(:load_instance).with("_orphan_pid_").returns(mock_orphan)
+      ExternalVideo.expects(:find).with("_non_orphan_pid_").returns(mock_non_orphan)
+      ExternalVideo.expects(:find).with("_orphan_pid_").returns(mock_orphan)
 
       ExternalVideo.garbage_collect("_non_orphan_pid_")
       ExternalVideo.garbage_collect("_orphan_pid_")

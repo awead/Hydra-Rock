@@ -1,25 +1,20 @@
-<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"digital_video", :"accept-charset"=>"utf-8") do -%>
-
-  <%= hidden_field_tag("_method","put") %>
+<%= form_for @afdoc, :url => digital_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="archival_fields">
     <legend>Archival Information</legend>
     <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
-    <%= display_field([:archival_collection], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:archival_series], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:collection_number], {:multiple=>false, :required=>false}) %>
-    <%= display_field([:accession_number], {:multiple=>false, :required=>false}) %>
+    <% ["archival_collection", "archival_series", "collection_number", "accession_number"].each do |t| %>
+      <%= f.label t.to_sym, :class=>"field" %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
+    <% end %>
   </fieldset>
 
   <fieldset id="usage_fields">
     <legend>Use Restrictions</legend>
-    <p class="legend-caption">Enter any relevant information about the condition of the original item or its usage restrictions.</p>
-    <%= display_field([:usage], {:multiple=>false, :required=>false}) %>
+    <%= f.label :usage, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"usage", :f=>f, :vals=>@afdoc.usage, :multiple=>FALSE } %>
   </fieldset>
 
-  <%= hidden_field_tag(:wf_step,params["wf_step"]) %>
-  <%= hidden_field_tag(:content_type,"digital_video") %>
-  <%= submit_tag("Submit", :name=>"submit") %>
-  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 
 <% end %>

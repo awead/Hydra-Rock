@@ -1,33 +1,24 @@
-<div class="document_viewer" id="cover_container">
+<div class="well"><h1><%= @document[:heading_display].first %></h1></div>
 
-    <% if @document_fedora.file_objects.count > 0 %>
-      <h2 id="video" class="section-title">Video</h2>
-      <%= render_video_player %>
-    <% end %>
+<% player_column << capture do %>
+  <%= render_video_player_in_catalog %>
+<% end %>
 
-    <h2 id="content" class="section-title">Content</h2>
-    <%= render :partial => "digital_videos/show/document", :locals => {:content_type => "digital_video"} %>
+<h2>Catalog Record</h2>
+<dl class="dl-horizontal">
+<% document_show_fields.each do |solr_fname, field| -%>
+  <% if document.has? solr_fname %>
+	  <dt id="<%= solr_fname %>"><%= render_document_show_field_label :field => solr_fname %></dt>
+	  <% document[solr_fname.to_sym].each do |v| %>
+	    <dd id="<%= solr_fname %>"><%= v %></dd>
+	  <% end %>
+  <% end -%>
+<% end -%>
+</dl>
 
-    <h2 id="rockhall" class="section-title">Rockhall</h2>
-    <%= render :partial => "shared/show/rockhall", :locals => {:content_type => "digital_video"} %>
+<h2>Review Information</h2>
+<%= render :partial => "shared/show/review" %>
 
-    <h2 id="rockhall" class="section-title">Review Information</h2>
-    <%= render :partial => "shared/show/review", :locals => {:content_type => "digital_video"} %>
-
-    <% if @document_fedora.file_objects.count > 0 %>
-      <h2 id="files" class="section-title">Files</h2>
-      <%= render :partial => "shared/show/all", :locals => {:content_type => "digital_video"} %>
-    <% end %>
-
-</div>
-
-<% sidebar_items << capture do %>
-
-  <div class="fixed_sidebar">
-    <div class="float_sidebar">
-      <h3 class="twiddle">Navigation</h3>
-      <%= toc_links %>
-    </div>
-  </div>
-
+<% navbar_items << capture do %>
+  <%= render_user_navbar("digital_videos") %>
 <% end %>

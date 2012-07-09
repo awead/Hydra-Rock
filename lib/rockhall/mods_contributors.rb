@@ -4,7 +4,7 @@ module Rockhall::ModsContributors
   # but has different class methods for customized XML nodes
 
   include Hydrangea::ModsContributors
-  include Hydra::CommonModsIndexMethods
+  include Hydra::Datastream::CommonModsIndexMethods
 
   module MyClassMethods
 

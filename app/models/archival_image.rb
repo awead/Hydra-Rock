@@ -2,17 +2,14 @@ require "hydra"
 
 class ArchivalImage < ActiveFedora::Base
 
+  include ActiveFedora::Relationships
   include Hydra::GenericImage
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
 
-  # These will need to be included to avoid deprecation warnings is later versions of HH
-  include ActiveFedora::Relationships
-
   has_relationship "objects", :is_part_of, :inbound => true
 
-  # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata
+  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
 
   # Custom mods datastream
   has_metadata :name => "descMetadata", :type => Rockhall::ModsImage do |m|

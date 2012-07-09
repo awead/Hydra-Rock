@@ -1,90 +1,112 @@
 module TechDataHelper
 
-  def display_file_size
-    field = String.new
-    results = String.new
-    if get_values_from_datastream(@document_fedora, "descMetadata", [:size]).first.empty?
-      field << "unavailable"
+  # This is an array of field names.  Some correspond to the delegated field in
+  # ExternalVideo, others correspond to a formatted field that combines contents
+  # from different fields into a specially formatted display field, such as file_size
+  # which takes #size and #size_units
+  def field_names
+    r = Array.new
+    r << "name"
+    r << "location"
+    r << "date"
+    r << "generation"
+    r << "media_type"
+    r << "file_format"
+    r << "size"
+    r << "colors"
+    r << "duration"
+    r << "rights_summary"
+    r << "note"
+    r << "checksum_type"
+    r << "checksum_value"
+    r << "device"
+    r << "capture_soft"
+    r << "trans_soft"
+    r << "operator"
+    r << "trans_note"
+    r << "vendor"
+    r << "condition"
+    r << "cleaning"
+    r << "color_space"
+    r << "chroma"
+    r << "standard"
+    r << "language"
+    r << "video_standard"
+    r << "video_encoding"
+    r << "video_bit_rate"
+    r << "frame_rate"
+    r << "frame_size"
+    r << "video_bit_depth"
+    r << "aspect_ratio"
+    r << "audio_standard"
+    r << "audio_encoding"
+    r << "audio_bit_rate"
+    r << "audio_sample_rate"
+    r << "audio_bit_depth"
+    r << "audio_channels"
+    r << "depositor"
+    return r
+  end
+
+  # Cycles through every field in #field_names.  If there is no method defined in
+  # this module with the same name, it will return the delegate mapping.  Otherwise,
+  # it calls the method here and returns whatever the specially-formatted response is.
+  def display_tech_data_field(field)
+    if TechDataHelper.instance_methods.include?(field.to_sym)
+      return send field.to_sym
     else
-      field << get_values_from_datastream(@document_fedora, "descMetadata", [:size]).first
-      unless get_values_from_datastream(@document_fedora, "descMetadata", [:size_units]).first.empty?
-        units = get_values_from_datastream(@document_fedora, "descMetadata", [:size_units]).first
-        field << " " + ["(", units, ")"].join
+      if @afdoc.send(field.to_sym).empty? or @afdoc.send(field.to_sym).first.blank?
+        return display_mediainfo_field(field)
+      else
+        return @afdoc.send(field.to_sym).first
       end
     end
-    results << "<dt><label for=\"video_bit_rate\">File Size</label></dt>"
-    results << "<dd class=\"field\">#{field}</dd>"
-    return results.html_safe
-
   end
 
-
-  def display_video_bit_rate
-    field = String.new
-    results = String.new
-    if get_values_from_datastream(@document_fedora, "descMetadata", [:video_bit_rate]).first.empty?
-      field << "unavailable"
+  def display_mediainfo_field(field)
+    if @afdoc.datastreams["mediaInfo"].respond_to?(field.to_sym)
+      value = @afdoc.datastreams["mediaInfo"].send(field.to_sym)
+      unless value.nil?
+        value.is_a?(Array) ? value.first : value
+      end
     else
-      field << get_values_from_datastream(@document_fedora, "descMetadata", [:video_bit_rate]).first
-      unless get_values_from_datastream(@document_fedora, "descMetadata", [:video_bit_rate_units]).first.empty?
-        units = get_values_from_datastream(@document_fedora, "descMetadata", [:video_bit_rate_units]).first
-        field << " " + ["(", units, ")"].join
+      return nil
+    end
+  end
+
+  def format_with_units(field,unit)
+    if @afdoc.send(field.to_sym).first.empty?
+      return nil
+    else
+      if @afdoc.send(unit.to_sym).first.empty?
+        return @afdoc.send(field.to_sym).first
+      else
+        return @afdoc.send(field.to_sym).first + " (" + @afdoc.send(unit.to_sym).first + ")"
       end
     end
-    results << "<dt><label for=\"video_bit_rate\">Video Bit Rate</label></dt>"
-    results << "<dd class=\"field\">#{field}</dd>"
-    return results.html_safe
   end
 
-  def display_video_frame_rate
-    field = String.new
-    results = String.new
-    if get_values_from_datastream(@document_fedora, "descMetadata", [:frame_rate]).first.empty?
-      field << "unavailable"
+  def size
+    if @afdoc.size.empty? or @afdoc.size.first == "0"
+      return display_mediainfo_field(:size)
     else
-      value = get_values_from_datastream(@document_fedora, "descMetadata", [:frame_rate]).first
-      field << value + " (fps)"
+      return format_with_units(:size,:size_units)
     end
-    results << "<dt><label for=\"video_bit_rate\">Video Frame Rate</label></dt>"
-    results << "<dd class=\"field\">#{field}</dd>"
-    return results.html_safe
   end
 
-  def display_audio_bit_rate
-    field = String.new
-    results = String.new
-    if get_values_from_datastream(@document_fedora, "descMetadata", [:audio_bit_rate]).first.empty?
-      field << "unavailable"
-    else
-      field << get_values_from_datastream(@document_fedora, "descMetadata", [:audio_bit_rate]).first
-      unless get_values_from_datastream(@document_fedora, "descMetadata", [:audio_bit_rate_units]).first.empty?
-        units = get_values_from_datastream(@document_fedora, "descMetadata", [:audio_bit_rate_units]).first
-        field << " " + ["(", units, ")"].join
-      end
-    end
-    results << "<dt><label for=\"audio_bit_rate\">Audio Bit Rate</label></dt>"
-    results << "<dd class=\"field\">#{field}</dd>"
-    return results.html_safe
+  def video_bit_rate
+    result = format_with_units(:video_bit_rate,:video_bit_rate_units)
+    result.nil? ? display_mediainfo_field(:video_bit_rate) : result
   end
 
-  def display_audio_sample_rate
-    field = String.new
-    results = String.new
-    if get_values_from_datastream(@document_fedora, "descMetadata", [:audio_sample_rate]).first.empty?
-      field << "unavailable"
-    else
-      field << get_values_from_datastream(@document_fedora, "descMetadata", [:audio_sample_rate]).first
-      unless get_values_from_datastream(@document_fedora, "descMetadata", [:audio_sample_rate_units]).first.empty?
-        units = get_values_from_datastream(@document_fedora, "descMetadata", [:audio_sample_rate_units]).first
-        field << " " + ["(", units, ")"].join
-      end
-    end
-    results << "<dt><label for=\"audio_bit_rate\">Audio Sample Rate</label></dt>"
-    results << "<dd class=\"field\">#{field}</dd>"
-    return results.html_safe
+  def audio_bit_rate
+    result = format_with_units(:audio_bit_rate,:audio_bit_rate_units)
+    result.nil? ? display_mediainfo_field(:audio_bit_rate) : result
   end
 
-
-
+  def audio_sample_rate
+    result = format_with_units(:audio_sample_rate,:audio_sample_rate_units)
+    result.nil? ? display_mediainfo_field(:audio_sample_rate) : result
+  end
 
 end

@@ -1,12 +1,10 @@
-
-<table>
+<table class="table table-striped table-condensed">
 	<% unless params[:display_type] == 'list' %>
   <tr>
-    <th class="title">Title</th>
     <th class="format">Format</th>
+    <th class="title">Title</th>
     <th class="deposited">Deposited</th>
     <th class="reviewed">Reviewed</th>
-    <th class="files">Files</th>
   </tr>
   <% end %>
   <% docs.each_with_index do |document,counter| %>

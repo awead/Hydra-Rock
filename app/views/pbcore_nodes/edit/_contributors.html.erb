@@ -1,0 +1,25 @@
+<% document.contributor_name.each_index do |index| %>
+  <%= text_field_tag "document_fields[contributor_name][#{index.to_s}]", document.contributor_name[index],
+                     :id => ("contributor_name_" + index.to_s), :class=>"edit span3" %>
+  <%= select_tag "document_fields[contributor_role][#{index.to_s}]",
+                 options_for_select(Relators.marc.keys.sort, document.contributor_role[index]),
+                 {:id => ("contributor_role_" + index.to_s)} %>
+  <%-
+      # TODO: I'm not understanding delete methods something
+      # ---------------
+      # link_to 'Delete', pbcore_node_path({:node=>"contributor", :index=>index}),
+      # :remote => true, :method => :delete
+      # ---------------
+      # This produces routing errors unless remote => false is set in the link that adds
+      # the contributor.  If I fake out the url and code it in this way:
+      #
+      # <a href="/pbcore_nodes/:id?index=:index&amp;node=publisher" data-method="delete" data-remote="true" rel="nofollow">Delete</a>
+      #
+      # It will work under WebBrick, but Passenger Phusion won't allow the DELETE method
+      # The strange thing is that if I opt for door #1, leave the link_to as is, and let
+      # contributors be added as a non-remote form, the Passenger doesn't complain about
+      # the DELETE method.
+  -%>
+  <%= link_to 'Delete', pbcore_node_path({:node=>"contributor", :index=>index}), :remote => true, :method => :delete %>
+  <br/>
+<% end %>

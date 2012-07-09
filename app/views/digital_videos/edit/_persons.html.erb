@@ -1,48 +1,28 @@
-<%= form_tag(url_for(:controller=>"assets", :action=>"update", :id=>params[:id]), :id=>"descriptive-metadata", :"data-resourceType"=>"digital_video", :"accept-charset"=>"utf-8") do -%>
-
-  <%= hidden_field_tag("_method","put") %>
+<%= form_for @afdoc, :url => digital_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="contributors">
     <legend>Contributors</legend>
-    <p class="legend-caption">Use the buttons on the left to add contributors and their roles</p>
-    <%= render :partial=>"pbcore/header", :locals => {:node=>"contributor"} %>
+    <p class="legend-caption">Choose "Add" from the menu to add contributors to this record</p>
+    <div id="contributors_form">
+      <%= render :partial => "pbcore_nodes/edit/contributors", :locals => { :document => @afdoc } %>
+    </div>
   </fieldset>
 
   <fieldset id="publishers">
     <legend>Publishers</legend>
-    <p class="legend-caption">Use the buttons on the left to add publishers and their roles</p>
-    <%= render :partial=>"pbcore/header", :locals => {:node=>"publisher"} %>
+    <p class="legend-caption">Choose "Add" from the menu to add publishers to this record</p>
+    <div id="publishers_form">
+      <%= render :partial => "pbcore_nodes/edit/publishers", :locals => { :document => @afdoc } %>
+    </div>
   </fieldset>
 
-  <h3>Proceed to next step?</h3>
-  <%= radio_button_tag(:wf_step, "subjects", :checked=>true) %> No <br/>
-  <%= radio_button_tag(:wf_step, "persons") %> Yes <br/>
-  <%= hidden_field_tag(:content_type,"digital_video") %>
-  <%= submit_tag("Submit", :name=>"submit") %>
-  <%= submit_tag("Save and Finish", :name=>"finish", :class=>"save-submit") unless params[:new_asset] %>
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 
 <% end %>
 
-<h3 class="twiddle">Delete Fields</h3>
-<%= delete_field_button %>
-
-<% sidebar_items << capture do %>
-
-      <h3 class="twiddle">Add Fields</h3>
-      <ul>
-        <!-- Buttons for inserting and deleting field sets -->
-        <% ["contributor","publisher"].each do |type| %>
-          <li>
-          <%= form_tag url_for(:action=>"create", :asset_id=>@document[:id], :controller=>"pbcore", :content_type=>"digital_video", :node=>type) do %>
-            <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
-            <%= submit_tag "Add #{type}", {:id => "add#{type.capitalize}"} %>
-          <% end %>
-          </li>
-        <% end %>
-      </ul>
-
+<% navbar_items << capture do %>
+  <%= add_dropdown %>
 <% end %>
-
 
 
 

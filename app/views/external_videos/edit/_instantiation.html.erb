@@ -1,14 +1,13 @@
-<%= form_tag url_for(:action=>"update", :controller=>"assets", :content_type=>"external_video"),
-      :method             => "put",
-      :id                 => "properties",
-      "data-resourceType" => "archival_video",
-      "accept-charset"    => "utf-8" do %>
+<%= form_for @afdoc, :url => external_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="instantiation_fields">
+    <legend>Fields you can edit</legend>
     <dl>
-      <%= display_field([:rights_summary]) %>
-      <%= display_field([:note], {:multiple=>TRUE}) %>
+      <%= f.label :rights_summary, :class=>"field" %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>"rights_summary", :f=>f, :vals=>@afdoc.rights_summary, :multiple=>FALSE } %>
+      <%= f.label :note, :class=>"field" %>
+      <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@afdoc.note, :multiple=>TRUE } %>
     </dl>
   </fieldset>
-  <%= submit_tag 'Save File', {:id => "submitDocument"} %>
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 <% end %>

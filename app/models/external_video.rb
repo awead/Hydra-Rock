@@ -1,55 +1,71 @@
-require 'hydra'
-
 class ExternalVideo < ActiveFedora::Base
 
-  include Hydra::ModelMethods
-
-  # These will need to be included to avoid deprecation warnings is later versions of HH
-  include ActiveFedora::Relationships
   include ActiveFedora::DatastreamCollections
+  include ActiveFedora::FileManagement
+  include ActiveFedora::Relationships
+  include Hydra::ModelMethods
+  include Rockhall::ModelMethods
+
+  after_create :apply_default_permissions
 
   has_relationship "is_member_of_collection", :has_collection_member, :inbound => true
   has_bidirectional_relationship "part_of", :is_part_of, :has_part
 
   # Object will have either an access or a perservation datastream but not both
-  has_datastream :name=>"access", :type=>ActiveFedora::Datastream, :controlGroup=>'E'
-  has_datastream :name=>"preservation", :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name=>"access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name=>"preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
 
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata
+  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
+  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreInstantiation
+  has_metadata :name => "mediaInfo",      :type => MediainfoXml::Document
+  has_metadata :name => "properties",     :type => Rockhall::Properties
 
-  has_metadata :name => "descMetadata", :type => Rockhall::PbcoreInstantiation do |m|
-  end
-  delegate :generation, :to=>"descMetadata", :at=>[:generation]
-  delegate :format,     :to=>"descMetadata", :at=>[:file_format]
-  delegate :vendor,     :to=>"descMetadata", :at=>[:vendor]
-  delegate :next,       :to=>"descMetadata", :at=>[:next]
-  delegate :previous,   :to=>"descMetadata", :at=>[:previous]
-  delegate :name,       :to=>"descMetadata", :at=>[:name]
-  delegate :size,       :to=>"descMetadata", :at=>[:size]
-  delegate :size_units, :to=>"descMetadata", :at=>[:size_units]
-  delegate :date,       :to=>"descMetadata", :at=>[:date]
-  delegate :media_type, :to=>"descMetadata", :at=>[:media_type]
-  delegate :colors,     :to=>"descMetadata", :at=>[:colors]
-
-
-  has_metadata :name => "mediaInfo", :type => MediainfoXml::Document do |m|
-  end
-
-  has_metadata :name => "properties", :type => Rockhall::Properties do |m|
-  end
-  delegate :depositor, :to=>'properties', :at=>[:depositor]
-
-  def initialize( attrs={} )
-    super
-    # Anyone in the archivist group has edit rights
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
-  end
-
-  def apply_depositor_metadata(depositor_id)
-    self.depositor = depositor_id
-    super
-  end
+  delegate :name,                    :to => :descMetadata
+  delegate :location,                :to => :descMetadata
+  delegate :date,                    :to => :descMetadata
+  delegate :generation,              :to => :descMetadata
+  delegate :media_type,              :to => :descMetadata
+  delegate :file_format,             :to => :descMetadata
+  delegate :size,                    :to => :descMetadata
+  delegate :size_units,              :to => :descMetadata
+  delegate :colors,                  :to => :descMetadata
+  delegate :duration,                :to => :descMetadata
+  delegate :rights_summary,          :to => :descMetadata
+  delegate :note,                    :to => :descMetadata
+  delegate :checksum_type,           :to => :descMetadata
+  delegate :checksum_value,          :to => :descMetadata
+  delegate :device,                  :to => :descMetadata
+  delegate :capture_soft,            :to => :descMetadata
+  delegate :trans_soft,              :to => :descMetadata
+  delegate :operator,                :to => :descMetadata
+  delegate :trans_note,              :to => :descMetadata
+  delegate :vendor,                  :to => :descMetadata
+  delegate :condition,               :to => :descMetadata
+  delegate :cleaning,                :to => :descMetadata
+  delegate :color_space,             :to => :descMetadata
+  delegate :chroma,                  :to => :descMetadata
+  delegate :standard,                :to => :descMetadata
+  delegate :language,                :to => :descMetadata
+  delegate :video_standard,          :to => :descMetadata
+  delegate :video_encoding,          :to => :descMetadata
+  delegate :video_bit_rate,          :to => :descMetadata
+  delegate :video_bit_rate_units,    :to => :descMetadata
+  delegate :frame_rate,              :to => :descMetadata
+  delegate :frame_size,              :to => :descMetadata
+  delegate :video_bit_depth,         :to => :descMetadata
+  delegate :aspect_ratio,            :to => :descMetadata
+  delegate :audio_standard,          :to => :descMetadata
+  delegate :audio_encoding,          :to => :descMetadata
+  delegate :audio_bit_rate,          :to => :descMetadata
+  delegate :audio_bit_rate_units,    :to => :descMetadata
+  delegate :audio_sample_rate,       :to => :descMetadata
+  delegate :audio_sample_rate_units, :to => :descMetadata
+  delegate :audio_bit_depth,         :to => :descMetadata
+  delegate :audio_channels,          :to => :descMetadata
+  delegate :next,                    :to => :descMetadata
+  delegate :previous,                :to => :descMetadata
+  delegate :depositor,               :to => :properties
+  delegate :notes,                   :to => :properties
 
   # augments add_named_datastream to put file information in descMetadata
   def add_named_datastream(name,opts={})
@@ -68,10 +84,8 @@ class ExternalVideo < ActiveFedora::Base
     self.name       = opts[:label]
   end
 
-  # Duplicated methods from FileAsset
-  # TODO: would be really nice if we didn't have to duplicate all this code
-
   # deletes the object identified by pid if it does not have any objects asserting has_collection_member
+  # Originally duplicated from FileAssets
   def self.garbage_collect(pid)
     begin
       obj = ExternalVideo.load_instance(pid)
@@ -93,43 +107,6 @@ class ExternalVideo < ActiveFedora::Base
           num = num/1024.0
         end
       end
-  end
-
-  # Mimic the relationship accessor that would be created if a containers relationship existed
-  # Decided to create this method instead because it combines more than one relationship list
-  # from is_member_of_collection and part_of
-  # @param [Hash] opts The options hash that can contain a :response_format value of :id_array, :solr, or :load_from_solr
-  # @return [Array] Objects found through inbound has_collection_member and part_of relationships
-  def containers(opts={})
-    is_member_array = is_member_of_collection(:response_format=>:id_array)
-
-    if !is_member_array.empty?
-      logger.warn "This object has inbound collection member assertions.  hasCollectionMember will no longer be used to track file_object relationships after active_fedora 1.3.  Use isPartOf assertions in the RELS-EXT of child objects instead."
-      if opts[:response_format] == :solr || opts[:response_format] == :load_from_solr
-        logger.warn ":solr and :load_from_solr response formats for containers search only uses parts relationships (usage of hasCollectionMember is no longer supported)"
-        result = part_of(opts)
-      else
-        con_result = is_member_of_collection(opts)
-        part_of_result = part_of(opts)
-        ary = con_result+part_of_result
-        result = ary.uniq
-      end
-    else
-      result = part_of(opts)
-    end
-    return result
-  end
-
-  # Calls +containers+ with the :id_array option to return a list of pids for containers found.
-  # @return [Array] Container ids (via is_member_of_collection and part_of relationships)
-  def containers_ids
-    containers(:response_format => :id_array)
-  end
-
-  # Calls +containers+ with the option to load objects found from solr instead of Fedora.
-  # @return [Array] ActiveFedora::Base objects populated via solr
-  def containers_from_solr
-    containers(:response_format => :load_from_solr)
   end
 
 end

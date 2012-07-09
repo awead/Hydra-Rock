@@ -1,51 +1,105 @@
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html>
   <head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+    <meta charset="utf-8" />
     <title><%= h(@page_title || application_name) %></title>
-    <link href="<%= opensearch_catalog_path %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
-
+    <link href="<%= opensearch_catalog_url(:format => 'xml') %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
     <%= raw(render_head_content) %>
+	</head>
 
+  <body class="<%= render_body_class %>">
 
-  </head>
-  <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
-  <body onload="$('input#q').focus();" class="<%= render_body_class %>">
-    <% else %>
-  <body class="<%= render_body_class.html_safe %>">
-    <% end %>
-      <div id="doc4" class="yui-t2">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>
+          <a class="brand" href="<%= root_path %>"> <i class="icon-home"></i> <%= application_name %> </a>
 
-	    <div id="hd">
-        <div class="yui-g">
-          <div class="yui-u first">
-            <h2 class="site_title">Hydra</h2>
-            <h3 class="site_title">Digital asset management system</h3>
-            <h1 class="site_title"><%= link_to application_name, root_path %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>".html_safe : "" %></h1>
+          <!-- Navbar items when user is logged in -->
+          <div class="nav-collapse">
+            <%= render :partial => '/user_util_links' %>
           </div>
-          <div class="yui-u user_util_links">
-            <%= render :partial=>'/user_util_links' %>
+
+          <!-- Navbar: Search and login/account -->
+          <ul class="nav pull-right">
+            <%= form_tag catalog_index_path, :method => :get, :class => "navbar-search" do %>
+              <%= text_field_tag :q, params[:q], :class => "q span2 search-query", :placeholder => (session[:search][:q].nil? ? "Search, hit <Enter>" : session[:search][:q]) %>
+              <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %>
+              <% # Can't get send_keys to work in Capybara, so we have a hidden submit button %>
+              <%= submit_tag "Search", :class=>"hidden" %>
+            <% end %>
+            <% unless session[:search][:q].nil? and session[:search][:f].nil? %>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-search"></i> Results <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <% unless session[:search][:q].nil? and session[:search][:f].nil? %>
+                    <li><%= link_back_to_catalog %></li>
+                    <li><a href="/catalog">Start Over</a></li>
+                    <li class="divider"></li>
+                  <% end %>
+                  <li><%= link_to "Selected Items (#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0})", folder_index_path %></li>
+                  <li><%= link_to "Search History", search_history_path %></li>
+                </ul>
+              </li>
+            <% end %>
+            <%= render :partial=>"/user_acct_links" %>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- document row -->
+      <div class="row">
+        <% if sidebar_items.empty? %>
+          <% if player_column.empty? %>
+            <div class="span12">
+              <%= render :partial=>'/flash_msg' %>
+              <%= yield %>
+            </div>
+          <% else %>
+            <div class="span6">
+              <%= player_column.join('').html_safe %>
+            </div>
+            <div class="span6">
+              <%= render :partial=>'/flash_msg' %>
+              <%= yield %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="span4">
+            <div class="well"><%= sidebar_items.join('').html_safe %></div>
+            <%= render :partial => "/legend" %>
+          </div>
+          <div class="span8">
+            <%= render :partial=>'/flash_msg' %>
+            <%= yield %>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- footer row -->
+      <div class="row">
+        <div class="span12">
+          <div class="contact_info"></div>
+          <div class="aux_links"></div>
+          <div id="footer_notices" class="well">
+            <div id="bottom_text">
+              <div id="hydra_logo"><%= image_tag('hydra/powered_by_hydra.png', :width => 80, :height => 50, :alt => "Hydra logo") %></div>
+            </div>
           </div>
         </div>
       </div>
 
-	    <div id="bd">
+    </div>
+  </body>
 
-      	<div id="yui-main">
-          <div class="yui-b">
-            <%= render :partial=>'/flash_msg' %>
-            <%= yield %>
-          </div>
-        </div>
-
-        <div class="yui-b sidebar"><%= sidebar_items.join('').html_safe %></div>
-
-	    </div>
-	    <div id="ft"><%= raw(@footer) %></div>
-	  </div>
-    </body>
-
-    </html>
+</html>

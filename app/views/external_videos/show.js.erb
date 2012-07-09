@@ -1,0 +1,3 @@
+content = '<%= escape_javascript render :partial => "external_videos/tabular_display", :locals => { :video => @afdoc } %>';
+id = '<%= escape_javascript @afdoc.pid.gsub(/:/,"_") %>';
+$("li#"+id).replaceWith('<li class="active" id="'+id+'">'+content+'</li>');

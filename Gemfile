@@ -1,27 +1,46 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.0.10'
+gem 'rails', '~>3.2.3'
+gem 'sass-rails', '~> 3.2.3'
 
-gem 'blacklight', '~> 3.1.0'
-gem 'hydra-head', '~> 3.2.2'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'blacklight', '~>3.4'
+gem 'hydra-head', :path => 'gems/hydra-head'
+gem 'active-fedora', :path => 'gems/active_fedora'
+gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
 gem 'mediainfo'
-gem 'rsolr', '1.0.2'
+
+group :assets do
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+  gem 'compass-rails', '~> 1.0.0'
+  gem 'compass-susy-plugin', '~> 0.9.0'
+  gem 'twitter-bootstrap-rails'
+  gem 'compass_twitter_bootstrap'
+  gem 'therubyracer'
+  gem 'jquery-rails'
+end
 
 group :development, :test do
-  gem 'solrizer-fedora', '>=1.2.0'
-  gem 'ruby-debug'
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem 'mocha'
-  gem 'generator_spec'
-  gem 'cucumber-rails'
-  gem 'database_cleaner'
+  gem 'bcrypt-ruby'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'database_cleaner'
   gem 'factory_girl'
-  gem 'bcrypt-ruby'
+  gem 'generator_spec'
+  gem 'mocha'
   gem 'rest-client'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'ruby-debug19'
+  gem 'solrizer-fedora'
+  gem 'webrat'
+end
+
+group :cucumber do
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'spork'
+  gem 'launchy'
 end

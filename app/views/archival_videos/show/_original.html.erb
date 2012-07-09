@@ -1,22 +1,21 @@
 <fieldset id="original_fields">
-  <dl>
-
-    <%= display_field([:creation_date]) %>
-    <%= display_field([:barcode]) %>
-    <%= display_field([:repository]) %>
-    <%= display_field([:format]) %>
-    <%= display_field([:standard]) %>
-    <%= display_field([:media_type]) %>
-    <%= display_field([:generation]) %>
-    <%= display_field([:language]) %>
-    <%= display_field([:colors]) %>
-    <%= display_field([:archival_collection]) %>
-    <%= display_field([:archival_series]) %>
-    <%= display_field([:collection_number]) %>
-    <%= display_field([:accession_number]) %>
-    <%= display_field([:usage]) %>
-    <%= display_field([:condition_note], {:inline=>TRUE}) %>
-    <%= display_field([:cleaning_note], {:inline=>TRUE}) %>
-
+  <legend>Video Tape</legend>
+  <dl class="dl-horizontal">
+    <%= display_field(:creation_date) %>
+    <%= display_field(:barcode) %>
+    <%= display_field(:repository) %>
+    <%= display_field(:format) %>
+    <%= display_field(:standard) %>
+    <%= display_field(:media_type) %>
+    <%= display_field(:generation) %>
+    <%= display_field(:language) %>
+    <%= display_field(:colors) %>
+    <%= display_field(:archival_collection) %>
+    <%= display_field(:archival_series) %>
+    <%= display_field(:collection_number) %>
+    <%= display_field(:accession_number) %>
+    <%= display_field(:usage) %>
+    <%= display_field(:condition_note) %>
+    <%= display_field(:cleaning_note) %>
   </dl>
 </fieldset>

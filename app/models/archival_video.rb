@@ -1,42 +1,46 @@
-require "hydra"
-
 class ArchivalVideo < ActiveFedora::Base
 
-  include Hydra::ModelMethods
-  include Rockhall::ModelMethods
-  include Rockhall::WorkflowMethods
-  include Hydra::SubmissionWorkflow
-
-  # These will need to be included to avoid deprecation warnings is later versions of HH
+  include ActiveFedora::DatastreamCollections
   include ActiveFedora::FileManagement
   include ActiveFedora::Relationships
-  include ActiveFedora::DatastreamCollections
+  include Hydra::ModelMethods
+  include Hydra::SubmissionWorkflow
+  include Rockhall::ModelMethods
+  include Rockhall::WorkflowMethods
+  include ActiveModel::Validations
+  include Rockhall::Validations
+
+  after_create :apply_default_permissions
 
   has_relationship "objects", :is_part_of, :inbound => true
 
-  # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  has_metadata :name => "rightsMetadata", :type => Hydra::RightsMetadata
+  has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
+  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreDocument
+  has_metadata :name => "properties",     :type => Rockhall::Properties
+  has_metadata :name => "assetReview",    :type => Rockhall::AssetReview
 
-  has_metadata :name => "descMetadata", :type => Rockhall::PbcoreDocument do |m|
-  end
+  delegate_to :assetReview,
+    [:reviewer, :date_updated, :complete, :priority, :license, :abstract]
 
-  has_metadata :name => "properties", :type => Rockhall::Properties do |m|
-  end
-  delegate :depositor, :to=>'properties', :at=>[:depositor]
+  delegate_to :descMetadata,
+    [:alternative_title, :chapter, :episode, :segment, :subtitle, :track,
+     :translation, :lc_subject, :lc_name, :rh_subject, :subjects, :summary, :parts_list,
+     :getty_genre, :lc_genre, :lc_subject_genre, :genres, :event_series, :event_place,
+     :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
+     :note, :creation_date, :barcode, :repository, :format, :standard, :media_type,
+     :generation, :language, :colors, :archival_collection, :archival_series,
+     :collection_number, :accession_number, :usage, :condition_note, :cleaning_note]
 
-  has_metadata :name => "assetReview", :type => Rockhall::AssetReview do |m|
-  end
-  delegate :reviewer,       :to=>'assetReview', :at=>[:reviewer]
-  delegate :date_updated,   :to=>'assetReview', :at=>[:date_updated]
-  delegate :complete,       :to=>'assetReview', :at=>[:complete]
-  delegate :priority,       :to=>'assetReview', :at=>[:priority]
+  # Fields with only one value
+  delegate :main_title, :to=> :descMetadata, :unique=>true
+  validates_presence_of :main_title, :message => "Main title can't be blank"
 
-  def initialize( attrs={} )
-    super
-    # Apply group permissions
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
-  end
+  # label is used for the Fedora object, so we have to call our label something else
+  delegate :title_label, :to=> :descMetadata, :at=>[:label]
+
+  delegate_to :properties, [:depositor, :notes]
+
+  validate :validate_event_date
+  validate :validate_creation_date
 
 end

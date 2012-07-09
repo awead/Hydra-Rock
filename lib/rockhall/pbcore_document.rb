@@ -2,7 +2,7 @@ module Rockhall
 class PbcoreDocument < ActiveFedora::NokogiriDatastream
 
 	include Rockhall::PbcoreMethods
-	include Rockhall::SolrMethods
+	include Rockhall::WorkflowMethods
 
   set_terminology do |t|
     t.root(:path=>"pbcoreDescriptionDocument", :xmlns => '', :namespace_prefix=>nil)
@@ -311,8 +311,8 @@ class PbcoreDocument < ActiveFedora::NokogiriDatastream
     # Extract 4-digit year for creation date facet in Hydra and pub_date facet in Blacklight
 		create = get_year_from_date(self.find_by_terms(:creation_date).text.strip)
 		unless create.nil? or create.empty?
-		  solr_doc.merge!(:create_date_facet => create)
-		  solr_doc.merge!(:pub_date => create)
+		  solr_doc.merge!(:create_date_facet => get_year(create))
+		  solr_doc.merge!(:pub_date => get_year(create))
 		end
 
 		# For full text, we stuff it into the mods_t field which is already configured for Mods doucments

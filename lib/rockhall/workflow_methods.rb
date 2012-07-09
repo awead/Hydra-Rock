@@ -28,13 +28,50 @@ module Rockhall::WorkflowMethods
     end
   end
 
+  # Assumes American-style date format:
+  # mm/dd/year where year is either 2 or 4 digits
   def parse_date(s)
     begin
-      date = DateTime.parse(s)
+      if s =~ /^(\d{1,2})\/(\d{1,2})\/([2-9]{1}\d{1})$/
+        date = DateTime.parse("#{$2}/#{$1}/19#{$3}")
+      elsif s =~ /^(\d{1,2})\/(\d{1,2})\/([0-1]{1}\d{1})$/
+        date = DateTime.parse("#{$2}/#{$1}/20#{$3}")
+      elsif s =~ /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/
+        date = DateTime.parse("#{$2}/#{$1}/#{$3}")
+      elsif s =~ /^(\d\d\d\d)-(\d\d)$/
+        if (1...13).include?($2.to_i) and (1000...3000).include?($1.to_i)
+          return s
+        else
+          return nil
+        end
+      elsif s =~ /^(\d\d\d\d)$/
+        if (1000...3000).include?($1.to_i)
+          return s
+        else
+          return nil
+        end
+      else
+        date = DateTime.parse(s)
+      end
     rescue
       return nil
     end
     return date.strftime("%Y-%m-%d")
+  end
+
+  # Returns the 4-digit year from a string
+  def get_year(s)
+    begin
+      return DateTime.parse(s).year.to_s
+    rescue
+      if s.match(/^\d\d\d\d$/)
+        return s.to_s
+      elsif s.match(/^(\d\d\d\d)-\d\d$/)
+        return $1.to_s
+      else
+        return nil
+      end
+    end
   end
 
   def parse_ratio(r)

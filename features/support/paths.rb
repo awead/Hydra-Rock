@@ -56,6 +56,27 @@ module NavigationHelpers
     when /the permissions page for (.*)$/i
       asset_permissions_path($1)
 
+    # Archival videos
+    when /show archival video page for (.*)/i
+      catalog_path($1)
+    when /new archival video page/
+      new_archival_video_path
+    when /edit archival video page for (.*)/i
+      edit_archival_video_path($1)
+
+    # External Videos
+    when /show external video page for (.*)/i
+      catalog_path($1)
+
+    # Digital Videos
+    when /new digital_video page/
+      new_digital_video_path
+    when /show digital video page for (.*)/i
+      catalog_path($1)
+    when /edit digital video page for (.*)/i
+      edit_digital_video_path($1)
+
+
     when /new (.*) page$/i
       new_asset_path(:content_type => $1)
     when /the asset (.*)$/i

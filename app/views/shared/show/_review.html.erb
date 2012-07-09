@@ -1,12 +1,11 @@
 <fieldset id="assetReview">
-  <dl>
-
-    <%= display_field([:reviewer], { :datastream => "assetReview" }) %>
-    <%= display_field([:complete], { :datastream => "assetReview" }) %>
-    <%= display_field([:date_updated], { :datastream => "assetReview" }) %>
-    <%= display_field([:license], { :datastream => "assetReview" }) %>
-    <%= display_field([:abstract], { :datastream => "assetReview" }) %>
-    <%= display_field([:priority], { :datastream => "assetReview" }) %>
-
+  <dl class="dl-horizontal">
+    <%= display_field(:reviewer_t) %>
+    <%= display_field(:depositor_t) %>
+    <%= display_field(:complete_t) %>
+    <%= display_field(:date_updated_t) %>
+    <%= display_field(:license_t ) %>
+    <%= display_field(:abstract_t) %>
+    <%= display_field(:priority_t) %>
   </dl>
 </fieldset>

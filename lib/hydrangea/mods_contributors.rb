@@ -1,6 +1,6 @@
 module Hydrangea::ModsContributors
 
-  include Hydra::CommonModsIndexMethods
+  include Hydra::Datastream::CommonModsIndexMethods
 
   # This will add an attibute accessor to _instances_ of classes that include the module.
   attr_accessor :my_attribute

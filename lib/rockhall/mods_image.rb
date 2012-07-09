@@ -1,7 +1,7 @@
 module Rockhall
 class ModsImage < ActiveFedora::NokogiriDatastream
 
-  include Hydra::CommonModsIndexMethods
+  include Hydra::Datastream::CommonModsIndexMethods
   include Rockhall::ModsContributors
   include Rockhall::ModsSubjects
 

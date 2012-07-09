@@ -39,7 +39,7 @@ module Rockhall::ModelMethods
   def remove_file_objects
     if self.file_objects.count > 0
       self.file_objects.each do |obj|
-        ActiveFedora::Base.load_instance(obj.pid).delete
+        ActiveFedora::Base.find(obj.pid).delete
       end
       return true
     else
@@ -62,21 +62,18 @@ module Rockhall::ModelMethods
   # particulr datastream name.
   def videos
     results = Hash.new
-    u_files = Array.new
-    p_files = Array.new
-    a_files = Array.new
+    results[:unknown]  = Array.new
+    results[:original] = Array.new
+    results[:h264]     = Array.new
     self.file_objects.each do |obj|
       if obj.datastreams.keys.include?("PRESERVATION1")
-        p_files << obj
+        results[:original] << obj
       elsif obj.datastreams.keys.include?("ACCESS1")
-        a_files << obj
+        results[:h264] << obj
       else
-        u_files << obj
+        results[:unknown] << obj
       end
     end
-    results[:unknown]  = u_files
-    results[:original] = p_files
-    results[:h264]     = a_files
     return results
   end
 
@@ -102,6 +99,13 @@ module Rockhall::ModelMethods
     end
     solr_doc.merge!(:access_file_s => access_videos)
     solr_doc.merge!(:format_dtl_display => self.access_format)
+  end
+
+  def apply_default_permissions
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
+    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
+    self.save
   end
 
 end

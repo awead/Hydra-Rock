@@ -1,17 +1,14 @@
 development:
-  fedora:
-    url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora
-  solr:
-    url: http://localhost:8984/solr/hydra-dev
+  user:     fedoraAdmin
+  password: fedoraAdmin
+  url:      http://127.0.0.1:8983/fedora
 test: &TEST
-  fedora:
-    url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora
-  solr:
-    url: http://localhost:8984/solr/hydra-test
+  user:     fedoraAdmin
+  password: fedoraAdmin
+  url:      http://127.0.0.1:8983/fedora
 production:
-  fedora:
-    url: http://fedoraAdmin:fedoraAdmin@127.0.0.1:8983/fedora
-  solr:
-    url: http://localhost:8984/solr/hydra-dev
+  user:     fedoraAdmin
+  password: fedoraAdmin
+  url:      http://127.0.0.1:8983/fedora
 cucumber:
   <<: *TEST
