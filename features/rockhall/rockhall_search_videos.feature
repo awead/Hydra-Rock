@@ -22,3 +22,23 @@ Feature:
   Scenario: Don't display the results dropdown (DAM-188)
     Given I am on the home page
     Then I should not see "Results"
+
+  Scenario: Searching the abstract field (DAM-151)
+    Given I am logged in as "reviewer1@example.com"
+    When I fill in "q" with "Old Time Rock"
+    And I press "Search"
+    Then I should see "Hall of Fame Series. An evening with Little Richard. Pt. 1."
+
+  Scenario: Searching title field (DAM-157)
+    Given I am logged in as "reviewer1@example.com"
+    And I am on the home page
+    When I fill in "q" with "An evening with Little Richard"
+    And I press "Search"
+    Then I should see "Hall of Fame Series. An evening with Little Richard. Pt. 1."
+
+  Scenario: Searching title field, part 2 (DAM-157)
+    Given I am logged in as "reviewer1@example.com"
+    And I am on the home page
+    When I fill in "q" with "Little Richard"
+    And I press "Search"
+    Then I should see "Hall of Fame Series. An evening with Little Richard. Pt. 1."

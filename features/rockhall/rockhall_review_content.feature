@@ -69,23 +69,3 @@ Description:
     And I should see the field content "reviewer_t" contain "reviewer1@example.com"
     And I should see the field title "abstract_t" contain "Abstract"
     And I should see the field content "abstract_t" contain "We don't have permission to show this to the public"
-
-  Scenario: Searching the abstract field (DAM-151)
-    Given I am logged in as "reviewer1@example.com"
-    When I fill in "q" with "Old Time Rock"
-    And I press "Search"
-    Then I should see "Hall of Fame Series. An evening with Little Richard. Pt. 1."
-
-  Scenario: Searching title field (DAM-157)
-    Given I am logged in as "reviewer1@example.com"
-    And I am on the home page
-    When I fill in "q" with "An evening with Little Richard"
-    And I press "Search"
-    Then I should see "Hall of Fame Series. An evening with Little Richard. Pt. 1."
-    Given I am on the home page
-    When I fill in "q" with "Little Richard"
-    And I press "Search"
-    Then I should see "Hall of Fame Series. An evening with Little Richard. Pt. 1."
-
-
-
