@@ -131,11 +131,5 @@ module Rockhall::WorkflowMethods
     end
   end
 
-  def get_model
-    raise "No pid for #{self}" if self.pid.nil?
-    af = ActiveFedora::Base.load_instance(self.pid)
-    af.relationships(:has_model).first.split(":").last
-  end
-
 end
 
