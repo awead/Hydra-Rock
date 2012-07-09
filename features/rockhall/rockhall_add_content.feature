@@ -1,4 +1,3 @@
-@wip
 Feature: Add rockhall content
   In order to create new digital content for the Rockhall
   As an editor
@@ -9,12 +8,15 @@ Feature: Add rockhall content
     And I am on the home page
     Then I should see "Archival Video"
 
-  Scenario: Disallowed groups should not be able to create assets (DAM-163)
+  Scenario: Disallowed groups should not be able to create archival videos (DAM-163)
     Given I am logged in as "researcher1@example.com"
     And I am on the home page
     And I create a new archival video
     Then I should see "You are not allowed to create new content"
-    Given I am on the home page
+
+  Scenario: Disallowed groups should not be able to create digital videos (DAM-163)
+    Given I am logged in as "researcher1@example.com"
+    And I am on the home page
     And I create a new digital_video
     Then I should see "You are not allowed to create new content"
 
