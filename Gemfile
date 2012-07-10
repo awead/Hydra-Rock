@@ -6,6 +6,7 @@ gem 'sass-rails', '~> 3.2.3'
 gem 'blacklight', '~>3.4'
 gem 'hydra-head', :path => 'gems/hydra-head'
 gem 'active-fedora', :path => 'gems/active_fedora'
+gem 'solrizer-fedora'
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
@@ -34,7 +35,6 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'ruby-debug19'
-  gem 'solrizer-fedora'
   gem 'webrat'
 end
 
