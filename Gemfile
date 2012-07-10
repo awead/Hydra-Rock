@@ -3,10 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '~>3.2.3'
 gem 'sass-rails', '~> 3.2.3'
 
-gem 'blacklight', '~>3.4'
-gem 'hydra-head', :path => 'gems/hydra-head'
-gem 'active-fedora', :path => 'gems/active_fedora'
-gem 'solrizer-fedora'
+gem 'blacklight'
+gem 'hydra-head', '< 4.1.0'
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
@@ -30,11 +28,12 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'generator_spec'
-  gem "mocha", :require => false
+  gem 'mocha', :require => false
   gem 'rest-client'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'ruby-debug19'
+  gem 'solrizer-fedora'
   gem 'webrat'
 end
 
