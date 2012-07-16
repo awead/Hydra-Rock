@@ -44,6 +44,6 @@ group :cucumber do
   gem 'launchy'
 end
 
-groups :production do
+group :production do
   gem 'passenger', '=3.0.13'
 end
