@@ -1,14 +1,15 @@
 source 'http://rubygems.org'
 
+# Gems for all environments
 gem 'rails', '~>3.2.3'
 gem 'sass-rails', '~> 3.2.3'
-
 gem 'blacklight'
 gem 'hydra-head', '< 4.1.0'
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
 gem 'mediainfo'
+gem 'solrizer-fedora'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
@@ -33,7 +34,6 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'ruby-debug19'
-  gem 'solrizer-fedora'
   gem 'webrat'
 end
 
@@ -42,4 +42,8 @@ group :cucumber do
   gem 'cucumber-rails'
   gem 'spork'
   gem 'launchy'
+end
+
+groups :production do
+  gem 'passenger', '=3.0.13'
 end
