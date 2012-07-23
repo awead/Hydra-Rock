@@ -89,18 +89,6 @@ module Rockhall::ModelMethods
     end
   end
 
-  # Used in conjuction with Rockhall::Discovery, this method will return additional solr fields
-  # that need to be included when an object is exported to another solr index.
-  def addl_solr_fields
-    solr_doc = Hash.new
-    access_videos = Array.new
-    self.videos[:h264].each do |ev|
-      access_videos << ev.name.first
-    end
-    solr_doc.merge!(:access_file_s => access_videos)
-    solr_doc.merge!(:format_dtl_display => self.access_format)
-  end
-
   def apply_default_permissions
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
