@@ -95,7 +95,7 @@ module Rockhall::ModelMethods
     solr_doc = Hash.new
     access_videos = Array.new
     self.videos[:h264].each do |ev|
-      access_videos << ev.name
+      access_videos << ev.name.first
     end
     solr_doc.merge!(:access_file_s => access_videos)
     solr_doc.merge!(:format_dtl_display => self.access_format)
