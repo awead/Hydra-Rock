@@ -83,8 +83,9 @@ describe ArchivalVideo do
       av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
       addl_doc = av.addl_solr_fields
       addl_doc.should be_kind_of(Hash)
-      addl_doc.to_s.should match("39156042439369_access.mp4")
-      addl_doc.to_s.should match("H.264/MPEG-4 AVC")
+      addl_doc[:access_file_s].should be_kind_of(Array)
+      addl_doc[:access_file_s].should == ["39156042439369_access.mp4"]
+      addl_doc[:format_dtl_display].should == ["H.264/MPEG-4 AVC"]
     end
   end
 
