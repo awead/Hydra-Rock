@@ -20,4 +20,7 @@
 
 //= require_tree .
 
+// Hacky way of dealing with asset pipeline and running your app with passenger
+// and a suburi.  Use this variable in conjunction with:
+// RAILS_RELATIVE_URL_ROOT=/hydra rake assets:precompile
 var ROOT_PATH = "/";
