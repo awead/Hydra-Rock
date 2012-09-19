@@ -115,6 +115,14 @@ module Rockhall::WorkflowMethods
     end
   end
 
+  def parse_empty(t)
+    if t.empty?
+      return nil
+    else
+      return t
+    end
+  end
+
   def get_next(index, length)
     last_index = length - 1
     next_index = index + 1

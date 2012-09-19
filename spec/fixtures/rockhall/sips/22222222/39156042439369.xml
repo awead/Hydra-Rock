@@ -1,122 +1,75 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<FMPXMLRESULT xmlns="http://www.filemaker.com/fmpxmlresult">
-  <ERRORCODE>0</ERRORCODE>
-  <PRODUCT BUILD="07-18-2011" NAME="FileMaker" VERSION="ProAdvanced 11.0v4"/>
-  <DATABASE DATEFORMAT="M/d/yyyy" LAYOUT="" NAME="GBA" RECORDS="49128" TIMEFORMAT="h:mm:ss a"/>
-  <METADATA>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_A" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_B" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_C" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_D" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_E" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_F" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_G" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_H" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_I" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_J" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_K" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_L" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_M" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_N" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_O" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_P" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_Q" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_R" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_S" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_T" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_U" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_V" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_W" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_X" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_Y" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_Z" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BA" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BB" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BC" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BD" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BE" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BF" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BG" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BH" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BI" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BJ" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BK" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BL" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BM" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BN" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BO" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BP" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BQ" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BR" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BS" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BT" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BU" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BV" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BW" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BX" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BY" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_BZ" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_CA" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_CB" TYPE="TEXT"/>
-    <FIELD EMPTYOK="YES" MAXREPEAT="1" NAME="MetaWorksheetColumn_CC" TYPE="TEXT"/>
-  </METADATA>
-  <RESULTSET FOUND="1">
-    <ROW MODID="99" RECORDID="143572">
-      <COL><DATA>39156042439369</DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA>2007-07-09</DATA></COL>
-      <COL><DATA>NTSC</DATA></COL>
-      <COL><DATA>Bars and tone at end of program</DATA></COL>
-      <COL><DATA>Betacam</DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA>39156042439369_preservation</DATA></COL>
-      <COL><DATA>10/12/2011</DATA></COL>
-      <COL><DATA>.mov</DATA></COL>
-      <COL><DATA>86,166.24</DATA></COL>
-      <COL><DATA>MB</DATA></COL>
-      <COL><DATA>0:50:47</DATA></COL>
-      <COL><DATA>AJA v210</DATA></COL>
-      <COL><DATA>224</DATA></COL>
-      <COL><DATA>Mbps</DATA></COL>
-      <COL><DATA>10</DATA></COL>
-      <COL><DATA>720 x 486</DATA></COL>
-      <COL><DATA>4 x 3</DATA></COL>
-      <COL><DATA>4 X 3</DATA></COL>
-      <COL><DATA>4:2:2</DATA></COL>
-      <COL><DATA>YUV</DATA></COL>
-      <COL><DATA>in24</DATA></COL>
-      <COL><DATA>PCM</DATA></COL>
-      <COL><DATA>1152</DATA></COL>
-      <COL><DATA>Kbps</DATA></COL>
-      <COL><DATA>MPEG4</DATA></COL>
-      <COL><DATA>AAC</DATA></COL>
-      <COL><DATA>256</DATA></COL>
-      <COL><DATA>Kbps</DATA></COL>
-      <COL><DATA>Khz</DATA></COL>
-      <COL><DATA>48</DATA></COL>
-      <COL><DATA>16</DATA></COL>
-      <COL><DATA>2</DATA></COL>
-      <COL><DATA>md5</DATA></COL>
-      <COL><DATA>5441895028acd538cf43ea26459b7f13</DATA></COL>
-      <COL><DATA>MPEG Streamclip 1.92</DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA>TMu</DATA></COL>
-      <COL><DATA>George Blood Audio and Video</DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-      <COL><DATA></DATA></COL>
-  </ROW>
-  </RESULTSET>
-</FMPXMLRESULT>
+<?xml version="1.0" encoding="UTF-8"?>
+<VideoObject>
+  <Original>
+    <LabelTitle/>
+    <Barcode>39156042439369</Barcode>
+    <Duration>0:50:47</Duration>
+    <RecordDate>2007-07-09</RecordDate>
+    <VideoStandard>NTSC</VideoStandard>
+    <ConditionNotes>Bars and tone at end of program</ConditionNotes>
+    <FormatType>Betacam</FormatType>
+    <CleaningNotes/>
+  </Original>
+  <PreservationMaster>
+    <FileName>39156042439369_preservation</FileName>
+    <DateCreated>10/12/2011</DateCreated>
+    <FileFormatWrapper>.mov</FileFormatWrapper>
+    <FileSize>86,166.24</FileSize>
+    <FileSizeUnit>MB</FileSizeUnit>
+    <VideoCodec>AJA v210</VideoCodec>
+    <VideoBitRate>224</VideoBitRate>
+    <VideoBitRateUnit>Mbps</VideoBitRateUnit>
+    <VideoBitDepth>10</VideoBitDepth>
+    <FrameRate>29.97</FrameRate>
+    <FrameSize>720 X 486</FrameSize>
+    <AspectRatio>4 X 3</AspectRatio>
+    <ChromaSubSampling>4:2:2</ChromaSubSampling>
+    <ColorSpace>YUV</ColorSpace>
+    <AudioCodec>in24</AudioCodec>
+    <AudioDataEncoding>PCM</AudioDataEncoding>
+    <AudioBitRate>1152</AudioBitRate>
+    <AudioBitRateUnit>Kbps</AudioBitRateUnit>
+    <AudioSamplingRate>48</AudioSamplingRate>
+    <AudioSamplingRateUnit>kHz</AudioSamplingRateUnit>
+    <AudioBitDepth>24</AudioBitDepth>
+    <AudioChannels>2</AudioChannels>
+    <CheckSumType>md5</CheckSumType>
+    <CheckSumValue>a8a357f97736e108f01b87b878de2323</CheckSumValue>
+    <PlayBackDevice>Sony PVW-2800; 20040</PlayBackDevice>
+    <CaptureSoftware>Apple FCP 7 (ver 7.0.3)</CaptureSoftware>
+    <TransferNotes/>
+    <EngineerName>TMu</EngineerName>
+    <VendorName>George Blood Audio and Video</VendorName>
+  </PreservationMaster>
+  <AccessCopy>
+    <FileName>39156042439369_access</FileName>
+    <DateCreated>10/12/2011</DateCreated>
+    <FileFormatWrapper>.mp4</FileFormatWrapper>
+    <FileSize>1,057.96</FileSize>
+    <FileSizeUnit>MB</FileSizeUnit>
+    <Duration>0:50:47</Duration>
+    <VideoCodec>avc1</VideoCodec>
+    <VideoBitRate>2507</VideoBitRate>
+    <VideoBitRateUnit>Kbps</VideoBitRateUnit>
+    <VideoBitDepth>8</VideoBitDepth>
+    <FrameRate>29.97</FrameRate>
+    <FrameSize>640 X 480</FrameSize>
+    <AspectRatio>4:3</AspectRatio>
+    <ChromaSubSampling>4:2:0</ChromaSubSampling>
+    <ColorSpace>YUV</ColorSpace>
+    <AudioCodec>MPEG4</AudioCodec>
+    <AudioDataEncoding>AAC</AudioDataEncoding>
+    <AudioBitRate>256</AudioBitRate>
+    <AudioBitRateUnit>Kbps</AudioBitRateUnit>
+    <AudioSamplingRate>48.0</AudioSamplingRate>
+    <AudioSamplingRateUnit>kHz</AudioSamplingRateUnit>
+    <AudioBitDepth>16</AudioBitDepth>
+    <AudioChannels>2</AudioChannels>
+    <CheckSumType>md5</CheckSumType>
+    <CheckSumValue>5441895028acd538cf43ea26459b7f13</CheckSumValue>
+    <TranscodingSoftware>MPEG Streamclip 1.92</TranscodingSoftware>
+    <TransferNotes/>
+    <EngineerName>TMu</EngineerName>
+    <VendorName>George Blood Audio and Video</VendorName>
+  </AccessCopy>
+</VideoObject>

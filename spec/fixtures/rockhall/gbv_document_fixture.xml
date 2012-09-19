@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VideoObject>
   <Original>
-    <LabelTitle>Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2.</LabelTitle>
-    <Barcode>39156042439369</Barcode>
-    <Duration>0:50:47</Duration>
-    <RecordDate>2007-07-09</RecordDate>
+    <LabelTitle>Sun Records. 151.02 TRT-5:40.</LabelTitle>
+    <Barcode>39156042448451</Barcode>
+    <Duration>0:07:56</Duration>
+    <RecordDate/>
     <VideoStandard>NTSC</VideoStandard>
-    <ConditionNotes>Bars and tone at end of program</ConditionNotes>
+    <ConditionNotes/>
     <FormatType>Betacam</FormatType>
     <CleaningNotes/>
   </Original>
   <PreservationMaster>
     <FileName>39156042439369_preservation</FileName>
-    <DateCreated>10/12/2011</DateCreated>
+    <DateCreated>9/11/2012</DateCreated>
     <FileFormatWrapper>.mov</FileFormatWrapper>
-    <FileSize>86,166.24</FileSize>
+    <FileSize>13434.97</FileSize>
     <FileSizeUnit>MB</FileSizeUnit>
     <VideoCodec>AJA v210</VideoCodec>
     <VideoBitRate>224</VideoBitRate>
@@ -34,20 +34,20 @@
     <AudioBitDepth>24</AudioBitDepth>
     <AudioChannels>2</AudioChannels>
     <CheckSumType>md5</CheckSumType>
-    <CheckSumValue>a8a357f97736e108f01b87b878de2323</CheckSumValue>
-    <PlayBackDevice>Sony PVW-2800; 20040</PlayBackDevice>
+    <CheckSumValue>7349999933fc679f52e5c04afed039ce</CheckSumValue>
+    <PlayBackDevice>Sony BVW-75</PlayBackDevice>
     <CaptureSoftware>Apple FCP 7 (ver 7.0.3)</CaptureSoftware>
     <TransferNotes/>
-    <EngineerName>TMu</EngineerName>
+    <EngineerName>TM</EngineerName>
     <VendorName>George Blood Audio and Video</VendorName>
   </PreservationMaster>
   <AccessCopy>
-    <FileName>39156042439369_access</FileName>
-    <DateCreated>10/12/2011</DateCreated>
+    <FileName>39156042448451_access</FileName>
+    <DateCreated>9/11/2012</DateCreated>
     <FileFormatWrapper>.mp4</FileFormatWrapper>
-    <FileSize>1,057.96</FileSize>
+    <FileSize>163.83</FileSize>
     <FileSizeUnit>MB</FileSizeUnit>
-    <Duration>0:50:47</Duration>
+    <Duration>0:07:56</Duration>
     <VideoCodec>avc1</VideoCodec>
     <VideoBitRate>2507</VideoBitRate>
     <VideoBitRateUnit>Kbps</VideoBitRateUnit>
@@ -66,10 +66,10 @@
     <AudioBitDepth>16</AudioBitDepth>
     <AudioChannels>2</AudioChannels>
     <CheckSumType>md5</CheckSumType>
-    <CheckSumValue>5441895028acd538cf43ea26459b7f13</CheckSumValue>
+    <CheckSumValue>a5aee22426815523413231d23fc38e5c</CheckSumValue>
     <TranscodingSoftware>MPEG Streamclip 1.92</TranscodingSoftware>
     <TransferNotes/>
-    <EngineerName>TMu</EngineerName>
+    <EngineerName>TM</EngineerName>
     <VendorName>George Blood Audio and Video</VendorName>
   </AccessCopy>
 </VideoObject>

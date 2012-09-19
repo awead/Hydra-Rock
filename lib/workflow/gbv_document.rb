@@ -4,360 +4,341 @@ class GbvDocument < ActiveFedora::NokogiriDatastream
   include Rockhall::WorkflowMethods
 
   set_terminology do |t|
-    t.root(:path=>"FMPXMLRESULT", :xmlns=>"http://www.filemaker.com/fmpxmlresult")
+    t.root(:path=>"/VideoObject", :xmlns=> nil)
 
-    t.resultset(:path=>"RESULTSET") {
-      t.row(:path=>"ROW") {
-        t.col(:path=>"COL")
-      }
-    }
-
-    t.data(:ref=>[:resultset, :row, :col])
-
+    t.barcode_array(:path => "/VideoObject/Original/Barcode")
+    t.title_array(:path => "/VideoObject/Original/LabelTitle")
+    t.orig_date_array(:path => "/VideoObject/Original/RecordDate")
+    t.standard_array(:path => "/VideoObject/Original/VideoStandard")
+    t.condition_array(:path => "/VideoObject/Original/ConditionNotes")
+    t.format_array(:path => "/VideoObject/Original/FormatType")
+    t.cleaning_array(:path => "/VideoObject/Original/CleaningNotes")
+    t.p_name_array(:path => "/VideoObject/PreservationMaster/FileName")
+    t.p_create_date_array(:path => "/VideoObject/PreservationMaster/DateCreated")
+    t.p_file_format_array(:path => "/VideoObject/PreservationMaster/FileFormatWrapper")
+    t.p_size_array(:path => "/VideoObject/PreservationMaster/FileSize")
+    t.p_size_units_array(:path => "/VideoObject/PreservationMaster/FileSizeUnit")
+    t.p_duration_array(:path => "/VideoObject/Original/Duration")
+    t.p_video_codec_array(:path => "/VideoObject/PreservationMaster/VideoCodec")
+    t.p_video_bit_rate_array(:path => "/VideoObject/PreservationMaster/VideoBitRate")
+    t.p_video_bit_rate_units_array(:path => "/VideoObject/PreservationMaster/VideoBitRateUnit")
+    t.p_video_bit_depth_array(:path => "/VideoObject/PreservationMaster/VideoBitDepth")
+    t.p_frame_rate_array(:path => "/VideoObject/PreservationMaster/FrameRate")
+    t.p_frame_size_array(:path => "/VideoObject/PreservationMaster/FrameSize")
+    t.p_ratio_array(:path => "/VideoObject/PreservationMaster/AspectRatio")
+    t.p_chroma_array(:path => "/VideoObject/PreservationMaster/ChromaSubSampling")
+    t.p_color_space_array(:path => "/VideoObject/PreservationMaster/ColorSpace")
+    t.p_audio_encoding_array(:path => "/VideoObject/PreservationMaster/AudioCodec")
+    t.p_audio_standard_array(:path => "/VideoObject/PreservationMaster/AudioDataEncoding")
+    t.p_audio_bit_rate_array(:path => "/VideoObject/PreservationMaster/AudioBitRate")
+    t.p_audio_bit_rate_unit_array(:path => "/VideoObject/PreservationMaster/AudioBitRateUnit")
+    t.p_audio_sample_rate_array(:path => "/VideoObject/PreservationMaster/AudioSamplingRate")
+    t.p_audio_sample_rate_unit_array(:path => "/VideoObject/PreservationMaster/AudioSamplingRateUnit")
+    t.p_audio_bit_depth_array(:path => "/VideoObject/PreservationMaster/AudioBitDepth")
+    t.p_audio_channels_array(:path => "/VideoObject/PreservationMaster/AudioChannels")
+    t.p_checksum_type_array(:path => "/VideoObject/PreservationMaster/CheckSumType")
+    t.p_checksum_value_array(:path => "/VideoObject/PreservationMaster/CheckSumValue")
+    t.device_array(:path => "/VideoObject/PreservationMaster/PlayBackDevice")
+    t.capture_soft_array(:path => "/VideoObject/PreservationMaster/CaptureSoftware")
+    t.p_trans_note_array(:path => "/VideoObject/PreservationMaster/TransferNotes")
+    t.p_operator_array(:path => "/VideoObject/PreservationMaster/EngineerName")
+    t.p_vendor_array(:path => "/VideoObject/PreservationMaster/VendorName")
+    t.a_name_array(:path => "/VideoObject/AccessCopy/FileName")
+    t.a_create_date_array(:path => "/VideoObject/AccessCopy/DateCreated")
+    t.a_file_format_array(:path => "/VideoObject/AccessCopy/FileFormatWrapper")
+    t.a_size_array(:path => "/VideoObject/AccessCopy/FileSize")
+    t.a_size_units_array(:path => "/VideoObject/AccessCopy/FileSizeUnit")
+    t.a_duration_array(:path => "/VideoObject/AccessCopy/Duration")
+    t.a_video_codec_array(:path => "/VideoObject/AccessCopy/VideoCodec")
+    t.a_video_bit_rate_array(:path => "/VideoObject/AccessCopy/VideoBitRate")
+    t.a_video_bit_rate_units_array(:path => "/VideoObject/AccessCopy/VideoBitRateUnit")
+    t.a_video_bit_depth_array(:path => "/VideoObject/AccessCopy/VideoBitDepth")
+    t.a_frame_rate_array(:path => "/VideoObject/AccessCopy/FrameRate")
+    t.a_frame_size_array(:path => "/VideoObject/AccessCopy/FrameSize")
+    t.a_ratio_array(:path => "/VideoObject/AccessCopy/AspectRatio")
+    t.a_chroma_array(:path => "/VideoObject/AccessCopy/ChromaSubSampling")
+    t.a_color_space_array(:path => "/VideoObject/AccessCopy/ColorSpace")
+    t.a_audio_encoding_array(:path => "/VideoObject/AccessCopy/AudioCodec")
+    t.a_audio_standard_array(:path => "/VideoObject/AccessCopy/AudioDataEncoding")
+    t.a_audio_bit_rate_array(:path => "/VideoObject/AccessCopy/AudioBitRate")
+    t.a_audio_bit_rate_unit_array(:path => "/VideoObject/AccessCopy/AudioBitRateUnit")
+    t.a_audio_sample_rate_array(:path => "/VideoObject/AccessCopy/AudioSamplingRate")
+    t.a_audio_sample_rate_unit_array(:path => "/VideoObject/AccessCopy/AudioSamplingRateUnit")
+    t.a_audio_bit_depth_array(:path => "/VideoObject/AccessCopy/AudioBitDepth")
+    t.a_audio_channels_array(:path => "/VideoObject/AccessCopy/AudioChannels")
+    t.a_checksum_type_array(:path => "/VideoObject/AccessCopy/CheckSumType")
+    t.a_checksum_value_array(:path => "/VideoObject/AccessCopy/CheckSumValue")
+    t.trans_soft_array(:path => "/VideoObject/AccessCopy/TranscodingSoftware")
+    t.a_trans_note_array(:path => "/VideoObject/AccessCopy/TransferNotes")
+    t.a_operator_array(:path => "/VideoObject/AccessCopy/EngineerName")
+    t.a_vendor_array(:path => "/VideoObject/AccessCopy/VendorName")
   end
 
-  def respond(value)
-    unless value.empty?
-      return value
-    end
-  end
-
-  # Fields from xml file, listed by column id
-
-  # A Original: Barcode
   def barcode
-    unless self.data[0].match(/^3[0-9]+$/).nil?
-      return self.data[0]
-    end
+    return parse_empty(self.barcode_array.first)
   end
 
-  # B - Original: Label Title (transcribed from label/container)
   def title
-    return respond(self.data[1])
+    return parse_empty(self.title_array.first)
   end
 
-  # C - Original: Recording Date (yyyy-mm-dd)
   def orig_date
-    return parse_date(self.data[2])
+    return parse_date(self.orig_date_array.first)
   end
 
-  # D - Original: Video Standard
   def standard
-    return respond(self.data[3])
+    return parse_empty(self.standard_array.first)
   end
 
-  # E - Original: Condition Notes
   def condition
-    return respond(self.data[4])
+    return parse_empty(self.condition_array.first)
   end
 
-  # F - Original: Cleaning Notes
   def format
-    return respond(self.data[5])
+    return parse_empty(self.format_array.first)
   end
 
-  # G - Original: Cleaning Notes
   def cleaning
-    return respond(self.data[6])
+    return parse_empty(self.cleaning_array.first)
   end
 
-  # H - Pres Master: File Name
   def p_name
-    return respond(self.data[7])
+  	return parse_empty(self.p_name_array.first)
   end
 
-  # I - Pres Master: Date Created (mm-dd-yyyy)
   def p_create_date
-    return parse_date(self.data[8])
+  	return parse_date(self.p_create_date_array.first)
   end
 
-  # J - Pres Master: File Format (extension)
   def p_file_format
-    return respond(self.data[9]).gsub(/\./,"")
+  	return parse_empty(self.p_file_format_array.first.gsub(/\./,""))
   end
 
-  # K - Pres master: file size value
   def p_size
-    return respond(self.data[10])
+  	return parse_empty(self.p_size_array.first)
   end
 
-  # L - Pres Master: File Size Unit of Measure (MB)
   def p_size_units
-    return respond(self.data[11])
+  	return parse_empty(self.p_size_units_array.first)
   end
 
-  # M - Pres Master: Duration (HH:MM:SS)
   def p_duration
-    return respond(self.data[12])
+  	return parse_empty(self.p_duration_array.first)
   end
 
-  # N - Pres Master: Video Codec
   def p_video_codec
-    return parse_encoding(self.data[13])
+  	return parse_empty(self.p_video_codec_array.first)
   end
 
-  # O - Pres Master: Video Bit Rate Value
   def p_video_bit_rate
-    return respond(self.data[14])
+  	return parse_empty(self.p_video_bit_rate_array.first)
   end
 
-  # P - Pres Master: Video Bit Rate Unit of Measure (kbps)
   def p_video_bit_rate_units
-    return respond(self.data[15])
+  	return parse_empty(self.p_video_bit_rate_units_array.first)
   end
 
-  # Q - Pres Master: Video Bit Depth
   def p_video_bit_depth
-    return respond(self.data[16])
+  	return parse_empty(self.p_video_bit_depth_array.first)
   end
 
-  # R - Pres Master: Video Frame Rate
   def p_frame_rate
-    return respond(self.data[17])
+  	return parse_empty(self.p_frame_rate_array.first)
   end
 
-  # S - Pres Master: Video Frame Size (pixels: W x H)
   def p_frame_size
-    return parse_size(self.data[18])
+  	return parse_size(self.p_frame_size_array.first)
   end
 
-  # T - Pres Master: Video Aspect Ratio (W:H)
   def p_ratio
-    return parse_ratio(self.data[19])
+  	return parse_ratio(self.p_ratio_array.first)
   end
 
-  # U - Pres Master: Video Chroma Subsampling
   def p_chroma
-    return respond(self.data[20])
+  	return parse_empty(self.p_chroma_array.first)
   end
 
-  # V - Pres Master: Video Color Space
   def p_color_space
-    return respond(self.data[21])
+  	return parse_empty(self.p_color_space_array.first)
   end
 
-  # W - Pres Master: Audio Codec
-  # See: http://bernie.rockhall.org/confluence/display/archives/Metadata+for+Digital+Items
   def p_audio_encoding
-    return parse_encoding(self.data[22])
+  	return parse_empty(self.p_audio_encoding_array.first)
   end
 
-  # X  - Pres Master: Audio Data Encoding
-  # See: http://bernie.rockhall.org/confluence/display/archives/Metadata+for+Digital+Items?&#comments
   def p_audio_standard
-    return parse_standard(self.data[23])
+  	return parse_standard(self.p_audio_standard_array.first)
   end
 
-  # Y  - Pres Master: Audio Bit Rate Value
   def p_audio_bit_rate
-    return respond(self.data[24])
+  	return parse_empty(self.p_audio_bit_rate_array.first)
   end
 
-  # Z  - Pres Master: Audio Bit Rate Unit of Measure (kbps)
   def p_audio_bit_rate_unit
-    return respond(self.data[25])
+  	return parse_empty(self.p_audio_bit_rate_unit_array.first)
   end
 
-  # AA - Pres Master: Audio Sampling Rate
   def p_audio_sample_rate
-    return respond(self.data[26])
+  	return parse_empty(self.p_audio_sample_rate_array.first)
   end
 
-  # AB - Pres Master: Audio Sampling Rate Unit
   def p_audio_sample_rate_unit
-    return respond(self.data[27])
+  	return parse_empty(self.p_audio_sample_rate_unit_array.first)
   end
 
-  # AC - Pres Master: Audio Bit Depth
   def p_audio_bit_depth
-    return respond(self.data[28])
+  	return parse_empty(self.p_audio_bit_depth_array.first)
   end
 
-  # AD - Pres Master: Audio Channels (number of)
   def p_audio_channels
-    return respond(self.data[29])
+  	return parse_empty(self.p_audio_channels_array.first)
   end
 
-  # AE - Pres Master: Checksum Type
   def p_checksum_type
-    return respond(self.data[30])
+  	return parse_empty(self.p_checksum_type_array.first)
   end
 
-  # AF - Pres Master: Checksum Value
   def p_checksum_value
-    return respond(self.data[31])
+  	return parse_empty(self.p_checksum_value_array.first)
   end
 
-  # AG - Pres Master: Playback Device (Make, model)
   def device
-    return respond(self.data[32])
+  	return parse_empty(self.device_array.first)
   end
 
-  # AH - Pres Master: Capture Software (Name, version)
   def capture_soft
-    return respond(self.data[33])
+  	return parse_empty(self.capture_soft_array.first)
   end
 
-  # AI - Pres Master: Transfer Notes
   def p_trans_note
-    return respond(self.data[34])
+  	return parse_empty(self.p_trans_note_array.first)
   end
 
-  # AJ
   def p_operator
-    return respond(self.data[35])
+  	return parse_empty(self.p_operator_array.first)
   end
 
-  # AK - Pres Master: Vendor Name
   def p_vendor
-    return respond(self.data[36])
+  	return parse_empty(self.p_vendor_array.first)
   end
 
-  # AL - Access Copy: File Name
   def a_name
-    return respond(self.data[37])
+  	return parse_empty(self.a_name_array.first)
   end
 
-  # AM - Access Copy: Date Created (mm-dd-yyyy)
   def a_create_date
-    return parse_date(self.data[38])
+  	return parse_date(self.a_create_date_array.first)
   end
 
-  # AN - Access Copy:  File Format (extension)
   def a_file_format
-    return respond(self.data[39]).gsub(/\./,"")
+  	return parse_empty(self.a_file_format_array.first.gsub(/\./,""))
   end
 
-  # AO - Access Copy: File Size Value
   def a_size
-    return respond(self.data[40])
+  	return parse_empty(self.a_size_array.first)
   end
 
-  # AP - Access Copy: File Size Unit of Measure (MB)
   def a_size_units
-    return respond(self.data[41])
+  	return parse_empty(self.a_size_units_array.first)
   end
 
-  # AQ - Access Copy: Duration (HH:MM:SS)
   def a_duration
-    return respond(self.data[42])
+  	return parse_empty(self.a_duration_array.first)
   end
 
-  # AR - Access Copy: Video Codec
   def a_video_codec
-    return parse_encoding(self.data[43])
+  	return parse_encoding(self.a_video_codec_array.first)
   end
 
-  # AS - Access Copy: Video Bit Rate Value
   def a_video_bit_rate
-    return respond(self.data[44])
+  	return parse_empty(self.a_video_bit_rate_array.first)
   end
 
-  # AT - Access Copy: Video Bit Rate Unit of Measure (kbps)
   def a_video_bit_rate_units
-    return respond(self.data[45])
+  	return parse_empty(self.a_video_bit_rate_units_array.first)
   end
 
-  # AU - Access Copy: Video Bit Depth
   def a_video_bit_depth
-    return respond(self.data[46])
+  	return parse_empty(self.a_video_bit_depth_array.first)
   end
 
-  # AV - Access Copy: Video Frame Rate
   def a_frame_rate
-    return respond(self.data[47])
+  	return parse_empty(self.a_frame_rate_array.first)
   end
 
-  # AW - Access Copy: Video Frame Size (pixels: W x H)
   def a_frame_size
-    return parse_size(self.data[48])
+  	return parse_size(self.a_frame_size_array.first)
   end
 
-  # AX - Access Copy: Video Aspect Ratio (W:H)
   def a_ratio
-    return parse_ratio(self.data[49])
+  	return parse_ratio(self.a_ratio_array.first)
   end
 
-  # AY - Access Copy: Video Chroma Subsampling
   def a_chroma
-    return respond(self.data[50])
+  	return parse_empty(self.a_chroma_array.first)
   end
 
-  # AZ - Access Copy: Video Color Space
   def a_color_space
-    return respond(self.data[51])
+  	return parse_empty(self.a_color_space_array.first)
   end
 
-  # BA - Access Copy: Audio Codec
-  # See note for field W
   def a_audio_encoding
-    return parse_encoding(self.data[52])
+  	return parse_encoding(self.a_audio_encoding_array.first)
   end
 
-  # BB - Access Copy: Audio Data Encoding
   def a_audio_standard
-    return parse_standard(self.data[53])
+  	return parse_standard(self.a_audio_standard_array.first)
   end
 
-  # BC - Access Copy: Audio Bit Rate Value
   def a_audio_bit_rate
-    return respond(self.data[54])
+  	return parse_empty(self.a_audio_bit_rate_array.first)
   end
 
-  # BD - Access Copy: Audio Bit Rate Unit of Measure (kbps)
   def a_audio_bit_rate_unit
-    return respond(self.data[55])
+  	return parse_empty(self.a_audio_bit_rate_unit_array.first)
   end
 
-  # BE - Access Copy: Audio Sampling Rate Value
   def a_audio_sample_rate
-    return respond(self.data[56])
+  	return parse_empty(self.a_audio_sample_rate_array.first)
   end
 
-  # BF - Access Copy: Audio Sampling Rate Unit(kHz)
   def a_audio_sample_rate_unit
-    return respond(self.data[57])
+  	return parse_empty(self.a_audio_sample_rate_unit_array.first)
   end
 
-  # BG - Access Copy: Audio Bit Depth
   def a_audio_bit_depth
-    return respond(self.data[58])
+  	return parse_empty(self.a_audio_bit_depth_array.first)
   end
 
-  # BH - Access Copy: Audio Channels (number of)
   def a_audio_channels
-    return respond(self.data[59])
+  	return parse_empty(self.a_audio_channels_array.first)
   end
 
-  # BI - Access Copy: Checksum Type
   def a_checksum_type
-    return respond(self.data[60])
+  	return parse_empty(self.a_checksum_type_array.first)
   end
 
-  # BJ - Access Copy: Checksum Value
   def a_checksum_value
-    return respond(self.data[61])
+  	return parse_empty(self.a_checksum_value_array.first)
   end
 
-  # BK - Access Copy: Transcoding Software (Name, version)
   def trans_soft
-    return respond(self.data[62])
+  	return parse_empty(self.trans_soft_array.first)
   end
 
-  # BL - Access Copy: Transfer Notes
   def a_trans_note
-    return respond(self.data[63])
+  	return parse_empty(self.a_trans_note_array.first)
   end
 
-  # BM - Access Copy: Engineer Name
   def a_operator
-    return respond(self.data[64])
+  	return parse_empty(self.a_operator_array.first)
   end
 
-  # BN - Access Copy: Vendor Name
   def a_vendor
-    return respond(self.data[65])
+  	return parse_empty(self.a_vendor_array.first)
   end
+
+
 
 end
 end
