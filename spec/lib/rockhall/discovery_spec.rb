@@ -40,6 +40,7 @@ describe Rockhall::Discovery do
     end
 
     it "should update the Blacklight index with new videos" do
+      pending "Forcoming blacklight solr update"
       Rockhall::Discovery.update
       docs = Rockhall::Discovery.get_objects({:remote=>TRUE})
       docs.count.should == 2
