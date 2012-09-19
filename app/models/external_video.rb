@@ -20,50 +20,15 @@ class ExternalVideo < ActiveFedora::Base
   has_metadata :name => "mediaInfo",      :type => MediainfoXml::Document
   has_metadata :name => "properties",     :type => Rockhall::Properties
 
-  delegate :name,                    :to => :descMetadata
-  delegate :location,                :to => :descMetadata
-  delegate :date,                    :to => :descMetadata
-  delegate :generation,              :to => :descMetadata
-  delegate :media_type,              :to => :descMetadata
-  delegate :file_format,             :to => :descMetadata
-  delegate :size,                    :to => :descMetadata
-  delegate :size_units,              :to => :descMetadata
-  delegate :colors,                  :to => :descMetadata
-  delegate :duration,                :to => :descMetadata
-  delegate :rights_summary,          :to => :descMetadata
-  delegate :note,                    :to => :descMetadata
-  delegate :checksum_type,           :to => :descMetadata
-  delegate :checksum_value,          :to => :descMetadata
-  delegate :device,                  :to => :descMetadata
-  delegate :capture_soft,            :to => :descMetadata
-  delegate :trans_soft,              :to => :descMetadata
-  delegate :operator,                :to => :descMetadata
-  delegate :trans_note,              :to => :descMetadata
-  delegate :vendor,                  :to => :descMetadata
-  delegate :condition,               :to => :descMetadata
-  delegate :cleaning,                :to => :descMetadata
-  delegate :color_space,             :to => :descMetadata
-  delegate :chroma,                  :to => :descMetadata
-  delegate :standard,                :to => :descMetadata
-  delegate :language,                :to => :descMetadata
-  delegate :video_standard,          :to => :descMetadata
-  delegate :video_encoding,          :to => :descMetadata
-  delegate :video_bit_rate,          :to => :descMetadata
-  delegate :video_bit_rate_units,    :to => :descMetadata
-  delegate :frame_rate,              :to => :descMetadata
-  delegate :frame_size,              :to => :descMetadata
-  delegate :video_bit_depth,         :to => :descMetadata
-  delegate :aspect_ratio,            :to => :descMetadata
-  delegate :audio_standard,          :to => :descMetadata
-  delegate :audio_encoding,          :to => :descMetadata
-  delegate :audio_bit_rate,          :to => :descMetadata
-  delegate :audio_bit_rate_units,    :to => :descMetadata
-  delegate :audio_sample_rate,       :to => :descMetadata
-  delegate :audio_sample_rate_units, :to => :descMetadata
-  delegate :audio_bit_depth,         :to => :descMetadata
-  delegate :audio_channels,          :to => :descMetadata
-  delegate :next,                    :to => :descMetadata
-  delegate :previous,                :to => :descMetadata
+  delegate_to :descMetadata,
+    [ :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 
+      :duration, :rights_summary, :note, :checksum_type, :checksum_value, :device, :capture_soft, 
+      :trans_soft, :operator, :trans_note, :vendor, :condition, :cleaning, :color_space, :chroma, 
+      :standard, :language, :video_standard, :video_encoding, :video_bit_rate, :video_bit_rate_units, 
+      :frame_rate, :frame_size, :video_bit_depth, :aspect_ratio, :audio_standard, :audio_encoding, 
+      :audio_bit_rate, :audio_bit_rate_units, :audio_sample_rate, :audio_sample_rate_units, 
+      :audio_bit_depth, :audio_channels, :next, :previous ]
+
   delegate :depositor,               :to => :properties
   delegate :notes,                   :to => :properties
 
