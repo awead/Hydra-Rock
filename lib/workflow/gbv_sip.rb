@@ -50,19 +50,18 @@ class GbvSip
     raise "Invalid sip" unless self.valid?
 
     begin
-      av = ArchivalVideo.new
-      av.save
-      av.label = "George Blood Audio and Video"
-      ds = av.datastreams["descMetadata"]
-      self.update_fields(ds)
-      av.save
+      @av = ArchivalVideo.new
+      @av.save
+      @av.label = "George Blood Audio and Video"
+      self.update_fields
+      @av.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
 
     # Rename sip using the new object pid
     begin
-      new_name = av.pid.gsub(/:/,"_")
+      new_name = @av.pid.gsub(/:/,"_")
       FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
       self.base = new_name
       self.root = File.join(File.dirname(self.root), new_name)
@@ -80,10 +79,9 @@ class GbvSip
     raise "Invalid sip" unless self.valid?
 
     begin
-      av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
-      ds = av.datastreams["descMetadata"]
-      self.update_fields(ds)
-      av.save
+      @av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
+      self.update_fields
+      @av.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
@@ -155,12 +153,12 @@ class GbvSip
     end
   end
 
-  def update_fields(ds)
-    ds.update_indexed_attributes( {[:barcode]       => {"0" => self.barcode}} )
-    ds.update_indexed_attributes( {[:main_title]    => {"0" => self.title}} )
-    ds.update_indexed_attributes( {[:creation_date] => {"0" => self.info(:orig_date)}} ) unless self.info(:orig_date).nil?
-    ds.update_indexed_attributes( {[:standard]      => {"0" => self.info(:standard)}} ) unless self.info(:standard).nil?
-    ds.update_indexed_attributes( {[:format]        => {"0" => self.info(:format)}} ) unless self.info(:format).nil?
+  def update_fields
+    @av.barcode       = self.barcode
+    @av.main_title    = self.title
+    @av.creation_date = self.info(:orig_date) unless self.info(:orig_date).nil?
+    @av.standard      = self.info(:standard)  unless self.info(:standard).nil?
+    @av.format        = self.info(:format)    unless self.info(:format).nil?
   end
 
 end
