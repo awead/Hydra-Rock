@@ -11,3 +11,4 @@ test_support/fixtures
 public/cucumber.html
 public/assets/*
 nohup.out
+.rvmrc
