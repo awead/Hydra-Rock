@@ -8,8 +8,8 @@ module Rockhall::IndexMethods
 
   def format_contributors_display(results = Array.new)
     (0..(self.find_by_terms(:contributor_name).count - 1)).each do |index|
-      if self.find_by_terms(:contributor_role)[index].text.empty?
-        results << self.find_by_terms(:contributor_name)[index]
+      if self.find_by_terms(:contributor_role)[index].nil? or self.find_by_terms(:contributor_role)[index].text.empty?
+        results << self.find_by_terms(:contributor_name)[index].text
       else
         results << self.find_by_terms(:contributor_name)[index].text + " (" + self.find_by_terms(:contributor_role)[index].text + ")"
       end
