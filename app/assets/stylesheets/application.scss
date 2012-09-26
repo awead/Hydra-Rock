@@ -21,33 +21,7 @@
 @import "compass_twitter_bootstrap";
 @import "compass_twitter_bootstrap/layouts";
 
-.pagination {
-  height: auto;
-  h2 {
-    display: none;
-  }
-  span.prev, span.next {
-    float: left;
-    a {
-      border-left-width: 1px;
-    }
-  }
-  span.disabled {
-    display: none;
-  }
 
-  div.page_links {
-    float: left;
-    span.current, .gap {
-      float: left;
-      padding: 0 14px;
-      line-height: 34px;
-      text-decoration: none;
-      border: 1px solid #DDD;
-      border-left-width: 0;
-    }
-  }
-}
 
 #showHead {
   display: none;

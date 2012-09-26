@@ -7,3 +7,56 @@ div.document_viewer, div.fixed_sidebar, div.facets {
 .field {
   font-size: medium;
 }
+
+.pagination {
+  
+  /**
+  
+  height: auto;
+  
+  span.prev, span.next {
+    float: left;
+    a {
+      border-left-width: 1px;
+    }
+  }
+  
+  div.page_links {
+    float: left;
+    span.current, .gap {
+      float: left;
+      padding: 0 14px;
+      line-height: 34px;
+      text-decoration: none;
+      border: 1px solid #DDD;
+      border-left-width: 0;
+    }
+  }
+
+  **/
+
+  span {
+    padding: 0px;
+    border: none;
+
+  }
+  a {
+    padding: 0px 10px 0px 10px;
+    border: 1px solid #DDD;
+  }
+
+  .current {
+      padding: 0px 10px 0px 10px;
+      border: 1px solid #DDD;
+  }
+
+  h2 {
+    display: none;
+  }
+
+  span.disabled {
+    display: none;
+  }
+
+  
+}
