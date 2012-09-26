@@ -40,7 +40,7 @@
                 <ul class="dropdown-menu">
                   <% unless session[:search][:q].nil? and session[:search][:f].nil? %>
                     <li><%= link_back_to_catalog %></li>
-                    <li><a href="/catalog">Start Over</a></li>
+                    <li><%= link_to("Start Over", root_path ) %></li>
                     <li class="divider"></li>
                   <% end %>
                   <li><%= link_to "Selected Items (#{session[:folder_document_ids] ? session[:folder_document_ids].length : 0})", folder_index_path %></li>
