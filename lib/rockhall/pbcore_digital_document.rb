@@ -2,6 +2,8 @@ module Rockhall
 class PbcoreDigitalDocument < ActiveFedora::NokogiriDatastream
 
 	include Rockhall::PbcoreMethods
+  include Rockhall::IndexMethods
+
 
   set_terminology do |t|
     t.root(:path=>"pbcoreDescriptionDocument", :xmlns => '', :namespace_prefix=>nil)
@@ -212,7 +214,7 @@ class PbcoreDigitalDocument < ActiveFedora::NokogiriDatastream
     solr_doc.merge!(:summary_display => self.find_by_terms(:summary).text)
     solr_doc.merge!(:pub_date_display => self.find_by_terms(:event_date).text)
     solr_doc.merge!(:publisher_display => gather_terms(self.find_by_terms(:publisher_name)))
-    solr_doc.merge!(:contributors_display => gather_terms(self.find_by_terms(:contributor_name)))
+    solr_doc.merge!(:contributors_display => format_contributors_display)
     solr_doc.merge!(:subject_display => gather_terms(self.find_by_terms(:subjects)))
     solr_doc.merge!(:genre_display => gather_terms(self.find_by_terms(:genres)))
     solr_doc.merge!(:series_display => gather_terms(self.find_by_terms(:event_series)))
@@ -263,14 +265,7 @@ class PbcoreDigitalDocument < ActiveFedora::NokogiriDatastream
 
     return solr_doc
   end
-
-  private
-
-  def gather_terms(terms)
-    results = Array.new
-    terms.each { |r| results << r.text }
-    return results.compact.uniq
-  end
+  
 
 end
 end

@@ -92,3 +92,7 @@ Feature:
     Then I should see "Video not available"
     When I am on the edit archival video page for rockhall:fixture_pbcore_digital_document1
     Then I should see "Part 1"
+
+  Scenario: Displaying role terms in view mode (DAM-217)
+    Given I am on the show archival video page for rockhall:fixture_pbcore_document1
+    Then I should see the field content "contributors_display" contain "Springsteen, Bruce (recipient)"
