@@ -38,6 +38,7 @@ class Rockhall::Discovery
       solr_doc = response["response"]["docs"].first
       solr_doc.merge!(addl_solr_fields(doc.id))
       solr.add solr_doc
+      puts "Updating id: " + doc.id
       solr.commit
     end
   end
@@ -48,6 +49,7 @@ class Rockhall::Discovery
     docs = get_objects({:remote=>TRUE})
     docs.each do |r|
       solr.delete_by_id r["id"]
+      puts "Deleting id: " + r["id"]
       solr.commit
     end
   end
