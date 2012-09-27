@@ -3,7 +3,7 @@ defaults: &defaults
   host:           http://localhost/~adamw/bag
   depositor:      awead@rockhall.org
   hostname:       http://localhost:3000/
-  solr_discovery: http://localhost:8985/solr/blacklight-dev
+  solr_discovery: http://localhost:8985/solr/blacklight-prod
   pid_space:      changeme
   wowza_host:     localhost
   video_player:   flowplayer
