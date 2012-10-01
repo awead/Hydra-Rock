@@ -1,3 +1,18 @@
+GIT
+  remote: git://github.com/cbeer/rubydora
+  revision: 429f5283885ac2599af239f3d8bf79ef93a6ee14
+  specs:
+    rubydora (0.5.13)
+      activemodel
+      activesupport
+      deprecation
+      fastercsv
+      hooks
+      mime-types
+      nokogiri
+      rest-client
+      savon
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -139,24 +154,40 @@ GEM
     hooks (0.2.1)
     httpi (1.1.1)
       rack
-    hydra-access-controls (0.0.5)
+    hydra-access-controls (5.0.0.pre1)
       active-fedora
       activesupport
       blacklight
       cancan
       deprecation
-    hydra-head (4.1.1)
+    hydra-core (5.0.0.pre1)
       RedCloth (= 4.2.9)
       active-fedora (~> 4.1)
       blacklight (~> 3.4)
       block_helpers
       deprecation (>= 0.0.5)
       devise
-      hydra-access-controls (>= 0.0.5)
+      hydra-access-controls (= 5.0.0.pre1)
       hydra-mods (>= 0.0.5)
       jquery-rails
       rails (~> 3.2.3)
       sanitize
+    hydra-file-access (5.0.0.pre1)
+      RedCloth (= 4.2.9)
+      active-fedora (~> 4.1)
+      blacklight (~> 3.4)
+      block_helpers
+      deprecation (>= 0.0.5)
+      devise
+      hydra-core (= 5.0.0.pre1)
+      hydra-mods (>= 0.0.5)
+      rails (~> 3.2.3)
+      sanitize
+    hydra-head (5.0.0.pre1)
+      hydra-access-controls (= 5.0.0.pre1)
+      hydra-core (= 5.0.0.pre1)
+      hydra-file-access (= 5.0.0.pre1)
+      rails (>= 3.2.6)
     hydra-mods (0.0.5)
       active-fedora (~> 4.1)
     i18n (0.6.1)
@@ -265,16 +296,6 @@ GEM
       ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
-    rubydora (0.5.13)
-      activemodel
-      activesupport
-      deprecation
-      fastercsv
-      hooks
-      mime-types
-      nokogiri
-      rest-client
-      savon
     rubyzip (0.9.9)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
@@ -362,7 +383,7 @@ DEPENDENCIES
   devise
   factory_girl
   generator_spec
-  hydra-head
+  hydra-head (~> 5.0.0.pre1)
   jquery-rails
   launchy
   mediainfo
@@ -373,6 +394,7 @@ DEPENDENCIES
   rspec
   rspec-rails
   ruby-debug19
+  rubydora!
   sass-rails (~> 3.2.3)
   solrizer-fedora
   spork

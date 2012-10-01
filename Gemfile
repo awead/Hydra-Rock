@@ -4,12 +4,15 @@ source 'http://rubygems.org'
 gem 'rails', '~>3.2.3'
 gem 'sass-rails', '~> 3.2.3'
 gem 'blacklight'
-gem 'hydra-head'
+gem "hydra-head", "~> 5.0.0.pre1"
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
 gem 'mediainfo'
 gem 'solrizer-fedora'
+
+# Pulling from git
+gem 'rubydora', :git => 'git://github.com/cbeer/rubydora'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
