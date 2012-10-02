@@ -96,3 +96,10 @@ Feature:
   Scenario: Displaying role terms in view mode (DAM-217)
     Given I am on the show archival video page for rockhall:fixture_pbcore_document1
     Then I should see the field content "contributors_display" contain "Springsteen, Bruce (recipient)"
+
+  @javascript
+  Scenario: Displaying video playlist (DAM-229)
+    Given I am on the show archival video page for rockhall:fixture_pbcore_digital_document1
+    Then I should see "Part 1" in the playlist
+    And I should see "Part 2" in the playlist
+    And I should see "Part 3" in the playlist

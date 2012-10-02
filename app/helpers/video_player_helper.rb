@@ -51,7 +51,7 @@ module VideoPlayerHelper
         count = count + 1
       end
     end
-    return results.join(",").to_s
+    return results.join(",").to_s.html_safe
   end
 
 end
