@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
 # Gems for all environments
-gem 'rails', '~>3.2.3'
-gem 'sass-rails', '~> 3.2.3'
-gem 'blacklight'
+gem 'rails', '~>3.2.8'
+gem 'sass-rails'
+gem 'blacklight', '~>3.6.1'
 gem "hydra-head", "~> 5.0.0.pre1"
 gem 'sqlite3'
 gem 'devise'
@@ -15,10 +15,10 @@ gem 'solrizer-fedora'
 gem 'rubydora', :git => 'git://github.com/cbeer/rubydora'
 
 group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'compass-rails', '~> 1.0.0'
-  gem 'compass-susy-plugin', '~> 0.9.0'
+  gem 'coffee-rails'
+  gem 'uglifier'
+  gem 'compass-rails'
+  gem 'compass-susy-plugin'
   gem 'twitter-bootstrap-rails'
   gem 'compass_twitter_bootstrap'
   gem 'therubyracer'
