@@ -63,3 +63,7 @@ When /^I hit the enter key$/ do
   input = find("#q")
   input.base.invoke('keypress', false, false, false, false, 13, nil)
 end
+
+Then /^I should see "(.*?)" in the playlist$/ do |arg1|
+  page.should have_xpath("//div[@id='playlist']", :text => arg1)
+end
