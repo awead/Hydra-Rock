@@ -1,8 +1,8 @@
 class ExternalVideosController < ApplicationController
   include Blacklight::Catalog
-  include Hydra::Catalog
-  include Hydra::Controller
-  include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
+  #include Hydra::Catalog
+  include Hydra::Controller::ControllerBehavior
+  #include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
   include Rockhall::Controller::ControllerBehaviour
 
 

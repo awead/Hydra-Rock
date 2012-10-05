@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   include Blacklight::Controller
-  include Hydra::Controller
+  include Hydra::Controller::ControllerBehavior
 
   def layout_name
    'hydra-head'

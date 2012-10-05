@@ -2,7 +2,7 @@ class ReviewersController < ApplicationController
 
   include Hydra::Assets
   include Blacklight::Catalog
-  include Hydra::Catalog # adds-in Hydra editing behaviors
+  #include Hydra::Catalog # adds-in Hydra editing behaviors
   include Rockhall::Controller::ControllerBehaviour
 
   # These before_filters apply the hydra access controls
