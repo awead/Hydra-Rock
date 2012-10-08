@@ -3,7 +3,7 @@ class DigitalVideo < ActiveFedora::Base
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
-  #include Hydra::SubmissionWorkflow
+  include Hydra::SubmissionWorkflow
   include ActiveFedora::FileManagement
   include ActiveFedora::Relationships
   include ActiveFedora::DatastreamCollections
