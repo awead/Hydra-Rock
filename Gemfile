@@ -3,8 +3,9 @@ source 'http://rubygems.org'
 # Gems for all environments
 gem 'rails', '~>3.2.8'
 gem 'sass-rails'
-gem 'blacklight', '~>3.6.1'
-gem "hydra-head", "=5.0.0.pre4"
+gem 'blacklight'
+gem "hydra-head", "=5.0.0.pre9"
+#gem "solrizer", "~> 2.0.0.rc1"
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
@@ -12,7 +13,7 @@ gem 'mediainfo'
 gem 'solrizer-fedora'
 
 # Pulling from git
-gem 'rubydora', :git => 'git://github.com/cbeer/rubydora'
+#gem 'rubydora', :git => 'git://github.com/cbeer/rubydora'
 
 group :assets do
   gem 'coffee-rails'
