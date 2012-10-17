@@ -112,8 +112,8 @@ class PbcoreDigitalDocument < ActiveFedora::NokogiriDatastream
         :ref=>"http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" }
       )
       t.pbcoreContributor(:namespace_prefix=>nil) {
-        t.contributor(:attributes=>{ :annotation=>"part contributor" })
-        t.contributorRole(:attributes=>{ :source=>"MARC relator terms" })
+        t.contributor(:namespace_prefix=>nil, :attributes=>{ :annotation=>"part contributor" })
+        t.contributorRole(:namespace_prefix=>nil, :attributes=>{ :source=>"MARC relator terms" })
       }
     }
     t.part_title(:ref=>[:pbcorePart, :pbcoreTitle])
