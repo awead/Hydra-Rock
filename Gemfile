@@ -4,7 +4,8 @@ source 'http://rubygems.org'
 gem 'rails', '~>3.2.8'
 gem 'sass-rails'
 gem 'blacklight'
-gem "hydra-head", "=5.0.0.pre9"
+gem 'hydra-head', '~> 5.0.0.pre9'
+gem 'hydra-pbcore'
 #gem "solrizer", "~> 2.0.0.rc1"
 gem 'sqlite3'
 gem 'devise'
