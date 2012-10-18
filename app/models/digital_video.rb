@@ -15,9 +15,9 @@ class DigitalVideo < ActiveFedora::Base
   has_relationship "objects", :is_part_of, :inbound => true
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreDigitalDocument
-  has_metadata :name => "properties",     :type => Rockhall::Properties
-  has_metadata :name => "assetReview",    :type => Rockhall::AssetReview
+  has_metadata :name => "descMetadata",   :type => PbcoreDigitalDocument
+  has_metadata :name => "properties",     :type => Properties
+  has_metadata :name => "assetReview",    :type => AssetReview
 
   delegate_to :assetReview,
     [:reviewer, :date_updated, :complete, :priority, :license, :abstract]

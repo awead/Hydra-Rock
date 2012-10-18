@@ -16,9 +16,9 @@ class ExternalVideo < ActiveFedora::Base
   has_datastream :name=>"preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreInstantiation
-  has_metadata :name => "mediaInfo",      :type => MediainfoXml::Document
-  has_metadata :name => "properties",     :type => Rockhall::Properties
+  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Instantiation
+  has_metadata :name => "mediaInfo",      :type => MediainfoXml
+  has_metadata :name => "properties",     :type => Properties
 
   delegate_to :descMetadata,
     [ :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 

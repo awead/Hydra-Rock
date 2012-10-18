@@ -44,9 +44,9 @@ class ArchivalVideo < ActiveFedora::Base
   # datastreams listed below are all xml datastreams that use an OM terminology to
   # define their terms.
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreDocument
-  has_metadata :name => "properties",     :type => Rockhall::Properties
-  has_metadata :name => "assetReview",    :type => Rockhall::AssetReview
+  has_metadata :name => "descMetadata",   :type => PbcoreDocument
+  has_metadata :name => "properties",     :type => Properties
+  has_metadata :name => "assetReview",    :type => AssetReview
 
   # We use the delegate_to method link term definitions and their datastreams to our
   # model's attributes.
