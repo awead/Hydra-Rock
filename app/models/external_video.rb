@@ -53,7 +53,7 @@ class ExternalVideo < ActiveFedora::Base
   # Originally duplicated from FileAssets
   def self.garbage_collect(pid)
     begin
-      obj = ExternalVideo.load_instance(pid)
+      obj = ExternalVideo.find(pid)
       if obj.containers.empty?
         obj.delete
       end
