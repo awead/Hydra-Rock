@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 require "equivalent-xml"
 
-describe Rockhall::AssetReview do
+describe AssetReview do
 
   before(:each) do
     av = ArchivalVideo.new nil
