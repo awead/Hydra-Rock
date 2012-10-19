@@ -17,7 +17,7 @@ namespace :rockhall do
       Rake::Task["solrizer:fedora:solrize_objects"].invoke
       Rake::Task["solrizer:fedora:solrize_objects"].reenable
 
-      Hydrangea::JettyCleaner.clean()
+      Rockhall::JettyCleaner.clean()
 
       contents = Dir.glob("spec/fixtures/fedora/*.xml")
       contents.each do |file|

@@ -1,4 +1,4 @@
-class Hydrangea::JettyCleaner
+class Rockhall::JettyCleaner
 
   def self.clean(pidspace=nil)
     raise "You're trying to clean out your production Fedora instance!!" if Rails.env == "production"

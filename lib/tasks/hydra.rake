@@ -15,7 +15,7 @@ namespace :hydra do
 
       # You really don't want to do this in production
       unless Rails.env == "production"
-        Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
+        Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
       end
 
     end
