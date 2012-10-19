@@ -1,9 +1,9 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require "spec_helper"
 
 describe Workflow::RockhallSip do
 
   before(:each) do
-    @sip = Workflow::RockhallSip.new("spec/fixtures/rockhall/sips/digital_video_sip")
+    @sip = Workflow::RockhallSip.new(sip "digital_video_sip")
   end
 
   describe "creating a new sip" do
@@ -120,7 +120,7 @@ describe Workflow::RockhallSip do
     end
 
     it "should use the previously defined pid" do
-      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
+      sip = Workflow::GbvSip.new(sip "39156042439369")
       sip.base = RH_CONFIG["pid_space"] + "_10"
       sip.reuse
       sip.pid.should == RH_CONFIG["pid_space"] + ":10"

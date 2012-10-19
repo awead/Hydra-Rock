@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require "spec_helper"
 
 describe Workflow::GbvIngest do
 
@@ -14,12 +14,15 @@ describe Workflow::GbvIngest do
     solrizer.solrize_objects
   end
 
+  before(:each) do
+    @sip = Workflow::GbvSip.new(sip("39156042439369"))
+  end
+
   describe "the entire ingestion process" do
 
     it "should prepare a sip and ingest it into Fedora" do
-      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
-      FileUtils.cp_r(sip.root,RH_CONFIG["location"])
-      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], sip.base))
+      FileUtils.cp_r(@sip.root,RH_CONFIG["location"])
+      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.base))
       copy.prepare
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.file_objects.empty?.should be_true
@@ -116,8 +119,7 @@ describe Workflow::GbvIngest do
     end
 
     it "should update the metadata from the GBV xml file" do
-      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
-      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
+      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
       ing = Workflow::GbvIngest.new(copy)
       ing.update
 
@@ -151,8 +153,7 @@ describe Workflow::GbvIngest do
     end
 
     it "should not add additional files" do
-      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
-      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
+      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.file_objects.length.should == 2
       first_pid = ing.parent.file_objects.first.pid
@@ -164,8 +165,7 @@ describe Workflow::GbvIngest do
     end
 
     it "should reprocess a sip by removing existing files and re-adding them" do
-      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
-      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
+      copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
       lambda { copy.prepare }.should raise_error(RuntimeError)
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.file_objects.length.should == 2
@@ -177,7 +177,7 @@ describe Workflow::GbvIngest do
       last_pid.should_not  == ing.parent.file_objects.last.pid
 
       # Clean-up
-      FileUtils.rm_rf(File.join(RH_CONFIG["location"], sip.pid.gsub(/:/,"_")))
+      FileUtils.rm_rf(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
     end
 
   end

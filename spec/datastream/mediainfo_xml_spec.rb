@@ -1,15 +1,11 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require "active_fedora"
-require "nokogiri"
-require "equivalent-xml"
+require "spec_helper"
 
-describe  do
+describe  MediainfoXml do
 
   describe "terms from an existing template" do
 
     before(:all) do
-      file = File.new("spec/fixtures/mediainfo/mediainfo_template.xml")
-      @doc = MediainfoXml.from_xml(file)
+      @doc = MediainfoXml.from_xml(fixture "mediainfo_template.xml")
     end
 
     it "should find all the terms that need no extra processing" do

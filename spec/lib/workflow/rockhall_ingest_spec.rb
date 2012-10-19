@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require "spec_helper"
 
 describe Workflow::RockhallIngest do
 
@@ -17,7 +17,7 @@ describe Workflow::RockhallIngest do
   describe "the entire ingestion process" do
 
     it "should prepare a sip, ingest it into Fedora, and reprocess it" do
-      sip = Workflow::RockhallSip.new("spec/fixtures/rockhall/sips/digital_video_sip")
+      sip = Workflow::RockhallSip.new(sip "digital_video_sip")
       FileUtils.cp_r(sip.root,RH_CONFIG["location"])
       copy = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], sip.base))
       copy.prepare

@@ -1,9 +1,9 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require "spec_helper"
 
 describe Workflow::GbvSip do
 
   before(:each) do
-    @sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
+    @sip = Workflow::GbvSip.new(sip "39156042439369")
   end
 
   describe "creating a new sip" do
@@ -181,7 +181,7 @@ describe Workflow::GbvSip do
     end
 
     it "should use the previously defined pid" do
-      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
+      sip = Workflow::GbvSip.new(sip "39156042439369")
       sip.base = RH_CONFIG["pid_space"] + "_10"
       sip.reuse
       sip.pid.should == RH_CONFIG["pid_space"] + ":10"
@@ -191,14 +191,14 @@ describe Workflow::GbvSip do
   describe "when barcodes are mis-matched" do
     it "the xml barcode does not match the folder name" do
       @sip.barcodes_match?.should be_true
-      mismatch = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/22222222")
+      mismatch = Workflow::GbvSip.new(sip "22222222")
       mismatch.barcodes_match?.should be_false
     end
   end
 
   describe "when a field is empty" do
     it "the xml will be blank" do
-      false_sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/22222222")
+      false_sip = Workflow::GbvSip.new(sip "22222222")
       false_sip.valid?.should be_false
     end
   end

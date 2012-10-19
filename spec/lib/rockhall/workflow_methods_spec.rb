@@ -1,6 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-require "active_fedora"
-require "nokogiri"
+require "spec_helper"
 
 describe Rockhall::WorkflowMethods do
 
@@ -85,7 +83,7 @@ describe Rockhall::WorkflowMethods do
   describe "get_file" do
 
     it "should return a filename if it exists" do
-      path = "spec/fixtures/rockhall/sips/39156042439369/data/39156042439369_access.mp4"
+      path = File.join(sip("39156042439369"), "data/39156042439369_access.mp4")
       @wf.get_file(path).should == "39156042439369_access.mp4"
     end
 
