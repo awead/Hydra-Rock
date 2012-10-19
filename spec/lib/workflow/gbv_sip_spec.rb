@@ -146,13 +146,13 @@ describe Workflow::GbvSip do
   describe "preparing a sip" do
 
     before(:each) do
-      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
       solrizer = Solrizer::Fedora::Solrizer.new
       solrizer.solrize_objects
     end
 
     after(:each) do
-      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
       solrizer = Solrizer::Fedora::Solrizer.new
       solrizer.solrize_objects
     end
@@ -175,7 +175,7 @@ describe Workflow::GbvSip do
   describe "reusing a sip" do
 
     after(:each) do
-      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
       solrizer = Solrizer::Fedora::Solrizer.new
       solrizer.solrize_objects
     end
