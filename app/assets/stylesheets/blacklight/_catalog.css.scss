@@ -1,0 +1,320 @@
+#appliedParams
+{
+	background-color:$search_ui_bg_color;
+	border-bottom:1px solid $search_ui_border_color;
+	border-left:1px solid $search_ui_border_color;
+	border-right:1px solid $search_ui_border_color;
+	margin-bottom:1.5em;
+	padding:1em 0 0 0em;
+
+  .label
+  {
+ position: absolute !important;
+  height: 1px; width: 1px; 
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  }
+}
+
+#sort-dropdown {
+  padding-left: 1em;
+}
+
+#document
+{
+	margin-top:1em;
+
+
+  h1
+  {
+    margin:0;
+    padding:0 0 1em;
+  }
+}
+
+#documents
+{
+	margin-bottom:1em;
+	margin-top:1em;
+
+  .documentHeader
+  {
+     padding: 5px 0 0;
+  }
+
+  .per_page-form
+  {
+    padding-right:5px;
+  }
+}
+
+#librarian_view
+{
+	left:-17%;
+	text-align:left;
+	top:10%;
+	width:700px;
+}
+
+#marc_view
+{
+	padding:5px;
+	text-align:left;
+
+  .field
+  {
+    border-bottom: $marc_item_separator;
+    clear:both;
+  }
+
+  .ind1, .ind2
+  {
+    display:inline;
+    padding:0 5px;
+  }
+
+  .subfields
+  {
+    padding-left:5em;
+  }
+
+  .tag_ind
+  {
+    float:left;
+  }
+}
+
+
+#previousNextDocument {
+   ul {
+    margin: 0;
+   }
+   .next {
+    border: 1px solid #DDDDDD;
+   }
+   .previous {
+    margin-right: -1px;
+    border: 1px solid #DDDDDD;
+   }
+}
+
+
+
+.constraints-row {
+  margin-top:1em;
+  margin-bottom:1em;
+}
+span.constraints-label {
+  font-weight:bold;
+}
+
+li.pill-with-label {
+  padding-top: 3px;
+  padding-right: 6px;
+  padding-left: 6px;
+  padding-bottom: 3px;
+  a.dropdown-toggle {
+    padding-left: 3px;
+    padding-right: 3px;
+    display: inline;
+
+  }
+}
+
+#sortAndPerPage {
+  background-color: #F3F9FF;
+  margin-right: 0em;
+  padding: 0.5em;
+  li.per_page {
+    display:none;
+  }
+
+  #sort-dropdown {
+    display:none;
+  }
+}
+.show-document-title 
+{
+  padding-top: 0.5em;
+
+}
+
+.show-document > #document
+{
+  margin-top: 0;
+}
+
+.appliedFilter
+{
+	background: $constraint_bg_color;
+	border:1px solid $constraint_border_color;
+	display:inline-block;
+	margin-bottom:0.66em;
+	margin-right:0.33em;
+	padding:3px 3px 3px 1.5em;
+	position:relative;
+  @include border-radius(15px 15px 15px 15px);
+
+  .btnRemove
+  {
+    background:asset_url('blacklight/remove.gif', image) no-repeat center center;
+    border-bottom:none;
+    border-left:1px solid $constraint_border_color;
+    display:block;
+    height:100%;
+    outline:none;
+    position:absolute;
+    right:0;
+    text-indent:-99999px;
+    top:0;
+    width:32px;
+    z-index:5;
+  }
+
+  .btnRemove:active,.btnRemove:focus
+  {
+    border:1px dotted $constraint_border_active_color;
+  }
+
+  .queryName,.filterName
+  {
+    background:asset_url('blacklight/separator.gif',image) no-repeat right center;
+    padding-right:14px;
+  }
+}
+
+.constraints,h3.index_title,dl
+{
+	margin:0;
+	padding:0;
+}
+
+.document
+{
+	border-bottom:1px dotted $dotted_border_color; 
+	clear:both;
+  padding-bottom: 1em;
+
+  dd {
+    padding-bottom:0.5em;
+  }
+}
+
+#documents .documentFunctions
+{
+	float:right;
+  margin-top: 0.25em;
+	margin-bottom:0.5em;
+	margin-left:1em;
+
+  .bookmark_toggle
+  {
+    display:inline;
+  }
+}
+
+#sidebar form {
+  margin: 0;
+}
+
+.filterValue
+{
+	padding-right:37px;
+}
+
+
+.pageEntriesInfo
+{
+  background-color:$search_ui_bg_color;
+	border-color:$search_ui_border_color;
+  border-style:solid;
+	border-width:1px 1px 0;
+	padding:0 0.66em 0.66em 0;
+	position:relative;
+}
+
+
+.page_links
+{
+	margin-left:8em;
+	margin-right:8em;
+	text-align:center;
+
+  span.current
+  {
+    background:none repeat scroll 0 0 $page_bg_color;
+    border:1px solid $page_bg_color;
+    color:#FFF;
+    font-weight:700;
+  }
+}
+
+.pagination {
+  text-align: center ;
+}
+
+
+.show #appliedParams
+{
+	border-top:1px solid $search_ui_border_color;
+
+  .label
+  {
+    margin-top:0;
+    position:static;
+  }
+}
+
+.solrQuery
+{
+	background-color: $search_ui_bg_color;
+	border:1px dotted $dotted_border_color;
+	font-size:90%;
+	margin:2em;
+	padding:.5em;
+}
+
+.dl-invert {
+  dt {
+    font-weight: normal;
+    color: #888;
+  }
+}
+
+label.checked
+{
+	font-weight:700;
+}
+
+label.toggle_bookmark
+{
+	color:inherit;
+	display:inline-block;
+	font-weight:inherit;
+	min-width:8.5em;
+	text-align:left;
+}
+
+
+span.page a,span.page.current
+{
+	border-bottom:none;
+	margin-right:0.2em;
+	padding:0.2em 0.5em;
+	text-decoration:none;
+}
+
+
+#sidebar-nav
+{
+  padding: 8px 0;
+
+}
+
+.show-document
+{
+  .document {
+    border: none;
+  }
+}
