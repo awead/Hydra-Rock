@@ -27,12 +27,14 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.show_link            = 'heading_display'
-    config.index.record_display_type  = 'has_model_s'
+    config.index.record_display_type  = 'format'
 
     # solr field configuration for document/show views
     config.show.html_title            = 'title_t'
     config.show.heading               = 'title_t'
-    config.show.display_type          = 'has_model_s'
+
+    # This is the field that's used to determine the partial type
+    config.show.display_type          = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -91,6 +93,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     #
     # These are fields that are shown via the catalog controller
+    config.add_show_field 'format',           :label => 'Format'
     config.add_show_field 'main_title_t',           :label => 'Main Title'
     config.add_show_field 'alternative_title_t',    :label => 'Alternative Title'
     config.add_show_field 'chapter_t',              :label => 'Capter'
