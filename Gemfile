@@ -1,17 +1,15 @@
 source 'http://rubygems.org'
 
 # Gems for all environments
-gem 'rails', '~>3.2.8'
-gem 'blacklight', :path => '/Users/adamw/Projects/Gems/blacklight'
-gem 'hydra-head', '~> 5.0.0.pre9'
+gem 'rails',          '~>3.2.8'
+gem 'blacklight',     :path => '/Users/adamw/Projects/Gems/blacklight'
+gem 'hydra-head',     '~> 5.0.0.pre9'
 gem 'hydra-pbcore'
-#gem 'solrizer', '~> 2.0.0.rc1'
 gem 'devise'
-gem 'devise-guests', '~> 0.2'
+gem 'devise-guests',  '~> 0.2'
 gem 'bootstrap-sass', '~> 2.1.0.0'
 gem 'jquery-rails'
 gem 'sqlite3'
-gem 'devise'
 gem 'bagit'
 gem 'mediainfo'
 gem 'solrizer-fedora'
@@ -49,5 +47,3 @@ end
 group :production do
   gem 'passenger', '=3.0.13'
 end
-
-gem "bootstrap-sass", "~> 2.1.0.0"
