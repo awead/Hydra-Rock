@@ -40,30 +40,27 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
   </head>
- <body>
-  <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
+  <body>
+    <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
+    <%= render :partial => 'shared/header_navbar' %>
 
-  <%= render :partial => 'shared/header_navbar' %>
+    <div id="main-container" class="container">
+      <!-- Top bar -->
+      <div id="search-found" class="row hidden-phone">
+        <%= topbar_items.join('').html_safe %>
+      </div>
+      <!-- /Top bar -->
+      <div class="row">
+        <div class="span10">
+          <%= render :partial=>'/flash_msg' %>
+        </div>    
+      </div>              
 
+      <div class="row">
+        <%= yield %>
+      </div>   
+    </div>
 
-<!-- /container -->
-  <div id="main-container" class="container">
-            <!-- Top bar -->
-            <div id="search-found" class="row hidden-phone">
-              <%= topbar_items.join('').html_safe %>
-            </div>
-            <!-- /Top bar -->
-                  <div class="row">
-                      <div class="span10">
-                        <%= render :partial=>'/flash_msg' %>
-                      </div>    
-                  </div>              
-
-                  <div class="row">
-                       <%= yield %>
-                       </div>   
-</div>
-
-<%= render :partial => 'shared/footer' %>
-    </body>
+    <%= render :partial => 'shared/footer' %>
+  </body>
 </html>
