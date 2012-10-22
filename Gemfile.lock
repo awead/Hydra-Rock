@@ -12,6 +12,44 @@ PATH
       sass-rails
       unicode
 
+PATH
+  remote: /Users/adamw/Projects/Gems/hydra-head
+  specs:
+    hydra-access-controls (5.0.0.pre9)
+      active-fedora
+      activesupport
+      blacklight
+      cancan
+      deprecation
+    hydra-core (5.0.0.pre9)
+      RedCloth (= 4.2.9)
+      active-fedora (~> 4.6.0.rc2)
+      blacklight (~> 3.4)
+      block_helpers
+      deprecation (>= 0.0.5)
+      devise
+      hydra-access-controls (= 5.0.0.pre9)
+      hydra-mods (>= 0.0.5)
+      jquery-rails
+      rails (~> 3.2.3)
+      sanitize
+    hydra-file-access (5.0.0.pre9)
+      RedCloth (= 4.2.9)
+      active-fedora
+      blacklight (~> 3.4)
+      block_helpers
+      deprecation (>= 0.0.5)
+      devise
+      hydra-core (= 5.0.0.pre9)
+      hydra-mods (>= 0.0.5)
+      rails (~> 3.2.3)
+      sanitize
+    hydra-head (5.0.0.pre9)
+      hydra-access-controls (= 5.0.0.pre9)
+      hydra-core (= 5.0.0.pre9)
+      hydra-file-access (= 5.0.0.pre9)
+      rails (>= 3.2.6)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -133,40 +171,6 @@ GEM
     hooks (0.2.1)
     httpi (1.1.1)
       rack
-    hydra-access-controls (5.0.0.pre9)
-      active-fedora
-      activesupport
-      blacklight
-      cancan
-      deprecation
-    hydra-core (5.0.0.pre9)
-      RedCloth (= 4.2.9)
-      active-fedora (~> 4.6.0.rc2)
-      blacklight (~> 3.4)
-      block_helpers
-      deprecation (>= 0.0.5)
-      devise
-      hydra-access-controls (= 5.0.0.pre9)
-      hydra-mods (>= 0.0.5)
-      jquery-rails
-      rails (~> 3.2.3)
-      sanitize
-    hydra-file-access (5.0.0.pre9)
-      RedCloth (= 4.2.9)
-      active-fedora
-      blacklight (~> 3.4)
-      block_helpers
-      deprecation (>= 0.0.5)
-      devise
-      hydra-core (= 5.0.0.pre9)
-      hydra-mods (>= 0.0.5)
-      rails (~> 3.2.3)
-      sanitize
-    hydra-head (5.0.0.pre9)
-      hydra-access-controls (= 5.0.0.pre9)
-      hydra-core (= 5.0.0.pre9)
-      hydra-file-access (= 5.0.0.pre9)
-      rails (>= 3.2.6)
     hydra-mods (0.0.5)
       active-fedora (~> 4.1)
     hydra-pbcore (0.0.2)
@@ -365,7 +369,7 @@ DEPENDENCIES
   devise-guests (~> 0.2)
   factory_girl
   generator_spec
-  hydra-head (~> 5.0.0.pre9)
+  hydra-head!
   hydra-pbcore
   jquery-rails
   launchy
