@@ -13,7 +13,7 @@ PATH
       unicode
 
 PATH
-  remote: /Users/adamw/Projects/Gems/hydra-head
+  remote: /Users/adamw/Projects/Github/hydra-head
   specs:
     hydra-access-controls (5.0.0.pre9)
       active-fedora

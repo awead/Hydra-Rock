@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 # Gems for all environments
 gem 'rails',          '~>3.2.8'
 gem 'blacklight',     :path => '/Users/adamw/Projects/Gems/blacklight'
-gem 'hydra-head',     :path => '/Users/adamw/Projects/Gems/hydra-head'
+gem 'hydra-head',     :path => '/Users/adamw/Projects/Github/hydra-head'
 gem 'hydra-pbcore'
 gem 'devise'
 gem 'devise-guests',  '~> 0.2'
