@@ -2,18 +2,11 @@
   <div class="navbar-inner">
     <div class="container">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>
-      <%= link_to application_name, root_path, :class => "brand span3 " %>
+      <%= link_to application_name, root_path, :class => "brand" %>
 
-      <div class="span6" id="searchbar">         
+      <div id="searchbar">         
         <%= render_search_bar  %>
-      </div>
-
-      <!-- Navbar items when user is logged in -->
-      <div class="nav-collapse">
-        <%= render :partial => '/user_util_links' %>
-      </div>
-
-      
+      </div>      
 
     </div>
   </div>
