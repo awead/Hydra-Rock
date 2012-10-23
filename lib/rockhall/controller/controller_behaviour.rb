@@ -52,4 +52,8 @@ module Rockhall::Controller::ControllerBehaviour
     end
   end
 
+  # TODO: This has to do something at some point
+  def current_or_guest_user
+  end
+
 end
