@@ -42,7 +42,7 @@
   </head>
   <body>
     <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
-    <%= render :partial => 'shared/header_navbar' %>
+    <%= render :partial => 'shared/navbar' %>
 
     <div id="main-container" class="container">
       <!-- Top bar -->
