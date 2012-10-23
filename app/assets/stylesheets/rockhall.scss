@@ -1,36 +1,3 @@
-div.document_viewer, div.fixed_sidebar, div.facets {
-  ul li {
-    list-style-type: none;
-  }
-}
-
-.field {
-  font-size: medium;
-}
-
-.pagination {
-  
-  span {
-    padding: 0px;
-    border: none;
-
-  }
-  a {
-    padding: 0px 10px 0px 10px;
-    border: 1px solid #DDD;
-  }
-
-  .current {
-      padding: 0px 10px 0px 10px;
-      border: 1px solid #DDD;
-  }
-
-  h2 {
-    display: none;
-  }
-
-  span.disabled {
-    display: none;
-  }
-  
-}
+/*
+ Local stylings
+*/
