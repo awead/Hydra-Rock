@@ -2,7 +2,7 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
   include Hydra::AccessControlsEnforcement
-  include Rockhall::Controller::ControllerBehaviour
+  include Rockhall::Controller::ControllerBehavior
 
   # User still needs the #update action in the catalog, so we only enforce Hydra
   # access controls when the user tries to just view a document they don't have

@@ -1,4 +1,4 @@
-module Rockhall::Controller::ControllerBehaviour
+module Rockhall::Controller::ControllerBehavior
 
   def update_session
     logger.info "Updating session with parameters:" + params.inspect
