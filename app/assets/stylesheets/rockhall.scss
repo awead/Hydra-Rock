@@ -1,3 +1,15 @@
 /*
  Local stylings
 */
+
+body { padding-top: 60px; }
+
+// For some reason, the glyphicons aren't showing up, so I have to
+// explicitly define them here.
+.icon-chevron-right, .sidenav .icon-chevron {
+  background-position: -456px -72px;
+}
+
+.icon-chevron-down, .sidenav .twiddle-open .icon-chevron {
+  background-position: -313px -119px;
+}
