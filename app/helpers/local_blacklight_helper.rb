@@ -23,7 +23,8 @@ module LocalBlacklightHelper
 
   # Puts our title in a pretty little "well"
   def render_document_heading
-    render :partial => "shared/document_heading"
+    title = content_tag(:h2, @document[:heading_display].first) 
+    content_tag(:div, title, :class => "well")
   end
 
 end
