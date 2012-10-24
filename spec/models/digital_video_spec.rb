@@ -76,7 +76,7 @@ describe DigitalVideo do
       addl_doc = av.addl_solr_fields
       addl_doc.should be_kind_of(Hash)
       addl_doc[:access_file_s].should be_kind_of(Array)
-      addl_doc[:access_file_s].should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
+      addl_doc[:access_file_s].sort.should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
       # TODO: get fields from mediainfo into PBCore
       #addl_doc[:format_dtl_display].should == [["H.264/MPEG-4 AVC"]]
     end
