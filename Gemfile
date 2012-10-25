@@ -1,18 +1,23 @@
 source 'http://rubygems.org'
 
+# Gems with specific versions
+gem 'rails',           '~>3.2.8'
+gem 'devise-guests',   '~> 0.2'
+gem 'bootstrap-sass',  '~> 2.1.0.0'
+
+# Local gems
+gem 'blacklight',      :path => '/Users/adamw/Projects/Gems/blacklight'
+gem 'hydra-head',      :path => '/Users/adamw/Projects/Github/hydra-head'
+gem 'solrizer',        :path => '/Users/adamw/Projects/Gems/solrizer'
+gem 'solrizer-fedora', :path => '/Users/adamw/Projects/Gems/solrizer-fedora'
+
 # Gems for all environments
-gem 'rails',          '~>3.2.8'
-gem 'blacklight',     :path => '/Users/adamw/Projects/Gems/blacklight'
-gem 'hydra-head',     :path => '/Users/adamw/Projects/Github/hydra-head'
-gem 'hydra-pbcore'
 gem 'devise'
-gem 'devise-guests',  '~> 0.2'
-gem 'bootstrap-sass', '~> 2.1.0.0'
+gem 'hydra-pbcore'
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'bagit'
 gem 'mediainfo'
-gem 'solrizer-fedora'
 
 # Gems used only for assets and not required
 # in production environments by default.
