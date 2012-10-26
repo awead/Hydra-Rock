@@ -8,8 +8,8 @@ gem 'bootstrap-sass',  '~> 2.1.0.0'
 # Local gems
 gem 'blacklight',      :path => '/Users/adamw/Projects/Gems/blacklight'
 gem 'hydra-head',      :path => '/Users/adamw/Projects/Github/hydra-head'
-gem 'solrizer',        :path => '/Users/adamw/Projects/Gems/solrizer'
-gem 'solrizer-fedora', :path => '/Users/adamw/Projects/Gems/solrizer-fedora'
+gem 'solrizer',        :git => 'git://github.com/projecthydra/solrizer.git'
+gem 'solrizer-fedora', :git => 'git://github.com/projecthydra/solrizer-fedora.git'
 
 # Gems for all environments
 gem 'devise'
