@@ -1,21 +1,9 @@
 GIT
   remote: git://github.com/projecthydra/solrizer-fedora.git
-  revision: 77c22abed54619b61bd9a83c4399e3f79da8b6d2
+  revision: a7a5eca2af63295c3860d3100289e96c674ffadc
   specs:
     solrizer-fedora (2.2.0)
-      active-fedora (~> 4.0)
-
-GIT
-  remote: git://github.com/projecthydra/solrizer.git
-  revision: a94bf751b0ba77b51bd9707914e7bb752c2471f9
-  specs:
-    solrizer (2.0.0.rc3)
-      daemons
-      mediashelf-loggable (~> 0.4.7)
-      nokogiri
-      om (>= 1.5.0)
-      stomp
-      xml-simple
+      active-fedora
 
 PATH
   remote: /Users/adamw/Projects/Gems/blacklight
@@ -34,39 +22,38 @@ PATH
 PATH
   remote: /Users/adamw/Projects/Github/hydra-head
   specs:
-    hydra-access-controls (5.0.0.pre9)
+    hydra-access-controls (5.0.0.pre10)
       active-fedora
       activesupport
       blacklight
       cancan
       deprecation
-    hydra-core (5.0.0.pre9)
+    hydra-core (5.0.0.pre10)
       RedCloth (= 4.2.9)
-      active-fedora (~> 4.6.0.rc2)
+      active-fedora (~> 5.0.0.rc1)
       blacklight (~> 3.4)
       block_helpers
       deprecation (>= 0.0.5)
       devise
-      hydra-access-controls (= 5.0.0.pre9)
-      hydra-mods (>= 0.0.5)
+      hydra-access-controls (= 5.0.0.pre10)
+      hydra-mods (>= 0.0.6)
       jquery-rails
       rails (~> 3.2.3)
       sanitize
-    hydra-file-access (5.0.0.pre9)
+    hydra-file-access (5.0.0.pre10)
       RedCloth (= 4.2.9)
       active-fedora
       blacklight (~> 3.4)
       block_helpers
       deprecation (>= 0.0.5)
       devise
-      hydra-core (= 5.0.0.pre9)
+      hydra-core (= 5.0.0.pre10)
       hydra-mods (>= 0.0.5)
       rails (~> 3.2.3)
       sanitize
-    hydra-head (5.0.0.pre9)
-      hydra-access-controls (= 5.0.0.pre9)
-      hydra-core (= 5.0.0.pre9)
-      hydra-file-access (= 5.0.0.pre9)
+    hydra-head (5.0.0.pre10)
+      hydra-access-controls (= 5.0.0.pre10)
+      hydra-core (= 5.0.0.pre10)
       rails (>= 3.2.6)
 
 GEM
@@ -86,7 +73,7 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.3)
-    active-fedora (4.6.0.rc4)
+    active-fedora (5.0.0.rc1)
       activeresource (>= 3.0.0)
       activesupport (>= 3.0.0)
       builder (~> 3.0.0)
@@ -127,7 +114,7 @@ GEM
     bootstrap-sass (2.1.0.1)
     builder (3.0.4)
     cancan (1.6.8)
-    capybara (1.1.2)
+    capybara (1.1.3)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -156,7 +143,7 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
-    daemon_controller (1.0.0)
+    daemon_controller (1.1.0)
     daemons (1.1.9)
     database_cleaner (0.9.1)
     deprecation (0.0.5)
@@ -169,7 +156,7 @@ GEM
     devise-guests (0.2.0)
       devise
     diff-lcs (1.1.3)
-    equivalent-xml (0.2.9)
+    equivalent-xml (0.3.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -226,7 +213,7 @@ GEM
     multi_json (1.3.6)
     nokogiri (1.5.5)
     nori (1.1.3)
-    om (1.7.0.rc2)
+    om (1.7.0)
       activemodel
       activesupport
       mediashelf-loggable
@@ -330,6 +317,13 @@ GEM
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
       rubyzip
+    solrizer (2.0.0.rc3)
+      daemons
+      mediashelf-loggable (~> 0.4.7)
+      nokogiri
+      om (>= 1.5.0)
+      stomp
+      xml-simple
     spork (0.9.2)
     sprockets (2.1.3)
       hike (~> 1.2)
@@ -339,10 +333,10 @@ GEM
     stomp (1.2.6)
     thor (0.16.0)
     tilt (1.3.3)
-    treetop (1.4.11)
+    treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.33)
+    tzinfo (0.3.34)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -379,6 +373,7 @@ DEPENDENCIES
   devise-guests (~> 0.2)
   factory_girl
   generator_spec
+  hydra-file-access
   hydra-head!
   hydra-pbcore
   jquery-rails
@@ -392,7 +387,6 @@ DEPENDENCIES
   rspec-rails
   ruby-debug19
   sass-rails (~> 3.2.3)
-  solrizer!
   solrizer-fedora!
   spork
   sqlite3

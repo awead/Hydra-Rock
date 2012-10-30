@@ -1,19 +1,20 @@
 source 'http://rubygems.org'
 
-# Gems with specific versions
 gem 'rails',           '~>3.2.8'
-gem 'devise-guests',   '~> 0.2'
-gem 'bootstrap-sass',  '~> 2.1.0.0'
 
 # Local gems
 gem 'blacklight',      :path => '/Users/adamw/Projects/Gems/blacklight'
 gem 'hydra-head',      :path => '/Users/adamw/Projects/Github/hydra-head'
-gem 'solrizer',        :git => 'git://github.com/projecthydra/solrizer.git'
-gem 'solrizer-fedora', :git => 'git://github.com/projecthydra/solrizer-fedora.git'
+gem 'solrizer-fedora', :git  => 'git://github.com/projecthydra/solrizer-fedora.git'
+
+# Hydra add-ins
+gem 'hydra-file-access'
+gem 'hydra-pbcore'
 
 # Gems for all environments
+gem 'bootstrap-sass',  '~> 2.1.0.0'
+gem 'devise-guests',   '~> 0.2'
 gem 'devise'
-gem 'hydra-pbcore'
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'bagit'
