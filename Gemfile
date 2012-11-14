@@ -5,7 +5,6 @@ gem 'rails',           '~>3.2.8'
 # Local gems
 gem 'blacklight',      :path => '/Users/adamw/Projects/Gems/blacklight'
 gem 'hydra-head',      :path => '/Users/adamw/Projects/Github/hydra-head'
-gem 'solrizer-fedora', :git  => 'git://github.com/projecthydra/solrizer-fedora.git'
 
 # Hydra add-ins
 gem 'hydra-file-access'

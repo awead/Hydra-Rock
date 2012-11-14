@@ -1,1 +1,1 @@
-rvm use ruby-1.9.3-p125@hydra-hh5-bootstrap
+rvm use ruby-1.9.3-p286@hydra-hh5 --create
