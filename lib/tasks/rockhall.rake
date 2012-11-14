@@ -16,6 +16,13 @@ namespace :rockhall do
       end
     end
 
+    desc "Deletes all objects from Fedora repository and loads fixtures"
+    task :fedora_refresh => :environment do
+      Rockhall::JettyCleaner.clean
+      Rake::Task["rockhall:load_fixtures"].invoke
+      Rake::Task["rockhall:load_fixtures"].reenable
+    end
+
     desc "Clean out unwanted objects from Fedora"
     task :fedora_clean => :environment do
       Rockhall::JettyCleaner.clean("changeme")
