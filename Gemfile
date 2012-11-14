@@ -39,7 +39,7 @@ group :development, :test do
   gem 'rest-client'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'ruby-debug19'
+  gem 'debugger'
   gem 'webrat'
 end
 
@@ -51,5 +51,5 @@ group :cucumber do
 end
 
 group :production do
-  gem 'passenger', '=3.0.13'
+  gem 'passenger', '=3.0.18'
 end

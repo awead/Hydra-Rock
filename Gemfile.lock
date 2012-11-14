@@ -113,7 +113,6 @@ GEM
     akami (1.2.0)
       gyoku (>= 0.4.0)
       nokogiri (>= 1.4.0)
-    archive-tar-minitar (0.5.2)
     arel (3.0.2)
     bagit (0.2.0)
       validatable (~> 1.6)
@@ -155,6 +154,13 @@ GEM
     daemon_controller (1.1.0)
     daemons (1.1.9)
     database_cleaner (0.9.1)
+    debugger (1.2.1)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.1.4)
+    debugger-linecache (1.1.2)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.1.4)
     deprecation (0.0.5)
       activesupport
     devise (2.1.2)
@@ -201,8 +207,6 @@ GEM
       addressable (~> 2.3)
     libwebsocket (0.1.5)
       addressable
-    linecache19 (0.5.12)
-      ruby_core_source (>= 0.1.4)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -224,7 +228,7 @@ GEM
       mediashelf-loggable
       nokogiri (>= 1.4.2)
     orm_adapter (0.4.0)
-    passenger (3.0.13)
+    passenger (3.0.18)
       daemon_controller (>= 1.0.0)
       fastthread (>= 1.0.1)
       rack
@@ -281,16 +285,6 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
-    ruby-debug-base19 (0.11.25)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
-    ruby_core_source (0.1.5)
-      archive-tar-minitar (>= 0.5.2)
     rubydora (0.5.13)
       activemodel
       activesupport
@@ -375,6 +369,7 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
+  debugger
   devise
   devise-guests (~> 0.2)
   factory_girl
@@ -386,12 +381,11 @@ DEPENDENCIES
   launchy
   mediainfo
   mocha
-  passenger (= 3.0.13)
+  passenger (= 3.0.18)
   rails (~> 3.2.8)
   rest-client
   rspec
   rspec-rails
-  ruby-debug19
   sass-rails (~> 3.2.3)
   solrizer-fedora!
   spork
