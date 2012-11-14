@@ -6,42 +6,19 @@ namespace :rockhall do
       Rockhall::Discovery.update
     end
 
-    desc "Delete everything from Fedora and reindex our fixtures in both development and test"
-    task :reload_fixtures => :environment do
-
-      # Re-sync solr development
-      ENV["RAILS_ENV"] = "development"
-      Rake::Task["hydra:jetty:solr_clean"].invoke
-      Rake::Task["hydra:jetty:solr_clean"].reenable
-      ENV["RAILS_ENV"] = "development"
-      Rake::Task["solrizer:fedora:solrize_objects"].invoke
-      Rake::Task["solrizer:fedora:solrize_objects"].reenable
-
-      Rockhall::JettyCleaner.clean("rockhall")
-      Rockhall::JettyCleaner.clean("changeme")
-
+    desc "Load fixtures into an empty Fedora"
+    task :load_fixtures => :environment do
       contents = Dir.glob("spec/fixtures/fedora/*.xml")
       contents.each do |file|
         ENV["foxml"] = file
         Rake::Task["repo:load"].invoke
         Rake::Task["repo:load"].reenable
       end
+    end
 
-      # Re-sync all the solrs
-      ENV["RAILS_ENV"] = "test"
-      Rake::Task["hydra:jetty:solr_clean"].invoke
-      Rake::Task["hydra:jetty:solr_clean"].reenable
-      ENV["RAILS_ENV"] = "test"
-      Rake::Task["solrizer:fedora:solrize_objects"].invoke
-      Rake::Task["solrizer:fedora:solrize_objects"].reenable
-
-      ENV["RAILS_ENV"] = "development"
-      Rake::Task["hydra:jetty:solr_clean"].invoke
-      Rake::Task["hydra:jetty:solr_clean"].reenable
-      ENV["RAILS_ENV"] = "development"
-      Rake::Task["solrizer:fedora:solrize_objects"].invoke
-      Rake::Task["solrizer:fedora:solrize_objects"].reenable
-
+    desc "Clean out unwanted objects from Fedora"
+    task :fedora_clean => :environment do
+      Rockhall::JettyCleaner.clean("changeme")
     end
 
     desc "Validates a bag"
