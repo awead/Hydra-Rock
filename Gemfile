@@ -8,7 +8,8 @@ gem 'hydra-head',      :path => '/Users/adamw/Projects/Github/hydra-head'
 
 # Hydra add-ins
 gem 'hydra-file-access'
-gem 'hydra-pbcore'
+gem 'hydra-pbcore',    :git  => 'https://github.com/awead/hydra-pbcore'
+gem 'solrizer-fedora', :git  => 'https://github.com/projecthydra/solrizer-fedora'
 
 # Gems for all environments
 gem 'bootstrap-sass',  '~> 2.1.0.0'
