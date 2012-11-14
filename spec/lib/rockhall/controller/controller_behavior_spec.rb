@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe Rockhall::Controller::ControllerBehaviour do
+describe Rockhall::Controller::ControllerBehavior do
 
   class TestClass
-    include Rockhall::Controller::ControllerBehaviour
+    include Rockhall::Controller::ControllerBehavior
   end
 
   before :each do

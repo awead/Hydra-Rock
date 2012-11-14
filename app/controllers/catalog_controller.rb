@@ -2,6 +2,7 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
   include Hydra::AccessControlsEnforcement
+  include Rockhall::Controller::ControllerBehavior
 
   # User still needs the #update action in the catalog, so we only enforce Hydra
   # access controls when the user tries to just view a document they don't have
@@ -27,12 +28,14 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.show_link            = 'heading_display'
-    config.index.record_display_type  = 'has_model_s'
+    config.index.record_display_type  = 'format'
 
     # solr field configuration for document/show views
     config.show.html_title            = 'title_t'
     config.show.heading               = 'title_t'
-    config.show.display_type          = 'has_model_s'
+
+    # This is the field that's used to determine the partial type
+    config.show.display_type          = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -77,20 +80,21 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    #config.add_index_field 'title_display',           :label => 'Title:'
-    #config.add_index_field 'title_vern_display',      :label => 'Title:'
-    #config.add_index_field 'author_display',          :label => 'Author:'
-    #config.add_index_field 'author_vern_display',     :label => 'Author:'
-    #config.add_index_field 'format',                  :label => 'Format:'
-    #config.add_index_field 'language_facet',          :label => 'Language:'
-    #config.add_index_field 'published_display',       :label => 'Published:'
-    #config.add_index_field 'published_vern_display',  :label => 'Published:'
-    #config.add_index_field 'lc_callnum_display',      :label => 'Call number:'
+    config.add_index_field 'format',                 :label => 'Format:'
+    config.add_index_field 'alternative_title_t',    :label => 'Alternative Title'
+    config.add_index_field 'event_series_t',         :label => 'Event Series'
+    config.add_index_field 'event_date_t',           :label => 'Event Date'
+    config.add_index_field 'creation_date_t',        :label => 'Creation Date'
+    config.add_index_field 'media_type_t',           :label => 'Media Type'
+    config.add_index_field 'archival_collection_t',  :label => 'Archival Collection'
+    config.add_index_field 'archival_series_t',      :label => 'Archival Series'
+
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     #
     # These are fields that are shown via the catalog controller
+    config.add_show_field 'format',                 :label => 'Format'
     config.add_show_field 'main_title_t',           :label => 'Main Title'
     config.add_show_field 'alternative_title_t',    :label => 'Alternative Title'
     config.add_show_field 'chapter_t',              :label => 'Capter'

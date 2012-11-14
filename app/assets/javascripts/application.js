@@ -12,12 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-
-//= require jquery-ui
+//
+// Required by Blacklight
 //= require blacklight/blacklight
-//= require 'jquery.ui.datepicker.js'
-
 //= require_tree .
 
 // Hacky way of dealing with asset pipeline and running your app with passenger

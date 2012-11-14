@@ -1,10 +1,10 @@
 # This is a sample config file that does not have multiple solr instances. You will also need to be sure to
 # edit the fedora.yml file to match the solr URL for active-fedora.
 development:
-  url: http://localhost:8984/solr/hydra-dev
+  url: http://localhost:8985/solr/hydra-dev
 test: &TEST
-  url: http://127.0.0.1:8984/solr/hydra-test
+  url: http://localhost:8985/solr/hydra-test
 cucumber:
   <<: *TEST
 production:
-    url: http://localhost:8984/solr/hydra-dev
+    url: http://localhost:8985/solr/hydra-dev

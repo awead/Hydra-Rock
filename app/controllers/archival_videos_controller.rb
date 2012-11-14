@@ -3,7 +3,7 @@ class ArchivalVideosController < ApplicationController
   #include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
-  include Rockhall::Controller::ControllerBehaviour
+  include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
   before_filter :enforce_access_controls

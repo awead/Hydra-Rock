@@ -1,0 +1,13 @@
+<% player_column << capture do %>
+  <%= render_video_player_in_catalog %>
+<% end %>
+
+<h3>Catalog Record</h2>
+<%= render :partial => "catalog/show_default", :locals => {:document => @document}  %>
+
+<h3>Review Information</h2>
+<%= render :partial => "shared/show/review" %>
+
+<% navbar_items << capture do %>
+  <%= render_user_navbar("archival_videos") %>
+<% end %>

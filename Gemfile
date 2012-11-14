@@ -1,30 +1,31 @@
 source 'http://rubygems.org'
 
-# Gems for all environments
-gem 'rails', '~>3.2.8'
-gem 'sass-rails'
-gem 'blacklight'
-gem 'hydra-head', '~> 5.0.0.pre9'
+gem 'rails',           '~>3.2.8'
+
+# Local gems
+gem 'blacklight',      :path => '/Users/adamw/Projects/Gems/blacklight'
+gem 'hydra-head',      :path => '/Users/adamw/Projects/Github/hydra-head'
+gem 'solrizer-fedora', :git  => 'git://github.com/projecthydra/solrizer-fedora.git'
+
+# Hydra add-ins
+gem 'hydra-file-access'
 gem 'hydra-pbcore'
-#gem "solrizer", "~> 2.0.0.rc1"
-gem 'sqlite3'
+
+# Gems for all environments
+gem 'bootstrap-sass',  '~> 2.1.0.0'
+gem 'devise-guests',   '~> 0.2'
 gem 'devise'
+gem 'jquery-rails'
+gem 'sqlite3'
 gem 'bagit'
 gem 'mediainfo'
-gem 'solrizer-fedora'
 
-# Pulling from git
-#gem 'rubydora', :git => 'git://github.com/cbeer/rubydora'
-
+# Gems used only for assets and not required
+# in production environments by default.
 group :assets do
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'compass-rails'
-  gem 'compass-susy-plugin'
-  gem 'twitter-bootstrap-rails'
-  gem 'compass_twitter_bootstrap'
-  gem 'therubyracer'
-  gem 'jquery-rails'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier',     '>= 1.0.3'
 end
 
 group :development, :test do

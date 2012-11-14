@@ -25,26 +25,9 @@ module RockhallAssetsHelper
     end
   end
 
-  def list_available_assets_to_create
-    results = String.new
-    results << "<li>"
-    results << link_to('Archival Video', new_archival_video_path)
-    results << "</li>"
-    results << "<li>"
-    results << link_to('Digital Video', new_digital_video_path)
-    results << "</li>"
-    user_groups = RoleMapper.roles(current_user.login)
-    if user_groups.include?("archivist")
-      results << "<li>"
-      results << link_to_create_asset('Basic MODS Asset', 'mods_asset')
-      results << "</li>"
-      results << "<li>"
-      results << link_to_create_asset('Image', 'generic_image')
-      results << "</li>"
-      results << "<li>"
-      results << link_to_create_asset('Generic Content', 'generic_content')
-      results << "</li>"
-    end
+  def list_available_assets_to_create results = String.new
+    results << content_tag(:li, link_to('Archival Video', new_archival_video_path))
+    results << content_tag(:li, link_to('Digital Video', new_digital_video_path))
     return results.html_safe
   end
 

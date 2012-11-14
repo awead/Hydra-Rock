@@ -1,36 +1,9 @@
-div.document_viewer, div.fixed_sidebar, div.facets {
-  ul li {
-    list-style-type: none;
-  }
-}
+/*
+ Local stylings
+*/
 
-.field {
-  font-size: medium;
-}
+body { padding-top: 60px; }
 
-.pagination {
-  
-  span {
-    padding: 0px;
-    border: none;
-
-  }
-  a {
-    padding: 0px 10px 0px 10px;
-    border: 1px solid #DDD;
-  }
-
-  .current {
-      padding: 0px 10px 0px 10px;
-      border: 1px solid #DDD;
-  }
-
-  h2 {
-    display: none;
-  }
-
-  span.disabled {
-    display: none;
-  }
-  
+.navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+  width: 1170px;
 }

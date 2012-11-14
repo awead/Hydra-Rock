@@ -5,6 +5,10 @@ module RockhallNavbarHelper
     @navbar_items ||= []
   end
 
+  def render_add_assets
+    render :partial=>"shared/navbar_partials/add_assets_links" if allow_asset_creation
+  end
+
   # navbar items if a user is logged in
   def render_user_navbar(model, opts={})
     result = String.new

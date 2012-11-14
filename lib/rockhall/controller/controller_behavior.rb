@@ -1,4 +1,4 @@
-module Rockhall::Controller::ControllerBehaviour
+module Rockhall::Controller::ControllerBehavior
 
   def update_session
     logger.info "Updating session with parameters:" + params.inspect
@@ -50,6 +50,10 @@ module Rockhall::Controller::ControllerBehaviour
       flash[:notice] = "You have been redirected to the review page for this document"
       redirect_to url_for(:controller=>"reviewers", :action=>"edit")
     end
+  end
+
+  # TODO: This has to do something at some point
+  def current_or_guest_user
   end
 
 end
