@@ -1,0 +1,26 @@
+module Rockhall::TemplateMethods
+
+# Object-level methods for inserting and deleting terms from datastreams
+#
+# Each method here references an existing method in HydraPbcore that 
+# performs the action on the datastream.  We have to duplicated the 
+# methods here to link them to the appropriate datastream so that they're
+# available at the object level.
+
+  def new_contributor(name=nil, role=nil)
+    self.datastreams["descMetadata"].insert_contributor(name, role)
+  end
+
+  def delete_contributor(index)
+    self.datastreams["descMetadata"].remove_node(:contributor, index)
+  end
+
+  def new_publisher(publisher=nil, role=nil)
+    self.datastreams["descMetadata"].insert_publisher(publisher, role)
+  end
+
+  def delete_publisher(index)
+    self.datastreams["descMetadata"].remove_node(:publisher, index)
+  end 
+
+end
