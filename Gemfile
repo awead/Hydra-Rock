@@ -5,10 +5,12 @@ gem 'rails',           '~>3.2.8'
 # Local gems
 gem 'blacklight',      :path => '/Users/adamw/Projects/Gems/blacklight'
 gem 'hydra-head',      :path => '/Users/adamw/Projects/Github/hydra-head'
+gem 'om',              :path => '/Users/adamw/Projects/Github/om'
+gem 'solrizer',        :path => '/Users/adamw/Projects/Github/solrizer'
+gem 'hydra-pbcore',    :path => '/Users/adamw/Projects/Github/hydra-pbcore'
 
 # Hydra add-ins
 gem 'hydra-file-access'
-gem 'hydra-pbcore',    :git  => 'https://github.com/awead/hydra-pbcore'
 gem 'solrizer-fedora', :git  => 'https://github.com/projecthydra/solrizer-fedora'
 
 # Gems for all environments
