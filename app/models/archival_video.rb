@@ -22,6 +22,7 @@ class ArchivalVideo < ActiveFedora::Base
   include Rockhall::WorkflowMethods
   include ActiveModel::Validations
   include Rockhall::Validations
+  include Rockhall::TemplateMethods
 
   # ActiveFedora implements callbacks just like ActiveRecord does and you can specify
   # them here.  #apply_default_permissions is a particular method in our local Rockhall
