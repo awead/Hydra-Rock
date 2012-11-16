@@ -12,7 +12,7 @@ class DigitalVideo < ActiveFedora::Base
 
   after_create :apply_default_permissions
 
-  has_relationship "objects", :is_part_of, :inbound => true
+  has_many :external_videos, :property => :is_part_of, :inbound => true
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
   has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::DigitalDocument

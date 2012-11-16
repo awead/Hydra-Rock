@@ -62,11 +62,11 @@ describe DigitalVideo do
 
   end
 
-  describe "#videos" do
-    it "should return a hash of videos" do
+  describe "relationships" do
+    it "should return a hash of external videos" do
       dv = DigitalVideo.find("rockhall:fixture_pbcore_digital_document1")
-      dv.file_objects.count.should == 6
-      dv.videos.should be_kind_of(Hash)
+      dv.external_videos.count.should == 6
+      dv.external_videos.first.should be_kind_of(ExternalVideo)
     end
   end
 

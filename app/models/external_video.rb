@@ -8,8 +8,7 @@ class ExternalVideo < ActiveFedora::Base
 
   after_create :apply_default_permissions
 
-  has_relationship "is_member_of_collection", :has_collection_member, :inbound => true
-  has_bidirectional_relationship "part_of", :is_part_of, :has_part
+  belongs_to :parent, :property => :is_part_of
 
   # Object will have either an access or a perservation datastream but not both
   has_datastream :name=>"access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'

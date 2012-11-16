@@ -33,4 +33,13 @@ describe ExternalVideo do
     end
   end
 
+  describe "relationships" do
+
+    it "should have a single parent video" do
+      ev = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2642")
+      ev.parent.should be_kind_of(DigitalVideo)
+    end
+
+  end
+
 end

@@ -78,11 +78,11 @@ describe ArchivalVideo do
 
   end
 
-  describe "#videos" do
-    it "should return a hash of videos" do
+  describe "relationships" do
+    it "should return a hash of external video objects" do
       av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
-      av.file_objects.count.should == 2
-      av.videos.should be_kind_of(Hash)
+      av.external_videos.count.should == 2
+      av.external_videos.first.should be_kind_of(ExternalVideo)
     end
   end
 

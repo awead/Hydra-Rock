@@ -36,7 +36,7 @@ class ArchivalVideo < ActiveFedora::Base
   # assert an "isPartOf" relationship.  The fact that it is "inbound" means that the
   # relationship is incoming from another object, like inbound traffic coming in from
   # somewhere.
-  has_relationship "objects", :is_part_of, :inbound => true
+  has_many :external_videos, :property => :is_part_of, :inbound => true
 
   # This is the essential "meat" section of our model where we actually define which
   # datastreams are in our objects and what's in them.  The name of the datastream is
