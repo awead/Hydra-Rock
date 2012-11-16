@@ -18,8 +18,12 @@ namespace :rockhall do
 
     desc "Deletes all objects from Fedora repository and loads fixtures"
     task :fedora_refresh => :environment do
+      if Rails.env.match("production")
+        raise "You don't want to run this task in production.  You'll royally f#&@ things up."
+      end
       Rockhall::JettyCleaner.clean("changeme")
       Rockhall::JettyCleaner.clean("rockhall")
+      Rockhall::JettyCleaner.clean("rrhof")
       Rake::Task["rockhall:load_fixtures"].invoke
       Rake::Task["rockhall:load_fixtures"].reenable
     end
