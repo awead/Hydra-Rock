@@ -64,16 +64,16 @@ describe DigitalVideo do
 
   describe "#videos" do
     it "should return a hash of videos" do
-      av = ArchivalVideo.find("rockhall:fixture_pbcore_digital_document1")
-      av.file_objects.count.should == 6
-      av.videos.should be_kind_of(Hash)
+      dv = DigitalVideo.find("rockhall:fixture_pbcore_digital_document1")
+      dv.file_objects.count.should == 6
+      dv.videos.should be_kind_of(Hash)
     end
   end
 
   describe "#addl_solr_fields" do
     it "should return a hash of additional fields that will be included in the solr discovery export" do
-      av = ArchivalVideo.find("rockhall:fixture_pbcore_digital_document1")
-      addl_doc = av.addl_solr_fields
+      dv = DigitalVideo.find("rockhall:fixture_pbcore_digital_document1")
+      addl_doc = dv.addl_solr_fields
       addl_doc.should be_kind_of(Hash)
       addl_doc[:access_file_s].should be_kind_of(Array)
       addl_doc[:access_file_s].sort.should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
