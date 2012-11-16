@@ -17,18 +17,24 @@ describe DigitalVideo do
       @video.should respond_to(:apply_depositor_metadata)
     end
 
-    describe "#insert_node" do
-      it "should insert a new node into the existing xml" do
-        node, index = @video.insert_node("contributor")
-        index.should == 0
+    describe "using templates to manage multi-valued terms" do
+      it "should insert contributors" do
+        @video.new_contributor("Name", "role")
+        @video.contributor_name.should == ["Name"]
+        @video.contributor_role.should == ["role"]
+        @video.new_contributor("Name2", "role2")
+        @video.contributor_name.should == ["Name", "Name2"]
+        @video.contributor_role.should == ["role", "role2"]
       end
-    end
 
-    describe "#remove_node" do
-      it "should remove a node from the existing xml" do
-        node, index = @video.insert_node("contributor")
-        index.should == 0
-        @video.remove_node("contributor","0")
+      it "should remove contributors" do
+        @video.new_contributor("Name", "role")
+        @video.new_contributor("Name2", "role2")
+        @video.contributor_name.should == ["Name", "Name2"]
+        @video.contributor_role.should == ["role", "role2"]
+        @video.delete_contributor(0)
+        @video.contributor_name.should == ["Name2"]
+        @video.contributor_role.should == ["role2"]
       end
     end
 
