@@ -40,7 +40,7 @@ class DigitalVideosController < ApplicationController
 
   def create
     @afdoc = DigitalVideo.new(params[:digital_video])
-    @afdoc.apply_depositor_metadata(current_user.login)
+    @afdoc.apply_depositor_metadata(current_user.email)
     respond_to do |format|
       if @afdoc.save
         format.html { redirect_to(edit_digital_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was successfully created.') }

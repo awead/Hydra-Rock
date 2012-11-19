@@ -36,7 +36,7 @@ module Rockhall::Controller::ControllerBehavior
   end
 
   def enforce_asset_creation_restrictions
-    user_groups = RoleMapper.roles(current_user.login)
+    user_groups = RoleMapper.roles(current_user.email)
     unless user_groups.include?("archivist") or user_groups.include?("reviewer")
       flash[:notice] = "You are not allowed to create new content"
       redirect_to url_for(root_path)
@@ -45,7 +45,7 @@ module Rockhall::Controller::ControllerBehavior
 
   # Right now, anyone in the review group gets redirected to the reviewers edit page
   def enforce_review_controls
-    user_groups = RoleMapper.roles(current_user.login)
+    user_groups = RoleMapper.roles(current_user.email)
     if user_groups.include?("reviewer")
       flash[:notice] = "You have been redirected to the review page for this document"
       redirect_to url_for(:controller=>"reviewers", :action=>"edit")
