@@ -9,6 +9,7 @@ describe Rockhall::Discovery do
 
   after :all do
     @d.delete
+    @d.blacklight_items.length.should == 0
   end
 
   it "should create a connection to our Blacklight solr index" do
