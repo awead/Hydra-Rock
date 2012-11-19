@@ -16,12 +16,7 @@ class Rockhall::JettyCleaner
     response["response"]["docs"].each do |doc|
       id = doc["id"]
       namespace, number = id.split(/:/)
-      if namespace == pidspace or pidspace.nil?
-        puts "Deleting #{id}"
-        ActiveFedora::Base.find(id).delete
-      else
-        puts "Keeping #{id}"
-      end
+      ActiveFedora::Base.find(id).delete if namespace == pidspace or pidspace.nil?
     end
   end
 
