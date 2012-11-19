@@ -16,15 +16,12 @@ class GbvSip
   attr_accessor :root, :base
 
   def initialize(path)
-    unless File.exists?(path)
-      raise "Specified path does not exist"
-    end
+    raise "Specified path does not exist" unless File.exists?(path)
     self.root = path
     self.base = File.basename(path)
   end
 
-  def valid?
-    errors = Array.new
+  def valid?(errors = Array.new)
     # Check required fields
     errors << "No barcode found"     unless self.barcode
     errors << "Title not found"      unless self.title
@@ -41,13 +38,10 @@ class GbvSip
   end
 
   def prepare(opts={})
-    unless barcodes_match?
-      raise "XML barcode does not match folder name"
-    end
-    if self.pid
-      raise "Pid already exists"
-    end
-    raise "Invalid sip" unless self.valid?
+    raise "XML barcode does not match folder name" unless barcodes_match?
+    raise "Pid already exists"                     if self.pid
+    raise "Invalid sip"                            unless self.valid?
+    raise "Can't write to root directory of sip"   unless File.writable?(File.dirname(self.root))
 
     begin
       @av = ArchivalVideo.new
@@ -73,10 +67,8 @@ class GbvSip
 
   # Prepares a sip resuing the pid provided by the directory name
   def reuse
-    unless self.base.match(/^#{RH_CONFIG["pid_space"]}_/)
-      raise "Invalid pid format used in base directory name"
-    end
-    raise "Invalid sip" unless self.valid?
+    raise "Invalid pid format used in base directory name" unless self.base.match(/^#{RH_CONFIG["pid_space"]}_/)
+    raise "Invalid sip"                                    unless self.valid?
 
     begin
       @av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
@@ -90,67 +82,50 @@ class GbvSip
   def doc
     file  = File.join(self.root, "*.xml")
     files = Dir.glob(file)
-    if files.length > 0
-      doc = Workflow::GbvDocument.from_xml(File.new(files.first))
-    end
+    Workflow::GbvDocument.from_xml(File.new(files.first)) if files.length > 0
   end
 
   # grab fields from GBV xml file as defined in Workflow::GbvDocument
   def info(field)
-    unless self.doc.nil?
-      return self.doc.send(field.to_sym)
-    end
+    self.doc.send(field.to_sym) unless self.doc.nil?
   end
 
   # barcode is requried so it gets its own method
   def barcode
-    unless self.doc.nil?
-      return self.doc.barcode
-    end
+    self.doc.barcode unless self.doc.nil?
   end
 
   # title is required so it gets its own method
   def title
-    unless self.doc.nil?
-      return self.doc.title
-    end
+    self.doc.title unless self.doc.nil?
   end
 
   def access
     file  = File.join(self.root, "data", "*_access.mp4")
     files = Dir.glob(file)
-    if files.length == 1
-      return File.basename(files.first)
-    end
+    File.basename(files.first) if files.length == 1
   end
 
   def preservation
     file  = File.join(self.root, "data", "*_preservation.mov")
     files = Dir.glob(file)
-    if files.length == 1
-      return File.basename(files.first)
-    end
+    File.basename(files.first) if files.length == 1
   end
 
   def pid
     return nil unless self.barcode
-    solr_params = { :fl => "id", :q  => "barcode_t:#{self.barcode}", :qt => "document" }
-    solr_response = Blacklight.solr.find(solr_params)
-    if solr_response[:response][:numFound] == 0
+    obj = ArchivalVideo.find("barcode_t" => self.barcode)
+    if obj.empty?
       return nil
-    elsif solr_response[:response][:numFound] == 1
-      return solr_response[:response][:docs][0][:id]
+    elsif obj.length == 1
+      return obj.first.pid
     else
       raise "Barcode search returned more than one document, when there should be only 0 or 1"
     end
   end
 
   def barcodes_match?
-    if self.barcode == self.base
-      return true
-    else
-      return false
-    end
+   self.barcode == self.base ? true : false
   end
 
   def update_fields
