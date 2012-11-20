@@ -1,0 +1,6 @@
+#!/bin/bash
+rake rockhall:fedora:clean
+rake rockhall:solr:clean
+rake rockhall:solr:index_all
+RAILS_ENV=test rake rockhall:solr:clean
+RAILS_ENV=test rake rockhall:solr:index_all
