@@ -18,32 +18,20 @@ class RockhallIngest
   def process(opts={})
 
     # Process each access file
-    @sip.access.each do |aces|
-      ev = self.ingest(@sip.base, aces, "access", {:format=>"h264"} )
+    @sip.access.each do |a|
+      ev = self.ingest(@sip.base, a, "access", {:format=>"h264"} )
       ev.generation = "Copy: access"
-      if @sip.next_access(aces)
-        ev.datastreams["descMetadata"].insert_node("next", {:root => "pbcoreInstantiation"})
-        ev.next = @sip.next_access(aces).to_s
-      end
-      if @sip.previous_access(aces)
-        ev.datastreams["descMetadata"].insert_node("previous", {:root => "pbcoreInstantiation"})
-        ev.previous = @sip.previous_access(aces).to_s
-      end
+      ev.datastreams["descMetadata"].insert_next(@sip.next_access(a).to_s)         if @sip.next_access(a)
+      ev.datastreams["descMetadata"].insert_previous(@sip.previous_access(a).to_s) if @sip.previous_access(a)
       ev.save
     end
 
     # Process each preservation file
-    @sip.preservation.each do |pres|
-      ev = self.ingest(@sip.base, pres, "preservation", {:format=>"original"} )
+    @sip.preservation.each do |p|
+      ev = self.ingest(@sip.base, p, "preservation", {:format=>"original"} )
       ev.generation = "original"
-      if @sip.next_preservation(pres)
-        ev.datastreams["descMetadata"].insert_node("next", {:root => "pbcoreInstantiation"})
-        ev.next = @sip.next_preservation(pres).to_s
-      end
-      if @sip.previous_preservation(pres)
-        ev.datastreams["descMetadata"].insert_node("previous", {:root => "pbcoreInstantiation"})
-        ev.previous = @sip.previous_preservation(pres).to_s
-      end
+      ev.datastreams["descMetadata"].insert_next(@sip.next_preservation(p).to_s)         if @sip.next_preservation(p)
+      ev.datastreams["descMetadata"].insert_previous(@sip.previous_preservation(p).to_s) if @sip.previous_preservation(p)
       ev.save
     end
   end
