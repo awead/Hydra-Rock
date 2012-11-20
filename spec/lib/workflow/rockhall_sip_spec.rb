@@ -85,14 +85,10 @@ describe Workflow::RockhallSip do
 
     before(:each) do
       Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      solrizer = Solrizer::Fedora::Solrizer.new
-      solrizer.solrize_objects
     end
 
     after(:each) do
       Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      solrizer = Solrizer::Fedora::Solrizer.new
-      solrizer.solrize_objects
     end
 
     it "should prepare it for ingestion" do
@@ -115,8 +111,6 @@ describe Workflow::RockhallSip do
 
     after(:each) do
       Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      solrizer = Solrizer::Fedora::Solrizer.new
-      solrizer.solrize_objects
     end
 
     it "should use the previously defined pid" do
