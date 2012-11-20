@@ -17,9 +17,7 @@ class RockhallSip
   attr_accessor :root, :base
 
   def initialize(path)
-    unless File.exists?(path)
-      raise "Specified path does not exist"
-    end
+    raise "Specified path does not exist" unless File.exists?(path)
     self.root = path
     self.base = File.basename(path)
   end
@@ -54,10 +52,8 @@ class RockhallSip
   # you still have the sip and want to recreated the object using
   # its original pid.
   def reuse
-    unless self.base.match(/^#{RH_CONFIG["pid_space"]}_/)
-      raise "Invalid pid format used in base directory name"
-    end
-    raise "Invalid sip" unless self.valid?
+    raise "Invalid pid format used in base directory name" unless self.base.match(/^#{RH_CONFIG["pid_space"]}_/)
+    raise "Invalid sip"                                    unless self.valid?
 
     begin
       dv = DigitalVideo.new({:pid=>self.base.gsub(/_/,":")})
@@ -67,70 +63,45 @@ class RockhallSip
     end
   end
 
-  def access
-    file  = File.join(self.root, "data", "*_access.mp4")
-    files = Dir.glob(file)
-    results = Array.new
-    files.each do |file|
+  def access(results = Array.new)
+    files = Dir.glob(File.join(self.root, "data", "*_access.mp4")).each do |file|
       results << File.basename(file)
     end
-    if results.empty?
-      return nil
-    else
-      return results.sort
-    end
+    results.empty? ? nil : results.sort
   end
 
   def next_access(file)
     next_index = self.get_next(self.access.index(file), self.access.length)
-    unless next_index.nil?
-      return self.access[next_index]
-    end
+    self.access[next_index] unless next_index.nil?
   end
 
   def previous_access(file)
     previous_index = self.get_previous(self.access.index(file), self.access.length)
-    unless previous_index.nil?
-      return self.access[previous_index]
-    end
+    self.access[previous_index] unless previous_index.nil?
   end
 
-  def preservation
-    file  = File.join(self.root, "data", "*_preservation.mov")
-    files = Dir.glob(file)
-    results = Array.new
-    files.each do |file|
+  def preservation(results = Array.new) 
+    Dir.glob(File.join(self.root, "data", "*_preservation.mov")).each do |file|
       results << File.basename(file)
     end
-    if results.empty?
-      return nil
-    else
-      return results.sort
-    end
+    results.empty? ? nil : results.sort
   end
 
   def next_preservation(file)
     next_index = self.get_next(self.preservation.index(file), self.preservation.length)
-    unless next_index.nil?
-      return self.preservation[next_index]
-    end
+    self.preservation[next_index] unless next_index.nil?
   end
 
   def previous_preservation(file)
     previous_index = self.get_previous(self.preservation.index(file), self.preservation.length)
-    unless previous_index.nil?
-      return self.preservation[previous_index]
-    end
+    self.preservation[previous_index] unless previous_index.nil?
   end
 
   def pid
-    pid = self.base.sub(/_/,":") # replaces first occurance only
-    solr_params = { :fl => "id", :q  => "id:\"#{pid}\"", :qt => "document" }
-    solr_response = Blacklight.solr.find(solr_params)
-    if solr_response[:response][:numFound] == 0
-      return nil
-    else solr_response[:response][:numFound] == 1
-      return solr_response[:response][:docs][0][:id]
+    begin
+      ArchivalVideo.find(self.base.sub(/_/,":")).pid
+    rescue
+      nil
     end
   end
 
@@ -138,6 +109,7 @@ class RockhallSip
 
   # Creates a new sip from a given directory
   def create(opts={})
+    raise "Can't write to root directory of sip" unless File.writable?(File.dirname(self.root))
     begin
       dv = DigitalVideo.new
       dv.main_title = self.base.to_s
