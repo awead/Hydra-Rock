@@ -1,14 +1,7 @@
-GIT
-  remote: https://github.com/projecthydra/solrizer-fedora
-  revision: a7a5eca2af63295c3860d3100289e96c674ffadc
-  specs:
-    solrizer-fedora (2.2.0)
-      active-fedora
-
 PATH
   remote: /Users/adamw/Projects/Github/hydra-pbcore
   specs:
-    hydra-pbcore (0.1.0)
+    hydra-pbcore (1.0.0)
       active-fedora
       nokogiri
       om
@@ -379,7 +372,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   solrizer
-  solrizer-fedora!
   spork
   sqlite3
   uglifier (>= 1.0.3)

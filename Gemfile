@@ -11,7 +11,6 @@ gem 'hydra-pbcore',    :path => '/Users/adamw/Projects/Github/hydra-pbcore'
 
 # Hydra add-ins
 gem 'hydra-file-access'
-gem 'solrizer-fedora', :git  => 'https://github.com/projecthydra/solrizer-fedora'
 
 # Gems for all environments
 gem 'bootstrap-sass',  '~> 2.1.0.0'
