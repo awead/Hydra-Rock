@@ -1,16 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails',           '~>3.2.8'
+gem 'rails',      '~>3.2.9'
+gem 'hydra-head', '~> 5.0.0.pre12'
+gem 'blacklight'    
 
-# Local gems
-gem 'blacklight'     #:path => '/Users/adamw/Projects/Gems/blacklight'
-gem 'hydra-head', '~> 5.0.0.pre12'     #:path => '/Users/adamw/Projects/Github/hydra-head'
-gem 'om'              #:path => '/Users/adamw/Projects/Github/om'
-gem 'solrizer'        #:path => '/Users/adamw/Projects/Github/solrizer'
-gem 'hydra-pbcore',    :path => '/Users/adamw/Projects/Github/hydra-pbcore'
-
-# Hydra add-ins
+# Hydra Bits
+gem 'om'
+gem 'solrizer'
 gem 'hydra-file-access'
+gem 'hydra-pbcore'
 
 # Gems for all environments
 gem 'bootstrap-sass',  '~> 2.1.0.0'
