@@ -120,7 +120,7 @@ GEM
       activesupport (>= 3.0.0)
     fastercsv (1.5.5)
     fastthread (1.0.7)
-    ffi (1.1.5)
+    ffi (1.2.0)
     generator_spec (0.8.5)
       rails (>= 3.0, < 4.0)
       rspec-rails
@@ -183,7 +183,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.1.2)
       addressable (~> 2.3)
-    libwebsocket (0.1.6)
+    libwebsocket (0.1.6.1)
       websocket
     mail (2.4.4)
       i18n (>= 0.4.0)
