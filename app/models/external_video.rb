@@ -5,14 +5,15 @@ class ExternalVideo < ActiveFedora::Base
   include ActiveFedora::Relationships
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
+  include Rockhall::TemplateMethods
 
   after_create :apply_default_permissions
 
   belongs_to :parent, :property => :is_part_of
 
   # Object will have either an access or a perservation datastream but not both
-  has_datastream :name=>"access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
-  has_datastream :name=>"preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name => "access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name => "preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
   has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Instantiation

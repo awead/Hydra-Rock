@@ -21,6 +21,14 @@ module Rockhall::TemplateMethods
 
   def delete_publisher(index)
     self.datastreams["descMetadata"].remove_node(:publisher, index)
-  end 
+  end
+
+  def insert_next(file)
+    self.datastreams["descMetadata"].insert_next(file)
+  end
+
+  def insert_previous(file)
+    self.datastreams["descMetadata"].insert_previous(file)
+  end
 
 end

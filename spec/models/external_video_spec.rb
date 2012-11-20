@@ -33,6 +33,18 @@ describe ExternalVideo do
     end
   end
 
+  describe "file order" do
+    it "should have a next file" do
+      @video.insert_next("foo.mp4")
+      @video.next.should == ["foo.mp4"]
+    end
+
+    it "should have a previous file" do
+      @video.insert_previous("foo.mp4")
+      @video.previous.should == ["foo.mp4"]
+    end
+  end
+
   describe "relationships" do
 
     it "should have a single parent video" do
