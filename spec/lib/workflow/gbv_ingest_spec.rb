@@ -4,14 +4,10 @@ describe Workflow::GbvIngest do
 
   before(:all) do
     Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
-    solrizer = Solrizer::Fedora::Solrizer.new
-    solrizer.solrize_objects
   end
 
   after(:all) do
     Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
-    solrizer = Solrizer::Fedora::Solrizer.new
-    solrizer.solrize_objects
   end
 
   before(:each) do
