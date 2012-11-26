@@ -16,7 +16,7 @@ class DigitalVideo < ActiveFedora::Base
   has_many :external_videos, :property => :is_part_of, :inbound => true
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::DigitalDocument
+  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Deprecated::DigitalDocument
   has_metadata :name => "properties",     :type => Properties
   has_metadata :name => "assetReview",    :type => AssetReview
 
