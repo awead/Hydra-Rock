@@ -45,5 +45,5 @@ group :cucumber do
 end
 
 group :production do
-  gem 'passenger', '=3.0.13'
+  gem 'passenger', '=3.0.18'
 end
