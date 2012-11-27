@@ -11,6 +11,5 @@ test_support/fixtures
 public/cucumber.html
 public/assets/*
 nohup.out
-.rvmrc
 hydra-rock.sublime-project
 hydra-rock.sublime-workspace
