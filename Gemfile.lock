@@ -2,20 +2,20 @@ GEM
   remote: http://rubygems.org/
   specs:
     RedCloth (4.2.9)
-    actionmailer (3.2.8)
-      actionpack (= 3.2.8)
+    actionmailer (3.2.9)
+      actionpack (= 3.2.9)
       mail (~> 2.4.4)
-    actionpack (3.2.8)
-      activemodel (= 3.2.8)
-      activesupport (= 3.2.8)
+    actionpack (3.2.9)
+      activemodel (= 3.2.9)
+      activesupport (= 3.2.9)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
       rack (~> 1.4.0)
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
-      sprockets (~> 2.1.3)
-    active-fedora (4.5.2)
+      sprockets (~> 2.2.1)
+    active-fedora (4.5.3)
       activeresource (>= 3.0.0)
       activesupport (>= 3.0.0)
       deprecation
@@ -27,30 +27,29 @@ GEM
       rsolr
       rubydora (~> 0.5.13)
       solrizer (~> 1.2.0)
-    activemodel (3.2.8)
-      activesupport (= 3.2.8)
+    activemodel (3.2.9)
+      activesupport (= 3.2.9)
       builder (~> 3.0.0)
-    activerecord (3.2.8)
-      activemodel (= 3.2.8)
-      activesupport (= 3.2.8)
+    activerecord (3.2.9)
+      activemodel (= 3.2.9)
+      activesupport (= 3.2.9)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.8)
-      activemodel (= 3.2.8)
-      activesupport (= 3.2.8)
-    activesupport (3.2.8)
+    activeresource (3.2.9)
+      activemodel (= 3.2.9)
+      activesupport (= 3.2.9)
+    activesupport (3.2.9)
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.2)
     akami (1.2.0)
       gyoku (>= 0.4.0)
       nokogiri (>= 1.4.0)
-    archive-tar-minitar (0.5.2)
     arel (3.0.2)
     bagit (0.2.0)
       validatable (~> 1.6)
     bcrypt-ruby (3.0.1)
-    blacklight (3.6.1.1)
+    blacklight (3.8.1)
       compass-rails (~> 1.0.0)
       compass-susy-plugin (>= 0.9.0)
       kaminari (~> 0.13)
@@ -63,19 +62,19 @@ GEM
       unicode
     block_helpers (0.3.3)
       activesupport (>= 2.0)
-    builder (3.0.3)
+    builder (3.0.4)
     cancan (1.6.8)
-    capybara (1.1.2)
+    capybara (1.1.3)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    capybara-webkit (0.12.1)
+    capybara-webkit (0.13.0)
       capybara (>= 1.0.0, < 1.2)
       json
-    childprocess (0.3.5)
+    childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
     chunky_png (1.2.6)
     coffee-rails (3.2.2)
@@ -84,7 +83,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.3.3)
+    coffee-script-source (1.4.0)
     columnize (0.3.6)
     commonjs (0.2.6)
     compass (0.12.2)
@@ -108,7 +107,14 @@ GEM
       nokogiri (>= 1.5.0)
     daemon_controller (1.1.0)
     daemons (1.1.9)
-    database_cleaner (0.8.0)
+    database_cleaner (0.9.1)
+    debugger (1.2.2)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.1.1)
+      debugger-ruby_core_source (~> 1.1.5)
+    debugger-linecache (1.1.2)
+      debugger-ruby_core_source (>= 1.1.1)
+    debugger-ruby_core_source (1.1.5)
     deprecation (0.0.5)
       activesupport
     devise (2.1.2)
@@ -117,7 +123,7 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.1.3)
-    equivalent-xml (0.2.9)
+    equivalent-xml (0.3.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -126,17 +132,14 @@ GEM
       activesupport (>= 3.0.0)
     fastercsv (1.5.5)
     fastthread (1.0.7)
-    ffi (1.1.5)
+    ffi (1.2.0)
     fssm (0.2.9)
-    generator_spec (0.8.5)
-      rails (>= 3.0, < 4.0)
-      rspec-rails
-    gherkin (2.11.2)
+    gherkin (2.11.5)
       json (>= 1.4.6)
     gyoku (0.4.6)
       builder (>= 2.1.2)
     hike (1.2.1)
-    hooks (0.2.1)
+    hooks (0.2.2)
     httpi (1.1.1)
       rack
     hydra-access-controls (0.0.5)
@@ -145,7 +148,7 @@ GEM
       blacklight
       cancan
       deprecation
-    hydra-head (4.1.1)
+    hydra-head (4.1.3)
       RedCloth (= 4.2.9)
       active-fedora (~> 4.1)
       blacklight (~> 3.4)
@@ -157,13 +160,13 @@ GEM
       jquery-rails
       rails (~> 3.2.3)
       sanitize
-    hydra-mods (0.0.5)
-      active-fedora (~> 4.1)
+    hydra-mods (0.0.6)
+      active-fedora (> 4.1)
     i18n (0.6.1)
     journey (1.0.4)
-    jquery-rails (2.1.3)
-      railties (>= 3.1.0, < 5.0)
-      thor (~> 0.14)
+    jquery-rails (2.1.4)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
     json (1.7.5)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -172,14 +175,12 @@ GEM
       addressable (~> 2.3)
     less (2.2.2)
       commonjs (~> 0.2.6)
-    less-rails (2.2.3)
+    less-rails (2.2.6)
       actionpack (>= 3.1)
       less (~> 2.2.0)
     libv8 (3.3.10.4)
-    libwebsocket (0.1.5)
-      addressable
-    linecache19 (0.5.12)
-      ruby_core_source (>= 0.1.4)
+    libwebsocket (0.1.6.1)
+      websocket
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -189,9 +190,9 @@ GEM
     mediashelf-loggable (0.4.9)
     metaclass (0.0.1)
     mime-types (1.19)
-    mocha (0.12.4)
+    mocha (0.13.0)
       metaclass (~> 0.0.1)
-    multi_json (1.3.6)
+    multi_json (1.3.7)
     nokogiri (1.5.5)
     nori (1.1.3)
     om (1.6.1)
@@ -209,25 +210,25 @@ GEM
       rack (>= 0.4)
     rack-ssl (1.3.2)
       rack
-    rack-test (0.6.1)
+    rack-test (0.6.2)
       rack (>= 1.0)
-    rails (3.2.8)
-      actionmailer (= 3.2.8)
-      actionpack (= 3.2.8)
-      activerecord (= 3.2.8)
-      activeresource (= 3.2.8)
-      activesupport (= 3.2.8)
+    rails (3.2.9)
+      actionmailer (= 3.2.9)
+      actionpack (= 3.2.9)
+      activerecord (= 3.2.9)
+      activeresource (= 3.2.9)
+      activesupport (= 3.2.9)
       bundler (~> 1.0)
-      railties (= 3.2.8)
-    railties (3.2.8)
-      actionpack (= 3.2.8)
-      activesupport (= 3.2.8)
+      railties (= 3.2.9)
+    railties (3.2.9)
+      actionpack (= 3.2.9)
+      activesupport (= 3.2.9)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.2)
-    rdf (0.3.8)
+    rdf (0.3.10)
       addressable (>= 2.2.6)
     rdf-rdfxml (0.3.8)
       rdf (>= 0.3.4)
@@ -242,29 +243,17 @@ GEM
       builder (>= 2.1.2)
     rsolr-ext (1.0.3)
       rsolr (>= 1.0.2)
-    rspec (2.11.0)
-      rspec-core (~> 2.11.0)
-      rspec-expectations (~> 2.11.0)
-      rspec-mocks (~> 2.11.0)
-    rspec-core (2.11.1)
-    rspec-expectations (2.11.3)
+    rspec-core (2.12.0)
+    rspec-expectations (2.12.0)
       diff-lcs (~> 1.1.3)
-    rspec-mocks (2.11.3)
-    rspec-rails (2.11.0)
+    rspec-mocks (2.12.0)
+    rspec-rails (2.12.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec (~> 2.11.0)
-    ruby-debug-base19 (0.11.25)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
-    ruby_core_source (0.1.5)
-      archive-tar-minitar (>= 0.5.2)
+      rspec-core (~> 2.12.0)
+      rspec-expectations (~> 2.12.0)
+      rspec-mocks (~> 2.12.0)
     rubydora (0.5.13)
       activemodel
       activesupport
@@ -278,7 +267,8 @@ GEM
     rubyzip (0.9.9)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
-    sass (3.2.1)
+      nokogiri (>= 1.4.4, < 1.6)
+    sass (3.2.3)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -291,7 +281,7 @@ GEM
       nokogiri (>= 1.4.0)
       nori (~> 1.1.0)
       wasabi (~> 2.5.0)
-    selenium-webdriver (2.25.0)
+    selenium-webdriver (2.26.0)
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
       multi_json (~> 1.0)
@@ -306,25 +296,25 @@ GEM
     solrizer-fedora (2.2.0)
       active-fedora (~> 4.0)
     spork (0.9.2)
-    sprockets (2.1.3)
+    sprockets (2.2.2)
       hike (~> 1.2)
+      multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.6)
-    stomp (1.2.5)
+    stomp (1.2.7)
     therubyracer (0.10.2)
       libv8 (~> 3.3.10)
     thor (0.16.0)
     tilt (1.3.3)
-    treetop (1.4.10)
+    treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.3)
+    twitter-bootstrap-rails (2.1.6)
       actionpack (>= 3.1)
-      less-rails (~> 2.2.3)
+      execjs
       railties (>= 3.1)
-      therubyracer (~> 0.10.2)
-    tzinfo (0.3.33)
+    tzinfo (0.3.35)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -339,7 +329,8 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
-    xml-simple (1.1.1)
+    websocket (1.0.4)
+    xml-simple (1.1.2)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -348,36 +339,33 @@ PLATFORMS
 
 DEPENDENCIES
   bagit
-  bcrypt-ruby
   blacklight
   capybara
   capybara-webkit
-  coffee-rails (~> 3.2.1)
-  compass-rails (~> 1.0.0)
-  compass-susy-plugin (~> 0.9.0)
+  coffee-rails
+  compass-rails
+  compass-susy-plugin
   compass_twitter_bootstrap
   cucumber
   cucumber-rails
   database_cleaner
+  debugger
   devise
   factory_girl
-  generator_spec
   hydra-head
   jquery-rails
   launchy
+  less-rails
   mediainfo
   mocha
   passenger (= 3.0.18)
-  rails (~> 3.2.3)
-  rest-client
-  rspec
+  rails (~> 3.2.9)
   rspec-rails
-  ruby-debug19
-  sass-rails (~> 3.2.3)
+  sass-rails
   solrizer-fedora
   spork
   sqlite3
   therubyracer
   twitter-bootstrap-rails
-  uglifier (>= 1.0.3)
+  uglifier
   webrat
