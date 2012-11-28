@@ -1,13 +1,13 @@
 source 'http://rubygems.org'
 
 # Gems for all environments
-gem 'rails', '~>3.2.9'
+gem 'rails',       '~>3.2.9'
 gem 'jquery-rails'
 gem 'rspec-rails'
 gem 'sass-rails'
 gem 'less-rails'
-gem 'blacklight'
-gem 'hydra-head'
+gem 'blacklight',  '=3.6.1.1'
+gem 'hydra-head',  '< 5.0.0'
 gem 'sqlite3'
 gem 'devise'
 gem 'bagit'
@@ -30,13 +30,10 @@ group :development, :test do
   gem 'debugger'
   gem 'factory_girl'
   gem 'mocha', :require => false
-  gem 'capybara'
-  gem 'capybara-webkit'
 end
 
 group :cucumber do
-  gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'capybara', '< 2.0.0'
   gem 'cucumber-rails'
   gem 'cucumber'
   gem 'spork'

@@ -32,7 +32,9 @@ module NavigationHelpers
     when /the subjects workflow edit page for (.+)/
       edit_catalog_path(:id => $1, :wf_step => "subjects")
     when /the persons workflow edit page for (.+)/
-      edit_catalog_path(:id => $1, :wf_step => "persons")
+      edit_archival_video_path(:id => $1, :wf_step => "persons")
+    when /the original workflow edit page for (.+)/
+      edit_archival_video_path(:id => $1, :wf_step => "original")
 
     when /the edit document page for (.*)$/i
       edit_catalog_path($1)

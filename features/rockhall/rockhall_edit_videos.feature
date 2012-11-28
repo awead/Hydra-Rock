@@ -64,8 +64,7 @@ Feature:
   @javascript
   Scenario: Populate fields with autocomplete data via JSON (DAM-214)
     Given I am logged in as "archivist1@example.com"
-    And I am on the edit archival video page for rockhall:fixture_pbcore_document1
-    And I follow "Original"
+    And I am on the original workflow edit page for rockhall:fixture_pbcore_document1
     When I fill in "document_fields[format][]" with "Be"
     Then I should see "Betacam"
     And I should see "Betacam SP"

@@ -6,16 +6,15 @@ Feature:
   @javascript
   Scenario: Add a new nodes enter information (DAM-169)
     Given I am logged in as "archivist1@example.com"
-    And I create a new archival video
-    And I fill in "archival_video[main_title]" with "Sample Main Title"
-    And I press "Save Changes"
-    And I follow "Persons"
+    And I am on the persons workflow edit page for rockhall:fixture_pbcore_document3
+    And I follow "Add"
     And I follow "Contributor"
     And I fill in "document_fields[contributor_name][0]" with "John Doe"
     And I press "Save Changes"
     Then the "contributor_name_0" field should contain "John Doe"
     When I follow "Delete"
     Then I should not see "John Doe"
+    And I follow "Add"
     And I follow "Publisher"
     And I fill in "document_fields[publisher_name][0]" with "Jane Doe"
     And I press "Save Changes"
