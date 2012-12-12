@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails',      '~>3.2.9'
-gem 'hydra-head', '~> 5.0.0.pre12'
+gem 'hydra-head'
 gem 'blacklight'    
 
 # Hydra Bits
