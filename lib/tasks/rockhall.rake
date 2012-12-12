@@ -19,9 +19,8 @@ namespace :rockhall do
     task :load => :environment do
       contents = Dir.glob("spec/fixtures/fedora/*.xml")
       contents.each do |file|
-        ENV["foxml"] = file
-        Rake::Task["repo:load"].invoke
-        Rake::Task["repo:load"].reenable
+        pid = ActiveFedora::FixtureLoader.import_to_fedora(file)
+        ActiveFedora::FixtureLoader.index(pid)
       end
     end
     
@@ -38,6 +37,13 @@ namespace :rockhall do
     desc "Clean out unwanted objects from Fedora"
     task :clean => :environment do
       Rockhall::JettyCleaner.clean("changeme")
+    end
+
+    desc "Cleans out everytyhing from Fedora"
+    task :empty => :environment do
+      Rockhall::JettyCleaner.clean("changeme")
+      Rockhall::JettyCleaner.clean("rockhall")
+      Rockhall::JettyCleaner.clean("rrhof")
     end
 
   end
