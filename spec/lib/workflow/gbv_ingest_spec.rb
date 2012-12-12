@@ -21,9 +21,9 @@ describe Workflow::GbvIngest do
       copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.base))
       copy.prepare
       ing = Workflow::GbvIngest.new(copy)
-      ing.parent.file_objects.empty?.should be_true
+      ing.parent.external_videos.empty?.should be_true
       ing.process
-      ing.parent.file_objects.length.should == 2
+      ing.parent.external_videos.length.should == 2
 
       # Check parent object fields
       ing.parent.label.should == "George Blood Audio and Video"
@@ -151,26 +151,26 @@ describe Workflow::GbvIngest do
     it "should not add additional files" do
       copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
       ing = Workflow::GbvIngest.new(copy)
-      ing.parent.file_objects.length.should == 2
-      first_pid = ing.parent.file_objects.first.pid
-      last_pid  = ing.parent.file_objects.last.pid
+      ing.parent.external_videos.length.should == 2
+      first_pid = ing.parent.external_videos.first.pid
+      last_pid  = ing.parent.external_videos.last.pid
       ing.process
-      ing.parent.file_objects.length.should == 2
-      first_pid.should == ing.parent.file_objects.first.pid
-      last_pid.should  == ing.parent.file_objects.last.pid
+      ing.parent.external_videos.length.should == 2
+      first_pid.should == ing.parent.external_videos.first.pid
+      last_pid.should  == ing.parent.external_videos.last.pid
     end
 
     it "should reprocess a sip by removing existing files and re-adding them" do
       copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
       lambda { copy.prepare }.should raise_error(RuntimeError)
       ing = Workflow::GbvIngest.new(copy)
-      ing.parent.file_objects.length.should == 2
-      first_pid = ing.parent.file_objects.first.pid
-      last_pid  = ing.parent.file_objects.last.pid
+      ing.parent.external_videos.length.should == 2
+      first_pid = ing.parent.external_videos.first.pid
+      last_pid  = ing.parent.external_videos.last.pid
       ing.reprocess
-      ing.parent.file_objects.length.should == 2
-      first_pid.should_not == ing.parent.file_objects.first.pid
-      last_pid.should_not  == ing.parent.file_objects.last.pid
+      ing.parent.external_videos.length.should == 2
+      first_pid.should_not == ing.parent.external_videos.first.pid
+      last_pid.should_not  == ing.parent.external_videos.last.pid
 
       # Clean-up
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))

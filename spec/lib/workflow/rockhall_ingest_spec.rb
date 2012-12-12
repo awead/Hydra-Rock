@@ -18,9 +18,9 @@ describe Workflow::RockhallIngest do
       copy = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], sip.base))
       copy.prepare
       ing = Workflow::RockhallIngest.new(copy)
-      ing.parent.file_objects.empty?.should be_true
+      ing.parent.external_videos.empty?.should be_true
       ing.process
-      ing.parent.file_objects.length.should == 6
+      ing.parent.external_videos.length.should == 6
 
       # Check parent object fields
       ing.parent.label.should == "Rock and Roll Hall of Fame Library and Archives"
@@ -76,13 +76,13 @@ describe Workflow::RockhallIngest do
       # Reprocess
       copy_sip = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))
       re_ing = Workflow::RockhallIngest.new(copy_sip)
-      re_ing.parent.file_objects.length.should == 6
-      first_pid = re_ing.parent.file_objects.first.pid
-      last_pid  = re_ing.parent.file_objects.last.pid
+      re_ing.parent.external_videos.length.should == 6
+      first_pid = re_ing.parent.external_videos.first.pid
+      last_pid  = re_ing.parent.external_videos.last.pid
       re_ing.reprocess
-      re_ing.parent.file_objects.length.should == 6
-      first_pid.should_not == re_ing.parent.file_objects.first.pid
-      last_pid.should_not  == re_ing.parent.file_objects.last.pid
+      re_ing.parent.external_videos.length.should == 6
+      first_pid.should_not == re_ing.parent.external_videos.first.pid
+      last_pid.should_not  == re_ing.parent.external_videos.last.pid
 
       # Clean-up
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))

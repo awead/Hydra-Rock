@@ -38,7 +38,9 @@ class RockhallIngest
 
   # parent object exists in Fedora and has child objects that need to be reingested
   def reprocess(opts={})
-    @parent.remove_file_objects unless @parent.file_objects.empty?
+    @parent.remove_external_videos unless @parent.external_videos.empty?
+    dv = DigitalVideo.find(self.sip.pid)
+    @parent = dv
     self.process
   end
 
@@ -62,8 +64,9 @@ class RockhallIngest
       ev.datastreams["mediaInfo"].ng_xml = ng_info
       ev.vendor = "Rock and Roll Hall of Fame Library and Archives"
       ev.date = mtime
-      @parent.file_objects_append(ev)
+      @parent.external_videos << ev
       @parent.save
+      ev.save
     rescue Exception=>e
       raise "Failed to add #{type} datastream: #{e}"
     end

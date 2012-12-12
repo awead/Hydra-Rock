@@ -7,9 +7,9 @@ module Rockhall::ModelMethods
   end
 
   # Removes any child objects that linked to the parent via RELS-EXT
-  def remove_file_objects
-    if self.file_objects.count > 0
-      self.file_objects.each do |obj|
+  def remove_external_videos
+    if self.external_videos.count > 0
+      self.external_videos.each do |obj|
         ActiveFedora::Base.find(obj.pid).delete
       end
       return true
@@ -21,7 +21,7 @@ module Rockhall::ModelMethods
   # Returns an array of child video objects based on the child's Fedora label
   def external_video(type)
     results = Array.new
-    self.file_objects.each do |obj|
+    self.external_videos.each do |obj|
       if type.to_s == obj.label
         results << obj
       end
@@ -36,7 +36,7 @@ module Rockhall::ModelMethods
     results[:unknown]  = Array.new
     results[:original] = Array.new
     results[:h264]     = Array.new
-    self.file_objects.each do |obj|
+    self.external_videos.each do |obj|
       if obj.datastreams.keys.include?("PRESERVATION1")
         results[:original] << obj
       elsif obj.datastreams.keys.include?("ACCESS1")

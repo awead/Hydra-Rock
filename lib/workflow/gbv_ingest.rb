@@ -22,7 +22,9 @@ class GbvIngest
 
   # parent object exists in Fedora and has child objects that need to be reingested
   def reprocess(opts={})
-    @parent.remove_file_objects unless @parent.file_objects.empty?
+    @parent.remove_external_videos unless @parent.external_videos.empty?
+    av = ArchivalVideo.find(self.sip.pid)
+    @parent = av
     self.process
   end
 
@@ -68,8 +70,9 @@ class GbvIngest
       update_preservation_fields(ev) if type == "preservation"
       update_access_fields(ev) if type == "access"
       ev.vendor = "George Blood Audio and Video"
-      @parent.file_objects_append(ev)
+      @parent.external_videos << ev
       @parent.save
+      ev.save
     rescue Exception=>e
       raise "Failed to add #{type} datastream: #{e}"
     end
