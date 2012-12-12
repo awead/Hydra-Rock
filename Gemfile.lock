@@ -160,11 +160,11 @@ GEM
       rails (>= 3.2.6)
     hydra-mods (0.0.6)
       active-fedora (> 4.1)
-    hydra-pbcore (1.1.0)
+    hydra-pbcore (1.1.1)
       active-fedora
       nokogiri
       om
-      solrizer (~> 2.0.0.rc3)
+      solrizer
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.1.4)
