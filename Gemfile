@@ -11,8 +11,8 @@ gem 'hydra-file-access'
 gem 'hydra-pbcore'
 
 # Gems for all environments
-gem 'bootstrap-sass',  '~> 2.1.0.0'
-gem 'devise-guests',   '~> 0.2'
+gem 'bootstrap-sass'
+gem 'devise-guests'
 gem 'devise'
 gem 'jquery-rails'
 gem 'sqlite3'
@@ -23,15 +23,13 @@ gem 'equivalent-xml'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
 end
 
 group :development, :test do
   gem 'bcrypt-ruby'
-  gem 'capybara'
-  gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'generator_spec'
@@ -44,8 +42,9 @@ group :development, :test do
 end
 
 group :cucumber do
-  gem 'cucumber'
+  gem 'capybara'
   gem 'cucumber-rails'
+  gem 'cucumber'
   gem 'spork'
   gem 'launchy'
 end
