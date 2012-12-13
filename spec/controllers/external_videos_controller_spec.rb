@@ -6,7 +6,7 @@ describe ExternalVideosController do
 
   describe "when the user is not logged in" do
 
-    it "should redirect me to the login page" do
+    it "should redirect me to the sign-in page" do
       pending
     end
 

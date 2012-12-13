@@ -6,7 +6,7 @@ describe DigitalVideosController do
 
   describe "when the user is not logged in" do
 
-    it "should redirect me to the login page" do
+    it "should redirect me to the sign-in page" do
       get :new
       assert_redirected_to new_user_session_path
       post :create

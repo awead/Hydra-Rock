@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   # Method added by Blacklight; Blacklight uses #to_s on your
-  # user class to get a user-displayable login/identifier for
+  # user class to get a user-displayable identifier for
   # the account. 
   def to_s
     email
