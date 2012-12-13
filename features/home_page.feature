@@ -1,7 +1,7 @@
 Feature:
-  In order to use Hydra
+  Checking the Hydra home page
   As any kind of user
-  There need to be some basic features
+  There is some required content
 
   Scenario: Clicking on the image logo takes you to the home page
     Given I am on the home page
