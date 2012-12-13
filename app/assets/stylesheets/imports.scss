@@ -1,2 +1,7 @@
 @import 'bootstrap';
+@import 'bootstrap-responsive';
+
+// Just import facet stylings.  If you want to import the entire
+// blacklight style do:
+// @import 'blacklight/blacklight';
 @import 'blacklight/facets'
