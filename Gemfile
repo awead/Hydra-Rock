@@ -12,6 +12,7 @@ gem 'hydra-pbcore'
 
 # Gems for all environments
 gem 'bootstrap-sass'
+gem "unicode", :platforms => [:mri_18, :mri_19]
 gem 'devise-guests'
 gem 'devise'
 gem 'jquery-rails'
