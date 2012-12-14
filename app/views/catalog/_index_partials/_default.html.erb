@@ -5,27 +5,23 @@
     <th class="title">Title</th>
     <th class="deposited">Deposited</th>
     <th class="reviewed">Reviewed</th>
-    <th class="bookmark">Bookmark</th>
+    <th class="bookmark"></th>
   </tr>
 
   <% @document_list.each_with_index do |document,counter| %>
-   <tr>
-  <td>
-    <%= image_tag("rockhall/archival_video.png", :size=>"30x30") %>
-  </td>
-  <td>
-    <%= link_to_document(document,
-                         :label => blacklight_config.show.heading.to_sym,
-                         :counter => (counter + 1 + @response.params[:start].to_i)) %>
-  </td>
-  <td style="white-space: nowrap">
-    <% #DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>
-    date/time goes here
-  </td>
-  <td style="text-align: center">
-    <%= get_review_status_from_solr_doc(document) %>
-  </td>
-  <td>render bookmark form here</td>
-</tr>
+    <tr>
+      <td><%= render_icon(document) %></td>
+      <td>
+        <%= link_to_document(document,
+              :label => blacklight_config.show.heading.to_sym,
+              :counter => (counter + 1 + @response.params[:start].to_i)) %>
+      </td>
+      <td style="white-space: nowrap">
+        <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>
+      </td>
+      <td style="text-align: center"><%= get_review_status_from_solr_doc(document) %></td>
+      <td><%= render :partial => "catalog/bookmark_control", :locals => {:document => document } %></td>
+    </tr>
   <% end %>
+
 </table>

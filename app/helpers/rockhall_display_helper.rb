@@ -17,6 +17,14 @@ module RockhallDisplayHelper
     return results.html_safe
   end
 
+  # Determins the image to be used for the icon in the index display
+  def render_icon(document)
+    unless document.fetch(:has_model_s,nil).nil?
+      path = "rockhall/" + document.fetch(:has_model_s,nil).first.split(/:/).last.underscore + ".png"
+      image_tag(path, :size=>"30x30")
+    end
+  end
+
   def get_review_status_from_solr_doc(document)
     results = String.new
     if document[:complete_t].nil?
@@ -25,14 +33,6 @@ module RockhallDisplayHelper
       results << document[:complete_t].first
     end
     return results.html_safe
-  end
-
-  def get_heading_display_from_solr_doc(document)
-    if document[blacklight_config.index.show_link].nil?
-      return document[:id]
-    else
-      return document[blacklight_config.index.show_link].first
-    end
   end
 
 end
