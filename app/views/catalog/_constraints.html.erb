@@ -2,6 +2,5 @@
   <div class="well">
     <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>  
     <%= render_constraints(params) %>  
-    <%=link_to t('blacklight.search.start_over'), url_for(:action=>'index'), :class => "btn btn-danger", :id=>"startOverLink" %>
   </div>
 <% end %>
