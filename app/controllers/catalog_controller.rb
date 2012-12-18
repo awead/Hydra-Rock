@@ -56,19 +56,19 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format',                  :label => 'Content Type'
-    config.add_facet_field 'media_format_facet',      :label => 'Media Format'
-    config.add_facet_field 'contributor_name_facet',  :label => 'Name'
-    config.add_facet_field 'subject_facet',           :label => 'Subject'
-    config.add_facet_field 'genre_facet',             :label => 'Genre'
-    config.add_facet_field 'series_facet',            :label => 'Event/Series'
-    config.add_facet_field 'collection_facet',        :label => 'Collection'
-    config.add_facet_field 'language_facet',          :label => 'Language',     :limit => true
-    config.add_facet_field 'complete_facet',          :label => 'Review Status'
-    config.add_facet_field 'create_date_facet',       :label => 'Year'
-    config.add_facet_field 'priority_facet',          :label => 'Priority'
-    config.add_facet_field 'depositor_facet',         :label => 'Depositor'
-    config.add_facet_field 'reviewer_facet',          :label => 'Reviewer'
+    config.add_facet_field 'format',                 :label => 'Content Type'
+    config.add_facet_field 'media_format_facet',     :label => 'Media Format'
+    config.add_facet_field 'contributor_name_facet', :label => 'Name'
+    config.add_facet_field 'subject_facet',          :label => 'Subject'
+    config.add_facet_field 'genre_facet',            :label => 'Genre'
+    config.add_facet_field 'series_facet',           :label => 'Event/Series'
+    config.add_facet_field 'collection_facet',       :label => 'Collection'
+    config.add_facet_field 'language_facet',         :label => 'Language',     :limit => true
+    config.add_facet_field 'complete_facet',         :label => 'Review Status'
+    config.add_facet_field 'create_date_facet',      :label => 'Year'
+    config.add_facet_field 'priority_facet',         :label => 'Priority'
+    config.add_facet_field 'depositor_facet',        :label => 'Depositor'
+    config.add_facet_field 'reviewer_facet',         :label => 'Reviewer'
 
     # TODO: Maybe add this in later
     #config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
@@ -85,9 +85,9 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'format',                 :label => 'Format:'
-    config.add_index_field 'title_display',          :label => 'Title:'
-    config.add_index_field 'complete_facet',         :label => 'Review Status:'
+    config.add_index_field 'format',         :label => 'Format:'
+    config.add_index_field 'title_display',  :label => 'Title:'
+    config.add_index_field 'complete_facet', :label => 'Review Status:'
 
 
     # solr fields to be displayed in the show (single result) view
