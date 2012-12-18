@@ -25,11 +25,11 @@ class DigitalVideo < ActiveFedora::Base
 
   delegate_to :descMetadata,
     [:alternative_title, :chapter, :episode, :segment, :subtitle, :track,
-     :translation, :lc_subject, :lc_name, :rh_subject, :subjects, :summary, :parts_list,
-     :getty_genre, :lc_genre, :lc_subject_genre, :genres, :event_series, :event_place,
+     :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
+     :getty_genre, :lc_genre, :lc_subject_genre, :genre, :series, :event_place,
      :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
-     :note, :archival_collection, :archival_series, :collection_number, :accession_number,
-     :usage]
+     :note, :collection, :archival_series, :collection_number, :accession_number,
+     :access]
 
   # Fields with only one value
   delegate :title, :to=> :descMetadata, :unique=>true
