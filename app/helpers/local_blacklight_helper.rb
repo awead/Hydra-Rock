@@ -6,5 +6,8 @@ module LocalBlacklightHelper
     'Hydra'
   end
 
+  def field_value_separator
+    '<br/>'
+  end
 
 end

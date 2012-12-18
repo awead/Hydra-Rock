@@ -1,11 +1,13 @@
 module RockhallDisplayHelper
 
-  def display_field(field,opts={})
-    results = String.new
+  def display_field field,opts={}, results = String.new
     return nil if @document[field.to_sym].nil? or @document[field.to_sym].first.empty?
+    
     # Determine field label
     if opts[:name].nil?
-      name = field.to_s.gsub(/_t$/,"").split(/_/).each{|word| word.capitalize!}.join(" ")
+      parts = field.to_s.split(/_/)
+      parts.pop
+      name = parts.each{|word| word.capitalize!}.join(" ")
       @document[field.to_sym].count > 1 ? formatted_name = name.pluralize : formatted_name = name
     else
       formatted_name = opts[:name]
