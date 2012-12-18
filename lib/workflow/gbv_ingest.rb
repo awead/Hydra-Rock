@@ -36,7 +36,7 @@ class GbvIngest
     @av.title         = @sip.title
     @av.creation_date = @sip.info(:orig_date) unless @sip.info(:orig_date).nil?
     @av.standard      = @sip.info(:standard)  unless @sip.info(:standard).nil?
-    @av.format        = @sip.info(:format)    unless @sip.info(:format).nil?
+    @av.media_format  = @sip.info(:format)    unless @sip.info(:format).nil?
     @av.save
 
     # Fields in preservation video object

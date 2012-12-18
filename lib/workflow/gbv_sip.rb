@@ -133,7 +133,7 @@ class GbvSip
     @av.title         = self.title
     @av.creation_date = self.info(:orig_date) unless self.info(:orig_date).nil?
     @av.standard      = self.info(:standard)  unless self.info(:standard).nil?
-    @av.format        = self.info(:format)    unless self.info(:format).nil?
+    @av.media_format  = self.info(:format)    unless self.info(:format).nil?
   end
 
 end
