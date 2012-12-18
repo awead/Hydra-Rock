@@ -4,8 +4,8 @@
 
 body { padding-top: 60px; }
 
-// Hide text lable for bookmark toggle
-.toggle_bookmark {
+// Hide text label for bookmark toggle when using tables
+td .toggle_bookmark {
   
   span { display: none; }
 

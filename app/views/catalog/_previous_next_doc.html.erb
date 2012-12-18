@@ -1,0 +1,13 @@
+<% #Using the Bootstrap Pagination class  -%>
+<% if @previous_document || @next_document %>
+  <div class="well" id="previousNextDocument">
+    <%= link_to_previous_document @previous_document %> |
+
+    <%= item_page_entry_info %> |
+
+    <%= link_to_next_document @next_document %>
+    <div class="pull-right">
+      <%= render :partial => "catalog/bookmark_control", :locals => {:document => @document } %>
+    </div>
+  </div>
+<% end %>

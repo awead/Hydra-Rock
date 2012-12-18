@@ -1,0 +1,14 @@
+<div id="content" class="span9 show-document">
+
+<%= render 'previous_next_doc' %>
+<% @page_title = t('blacklight.search.show.title', :document_title => document_show_html_title, :application_name => application_name) %>
+<% extra_head_content << render_link_rel_alternates %>
+
+  <div id="document" class="<%= render_document_class %>">
+    <div id="doc_<%= @document.id.to_s.parameterize %>">
+      <%= render_document_heading(:h1).html_safe %>
+      <%= render :partial => "catalog/_show_partials/video" %>
+    </div>
+  </div>
+
+</div>
