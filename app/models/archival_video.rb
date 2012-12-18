@@ -64,8 +64,8 @@ class ArchivalVideo < ActiveFedora::Base
      :collection_number, :accession_number, :usage, :condition_note, :cleaning_note]
 
   # Fields with only one value
-  delegate :main_title, :to=> :descMetadata, :unique=>true
-  validates_presence_of :main_title, :message => "Main title can't be blank"
+  delegate :title, :to=> :descMetadata, :unique=>true
+  validates_presence_of :title, :message => "Main title can't be blank"
 
   # label is used for the Fedora object, so we have to call our label something else
   delegate :title_label, :to=> :descMetadata, :at=>[:label]

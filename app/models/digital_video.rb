@@ -32,8 +32,8 @@ class DigitalVideo < ActiveFedora::Base
      :usage]
 
   # Fields with only one value
-  delegate :main_title, :to=> :descMetadata, :unique=>true
-  validates_presence_of :main_title, :message => "Main title can't be blank"
+  delegate :title, :to=> :descMetadata, :unique=>true
+  validates_presence_of :title, :message => "Main title can't be blank"
 
   delegate :title_label, :to=> :descMetadata, :at=>[:label]
 

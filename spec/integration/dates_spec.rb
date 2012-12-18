@@ -4,7 +4,7 @@ describe "Dates" do
 
   before :each do
     @object = ArchivalVideo.new
-    @object.main_title = "Test document for date integration"
+    @object.title = "Test document for date integration"
   end
 
   after :all do

@@ -27,12 +27,12 @@ class CatalogController < ApplicationController
     }
 
     # solr field configuration for search results/index views
-    config.index.show_link            = 'main_title_display'
+    config.index.show_link            = 'title_display'
     config.index.record_display_type  = 'format'
 
     # solr field configuration for document/show views
-    config.show.html_title            = 'main_title_display'
-    config.show.heading               = 'main_title_display'
+    config.show.html_title            = 'title_display'
+    config.show.heading               = 'title_display'
 
     # This is the field that's used to determine the partial type
     config.show.display_type          = 'format'
@@ -95,7 +95,7 @@ class CatalogController < ApplicationController
     #
     # These are fields that are shown via the catalog controller
     config.add_show_field 'format',                 :label => 'Format'
-    config.add_show_field 'main_title_t',           :label => 'Main Title'
+    config.add_show_field 'title_display',          :label => 'Main Title'
     config.add_show_field 'alternative_title_t',    :label => 'Alternative Title'
     config.add_show_field 'chapter_t',              :label => 'Capter'
     config.add_show_field 'episode_t',              :label => 'Episode'

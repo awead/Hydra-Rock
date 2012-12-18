@@ -37,9 +37,9 @@ describe Rockhall::Controller::ControllerBehavior do
     end
 
     it "should return names of changed single-value fields" do
-      @params[:document_fields][:main_title] = "My Title"
+      @params[:document_fields][:title] = "My Title"
       results = @controller.changed_fields(@params)
-      results[:main_title].should == "My Title"
+      results[:title].should == "My Title"
     end
 
   end

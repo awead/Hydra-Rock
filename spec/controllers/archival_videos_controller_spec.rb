@@ -33,7 +33,7 @@ describe ArchivalVideosController do
 
     describe "#create" do
       it "should save a new archival video" do
-        post :create, :archival_video => {:main_title => "Fake title"}
+        post :create, :archival_video => {:title => "Fake title"}
         assert_equal 'Video was successfully created.', flash[:notice]
       end
     end
