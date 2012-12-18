@@ -21,6 +21,9 @@ gem 'bagit'
 gem 'mediainfo'
 gem 'equivalent-xml'
 
+# Gems that we lock to specific versions for compatibility
+gem 'rubydora', '~>1.0.0'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
