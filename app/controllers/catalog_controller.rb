@@ -86,13 +86,8 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     config.add_index_field 'format',                 :label => 'Format:'
-    config.add_index_field 'alternative_title_t',    :label => 'Alternative Title'
-    config.add_index_field 'event_series_t',         :label => 'Event Series'
-    config.add_index_field 'event_date_t',           :label => 'Event Date'
-    config.add_index_field 'creation_date_t',        :label => 'Creation Date'
-    config.add_index_field 'media_type_t',           :label => 'Media Type'
-    config.add_index_field 'archival_collection_t',  :label => 'Archival Collection'
-    config.add_index_field 'archival_series_t',      :label => 'Archival Series'
+    config.add_index_field 'title_display',          :label => 'Title:'
+    config.add_index_field 'complete_facet',         :label => 'Review Status:'
 
 
     # solr fields to be displayed in the show (single result) view

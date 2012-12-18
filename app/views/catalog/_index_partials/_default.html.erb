@@ -19,7 +19,7 @@
       <td style="white-space: nowrap">
         <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>
       </td>
-      <td style="text-align: center"><%= get_review_status_from_solr_doc(document) %></td>
+      <td style="text-align: center"><%= document.fetch(:complete_facet,nil).first %></td>
       <td><%= render :partial => "catalog/bookmark_control", :locals => {:document => document } %></td>
     </tr>
   <% end %>

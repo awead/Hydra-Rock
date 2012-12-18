@@ -25,14 +25,4 @@ module RockhallDisplayHelper
     end
   end
 
-  def get_review_status_from_solr_doc(document)
-    results = String.new
-    if document[:complete_t].nil?
-      results << "no"
-    else
-      results << document[:complete_t].first
-    end
-    return results.html_safe
-  end
-
 end
