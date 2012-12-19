@@ -1,37 +1,35 @@
+/* 
+
+  CSS-specific syles for the Flow Player video plugin
+
+*/
+
+/* container for the video player */
 #video_box {
   background: #000;
-  padding: 10px 0px 10px 0px;
+  width:550px;
+  height:350px;
 }
 
-/* player container */
+/* the player itself -- shows a splash image until the video is started */
 #player {
   background:#000 url(../images/video-splash.png) center center no-repeat;
   width:550px;
   height:350px;
-  cursor:pointer;
-  -moz-outline-radius:4px;
-  margin: 0 auto;
-  margin-top: 12px;
 }
 
-/* playlist */
-#playlist {
-  margin: 0 auto;
-  margin-top:5px;
-  width: 550px;
-}
-
-/* playlist item */
+/* playlist that appears underneath when there are multiple parts */
 #playlist div {
+  width: 550px;
   float:left;
   color:#fff;
   background-color: #333;
   text-align:center;
   width:180px;
   height:16px;
-  padding:5px 0px;
+  padding: 0px 0px 5px 0px;
   font-size:14px;
-  margin-right: 5px;
+  margin: 0px 5px 0px 0px;
   cursor:pointer;
 }
 

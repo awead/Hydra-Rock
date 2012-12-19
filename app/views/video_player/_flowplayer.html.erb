@@ -1,16 +1,12 @@
-<div id="video_box">
+<!-- player container-->
+<div id="player">&nbsp;</div>
 
-  <!-- player container-->
-  <div id="player">&nbsp;</div>
-
-  <!-- the playlist -->
-  <%  if @afdoc.videos[:h264].count > 1 %>
-    <div id="playlist" class="clearfix" style="display:none">
-      <div>${title}</div>
-    </div>
-  <% end %>
-
-</div>
+<!-- the playlist -->
+<%  if @afdoc.videos[:h264].count > 1 %>
+  <div id="playlist" style="display:none">
+    <div>${title}</div>
+  </div>
+<% end %>
 
 <script type="text/javascript">
   $f("player", "<%= root_path %>flowplayer-3.2.9.swf", {
@@ -46,6 +42,3 @@
   $("#playlist").show();
 
 </script>
-
-
-
