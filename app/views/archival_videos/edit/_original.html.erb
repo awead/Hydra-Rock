@@ -16,8 +16,8 @@
     <%= f.select :colors, ["Color", "B&W", "Grayscale", "Tinted", "Toned"], {}, {:name => "document_fields[colors][]"} %>
     <%= f.label :generation, :class=>"field"  %>
     <%= f.text_field :generation, :name=>"document_fields[generation][]", :value=>@afdoc.generation.first, :class=>"pbcGen_auto edit span2", "data-provide".to_sym => "typeahead"  %>
-    <%= f.label :format, :class=>"field"  %>
-    <%= f.text_field :format, :name=>"document_fields[format][]", :value=>@afdoc.format.first, :class=>"insPhy_auto edit span2", "data-provide".to_sym => "typeahead"  %>
+    <%= f.label :media_format, :class=>"field"  %>
+    <%= f.text_field :media_format, :name=>"document_fields[media_format][]", :value=>@afdoc.media_format.first, :class=>"insPhy_auto edit span2", "data-provide".to_sym => "typeahead"  %>
     <%= f.label :barcode, :class=>"field" %>
     <%= f.text_field :barcode, :name=>"document_fields[barcode][]", :value=>@afdoc.barcode.first, :class=>" edit span2" %>
     <%= f.label :language, :class=>"field" %>
@@ -29,7 +29,7 @@
   <fieldset id="archival_fields">
     <legend>Archival Information</legend>
     <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
-    <% ["archival_collection", "archival_series", "collection_number", "accession_number"].each do |t| %>
+    <% ["collection", "archival_series", "collection_number", "accession_number"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
       <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
     <% end %>
@@ -38,7 +38,7 @@
   <fieldset id="condition_fields">
     <legend>Item Condition</legend>
     <p class="legend-caption">Enter any relevant information about the condition of the original item or its usage restrictions.</p>
-    <% ["usage", "condition_note", "cleaning_note"].each do |t| %>
+    <% ["access", "condition_note", "cleaning_note"].each do |t| %>
       <%= f.label t.to_sym, :class=>"field" %>
       <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
     <% end %>
