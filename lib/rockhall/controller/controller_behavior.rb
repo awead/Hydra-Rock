@@ -52,4 +52,13 @@ module Rockhall::Controller::ControllerBehavior
     end
   end
 
+  # Gets the active_fedora object in the show views of CatalogController.
+  #
+  # The show view only has a SolrDocument, but we need the actual fedora 
+  # object in order to  display more information about it, such as child
+  # objects that are attached to it.
+  def query_child_objects
+    @afdoc = ArchivalVideo.load_instance_from_solr(params[:id])
+  end
+
 end
