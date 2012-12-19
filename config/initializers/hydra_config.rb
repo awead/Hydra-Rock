@@ -53,7 +53,7 @@ if Hydra.respond_to?(:configure)
           {:name => "persons",     :edit_partial => "archival_videos/edit/persons",  :show_partial => "archival_videos/show/document"},
           {:name => "original",    :edit_partial => "archival_videos/edit/original", :show_partial => "archival_videos/show/original"},
           {:name => "rockhall",    :edit_partial => "archival_videos/edit/rockhall", :show_partial => "archival_videos/show/original"},
-          {:name => "permissions", :edit_partial => "shared/edit/permissions",       :show_partial => "mods_assets/show_permissions"}
+          {:name => "permissions", :edit_partial => "shared/edit/permissions",       :show_partial => "permissions/show"}
         ],
         :digital_videos   => [
           {:name => "titles",      :edit_partial => "digital_videos/edit/titles",     :show_partial => "digital_videos/show/document"},
@@ -61,12 +61,12 @@ if Hydra.respond_to?(:configure)
           {:name => "persons",     :edit_partial => "digital_videos/edit/persons",    :show_partial => "digital_videos/show/document"},
           {:name => "collection",  :edit_partial => "digital_videos/edit/collection", :show_partial => "digital_videos/show/original"},
           {:name => "rockhall",    :edit_partial => "digital_videos/edit/rockhall",   :show_partial => "digital_videos/show/original"},
-          {:name => "permissions", :edit_partial => "shared/edit/permissions",   :show_partial => "mods_assets/show_permissions"}
+          {:name => "permissions", :edit_partial => "shared/edit/permissions",        :show_partial => "permissions/show"}
         ],
         :external_videos   => [
-          {:name => "file",        :edit_partial => "external_videos/edit/instantiation",     :show_partial => "digital_videos/show/document"},
-          {:name => "rockhall",    :edit_partial => "external_videos/edit/rockhall",          :show_partial => "digital_videos/show/original"},
-          {:name => "permissions", :edit_partial => "shared/edit/permissions",                :show_partial => "mods_assets/show_permissions"}
+          {:name => "file",        :edit_partial => "external_videos/edit/instantiation", :show_partial => "digital_videos/show/document"},
+          {:name => "rockhall",    :edit_partial => "external_videos/edit/rockhall",      :show_partial => "digital_videos/show/original"},
+          {:name => "permissions", :edit_partial => "shared/edit/permissions",            :show_partial => "permissions/show"}
         ]
       }
 
