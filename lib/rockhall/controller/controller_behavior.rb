@@ -57,8 +57,8 @@ module Rockhall::Controller::ControllerBehavior
   # The show view only has a SolrDocument, but we need the actual fedora 
   # object in order to  display more information about it, such as child
   # objects that are attached to it.
-  def query_child_objects
-    @afdoc = ArchivalVideo.load_instance_from_solr(params[:id])
+  def get_af_doc
+    @afdoc = get_model_from_pid(params[:id])
   end
 
 end

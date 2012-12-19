@@ -8,7 +8,7 @@ class CatalogController < ApplicationController
   # access controls when the user tries to just view a document they don't have
   # access to.
   before_filter :enforce_access_controls, :only => :show
-  before_filter :query_child_objects, :only => :show
+  before_filter :get_af_doc, :only => :show
 
   # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params
