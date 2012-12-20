@@ -41,11 +41,6 @@ class AssetReview < ActiveFedora::NokogiriDatastream
       solr_doc.merge!(:priority_facet => "normal")
     end
 
-    # Facets
-    unless self.find_by_terms(:reviewer).nil?
-      solr_doc.merge!(:reviewer_facet => self.find_by_terms(:reviewer).text)
-    end
-
     return solr_doc
   end
 

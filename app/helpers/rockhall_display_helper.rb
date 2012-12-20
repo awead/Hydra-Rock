@@ -12,9 +12,9 @@ module RockhallDisplayHelper
     else
       formatted_name = opts[:name]
     end
-    results << "<dt id=\"#{field.to_s}\">" + formatted_name + "</dt>"
+    results << "<dt class=\"#{field.to_s}\">" + formatted_name + "</dt>"
     @document[field.to_sym].each do |v|
-      results << "<dd id=\"#{field.to_s}\">" + v + "</dd>"
+      results << "<dd class=\"#{field.to_s}\">" + v + "</dd>"
     end
     return results.html_safe
   end

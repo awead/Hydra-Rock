@@ -3,11 +3,13 @@ Then /^I should be able to follow "([^"]*)"$/ do |link|
 end
 
 Then /^I should see the field title "([^"]*)" contain "([^"]*)"$/ do |arg1, arg2|
-  page.should have_xpath("//dt[@id='#{arg1}']", :text => arg2)
+  selector = "dt." + arg1
+  find(selector, :text => arg2)
 end
 
 Then /^I should see the field content "([^"]*)" contain "([^"]*)"$/ do |arg1, arg2|
-  page.should have_xpath("//dd[@id='#{arg1}']", :text => arg2)
+  selector = "dd." + arg1
+  find(selector, :text => arg2)
 end
 
 Then /^I should see the field content "([^"]*)" not contain "([^"]*)"$/ do |arg1, arg2|
