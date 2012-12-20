@@ -57,19 +57,19 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format',                 :label => 'Content Type'
-    config.add_facet_field 'media_format_facet',     :label => 'Media Format'
-    config.add_facet_field 'contributor_name_facet', :label => 'Name'
-    config.add_facet_field 'subject_facet',          :label => 'Subject'
-    config.add_facet_field 'genre_facet',            :label => 'Genre'
-    config.add_facet_field 'series_facet',           :label => 'Event/Series'
-    config.add_facet_field 'collection_facet',       :label => 'Collection'
-    config.add_facet_field 'language_facet',         :label => 'Language',     :limit => true
-    config.add_facet_field 'complete_facet',         :label => 'Review Status'
-    config.add_facet_field 'create_date_facet',      :label => 'Year'
-    config.add_facet_field 'priority_facet',         :label => 'Priority'
-    config.add_facet_field 'depositor_facet',        :label => 'Depositor'
-    config.add_facet_field 'reviewer_facet',         :label => 'Reviewer'
+    config.add_facet_field 'format',                 :label => 'Content Type',  :limit => 20
+    config.add_facet_field 'media_format_facet',     :label => 'Media Format',  :limit => 20
+    config.add_facet_field 'contributor_name_facet', :label => 'Name',          :limit => 20
+    config.add_facet_field 'subject_facet',          :label => 'Subject',       :limit => 20
+    config.add_facet_field 'genre_facet',            :label => 'Genre',         :limit => 20
+    config.add_facet_field 'series_facet',           :label => 'Event/Series',  :limit => 20
+    config.add_facet_field 'collection_facet',       :label => 'Collection',    :limit => 20
+    config.add_facet_field 'language_facet',         :label => 'Language',      :limit => true
+    config.add_facet_field 'complete_facet',         :label => 'Review Status', :limit => 20
+    config.add_facet_field 'create_date_facet',      :label => 'Year',          :limit => 20
+    config.add_facet_field 'priority_facet',         :label => 'Priority',      :limit => 20
+    config.add_facet_field 'depositor_facet',        :label => 'Depositor',     :limit => 20
+    config.add_facet_field 'reviewer_facet',         :label => 'Reviewer',      :limit => 20
 
     # TODO: Maybe add this in later
     #config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
@@ -113,7 +113,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'series_display',            :label => 'Event Series'
     config.add_show_field 'event_place_display',       :label => 'Event Place'
     config.add_show_field 'event_date_display',        :label => 'Event Date'
-    config.add_show_field 'contributors_display',      :label => 'Contributor'
+    config.add_show_field 'contributor_name_facet',    :label => 'Contributor'
     config.add_show_field 'publisher_display',         :label => 'Publisher'
     config.add_show_field 'creation_date_display',     :label => 'Creation Date'
     config.add_show_field 'media_displayype_display',  :label => 'Media Type'
