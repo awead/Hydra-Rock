@@ -76,7 +76,6 @@ Feature:
     Given I am on the document page for id rockhall:fixture_pbcore_document1
     Then I should see "Video not available"  
 
-  @wip
   Scenario: Displaying role terms in view mode (DAM-217)
     Given I am on the show archival video page for rockhall:fixture_pbcore_document1
     Then I should see the field content "blacklight-contributor_name_facet" contain "Springsteen, Bruce (recipient)"

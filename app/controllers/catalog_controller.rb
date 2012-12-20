@@ -113,7 +113,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'series_display',            :label => 'Event Series'
     config.add_show_field 'event_place_display',       :label => 'Event Place'
     config.add_show_field 'event_date_display',        :label => 'Event Date'
-    config.add_show_field 'contributor_name_facet',    :label => 'Contributor'
+    config.add_show_field 'contributor_name_facet',    :label => 'Contributor', :helper_method => :contributor_display
     config.add_show_field 'publisher_name_facet',      :label => 'Publisher'
     config.add_show_field 'creation_date_display',     :label => 'Creation Date'
     config.add_show_field 'media_type_display',        :label => 'Media Type'
