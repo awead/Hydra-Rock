@@ -36,3 +36,7 @@ end
 Then /^I should see "(.*?)" in the playlist$/ do |arg1|
   page.should have_xpath("//div[@id='playlist']", :text => arg1)
 end
+
+Given /^I choose a title search$/ do
+  page.select("Title", :from => "search_field")
+end
