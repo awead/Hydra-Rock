@@ -30,7 +30,11 @@ module RockhallDisplayHelper
   def contributor_display response, results = Array.new
     response[:document][response[:field]].each_index do |i|
       role = response[:document]["contributor_role_display"][i]
-      results << response[:document][response[:field]][i] + " (" + role + ")"
+      if role
+        results << response[:document][response[:field]][i] + " (" + role + ")"
+      else
+        results << response[:document][response[:field]][i]
+      end
     end
     return results.join("<br/>").html_safe
   end
