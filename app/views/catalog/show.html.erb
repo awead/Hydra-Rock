@@ -2,20 +2,14 @@
 <% extra_head_content << render_link_rel_alternates %>
 <%= render 'previous_next_doc' %>
 
-<div class="span12 show-document">
+<div id="video_box" class="span6">
+  <%= render_video_player %>
+  <% unless @afdoc.external_videos.empty? %>
+    <%= render :partial => "external_videos/list" %>
+  <% end %>
+</div>
 
-  <div class="row">
-    <div id="video_box" class="span6">
-      <%= render_video_player %>
-      <% unless @afdoc.external_videos.empty? %>
-        <%= render :partial => "external_videos/list" %>
-      <% end %>
-    </div>
-
-    <div id="document" class="<%= render_document_class %> span6">
-      <%= render_document_heading(:h1).html_safe %>
-      <%= render :partial => "catalog/_show_partials/video" %>
-    </div>
-  </div>
-
+<div id="document" class="<%= render_document_class %> span6">
+  <div class="well"><%= render_document_heading(:h1).html_safe %></div>
+  <%= render :partial => "catalog/_show_partials/video" %>
 </div>

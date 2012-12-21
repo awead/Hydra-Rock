@@ -44,18 +44,23 @@
     <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
     <%= render :partial => 'shared/navbar' %>
 
-    <div id="main-container" class="container">
-      <div class="row">
+    <div id="main-container" class="container-fluid">
+      <div class="row-fluid">
         <div class="span12">
           <%= render :partial=>'/flash_msg' %>
         </div>    
       </div>              
 
-      <div class="row">
+      <div class="row-fluid">
         <%= yield %>
-      </div>   
-    </div>
+      </div>
 
-    <%= render :partial => 'shared/footer' %>
+      <div class="row-fluid">
+        <div class="span12">
+          <%= render :partial => 'shared/footer' %>
+        </div>
+      </div>
+    </div>
+    
   </body>
 </html>
