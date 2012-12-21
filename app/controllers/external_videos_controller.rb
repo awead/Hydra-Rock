@@ -20,7 +20,7 @@ class ExternalVideosController < ApplicationController
     session[:viewing_context] = "browse"
     @afdoc = ExternalVideo.find(params[:id])
     respond_to do |format|
-      format.html  { setup_next_and_previous_documents }
+      format.html  { render :partial => "external_videos/tabular_display", :locals => { :video => @afdoc } }
       format.js
     end
   end

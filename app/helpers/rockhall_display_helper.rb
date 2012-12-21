@@ -19,7 +19,7 @@ module RockhallDisplayHelper
     return results.html_safe
   end
 
-  # Determins the image to be used for the icon in the index display
+  # Determines the image to be used for the icon in the index display
   def render_icon(document)
     unless document.fetch(:has_model_s,nil).nil?
       path = "rockhall/" + document.fetch(:has_model_s,nil).first.split(/:/).last.underscore + ".png"
@@ -39,4 +39,9 @@ module RockhallDisplayHelper
     return results.join("<br/>").html_safe
   end
     
+  def render_tech_info_button type, index
+    link_text = type.to_s.capitalize + " (" + (index + 1).to_s + ")" + '<i class="icon-chevron-down"></i>'
+    link_to(link_text.html_safe, external_video_path(@afdoc.videos[type][index].pid), :class => "show_tech_info")
+  end
+
 end

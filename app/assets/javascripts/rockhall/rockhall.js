@@ -18,6 +18,9 @@ function getTerms(term) {
   return items;
 };
 
+$(document).ready(showTech);
+$(document).ready(hideTech);
+
 jQuery(document).ready(function() {
 
 
@@ -27,3 +30,26 @@ jQuery(document).ready(function() {
 
 });
 
+function showTech() {
+  $('.show_tech_info').live("click", function(action) {
+
+    var parent  = $(this).parent("li").attr("id");
+    $(this).toggleClass("show_tech_info");
+    $(this).toggleClass("hide_tech_info");
+    $.get(this, function(data) {
+      $("#"+parent).slideDown("normal", function() { $(this).append(data); } );
+    });
+    action.preventDefault();
+
+  });  
+}
+
+function hideTech() {
+  $('.hide_tech_info').live("click", function(action) {
+    var parent  = $(this).parent("li").attr("id");
+    $(this).toggleClass("show_tech_info");
+    $(this).toggleClass("hide_tech_info");
+    $("#"+parent+" table").slideUp("normal", function() { $(this).remove(); } );
+    action.preventDefault();
+  });
+} 
