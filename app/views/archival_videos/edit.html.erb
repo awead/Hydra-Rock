@@ -1,17 +1,23 @@
-<div class="well"><h1><%= @afdoc.title %></h1></div>
-
-<% player_column << capture do %>
-  <%= render_video_player %>
-  <% unless @afdoc.file_objects.empty? %>
-    <%= render :partial => "external_videos/list" %>
-  <% end %>
-<% end %>
-
-<%= render_submission_workflow_step -%>
-
 <% navbar_items << capture do %>
   <% unless params[:new_asset] %>
     <%= workflow_dropdown("archival_videos") %>
   <% end %>
   <%= render_user_navbar("archival_videos", {:delete=>TRUE}) %>
 <% end %>
+
+<div class="span12 show-document">
+  <div class="row">
+    <div id="video_box" class="span6">
+      <%= render_video_player %>
+      <% unless @afdoc.external_videos.empty? %>
+        <%= render :partial => "external_videos/list" %>
+      <% end %>
+    </div>
+
+    <div id="document" class="<%= render_document_class %> span6">
+      <div class="well"><h1><%= @afdoc.title %></h1></div>
+      <%= render_submission_workflow_step -%>
+    </div>
+
+  </div>
+</div>
