@@ -8,7 +8,7 @@ gem 'blacklight'
 gem 'om'
 gem 'solrizer'
 gem 'hydra-file-access'
-gem 'hydra-pbcore', :path => '/Users/adamw/Projects/Github/hydra-pbcore'
+gem 'hydra-pbcore'
 
 # Gems for all environments
 gem 'bootstrap-sass'
