@@ -44,4 +44,10 @@ module RockhallDisplayHelper
     link_to(link_text.html_safe, external_video_path(@afdoc.videos[type][index].pid), :class => "show_tech_info")
   end
 
+  def render_file_list
+    unless @afdoc.external_videos.empty?
+      render :partial => "external_videos/list" if current_user
+    end
+  end
+
 end

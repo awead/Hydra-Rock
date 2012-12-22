@@ -77,4 +77,13 @@ module RockhallAssetsHelper
     method = model + "_path"
     return send(method, document[:id]).html_safe
   end
+
+  # Returns the url to download the access version of a video
+  def link_to_access_video text = nil
+    url = @afdoc.external_video(:h264).first.datastreams["ACCESS1"].label
+    link_to(text, url, :class => "btn")
+
+  end
+
+
 end
