@@ -13,14 +13,14 @@
   <%- unless options[:remove].blank? -%>
     <% accessible_remove_label =
        if label.blank?
-         "<i class='icon-remove-sign icon-white'></i> #{options[:escape_value] ? h(value) : value}"
+         "<i class='icon-remove-sign'></i> #{options[:escape_value] ? h(value) : value}"
        else
-          "<i class='icon-remove-sign icon-white'></i> #{options[:escape_label] ? h(label) : label}: #{options[:escape_value] ? h(value) : value}"
+          "<i class='icon-remove-sign'></i> #{options[:escape_label] ? h(label) : label}: #{options[:escape_value] ? h(value) : value}"
        end
     %>
     <%= link_to(accessible_remove_label.html_safe,
 				options[:remove],
-				  :class=>'btn btn-medium btn-info',
+				  :class=>'btn btn-medium',
           :alt=>'remove') 
     %>
   <%- end -%>

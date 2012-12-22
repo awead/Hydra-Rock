@@ -4,10 +4,6 @@
 
 */
 
-#player {
-  background-color: #000;
-}
-
 /* playlist that appears underneath when there are multiple parts */
 #playlist div {
   width: 550px;
