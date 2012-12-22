@@ -1,14 +1,13 @@
-<!-- player container-->
-<div id="player" class="well well-inverse">
-  <%= image_tag("rockhall/pre-screen.png", :class => "media-object") %>
-</div>
-
-<!-- the playlist -->
-<%  if @afdoc.videos[:h264].count > 1 %>
-  <div id="playlist" style="display:none">
-    <div>${title}</div>
+<div class="tabbable tabs-below">
+  <div id="player" class="tab-content well well-inverse">
+    <%= image_tag("rockhall/pre-screen.png", :class => "media-object") %>
   </div>
-<% end %>
+  <% if @afdoc.videos[:h264].count > 1 %>
+    <ul id="playlist" class="nav nav-tabs">
+      <li><a href="#">${title}</a></li>
+    </ul>
+  <% end %>
+</div>
 
 <script type="text/javascript">
   $f("player", "<%= root_path %>flowplayer-3.2.9.swf", {

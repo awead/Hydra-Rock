@@ -4,39 +4,16 @@
 
 */
 
-/* playlist that appears underneath when there are multiple parts */
-#playlist div {
-  width: 550px;
-  float:left;
-  color:#fff;
-  background-color: #333;
-  text-align:center;
-  width:180px;
-  height:16px;
-  padding: 0px 0px 5px 0px;
-  font-size:14px;
-  margin: 0px 5px 0px 0px;
-  cursor:pointer;
+/* Player is in a well, which normally has a bottom margin but we want the playlist
+   to appear directly underneath it */
+#player {
+  margin-bottom: 0px;
 }
 
-#playlist div:last-child {
-  margin-right:0;
-}
-
-/* mouseover state */
-#playlist div:hover {
-  background-color: #666;
-}
-
-/* clicked state */
-#playlist div.playing, #playlist div.paused {
-  background-color: #fff;
-  color: #000;
-}
-
-/* active item */
-#playlist div:active {
-  cursor:default;
-  background-color: #ededed;
-  color: #444;
+/* The playlist js uses the progress class, which appears to conflict with bootstrap so we
+   do some overriding here. */
+#playlist .progress {
+  height: 0px;
+  margin: 0px;
+  padding: 8px 12px 28px 12px;
 }
