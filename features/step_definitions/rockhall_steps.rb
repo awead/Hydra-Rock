@@ -34,7 +34,7 @@ When /^I hit the enter key$/ do
 end
 
 Then /^I should see "(.*?)" in the playlist$/ do |arg1|
-  page.should have_xpath("//div[@id='playlist']", :text => arg1)
+  page.should have_xpath("//ul[@id='playlist']/li/a", :text => arg1)
 end
 
 Given /^I choose a title search$/ do
