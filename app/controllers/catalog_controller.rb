@@ -57,19 +57,19 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format',                 :label => 'Content Type',  :limit => 20
-    config.add_facet_field 'media_format_facet',     :label => 'Media Format',  :limit => 20
-    config.add_facet_field 'contributor_name_facet', :label => 'Name',          :limit => 20
-    config.add_facet_field 'subject_facet',          :label => 'Subject',       :limit => 20
-    config.add_facet_field 'genre_facet',            :label => 'Genre',         :limit => 20
-    config.add_facet_field 'series_facet',           :label => 'Event/Series',  :limit => 20
-    config.add_facet_field 'collection_facet',       :label => 'Collection',    :limit => 20
+    config.add_facet_field 'format',                 :label => 'Content Type',  :limit => 10
+    config.add_facet_field 'media_format_facet',     :label => 'Media Format',  :limit => 10
+    config.add_facet_field 'contributor_name_facet', :label => 'Name',          :limit => 10
+    config.add_facet_field 'subject_facet',          :label => 'Subject',       :limit => 10
+    config.add_facet_field 'genre_facet',            :label => 'Genre',         :limit => 10
+    config.add_facet_field 'series_facet',           :label => 'Event/Series',  :limit => 10
+    config.add_facet_field 'collection_facet',       :label => 'Collection',    :limit => 10
     config.add_facet_field 'language_facet',         :label => 'Language',      :limit => true
-    config.add_facet_field 'complete_facet',         :label => 'Review Status', :limit => 20
-    config.add_facet_field 'create_date_facet',      :label => 'Year',          :limit => 20
-    config.add_facet_field 'priority_facet',         :label => 'Priority',      :limit => 20
-    config.add_facet_field 'depositor_facet',        :label => 'Depositor',     :limit => 20
-    config.add_facet_field 'reviewer_facet',         :label => 'Reviewer',      :limit => 20
+    config.add_facet_field 'complete_facet',         :label => 'Review Status', :limit => 10
+    config.add_facet_field 'create_date_facet',      :label => 'Year',          :limit => 10
+    config.add_facet_field 'priority_facet',         :label => 'Priority',      :limit => 10
+    config.add_facet_field 'depositor_facet',        :label => 'Depositor',     :limit => 10
+    config.add_facet_field 'reviewer_facet',         :label => 'Reviewer',      :limit => 10
 
     # TODO: Maybe add this in later
     #config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
