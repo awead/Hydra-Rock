@@ -79,10 +79,12 @@ module RockhallAssetsHelper
   end
 
   # Returns the url to download the access version of a video
-  def link_to_access_video text = nil
-    url = @afdoc.external_video(:h264).first.datastreams["ACCESS1"].label
-    link_to(text, url, :class => "btn btn-inverse")
-
+  def link_to_access_video text = nil, results = String.new, counter = 1
+    @afdoc.external_video(:h264).each do |ds|
+      results << link_to((text + " (" + counter.to_s + ")"), ds.datastreams["ACCESS1"].label, :class => "btn btn-inverse")
+      counter = counter + 1
+    end
+    return results.html_safe
   end
 
 
