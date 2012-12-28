@@ -6,7 +6,7 @@ Given /^I (?:am )?log(?:ged)? in as "([^\"]*)"$/ do |email|
   user = User.create(:email => email, :password => "password", :password_confirmation => "password")
   User.find_by_email(email).should_not be_nil
   visit destroy_user_session_path
-  visit root_path
+  visit new_user_session_path
   find("input#user_email").set email
   find("input#user_password").set "password"
   click_button "Sign in"
