@@ -1,7 +1,7 @@
 @javascript
 Feature: Displaying technical metadata from video files
   In order to see all the relevant technical data from a video file
-  As as archivist
+  As an archivist
   I should be able to view combined information from the relevant datastreams
 
 Narrative:
