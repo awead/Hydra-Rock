@@ -14,7 +14,7 @@
       </div>
 
       <div id="searchbar">         
-        <%= render_search_bar  %>
+        <%= render_search_bar unless request.original_url.match(/users/) %>
       </div>      
       
     </div>
