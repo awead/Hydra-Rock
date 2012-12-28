@@ -8,7 +8,7 @@ Feature:
     And I am on the home page
     And I create a new archival video
     And I should see "Required Title"
-    And I fill in "archival_video[main_title]" with "Sample Main Title"
+    And I fill in "archival_video[title]" with "Sample Main Title"
     When I press "Save Changes"
     Then I should see "Sample Main Title"
     When I follow "Titles"
@@ -22,7 +22,7 @@ Feature:
     And I fill in "document_fields[track][]" with "Sample Track"
     And I fill in "document_fields[translation][]" with "Sample Translation"
     And I fill in "document_fields[summary][]" with "Sample summary"
-    And I fill in "document_fields[parts_list][]" with "Sample parts list"
+    And I fill in "document_fields[contents][]" with "Sample parts list"
     And I fill in "document_fields[note][]" with "Sample note"
     And I press "Save Changes"
     Then I should see "Required Title"
@@ -30,7 +30,7 @@ Feature:
     Then I should see "Library of Congress Subject Headings"
     And I fill in "document_fields[lc_subject][]" with "Sample subject"
     And I fill in "document_fields[lc_genre][]" with "Sample genre"
-    And I fill in "document_fields[event_series][]" with "Sample event series"
+    And I fill in "document_fields[series][]" with "Sample event series"
     And I fill in "document_fields[event_place][]" with "Sample event place"
     And I fill in "document_fields[event_date][]" with "2010-02-03"
     And I press "Save Changes"
