@@ -40,3 +40,7 @@ end
 Given /^I choose a title search$/ do
   page.select("Title", :from => "search_field")
 end
+
+Given /^I create a new ([^"]*)$/ do |asset_type|
+  visit path_to("new #{asset_type} page")
+end
