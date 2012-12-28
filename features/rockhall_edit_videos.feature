@@ -70,5 +70,9 @@ Feature:
     Then I should see "Betacam"
     And I should see "Betacam SP"
     And I should see "Betacam SX"
+    Given I am on the edit original page for rockhall:fixture_pbcore_document3
+    Then the following should be selected within "fieldset#original_fields"
+      | archival_video_standard | NTSC |
+      | archival_video_colors | Color |
 
 
