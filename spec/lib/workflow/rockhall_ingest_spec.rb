@@ -30,7 +30,7 @@ describe Workflow::RockhallIngest do
         ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
         ev.label.should == "h264"
         ev.generation.first.should == "Copy: access"
-        ev.date.first.should match /^2012/
+        ev.date.first.should ==  Date.today.strftime("%Y-%m-%d")
         ev.size.first.should == "240"
         ev.media_type.first.should == "Moving image"
         ev.colors.first.should == "Color"
@@ -54,7 +54,7 @@ describe Workflow::RockhallIngest do
         ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
         ev.label.should == "original"
         ev.generation.first.should == "original"
-        ev.date.first.should match /^2012/
+        ev.date.first.should ==  Date.today.strftime("%Y-%m-%d")
         ev.size.first.first.should == "0"
         ev.media_type.first.should == "Moving image"
         ev.colors.first.should == "Color"
