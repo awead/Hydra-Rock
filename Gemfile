@@ -12,7 +12,7 @@ gem 'hydra-pbcore'
 
 # Gems for all environments
 gem 'bootstrap-sass'
-gem "unicode", :platforms => [:mri_18, :mri_19]
+gem 'unicode', :platforms => [:mri_18, :mri_19]
 gem 'devise-guests'
 gem 'devise'
 gem 'jquery-rails'
@@ -22,7 +22,7 @@ gem 'mediainfo'
 gem 'equivalent-xml'
 
 # Gems that we lock to specific versions for compatibility
-gem 'rubydora', '~>1.0.0'
+# None right now!
 
 # Gems used only for assets and not required
 # in production environments by default.

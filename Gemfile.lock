@@ -15,7 +15,7 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active-fedora (5.2.1)
+    active-fedora (5.3.1)
       activeresource (>= 3.0.0)
       activesupport (>= 3.0.0)
       builder (~> 3.0.0)
@@ -25,7 +25,7 @@ GEM
       rdf
       rdf-rdfxml (~> 0.3.8)
       rsolr
-      rubydora (~> 1.0)
+      rubydora (~> 1.2)
       solrizer (~> 2.0.0)
     activemodel (3.2.10)
       activesupport (= 3.2.10)
@@ -123,38 +123,38 @@ GEM
       json (>= 1.4.6)
     hike (1.2.1)
     hooks (0.2.2)
-    hydra-access-controls (5.0.1)
+    hydra-access-controls (5.1.0)
       active-fedora
       activesupport
       blacklight
       cancan
       deprecation
-    hydra-core (5.0.1)
+    hydra-core (5.1.0)
       RedCloth (= 4.2.9)
-      active-fedora (~> 5.0)
+      active-fedora (~> 5.3)
       blacklight (~> 4.0)
       block_helpers
       deprecation (>= 0.0.5)
       devise
-      hydra-access-controls (= 5.0.1)
+      hydra-access-controls (= 5.1.0)
       hydra-mods (>= 0.0.6)
       jquery-rails
       rails (~> 3.2.3)
       sanitize
-    hydra-file-access (5.0.1)
+    hydra-file-access (5.1.0)
       RedCloth (= 4.2.9)
       active-fedora
       blacklight
       block_helpers
       deprecation (>= 0.0.5)
       devise
-      hydra-core (= 5.0.1)
+      hydra-core (= 5.1.0)
       hydra-mods (>= 0.0.5)
       rails (~> 3.2.3)
       sanitize
-    hydra-head (5.0.1)
-      hydra-access-controls (= 5.0.1)
-      hydra-core (= 5.0.1)
+    hydra-head (5.1.0)
+      hydra-access-controls (= 5.1.0)
+      hydra-core (= 5.1.0)
       rails (>= 3.2.6)
     hydra-mods (0.0.6)
       active-fedora (> 4.1)
@@ -254,10 +254,11 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
-    rubydora (1.0.2)
+    rubydora (1.2.1)
       activemodel
       activesupport
       deprecation
+      equivalent-xml
       fastercsv
       hooks
       mime-types
@@ -345,7 +346,6 @@ DEPENDENCIES
   rest-client
   rspec
   rspec-rails
-  rubydora (~> 1.0.0)
   sass-rails
   solrizer
   spork
