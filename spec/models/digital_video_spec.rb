@@ -19,17 +19,17 @@ describe DigitalVideo do
 
     describe "using templates to manage multi-valued terms" do
       it "should insert contributors" do
-        @video.new_contributor("Name", "role")
+        @video.new_contributor({:name=> "Name", :role => "role"})
         @video.contributor_name.should == ["Name"]
         @video.contributor_role.should == ["role"]
-        @video.new_contributor("Name2", "role2")
+        @video.new_contributor({:name=> "Name2", :role => "role2"})
         @video.contributor_name.should == ["Name", "Name2"]
         @video.contributor_role.should == ["role", "role2"]
       end
 
       it "should remove contributors" do
-        @video.new_contributor("Name", "role")
-        @video.new_contributor("Name2", "role2")
+        @video.new_contributor({:name=> "Name", :role => "role"})
+        @video.new_contributor({:name=> "Name2", :role => "role2"})
         @video.contributor_name.should == ["Name", "Name2"]
         @video.contributor_role.should == ["role", "role2"]
         @video.delete_contributor(0)

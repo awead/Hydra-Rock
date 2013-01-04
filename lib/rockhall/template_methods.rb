@@ -7,8 +7,12 @@ module Rockhall::TemplateMethods
 # methods here to link them to the appropriate datastream so that they're
 # available at the object level.
 
-  def new_contributor(name=nil, role=nil)
-    self.datastreams["descMetadata"].insert_contributor(name, role)
+  def new_contributor(args)
+    if args[:name]
+      self.datastreams["descMetadata"].insert_contributor(args[:name], args[:role])
+    else
+      self.errors.add(:contributor_name)
+    end
   end
 
   def delete_contributor(index)
