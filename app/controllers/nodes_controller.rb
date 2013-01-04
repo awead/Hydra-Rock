@@ -1,13 +1,18 @@
 class NodesController < ApplicationController
 
   include Hydra::Controller::ControllerBehavior
+  include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
   before_filter :enforce_access_controls
 
   def new
-    type = params[:node].keys.first
-    render :partial => "nodes/new/#{type}"
+    if params[:type]
+      render :partial => "nodes/new/#{params[:type]}"
+    else
+      flash[:notice] = "Node type is required"
+      redirect_to root_path
+    end
   end
 
   def edit
@@ -17,46 +22,17 @@ class NodesController < ApplicationController
   end
 
   def create
-    @object = get_object
-    type = params[:node].keys.first
+    @object = get_model_from_pid(params[:id])
+    @object.create_node(params)
+    @object.errors.empty? ? @object.save : flash[:notice] = "Unable to insert node: #{@object.errors.full_messages.join("<br/>")}"
 
-    if @object.respond_to?("new_"+type)
-      @object.send("new_"+type, params[:node][type])
-    else
-      @object.errors["node"] = "#{type} is not defined"
-    end
-
-    if @object.errors.empty?
-      @object.save
-      respond_to do |format|
-        format.html { redirect_to edit_archival_video_path(@object.pid) }
-        #format.js   { render :partial => "pbcore_nodes/edit/#{params[:node]}", :locals => {:document=>@afdoc} }
-      end
-    else
-      flash[:notice] = "Unable to insert node: #{@object.errors.full_messages.join("<br/>")}"
-      respond_to do |format|
-        format.html { redirect_to edit_archival_video_path(@object.pid) }
-        #format.js
-      end 
-    end
+    respond_to do |format|
+      format.html { redirect_to send(("edit_"+@object.class.to_s.underscore+"_path"), @object.pid) }
+      #format.js
+    end 
   end
 
   def destroy
-  end
-
-  protected
-
-  # Takes the first parameter ending in *_id, figures out what the model is and returns it.
-  # I don't like this, but it works...
-  def get_object(id = nil, model = nil)
-    params.keys.each do |key|
-      if key.match(/id$/)
-        parts = key.to_s.split(/_/)
-        id    = params[key]
-        model = parts[0].capitalize + parts[1].capitalize
-      end
-    end
-    eval(model).find(id)
   end
 
 end
