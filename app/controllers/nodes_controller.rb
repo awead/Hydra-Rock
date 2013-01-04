@@ -6,6 +6,8 @@ class NodesController < ApplicationController
   before_filter :enforce_access_controls
 
   def new
+    type = params[:node].keys.first
+    render :partial => "nodes/new/#{type}"
   end
 
   def edit

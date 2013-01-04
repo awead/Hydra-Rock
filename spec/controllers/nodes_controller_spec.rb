@@ -37,7 +37,7 @@ include Devise::TestHelpers
 
       describe "#new" do
         it "should render a new page" do
-          get :new, :archival_video_id => @video.pid
+          get :new, :archival_video_id => @video.pid, :node => { "contributor" => {}}
           assert_response :success
         end
       end
@@ -73,7 +73,7 @@ include Devise::TestHelpers
 
       describe "#new" do
         it "should render a new page" do
-          get :new, :digital_video_id => @digital.pid
+          get :new, :digital_video_id => @digital.pid, :node => { "contributor" => {}}
           assert_response :success
         end
       end

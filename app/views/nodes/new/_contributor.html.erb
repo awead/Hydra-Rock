@@ -1,0 +1,7 @@
+<h1>New Contributor</h1>
+
+<%= form_tag(request.fullpath.split(/\//)[0..3].join("/")) do %>
+  <%= text_field_tag "node[contributor[name]]" %>
+  <%= select_tag "node[contributor[role]]", options_for_select(Relators.marc.keys.sort) %>
+  <%= submit_tag %>
+<% end %>
