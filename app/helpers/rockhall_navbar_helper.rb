@@ -60,6 +60,7 @@ module RockhallNavbarHelper
     return results.html_safe
   end
 
+  # deprecated
   def add_dropdown
     results = String.new
     results << '<li class="dropdown">'
@@ -72,7 +73,7 @@ module RockhallNavbarHelper
     end
     results << '</ul>'
     results << '</li>'
-    return results.html_safe
+    return nil
   end
 
 end
