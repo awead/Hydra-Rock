@@ -1,29 +1,27 @@
 <%= form_for @afdoc, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
 
   <fieldset id="contributors">
-    <legend>Contributors</legend>
-    <p class="legend-caption">Choose "Add" from the menu to add contributors to this record</p>
+    <legend>
+      Contributors
+      <%= link_to("+", new_node_path("contributor"), :class => "btn btn-mini btn-info more_facets_link") %>
+    </legend>
+    <p class="legend-caption">Click the button to add new contributors</p>
     <div id="contributors_form">
       <%= render :partial => "pbcore_nodes/edit/contributors", :locals => { :document => @afdoc } %>
     </div>
   </fieldset>
 
   <fieldset id="publishers">
-    <legend>Publishers</legend>
-    <p class="legend-caption">Choose "Add" from the menu to add publishers to this record</p>
+    <legend>
+      Publishers
+      <%= link_to("+", new_node_path("publisher"), :class => "btn btn-mini btn-info more_facets_link") %>
+    </legend>
+    <p class="legend-caption">Click the button to add new publishers</p>
     <div id="publishers_form">
       <%= render :partial => "pbcore_nodes/edit/publishers", :locals => { :document => @afdoc } %>
     </div>
   </fieldset>
 
-  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+  <%= f.submit "Done", :class => "btn-primary" %>
 
 <% end %>
-
-<% navbar_items << capture do %>
-  <%= add_dropdown %>
-<% end %>
-
-
-
-

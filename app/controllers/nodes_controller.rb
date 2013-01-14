@@ -16,9 +16,13 @@ class NodesController < ApplicationController
   end
 
   def edit
-  end
-
-  def update
+    @object = get_model_from_pid(params[:id])
+    if params[:type]
+      render :partial => "nodes/edit/#{params[:type]}", :locals => {:document=>@object}
+    else
+      flash[:notice] = "Node type is required"
+      redirect_to root_path
+    end
   end
 
   def create
@@ -27,7 +31,7 @@ class NodesController < ApplicationController
     @object.errors.empty? ? @object.save : flash[:notice] = "Unable to insert node: #{@object.errors.full_messages.join("<br/>")}"
 
     respond_to do |format|
-      format.html { redirect_to send(("edit_"+@object.class.to_s.underscore+"_path"), @object.pid) }
+      format.html { redirect_to edit_node_path(params) }
       #format.js
     end 
   end

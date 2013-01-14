@@ -1,7 +1,11 @@
-<h1>New Contributor</h1>
-
-<%= form_tag(request.fullpath.split(/\//)[0..3].join("/")) do %>
-  <%= text_field_tag "name" %>
-  <%= select_tag "role", options_for_select(Relators.marc.keys.sort) %>
-  <%= submit_tag %>
-<% end %>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3>Add contributor</h3>
+</div>
+<div class="modal-body">
+  <%= form_tag(create_node_path("contributor"), :class => "navbar-form form-inline pull-left") do %>
+    <%= text_field_tag "name" %>
+    <%= select_tag "role", options_for_select(Relators.marc.keys.sort) %>
+    <%= submit_tag %>
+  <% end %>
+</div>
