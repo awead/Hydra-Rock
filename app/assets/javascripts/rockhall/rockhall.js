@@ -20,6 +20,8 @@ function getTerms(term) {
 
 $(document).ready(showTech);
 $(document).ready(hideTech);
+$(document).ready(refreshContributors);
+$(document).ready(deleteContributors);
 
 jQuery(document).ready(function() {
 
@@ -52,4 +54,51 @@ function hideTech() {
     $("#"+parent+" table").slideUp("normal", function() { $(this).remove(); } );
     action.preventDefault();
   });
-} 
+}
+
+function refreshContributors() {
+
+  $('.refresh_contributors, .modal-backdrop').live("click", function(action) {
+    reloadContributorsForm();
+    action.preventDefault();
+  });    
+
+}
+
+function deleteContributors() {
+
+  $('.delete_contributors').live("click", function(action) {
+    url = $(this).attr("href")
+    $.ajax({
+      type: "GET",
+      url: url,
+      cache: false,
+      success: reloadContributorsForm,
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+    });
+    action.preventDefault();
+  }); 
+}
+
+function reloadContributorsForm() {
+
+  var pid = window.location.pathname.split("/")[2];
+  var url = "/nodes/"+pid+"/contributor/edit";
+
+  $.ajax({
+    type: "GET",
+    url: url,
+    cache: false,
+    success: function(data) {
+      $('#contributors_form').html(data);
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      alert(xhr.status);
+      alert(thrownError);
+    }
+  });
+
+}

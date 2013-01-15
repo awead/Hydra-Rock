@@ -10,8 +10,8 @@ module NodesHelper
     return parts.join("/")
   end
 
-  def delete_node_path type
-    parts = [ "/nodes", params[:id], type, "destroy" ]
+  def delete_node_path type, index
+    parts = [ "/nodes", params[:id], type, "destroy", index ]
     return parts.join("/")
   end
     
