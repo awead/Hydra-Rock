@@ -1,0 +1,12 @@
+<%= render :partial=>'/flash_msg' %>
+<%= form_tag create_node_path("publisher"), :id => "add_publisher", :class => "form-inline ajax_form", :method => :post do %>
+  <div class="modal-header">
+    <button type="button" class="close refresh_publishers" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Add publisher</h3>
+  </div>
+  <div class="modal-body">
+    <%= text_field_tag "name" %>
+    <%= select_tag "role", options_for_select(Relators.pbcore.keys.sort) %>
+    <%= submit_tag "Add", :id => "add_publisher_button" %>
+  </div>
+<% end %>

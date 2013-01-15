@@ -22,6 +22,8 @@ $(document).ready(showTech);
 $(document).ready(hideTech);
 $(document).ready(refreshContributors);
 $(document).ready(deleteContributors);
+$(document).ready(refreshPublishers);
+$(document).ready(deletePublishers);
 
 jQuery(document).ready(function() {
 
@@ -65,6 +67,15 @@ function refreshContributors() {
 
 }
 
+function refreshPublishers() {
+
+  $('.refresh_publishers, .modal-backdrop').live("click", function(action) {
+    reloadPublishersForm();
+    action.preventDefault();
+  });    
+
+}
+
 function deleteContributors() {
 
   $('.delete_contributors').live("click", function(action) {
@@ -74,6 +85,24 @@ function deleteContributors() {
       url: url,
       cache: false,
       success: reloadContributorsForm,
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+    });
+    action.preventDefault();
+  }); 
+}
+
+function deletePublishers() {
+
+  $('.delete_publishers').live("click", function(action) {
+    url = $(this).attr("href")
+    $.ajax({
+      type: "GET",
+      url: url,
+      cache: false,
+      success: reloadPublishersForm,
       error: function(xhr, ajaxOptions, thrownError) {
         alert(xhr.status);
         alert(thrownError);
@@ -94,6 +123,26 @@ function reloadContributorsForm() {
     cache: false,
     success: function(data) {
       $('#contributors_form').html(data);
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      alert(xhr.status);
+      alert(thrownError);
+    }
+  });
+
+}
+
+function reloadPublishersForm() {
+
+  var pid = window.location.pathname.split("/")[2];
+  var url = "/nodes/"+pid+"/publisher/edit";
+
+  $.ajax({
+    type: "GET",
+    url: url,
+    cache: false,
+    success: function(data) {
+      $('#publishers_form').html(data);
     },
     error: function(xhr, ajaxOptions, thrownError) {
       alert(xhr.status);

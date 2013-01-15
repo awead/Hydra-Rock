@@ -29,8 +29,12 @@ module Rockhall::TemplateMethods
     self.datastreams["descMetadata"].remove_node(:contributor, index)
   end
 
-  def new_publisher(publisher=nil, role=nil)
-    self.datastreams["descMetadata"].insert_publisher(publisher, role)
+  def new_publisher(args)
+    if args[:name]
+      self.datastreams["descMetadata"].insert_publisher(args[:name], args[:role])
+    else
+      self.errors.add(:publisher_name)
+    end
   end
 
   def delete_publisher(index)
