@@ -42,6 +42,14 @@ class NodesController < ApplicationController
   end
 
   def destroy
+    @object = get_model_from_pid(params[:id])
+    result = @object.send("delete_"+params[:type], params[:index])
+    @object.save unless result.nil?
+
+    respond_to do |format|
+      format.html { redirect_to edit_node_path(params) }
+      format.js   { render :partial => "nodes/new/#{params[:type]}" }
+    end 
   end
 
 end
