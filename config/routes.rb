@@ -9,7 +9,7 @@ HydraRock::Application.routes.draw do
   devise_for :users
 
   resources :nodes
-  match ":controller/:id/:type(/:action)", :controller => /nodes/
+  match ":controller/:id/:type(/:action(/:index))", :controller => /nodes/
   
 
   resources :archival_videos
