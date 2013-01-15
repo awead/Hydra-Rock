@@ -28,11 +28,16 @@ class NodesController < ApplicationController
   def create
     @object = get_model_from_pid(params[:id])
     @object.create_node(params)
-    @object.errors.empty? ? @object.save : flash[:notice] = "Unable to insert node: #{@object.errors.full_messages.join("<br/>")}"
+    if @object.errors.empty?
+      @object.save
+      flash[:notice] = "Added #{params.inspect}"
+    else
+      flash[:notice] = "Unable to insert node: #{@object.errors.full_messages.join("<br/>")}"
+    end
 
     respond_to do |format|
       format.html { redirect_to edit_node_path(params) }
-      #format.js
+      format.js   { render :partial => "nodes/new/#{params[:type]}" }
     end 
   end
 
