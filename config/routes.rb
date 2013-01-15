@@ -11,12 +11,9 @@ HydraRock::Application.routes.draw do
   resources :nodes
   match ":controller/:id/:type(/:action(/:index))", :controller => /nodes/
   
-
   resources :archival_videos
   resources :digital_videos
-
   resources :external_videos
-  resources :pbcore_nodes, :only => [:new , :destroy]
   resources :reviewers, :only => [:edit, :show]
   resources :permissions
 
