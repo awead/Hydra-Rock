@@ -13,3 +13,4 @@ public/assets/*
 nohup.out
 hydra-rock.sublime-project
 hydra-rock.sublime-workspace
+.DS_Store
