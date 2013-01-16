@@ -78,7 +78,18 @@ end
 #
 When /^(?:|I )fill in the following:$/ do |fields|
   fields.rows_hash.each do |name, value|
-    When %{I fill in "#{name}" with "#{value}"}
+    step %{I fill in "#{name}" with "#{value}"}
+  end
+end
+
+# Use this to view the results
+#
+#   And I should see the following:
+#     | id | value |
+#
+Then /^I should see the following:$/ do |fields|
+  fields.rows_hash.each do |name, value|
+    step %{I should see the field content "#{name}" contain "#{value}"}
   end
 end
 
