@@ -44,3 +44,11 @@ end
 Given /^I create a new ([^"]*)$/ do |asset_type|
   visit path_to("new #{asset_type} page")
 end
+
+Given /^I wait for (\d+) seconds$/ do |arg1|
+  sleep(arg1.to_i)
+end
+
+Given /^I close the modal window$/ do
+  click_button('close_modal')
+end
