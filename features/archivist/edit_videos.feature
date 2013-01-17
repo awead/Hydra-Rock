@@ -7,7 +7,7 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     Given I am on the edit archival video page for rockhall:fixture_pbcore_document1
     Then I should see "Required Title"
-    And the "archival_video_main_title" field should contain "Rock and Roll Hall of Fame induction ceremony. Part 1."
+    And the "archival_video_title" field should contain "Rock and Roll Hall of Fame induction ceremony. Part 1."
     And the "alternative_title_0" field should contain "\[Tape label title\] Induction ceremony, line cut reel \#20A, 03\/15\/99."
     And the "summary" field should contain "\(1 of 3\) Uncut performances and award presentations from the 1999 ceremony."
     And the "note_0" field should contain "http\:\/\/rockhall\.com\/inductees\/ceremonies\/1999\/"
@@ -23,7 +23,7 @@ Feature:
     And the "lc_genre_0" field should contain "Award presentations \(Motion pictures\)"
     And the "lc_genre_1" field should contain "Rock concert films."
     And I should see "Event Fields"
-    And the "event_series_0" field should contain "Rock and Roll Hall of Fame and Museum\. Annual induction ceremony\. 1999\."
+    And the "series_0" field should contain "Rock and Roll Hall of Fame and Museum\. Annual induction ceremony\. 1999\."
     And the "event_place_0" field should contain "New York, NY"
     And the "event_date_0" field should contain "1999-03-15"
     When I press "Save Changes"
@@ -40,7 +40,7 @@ Feature:
     And the "archival_video_creation_date" field should contain "1999-03-15"
     And the "archival_video_barcode" field should contain "39156042551098"
     And I should see "Archival Information"
-    And the "archival_collection_0" field should contain "Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division."
+    And the "collection_0" field should contain "Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division."
     When I follow "Rockhall"
     Then I should see "Rockhall Fields"
     When I follow "Permissions"
@@ -65,14 +65,9 @@ Feature:
   Scenario: Populate fields with autocomplete data via JSON (DAM-214)
     Given I am logged in as "archivist1@example.com"
     And I am on the edit archival video page for rockhall:fixture_pbcore_document1
+    And I follow "Edit"
     And I follow "Original"
-    When I fill in "document_fields[format][]" with "Be"
+    When I fill in "document_fields[media_format][]" with "Be"
     Then I should see "Betacam"
     And I should see "Betacam SP"
     And I should see "Betacam SX"
-    Given I am on the edit original page for rockhall:fixture_pbcore_document3
-    Then the following should be selected within "fieldset#original_fields"
-      | archival_video_standard | NTSC |
-      | archival_video_colors | Color |
-
-
