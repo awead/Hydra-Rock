@@ -1,12 +1,11 @@
 class ReviewersController < ApplicationController
 
-  include Hydra::Assets
   include Blacklight::Catalog
+  include Hydra::Controller::ControllerBehavior
   include Rockhall::Controller::ControllerBehavior
 
   # These before_filters apply the hydra access controls
   before_filter :enforce_access_controls
-  before_filter :enforce_review_controls, :only=>:edit
 
   # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params

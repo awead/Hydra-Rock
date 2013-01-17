@@ -43,7 +43,10 @@ module Rockhall::Controller::ControllerBehavior
     end
   end
 
-  # Right now, anyone in the review group gets redirected to the reviewers edit page
+  # Ensure that reviewers can only edit items via the reviewers controller.
+  #
+  # Add this method to any controller for models where you don't want revierwers
+  # to be able to edit via the default interface.
   def enforce_review_controls
     user_groups = RoleMapper.roles(current_user.email)
     if user_groups.include?("reviewer")

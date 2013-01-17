@@ -14,7 +14,7 @@ HydraRock::Application.routes.draw do
   resources :archival_videos
   resources :digital_videos
   resources :external_videos
-  resources :reviewers, :only => [:edit, :show]
+  resources :reviewers
   resources :permissions
 
 end
