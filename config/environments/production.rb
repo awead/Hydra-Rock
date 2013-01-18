@@ -80,3 +80,12 @@ HydraRock::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+
+# Sends to only interal addresses with not authenticating
+ActionMailer::Base.smtp_settings = {
+  :address => "192.168.250.174",
+  :port    => 25,
+  :domain  => 'ROCKHALL',
+}
+
+ActionMailer::Base.default :from => 'library@rockhall.org'

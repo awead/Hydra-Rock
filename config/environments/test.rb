@@ -35,3 +35,12 @@ HydraRock::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+# Sends to only interal addresses with not authenticating
+ActionMailer::Base.smtp_settings = {
+  :address => "192.168.250.174",
+  :port    => 25,
+  :domain  => 'ROCKHALL',
+}
+
+ActionMailer::Base.default :from => 'library@rockhall.org'

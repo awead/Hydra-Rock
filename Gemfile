@@ -20,6 +20,7 @@ gem 'sqlite3'
 gem 'bagit'
 gem 'mediainfo'
 gem 'equivalent-xml'
+gem 'ruby-ntlm'
 
 # Gems that we lock to specific versions for compatibility
 # None right now!

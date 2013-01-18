@@ -63,7 +63,7 @@ module HydraRock
     config.assets.version = '1.0'
 
     # For devise
-    config.action_mailer.default_url_options = { :host => 'localhost' }
+    config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   end
 end

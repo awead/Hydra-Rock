@@ -254,6 +254,7 @@ GEM
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
       rspec-mocks (~> 2.12.0)
+    ruby-ntlm (0.0.1)
     rubydora (1.2.1)
       activemodel
       activesupport
@@ -346,6 +347,7 @@ DEPENDENCIES
   rest-client
   rspec
   rspec-rails
+  ruby-ntlm
   sass-rails
   solrizer
   spork
