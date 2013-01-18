@@ -6,7 +6,7 @@ describe AssetReview do
     @av = ArchivalVideo.new nil
   end
 
-  describe ".update_indexed_attributes" do
+  describe "terms" do
     it "should update all of the fields in #xml_template and fields not requiring additional inserted nodes" do
       [
         "reviewer",
