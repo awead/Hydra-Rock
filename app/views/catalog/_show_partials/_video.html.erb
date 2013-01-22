@@ -6,5 +6,5 @@
 <%= render :partial => "shared/show/review" %>
 
 <% navbar_items << capture do %>
-  <%= render_user_navbar("archival_videos") %>
+  <%= render_user_navbar(@document["active_fedora_model_s"].first.underscore.pluralize) %>
 <% end %>
