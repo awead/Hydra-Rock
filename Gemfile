@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails',      '~>3.2.9'
+gem 'rails',      '~>3.2.11'
 gem 'hydra-head'
 gem 'blacklight'    
 
@@ -15,7 +15,7 @@ gem 'bootstrap-sass'
 gem 'unicode', :platforms => [:mri_18, :mri_19]
 gem 'devise-guests'
 gem 'devise'
-gem 'jquery-rails'
+
 gem 'sqlite3'
 gem 'bagit'
 gem 'mediainfo'
@@ -23,7 +23,11 @@ gem 'equivalent-xml'
 gem 'ruby-ntlm'
 
 # Gems that we lock to specific versions for compatibility
-# None right now!
+
+# jquery-rails 2.2 uses jQuery 1.9 which removed .live()
+# we're still using that and need to update our js, so until then,
+# we'll stick with an older version.
+gem 'jquery-rails', '< 2.2.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,7 +44,7 @@ group :development, :test do
   gem 'generator_spec'
   gem 'mocha', :require => false
   gem 'rest-client'
-  gem 'rspec'
+  gem 'rspec', '~> 2.12.0'
   gem 'rspec-rails'
   gem 'debugger'
   gem 'webrat'
