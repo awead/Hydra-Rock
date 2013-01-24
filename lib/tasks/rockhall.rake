@@ -19,8 +19,12 @@ namespace :rockhall do
     task :load => :environment do
       contents = Dir.glob("spec/fixtures/fedora/*.xml")
       contents.each do |file|
-        pid = ActiveFedora::FixtureLoader.import_to_fedora(file)
-        ActiveFedora::FixtureLoader.index(pid)
+        begin
+          pid = ActiveFedora::FixtureLoader.import_to_fedora(file)
+          ActiveFedora::FixtureLoader.index(pid)
+        rescue
+          puts "Failed to load #{file.to_s}"
+        end
       end
     end
     
@@ -66,9 +70,18 @@ namespace :rockhall do
     desc 'Index all objects in the repository.'
     task :index_all => :environment do
       ActiveFedora::Base.connection_for_pid('foo:1') # Loads Rubydora connection with fake object
+      success = 0
+      failed  = Array.new
       ActiveFedora::Base.fedora_connection[0].connection.search(nil) do |object|
-        ActiveFedora::Base.find(object.pid, cast: true).update_index
+        begin
+          ActiveFedora::Base.find(object.pid, cast: true).update_index
+          success = success + 1
+        rescue
+          failed << object.pid.to_s
+        end
       end
+      puts "Complete: #{success.to_s} objects indexed, #{failed.count.to_s} failed"
+      puts "#{failed.join("\n")}" if failed.count > 0
     end
   
   end

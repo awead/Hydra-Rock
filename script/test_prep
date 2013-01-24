@@ -1,6 +1,16 @@
 #!/bin/bash
+echo -n "Removing unwanted objects from fedora: "
 rake rockhall:fedora:clean
+echo "done."
+echo -n "Cleaning out solr dev: "
 rake rockhall:solr:clean
+echo "done."
+echo -n "Indexing solr dev: "
 rake rockhall:solr:index_all
+# no echo here since rake task outputs results and a newline
+echo -n "Cleaning out solr test: "
 RAILS_ENV=test rake rockhall:solr:clean
+echo "done."
+echo -n "Indexing solr test: "
 RAILS_ENV=test rake rockhall:solr:index_all
+# no echo here since rake task outputs results and a newline
