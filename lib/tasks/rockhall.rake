@@ -15,6 +15,14 @@ namespace :rockhall do
 
   namespace :fedora do
 
+    desc "Load a single object into fedora specified by FILE=path/to/file"
+    task :load_file => :environment do
+      raise "Must specify the full path to a file.  Ex:  FILE='spec/fixtures/fedora/rrhof_123.foxml.xml" unless ENV['FILE']
+      contents = Dir.glob("spec/fixtures/fedora/*.xml")
+      pid = ActiveFedora::FixtureLoader.import_to_fedora(ENV['FILE'])
+      ActiveFedora::FixtureLoader.index(pid)
+    end
+
     desc "Load fixtures into an empty Fedora"
     task :load => :environment do
       contents = Dir.glob("spec/fixtures/fedora/*.xml")
