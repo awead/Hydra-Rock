@@ -72,7 +72,7 @@
 .flowplayer .fp-buffer,.flowplayer .fp-progress{position:absolute;top:0;left:auto;height:100%;cursor:col-resize}
 .flowplayer .fp-buffer{-webkit-transition:width .25s linear;-moz-transition:width .25s linear;transition:width .25s linear}
 .flowplayer .fp-volume{position:absolute;top:7.5px;right:5px}
-.flowplayer .fp-mute{width:10px;height:15px;float:left;position:relative;top:-5px;left:;cursor:pointer;background-position:-2px -99px;}
+.flowplayer .fp-mute{width:10px;height:15px;float:left;position:relative;top-left:-5px;cursor:pointer;background-position:-2px -99px;}
 .no-mute.flowplayer .fp-mute{display:none}
 .flowplayer .fp-volumeslider{width:90px;height:5px;cursor:col-resize;float:left;}
 .no-volume.flowplayer .fp-volumeslider{display:none}
