@@ -34,18 +34,13 @@ module VideoPlayerHelper
     return results.html_safe
   end
 
-  def flowplayer_playlist
-    results = Array.new
-    videos = @afdoc.videos
-    count = 1
-    unless @afdoc.videos[:h264].empty?
-      @afdoc.videos[:h264].each do |video|
-        path = File.join(@afdoc.pid.gsub(/:/,"_"),"data",video.name)
-        results << "{title: 'Part #{count.to_s}', url: 'mp4:#{path}'}"
-        count = count + 1
-      end
-    end
-    return results.join(",").to_s.html_safe
+  def flowplayer_playlist results = String.new
+    if @afdoc.videos[:h264].count > 1
+      @afdoc.external_video(:h264).each do |ds|
+        results << link_to("", ds.datastreams["ACCESS1"].label)
+      end      
+    end  
+    return results.html_safe
   end
 
 end
