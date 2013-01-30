@@ -18,6 +18,15 @@ class GbvIngest
   def process(opts={})
     self.ingest(@sip.base, @sip.access,       "access",       {:format=>"h264"})     unless @parent.videos[:h264].first
     self.ingest(@sip.base, @sip.preservation, "preservation", {:format=>"original"}) unless @parent.videos[:original].first
+    
+    # add thumbnail
+    begin
+      generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access))
+      thumb = File.new("tmp/thumb.jpg")
+      @parent.add_thumbnail thumb
+    rescue
+      puts "INFO: Failed to add thumbnail"
+    end
   end
 
   # parent object exists in Fedora and has child objects that need to be reingested

@@ -24,6 +24,7 @@ describe Workflow::RockhallIngest do
 
       # Check parent object fields
       ing.parent.label.should == "Rock and Roll Hall of Fame Library and Archives"
+      ing.parent.get_thumbnail_url.should_not be_nil
 
       # Check access videos
       ing.parent.videos[:h264].each do |ev|

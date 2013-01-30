@@ -59,4 +59,7 @@ def image_fixture file
   File.new(File.join(File.dirname(__FILE__), 'fixtures', 'images', file))
 end
 
-
+# Video fixture
+def video_fixture
+  File.new(File.join(File.dirname(__FILE__), 'fixtures/sips/digital_video_sip/data/content_001_access.mp4'))
+end

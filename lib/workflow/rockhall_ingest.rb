@@ -34,6 +34,15 @@ class RockhallIngest
       ev.datastreams["descMetadata"].insert_previous(@sip.previous_preservation(p).to_s) if @sip.previous_preservation(p)
       ev.save
     end
+
+    # add a thumbnail
+    begin
+      generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access.first))
+      thumb = File.new("tmp/thumb.jpg")
+      @parent.add_thumbnail thumb
+    rescue
+      puts "INFO: Failed to add thumbnail image"
+    end
   end
 
   # parent object exists in Fedora and has child objects that need to be reingested
