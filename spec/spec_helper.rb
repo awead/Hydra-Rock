@@ -53,3 +53,10 @@ end
 def sip(dir)
   File.join(File.dirname(__FILE__), 'fixtures', 'sips', dir)
 end
+
+# Image fixture
+def image_fixture file
+  File.new(File.join(File.dirname(__FILE__), 'fixtures', 'images', file))
+end
+
+

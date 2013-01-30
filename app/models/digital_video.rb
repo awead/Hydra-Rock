@@ -20,6 +20,8 @@ class DigitalVideo < ActiveFedora::Base
   has_metadata :name => "properties",     :type => Properties
   has_metadata :name => "assetReview",    :type => AssetReview
 
+  has_file_datastream :name => "thumbnail", :type=>ActiveFedora::Datastream, :label => "Thumbnail image", :versionable => false
+
   delegate_to :assetReview,
     [:reviewer, :date_updated, :complete, :priority, :license, :abstract]
 

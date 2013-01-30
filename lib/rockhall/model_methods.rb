@@ -79,4 +79,8 @@ module Rockhall::ModelMethods
     self.save
   end
 
+  def add_thumbnail file
+    self.datastreams["thumbnail"].content = file
+  end
+
 end

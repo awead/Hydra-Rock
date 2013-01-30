@@ -76,6 +76,12 @@ describe ArchivalVideo do
       end
     end
 
+    it "should create a thumbnail" do
+      file = image_fixture "rrhof.jpg"
+      @video.add_thumbnail(file)
+      @video.datastreams["thumbnail"].content.should be_kind_of File
+    end
+
   end
 
   describe "relationships" do
@@ -97,5 +103,17 @@ describe ArchivalVideo do
     end
   end
 
+  describe "adding thumbnails to existing videos" do
+
+    it "should attach an image to fixture" do
+      file = image_fixture "rrhof.jpg"
+      av = ArchivalVideo.find("rockhall:fixture_pbcore_document1")
+      av.add_thumbnail(file)
+      av.save
+      test = ArchivalVideo.find("rockhall:fixture_pbcore_document1")
+      test.datastreams["thumbnail"].mimeType.should == "image/jpeg"
+    end
+
+  end
 
 end

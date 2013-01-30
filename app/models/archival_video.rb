@@ -49,6 +49,11 @@ class ArchivalVideo < ActiveFedora::Base
   has_metadata :name => "properties",     :type => Properties
   has_metadata :name => "assetReview",    :type => AssetReview
 
+  # The only datastream with any binary data in it is a thumbnail datastream that stores a
+  # small image of our video that we can use in the display.  Control group defaults to "M"
+  # and we set versionable to false to keep our object size small.
+  has_file_datastream :name => "thumbnail", :type=>ActiveFedora::Datastream, :label => "Thumbnail image", :versionable => false
+
   # We use the delegate_to method link term definitions and their datastreams to our
   # model's attributes.
   delegate_to :assetReview,
