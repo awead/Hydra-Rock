@@ -7,6 +7,7 @@ defaults: &defaults
   pid_space:      changeme
   wowza_host:     localhost
   video_player:   html
+  repository:     http://localhost:8983/fedora
 
 development:
   <<: *defaults

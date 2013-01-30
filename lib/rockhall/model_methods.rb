@@ -83,4 +83,10 @@ module Rockhall::ModelMethods
     self.datastreams["thumbnail"].content = file
   end
 
+  def get_thumbnail_url
+    unless self.datastreams["thumbnail"].content.nil?
+      return (RH_CONFIG["repository"] + "/" + self.datastreams["thumbnail"].url)
+    end
+  end
+
 end

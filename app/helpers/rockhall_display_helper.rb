@@ -21,10 +21,9 @@ module RockhallDisplayHelper
 
   # Determines the image to be used for the icon in the index display
   def render_icon(document)
-    unless document.fetch(:has_model_s,nil).nil?
-      path = "rockhall/" + document.fetch(:has_model_s,nil).first.split(/:/).last.underscore + ".png"
-      image_tag(path, :size=>"30x30")
-    end
+    object = ActiveFedora::Base.load_instance_from_solr(document.id)
+    url = object.get_thumbnail_url
+    url.nil? ? image_tag(("rockhall/" + object.class.to_s.underscore + ".png"), :class => "thumbnail") : image_tag(url, :class => "thumbnail")
   end
 
   def contributor_display response, results = Array.new
