@@ -105,7 +105,7 @@ describe ArchivalVideo do
 
   describe "adding thumbnails to existing videos" do
 
-    it "should attach an image to fixture" do
+    it "should attach an image to fixture from a given file" do
       file = image_fixture "rrhof.jpg"
       av = ArchivalVideo.find("rockhall:fixture_pbcore_document1")
       av.add_thumbnail(file)
@@ -113,6 +113,13 @@ describe ArchivalVideo do
       test = ArchivalVideo.find("rockhall:fixture_pbcore_document1")
       test.datastreams["thumbnail"].mimeType.should == "image/jpeg"
     end
+
+    it "should attempt to use existing access file if none is given" do
+      video = ArchivalVideo.new nil
+      video.add_thumbnail
+      video.get_thumbnail_url.should be_nil
+    end
+
 
   end
 
