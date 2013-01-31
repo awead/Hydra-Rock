@@ -115,7 +115,7 @@ function deletePublishers() {
 function reloadContributorsForm() {
 
   var pid = window.location.pathname.split("/")[2];
-  var url = "/nodes/"+pid+"/contributor/edit";
+  var url = ROOT_PATH+"nodes/"+pid+"/contributor/edit";
 
   $.ajax({
     type: "GET",
@@ -135,7 +135,7 @@ function reloadContributorsForm() {
 function reloadPublishersForm() {
 
   var pid = window.location.pathname.split("/")[2];
-  var url = "/nodes/"+pid+"/publisher/edit";
+  var url = ROOT_PATH+"nodes/"+pid+"/publisher/edit";
 
   $.ajax({
     type: "GET",
