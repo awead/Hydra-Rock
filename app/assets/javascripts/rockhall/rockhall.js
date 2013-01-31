@@ -114,7 +114,13 @@ function deletePublishers() {
 
 function reloadContributorsForm() {
 
-  var pid = window.location.pathname.split("/")[2];
+  // Look through our url and find the pid
+  var pid = jQuery.grep(window.location.pathname.split("/"), function (element) {
+    if(element.indexOf(":") !== -1) {
+      return element;
+    }
+  });
+
   var url = ROOT_PATH+"nodes/"+pid+"/contributor/edit";
 
   $.ajax({
@@ -134,7 +140,13 @@ function reloadContributorsForm() {
 
 function reloadPublishersForm() {
 
-  var pid = window.location.pathname.split("/")[2];
+  // Look through our url and find the pid
+  var pid = jQuery.grep(window.location.pathname.split("/"), function (element) {
+    if(element.indexOf(":") !== -1) {
+      return element;
+    }
+  });
+
   var url = ROOT_PATH+"nodes/"+pid+"/publisher/edit";
 
   $.ajax({
