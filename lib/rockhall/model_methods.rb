@@ -83,7 +83,10 @@ module Rockhall::ModelMethods
     if file.blank?
       unless self.external_video(:h264).count == 0
         path = File.join(RH_CONFIG["location"], self.pid.gsub(/:/,"_"), "data", self.external_video(:h264).first.name.first)
-        self.datastreams["thumbnail"].content = File.new(path) if File.exists?(path)
+        if File.exists?(path)
+          self.generate_video_thumbnail path
+          self.datastreams["thumbnail"].content = File.new("tmp/thumb.jpg")
+        end
       end
     else
       self.datastreams["thumbnail"].content = file
