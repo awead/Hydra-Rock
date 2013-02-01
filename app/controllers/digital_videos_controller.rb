@@ -13,7 +13,7 @@ class DigitalVideosController < ApplicationController
   def edit
     @afdoc = DigitalVideo.find(params[:id])
     respond_to do |format|
-      format.html  { setup_next_and_previous_documents }
+      format.html
       format.json  { render :json => @afdoc }
     end
   end
