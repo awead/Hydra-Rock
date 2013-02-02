@@ -18,33 +18,16 @@ module RockhallAssetsHelper
 
   def allow_asset_creation
     unless current_user.nil?
-      user_groups = RoleMapper.roles(current_user.login)
+      user_groups = RoleMapper.roles(current_user.email)
       if user_groups.include?("archivist") or user_groups.include?("reviewer")
         return TRUE
       end
     end
   end
 
-  def list_available_assets_to_create
-    results = String.new
-    results << "<li>"
-    results << link_to('Archival Video', new_archival_video_path)
-    results << "</li>"
-    results << "<li>"
-    results << link_to('Digital Video', new_digital_video_path)
-    results << "</li>"
-    user_groups = RoleMapper.roles(current_user.login)
-    if user_groups.include?("archivist")
-      results << "<li>"
-      results << link_to_create_asset('Basic MODS Asset', 'mods_asset')
-      results << "</li>"
-      results << "<li>"
-      results << link_to_create_asset('Image', 'generic_image')
-      results << "</li>"
-      results << "<li>"
-      results << link_to_create_asset('Generic Content', 'generic_content')
-      results << "</li>"
-    end
+  def list_available_assets_to_create results = String.new
+    results << content_tag(:li, link_to('Archival Video', new_archival_video_path))
+    results << content_tag(:li, link_to('Digital Video', new_digital_video_path))
     return results.html_safe
   end
 
@@ -94,4 +77,15 @@ module RockhallAssetsHelper
     method = model + "_path"
     return send(method, document[:id]).html_safe
   end
+
+  # Returns the url to download the access version of a video
+  def link_to_access_video text = nil, results = String.new, counter = 1
+    @afdoc.external_video(:h264).each do |ds|
+      results << link_to((text + " (" + counter.to_s + ")"), ds.datastreams["ACCESS1"].label, :class => "btn btn-inverse")
+      counter = counter + 1
+    end
+    return results.html_safe
+  end
+
+
 end

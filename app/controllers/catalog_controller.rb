@@ -2,11 +2,13 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
   include Hydra::AccessControlsEnforcement
+  include Rockhall::Controller::ControllerBehavior
 
   # User still needs the #update action in the catalog, so we only enforce Hydra
   # access controls when the user tries to just view a document they don't have
   # access to.
-  before_filter :enforce_access_controls, :only=>:show
+  before_filter :enforce_access_controls, :only => :show
+  before_filter :get_af_doc, :only => :show
 
   # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params
@@ -26,13 +28,15 @@ class CatalogController < ApplicationController
     }
 
     # solr field configuration for search results/index views
-    config.index.show_link            = 'heading_display'
-    config.index.record_display_type  = 'has_model_s'
+    config.index.show_link            = 'title_display'
+    config.index.record_display_type  = 'format'
 
     # solr field configuration for document/show views
-    config.show.html_title            = 'title_t'
-    config.show.heading               = 'title_t'
-    config.show.display_type          = 'has_model_s'
+    config.show.html_title            = 'title_display'
+    config.show.heading               = 'title_display'
+
+    # This is the field that's used to determine the partial type
+    config.show.display_type          = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -53,79 +57,80 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format',              :label => 'Content Type'
-    config.add_facet_field 'format_facet',        :label => 'Media Format'
-    config.add_facet_field 'name_facet',          :label => 'Name'
-    config.add_facet_field 'subject_topic_facet', :label => 'Topic'
-    config.add_facet_field 'genre_facet',         :label => 'Genre'
-    config.add_facet_field 'series_facet',        :label => 'Event/Series'
-    config.add_facet_field 'collection_facet',    :label => 'Collection'
-    config.add_facet_field 'language_facet',      :label => 'Language',     :limit => true
-    config.add_facet_field 'complete_t',          :label => 'Review Status'
-    config.add_facet_field 'create_date_facet',   :label => 'Year'
-    config.add_facet_field 'priority_t',          :label => 'Priority'
-    config.add_facet_field 'depositor_facet',     :label => 'Depositor'
-    config.add_facet_field 'reviewer_facet',      :label => 'Reviewer'
+    config.add_facet_field 'format',                 :label => 'Content Type',  :limit => 10
+    config.add_facet_field 'media_format_facet',     :label => 'Media Format',  :limit => 10
+    config.add_facet_field 'contributor_name_facet', :label => 'Name',          :limit => 10
+    config.add_facet_field 'subject_facet',          :label => 'Subject',       :limit => 10
+    config.add_facet_field 'genre_facet',            :label => 'Genre',         :limit => 10
+    config.add_facet_field 'series_facet',           :label => 'Event/Series',  :limit => 10
+    config.add_facet_field 'collection_facet',       :label => 'Collection',    :limit => 10
+    config.add_facet_field 'language_facet',         :label => 'Language',      :limit => true
+    config.add_facet_field 'complete_facet',         :label => 'Review Status', :limit => 10
+    config.add_facet_field 'create_date_facet',      :label => 'Year',          :limit => 10
+    config.add_facet_field 'priority_facet',         :label => 'Priority',      :limit => 10
+    config.add_facet_field 'depositor_facet',        :label => 'Depositor',     :limit => 10
+    config.add_facet_field 'reviewer_facet',         :label => 'Reviewer',      :limit => 10
+
+    # TODO: Maybe add this in later
+    #config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
+    # :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
+    # :years_10 => { :label => 'within 10 Years', :fq => "pub_date:[#{Time.now.year - 10 } TO *]" },
+    # :years_25 => { :label => 'within 25 Years', :fq => "pub_date:[#{Time.now.year - 25 } TO *]" }
+    #}
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
-    config.default_solr_params[:'facet.field'] = config.facet_fields.keys
-    #use this instead if you don't want to query facets marked :show=>false
-    #config.default_solr_params[:'facet.field'] = config.facet_fields.select{ |k, v| v[:show] != false}.keys
+    config.add_facet_fields_to_solr_request!
 
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    #config.add_index_field 'title_display',           :label => 'Title:'
-    #config.add_index_field 'title_vern_display',      :label => 'Title:'
-    #config.add_index_field 'author_display',          :label => 'Author:'
-    #config.add_index_field 'author_vern_display',     :label => 'Author:'
-    #config.add_index_field 'format',                  :label => 'Format:'
-    #config.add_index_field 'language_facet',          :label => 'Language:'
-    #config.add_index_field 'published_display',       :label => 'Published:'
-    #config.add_index_field 'published_vern_display',  :label => 'Published:'
-    #config.add_index_field 'lc_callnum_display',      :label => 'Call number:'
+    config.add_index_field 'format',         :label => 'Format:'
+    config.add_index_field 'title_display',  :label => 'Title:'
+    config.add_index_field 'complete_facet', :label => 'Review Status:'
+
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     #
     # These are fields that are shown via the catalog controller
-    config.add_show_field 'main_title_t',           :label => 'Main Title'
-    config.add_show_field 'alternative_title_t',    :label => 'Alternative Title'
-    config.add_show_field 'chapter_t',              :label => 'Capter'
-    config.add_show_field 'episode_t',              :label => 'Episode'
-    config.add_show_field 'label_t',                :label => 'Label'
-    config.add_show_field 'segment_t',              :label => 'Segment'
-    config.add_show_field 'subtitle_t',             :label => 'Subtitle'
-    config.add_show_field 'track_t',                :label => 'Track'
-    config.add_show_field 'translation_t',          :label => 'Translation'
-    config.add_show_field 'summary_t',              :label => 'Summary'
-    config.add_show_field 'parts_list_t',           :label => 'Parts List'
-    config.add_show_field 'note_t',                 :label => 'Note'
-    config.add_show_field 'subjects_t',             :label => 'Subject'
-    config.add_show_field 'genres_t',               :label => 'Genre'
-    config.add_show_field 'event_series_t',         :label => 'Event Series'
-    config.add_show_field 'event_place_t',          :label => 'Event Place'
-    config.add_show_field 'event_date_t',           :label => 'Event Date'
-    config.add_show_field 'contributors_display',   :label => 'Contributor'
-    config.add_show_field 'publisher_display',      :label => 'Publisher'
-    config.add_show_field 'creation_date_t',        :label => 'Creation Date'
-    config.add_show_field 'media_type_t',           :label => 'Media Type'
-    config.add_show_field 'standard_t',             :label => 'Standard'
-    config.add_show_field 'colors_t',               :label => 'Colors'
-    config.add_show_field 'barcode_t',              :label => 'Barcode'
-    config.add_show_field 'format_t',               :label => 'Format'
-    config.add_show_field 'generation_t',           :label => 'Generation'
-    config.add_show_field 'language_t',             :label => 'Language'
-    config.add_show_field 'repository_t',           :label => 'Repository'
-    config.add_show_field 'archival_collection_t',  :label => 'Archival Collection'
-    config.add_show_field 'archival_series_t',      :label => 'Archival Series'
-    config.add_show_field 'collection_number_t',    :label => 'Collection Number'
-    config.add_show_field 'accession_number_t',     :label => 'Accession Number'
-    config.add_show_field 'usage_t',                :label => 'Usage'
-    config.add_show_field 'condition_note_t',       :label => 'Condition Note'
-    config.add_show_field 'cleaning_note_t',        :label => 'Cleaning Note'
+    config.add_show_field 'format',                    :label => 'Format'
+    config.add_show_field 'title_display',             :label => 'Main Title'
+    config.add_show_field 'alternative_title_display', :label => 'Alternative Title'
+    config.add_show_field 'chapter_display',           :label => 'Capter'
+    config.add_show_field 'episode_display',           :label => 'Episode'
+    config.add_show_field 'label_display',             :label => 'Label'
+    config.add_show_field 'segment_display',           :label => 'Segment'
+    config.add_show_field 'subtitle_display',          :label => 'Subtitle'
+    config.add_show_field 'track_display',             :label => 'Track'
+    config.add_show_field 'translation_display',       :label => 'Translation'
+    config.add_show_field 'summary_display',           :label => 'Summary'
+    config.add_show_field 'contents_display',          :label => 'Parts List'
+    config.add_show_field 'note_display',              :label => 'Note'
+    config.add_show_field 'subject_facet',             :label => 'Subject'
+    config.add_show_field 'genre_facet',               :label => 'Genre'
+    config.add_show_field 'series_display',            :label => 'Event Series'
+    config.add_show_field 'event_place_display',       :label => 'Event Place'
+    config.add_show_field 'event_date_display',        :label => 'Event Date'
+    config.add_show_field 'contributor_name_facet',    :label => 'Contributor', :helper_method => :contributor_display
+    config.add_show_field 'publisher_name_facet',      :label => 'Publisher'
+    config.add_show_field 'creation_date_display',     :label => 'Creation Date'
+    config.add_show_field 'media_type_display',        :label => 'Media Type'
+    config.add_show_field 'standard_display',          :label => 'Standard'
+    config.add_show_field 'colors_display',            :label => 'Colors'
+    config.add_show_field 'barcode_display',           :label => 'Barcode'
+    config.add_show_field 'media_format_facet',        :label => 'Format'
+    config.add_show_field 'generation_display',        :label => 'Generation'
+    config.add_show_field 'language_display',          :label => 'Language'
+    config.add_show_field 'repository_display',        :label => 'Repository'
+    config.add_show_field 'collection_facet',          :label => 'Archival Collection'
+    config.add_show_field 'archival_series_display',   :label => 'Archival Series'
+    config.add_show_field 'collection_number_display', :label => 'Collection Number'
+    config.add_show_field 'accession_number_display',  :label => 'Accession Number'
+    config.add_show_field 'access_display',            :label => 'Usage'
+    config.add_show_field 'condition_note_display',    :label => 'Condition Note'
+    config.add_show_field 'cleaning_note_display',     :label => 'Cleaning Note'
 
 
     # "fielded" search configuration. Used by pulldown among other places.
@@ -164,14 +169,6 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
         :qf => '$title_qf',
         :pf => '$title_pf'
-      }
-    end
-
-    config.add_search_field('author') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
-      field.solr_local_parameters = {
-        :qf => '$author_qf',
-        :pf => '$author_pf'
       }
     end
 

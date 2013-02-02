@@ -1,46 +1,15 @@
-Then /^I should see a facet for "([^"]*)"$/ do |arg1|
-  regexp = Regexp.new(arg1)
-
-  if page.respond_to? :should
-    page.should have_xpath('//li', :text => regexp)
-  else
-    assert page.has_xpath?('//li', :text => regexp)
-  end
-
-end
-
-Then /^I should not see a facet for "([^"]*)"$/ do |arg1|
-  regexp = Regexp.new(arg1)
-
-  if page.respond_to? :should
-    page.should_not have_xpath('//li', :text => regexp)
-  else
-    assert !page.has_xpath?('//li', :text => regexp)
-  end
-end
-
-
-Then /^I should see the facet term "([^"]*)"$/ do |arg1|
-  regexp = Regexp.new(arg1)
-
-  if page.respond_to? :should
-    page.should have_xpath("//*/a[contains(@class, 'facet_select')]", :text => regexp)
-  else
-    assert page.has_xpath?("//*/a[contains(@class, 'facet_select')]", :text => regexp)
-  end
-
-end
-
 Then /^I should be able to follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
 Then /^I should see the field title "([^"]*)" contain "([^"]*)"$/ do |arg1, arg2|
-  page.should have_xpath("//dt[@id='#{arg1}']", :text => arg2)
+  selector = "dt." + arg1
+  find(selector, :text => arg2)
 end
 
 Then /^I should see the field content "([^"]*)" contain "([^"]*)"$/ do |arg1, arg2|
-  page.should have_xpath("//dd[@id='#{arg1}']", :text => arg2)
+  selector = "dd." + arg1
+  find(selector, :text => arg2)
 end
 
 Then /^I should see the field content "([^"]*)" not contain "([^"]*)"$/ do |arg1, arg2|
@@ -65,5 +34,21 @@ When /^I hit the enter key$/ do
 end
 
 Then /^I should see "(.*?)" in the playlist$/ do |arg1|
-  page.should have_xpath("//div[@id='playlist']", :text => arg1)
+  page.should have_xpath("//ul[@id='playlist']/li/a", :text => arg1)
+end
+
+Given /^I choose a title search$/ do
+  page.select("Title", :from => "search_field")
+end
+
+Given /^I create a new ([^"]*)$/ do |asset_type|
+  visit path_to("new #{asset_type} page")
+end
+
+Given /^I wait for (\d+) seconds$/ do |arg1|
+  sleep(arg1.to_i)
+end
+
+Given /^I close the modal window$/ do
+  click_button('close_modal')
 end

@@ -1,18 +1,12 @@
-<div id="video_box">
-
-<!-- player container-->
-<div id="player">&nbsp;</div>
-
-<!-- the playlist -->
-<%  if @afdoc.videos[:h264].count > 1 %>
-  <div id="playlist" class="clearfix" style="display:none">
-    <div>${title}</div>
+<div class="tabbable tabs-below">
+  <div id="player" class="tab-content well well-inverse">
+    <%= image_tag("rockhall/pre-screen.png", :class => "media-object") %>
   </div>
-<% end %>
-
-<!-- let rest of the page float normally -->
-<br clear="all" />
-
+  <% if @afdoc.videos[:h264].count > 1 %>
+    <ul id="playlist" class="nav nav-tabs">
+      <li><a href="#">${title}</a></li>
+    </ul>
+  <% end %>
 </div>
 
 <script type="text/javascript">
@@ -45,10 +39,7 @@
     }
   }
 
-}).playlist("#playlist");
-$("#playlist").show();
+  }).playlist("#playlist");
+  $("#playlist").show();
 
 </script>
-
-
-

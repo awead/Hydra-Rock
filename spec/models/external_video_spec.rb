@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require "spec_helper"
 
 describe ExternalVideo do
 
@@ -31,6 +31,27 @@ describe ExternalVideo do
       ExternalVideo.garbage_collect("_non_orphan_pid_")
       ExternalVideo.garbage_collect("_orphan_pid_")
     end
+  end
+
+  describe "file order" do
+    it "should have a next file" do
+      @video.insert_next("foo.mp4")
+      @video.next.should == ["foo.mp4"]
+    end
+
+    it "should have a previous file" do
+      @video.insert_previous("foo.mp4")
+      @video.previous.should == ["foo.mp4"]
+    end
+  end
+
+  describe "relationships" do
+
+    it "should have a single parent video" do
+      ev = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2642")
+      ev.parent.should be_kind_of(DigitalVideo)
+    end
+
   end
 
 end

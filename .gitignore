@@ -1,7 +1,7 @@
 .bundle
 db/*.sqlite3
 log/*.log
-tmp/
+tmp/*
 jetty/*
 *.swp
 .rspec
@@ -13,3 +13,4 @@ public/assets/*
 nohup.out
 hydra-rock.sublime-project
 hydra-rock.sublime-workspace
+.DS_Store

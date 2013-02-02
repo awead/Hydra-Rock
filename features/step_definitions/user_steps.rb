@@ -3,16 +3,13 @@
 # @example
 #   I am logged in as "archivist1@example.com"
 Given /^I (?:am )?log(?:ged)? in as "([^\"]*)"$/ do |email|
-  # Given %{a User exists with a Login of "#{login}"}
   user = User.create(:email => email, :password => "password", :password_confirmation => "password")
   User.find_by_email(email).should_not be_nil
   visit destroy_user_session_path
   visit new_user_session_path
-  fill_in "Email", :with => email
-  fill_in "Password", :with => "password"
+  find("input#user_email").set email
+  find("input#user_password").set "password"
   click_button "Sign in"
-  #step %{I should see a link to "my account info" with label "#{email}"}
-  #step %{I should see a link to "logout"}
 end
 
 Given /^I am logged in as "([^\"]*)" with "([^\"]*)" permissions$/ do |login,permission_group|

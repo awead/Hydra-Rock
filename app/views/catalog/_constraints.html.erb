@@ -1,7 +1,6 @@
-<div id="appliedParams" class="well">
-
-	<h6>You searched for:</h6>
-
-  <%= render_constraints(localized_params) %>
-
-</div>
+<% if query_has_constraints? %>
+  <div class="well well-info">
+    <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>  
+    <%= render_constraints(params) %>  
+  </div>
+<% end %>

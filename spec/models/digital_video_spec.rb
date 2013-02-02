@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require "spec_helper"
 
 describe DigitalVideo do
 
@@ -17,18 +17,24 @@ describe DigitalVideo do
       @video.should respond_to(:apply_depositor_metadata)
     end
 
-    describe "#insert_node" do
-      it "should insert a new node into the existing xml" do
-        node, index = @video.insert_node("contributor")
-        index.should == 0
+    describe "using templates to manage multi-valued terms" do
+      it "should insert contributors" do
+        @video.new_contributor({:name=> "Name", :role => "role"})
+        @video.contributor_name.should == ["Name"]
+        @video.contributor_role.should == ["role"]
+        @video.new_contributor({:name=> "Name2", :role => "role2"})
+        @video.contributor_name.should == ["Name", "Name2"]
+        @video.contributor_role.should == ["role", "role2"]
       end
-    end
 
-    describe "#remove_node" do
-      it "should remove a node from the existing xml" do
-        node, index = @video.insert_node("contributor")
-        index.should == 0
-        @video.remove_node("contributor","0")
+      it "should remove contributors" do
+        @video.new_contributor({:name=> "Name", :role => "role"})
+        @video.new_contributor({:name=> "Name2", :role => "role2"})
+        @video.contributor_name.should == ["Name", "Name2"]
+        @video.contributor_role.should == ["role", "role2"]
+        @video.delete_contributor(0)
+        @video.contributor_name.should == ["Name2"]
+        @video.contributor_role.should == ["role2"]
       end
     end
 
@@ -62,21 +68,21 @@ describe DigitalVideo do
 
   end
 
-  describe "#videos" do
-    it "should return a hash of videos" do
-      av = ArchivalVideo.find("rockhall:fixture_pbcore_digital_document1")
-      av.file_objects.count.should == 6
-      av.videos.should be_kind_of(Hash)
+  describe "relationships" do
+    it "should return a hash of external videos" do
+      dv = DigitalVideo.find("rockhall:fixture_pbcore_digital_document1")
+      dv.external_videos.count.should == 6
+      dv.external_videos.first.should be_kind_of(ExternalVideo)
     end
   end
 
   describe "#addl_solr_fields" do
     it "should return a hash of additional fields that will be included in the solr discovery export" do
-      av = ArchivalVideo.find("rockhall:fixture_pbcore_digital_document1")
-      addl_doc = av.addl_solr_fields
+      dv = DigitalVideo.find("rockhall:fixture_pbcore_digital_document1")
+      addl_doc = dv.addl_solr_fields
       addl_doc.should be_kind_of(Hash)
       addl_doc[:access_file_s].should be_kind_of(Array)
-      addl_doc[:access_file_s].should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
+      addl_doc[:access_file_s].sort.should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
       # TODO: get fields from mediainfo into PBCore
       #addl_doc[:format_dtl_display].should == [["H.264/MPEG-4 AVC"]]
     end

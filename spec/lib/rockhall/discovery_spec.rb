@@ -1,52 +1,47 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require "spec_helper"
 
 describe Rockhall::Discovery do
 
+  before :all do
+    @d = Rockhall::Discovery.new
+    @d.update
+  end
 
-  describe "#get_objects" do
+  after :all do
+    @d.delete
+    @d.blacklight_items.length.should == 0
+  end
 
-    before(:all) do
-      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      solrizer = Solrizer::Fedora::Solrizer.new
-      solrizer.solrize_objects
+  it "should create a connection to our Blacklight solr index" do
+    @d.solr.should be_a_kind_of(RSolr::Client)
+  end
+
+  describe "Items in Hydra" do
+    it "should be an array of publically available ActiveFedora model objects" do
+      @d.public_items.should be_a_kind_of(Array)
+      @d.public_items.count.should == 3
     end
+  end
 
-    after(:all) do
-      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      solrizer = Solrizer::Fedora::Solrizer.new
-      solrizer.solrize_objects
-      Rockhall::Discovery.delete_objects
-      Rockhall::Discovery.update
-    end
+  describe "Items in Blacklight" do
 
-    it "should delete all ArchivalVideos from the remote Blacklight index" do
-      Rockhall::Discovery.delete_objects
-      docs = Rockhall::Discovery.get_objects({:remote=>TRUE})
-      docs.should be_empty
-    end
-
-    it "should return a list of current documents" do
-      docs = Rockhall::Discovery.get_objects
-      docs.count.should == 2
-    end
-
-    it "should return an updated list of new videos" do
-      av = ArchivalVideo.new
-      av.main_title = "Sample title"
-      av.datastreams["rightsMetadata"].update_permissions( "group"=>{"public"=>"read"} )
-      av.save
-      docs = Rockhall::Discovery.get_objects
-      docs.count.should == 3
-    end
-
-    it "should update the Blacklight index with new videos" do
-      pending "Forcoming blacklight solr update"
-      Rockhall::Discovery.update
-      docs = Rockhall::Discovery.get_objects({:remote=>TRUE})
-      docs.count.should == 2
+    it "should be take from public_items" do
+      @d.blacklight_items.length.should == 3
     end
 
   end
 
+  describe ".addl_solr_fields" do
+    it "should return a list of additional fields for a digital video" do
+      fields = @d.addl_solr_fields("rockhall:fixture_pbcore_digital_document1")
+      fields[:access_file_s].should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
+      fields[:format_dtl_display].should == [""]    
+    end
+    it "should return a list of additional fiels for an achival video" do
+      fields = @d.addl_solr_fields("rrhof:331")
+      fields[:access_file_s].should == ["39156042459763_access.mp4"]
+      fields[:format_dtl_display].should == ["H.264/MPEG-4 AVC"]
+    end
+  end
 
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe DigitalVideosController do
 
@@ -6,7 +6,7 @@ describe DigitalVideosController do
 
   describe "when the user is not logged in" do
 
-    it "should redirect me to the login page" do
+    it "should redirect me to the sign-in page" do
       get :new
       assert_redirected_to new_user_session_path
       post :create
@@ -34,7 +34,7 @@ describe DigitalVideosController do
 
     describe "#create" do
       it "should save a new digital video" do
-        post :create, :digital_video => {:main_title => "Fake title"}
+        post :create, :digital_video => {:title => "Fake title"}
         assert_equal 'Video was successfully created.', flash[:notice]
       end
     end

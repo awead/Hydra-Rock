@@ -1,16 +1,27 @@
-<tr>
-  <td>
-    <%= image_tag("rockhall/#{document_type(document).underscore}.png", :size=>"30x30") %>
-  </td>
-  <td>
-    <%= link_to_document(document,
-                         :label => blacklight_config.show.heading.to_sym,
-                         :counter => (counter + 1 + @response.params[:start].to_i)) %>
-  </td>
-  <td style="white-space: nowrap">
-    <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>
-  </td>
-  <td style="text-align: center">
-    <%= get_review_status_from_solr_doc(document) %>
-  </td>
-</tr>
+<table class="table table-striped table-condensed">
+
+  <tr>
+    <th class="format">Format</th>
+    <th class="title">Title</th>
+    <th class="deposited">Deposited</th>
+    <th class="reviewed">Reviewed</th>
+    <th class="bookmark">Bookmark</th>
+  </tr>
+
+  <% @document_list.each_with_index do |document,counter| %>
+    <tr>
+      <td><%= render_icon(document) %></td>
+      <td>
+        <%= link_to_document(document,
+              :label => blacklight_config.show.heading.to_sym,
+              :counter => (counter + 1 + @response.params[:start].to_i)) %>
+      </td>
+      <td style="white-space: nowrap">
+        <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>
+      </td>
+      <td style="text-align: center"><%= document.fetch(:complete_facet,nil).first %></td>
+      <td><%= render :partial => "catalog/bookmark_control", :locals => {:document => document } %></td>
+    </tr>
+  <% end %>
+
+</table>

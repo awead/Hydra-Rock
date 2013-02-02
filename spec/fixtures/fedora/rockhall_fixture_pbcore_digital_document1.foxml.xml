@@ -679,8 +679,8 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <fields>
   <reviewer>reviewer1@example.com</reviewer>
   <date_updated>2012-04-05</date_updated>
-  <complete>yes</complete>
-  <abstract>This is oral history has been reviewed and it kicks ass.</abstract>
+  <complete>no</complete>
+  <abstract>This is oral history needs to be reviewed.</abstract>
   <license>Rockhall Use Only</license>
   <priority>normal</priority>
 </fields>

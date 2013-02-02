@@ -5,6 +5,10 @@ module RockhallNavbarHelper
     @navbar_items ||= []
   end
 
+  def render_add_assets
+    render :partial=>"shared/navbar_partials/add_assets_links" if allow_asset_creation
+  end
+
   # navbar items if a user is logged in
   def render_user_navbar(model, opts={})
     result = String.new
@@ -14,7 +18,7 @@ module RockhallNavbarHelper
         result << link_to('<i class="icon-eye-open"></i> View </a>'.html_safe, catalog_path(params[:id]))
         result << "</li>"
       else
-        if Hydra.config[:submission_workflow][model.to_sym].nil? or RoleMapper.roles(current_user.login).include?("reviewer")
+        if Hydra.config[:submission_workflow][model.to_sym].nil? or RoleMapper.roles(current_user.email).include?("reviewer")
           result << "<li>"
           result << link_to_edit_asset('<i class="icon-pencil"></i> Edit </a>'.html_safe, model)
           result << "</li>"
@@ -56,6 +60,7 @@ module RockhallNavbarHelper
     return results.html_safe
   end
 
+  # deprecated
   def add_dropdown
     results = String.new
     results << '<li class="dropdown">'
@@ -68,71 +73,7 @@ module RockhallNavbarHelper
     end
     results << '</ul>'
     results << '</li>'
-    return results.html_safe
-  end
-
-  def next_previous_dropdown
-    result = String.new
-    if @previous_document || @next_document
-      result << '<li class="dropdown">'
-      result << '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'
-      result << '<i class="icon-folder-open"></i>'
-      result << 'Document ' + session[:search][:counter].to_s + ' of ' + format_num(session[:search][:total])
-      result << '<b class="caret"></b>'
-      result << '</a>'
-      result << '<ul class="dropdown-menu">'
-      if @previous_document
-        result << '<li>'
-        if params[:action] == "edit"
-          result << link_to('<i class="icon-arrow-left"></i> Previous'.html_safe,
-                             url_for_asset_from_solr_doc(@previous_document),
-                            :'data-counter' => session[:search][:counter].to_i - 1)
-        else
-          result << link_to('<i class="icon-arrow-left"></i> Previous'.html_safe,
-                             catalog_path(@previous_document),
-                            :'data-counter' => session[:search][:counter].to_i - 1)
-        end
-        result << '</li>'
-      end
-      if  @next_document
-        result << '<li>'
-        if params[:action] == "edit"
-          result << link_to('<i class="icon-arrow-right"></i> Next'.html_safe,
-                            url_for_asset_from_solr_doc(@next_document),
-                            :'data-counter' => session[:search][:counter].to_i + 1)
-        else
-          result << link_to('<i class="icon-arrow-right"></i> Next'.html_safe,
-                            catalog_path(@next_document),
-                            :'data-counter' => session[:search][:counter].to_i + 1)
-        end
-        result << '</li>'
-      end
-      result << '</ul>'
-      result << '</li>'
-    end
-    return result.html_safe
-  end
-
-  def video_links_dropdown
-    result = String.new
-    if @afdoc.file_objects.count > 0
-      result << '<li class="dropdown">'
-      result << '<a href="#" class="dropdown-toggle" data-toggle="dropdown">'
-      result << '<i class="icon-facetime-video"></i> Video <b class="caret"></b></a>'
-      result << '<ul class="dropdown-menu">'
-      @afdoc.videos.keys.each do |type|
-        unless @afdoc.videos[type.to_sym].empty?
-          @afdoc.videos[type.to_sym].each do |obj|
-           result << '<li>'
-           result << link_to( obj.name.first, external_video_path(obj.pid) )
-           result << '</li>'
-          end
-        end
-      end
-      result << '</ul>'
-      result << '</li>'
-    end
-    return result.html_safe
+    return nil
   end
 
 end

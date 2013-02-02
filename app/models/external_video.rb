@@ -5,20 +5,20 @@ class ExternalVideo < ActiveFedora::Base
   include ActiveFedora::Relationships
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
+  include Rockhall::TemplateMethods
 
   after_create :apply_default_permissions
 
-  has_relationship "is_member_of_collection", :has_collection_member, :inbound => true
-  has_bidirectional_relationship "part_of", :is_part_of, :has_part
+  belongs_to :parent, :property => :is_part_of
 
   # Object will have either an access or a perservation datastream but not both
-  has_datastream :name=>"access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
-  has_datastream :name=>"preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name => "access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name => "preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreInstantiation
-  has_metadata :name => "mediaInfo",      :type => MediainfoXml::Document
-  has_metadata :name => "properties",     :type => Rockhall::Properties
+  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Deprecated::Instantiation
+  has_metadata :name => "mediaInfo",      :type => MediainfoXml
+  has_metadata :name => "properties",     :type => Properties
 
   delegate_to :descMetadata,
     [ :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 
@@ -53,7 +53,7 @@ class ExternalVideo < ActiveFedora::Base
   # Originally duplicated from FileAssets
   def self.garbage_collect(pid)
     begin
-      obj = ExternalVideo.load_instance(pid)
+      obj = ExternalVideo.find(pid)
       if obj.containers.empty?
         obj.delete
       end

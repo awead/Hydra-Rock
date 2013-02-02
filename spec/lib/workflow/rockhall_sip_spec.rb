@@ -1,9 +1,9 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require "spec_helper"
 
 describe Workflow::RockhallSip do
 
   before(:each) do
-    @sip = Workflow::RockhallSip.new("spec/fixtures/rockhall/sips/digital_video_sip")
+    @sip = Workflow::RockhallSip.new(sip "digital_video_sip")
   end
 
   describe "creating a new sip" do
@@ -84,15 +84,11 @@ describe Workflow::RockhallSip do
   describe "preparing a sip" do
 
     before(:each) do
-      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      solrizer = Solrizer::Fedora::Solrizer.new
-      solrizer.solrize_objects
+      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
     end
 
     after(:each) do
-      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      solrizer = Solrizer::Fedora::Solrizer.new
-      solrizer.solrize_objects
+      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
     end
 
     it "should prepare it for ingestion" do
@@ -114,13 +110,11 @@ describe Workflow::RockhallSip do
   describe "reusing a sip" do
 
     after(:each) do
-      Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      solrizer = Solrizer::Fedora::Solrizer.new
-      solrizer.solrize_objects
+      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
     end
 
     it "should use the previously defined pid" do
-      sip = Workflow::GbvSip.new("spec/fixtures/rockhall/sips/39156042439369")
+      sip = Workflow::GbvSip.new(sip "39156042439369")
       sip.base = RH_CONFIG["pid_space"] + "_10"
       sip.reuse
       sip.pid.should == RH_CONFIG["pid_space"] + ":10"

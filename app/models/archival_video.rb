@@ -22,6 +22,7 @@ class ArchivalVideo < ActiveFedora::Base
   include Rockhall::WorkflowMethods
   include ActiveModel::Validations
   include Rockhall::Validations
+  include Rockhall::TemplateMethods
 
   # ActiveFedora implements callbacks just like ActiveRecord does and you can specify
   # them here.  #apply_default_permissions is a particular method in our local Rockhall
@@ -36,7 +37,7 @@ class ArchivalVideo < ActiveFedora::Base
   # assert an "isPartOf" relationship.  The fact that it is "inbound" means that the
   # relationship is incoming from another object, like inbound traffic coming in from
   # somewhere.
-  has_relationship "objects", :is_part_of, :inbound => true
+  has_many :external_videos, :property => :is_part_of, :inbound => true
 
   # This is the essential "meat" section of our model where we actually define which
   # datastreams are in our objects and what's in them.  The name of the datastream is
@@ -44,9 +45,14 @@ class ArchivalVideo < ActiveFedora::Base
   # datastreams listed below are all xml datastreams that use an OM terminology to
   # define their terms.
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => Rockhall::PbcoreDocument
-  has_metadata :name => "properties",     :type => Rockhall::Properties
-  has_metadata :name => "assetReview",    :type => Rockhall::AssetReview
+  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Deprecated::Document
+  has_metadata :name => "properties",     :type => Properties
+  has_metadata :name => "assetReview",    :type => AssetReview
+
+  # The only datastream with any binary data in it is a thumbnail datastream that stores a
+  # small image of our video that we can use in the display.  Control group defaults to "M"
+  # and we set versionable to false to keep our object size small.
+  has_file_datastream :name => "thumbnail", :type=>ActiveFedora::Datastream, :label => "Thumbnail image", :versionable => false
 
   # We use the delegate_to method link term definitions and their datastreams to our
   # model's attributes.
@@ -55,16 +61,16 @@ class ArchivalVideo < ActiveFedora::Base
 
   delegate_to :descMetadata,
     [:alternative_title, :chapter, :episode, :segment, :subtitle, :track,
-     :translation, :lc_subject, :lc_name, :rh_subject, :subjects, :summary, :parts_list,
-     :getty_genre, :lc_genre, :lc_subject_genre, :genres, :event_series, :event_place,
+     :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
+     :getty_genre, :lc_genre, :lc_subject_genre, :genre, :series, :event_place,
      :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
-     :note, :creation_date, :barcode, :repository, :format, :standard, :media_type,
-     :generation, :language, :colors, :archival_collection, :archival_series,
-     :collection_number, :accession_number, :usage, :condition_note, :cleaning_note]
+     :note, :creation_date, :barcode, :repository, :media_format, :standard, :media_type,
+     :generation, :language, :colors, :collection, :archival_series,
+     :collection_number, :accession_number, :access, :condition_note, :cleaning_note]
 
   # Fields with only one value
-  delegate :main_title, :to=> :descMetadata, :unique=>true
-  validates_presence_of :main_title, :message => "Main title can't be blank"
+  delegate :title, :to=> :descMetadata, :unique=>true
+  validates_presence_of :title, :message => "Main title can't be blank"
 
   # label is used for the Fedora object, so we have to call our label something else
   delegate :title_label, :to=> :descMetadata, :at=>[:label]

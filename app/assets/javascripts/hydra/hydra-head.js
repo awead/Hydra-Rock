@@ -1,1 +1,0 @@
-// Wipe out all hydra-head js for now

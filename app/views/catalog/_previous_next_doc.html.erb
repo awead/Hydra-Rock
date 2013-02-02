@@ -1,0 +1,10 @@
+<% #Using the Bootstrap Pagination class  -%>
+<% navbar_items << capture do %>
+  <% if @previous_document || @next_document %>
+    <ul class="nav pull-right">
+      <li><p class="navbar-text">
+        <%= link_to_previous_document @previous_document %> | <%= item_page_entry_info %> | <%= link_to_next_document @next_document %>
+      </p></li>
+  </ul>
+  <% end %>
+<% end %>

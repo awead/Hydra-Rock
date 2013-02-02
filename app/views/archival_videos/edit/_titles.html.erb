@@ -3,8 +3,8 @@
   <fieldset id="required_title">
     <legend>Required Title</legend>
     <p class="legend-caption">A single, main title is required.  This may be the title of the event or program, it may be the title as it appears on the source tape</p>
-    <%= f.label :main_title, :class=>"field" %>
-    <%= f.text_field :main_title, :name=>"document_fields[main_title]", :class=>"edit span6" %>
+    <%= f.label "Main Title", :class=>"field" %>
+    <%= f.text_field :title, :name=>"document_fields[title]", :class=>"edit span6" %>
   </fieldset>
 
   <fieldset id="optional_titles">
@@ -21,8 +21,8 @@
     <p class="legend-caption">Provide additional descriptive information as needed.</p>
     <%= f.label :summary, :class=>"field" %>
     <%= f.text_area :summary, :id=>"summary", :name=>"document_fields[summary][]", :value => @afdoc.summary.first, :class=>"edit span5" %>
-    <%= f.label :parts_list, :class=>"field" %>
-    <%= f.text_area :parts_list, :id=>"parts_list", :name=>"document_fields[parts_list][]", :value => @afdoc.parts_list.first, :class=>"edit span5" %>
+    <%= f.label "Parts List", :class=>"field" %>
+    <%= f.text_area :contents, :id=>"contents", :name=>"document_fields[contents][]", :value => @afdoc.contents.first, :class=>"edit span5" %>
     <%= f.label :note, :class=>"field" %>
     <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@afdoc.note, :multiple=>TRUE } %>
   </fieldset>

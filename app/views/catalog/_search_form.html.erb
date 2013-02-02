@@ -1,1 +1,39 @@
-<% #moved to navbar in layouts/hydra-head %>
+<!-- Navbar: Search and sign-in to account -->
+<ul class="nav pull-right">
+  <%= form_tag search_action_url, :method => :get, :class => 'navbar-search' do %>
+    <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page]).html_safe %> 
+
+    <% unless search_fields.empty? %>
+      <div class="pull-left">
+        <%= select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => t('blacklight.search.form.search_field.title'), :class=>"search_field input-small") %>
+        <span class="hide-text"><%= t('blacklight.search.form.search_field.post_label') %></span>
+      </div>
+      <% end %>
+       <div class="input-append pull-left">
+         <%= text_field_tag :q, params[:q], :placeholder => t('blacklight.search.form.q'), :class => "search_q q", :id => "q"%>
+        <button type="submit" class="btn btn-primary search-btn" id="search">
+          <span class="submit-search-text"><%=t('blacklight.search.form.submit')%></span>
+        </button>
+
+       </div>
+
+  <% end %>
+
+
+  <% unless session[:search][:q].nil? and session[:search][:f].nil? %>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="icon-search"></i> Results <b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <% unless session[:search][:q].nil? and session[:search][:f].nil? %>
+          <li><%= link_back_to_catalog %></li>
+          <li><%= link_to("Start Over", root_path ) %></li>
+          <li class="divider"></li>
+        <% end %>
+        <li><%= link_to "Search History", search_history_path %></li>
+      </ul>
+    </li>
+  <% end %>
+  <%= render :partial=>"shared/navbar_partials/user_acct_links" %>
+</ul>

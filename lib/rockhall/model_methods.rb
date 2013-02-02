@@ -1,34 +1,5 @@
 module Rockhall::ModelMethods
 
-  # Call insert_subject on the descMetadata datastream
-  def insert_subject(type, opts={})
-    ds = self.datastreams["descMetadata"]
-    node, index = ds.insert_subject(type,opts)
-    return node, index
-  end
-
-  # Call remove_contributor on the descMetadata datastream
-  # We only need the numbered index node since type is irrelevant
-  def remove_subject(index)
-    ds = self.datastreams["descMetadata"]
-    result = ds.remove_subject(index)
-    return result
-  end
-
-  # Call the insert_node method for PBcore xml
-  def insert_node(type, opts={})
-    ds = self.datastreams["descMetadata"]
-    node, index = ds.insert_node(type,opts)
-    return node, index
-  end
-
-  # Call the remove_node method for PBcore xml
-  def remove_node(type, index)
-    ds = self.datastreams["descMetadata"]
-    result = ds.remove_node(type,index)
-    return result
-  end
-
   # Adds depositor information
   def apply_depositor_metadata(depositor_id)
     self.depositor = depositor_id
@@ -36,9 +7,9 @@ module Rockhall::ModelMethods
   end
 
   # Removes any child objects that linked to the parent via RELS-EXT
-  def remove_file_objects
-    if self.file_objects.count > 0
-      self.file_objects.each do |obj|
+  def remove_external_videos
+    if self.external_videos.count > 0
+      self.external_videos.each do |obj|
         ActiveFedora::Base.find(obj.pid).delete
       end
       return true
@@ -50,7 +21,7 @@ module Rockhall::ModelMethods
   # Returns an array of child video objects based on the child's Fedora label
   def external_video(type)
     results = Array.new
-    self.file_objects.each do |obj|
+    self.external_videos.each do |obj|
       if type.to_s == obj.label
         results << obj
       end
@@ -65,7 +36,7 @@ module Rockhall::ModelMethods
     results[:unknown]  = Array.new
     results[:original] = Array.new
     results[:h264]     = Array.new
-    self.file_objects.each do |obj|
+    self.external_videos.each do |obj|
       if obj.datastreams.keys.include?("PRESERVATION1")
         results[:original] << obj
       elsif obj.datastreams.keys.include?("ACCESS1")
@@ -106,6 +77,26 @@ module Rockhall::ModelMethods
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
     self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
     self.save
+  end
+
+  def add_thumbnail file = String.new
+    if file.blank?
+      unless self.external_video(:h264).count == 0
+        path = File.join(RH_CONFIG["location"], self.pid.gsub(/:/,"_"), "data", self.external_video(:h264).first.name.first)
+        if File.exists?(path)
+          self.generate_video_thumbnail path
+          self.datastreams["thumbnail"].content = File.new("tmp/thumb.jpg")
+        end
+      end
+    else
+      self.datastreams["thumbnail"].content = file
+    end
+  end
+
+  def get_thumbnail_url
+    unless self.datastreams["thumbnail"].content.nil?
+      return (RH_CONFIG["repository"] + "/" + self.datastreams["thumbnail"].url)
+    end
   end
 
 end

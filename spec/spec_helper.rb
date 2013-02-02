@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require "equivalent-xml"
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -36,4 +37,29 @@ RSpec.configure do |config|
   #     --seed 1234
   # Ingest tests are order dependent!
   # config.order = "random"
+end
+
+# Helper method for our local fixtires
+def fixture(file)
+  File.new(File.join(File.dirname(__FILE__), 'fixtures', file))
+end
+
+# Helper method for fedora fixtures
+def fedora_fixture(file)
+  File.new(File.join(File.dirname(__FILE__), 'fixtures', 'fedora', file))
+end
+
+# Returns the full path to a sip
+def sip(dir)
+  File.join(File.dirname(__FILE__), 'fixtures', 'sips', dir)
+end
+
+# Image fixture
+def image_fixture file
+  File.new(File.join(File.dirname(__FILE__), 'fixtures', 'images', file))
+end
+
+# Video fixture
+def video_fixture
+  File.new(File.join(File.dirname(__FILE__), 'fixtures/sips/digital_video_sip/data/content_001_access.mp4'))
 end

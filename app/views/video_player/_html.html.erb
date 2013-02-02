@@ -1,0 +1,10 @@
+<div class="well well-inverse">
+  <div id="dots" class="flowplayer">
+    <video>
+      <source type="video/mp4" src="<%= @afdoc.external_video(:h264).first.datastreams["ACCESS1"].label %>"/>
+    </video>
+    <div class="fp-playlist">
+      <%= flowplayer_playlist %>
+    </div>
+  </div>
+</div>

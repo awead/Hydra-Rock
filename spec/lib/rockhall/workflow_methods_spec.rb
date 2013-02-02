@@ -1,6 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
-require "active_fedora"
-require "nokogiri"
+require "spec_helper"
 
 describe Rockhall::WorkflowMethods do
 
@@ -85,7 +83,7 @@ describe Rockhall::WorkflowMethods do
   describe "get_file" do
 
     it "should return a filename if it exists" do
-      path = "spec/fixtures/rockhall/sips/39156042439369/data/39156042439369_access.mp4"
+      path = File.join(sip("39156042439369"), "data/39156042439369_access.mp4")
       @wf.get_file(path).should == "39156042439369_access.mp4"
     end
 
@@ -206,6 +204,18 @@ describe Rockhall::WorkflowMethods do
       @wf.get_previous(0,2).should be_nil
       @wf.get_previous(0,3).should be_nil
       @wf.get_previous(0,4).should be_nil
+    end
+
+  end
+
+  describe "#generate_video_thumbnail" do
+
+    it "should create a jpeg thumbnail from a video file" do
+      video = video_fixture
+      @wf.generate_video_thumbnail(video.path)
+      File.new("tmp/thumb.jpg").should be_kind_of File
+      # cleanup
+      FileUtils.rm("tmp/thumb.jpg")
     end
 
   end

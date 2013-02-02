@@ -1,21 +1,19 @@
 class ArchivalVideosController < ApplicationController
+  
   include Blacklight::Catalog
-  include Hydra::Catalog
-  include Hydra::Controller
+  include Hydra::Controller::ControllerBehavior
   include Hydra::AssetsControllerHelper  # This is to get apply_depositor_metadata method
-  include Rockhall::Controller::ControllerBehaviour
+  include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
   before_filter :enforce_access_controls
   before_filter :enforce_asset_creation_restrictions, :only=>:new
   prepend_before_filter :enforce_review_controls, :only=>:edit
-  #before_filter :enforce_viewing_context_for_show_requests, :only=>[:show]
-  #before_filter :search_session, :history_session
 
   def edit
     @afdoc = ArchivalVideo.find(params[:id])
     respond_to do |format|
-      format.html  { setup_next_and_previous_documents }
+      format.html
       format.json  { render :json => @afdoc }
     end
   end
@@ -40,7 +38,7 @@ class ArchivalVideosController < ApplicationController
 
   def create
     @afdoc = ArchivalVideo.new(params[:archival_video])
-    @afdoc.apply_depositor_metadata(current_user.login)
+    @afdoc.apply_depositor_metadata(current_user.email)
     respond_to do |format|
       if @afdoc.save
         format.html { redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was successfully created.') }
@@ -59,7 +57,6 @@ class ArchivalVideosController < ApplicationController
     update_session
     @afdoc = ArchivalVideo.find(params[:id])
     changes = changed_fields(params)
-    logger.info("Changed fields are: " + changes.inspect )
     if changes.empty?
       redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]))
     else

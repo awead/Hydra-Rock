@@ -1,5 +1,4 @@
-#require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
-require 'spec_helper'
+require "spec_helper"
 
 describe ExternalVideosController do
 
@@ -7,7 +6,7 @@ describe ExternalVideosController do
 
   describe "when the user is not logged in" do
 
-    it "should redirect me to the login page" do
+    it "should redirect me to the sign-in page" do
       pending
     end
 

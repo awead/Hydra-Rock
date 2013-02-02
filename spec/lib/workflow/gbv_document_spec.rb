@@ -1,10 +1,9 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require "spec_helper"
 
 describe Workflow::GbvDocument do
 
   before(:all) do
-    file = File.new("spec/fixtures/rockhall/gbv_document_fixture.xml")
-    xml = Nokogiri::XML(file)
+    xml = Nokogiri::XML(fixture "gbv_document_fixture.xml")
     @doc = Workflow::GbvDocument.from_xml(xml)
   end
 

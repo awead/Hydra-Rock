@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require "spec_helper"
 
 describe ArchivalVideo do
 
@@ -17,18 +17,24 @@ describe ArchivalVideo do
       @video.should respond_to(:apply_depositor_metadata)
     end
 
-    describe "#insert_node" do
-      it "should insert a new node into the existing xml" do
-        node, index = @video.insert_node("contributor")
-        index.should == 0
+    describe "using templates to manage multi-valued terms" do
+      it "should insert contributors" do
+        @video.new_contributor({:name=> "Name", :role => "role"})
+        @video.contributor_name.should == ["Name"]
+        @video.contributor_role.should == ["role"]
+        @video.new_contributor({:name=> "Name2", :role => "role2"})
+        @video.contributor_name.should == ["Name", "Name2"]
+        @video.contributor_role.should == ["role", "role2"]
       end
-    end
 
-    describe "#remove_node" do
-      it "should remove a node from the existing xml" do
-        node, index = @video.insert_node("contributor")
-        index.should == 0
-        @video.remove_node("contributor","0")
+      it "should remove contributors" do
+        @video.new_contributor({:name=> "Name", :role => "role"})
+        @video.new_contributor({:name=> "Name2", :role => "role2"})
+        @video.contributor_name.should == ["Name", "Name2"]
+        @video.contributor_role.should == ["role", "role2"]
+        @video.delete_contributor(0)
+        @video.contributor_name.should == ["Name2"]
+        @video.contributor_role.should == ["role2"]
       end
     end
 
@@ -47,11 +53,13 @@ describe ArchivalVideo do
       end
       it "should allow for 4-digit date" do
         @video.creation_date = "1999"
-        @video.to_solr[:pub_date].should == "1999"
+        @video.to_solr["creation_date_display"].should == ["1999"]
+        @video.to_solr["creation_date_dt"].should == ["1999-01-01T00:00:00Z"]
       end
       it "should use an incomplete date" do
         @video.creation_date = "2001-12"
-        @video.to_solr[:pub_date].should == "2001"
+        @video.to_solr["creation_date_display"].should == ["2001-12"]
+        @video.to_solr["creation_date_dt"].should == ["2001-12-01T00:00:00Z"]
       end
     end
 
@@ -68,13 +76,19 @@ describe ArchivalVideo do
       end
     end
 
+    it "should create a thumbnail" do
+      file = image_fixture "rrhof.jpg"
+      @video.add_thumbnail(file)
+      @video.datastreams["thumbnail"].content.should be_kind_of File
+    end
+
   end
 
-  describe "#videos" do
-    it "should return a hash of videos" do
+  describe "relationships" do
+    it "should return a hash of external video objects" do
       av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
-      av.file_objects.count.should == 2
-      av.videos.should be_kind_of(Hash)
+      av.external_videos.count.should == 2
+      av.external_videos.first.should be_kind_of(ExternalVideo)
     end
   end
 
@@ -89,5 +103,24 @@ describe ArchivalVideo do
     end
   end
 
+  describe "adding thumbnails to existing videos" do
+
+    it "should attach an image to fixture from a given file" do
+      file = image_fixture "rrhof.jpg"
+      av = ArchivalVideo.find("rockhall:fixture_pbcore_document1")
+      av.add_thumbnail(file)
+      av.save
+      test = ArchivalVideo.find("rockhall:fixture_pbcore_document1")
+      test.datastreams["thumbnail"].mimeType.should == "image/jpeg"
+    end
+
+    it "should attempt to use existing access file if none is given" do
+      video = ArchivalVideo.new nil
+      video.add_thumbnail
+      video.get_thumbnail_url.should be_nil
+    end
+
+
+  end
 
 end

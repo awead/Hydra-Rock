@@ -1,0 +1,10 @@
+<%= render :partial => "catalog/bookmark_control", :locals => {:document => @document } %>
+<h3>Catalog Record</h2>
+<%= render :partial => "catalog/show_default", :locals => {:document => @document}  %>
+
+<h3>Review Information</h2>
+<%= render :partial => "shared/show/review" %>
+
+<% navbar_items << capture do %>
+  <%= render_user_navbar(@document["active_fedora_model_s"].first.underscore.pluralize) %>
+<% end %>

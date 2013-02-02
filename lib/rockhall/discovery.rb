@@ -1,64 +1,54 @@
+# Rockhall::Discovery
+#
+# Provides methods for extracting publically available items in Hydra and indexing them
+# into our Blacklight solr index.  Solr documents are simply copied from the Hydra solr index
+# to the Blacklight solr index. #addl_solr_fields fields adds additional fields
+# that are not present in the Hydra solr document.
+
 class Rockhall::Discovery
 
-  include Hydra::RepositoryController
-  include Hydra::AccessControlsEnforcement
-  include Blacklight::SolrHelper
+  attr_accessor :solr
 
-  # Queries either the local Solr index used by Hydra for publicly available ArchivalVideo objects,
-  # or queries the remote discovery index for all ArchivalVideo objects
-  def self.get_objects(opts={})
-    solr_params = Hash.new
-    solr_params[:fl]   = "id"
-    solr_params[:qt]   = "standard"
-    solr_params[:rows] = 1000
-
-    if opts[:remote]
-      solr_params[:q]    = 'has_model_s:"info:fedora/afmodel:ArchivalVideo"'
-      solr = solr_connect
-      solr_response = solr.find(solr_params)
-    else
-      solr_params[:q]    = 'access_group_t:public'
-      solr_response = Blacklight.solr.find(solr_params)
-    end
-
-    return solr_response.docs.collect {|doc| SolrDocument.new(doc, solr_response)}
+  # Creates a new Rockhall::Discovery session with a connection to the solr_discovery index 
+  # defined in config/rockhall.yml
+  def initialize
+    @solr = RSolr.connect(:url => RH_CONFIG["solr_discovery"])
   end
 
-  # updates Blacklight index with results from get_objects
-  def self.update
-    # connect to our other solr index
-    solr = solr_connect
-    docs = get_objects
-    # shove 'em in...
-    docs.each do |doc|
-      retrieve = Hash.new
-      retrieve[:q]  = 'id:"' + doc.id + '"'
-      retrieve[:qt] = "document"
-      response = Blacklight.solr.find(retrieve)
-      solr_doc = response["response"]["docs"].first
-      solr_doc.merge!(addl_solr_fields(doc.id))
-      solr.add solr_doc
-      puts "Updating id: " + doc.id
-      solr.commit
+  # Deletes all existing Hydra-related documents in Blacklight and adds
+  # newly queried ones from Hydra's solr index.
+  def update
+    delete if blacklight_items.count > 0
+    self.public_items.each do |obj|
+      doc = obj.to_solr
+      doc.merge!(addl_solr_fields(obj.pid))
+      solr.add doc
     end
+    solr.commit
   end
 
   # delete any ActiveFedora objects from the Blacklight index
-  def self.delete_objects
-    solr = solr_connect
-    docs = get_objects({:remote=>TRUE})
-    docs.each do |r|
+  def delete
+    blacklight_items.each do |r|
       solr.delete_by_id r["id"]
-      puts "Deleting id: " + r["id"]
       solr.commit
     end
   end
 
-  def self.solr_connect
-    RSolr::Ext.connect({:url => RH_CONFIG["solr_discovery"]})
+  def public_items
+    ActiveFedora::Base.find("read_access_group_t" => "public")
   end
 
-  def self.addl_solr_fields(id)
+  def blacklight_items(solr_params = Hash.new)
+    solr_params[:fl]   = "id"
+    solr_params[:qt]   = "document"
+    solr_params[:rows] = 1000
+    solr_params[:q]    = 'active_fedora_model_s:"ActiveFedora::Base"'
+    response = @solr.get 'select', :params => solr_params
+    return response["response"]["docs"]
+  end
+
+  def addl_solr_fields(id)
     av = ArchivalVideo.find(id)
     return av.addl_solr_fields
   end

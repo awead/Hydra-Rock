@@ -1,40 +1,37 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require "spec_helper"
 
 describe Workflow::RockhallIngest do
 
   before(:all) do
-    Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
-    solrizer = Solrizer::Fedora::Solrizer.new
-    solrizer.solrize_objects
+    Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
   end
 
   after(:all) do
-    Hydrangea::JettyCleaner.clean(RH_CONFIG["pid_space"])
-    solrizer = Solrizer::Fedora::Solrizer.new
-    solrizer.solrize_objects
+    Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
   end
 
   describe "the entire ingestion process" do
 
     it "should prepare a sip, ingest it into Fedora, and reprocess it" do
-      sip = Workflow::RockhallSip.new("spec/fixtures/rockhall/sips/digital_video_sip")
+      sip = Workflow::RockhallSip.new(sip "digital_video_sip")
       FileUtils.cp_r(sip.root,RH_CONFIG["location"])
       copy = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], sip.base))
       copy.prepare
       ing = Workflow::RockhallIngest.new(copy)
-      ing.parent.file_objects.empty?.should be_true
+      ing.parent.external_videos.empty?.should be_true
       ing.process
-      ing.parent.file_objects.length.should == 6
+      ing.parent.external_videos.length.should == 6
 
       # Check parent object fields
       ing.parent.label.should == "Rock and Roll Hall of Fame Library and Archives"
+      ing.parent.get_thumbnail_url.should_not be_nil
 
       # Check access videos
       ing.parent.videos[:h264].each do |ev|
         ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
         ev.label.should == "h264"
         ev.generation.first.should == "Copy: access"
-        ev.date.first.should match /^2012/
+        ev.date.first.should ==  Date.today.strftime("%Y-%m-%d")
         ev.size.first.should == "240"
         ev.media_type.first.should == "Moving image"
         ev.colors.first.should == "Color"
@@ -58,7 +55,7 @@ describe Workflow::RockhallIngest do
         ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
         ev.label.should == "original"
         ev.generation.first.should == "original"
-        ev.date.first.should match /^2012/
+        ev.date.first.should ==  Date.today.strftime("%Y-%m-%d")
         ev.size.first.first.should == "0"
         ev.media_type.first.should == "Moving image"
         ev.colors.first.should == "Color"
@@ -80,13 +77,13 @@ describe Workflow::RockhallIngest do
       # Reprocess
       copy_sip = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))
       re_ing = Workflow::RockhallIngest.new(copy_sip)
-      re_ing.parent.file_objects.length.should == 6
-      first_pid = re_ing.parent.file_objects.first.pid
-      last_pid  = re_ing.parent.file_objects.last.pid
+      re_ing.parent.external_videos.length.should == 6
+      first_pid = re_ing.parent.external_videos.first.pid
+      last_pid  = re_ing.parent.external_videos.last.pid
       re_ing.reprocess
-      re_ing.parent.file_objects.length.should == 6
-      first_pid.should_not == re_ing.parent.file_objects.first.pid
-      last_pid.should_not  == re_ing.parent.file_objects.last.pid
+      re_ing.parent.external_videos.length.should == 6
+      first_pid.should_not == re_ing.parent.external_videos.first.pid
+      last_pid.should_not  == re_ing.parent.external_videos.last.pid
 
       # Clean-up
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))

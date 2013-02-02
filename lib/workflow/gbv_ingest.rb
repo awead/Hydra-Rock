@@ -18,11 +18,22 @@ class GbvIngest
   def process(opts={})
     self.ingest(@sip.base, @sip.access,       "access",       {:format=>"h264"})     unless @parent.videos[:h264].first
     self.ingest(@sip.base, @sip.preservation, "preservation", {:format=>"original"}) unless @parent.videos[:original].first
+    
+    # add thumbnail
+    begin
+      generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access))
+      thumb = File.new("tmp/thumb.jpg")
+      @parent.add_thumbnail thumb
+    rescue
+      puts "INFO: Failed to add thumbnail"
+    end
   end
 
   # parent object exists in Fedora and has child objects that need to be reingested
   def reprocess(opts={})
-    @parent.remove_file_objects unless @parent.file_objects.empty?
+    @parent.remove_external_videos unless @parent.external_videos.empty?
+    av = ArchivalVideo.find(self.sip.pid)
+    @parent = av
     self.process
   end
 
@@ -31,10 +42,10 @@ class GbvIngest
     # Fields in parent
     @av = ArchivalVideo.find(sip.pid)
     @av.barcode       = @sip.barcode
-    @av.main_title    = @sip.title
+    @av.title         = @sip.title
     @av.creation_date = @sip.info(:orig_date) unless @sip.info(:orig_date).nil?
     @av.standard      = @sip.info(:standard)  unless @sip.info(:standard).nil?
-    @av.format        = @sip.info(:format)    unless @sip.info(:format).nil?
+    @av.media_format  = @sip.info(:format)    unless @sip.info(:format).nil?
     @av.save
 
     # Fields in preservation video object
@@ -68,8 +79,9 @@ class GbvIngest
       update_preservation_fields(ev) if type == "preservation"
       update_access_fields(ev) if type == "access"
       ev.vendor = "George Blood Audio and Video"
-      @parent.file_objects_append(ev)
+      @parent.external_videos << ev
       @parent.save
+      ev.save
     rescue Exception=>e
       raise "Failed to add #{type} datastream: #{e}"
     end
