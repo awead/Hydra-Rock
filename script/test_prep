@@ -1,4 +1,6 @@
 #!/bin/bash
+echo -n "Re-indexing solr: "
+rake rockhall:solr:index_all
 echo -n "Removing unwanted objects from fedora: "
 rake rockhall:fedora:clean
 echo "done."
