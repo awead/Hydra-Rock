@@ -2,8 +2,9 @@ namespace :rockhall do
 
   desc "Export items from hydra into blacklight"
   task :discovery => :environment do
-    Rockhall::Discovery.delete_objects
-    Rockhall::Discovery.update
+    discovery = Rockhall::Discovery.new
+    discovery.delete
+    discovery.update
   end
 
   desc "Validates a bag"

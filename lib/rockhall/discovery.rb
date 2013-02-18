@@ -43,7 +43,7 @@ class Rockhall::Discovery
     solr_params[:fl]   = "id"
     solr_params[:qt]   = "document"
     solr_params[:rows] = 1000
-    solr_params[:q]    = 'active_fedora_model_s:"ActiveFedora::Base"'
+    solr_params[:q]    = 'active_fedora_model_s:"DigitalVideo" OR active_fedora_model_s:"ArchivalVideo" OR active_fedora_model_s:"ActiveFedora::Base"'
     response = @solr.get 'select', :params => solr_params
     return response["response"]["docs"]
   end
