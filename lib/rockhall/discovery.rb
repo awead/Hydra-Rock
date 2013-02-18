@@ -36,7 +36,7 @@ class Rockhall::Discovery
   end
 
   def public_items
-    ActiveFedora::Base.find("read_access_group_t" => "public")
+    ActiveFedora::Base.where(read_access_group_t: "public").all
   end
 
   def blacklight_items(solr_params = Hash.new)
