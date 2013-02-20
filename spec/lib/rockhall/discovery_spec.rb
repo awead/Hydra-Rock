@@ -38,17 +38,4 @@ describe Rockhall::Discovery do
     end
   end
 
-  describe ".addl_solr_fields" do
-    xit "should return a list of additional fields for a digital video" do
-      fields = @d.addl_solr_fields("rockhall:fixture_pbcore_digital_document1")
-      fields[:access_file_s].should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
-      fields[:format_dtl_display].should == [""]    
-    end
-    xit "should return a list of additional fiels for an achival video" do
-      fields = @d.addl_solr_fields("rrhof:331")
-      fields[:access_file_s].should == ["39156042459763_access.mp4"]
-      fields[:format_dtl_display].should == ["H.264/MPEG-4 AVC"]
-    end
-  end
-
 end
