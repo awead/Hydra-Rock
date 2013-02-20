@@ -80,9 +80,12 @@ describe DigitalVideo do
     it "solr document with metadata for discovery" do
       doc = DigitalVideo.find("rockhall:fixture_pbcore_digital_document1").to_discovery
       doc.should be_kind_of(Hash)
-      doc[:access_file_s].should be_kind_of(Array)
-      doc[:access_file_s].sort.should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
+      doc["access_file_s"].should be_kind_of(Array)
+      doc["access_file_s"].sort.should == ["content_001_access.mp4", "content_002_access.mp4", "content_003_access.mp4"]
+      doc["format_dtl_display"].first.should == "MPEG-4"
       doc["title_display"].first.should == "Oral History Example"
+      doc["heading_display"].should == doc["title_display"].first
+      doc["material_facet"].should == "Digital"
     end
   end
 

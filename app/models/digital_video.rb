@@ -55,8 +55,10 @@ class DigitalVideo < ActiveFedora::Base
     self.videos[:h264].each do |ev|
       access_videos << ev.name.first
     end
-    solr_doc.merge!(:access_file_s => access_videos)
-    solr_doc.merge!(:format_dtl_display => self.access_format)
+    solr_doc.merge!("access_file_s"      => access_videos)
+    solr_doc.merge!("format_dtl_display" => self.videos[:h264].first.mi_file_format)
+    solr_doc.merge!("heading_display"    => self.title)
+    solr_doc.merge!("material_facet"     => "Digital")
   end
 
 end
