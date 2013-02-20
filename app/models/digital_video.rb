@@ -46,9 +46,6 @@ class DigitalVideo < ActiveFedora::Base
   # When exporting these objects to another index, we need to collect metadata from 
   # child objects such as ExternalVideos.  This method returns the standard .to_solr
   # hash and augments it with additional metadata from child objects.
-  #
-  # TODO: get fields from mediainfo into PBCore
-  # addl_doc[:format_dtl_display].should == [["H.264/MPEG-4 AVC"]]
   def to_discovery
     solr_doc = self.to_solr
     access_videos = Array.new
