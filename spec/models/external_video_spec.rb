@@ -54,4 +54,14 @@ describe ExternalVideo do
 
   end
 
+  describe "delegate fields" do
+
+    before :all do
+      @delegate = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2641")
+    end
+    it "should be defined" do
+      @delegate.mi_file_format.first.should == "MPEG-4"
+    end
+  end
+
 end
