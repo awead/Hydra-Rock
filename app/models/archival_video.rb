@@ -80,4 +80,17 @@ class ArchivalVideo < ActiveFedora::Base
   validate :validate_event_date
   validate :validate_creation_date
 
+  # When exporting these objects to another index, we need to collect metadata from 
+  # child objects such as ExternalVideos.  This method returns the standard .to_solr
+  # hash and augments it with additional metadata from child objects.
+  def to_discovery
+    solr_doc = self.to_solr
+    access_videos = Array.new
+    self.videos[:h264].each do |ev|
+      access_videos << ev.name.first
+    end
+    solr_doc.merge!(:access_file_s => access_videos)
+    solr_doc.merge!(:format_dtl_display => self.access_format)
+  end
+
 end

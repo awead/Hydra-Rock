@@ -92,14 +92,14 @@ describe ArchivalVideo do
     end
   end
 
-  describe "#addl_solr_fields" do
-    it "should return a hash of additional fields that will be included in the solr discovery export" do
-      av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
-      addl_doc = av.addl_solr_fields
-      addl_doc.should be_kind_of(Hash)
-      addl_doc[:access_file_s].should be_kind_of(Array)
-      addl_doc[:access_file_s].should == ["39156042439369_access.mp4"]
-      addl_doc[:format_dtl_display].should == ["H.264/MPEG-4 AVC"]
+  describe ".to_discovery" do
+    it "solr document with metadata for discovery" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document3").to_discovery
+      doc.should be_kind_of(Hash)
+      doc[:access_file_s].should be_kind_of(Array)
+      doc[:access_file_s].should == ["39156042439369_access.mp4"]
+      doc[:format_dtl_display].should == ["H.264/MPEG-4 AVC"]
+      doc["title_display"].first.should == "Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2."
     end
   end
 
