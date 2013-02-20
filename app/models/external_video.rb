@@ -32,6 +32,8 @@ class ExternalVideo < ActiveFedora::Base
   delegate :depositor,               :to => :properties
   delegate :notes,                   :to => :properties
 
+  delegate :mi_file_format, :to => :mediaInfo
+
   # augments add_named_datastream to put file information in descMetadata
   def add_named_datastream(name,opts={})
     super

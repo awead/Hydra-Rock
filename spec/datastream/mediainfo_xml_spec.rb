@@ -35,6 +35,10 @@ describe  MediainfoXml do
       @doc.file_size.last.should == "37.30 MiB"
     end
 
+    it "should return the file format" do
+      @doc.mi_file_format.first.should == "MPEG-4"
+    end
+
   end
 
   describe "calling mediainfo command" do
