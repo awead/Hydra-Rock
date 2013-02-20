@@ -9,20 +9,22 @@ class Rockhall::Discovery
 
   attr_accessor :solr
 
-  # Creates a new Rockhall::Discovery session with a connection to the solr_discovery index 
-  # defined in config/rockhall.yml
-  def initialize
-    @solr = RSolr.connect(:url => RH_CONFIG["solr_discovery"])
+  # Creates a new Rockhall::Discovery session with a solr connect to the url
+  # given in config/rockhall.yml.  Can be overriden by specifying a url:
+  #
+  # > session = Rockhall::Discovery.new "http://localhost:8985/solr/blacklight-dev"
+  # 
+  def initialize url = nil
+    @solr = url.nil? ? RSolr.connect(:url => RH_CONFIG["solr_discovery"]) : RSolr.connect(:url => url)
   end
 
   # Deletes all existing Hydra-related documents in Blacklight and adds
   # newly queried ones from Hydra's solr index.
   def update
     delete if blacklight_items.count > 0
-    self.public_items.each do |obj|
-      doc = obj.to_solr
-      doc.merge!(addl_solr_fields(obj.pid))
-      solr.add doc
+    self.public_items.each do |pid|
+      obj = ActiveFedora::Base.find(pid, :cast => true)
+      solr.add obj.to_discovery if obj.respond_to? "to_discovery"
     end
     solr.commit
   end
@@ -35,8 +37,10 @@ class Rockhall::Discovery
     end
   end
 
+  # Returns an array of pids for items that are publically available, meaning any
+  # objects that have read_access_group_t set to "public" 
   def public_items
-    ActiveFedora::Base.where(read_access_group_t: "public").all
+    ActiveFedora::Base.where(read_access_group_t: "public").all.collect { |o| o.pid }
   end
 
   def blacklight_items(solr_params = Hash.new)
@@ -46,11 +50,6 @@ class Rockhall::Discovery
     solr_params[:q]    = 'active_fedora_model_s:"DigitalVideo" OR active_fedora_model_s:"ArchivalVideo" OR active_fedora_model_s:"ActiveFedora::Base"'
     response = @solr.get 'select', :params => solr_params
     return response["response"]["docs"]
-  end
-
-  def addl_solr_fields(id)
-    av = ArchivalVideo.find(id)
-    return av.addl_solr_fields
   end
 
 end
