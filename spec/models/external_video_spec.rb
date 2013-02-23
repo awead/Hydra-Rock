@@ -4,6 +4,7 @@ describe ExternalVideo do
 
   before(:each) do
     @video = ExternalVideo.new nil
+    @video.define_physical_instantiation
     @video.stubs(:create_date).returns("2008-07-02T05:09:42.015Z")
     @video.stubs(:modified_date).returns("2008-09-29T21:21:52.892Z")
   end

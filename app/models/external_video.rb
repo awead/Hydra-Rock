@@ -6,6 +6,7 @@ class ExternalVideo < ActiveFedora::Base
   include Hydra::ModelMethods
   include Rockhall::ModelMethods
   include Rockhall::TemplateMethods
+  include Rockhall::Conversion
 
   after_create :apply_default_permissions
 
@@ -16,7 +17,7 @@ class ExternalVideo < ActiveFedora::Base
   has_datastream :name => "preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Deprecated::Instantiation
+  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Instantiation
   has_metadata :name => "mediaInfo",      :type => MediainfoXml
   has_metadata :name => "properties",     :type => Properties
 

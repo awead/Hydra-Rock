@@ -49,4 +49,12 @@ module Rockhall::TemplateMethods
     self.datastreams["descMetadata"].insert_previous(file)
   end
 
+  def define_physical_instantiation
+    self.datastreams["descMetadata"].define :physical
+  end
+
+  def define_digital_instantiation
+    self.datastreams["descMetadata"].define :digital
+  end
+
 end
