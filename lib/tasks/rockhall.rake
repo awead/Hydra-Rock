@@ -110,4 +110,15 @@ namespace :rockhall do
 
   end
 
+  namespace :convert do
+
+    desc "Convert ArchivalVideos to new model"
+    task :archival_video => :environment do
+      raise "Specify pid, pid=rrhof:1234" unless ENV["pid"]
+      obj = ActiveFedora::Base.find(ENV["pid"], :cast => true)
+      obj.from_archival_video
+    end
+
+  end
+
 end
