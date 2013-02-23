@@ -23,6 +23,7 @@ class ArchivalVideo < ActiveFedora::Base
   include ActiveModel::Validations
   include Rockhall::Validations
   include Rockhall::TemplateMethods
+  include Rockhall::Conversion
 
   # ActiveFedora implements callbacks just like ActiveRecord does and you can specify
   # them here.  #apply_default_permissions is a particular method in our local Rockhall
@@ -45,7 +46,7 @@ class ArchivalVideo < ActiveFedora::Base
   # datastreams listed below are all xml datastreams that use an OM terminology to
   # define their terms.
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Deprecated::Document
+  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Document
   has_metadata :name => "properties",     :type => Properties
   has_metadata :name => "assetReview",    :type => AssetReview
 
@@ -64,9 +65,7 @@ class ArchivalVideo < ActiveFedora::Base
      :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
      :getty_genre, :lc_genre, :lc_subject_genre, :genre, :series, :event_place,
      :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
-     :note, :creation_date, :barcode, :repository, :media_format, :standard, :media_type,
-     :generation, :language, :colors, :collection, :archival_series,
-     :collection_number, :accession_number, :access, :condition_note, :cleaning_note]
+     :note, :collection, :archival_series, :collection_number, :accession_number]
 
   # Fields with only one value
   delegate :title, :to=> :descMetadata, :unique=>true
@@ -78,7 +77,6 @@ class ArchivalVideo < ActiveFedora::Base
   delegate_to :properties, [:depositor, :notes]
 
   validate :validate_event_date
-  validate :validate_creation_date
 
   # When exporting these objects to another index, we need to collect metadata from 
   # child objects such as ExternalVideos.  This method returns the standard .to_solr
