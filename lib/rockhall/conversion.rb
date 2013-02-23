@@ -12,12 +12,19 @@ module Rockhall::Conversion
   #  - removes pbcoreRelation nodes for archival collections and series, creates appropriate linked objects
   #  - cleans up xml validation errors
   def from_archival_video
-    inst = self.datastreams["descMetadata"].to_document
-    # video = ExternalVideo.new
-    # video.datastreams["descMetadata"] = video
-    # link up video with self
+
+    # Convert to new ArchivalVideo, extracting existing instantiaion xml and saving that as a Nokogigi XML doc
+    xml = self.datastreams["descMetadata"].to_document
+    doc = Nokogiri::XML::Document.parse(xml.to_s)
+
+    # Create new EV with xml from instantiation
+    ev = ExternalVideo.new
+    ev.datastreams["descMetadata"].ng_xml = doc
+    ev.save
+
+    # Add new ExternalVideo to ArchivalVideo
+    self.external_videos << ev
     # link up self/video with ArchivalCollection and ArchivalSeries
-    # video.datastreams["descMetadata"].to_physical_instantiation
     self.datastreams["descMetadata"].clean_document
     self.save
   end
