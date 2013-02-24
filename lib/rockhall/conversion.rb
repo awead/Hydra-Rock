@@ -13,6 +13,10 @@ module Rockhall::Conversion
   #  - cleans up xml validation errors
   def from_archival_video
 
+    # Collect old deprecated datastream for later use
+    dep_ds = HydraPbcore::Datastream::Deprecated::Document.new
+    dep_ds.ng_xml = self.datastreams["descMetadata"].ng_xml
+
     # Convert to new ArchivalVideo, extracting existing instantiaion xml and saving that as a Nokogigi XML doc
     xml = self.datastreams["descMetadata"].to_document
     doc = Nokogiri::XML::Document.parse(xml.to_s)
@@ -20,11 +24,13 @@ module Rockhall::Conversion
     # Create new EV with xml from instantiation
     ev = ExternalVideo.new
     ev.datastreams["descMetadata"].ng_xml = doc
+    # grab archival collection and series info here...
+    # 
+    ev.datastreams["descMetadata"].to_physical_instantiation
     ev.save
 
     # Add new ExternalVideo to ArchivalVideo
     self.external_videos << ev
-    # link up self/video with ArchivalCollection and ArchivalSeries
     self.datastreams["descMetadata"].clean_document
     self.save
   end
