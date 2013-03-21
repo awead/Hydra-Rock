@@ -285,6 +285,11 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    solr_ead (0.3.4)
+      om
+      rsolr
+      sanitize
+      solrizer (~> 2.1.0)
     solrizer (2.1.0)
       activesupport
       daemons
@@ -357,6 +362,7 @@ DEPENDENCIES
   rspec-rails
   ruby-ntlm
   sass-rails
+  solr_ead
   solrizer
   spork
   sqlite3
