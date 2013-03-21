@@ -32,6 +32,7 @@ class GbvIngest
   # parent object exists in Fedora and has child objects that need to be reingested
   def reprocess(opts={})
     @parent.remove_external_videos unless @parent.external_videos.empty?
+    puts self.sip.pid
     av = ArchivalVideo.find(self.sip.pid)
     @parent = av
     self.process
@@ -40,21 +41,23 @@ class GbvIngest
   # updates metadata in parent and child objects from metadata in GBV xml
   def update(opts={})
     # Fields in parent
-    @av = ArchivalVideo.find(sip.pid)
-    @av.barcode       = @sip.barcode
-    @av.title         = @sip.title
-    @av.creation_date = @sip.info(:orig_date) unless @sip.info(:orig_date).nil?
-    @av.standard      = @sip.info(:standard)  unless @sip.info(:standard).nil?
-    @av.media_format  = @sip.info(:format)    unless @sip.info(:format).nil?
-    @av.save
+    av = ArchivalVideo.find(sip.pid)
+    av.title         = @sip.title
+
+    # Update the fields in the external video representing the tape
+    av.videos[:tape].first.barcode  = @sip.barcode
+    av.videos[:tape].first.date     = @sip.info(:orig_date) unless @sip.info(:orig_date).nil?
+    av.videos[:tape].first.standard = @sip.info(:standard)  unless @sip.info(:standard).nil?
+    av.videos[:tape].first.format   = @sip.info(:format)    unless @sip.info(:format).nil?
+    av.videos[:tape].first.save
 
     # Fields in preservation video object
-    original = ExternalVideo.find(@av.videos[:original].first.pid)
+    original = ExternalVideo.find(av.videos[:original].first.pid)
     update_preservation_fields(original)
     original.save
 
     # Fields in access video object
-    access = ExternalVideo.find(@av.videos[:h264].first.pid)
+    access = ExternalVideo.find(av.videos[:h264].first.pid)
     update_access_fields(access)
     access.save
   end
@@ -70,6 +73,7 @@ class GbvIngest
 
     begin
       ev = ExternalVideo.new
+      ev.define_digital_instantiation
       ev.save
       opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
       ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )

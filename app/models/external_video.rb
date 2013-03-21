@@ -10,7 +10,7 @@ class ExternalVideo < ActiveFedora::Base
 
   after_create :apply_default_permissions
 
-  belongs_to :parent, :property => :is_part_of
+  belongs_to :parent, :property => :is_part_of, :class_name => "ArchivalVideo"
 
   # Object will have either an access or a perservation datastream but not both
   has_datastream :name => "access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
@@ -28,7 +28,7 @@ class ExternalVideo < ActiveFedora::Base
       :standard, :language, :video_standard, :video_encoding, :video_bit_rate, :video_bit_rate_units, 
       :frame_rate, :frame_size, :video_bit_depth, :aspect_ratio, :audio_standard, :audio_encoding, 
       :audio_bit_rate, :audio_bit_rate_units, :audio_sample_rate, :audio_sample_rate_units, 
-      :audio_bit_depth, :audio_channels, :next, :previous ]
+      :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format ]
 
   delegate :depositor,               :to => :properties
   delegate :notes,                   :to => :properties
