@@ -1,7 +1,7 @@
 PATH
   remote: /Users/adamw/Projects/Github/hydra-pbcore
   specs:
-    hydra-pbcore (2.0.0)
+    hydra-pbcore (2.2.0rc1)
       active-fedora
 
 GEM
