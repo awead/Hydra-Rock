@@ -56,8 +56,8 @@ class RockhallSip
     raise "Invalid sip"                                    unless self.valid?
 
     begin
-      dv = DigitalVideo.new({:pid=>self.base.gsub(/_/,":")})
-      dv.save
+      video = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
+      video.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
@@ -111,18 +111,18 @@ class RockhallSip
   def create(opts={})
     raise "Can't write to root directory of sip" unless File.writable?(File.dirname(self.root))
     begin
-      dv = DigitalVideo.new
-      dv.title = self.base.to_s
-      dv.save
-      dv.label = "Rock and Roll Hall of Fame Library and Archives"
-      dv.save
+      video = ArchivalVideo.new
+      video.title = self.base.to_s
+      video.save
+      video.label = "Rock and Roll Hall of Fame Library and Archives"
+      video.save
     rescue Exception=>e
       raise "Failed create new video object: #{e}"
     end
 
     # Rename sip using the new object pid
     begin
-      new_name = dv.pid.gsub(/:/,"_")
+      new_name = video.pid.gsub(/:/,"_")
       FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
       self.base = new_name
       self.root = File.join(File.dirname(self.root), new_name)
@@ -135,9 +135,9 @@ class RockhallSip
   # Updates a sip if the parent object was previously created
   def update
     begin
-      dv = DigitalVideo.find(self.pid)
-      dv.label = "Rock and Roll Hall of Fame Library and Archives"
-      dv.save
+      video = ArchivalVideo.find(self.pid)
+      video.label = "Rock and Roll Hall of Fame Library and Archives"
+      video.save
     rescue Exception=>e
       raise "Failed update video object: #{e}"
     end

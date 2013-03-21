@@ -11,7 +11,7 @@ class RockhallIngest
     raise "Invalid sip" unless sip.valid?
     raise "SIP has no PID.  Did you prepare it?" if sip.pid.nil?
     @sip = sip
-    @parent = DigitalVideo.find(sip.pid)
+    @parent = ArchivalVideo.find(sip.pid)
   end
 
   # runs the first time to process a new sip that doesn't exist in Fedora
@@ -48,8 +48,8 @@ class RockhallIngest
   # parent object exists in Fedora and has child objects that need to be reingested
   def reprocess(opts={})
     @parent.remove_external_videos unless @parent.external_videos.empty?
-    dv = DigitalVideo.find(self.sip.pid)
-    @parent = dv
+    video = ArchivalVideo.find(self.sip.pid)
+    @parent = video
     self.process
   end
 
@@ -65,6 +65,7 @@ class RockhallIngest
 
     begin
       ev = ExternalVideo.new
+      ev.define_digital_instantiation
       ev.save
       ds = ev.datastreams["descMetadata"]
       opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
