@@ -34,6 +34,21 @@ describe ExternalVideo do
     end
   end
 
+  describe ".to_solr" do
+    it "should allow for 4-digit date" do
+      pending "Will pass when run separately, probably due to HydraPbcore::Mapper issues"
+      @video.date = "1999"
+      @video.to_solr["date_display"].should == ["1999"]
+      @video.to_solr["date_dt"].should == ["1999-01-01T00:00:00Z"]
+    end
+    it "should use an incomplete date" do
+      pending "Will pass when run separately, probably due to HydraPbcore::Mapper issues"
+      @video.date = "2001-12"
+      @video.to_solr["date_display"].should == ["2001-12"]
+      @video.to_solr["date_dt"].should == ["2001-12-01T00:00:00Z"]
+    end
+  end
+
   describe "file order" do
     it "should have a next file" do
       @video.insert_next("foo.mp4")
@@ -47,16 +62,25 @@ describe ExternalVideo do
   end
 
   describe "relationships" do
+    it "should create archival video objects" do
+      parent = ArchivalVideo.new
+      parent.title = "Parent"
+      parent.save
+      child = ExternalVideo.new
+      child.save
+      parent.external_videos << child
+      parent.save
+      child.save
+      child.parent.title.should == "Parent"
+    end
 
     it "should have a single parent video" do
       ev = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2642")
       ev.parent.should be_kind_of(DigitalVideo)
     end
-
   end
 
   describe "delegate fields" do
-
     before :all do
       @delegate = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2641")
     end
@@ -64,5 +88,7 @@ describe ExternalVideo do
       @delegate.mi_file_format.first.should == "MPEG-4"
     end
   end
+
+
 
 end

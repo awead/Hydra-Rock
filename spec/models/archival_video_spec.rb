@@ -51,16 +51,6 @@ describe ArchivalVideo do
       it "should index the right fields in solr" do
         solr_doc = @video.to_solr
       end
-      it "should allow for 4-digit date" do
-        @video.creation_date = "1999"
-        @video.to_solr["creation_date_display"].should == ["1999"]
-        @video.to_solr["creation_date_dt"].should == ["1999-01-01T00:00:00Z"]
-      end
-      it "should use an incomplete date" do
-        @video.creation_date = "2001-12"
-        @video.to_solr["creation_date_display"].should == ["2001-12"]
-        @video.to_solr["creation_date_dt"].should == ["2001-12-01T00:00:00Z"]
-      end
     end
 
     describe "delegate fields" do
@@ -85,6 +75,20 @@ describe ArchivalVideo do
   end
 
   describe "relationships" do
+
+    before :each do
+      @av  = ArchivalVideo.new nil
+      @ev1 = ExternalVideo.new nil
+      @ev2 = ExternalVideo.new nil
+    end
+
+    it "should add external videos as child objects" do
+      @av.external_video_ids.should be_empty
+      @av.external_videos << @ev1
+      @av.external_videos << @ev2
+      @av.external_videos.count.should == 2
+    end
+
     it "should return a hash of external video objects" do
       av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
       av.external_videos.count.should == 2
