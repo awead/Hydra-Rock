@@ -38,7 +38,9 @@ class ArchivalVideo < ActiveFedora::Base
   # assert an "isPartOf" relationship.  The fact that it is "inbound" means that the
   # relationship is incoming from another object, like inbound traffic coming in from
   # somewhere.
-  has_many :external_videos, :property => :is_part_of, :inbound => true
+  has_many   :external_videos, :property => :is_part_of
+  belongs_to :collection,      :property => :is_member_of_collection, :class_name => "ArchivalCollection"
+  belongs_to :series,          :property => :is_member_of,            :class_name => "ArchivalComponent"
 
   # This is the essential "meat" section of our model where we actually define which
   # datastreams are in our objects and what's in them.  The name of the datastream is
@@ -63,9 +65,12 @@ class ArchivalVideo < ActiveFedora::Base
   delegate_to :descMetadata,
     [:alternative_title, :chapter, :episode, :segment, :subtitle, :track,
      :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
-     :getty_genre, :lc_genre, :lc_subject_genre, :genre, :series, :event_place,
+     :getty_genre, :lc_genre, :lc_subject_genre, :genre, :event_place,
      :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
-     :note, :collection, :archival_series, :collection_number, :accession_number]
+     :note, :collection_number, :accession_number]
+
+  # we use series to denote an archival series, but HydraPbcore::Datastream::Document defines series as an event series
+  delegate :event_series, :to => :descMetadata, :at => [:series]   
 
   # Fields with only one value
   delegate :title, :to=> :descMetadata, :unique=>true

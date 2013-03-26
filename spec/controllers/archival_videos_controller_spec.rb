@@ -43,12 +43,12 @@ describe ArchivalVideosController do
         video.save
         changes = { 
           :alternative_title => "Fake alt title",
-          :series => "Fake series"
+          :event_series => "Fake series"
         }
         put :update, id: video, document_fields: changes
         video.reload
         video.alternative_title.first.should == "Fake alt title"
-        video.series.first.should == "Fake series"
+        video.event_series.first.should == "Fake series"
 
         changes = { 
           :lc_subject => ["Sub one", "Sub two", "Sub three"],

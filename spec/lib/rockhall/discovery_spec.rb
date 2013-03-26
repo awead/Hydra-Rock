@@ -28,7 +28,7 @@ describe Rockhall::Discovery do
   describe "Items in Hydra" do
     it "should be an array of publically available ActiveFedora model objects" do
       @d.public_items.should be_a_kind_of(Array)
-      @d.public_items.count.should == 3
+      @d.public_items.count.should == 4
     end
   end
 

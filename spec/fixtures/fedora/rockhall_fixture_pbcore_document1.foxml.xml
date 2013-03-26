@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE=""/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-12-14T19:02:46.117Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-12-14T19:11:44.693Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-08-22T20:24:09.720Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-12-14T19:02:46.117Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -366,12 +366,52 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-12-14T19:11:44.693Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC45">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.417Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC46">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.528Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC47">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>rightsMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.602Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC48">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>properties</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.660Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC49">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>assetReview</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.720Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-14T19:02:46.117Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="343">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-14T19:02:46.117Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="362">
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:identifier>rockhall:fixture_pbcore_document1</dc:identifier>
@@ -437,7 +477,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2011-12-14T19:04:05.563Z" MIMETYPE="text/xml" SIZE="4296">
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2011-12-14T19:04:05.563Z" MIMETYPE="text/xml" SIZE="4490">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -497,69 +537,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.2" LABEL="" CREATED="2011-12-14T19:04:24.114Z" MIMETYPE="text/xml" SIZE="4417">
-<foxml:xmlContent>
-<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
-  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
-  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
-  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
-  <pbcoreRelation>
-    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
-  </pbcoreRelation>
-  <pbcoreCoverage>
-    <coverage annotation="Event Place">New York, NY</coverage>
-    <coverageType>Spatial</coverageType>
-  </pbcoreCoverage>
-  <pbcoreCoverage>
-    <coverage annotation="Event Date">1999-03-15</coverage>
-    <coverageType>Temporal</coverageType>
-  </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
-  <pbcoreInstantiation>
-    <instantiationIdentifier annotation="Barcode" source="Rock and Roll Hall of Fame and Museum"></instantiationIdentifier>
-    <instantiationDate dateType="created"></instantiationDate>
-    <instantiationPhysical source="PBCore instantiationPhysical"></instantiationPhysical>
-    <instantiationStandard></instantiationStandard>
-    <instantiationLocation>Rock and Roll Hall of Fame and Museum,
-2809 Woodland Ave.,
-Cleveland, OH, 44115
-216-515-1956
-library@rockhall.org</instantiationLocation>
-    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
-    <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
-    <instantiationColors>Color</instantiationColors>
-    <instantiationLanguage ref="http://www.loc.gov/standards/iso639-2/php/code_list.php" source="ISO 639.2">eng</instantiationLanguage>
-    <instantiationRelation>
-      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
-    </instantiationRelation>
-    <instantiationRelation>
-      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
-    </instantiationRelation>
-    <instantiationRelation>
-      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
-    </instantiationRelation>
-    <instantiationRelation>
-      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
-    </instantiationRelation>
-    <instantiationRights>
-      <rightsSummary></rightsSummary>
-    </instantiationRights>
-  </pbcoreInstantiation>
-  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
-  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
-  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-</pbcoreDescriptionDocument>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.3" LABEL="" CREATED="2011-12-14T19:04:31.071Z" MIMETYPE="text/xml" SIZE="4459">
+<foxml:datastreamVersion ID="descMetadata.2" LABEL="" CREATED="2011-12-14T19:04:24.114Z" MIMETYPE="text/xml" SIZE="4805">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -618,11 +596,10 @@ library@rockhall.org</instantiationLocation>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
   <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.4" LABEL="" CREATED="2011-12-14T19:04:43.135Z" MIMETYPE="text/xml" SIZE="4508">
+<foxml:datastreamVersion ID="descMetadata.3" LABEL="" CREATED="2011-12-14T19:04:31.071Z" MIMETYPE="text/xml" SIZE="4943">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -682,11 +659,10 @@ library@rockhall.org</instantiationLocation>
   <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
-  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.5" LABEL="" CREATED="2011-12-14T19:04:55.855Z" MIMETYPE="text/xml" SIZE="4653">
+<foxml:datastreamVersion ID="descMetadata.4" LABEL="" CREATED="2011-12-14T19:04:43.135Z" MIMETYPE="text/xml" SIZE="5088">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -747,14 +723,10 @@ library@rockhall.org</instantiationLocation>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.6" LABEL="" CREATED="2011-12-14T19:04:58.245Z" MIMETYPE="text/xml" SIZE="4798">
+<foxml:datastreamVersion ID="descMetadata.5" LABEL="" CREATED="2011-12-14T19:04:55.855Z" MIMETYPE="text/xml" SIZE="5233">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -819,14 +791,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.7" LABEL="" CREATED="2011-12-14T19:05:01.060Z" MIMETYPE="text/xml" SIZE="4943">
+<foxml:datastreamVersion ID="descMetadata.6" LABEL="" CREATED="2011-12-14T19:04:58.245Z" MIMETYPE="text/xml" SIZE="5378">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -895,14 +863,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.8" LABEL="" CREATED="2011-12-14T19:05:03.221Z" MIMETYPE="text/xml" SIZE="5088">
+<foxml:datastreamVersion ID="descMetadata.7" LABEL="" CREATED="2011-12-14T19:05:01.060Z" MIMETYPE="text/xml" SIZE="5523">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -975,14 +939,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.9" LABEL="" CREATED="2011-12-14T19:05:05.179Z" MIMETYPE="text/xml" SIZE="5233">
+<foxml:datastreamVersion ID="descMetadata.8" LABEL="" CREATED="2011-12-14T19:05:03.221Z" MIMETYPE="text/xml" SIZE="5668">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1059,14 +1019,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.10" LABEL="" CREATED="2011-12-14T19:05:07.305Z" MIMETYPE="text/xml" SIZE="5378">
+<foxml:datastreamVersion ID="descMetadata.9" LABEL="" CREATED="2011-12-14T19:05:05.179Z" MIMETYPE="text/xml" SIZE="5813">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1147,14 +1103,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.11" LABEL="" CREATED="2011-12-14T19:05:09.297Z" MIMETYPE="text/xml" SIZE="5523">
+<foxml:datastreamVersion ID="descMetadata.10" LABEL="" CREATED="2011-12-14T19:05:07.305Z" MIMETYPE="text/xml" SIZE="5958">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1239,14 +1191,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.12" LABEL="" CREATED="2011-12-14T19:05:11.269Z" MIMETYPE="text/xml" SIZE="5668">
+<foxml:datastreamVersion ID="descMetadata.11" LABEL="" CREATED="2011-12-14T19:05:09.297Z" MIMETYPE="text/xml" SIZE="6103">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1335,14 +1283,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.13" LABEL="" CREATED="2011-12-14T19:05:14.046Z" MIMETYPE="text/xml" SIZE="5813">
+<foxml:datastreamVersion ID="descMetadata.12" LABEL="" CREATED="2011-12-14T19:05:11.269Z" MIMETYPE="text/xml" SIZE="6248">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1435,6 +1379,102 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.13" LABEL="" CREATED="2011-12-14T19:05:14.046Z" MIMETYPE="text/xml" SIZE="6393">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreInstantiation>
+    <instantiationIdentifier annotation="Barcode" source="Rock and Roll Hall of Fame and Museum"></instantiationIdentifier>
+    <instantiationDate dateType="created"></instantiationDate>
+    <instantiationPhysical source="PBCore instantiationPhysical"></instantiationPhysical>
+    <instantiationStandard></instantiationStandard>
+    <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+2809 Woodland Ave.,
+Cleveland, OH, 44115
+216-515-1956
+library@rockhall.org</instantiationLocation>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationLanguage ref="http://www.loc.gov/standards/iso639-2/php/code_list.php" source="ISO 639.2">eng</instantiationLanguage>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRights>
+      <rightsSummary></rightsSummary>
+    </instantiationRights>
+  </pbcoreInstantiation>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -1442,7 +1482,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.14" LABEL="" CREATED="2011-12-14T19:05:38.006Z" MIMETYPE="text/xml" SIZE="5927">
+<foxml:datastreamVersion ID="descMetadata.14" LABEL="" CREATED="2011-12-14T19:05:38.006Z" MIMETYPE="text/xml" SIZE="6507">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1542,7 +1582,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.15" LABEL="" CREATED="2011-12-14T19:06:52.884Z" MIMETYPE="text/xml" SIZE="6038">
+<foxml:datastreamVersion ID="descMetadata.15" LABEL="" CREATED="2011-12-14T19:06:52.884Z" MIMETYPE="text/xml" SIZE="6618">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1642,7 +1682,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.16" LABEL="" CREATED="2011-12-14T19:06:59.080Z" MIMETYPE="text/xml" SIZE="6173">
+<foxml:datastreamVersion ID="descMetadata.16" LABEL="" CREATED="2011-12-14T19:06:59.080Z" MIMETYPE="text/xml" SIZE="6753">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1746,7 +1786,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.17" LABEL="" CREATED="2011-12-14T19:07:11.093Z" MIMETYPE="text/xml" SIZE="6219">
+<foxml:datastreamVersion ID="descMetadata.17" LABEL="" CREATED="2011-12-14T19:07:11.093Z" MIMETYPE="text/xml" SIZE="6799">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1850,7 +1890,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.18" LABEL="" CREATED="2011-12-14T19:08:23.642Z" MIMETYPE="text/xml" SIZE="6490">
+<foxml:datastreamVersion ID="descMetadata.18" LABEL="" CREATED="2011-12-14T19:08:23.642Z" MIMETYPE="text/xml" SIZE="7067">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1955,13 +1995,129 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.19" LABEL="" CREATED="2012-08-22T20:24:09.417Z" MIMETYPE="text/xml" SIZE="7070">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreInstantiation>
+    <instantiationIdentifier annotation="Barcode" source="Rock and Roll Hall of Fame and Museum">39156042551098</instantiationIdentifier>
+    <instantiationDate dateType="created">1999-03-15</instantiationDate>
+    <instantiationPhysical source="PBCore instantiationPhysical">Betacam</instantiationPhysical>
+    <instantiationStandard>NTSC</instantiationStandard>
+    <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+2809 Woodland Ave.,
+Cleveland, OH, 44115
+216-515-1956
+library@rockhall.org</instantiationLocation>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationLanguage ref="http://www.loc.gov/standards/iso639-2/php/code_list.php" source="ISO 639.2">eng</instantiationLanguage>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="Archival collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Series">Audiovisual Materials</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Collection Number">ARC.0002</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Accession Number">LA.2003.01.001</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRights>
+      <rightsSummary></rightsSummary>
+    </instantiationRights>
+  </pbcoreInstantiation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T19:02:46.370Z" MIMETYPE="text/xml" SIZE="278">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T19:02:46.370Z" MIMETYPE="text/xml" SIZE="297">
 <foxml:xmlContent>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document1">
     <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:ArchivalVideo"></hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="" CREATED="2012-08-22T20:24:09.528Z" MIMETYPE="text/xml" SIZE="465">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document1">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalVideo"></ns0:hasModel>
+    <ns1:isMemberOf rdf:resource="info:fedora/arc:test-ref6"></ns1:isMemberOf>
+    <ns1:isMemberOfCollection rdf:resource="info:fedora/arc:test"></ns1:isMemberOfCollection>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
@@ -2037,9 +2193,52 @@ library@rockhall.org</instantiationLocation>
 </rightsMetadata>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="rightsMetadata.2" LABEL="" CREATED="2012-08-22T20:24:09.602Z" MIMETYPE="text/xml" SIZE="711">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
+  <copyright>
+    <human></human>
+    <machine>
+      <uvalicense>no</uvalicense>
+    </machine>
+  </copyright>
+  <access type="discover">
+    <human></human>
+    <machine></machine>
+  </access>
+  <access type="read">
+    <human></human>
+    <machine>
+      <group>public</group>
+      <group>donor</group>
+    </machine>
+  </access>
+  <access type="edit">
+    <human></human>
+    <machine>
+      <person>archivist1@example.com</person>
+      <group>archivist</group>
+      <group>reviewer</group>
+    </machine>
+  </access>
+  <embargo>
+    <human></human>
+    <machine></machine>
+  </embargo>
+</rightsMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="properties" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-12-14T19:02:46.468Z" MIMETYPE="text/xml" SIZE="110">
+<foxml:xmlContent>
+<fields>
+  <depositor>archivist1@example.com</depositor>
+  <collection>archival_video</collection>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="properties.1" LABEL="" CREATED="2012-08-22T20:24:09.660Z" MIMETYPE="text/xml" SIZE="110">
 <foxml:xmlContent>
 <fields>
   <depositor>archivist1@example.com</depositor>
@@ -2054,7 +2253,19 @@ library@rockhall.org</instantiationLocation>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="assetReview.1" LABEL="" CREATED="2011-12-14T19:10:47.071Z" MIMETYPE="text/xml" SIZE="271">
+<foxml:datastreamVersion ID="assetReview.1" LABEL="" CREATED="2011-12-14T19:10:47.071Z" MIMETYPE="text/xml" SIZE="280">
+<foxml:xmlContent>
+<fields>
+  <reviewer>reviewer1@example.com</reviewer>
+  <date_updated>2011-11-29</date_updated>
+  <complete>yes</complete>
+  <abstract>We have permission to show this video to the public.</abstract>
+  <license>Publicly Available</license>
+  <priority>normal</priority>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="assetReview.2" LABEL="" CREATED="2012-08-22T20:24:09.720Z" MIMETYPE="text/xml" SIZE="280">
 <foxml:xmlContent>
 <fields>
   <reviewer>reviewer1@example.com</reviewer>

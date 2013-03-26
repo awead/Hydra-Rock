@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="arc:test"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2012-08-22T19:19:32.750Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-08-23T15:57:47.298Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2012-08-22T19:19:32.750Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T19:19:32.785Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T19:19:32.814Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-23T15:57:47.203Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-23T15:57:47.267Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>rightsMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-23T15:57:47.298Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2012-08-22T19:19:32.750Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="337">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:identifier>arc:test</dc:identifier>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-08-22T19:19:32.785Z" MIMETYPE="application/rdf+xml" SIZE="289">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/arc:test">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalCollection"></ns0:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-08-23T15:57:47.203Z" MIMETYPE="application/rdf+xml" SIZE="289">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/arc:test">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalCollection"></ns0:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2012-08-22T19:19:32.814Z" MIMETYPE="text/xml" SIZE="1614">
+<foxml:xmlContent>
+<ead>
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" findaidstatus="Complete" langencoding="iso639-2b" repositoryencoding="iso15511">
+    <eadid>TEST.0001</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>Test Collection
+                    <num>TEST.0001</num>
+        </titleproper>
+        <author>Finding aid prepared by Jennie Thomas, Head Archivist</author>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Library and Archives</publisher>
+        <address>
+          <addressline>2809 Woodland Ave</addressline>
+          <addressline>Cleveland, OH, 44115</addressline>
+          <addressline>216-515-1956</addressline>
+          <addressline>library@rockhall.org</addressline>
+        </address>
+        <date>April 16, 2012</date>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+      <creation>This finding aid was produced using the Archivists&apos; Toolkit
+                <date>2012-08-22T13:57-0400</date>
+      </creation>
+      <langusage>English</langusage>
+      <descrules>Describing Archives: A Content Standard</descrules>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="collection">
+    <did>
+      <unittitle>Test Collection</unittitle>
+      <unitid>TEST.0001</unitid>
+      <repository>
+        <corpname>Library and Archives</corpname>
+      </repository>
+      <langmaterial>
+        <language langcode="eng"></language>
+      </langmaterial>
+      <physdesc>
+        <extent>10.0 Linear feet</extent>
+        <extent>10 records cartons</extent>
+      </physdesc>
+      <unitdate>2012</unitdate>
+    </did>
+  </archdesc>
+</ead>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2012-08-23T15:57:47.267Z" MIMETYPE="text/xml" SIZE="1614">
+<foxml:xmlContent>
+<ead>
+  <eadheader countryencoding="iso3166-1" dateencoding="iso8601" findaidstatus="Complete" langencoding="iso639-2b" repositoryencoding="iso15511">
+    <eadid>TEST.0001</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>Test Collection
+                    <num>TEST.0001</num>
+        </titleproper>
+        <author>Finding aid prepared by Jennie Thomas, Head Archivist</author>
+      </titlestmt>
+      <publicationstmt>
+        <publisher>Library and Archives</publisher>
+        <address>
+          <addressline>2809 Woodland Ave</addressline>
+          <addressline>Cleveland, OH, 44115</addressline>
+          <addressline>216-515-1956</addressline>
+          <addressline>library@rockhall.org</addressline>
+        </address>
+        <date>April 16, 2012</date>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+      <creation>This finding aid was produced using the Archivists&apos; Toolkit
+                <date>2012-08-22T13:57-0400</date>
+      </creation>
+      <langusage>English</langusage>
+      <descrules>Describing Archives: A Content Standard</descrules>
+    </profiledesc>
+  </eadheader>
+  <archdesc level="collection">
+    <did>
+      <unittitle>Test Collection</unittitle>
+      <unitid>TEST.0001</unitid>
+      <repository>
+        <corpname>Library and Archives</corpname>
+      </repository>
+      <langmaterial>
+        <language langcode="eng"></language>
+      </langmaterial>
+      <physdesc>
+        <extent>10.0 Linear feet</extent>
+        <extent>10 records cartons</extent>
+      </physdesc>
+      <unitdate>2012</unitdate>
+    </did>
+  </archdesc>
+</ead>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2012-08-23T15:57:47.298Z" MIMETYPE="text/xml" SIZE="596">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
+  <copyright>
+    <human type="title"></human>
+    <human type="description"></human>
+    <machine type="uri"></machine>
+  </copyright>
+  <access type="discover">
+    <human></human>
+    <machine></machine>
+  </access>
+  <access type="read">
+    <human></human>
+    <machine>
+      <group>public</group>
+    </machine>
+  </access>
+  <access type="edit">
+    <human></human>
+    <machine></machine>
+  </access>
+  <embargo>
+    <human></human>
+    <machine></machine>
+  </embargo>
+</rightsMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>
