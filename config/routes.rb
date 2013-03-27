@@ -17,4 +17,8 @@ HydraRock::Application.routes.draw do
   resources :reviewers
   resources :permissions
 
+  resources :archival_collections do
+    resources :archival_components, :only => [:index]
+  end
+
 end

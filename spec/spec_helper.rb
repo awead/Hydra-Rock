@@ -37,6 +37,9 @@ RSpec.configure do |config|
   #     --seed 1234
   # Ingest tests are order dependent!
   # config.order = "random"
+
+  config.include Devise::TestHelpers, :type => :controller
+
 end
 
 # Helper method for our local fixtires
@@ -62,4 +65,11 @@ end
 # Video fixture
 def video_fixture
   File.new(File.join(File.dirname(__FILE__), 'fixtures/sips/digital_video_sip/data/content_001_access.mp4'))
+end
+
+module FactoryGirl
+  def self.find_or_create(handle, by=:email)
+    tmpl = FactoryGirl.build(handle)
+    tmpl.class.send("find_by_#{by}".to_sym, tmpl.send(by)) || FactoryGirl.create(handle)
+  end
 end
