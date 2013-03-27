@@ -6,13 +6,13 @@ class ArchivalCollection < ActiveFedora::Base
 
   after_create :apply_default_permissions
 
-  has_metadata :name => "descMetadata",   :type => EadDocument
+  has_metadata :name => "descMetadata",   :type => DublinCore
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
 
   has_many :series, :property => :is_member_of_collection, :class_name => "ArchivalComponent"
   has_many :videos, :property => :is_member_of_collection, :class_name => "ArchivalVideo"
 
-  delegate :title, :to=> :descMetadata, :at=>[:collection], :unique=>true
+  delegate :title, :to=> :descMetadata, :unique=>true
 
   # The id for the solr document of an archival collection as is is in our discovery
   # index is different than the solr document for the collection here in Fedora.

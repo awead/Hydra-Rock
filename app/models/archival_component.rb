@@ -14,9 +14,8 @@ class ArchivalComponent < ActiveFedora::Base
   # and have many items in them
   has_many :videos, :property => :is_member_of, :class_name => "ArchivalVideo"
 
-  has_metadata :name => "descMetadata", :type => EadComponent
-
-  delegate :title, :to=> :descMetadata, :at=>[:title], :unique=>true
+  has_metadata :name => "descMetadata", :type => DublinCore
+  delegate :title, :to=> :descMetadata, :unique=>true
 
   # The solr ids for components appear as:
   #    ARC-0003:ref1
