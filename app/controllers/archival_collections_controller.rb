@@ -27,7 +27,7 @@ class ArchivalCollectionsController < ApplicationController
   def create
     pid = params[:archival_collection]["pid"].downcase.gsub(/-/,":")
     @afdoc = ArchivalCollection.new(:pid=>pid)
-    @afdoc.get_xml_from_solr
+    @afdoc.get_title_from_solr
     if @afdoc.errors.empty?
       @afdoc.save
       @afdoc.update_components

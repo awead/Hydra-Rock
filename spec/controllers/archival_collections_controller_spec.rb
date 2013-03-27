@@ -18,9 +18,6 @@ describe ArchivalCollectionsController do
     describe "when the user is logged in" do
 
     before :each do
-      #@request.env["devise.mapping"] = Devise.mappings[:user]
-      #@user = FactoryGirl.create(:user)
-      #sign_in @user
       @user = FactoryGirl.find_or_create(:user)
       sign_in @user
       User.any_instance.stubs(:groups).returns([])
@@ -28,7 +25,6 @@ describe ArchivalCollectionsController do
     end
 
     after :each do
-      #sign_out @user
       @user.delete
     end
 
@@ -38,6 +34,15 @@ describe ArchivalCollectionsController do
         assert_response :success
         assigns[:afdoc].should be_kind_of ArchivalCollection
       end
+
+      it "should create a new collection from the discovery solr index" do
+        post :create, :archival_collection => {:pid => "ARC-0026"}
+
+
+      end
+
+
+
     end
 
   end
