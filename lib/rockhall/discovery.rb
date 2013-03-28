@@ -27,6 +27,7 @@ class Rockhall::Discovery
       solr.add obj.to_discovery if obj.respond_to? "to_discovery"
     end
     solr.commit
+    solr.optimize
   end
 
   # delete any ActiveFedora objects from the Blacklight index
