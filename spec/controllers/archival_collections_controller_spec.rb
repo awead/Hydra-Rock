@@ -28,6 +28,12 @@ describe ArchivalCollectionsController do
       @user.delete
     end
 
+    after :all do
+      collection = ArchivalCollection.find("arc:0026")
+      collection.delete_components
+      collection.delete
+    end
+
     describe "new" do
       it "should render a new page" do
         get :new

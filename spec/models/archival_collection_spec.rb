@@ -18,14 +18,14 @@ describe ArchivalCollection do
 
     before(:all) do
       @coll = ArchivalCollection.find("arc:test")
-      @ref3 = ArchivalComponent.find("arc:test-ref3")
-      @ref4 = ArchivalComponent.find("arc:test-ref4")
-      @ref6 = ArchivalComponent.find("arc:test-ref6")
+      @ref3 = ArchivalComponent.find("arc:testref3")
+      @ref4 = ArchivalComponent.find("arc:testref4")
+      @ref6 = ArchivalComponent.find("arc:testref6")
     end
 
     it "should have a collection with components, and components in a collection" do
       @coll.series.length.should == 3
-      @coll.series_ids.should =~ ["arc:test-ref3", "arc:test-ref4", "arc:test-ref6"]
+      @coll.series_ids.should =~ ["arc:testref3", "arc:testref4", "arc:testref6"]
       @ref3.collection.pid.should == "arc:test"
       @ref4.collection.pid.should == "arc:test"
       @ref6.collection.pid.should == "arc:test"
@@ -33,8 +33,8 @@ describe ArchivalCollection do
 
     it "should have components with subseries" do
       @ref3.series.should be_nil
-      @ref3.sub_series.first.pid.should == "arc:test-ref4"
-      @ref4.series.pid.should == "arc:test-ref3"
+      @ref3.sub_series.first.pid.should == "arc:testref4"
+      @ref4.series.pid.should == "arc:testref3"
     end
 
     it "should have titles" do
