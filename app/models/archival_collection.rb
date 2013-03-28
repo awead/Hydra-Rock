@@ -29,24 +29,25 @@ class ArchivalCollection < ActiveFedora::Base
     components.each do |id|
       pid = "arc:" + id.gsub(/^ARC-/,"").gsub(/:/,"-").downcase
       c = ArchivalComponent.new(:pid=>pid)
-      c.get_xml_from_solr
-      c.archival_group_append self
+      c.get_title_from_solr
       c.save
+      self.series << c
     end
     components.each do |id|
       pid = "arc:" + id.gsub(/^ARC-/,"").gsub(/:/,"-").downcase
       c = ArchivalComponent.find(pid)
       parent_ref = c.get_parent_component_from_solr
       unless parent_ref.nil?
-        parent = ArchivalComponent.find((self.pid + "-" + parent_ref))
-        c.archival_group_append parent
+        parent = ArchivalComponent.find((self.pid + parent_ref))
+        parent.sub_series << c
+        parent.save
         c.save
       end
     end
   end
 
   def delete_components
-    self.component.each {|c| c.delete}
+    self.series.each {|c| c.delete}
   end
 
 end
