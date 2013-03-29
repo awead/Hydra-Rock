@@ -58,6 +58,7 @@ namespace :rockhall do
       Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
       Rockhall::JettyCleaner.clean("rockhall")
       Rockhall::JettyCleaner.clean("rrhof")
+      Rockhall::JettyCleaner.clean("arc")
     end
 
   end
