@@ -107,10 +107,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/"></dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2013-03-28T17:56:31.726Z" MIMETYPE="text/xml" SIZE="133">
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2013-03-28T17:56:31.726Z" MIMETYPE="text/xml" SIZE="169">
 <foxml:xmlContent>
 <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
   <dc:title>Test Collection</dc:title>
+  <dc:format>Collection</dc:format>
 </dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
