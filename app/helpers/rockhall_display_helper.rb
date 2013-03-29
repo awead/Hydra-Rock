@@ -22,8 +22,12 @@ module RockhallDisplayHelper
   # Determines the image to be used for the icon in the index display
   def render_icon(document)
     object = ActiveFedora::Base.load_instance_from_solr(document.id)
-    url = object.get_thumbnail_url
-    url.nil? ? image_tag(("rockhall/" + object.class.to_s.underscore + ".png"), :class => "thumbnail") : image_tag(url, :class => "thumbnail")
+    if object.kind_of? ArchivalCollection
+      image_tag("rockhall/archival_collection.png")
+    else
+      url = object.get_thumbnail_url
+      url.nil? ? image_tag(("rockhall/" + object.class.to_s.underscore + ".png"), :class => "thumbnail") : image_tag(url, :class => "thumbnail")
+    end
   end
 
   def contributor_display response, results = Array.new
@@ -47,6 +51,10 @@ module RockhallDisplayHelper
     unless @afdoc.external_videos.empty?
       render :partial => "external_videos/list" if current_user
     end
+  end
+
+  def is_reviewed? document
+    document.fetch(:complete_facet,nil).nil? ? "n/a" : document.fetch(:complete_facet,nil).first
   end
 
 end

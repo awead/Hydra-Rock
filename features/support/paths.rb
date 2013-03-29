@@ -76,6 +76,8 @@ module NavigationHelpers
     when /edit digital video page for (.*)/i
       edit_digital_video_path($1)
 
+    when /new archival_collection/
+      new_archival_collection_path
 
     when /new (.*) page$/i
       new_asset_path(:content_type => $1)

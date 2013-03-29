@@ -4,7 +4,7 @@ class ArchivalCollection < ActiveFedora::Base
   include ActiveFedora::Relationships
   include Rockhall::CollectionBehaviors
 
-  after_create :apply_default_permissions
+  after_create :apply_defaults
 
   has_metadata :name => "descMetadata",   :type => DublinCore
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
@@ -13,6 +13,7 @@ class ArchivalCollection < ActiveFedora::Base
   has_many :videos, :property => :is_member_of_collection, :class_name => "ArchivalVideo"
 
   delegate :title, :to=> :descMetadata, :unique=>true
+  delegate :format, :to=> :descMetadata, :unique=>true
 
   # The id for the solr document of an archival collection as is is in our discovery
   # index is different than the solr document for the collection here in Fedora.
@@ -21,6 +22,16 @@ class ArchivalCollection < ActiveFedora::Base
   # it'll be "ARC-FOO".
   def discovery_id
     return self.pid.upcase.gsub(/:/,"-")
+  end
+
+  def apply_defaults
+    self.format = "Collection"
+    self.apply_default_permissions
+  end
+
+  # TODO: this should go someplace else?
+  def get_thumbnail_url
+    #return image_tag("archival_collections.png")
   end
 
   def update_components
