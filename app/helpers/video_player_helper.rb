@@ -6,8 +6,8 @@ module VideoPlayerHelper
   end
 
   # Displays the video player using a Hydra controller
-  def render_video_player(opts={})
-    if @afdoc.external_videos.count > 0
+  def render_video_player opts={}
+    if @afdoc.videos[:h264].count > 0
       if RH_CONFIG["video_player"].nil?
         render :partial => "video_player/jw_player"
       else
@@ -18,8 +18,7 @@ module VideoPlayerHelper
     end
   end
 
-  def display_all_assets
-    results = String.new
+  def display_all_assets results = String.new
     videos = @afdoc.videos
     videos.keys.each do |type|
       count = 1
