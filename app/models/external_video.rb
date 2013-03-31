@@ -1,5 +1,15 @@
 class ExternalVideo < ActiveFedora::Base
 
+  FieldList =
+    [ :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 
+      :duration, :rights_summary, :note, :checksum_type, :checksum_value, :device, :capture_soft, 
+      :trans_soft, :operator, :trans_note, :vendor, :condition, :cleaning, :color_space, :chroma, 
+      :standard, :language, :video_standard, :video_encoding, :video_bit_rate, :video_bit_rate_units, 
+      :frame_rate, :frame_size, :video_bit_depth, :aspect_ratio, :audio_standard, :audio_encoding, 
+      :audio_bit_rate, :audio_bit_rate_units, :audio_sample_rate, :audio_sample_rate_units, 
+      :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format, :depositor, :notes,
+      :mi_file_format ]
+
   include ActiveFedora::DatastreamCollections
   include ActiveFedora::FileManagement
   include ActiveFedora::Relationships
