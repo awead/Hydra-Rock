@@ -1,7 +1,7 @@
 <%= form_for @afdoc, :url => external_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
 
-  <fieldset id="instantiation_fields">
-    <legend>Fields you can edit</legend>
+  <fieldset id="digital_instantiation_fields">
+    <legend>Digital File</legend>
     <dl>
       <%= f.label :rights_summary, :class=>"field" %>
       <%= render :partial => "shared/edit/field", :locals => { :t=>"rights_summary", :f=>f, :vals=>@afdoc.rights_summary, :multiple=>FALSE } %>
@@ -9,5 +9,13 @@
       <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@afdoc.note, :multiple=>TRUE } %>
     </dl>
   </fieldset>
+
+  <fieldset id="rockhall_fields">
+    <legend>Rockhall Fields</legend>
+    <%= f.label :notes, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"notes", :f=>f, :vals=>@afdoc.notes, :multiple=>TRUE } %>
+  </fieldset>
+
   <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
 <% end %>
