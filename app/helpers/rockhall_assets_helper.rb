@@ -27,7 +27,6 @@ module RockhallAssetsHelper
 
   def list_available_assets_to_create results = String.new
     results << content_tag(:li, link_to('Archival Video', new_archival_video_path))
-    results << content_tag(:li, link_to('Digital Video', new_digital_video_path))
     results << content_tag(:li, link_to('Archival Collection', new_archival_collection_path))
     return results.html_safe
   end
