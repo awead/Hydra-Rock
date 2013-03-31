@@ -19,6 +19,19 @@ module RockhallDisplayHelper
     return results.html_safe
   end
 
+  def display_tabular_field field, heading, results = String.new
+    return nil if field.first.blank?
+
+    # Determine field label
+    parts = heading.to_s.split(/_/)
+    name = parts.each{|word| word.capitalize!}.join("&nbsp;")
+    formatted_name = field.count > 1 ? formatted_name = name.pluralize : formatted_name = name
+    results << "<tr><th class=\"#{heading.downcase}\">" + formatted_name + "</th>"
+    results << "<td class=\"#{heading.downcase}\">" + field.join("<br/>") + "</td></tr>"
+    return results.html_safe
+
+  end
+
   # Determines the image to be used for the icon in the index display
   def render_icon(document)
     object = ActiveFedora::Base.load_instance_from_solr(document.id)
@@ -49,7 +62,7 @@ module RockhallDisplayHelper
 
   def render_file_list
     unless @afdoc.external_videos.empty?
-      render :partial => "external_videos/list" if current_user
+      render :partial => "external_videos/show/list" if current_user
     end
   end
 
