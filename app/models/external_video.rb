@@ -87,4 +87,24 @@ class ExternalVideo < ActiveFedora::Base
       end
   end
 
+  # TODO: this should go someplace else?
+  def get_thumbnail_url
+    nil
+  end
+
+  # Returns the name of the instatiation type based on the content of the :generation field
+  def instantiation_type
+    return nil if self.generation.empty?
+    self.generation.first.match("Original") ? "physical" : "digital"
+  end
+
+  def to_solr solr_doc = Hash.new
+    super(solr_doc)
+    obj = ActiveFedora::Base.find(self.pid, :cast=>true)
+    unless self.parent.nil?
+      solr_doc.merge!({"parent_title_display" => self.parent.title})
+    end
+    return solr_doc
+  end
+
 end

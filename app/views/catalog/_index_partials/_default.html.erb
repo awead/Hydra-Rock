@@ -10,11 +10,9 @@
 
   <% @document_list.each_with_index do |document,counter| %>
     <tr>
-      <td><%= render_icon(document) %></td>
+      <td><%= render_icon document %></td>
       <td>
-        <%= link_to_document(document,
-              :label => blacklight_config.show.heading.to_sym,
-              :counter => (counter + 1 + @response.params[:start].to_i)) %>
+        <%= link_to_document(document, :label => render_title_for_index_view(document), :counter => (counter + 1 + @response.params[:start].to_i)) %>
       </td>
       <td style="white-space: nowrap">
         <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>

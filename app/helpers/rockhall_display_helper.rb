@@ -35,12 +35,20 @@ module RockhallDisplayHelper
   # Determines the image to be used for the icon in the index display
   def render_icon(document)
     object = ActiveFedora::Base.load_instance_from_solr(document.id)
-    if object.kind_of? ArchivalCollection
-      image_tag("rockhall/archival_collection.png")
+    case object.class.to_s
+    when "ExternalVideo"
+      object.instantiation_type.nil? ? "unknown" : image_tag(("rockhall/"+object.instantiation_type+"_instantiation.png"), :class => "thumbnail")
     else
-      url = object.get_thumbnail_url
-      url.nil? ? image_tag(("rockhall/" + object.class.to_s.underscore + ".png"), :class => "thumbnail") : image_tag(url, :class => "thumbnail")
+      image_tag(("rockhall/" + object.class.to_s.underscore + ".png"), :class => "thumbnail")
     end
+  end
+
+  def render_title_for_index_view document
+    if document["generation_display"].nil?
+      document["title_display"]
+    else
+      document["parent_title_display"].nil? ? document["generation_display"].first : document["parent_title_display"].first + " >> " + document["generation_display"].first
+    end  
   end
 
   def contributor_display response, results = Array.new
