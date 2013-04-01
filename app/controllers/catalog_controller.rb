@@ -24,7 +24,8 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       :qt   => 'search',
       :rows => 10,
-      :fq   => ["-has_model_s:\"info:fedora/afmodel:ExternalVideo\""]
+      # we're not excluding anything from search results, for now.
+      #:fq   => ["-has_model_s:\"info:fedora/afmodel:ExternalVideo\""]
     }
 
     # solr field configuration for search results/index views
