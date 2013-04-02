@@ -13,7 +13,10 @@ HydraRock::Application.routes.draw do
   
   resources :archival_videos
   resources :digital_videos
-  resources :external_videos
+  resources :external_videos, :except => [:new, :create]
+  # Fake a nested route for new and create actions on external videos
+  match "archival_videos/:archival_video_id/external_videos/new" => "external_videos#new"
+  match "archival_videos/:archival_video_id/external_videos"     => "external_videos#create"
   resources :reviewers
   resources :permissions
 
