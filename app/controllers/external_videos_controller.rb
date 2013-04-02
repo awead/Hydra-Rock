@@ -16,14 +16,14 @@ class ExternalVideosController < ApplicationController
     end
   end
 
-def show
-  @afdoc = ExternalVideo.find(params[:id])
-  partial = @afdoc.generation.first.match("Original") ? "physical" : "digital"
-  respond_to do |format|
-    format.html  { render :partial => "external_videos/show/tabular_display_#{partial}", :locals => { :video => @afdoc } }
-    format.js
+  def show
+    @afdoc = ExternalVideo.find(params[:id])
+    partial = @afdoc.generation.first.match("Original") ? "physical" : "digital"
+    respond_to do |format|
+      format.html  { render :partial => "external_videos/show/tabular_display_#{partial}", :locals => { :video => @afdoc } }
+      format.js
+    end
   end
-end
 
   def update
     @afdoc = ExternalVideo.find(params[:id])
