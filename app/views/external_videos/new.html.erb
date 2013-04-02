@@ -1,0 +1,14 @@
+<h1>New Tape</h1>
+
+<%= form_for @afdoc, :html => {:class => 'form-vertical'} do |f| %>
+
+  <fieldset id="date_fields">
+    <legend>Date</legend>
+    <p class="legend-caption">Enter the date the item was first created or filmed.  Use YYYY-MM-DD for the format.</p>
+    <%= f.label :date, :class=>"field" %>
+    <%= f.text_field :date, :name=>"document_fields[date][]", :value=>@afdoc.date.first, :class=>" edit span2" %>
+  </fieldset>
+
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
+<% end %>
