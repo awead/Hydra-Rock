@@ -60,6 +60,22 @@ namespace :rockhall do
       Rockhall::JettyCleaner.clean("rrhof")
     end
 
+    desc "Using PID, export a Fedora object and its associated objects to spec/fixtures/exports"
+    task :export => :environment do
+      raise "Must specify a pid using PID=" unless ENV['PID']
+      dir = "spec/fixtures/exports"
+      obj = ActiveFedora::Base.find(ENV['PID'], :cast => true)
+      unless obj.external_video_ids.empty?
+        puts "Exporting related external videos:"
+        obj.external_video_ids.each do |id|
+          puts "\t#{id}"
+          ActiveFedora::FixtureExporter.export_to_path(id, dir)
+        end
+      end
+      puts "Exporting object #{obj.pid}"
+      ActiveFedora::FixtureExporter.export_to_path(obj.pid, dir)
+    end
+
   end
 
   namespace :solr do
