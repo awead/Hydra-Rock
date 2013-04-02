@@ -100,7 +100,6 @@ class ExternalVideo < ActiveFedora::Base
 
   def to_solr solr_doc = Hash.new
     super(solr_doc)
-    obj = ActiveFedora::Base.find(self.pid, :cast=>true)
     unless self.parent.nil?
       solr_doc.merge!({"parent_title_display" => self.parent.title})
     end
