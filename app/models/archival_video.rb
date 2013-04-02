@@ -48,7 +48,7 @@ class ArchivalVideo < ActiveFedora::Base
   # datastreams listed below are all xml datastreams that use an OM terminology to
   # define their terms.
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
-  has_metadata :name => "descMetadata",   :type => PbcoreDocument
+  has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Document
   has_metadata :name => "properties",     :type => Properties
   has_metadata :name => "assetReview",    :type => AssetReview
 
@@ -96,6 +96,12 @@ class ArchivalVideo < ActiveFedora::Base
     solr_doc.merge!("format_dtl_display" => self.access_format)
     solr_doc.merge!("heading_display"    => self.title)
     solr_doc.merge!("material_facet"     => "Digital")
+  end
+
+  # Override model method to merge in some additional fields as needed
+  def to_solr solr_doc = Hash.new
+    super(solr_doc)
+    solr_doc.merge!({"format" => "Video"})
   end
 
 end
