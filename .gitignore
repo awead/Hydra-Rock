@@ -15,3 +15,5 @@ hydra-rock.sublime-project
 hydra-rock.sublime-workspace
 .DS_Store
 spec/fixtures/exports/*.xml
+bin
+.rvmrc
