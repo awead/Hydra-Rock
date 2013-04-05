@@ -35,6 +35,7 @@ class ArchivalVideosController < ApplicationController
     @afdoc.apply_depositor_metadata(current_user.email)
     respond_to do |format|
       if @afdoc.save
+        record_activity({:pid => @afdoc.pid, :action => "create"}.merge!(params[:archival_video]))
         format.html { redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was successfully created.') }
         format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
       else
@@ -55,8 +56,8 @@ class ArchivalVideosController < ApplicationController
       redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]))
     else
       @afdoc.update_attributes(changes)
-      logger.info("Updating these fields: #{changes.inspect}")
       if @afdoc.save
+        record_activity({:pid => @afdoc.pid, :action => "update"}.merge!(changes))
         redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
       else
         redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
@@ -65,9 +66,10 @@ class ArchivalVideosController < ApplicationController
   end
 
   def destroy
-    af = ActiveFedora::Base.find(params[:id], :cast=>true)
-    assets = af.destroy_child_assets
-    af.delete
+    @afdoc = ActiveFedora::Base.find(params[:id], :cast=>true)
+    assets = @afdoc.destroy_child_assets
+    @afdoc.delete
+    record_activity({:pid => params[:id], :action => "delete"})
     msg = "Deleted #{params[:id]}"
     msg.concat(" and associated file_asset(s): #{assets.join(", ")}") unless assets.empty?
     flash[:notice]= msg

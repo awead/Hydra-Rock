@@ -64,4 +64,15 @@ module Rockhall::Controller::ControllerBehavior
     @afdoc = get_model_from_pid(params[:id])
   end
 
+  def get_public_acticity
+    @activities = PublicActivity::Activity.all
+  end
+
+  def record_activity parameters
+    unless current_user.nil?
+      current_user.create_activity :activity, params: parameters, owner: current_user
+    end
+  end
+  
+
 end

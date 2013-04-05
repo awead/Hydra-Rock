@@ -9,6 +9,7 @@ class CatalogController < ApplicationController
   # access to.
   before_filter :enforce_access_controls, :only => :show
   before_filter :get_af_doc, :only => :show
+  before_filter :get_public_acticity, :only => :index
 
   # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params

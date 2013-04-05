@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   # Connects this user object to Blacklights Bookmarks. 
   include Blacklight::User
   include Hydra::User
+
+  include PublicActivity::Model
+  tracked
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

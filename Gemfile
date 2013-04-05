@@ -22,6 +22,7 @@ gem 'bagit'
 gem 'mediainfo'
 gem 'equivalent-xml'
 gem 'ruby-ntlm'
+gem 'public_activity'
 
 # Gems that we lock to specific versions for compatibility
 
