@@ -1,38 +1,30 @@
 module Rockhall::Conversion
 
-  # Converts our old models to new ones.  Old ArchivalVideo and DigitalVideo objects are merged into one
-  # kind of new ArchivalVideo object.  Old ArchivalVideo objects are reorganized to have no instantiations
-  # and instead have them linked as related objects.  All objects have pboreRelation nodes for collection 
-  # and series removed, replaced with linked objects for ArchivalCollection and ArchivalSeries.  Xml validation
-  # errors are corrected, and ExternalVideos are simplified to only inlcude the pbcoreInstantiation node and
-  # no parent nodes.
+  # Converts our old models to new ones.  Old ArchivalVideo and DigitalVideo objects are merged into
+  # one kind of new ArchivalVideo object.  Old ArchivalVideo objects are reorganized to have no
+  # instantiations and instead have them linked as related objects.  All objects have pboreRelation
+  # nodes for collection  and series removed, and saved to the properties datastream.  Xml
+  # validation errors are corrected, and ExternalVideos are simplified to only inlcude the
+  # pbcoreInstantiation node and no parent nodes.
 
-  # Converts an old ArchivalVideo model to new one.
-  #  - removes pbcoreInstantation and created new linked ExternalVideo object
-  #  - removes pbcoreRelation nodes for archival collections and series, creates appropriate linked objects
+  # Converts an old ArchivalVideo model to the new one
+  #  - captures the old collection number field and save that to the properties datastream for later
+  #    use to link with archival collections
+  #  - removes the exsiting pbcoreInstantation and creates new ExternalVideo object using the xml
+  #  - removes pbcoreRelation nodes for archival collections and series
   #  - cleans up xml validation errors
-  def from_archival_video
-
-    # Collect old deprecated datastream for later use
-    dep_ds = HydraPbcore::Datastream::Deprecated::Document.new
+  #  - returns the new ExternalVideo object and does not save anything
+  def from_archival_video ev = ExternalVideo.new, dep_ds = HydraPbcore::Datastream::Deprecated::Document.new
     dep_ds.ng_xml = self.datastreams["descMetadata"].ng_xml
-
-    # Convert to new ArchivalVideo, extracting existing instantiaion xml and saving that as a Nokogigi XML doc
     xml = self.datastreams["descMetadata"].to_document
     doc = Nokogiri::XML::Document.parse(xml.to_s)
-
-    # Create new EV with xml from instantiation
-    ev = ExternalVideo.new
-    ev.datastreams["descMetadata"].ng_xml = doc
-    # grab archival collection and series info here...
-    # 
-    ev.datastreams["descMetadata"].to_physical_instantiation
-    ev.save
-
-    # Add new ExternalVideo to ArchivalVideo
-    self.external_videos << ev
+    
     self.datastreams["descMetadata"].clean_document
-    self.save
+    self.collection_number = dep_ds.collection_number
+    
+    ev.datastreams["descMetadata"].ng_xml = doc
+    ev.datastreams["descMetadata"].to_physical_instantiation
+    return ev
   end
 
 

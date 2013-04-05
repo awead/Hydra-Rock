@@ -67,7 +67,7 @@ class ArchivalVideo < ActiveFedora::Base
      :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
      :getty_genre, :lc_genre, :lc_subject_genre, :genre, :event_place,
      :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
-     :note, :collection_number, :accession_number]
+     :note, :accession_number]
 
   # we use series to denote an archival series, but HydraPbcore::Datastream::Document defines series as an event series
   delegate :event_series, :to => :descMetadata, :at => [:series]   
@@ -80,6 +80,8 @@ class ArchivalVideo < ActiveFedora::Base
   delegate :title_label, :to=> :descMetadata, :at=>[:label]
 
   delegate_to :properties, [:depositor, :notes]
+  # save the old collection number from deprecated PBCore datastreams here
+  delegate :collection_number, :to => :properties, :at => [:collection]
 
   validate :validate_event_date
 
