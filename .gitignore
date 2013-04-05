@@ -17,3 +17,4 @@ hydra-rock.sublime-workspace
 spec/fixtures/exports/*.xml
 bin
 .rvmrc
+!tmp/.gitkeep
