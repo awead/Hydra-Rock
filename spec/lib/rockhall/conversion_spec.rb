@@ -13,9 +13,20 @@ describe Rockhall::Conversion do
   	av.collection_number.should == ["RG.0004"]
   end
 
-  it "should convert an old ExternalVideo to a new one" do
+  describe ".from_external_video" do
+    it "should convert an old ExternalVideo to a new one" do
+      ev = ExternalVideo.find("rrhof:506")
+      ev.datastreams["descMetadata"].ng_xml.xpath("//pbcoreDescriptionDocument").should_not be_empty
+      ev.from_external_video
+      ev.generation.should == ["Copy: access"]
+      ev.name.should       == ["39156042459763_access.mp4"] 
+      ev.datastreams["descMetadata"].ng_xml.xpath("//pbcoreDescriptionDocument").should be_empty
+    end
 
-
+    it "should not convert anything else" do
+      av = ArchivalVideo.new nil
+      lambda { av.from_external_video }.should raise_error
+    end
   end
 
 

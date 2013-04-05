@@ -35,8 +35,8 @@ module Rockhall::Conversion
 
   # Converts existing ExternalVideo to new ExternalVideo object
   def from_external_video
+    raise "Only converts ExternalVideo objects" unless self.is_a? ExternalVideo
+    self.datastreams["descMetadata"].to_instantiation
   end
-
-
 
 end
