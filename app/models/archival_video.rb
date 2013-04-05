@@ -81,7 +81,7 @@ class ArchivalVideo < ActiveFedora::Base
 
   delegate_to :properties, [:depositor, :notes]
   # save the old collection number from deprecated PBCore datastreams here
-  delegate :collection_number, :to => :properties, :at => [:collection]
+  delegate :collection_number, :to => :properties, :at => [:collection], :unique => true
 
   validate :validate_event_date
 

@@ -29,7 +29,15 @@ module Rockhall::Conversion
 
 
   # Converts existing DigitalVideo object to new ArchivalVideo object
+  #  - saves the existing collection_number for later use
+  #  - removes collection information and cleans up validation errors
+  #  - clones the existing object into a new ArchivalVideo with the same pid
   def from_digital_video
+    raise "Only converts DigitalVideo objects" unless self.is_a? DigitalVideo
+    collection_number = self.collection_number
+    av = ArchivalVideo.new(:pid => self.pid)
+    self.clone_into av
+    return av
   end
 
 

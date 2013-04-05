@@ -10,6 +10,7 @@ class DigitalVideo < ActiveFedora::Base
   include Rockhall::Validations
   include ActiveModel::Validations
   include Rockhall::TemplateMethods
+  include Rockhall::Conversion
 
   after_create :apply_default_permissions
 
