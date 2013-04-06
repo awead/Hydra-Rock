@@ -69,7 +69,7 @@ class ArchivalVideosController < ApplicationController
     @afdoc = ActiveFedora::Base.find(params[:id], :cast=>true)
     assets = @afdoc.destroy_child_assets
     @afdoc.delete
-    record_activity({:pid => params[:id], :action => "delete"})
+    record_activity({:action => "delete"})
     msg = "Deleted #{params[:id]}"
     msg.concat(" and associated file_asset(s): #{assets.join(", ")}") unless assets.empty?
     flash[:notice]= msg
