@@ -93,7 +93,6 @@ module RockhallDisplayHelper
     else
       title
     end
-
   end
 
 end

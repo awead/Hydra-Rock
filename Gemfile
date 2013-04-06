@@ -23,6 +23,7 @@ gem 'mediainfo'
 gem 'equivalent-xml'
 gem 'ruby-ntlm'
 gem 'public_activity'
+gem 'gravatar_image_tag'
 
 # Gems that we lock to specific versions for compatibility
 
