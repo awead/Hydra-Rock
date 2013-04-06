@@ -78,4 +78,13 @@ module RockhallDisplayHelper
     document.fetch(:complete_facet,nil).nil? ? "n/a" : document.fetch(:complete_facet,nil).first
   end
 
+  def render_activity_icon action
+    case
+      when action.match("create") then content_tag( :i, nil, :class => "icon-file").html_safe
+      when action.match("update") then content_tag( :i, nil, :class => "icon-pencil").html_safe
+      when action.match("delete") then content_tag( :i, nil, :class => "icon-trash").html_safe        
+      else "unknown"
+    end
+  end
+
 end

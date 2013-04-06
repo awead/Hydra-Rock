@@ -1,0 +1,4 @@
+<div>
+  <span><%= render_activity_icon a.parameters[:action] %> <%= a.owner.nil? ? "Someone" : a.owner  %></span>
+  <%= link_to(a.parameters["title"], catalog_path(a.parameters[:pid])) %>
+</div>

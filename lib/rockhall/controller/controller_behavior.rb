@@ -65,7 +65,7 @@ module Rockhall::Controller::ControllerBehavior
   end
 
   def get_public_acticity
-    @activities = PublicActivity::Activity.all
+    @activities = PublicActivity::Activity.order(:created_at).reverse_order.limit(20)
   end
 
   def record_activity parameters
@@ -73,6 +73,6 @@ module Rockhall::Controller::ControllerBehavior
       current_user.create_activity :activity, params: parameters, owner: current_user
     end
   end
-  
+   
 
 end

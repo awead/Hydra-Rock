@@ -4,15 +4,12 @@ Hydra is an open-source digital asset management system that utilizes Fedora rep
 software to store digital content, and a Solr index for searching.
 </p>
 
-<h1>Recent Activity</h1>
-<table class="table table-condensed table-striped">
-<% @activities.each do |activity| %>
-  <tr>
-	  <td><%= activity.key %></td>
-    <td><%= activity.parameters %></td>
-  </tr>
+<% unless @activities.empty? %> 
+  <h1>Recent Activity</h1>
+  <% @activities.each do |activity| %>
+    <%= render_activity(activity) %>
+  <% end %>
 <% end %>
-</table>
 
 <h1> Uses </h1>
 <p>

@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   include Blacklight::User
   include Hydra::User
 
+  # Use PublicActivity to add user avtivities via the AF models, so don't track the user model here
   include PublicActivity::Model
-  tracked
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
