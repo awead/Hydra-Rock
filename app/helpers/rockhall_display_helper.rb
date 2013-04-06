@@ -87,4 +87,13 @@ module RockhallDisplayHelper
     end
   end
 
+  def render_activity_link title, pid
+    if ActiveFedora::Base.exists?(pid) && !pid.nil?
+      link_to(title, catalog_path(pid))
+    else
+      title
+    end
+
+  end
+
 end
