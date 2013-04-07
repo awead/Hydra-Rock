@@ -37,11 +37,19 @@ module ActivitiesHelper
   def render_activity_changes changes, results = String.new
     results << '<dl class="dl-horizontal dl-invert">'
     changes.each_key do |field|
-      results << "<dt>"+field.gsub(/_/," ").titleize+"</dt>"
+      results << "<dt>"+format_activity_field(field)+"</dt>"
       results << "<dd>"+changes[field].join("<br/>")+"</dd>"
     end
     results << "</dl>"
     return results.html_safe
   end
 
+  def format_activity_field field
+    if field.match("title_label")
+      "Label"
+    else
+      field.gsub(/_/," ").titleize
+    end
+  end
+  
 end
