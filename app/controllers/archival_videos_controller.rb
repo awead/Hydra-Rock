@@ -57,7 +57,7 @@ class ArchivalVideosController < ApplicationController
     else
       @afdoc.update_attributes(changes)
       if @afdoc.save
-        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title}.merge!(changes))
+        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => changes})
         redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Video was updated successfully')
       else
         redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)

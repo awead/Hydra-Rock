@@ -39,8 +39,9 @@ editvideo:
   parameters:
     pid: "rrhof:331"
     action: "update"
-    title_label:
-      - "An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame."
+    changes:
+      title_label:
+        - "An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame."
     title: "Evening with series. Ian Hunter. Part 2."  
   recipient_id:
   recipient_type:
