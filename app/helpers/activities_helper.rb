@@ -19,6 +19,7 @@ module ActivitiesHelper
       results << "deleted video #{parameters["title"]}"
     when parameters["action"].match("update")
       results << "updated " + render_activity_link(parameters["title"], parameters["pid"])
+      results << render_activity_changes(parameters["changes"])
     else
       results << "some other kind of activity"
     end
@@ -33,5 +34,14 @@ module ActivitiesHelper
     end
   end
 
+  def render_activity_changes changes, results = String.new
+    results << '<dl class="dl-horizontal dl-invert">'
+    changes.each_key do |field|
+      results << "<dt>"+field.gsub(/_/," ").titleize+"</dt>"
+      results << "<dd>"+changes[field].join("<br/>")+"</dd>"
+    end
+    results << "</dl>"
+    return results.html_safe
+  end
 
 end
