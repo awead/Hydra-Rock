@@ -11,6 +11,14 @@ module ActivitiesHelper
     end
   end
 
+  def render_activity_owner activity
+    if activity.owner.nil?
+      "Someone"
+    else
+      activity.owner.name.nil? ? activity.owner : activity.owner.name
+    end
+  end
+
   def render_activity_message parameters, results = String.new
     case
     when parameters["action"].match("create")
@@ -51,5 +59,5 @@ module ActivitiesHelper
       field.gsub(/_/," ").titleize
     end
   end
-  
+
 end

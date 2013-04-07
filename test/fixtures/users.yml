@@ -1,4 +1,5 @@
 archivist1:
   id: 1
+  name: "The Archivist"
   email: "archivist1@example.com"
   encrypted_password: "$2a$10$6bwxuFSipbyNem9X8oZgbeCoP7G7h6QEbJpsCDRQ1ZO09h8Nievji" # = "password"
