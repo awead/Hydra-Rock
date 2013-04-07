@@ -47,3 +47,18 @@ editvideo:
   created_at: <%= Time.now - id.minute %>
   updated_at: <%= Time.now - id.minute %>
 
+ianhunter:
+  id: <%= id = 4 %>
+  trackable_id: 1 
+  trackable_type: "User"
+  owner_id: 1
+  owner_type: "User"
+  key: "user.activity"
+  parameters:
+    pid: "rrhof:331"
+    action: "create" 
+    title: "Evening with series. Ian Hunter. Part 2." 
+  recipient_id:
+  recipient_type:
+  created_at: <%= Time.now - id.minute %>
+  updated_at: <%= Time.now - id.minute %>

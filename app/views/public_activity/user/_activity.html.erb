@@ -1,5 +1,6 @@
 <div>
   <%= gravatar_image_tag(a.owner.to_s, :gravatar => { :size => 40 }) %>
   <span><%= render_activity_icon a.parameters["action"] %> <%= a.owner.nil? ? "Someone" : a.owner  %></span>
-  <%= a.parameters["action"] + "d" %> <%= render_activity_link a.parameters["title"], a.parameters["pid"]  %>
+  <%= render_activity_message a.parameters %>
+
 </div>
