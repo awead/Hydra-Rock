@@ -20,6 +20,7 @@ module ActivitiesHelper
   end
 
   def render_activity_message parameters, results = String.new
+    return nil if parameters.empty? || parameters["action"].nil?
     case
     when parameters["action"].match("create")
       results << "created a new video, " + render_activity_link(parameters["title"], parameters["pid"])
