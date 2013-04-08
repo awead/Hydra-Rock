@@ -24,7 +24,7 @@ module ActivitiesHelper
     when parameters["action"].match("create")
       results << "created a new video, " + render_activity_link(parameters["title"], parameters["pid"])
     when parameters["action"].match("delete")
-      results << "deleted video #{parameters["title"]}"
+      results << "deleted the video #{parameters["title"]}"
     when parameters["action"].match("update")
       results << "updated " + render_activity_link(parameters["title"], parameters["pid"])
       results << render_activity_changes(parameters["changes"])

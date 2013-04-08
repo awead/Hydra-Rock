@@ -7,7 +7,7 @@ deletevideo:
   key: "user.activity"
   parameters:
     action: "delete" 
-    title: "rrhof:fakepid"
+    title: "Bad Video"
   recipient_id:
   recipient_type:
   created_at: <%= Time.now - id.minute %>
