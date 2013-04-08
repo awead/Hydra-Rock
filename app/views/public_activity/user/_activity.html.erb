@@ -1,6 +1,5 @@
-<div>
+<div class="well">
   <%= gravatar_image_tag(a.owner.to_s, :gravatar => { :size => 40 }) %>
   <span><%= render_activity_icon a.parameters["action"] %> <%= render_activity_owner a %></span>
   <%= render_activity_message a.parameters %>
-
 </div>

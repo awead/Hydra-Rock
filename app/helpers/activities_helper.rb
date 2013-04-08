@@ -15,7 +15,7 @@ module ActivitiesHelper
     if activity.owner.nil?
       "Someone"
     else
-      activity.owner.name.nil? ? activity.owner : activity.owner.name
+      activity.owner.name.nil? ? link_to(activity.owner.email, user_path(activity.owner)) : link_to(activity.owner.name, user_path(activity.owner))
     end
   end
 

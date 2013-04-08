@@ -6,9 +6,11 @@ software to store digital content, and a Solr index for searching.
 
 <% unless @activities.empty? %> 
   <h1>Recent Activity</h1>
+
   <% @activities.each do |activity| %>
     <%= render_activity(activity) %>
   <% end %>
+  <%= link_to "See all activity", activities_path %>
 <% end %>
 
 <h1> Uses </h1>

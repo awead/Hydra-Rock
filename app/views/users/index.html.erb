@@ -1,0 +1,13 @@
+<% navbar_items << capture do %>
+  <%= render :partial => "catalog/search_form" %>
+<% end %>
+
+<h1>Hydra Users</h1>
+
+<% @users.each do |user| %>
+  <%= gravatar_image_tag(user.email.to_s, :gravatar => { :size => 40 }) %>
+  <h3><%= user.name.nil? ? user.email : user.name %></h3>
+  <%= link_to "See activity", user_path(user.id) %>
+  <%= render :partial => "users/info", :locals => { :user => user } %>
+<% end %>
+

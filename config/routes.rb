@@ -7,6 +7,8 @@ HydraRock::Application.routes.draw do
   root :to => "catalog#index"
 
   devise_for :users
+  resources :users
+  resources :activities
 
   resources :nodes
   match ":controller/:id/:type(/:action(/:index))", :controller => /nodes/
