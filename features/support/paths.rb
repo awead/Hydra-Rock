@@ -93,6 +93,11 @@ module NavigationHelpers
 
     when /the edit (.*) page for (.*)$/i
       edit_catalog_path($2,:wf_step=>$1)
+
+    when /the activities page$/i
+      activities_path
+    when /the activities page for user (.*)$/i
+      user_path($1)
     else
       begin
         page_name =~ /the (.*) page/
