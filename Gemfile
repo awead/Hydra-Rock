@@ -51,6 +51,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'debugger'
   gem 'webrat'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry'
 end
 
 group :cucumber do

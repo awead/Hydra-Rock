@@ -44,3 +44,9 @@ ActionMailer::Base.smtp_settings = {
 }
 
 ActionMailer::Base.default :from => 'library@rockhall.org'
+
+# Use Pry instead of IRB
+silence_warnings do
+  require 'pry'
+  IRB = Pry
+end
