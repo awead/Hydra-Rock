@@ -129,11 +129,33 @@ namespace :rockhall do
 
   namespace :convert do
 
-    desc "Convert ArchivalVideos to new model"
-    task :archival_video => :environment do
-      raise "Specify pid, pid=rrhof:1234" unless ENV["pid"]
-      obj = ActiveFedora::Base.find(ENV["pid"], :cast => true)
-      obj.from_archival_video
+    desc "Convert videos to their new models"
+    task :videos => :environment do
+      default_collection = ArchivalCollection.find("arc:test")
+      ExternalVideo.all.each do |v|
+        puts "Converting #{v.pid} to new ExternalVideo"
+        v.from_external_video
+        v.save
+      end
+
+      ActiveFedora::Base.all.each do |obj|
+        video = ActiveFedora::Base.find(obj.pid, :cast => true)
+        if video.is_a? (ArchivalVideo)
+          puts "Converting #{video.pid} to a new ArchivalVideo"
+          ev = video.from_archival_video
+          video.external_videos << ev
+          video.collection = default_collection
+          ev.save
+          video.save
+        end
+
+        if video.is_a? (DigitalVideo)
+          puts "Converting #{video.pid} from DigitalVideo to ArchivalVideo"
+          av = video.from_digital_video
+          av.collection = default_collection
+          av.save
+        end
+      end
     end
 
   end
