@@ -5,6 +5,12 @@
 
 <% navbar_items << capture do %>
   <li>
-    <%= link_to('<i class="icon-arrow-left"></i> Parent'.html_safe, catalog_path(@afdoc.parent.id) ) %>
+    <%= link_to('<i class="icon-arrow-left"></i> Parent'.html_safe, edit_archival_video_path(@afdoc.parent.id) ) %>
+  </li>
+  <li>
+    <%= button_to('Delete', external_video_path(params[:id]),
+                  :class => "btn-small btn-danger", :form => { :class=>"navbar-search"},
+                  :confirm => 'Are you sure?', :method => :delete)
+    %>
   </li>
 <% end %>

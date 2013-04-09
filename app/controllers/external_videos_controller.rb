@@ -20,8 +20,26 @@ class ExternalVideosController < ApplicationController
   # to existing ArchivalVideos
   def create
     parent = ActiveFedora::Base.find(params[:archival_video_id], :cast => true)
-    if parent.is_a?(Foo)
-
+    if parent.is_a?(ArchivalVideo)
+      @afdoc = ExternalVideo.new
+      @afdoc.define_physical_instantiation
+      @afdoc.update_attributes(params["document_fields"])
+      @afdoc.apply_depositor_metadata(current_user.email)
+      respond_to do |format|
+        if @afdoc.save
+          parent.external_videos << @afdoc
+          parent.save
+          @afdoc.save
+          format.html { redirect_to(edit_archival_video_path(parent, :wf_step=>params[:wf_step]), :notice => 'Tape was successfully created.') }
+          format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
+        else
+          format.html {
+            flash[:alert] = @afdoc.errors.messages.values.to_s
+            render :action => "new"
+          }
+          format.json { render :json => @afdoc.errors, :status => :unprocessable_entity }
+        end
+      end
     else
       redirect_to(edit_archival_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => "Can't add a tape to a #{parent.class}")
     end
@@ -57,6 +75,15 @@ class ExternalVideosController < ApplicationController
         redirect_to(edit_external_video_path(@afdoc, :wf_step=>params[:wf_step]), :notice => 'Error: Unable to save changes')
       end
     end
+  end
+
+  def destroy
+    @afdoc = ActiveFedora::Base.find(params[:id], :cast=>true)
+    parent = @afdoc.parent
+    @afdoc.delete
+    msg = "Deleted #{params[:id]}"
+    flash[:notice]= msg
+    redirect_to edit_archival_video_path(parent)
   end
 
 end
