@@ -10,6 +10,10 @@ module Rockhall::Validations
     date_format(:creation_date)
   end
 
+  def validate_date
+    date_format(:date)
+  end
+
   def date_format(date)
       unless self.send(date).first.blank?
         if parse_date(self.send(date).first).nil?
