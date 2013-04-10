@@ -1,15 +1,11 @@
 module CollectionHelper
 
-  def collection_components(pid, opts={},results = Array.new)
-    begin
-      coll = ArchivalCollection.load_instance_from_solr(pid)
-    rescue
-      return []
-    end
-    coll.series.each do |comp|
-      results << comp unless comp.videos.empty? and opts[:all].nil?
-    end
-    return results
+  def components_for_collection_id id
+    ArchivalCollection.load_instance_from_solr(id).series
+  end
+
+  def components_for_collection
+    @afdoc.collection.nil? ? [] : @afdoc.collection.series.collect { |s| [s.title, s.pid] }
   end
 
   def collection_items(pid, results = Array.new)

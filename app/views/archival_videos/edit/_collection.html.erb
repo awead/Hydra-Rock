@@ -1,0 +1,26 @@
+<%= form_for @afdoc, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
+
+<fieldset id="archival_fields">
+    <legend>Archival Information</legend>
+    <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
+
+    <%= f.label  :collection, :class=>"field"  %>
+    <%= f.select :collection,
+                 ArchivalCollection.find(:all).collect {|p| [ p.title, p.id ] },
+                 {:include_blank => 'None', :selected => (@afdoc.collection.nil? ? nil : @afdoc.collection.pid)},
+                 {:name => "document_fields[collection][]", :class => "collection_select"} %>
+
+    <%= f.label  :series, :class=>"field"  %>
+    <%= f.select :series,
+                 components_for_collection,
+                 {:include_blank => 'None'},
+                 {:name => "document_fields[series][]", :class => "component_select"} %>
+
+    <%= f.label      :accession_number, :class=>"field" %>
+    <%= f.text_field :accession_number, :name=>"document_fields[accession_number][]", 
+                     :value=>@afdoc.accession_number.first, :class=>" edit span2" %>
+  </fieldset>
+
+  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+
+<% end %>

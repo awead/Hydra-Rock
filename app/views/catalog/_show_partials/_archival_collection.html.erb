@@ -1,6 +1,6 @@
 <div class="well"><h1><%= @document["title_display"] %></h1></div>
 
-<% @components = collection_components(@document.id) %>
+<% @components = components_for_collection_id(@document.id) %>
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#collection" data-toggle="tab">Items in Collection</a></li>
