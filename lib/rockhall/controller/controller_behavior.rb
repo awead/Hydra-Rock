@@ -73,6 +73,26 @@ module Rockhall::Controller::ControllerBehavior
       current_user.create_activity :activity, params: parameters, owner: current_user
     end
   end
+
+  def update_relation relation, message = String.new
+    if params["archival_video"][relation].empty? && !@afdoc.collection.nil?
+      message = "Removed video from #{@afdoc.send(relation).title}"
+      @afdoc.send(relation+"=", nil)
+    end
+
+    if @afdoc.send(relation).nil?
+      unless params["archival_video"][relation].empty?
+        @afdoc.send(relation+"=", ActiveFedora::Base.find(params["archival_video"][relation], :cast => true))
+        message = "Assigned video to #{@afdoc.send(relation).title}"
+      end
+    else
+      unless params["archival_video"][relation].match(@afdoc.send(relation).pid)
+        @afdoc.send(relation+"=", ActiveFedora::Base.find(params["archival_video"][relation], :cast => true))
+        message = "Moved video to #{@afdoc.send(relation).title}"
+      end
+    end
+    return message
+  end
    
 
 end

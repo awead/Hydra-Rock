@@ -13,8 +13,12 @@ HydraRock::Application.routes.draw do
   resources :nodes
   match ":controller/:id/:type(/:action(/:index))", :controller => /nodes/
   
-  # Used nested resources for only creating new external videos
+  
   resources :archival_videos do
+    member do
+      put 'assign'
+    end
+    # Used nested resources for only creating new external videos
     resources :external_videos, :only => [:new, :create]
   end
   resources :external_videos, :except => [:new, :create]

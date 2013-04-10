@@ -1,4 +1,4 @@
-<%= form_for @afdoc, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
+<%= form_for @afdoc, :url => assign_archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
 
 <fieldset id="archival_fields">
     <legend>Archival Information</legend>
@@ -8,16 +8,16 @@
     <%= f.select :collection,
                  ArchivalCollection.find(:all).collect {|p| [ p.title, p.id ] },
                  {:include_blank => 'None', :selected => (@afdoc.collection.nil? ? nil : @afdoc.collection.pid)},
-                 {:name => "document_fields[collection][]", :class => "collection_select"} %>
+                 {:class => "collection_select"} %>
 
     <%= f.label  :series, :class=>"field"  %>
     <%= f.select :series,
                  components_for_collection,
-                 {:include_blank => 'None'},
-                 {:name => "document_fields[series][]", :class => "component_select"} %>
+                 {:include_blank => 'None', :selected => (@afdoc.series.nil? ? nil : @afdoc.series.pid)},
+                 {:class => "component_select"} %>
 
     <%= f.label      :accession_number, :class=>"field" %>
-    <%= f.text_field :accession_number, :name=>"document_fields[accession_number][]", 
+    <%= f.text_field :accession_number, 
                      :value=>@afdoc.accession_number.first, :class=>" edit span2" %>
   </fieldset>
 
