@@ -10,7 +10,7 @@ gems
 test_support/fixtures
 public/cucumber.html
 public/assets/*
-doc/*
+doc
 nohup.out
 hydra-rock.sublime-project
 hydra-rock.sublime-workspace
