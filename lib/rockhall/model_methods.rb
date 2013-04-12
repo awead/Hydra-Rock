@@ -1,7 +1,7 @@
 module Rockhall::ModelMethods
 
   # Adds depositor information
-  def apply_depositor_metadata(depositor_id)
+  def apply_depositor_metadata depositor_id
     self.depositor = depositor_id
     super
   end

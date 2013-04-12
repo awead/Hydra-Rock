@@ -1,7 +1,5 @@
 class PermissionsController < ApplicationController
 
-  include Hydra::AssetsControllerHelper
-  include Hydra::SubmissionWorkflow
   include Hydra::AccessControlsEnforcement
   
   before_filter :enforce_access_controls
