@@ -2,12 +2,30 @@ require "spec_helper"
 
 describe Rockhall::Conversion do
 
+  # Load fixtures specific to conversion
+  before :all do
+    @pid_list = Array.new
+    contents = Dir.glob("spec/fixtures/convert/*.xml")
+    contents.each do |file|
+      pid = ActiveFedora::FixtureLoader.import_to_fedora(file)
+      ActiveFedora::FixtureLoader.index(pid)
+      @pid_list << pid
+    end
+  end
+
+  # Delete the fixtures we loaded for these tests
+  after :all do
+    @pid_list.each do |pid|
+      ActiveFedora::Base.find(pid, :cast=>true).delete
+    end
+  end
+
   it "should convert an old ArchivalVideo to a new one" do
-  	av = ArchivalVideo.find("rrhof:331")
+  	av = ArchivalVideo.find("rrhof:1041")
   	ev = av.from_archival_video
   	ev.generation.should        == ["Original"]
-  	ev.barcode.should           == ["39156042459763"]
-  	av.event_date.should        == ["2001-05-03"]
+  	ev.barcode.should           == ["39156042459326"]
+  	av.event_date.should        == ["2001-02-01"]
   	av.event_place.should       == ["Rock and Roll Hall of Fame and Museum, Cleveland, Ohio"]
   	av.event_series.should      == ["Evening with series (Rock and Roll Hall of Fame and Museum)"]
   	av.collection_number.should == "RG.0004"
@@ -15,11 +33,11 @@ describe Rockhall::Conversion do
 
   describe ".from_external_video" do
     it "should convert an old ExternalVideo to a new one" do
-      ev = ExternalVideo.find("rrhof:506")
+      ev = ExternalVideo.find("rrhof:2406")
       ev.datastreams["descMetadata"].ng_xml.xpath("//pbcoreDescriptionDocument").should_not be_empty
       ev.from_external_video
       ev.generation.should == ["Copy: access"]
-      ev.name.should       == ["39156042459763_access.mp4"] 
+      ev.name.should       == ["rrhof_2405_001_access.mp4"] 
       ev.datastreams["descMetadata"].ng_xml.xpath("//pbcoreDescriptionDocument").should be_empty
     end
 
@@ -31,9 +49,9 @@ describe Rockhall::Conversion do
 
   describe ".from_digital_video" do
   	it "should convert an old DigitalVideo into an ArchivalVideo" do
-  	  dv = DigitalVideo.find("rockhall:fixture_pbcore_digital_document1")
+  	  dv = DigitalVideo.find("rrhof:2405")
   	  av = dv.from_digital_video
-  	  av.pid.should == "rockhall:fixture_pbcore_digital_document1"
+  	  av.pid.should == "rrhof:2405"
   	  av.videos.should == dv.videos
   	end
 

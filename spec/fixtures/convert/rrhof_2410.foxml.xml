@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="rrhof:2410"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="original"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="hydraApp"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2012-06-08T16:12:09.766Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-06-08T16:12:11.777Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2012-06-08T16:12:09.766Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:09.870Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>rightsMetadata</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:10.003Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyObject</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:10.422Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>PRESERVATION1</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:10.461Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:10.514Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:10.615Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>mediaInfo</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:10.660Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>rightsMetadata</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:10.759Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>properties</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:10.846Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyObject</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:11.447Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:11.512Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC12">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>mediaInfo</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:11.571Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC13">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>rightsMetadata</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:11.672Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC14">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>properties</audit:componentID>
+<audit:responsibility>hydraApp</audit:responsibility>
+<audit:date>2012-06-08T16:12:11.777Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2012-06-08T16:12:09.766Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="339">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:identifier>rrhof:2410</dc:identifier>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-08T16:12:09.870Z" MIMETYPE="application/rdf+xml" SIZE="286">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/rrhof:2410">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ExternalVideo"></ns0:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-08T16:12:10.615Z" MIMETYPE="application/rdf+xml" SIZE="420">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/rrhof:2410">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ExternalVideo"></ns0:hasModel>
+    <ns1:isPartOf rdf:resource="info:fedora/rrhof:2405"></ns1:isPartOf>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2012-06-08T16:12:10.003Z" MIMETYPE="text/xml" SIZE="607">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
+  <copyright>
+    <human></human>
+    <machine>
+      <uvalicense>no</uvalicense>
+    </machine>
+  </copyright>
+  <access type="discover">
+    <human></human>
+    <machine></machine>
+  </access>
+  <access type="read">
+    <human></human>
+    <machine>
+      <group>donor</group>
+    </machine>
+  </access>
+  <access type="edit">
+    <human></human>
+    <machine>
+      <group>archivist</group>
+    </machine>
+  </access>
+  <embargo>
+    <human></human>
+    <machine></machine>
+  </embargo>
+</rightsMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="rightsMetadata.1" LABEL="" CREATED="2012-06-08T16:12:10.759Z" MIMETYPE="text/xml" SIZE="636">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
+  <copyright>
+    <human></human>
+    <machine>
+      <uvalicense>no</uvalicense>
+    </machine>
+  </copyright>
+  <access type="discover">
+    <human></human>
+    <machine></machine>
+  </access>
+  <access type="read">
+    <human></human>
+    <machine>
+      <group>donor</group>
+    </machine>
+  </access>
+  <access type="edit">
+    <human></human>
+    <machine>
+      <group>archivist</group>
+      <person>batch</person>
+    </machine>
+  </access>
+  <embargo>
+    <human></human>
+    <machine></machine>
+  </embargo>
+</rightsMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="rightsMetadata.2" LABEL="" CREATED="2012-06-08T16:12:11.672Z" MIMETYPE="text/xml" SIZE="636">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
+  <copyright>
+    <human></human>
+    <machine>
+      <uvalicense>no</uvalicense>
+    </machine>
+  </copyright>
+  <access type="discover">
+    <human></human>
+    <machine></machine>
+  </access>
+  <access type="read">
+    <human></human>
+    <machine>
+      <group>donor</group>
+    </machine>
+  </access>
+  <access type="edit">
+    <human></human>
+    <machine>
+      <group>archivist</group>
+      <person>batch</person>
+    </machine>
+  </access>
+  <embargo>
+    <human></human>
+    <machine></machine>
+  </embargo>
+</rightsMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="PRESERVATION1" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="PRESERVATION1.0" LABEL="http://archive.rockhall.org/rrhof_2405/data/rrhof_2405_001_preservation.mov" CREATED="2012-06-08T16:12:10.461Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://archive.rockhall.org/rrhof_2405/data/rrhof_2405_001_preservation.mov"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2012-06-08T16:12:10.514Z" MIMETYPE="text/xml" SIZE="2601">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle></pbcoreTitle>
+  <pbcoreDescription></pbcoreDescription>
+  <pbcoreInstantiation>
+    <instantiationIdentifier annotation="Filename" source="Rock and Roll Hall of Fame and Museum">rrhof_2405_001_preservation.mov</instantiationIdentifier>
+    <instantiationDate dateType="created">2012-06-04</instantiationDate>
+    <instantiationDigital source="EBU file formats"></instantiationDigital>
+    <instantiationLocation></instantiationLocation>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationGenerations source="PBCore instantiationGenerations"></instantiationGenerations>
+    <instantiationFileSize unitsOfMeasure="">494</instantiationFileSize>
+    <instantiationDuration></instantiationDuration>
+    <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+    <instantiationEssenceTrack>
+      <essenceTrackType>Video</essenceTrackType>
+      <essenceTrackStandard></essenceTrackStandard>
+      <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
+      <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+      <essenceTrackFrameRate unitsOfMeasure="fps"></essenceTrackFrameRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackFrameSize source="PBCore essenceTrackFrameSize"></essenceTrackFrameSize>
+      <essenceTrackAspectRatio source="PBCore essenceTrackAspectRatio"></essenceTrackAspectRatio>
+    </instantiationEssenceTrack>
+    <instantiationEssenceTrack>
+      <essenceTrackType>Audio</essenceTrackType>
+      <essenceTrackStandard></essenceTrackStandard>
+      <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
+      <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+      <essenceTrackSamplingRate unitsOfMeasure=""></essenceTrackSamplingRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackAnnotation annotationType="Number of Audio Channels"></essenceTrackAnnotation>
+    </instantiationEssenceTrack>
+    <instantiationRights>
+      <rightsSummary></rightsSummary>
+    </instantiationRights>
+    <instantiationAnnotation annotationType="Vendor Name">Rock and Roll Hall of Fame Library and Archives</instantiationAnnotation>
+  </pbcoreInstantiation>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2012-06-08T16:12:11.512Z" MIMETYPE="text/xml" SIZE="2947">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle></pbcoreTitle>
+  <pbcoreDescription></pbcoreDescription>
+  <pbcoreInstantiation>
+    <instantiationIdentifier annotation="Filename" source="Rock and Roll Hall of Fame and Museum">rrhof_2405_001_preservation.mov</instantiationIdentifier>
+    <instantiationDate dateType="created">2012-06-04</instantiationDate>
+    <instantiationDigital source="EBU file formats"></instantiationDigital>
+    <instantiationLocation></instantiationLocation>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationGenerations source="PBCore instantiationGenerations">original</instantiationGenerations>
+    <instantiationFileSize unitsOfMeasure="">494</instantiationFileSize>
+    <instantiationDuration></instantiationDuration>
+    <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+    <instantiationEssenceTrack>
+      <essenceTrackType>Video</essenceTrackType>
+      <essenceTrackStandard></essenceTrackStandard>
+      <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
+      <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+      <essenceTrackFrameRate unitsOfMeasure="fps"></essenceTrackFrameRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackFrameSize source="PBCore essenceTrackFrameSize"></essenceTrackFrameSize>
+      <essenceTrackAspectRatio source="PBCore essenceTrackAspectRatio"></essenceTrackAspectRatio>
+    </instantiationEssenceTrack>
+    <instantiationEssenceTrack>
+      <essenceTrackType>Audio</essenceTrackType>
+      <essenceTrackStandard></essenceTrackStandard>
+      <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
+      <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+      <essenceTrackSamplingRate unitsOfMeasure=""></essenceTrackSamplingRate>
+      <essenceTrackBitDepth></essenceTrackBitDepth>
+      <essenceTrackAnnotation annotationType="Number of Audio Channels"></essenceTrackAnnotation>
+    </instantiationEssenceTrack>
+    <instantiationRights>
+      <rightsSummary></rightsSummary>
+    </instantiationRights>
+    <instantiationAnnotation annotationType="Vendor Name">Rock and Roll Hall of Fame Library and Archives</instantiationAnnotation>
+    <instantiationRelation>
+      <instantiationRelationType annotation="One of a multi-part instantiation">Precedes in Sequence</instantiationRelationType>
+      <instantiationRelationIdentifier source="Rock and Roll Hall of Fame and Museum">rrhof_2405_002_preservation.mov</instantiationRelationIdentifier>
+    </instantiationRelation>
+  </pbcoreInstantiation>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="mediaInfo" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="mediaInfo.0" LABEL="" CREATED="2012-06-08T16:12:10.660Z" MIMETYPE="text/xml" SIZE="2721">
+<foxml:xmlContent>
+<Mediainfo version="0.7.50">
+  <File>
+    <track type="General">
+      <Complete_name>/gpfs/archive/prod/bag/rrhof_2405/data/rrhof_2405_001_preservation.mov</Complete_name>
+      <Format>MPEG-4</Format>
+      <Format_profile>QuickTime</Format_profile>
+      <Codec_ID>qt  </Codec_ID>
+      <File_size>494 GiB</File_size>
+      <Duration>53mn 18s</Duration>
+      <Overall_bit_rate>1 327 Mbps</Overall_bit_rate>
+      <Encoded_date>UTC 2012-06-04 19:28:30</Encoded_date>
+      <Tagged_date>UTC 2012-06-04 20:55:15</Tagged_date>
+      <Writing_library>Apple QuickTime</Writing_library>
+      <Media_UUID>10DEFFB7-6624-42C2-8A42-3DCE927B8BC8</Media_UUID>
+    </track>
+    <track type="Video">
+      <ID>1</ID>
+      <Format>YUV</Format>
+      <Codec_ID>v210</Codec_ID>
+      <Codec_ID_Hint>AJA Video Systems Xena</Codec_ID_Hint>
+      <Duration>53mn 18s</Duration>
+      <Bit_rate_mode>Constant</Bit_rate_mode>
+      <Bit_rate>1 326 Mbps</Bit_rate>
+      <Width>1 888 pixels</Width>
+      <Original_width>1 920 pixels</Original_width>
+      <Height>1 062 pixels</Height>
+      <Original_height>1 080 pixels</Original_height>
+      <Display_aspect_ratio>16:9</Display_aspect_ratio>
+      <Frame_rate_mode>Constant</Frame_rate_mode>
+      <Frame_rate>29.970 fps</Frame_rate>
+      <Color_space>YUV</Color_space>
+      <Chroma_subsampling>4:2:2</Chroma_subsampling>
+      <Bit_depth>10 bits</Bit_depth>
+      <Compression_mode>Lossless</Compression_mode>
+      <Bits__Pixel_Frame_>22.063</Bits__Pixel_Frame_>
+      <Stream_size>494 GiB (100%)</Stream_size>
+      <Language>English</Language>
+      <Encoded_date>UTC 2012-06-04 19:28:30</Encoded_date>
+      <Tagged_date>UTC 2012-06-04 20:55:15</Tagged_date>
+    </track>
+    <track type="Audio">
+      <ID>2</ID>
+      <Format>PCM</Format>
+      <Format_settings__Endianness>Big</Format_settings__Endianness>
+      <Format_settings__Sign>Signed</Format_settings__Sign>
+      <Codec_ID>twos</Codec_ID>
+      <Duration>53mn 18s</Duration>
+      <Bit_rate_mode>Constant</Bit_rate_mode>
+      <Bit_rate>1 536 Kbps</Bit_rate>
+      <Channel_s_>2 channels</Channel_s_>
+      <Channel_positions>Front: L R</Channel_positions>
+      <Sampling_rate>48.0 KHz</Sampling_rate>
+      <Bit_depth>16 bits</Bit_depth>
+      <Stream_size>586 MiB (0%)</Stream_size>
+      <Language>English</Language>
+      <Encoded_date>UTC 2012-06-04 19:28:31</Encoded_date>
+      <Tagged_date>UTC 2012-06-04 20:55:15</Tagged_date>
+    </track>
+    <track type="Menu">
+      <ID>3</ID>
+      <Duration>53mn 18s</Duration>
+      <Language>English</Language>
+      <Encoded_date>UTC 2012-06-04 20:55:15</Encoded_date>
+      <Tagged_date>UTC 2012-06-04 20:55:15</Tagged_date>
+    </track>
+  </File>
+</Mediainfo>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="mediaInfo.1" LABEL="" CREATED="2012-06-08T16:12:11.571Z" MIMETYPE="text/xml" SIZE="2721">
+<foxml:xmlContent>
+<Mediainfo version="0.7.50">
+  <File>
+    <track type="General">
+      <Complete_name>/gpfs/archive/prod/bag/rrhof_2405/data/rrhof_2405_001_preservation.mov</Complete_name>
+      <Format>MPEG-4</Format>
+      <Format_profile>QuickTime</Format_profile>
+      <Codec_ID>qt  </Codec_ID>
+      <File_size>494 GiB</File_size>
+      <Duration>53mn 18s</Duration>
+      <Overall_bit_rate>1 327 Mbps</Overall_bit_rate>
+      <Encoded_date>UTC 2012-06-04 19:28:30</Encoded_date>
+      <Tagged_date>UTC 2012-06-04 20:55:15</Tagged_date>
+      <Writing_library>Apple QuickTime</Writing_library>
+      <Media_UUID>10DEFFB7-6624-42C2-8A42-3DCE927B8BC8</Media_UUID>
+    </track>
+    <track type="Video">
+      <ID>1</ID>
+      <Format>YUV</Format>
+      <Codec_ID>v210</Codec_ID>
+      <Codec_ID_Hint>AJA Video Systems Xena</Codec_ID_Hint>
+      <Duration>53mn 18s</Duration>
+      <Bit_rate_mode>Constant</Bit_rate_mode>
+      <Bit_rate>1 326 Mbps</Bit_rate>
+      <Width>1 888 pixels</Width>
+      <Original_width>1 920 pixels</Original_width>
+      <Height>1 062 pixels</Height>
+      <Original_height>1 080 pixels</Original_height>
+      <Display_aspect_ratio>16:9</Display_aspect_ratio>
+      <Frame_rate_mode>Constant</Frame_rate_mode>
+      <Frame_rate>29.970 fps</Frame_rate>
+      <Color_space>YUV</Color_space>
+      <Chroma_subsampling>4:2:2</Chroma_subsampling>
+      <Bit_depth>10 bits</Bit_depth>
+      <Compression_mode>Lossless</Compression_mode>
+      <Bits__Pixel_Frame_>22.063</Bits__Pixel_Frame_>
+      <Stream_size>494 GiB (100%)</Stream_size>
+      <Language>English</Language>
+      <Encoded_date>UTC 2012-06-04 19:28:30</Encoded_date>
+      <Tagged_date>UTC 2012-06-04 20:55:15</Tagged_date>
+    </track>
+    <track type="Audio">
+      <ID>2</ID>
+      <Format>PCM</Format>
+      <Format_settings__Endianness>Big</Format_settings__Endianness>
+      <Format_settings__Sign>Signed</Format_settings__Sign>
+      <Codec_ID>twos</Codec_ID>
+      <Duration>53mn 18s</Duration>
+      <Bit_rate_mode>Constant</Bit_rate_mode>
+      <Bit_rate>1 536 Kbps</Bit_rate>
+      <Channel_s_>2 channels</Channel_s_>
+      <Channel_positions>Front: L R</Channel_positions>
+      <Sampling_rate>48.0 KHz</Sampling_rate>
+      <Bit_depth>16 bits</Bit_depth>
+      <Stream_size>586 MiB (0%)</Stream_size>
+      <Language>English</Language>
+      <Encoded_date>UTC 2012-06-04 19:28:31</Encoded_date>
+      <Tagged_date>UTC 2012-06-04 20:55:15</Tagged_date>
+    </track>
+    <track type="Menu">
+      <ID>3</ID>
+      <Duration>53mn 18s</Duration>
+      <Language>English</Language>
+      <Encoded_date>UTC 2012-06-04 20:55:15</Encoded_date>
+      <Tagged_date>UTC 2012-06-04 20:55:15</Tagged_date>
+    </track>
+  </File>
+</Mediainfo>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="properties" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2012-06-08T16:12:10.846Z" MIMETYPE="text/xml" SIZE="145">
+<foxml:xmlContent>
+<fields>
+  <collection></collection>
+  <depositor>batch</depositor>
+  <notes></notes>
+  <access></access>
+  <submission></submission>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="properties.1" LABEL="" CREATED="2012-06-08T16:12:11.777Z" MIMETYPE="text/xml" SIZE="145">
+<foxml:xmlContent>
+<fields>
+  <collection></collection>
+  <depositor>batch</depositor>
+  <notes></notes>
+  <access></access>
+  <submission></submission>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>
