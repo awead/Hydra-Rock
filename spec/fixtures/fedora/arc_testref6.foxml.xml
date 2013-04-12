@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject VERSION="1.1" PID="arc:testref3"
+<foxml:digitalObject VERSION="1.1" PID="arc:testref6"
 xmlns:foxml="info:fedora/fedora-system:def/foxml#"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
@@ -7,11 +7,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE=""/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
-<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2013-03-28T17:45:17.911Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-03-28T17:57:23.361Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2013-03-28T17:45:44.677Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-04-12T14:11:55.170Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
-<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2013-03-28T17:45:17.911Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2013-03-28T17:45:44.677Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
 <foxml:xmlContent>
 <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
 <audit:record ID="AUDREC1">
@@ -19,7 +19,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>addDatastream</audit:action>
 <audit:componentID>RELS-EXT</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-03-28T17:45:17.980Z</audit:date>
+<audit:date>2013-03-28T17:45:44.756Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 <audit:record ID="AUDREC2">
@@ -27,7 +27,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>addDatastream</audit:action>
 <audit:componentID>descMetadata</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-03-28T17:45:21.201Z</audit:date>
+<audit:date>2013-03-28T17:45:47.957Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 <audit:record ID="AUDREC3">
@@ -35,7 +35,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>modifyDatastreamByValue</audit:action>
 <audit:componentID>RELS-EXT</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-03-28T17:46:13.423Z</audit:date>
+<audit:date>2013-03-28T17:46:13.612Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 <audit:record ID="AUDREC4">
@@ -43,7 +43,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>modifyDatastreamByValue</audit:action>
 <audit:componentID>descMetadata</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-03-28T17:57:23.361Z</audit:date>
+<audit:date>2013-03-28T17:58:34.283Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 </audit:auditTrail>
@@ -51,28 +51,28 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2013-03-28T17:45:17.911Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="341">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2013-03-28T17:45:44.677Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="341">
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-  <dc:identifier>arc:testref3</dc:identifier>
+  <dc:identifier>arc:testref6</dc:identifier>
 </oai_dc:dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-03-28T17:45:17.980Z" MIMETYPE="application/rdf+xml" SIZE="292">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-03-28T17:45:44.756Z" MIMETYPE="application/rdf+xml" SIZE="292">
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="info:fedora/arc:testref3">
+  <rdf:Description rdf:about="info:fedora/arc:testref6">
     <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalComponent"></ns0:hasModel>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-03-28T17:46:13.423Z" MIMETYPE="application/rdf+xml" SIZE="448">
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-03-28T17:46:13.612Z" MIMETYPE="application/rdf+xml" SIZE="448">
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="info:fedora/arc:testref3">
+  <rdf:Description rdf:about="info:fedora/arc:testref6">
     <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalComponent"></ns0:hasModel>
     <ns1:isMemberOfCollection rdf:resource="info:fedora/arc:test"></ns1:isMemberOfCollection>
   </rdf:Description>
@@ -81,15 +81,15 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2013-03-28T17:45:21.201Z" MIMETYPE="text/xml" SIZE="93">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2013-03-28T17:45:47.957Z" MIMETYPE="text/xml" SIZE="93">
 <foxml:xmlContent>
 <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/"></dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2013-03-28T17:57:23.361Z" MIMETYPE="text/xml" SIZE="141">
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2013-03-28T17:58:34.283Z" MIMETYPE="text/xml" SIZE="149">
 <foxml:xmlContent>
 <dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
-  <dc:title>Series 1: Sample Series</dc:title>
+  <dc:title>Series 2: Another sample series</dc:title>
 </dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>

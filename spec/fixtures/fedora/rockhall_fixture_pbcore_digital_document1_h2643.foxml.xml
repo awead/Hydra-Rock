@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="h264"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2012-04-05T02:03:27.631Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-06-15T15:57:43.878Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-04-12T14:23:41.901Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2012-04-05T02:03:27.631Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -132,6 +132,14 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:componentID>mediaInfo</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
 <audit:date>2012-06-15T15:57:43.878Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC16">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:41.901Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 </audit:auditTrail>
@@ -357,6 +365,48 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     </instantiationRelation>
   </pbcoreInstantiation>
 </pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.2" LABEL="" CREATED="2013-04-12T14:23:41.901Z" MIMETYPE="text/xml" SIZE="2496">
+<foxml:xmlContent>
+<pbcoreInstantiation>
+  <instantiationIdentifier annotation="Filename" source="Rock and Roll Hall of Fame and Museum">content_003_access.mp4</instantiationIdentifier>
+  <instantiationDate dateType="created">2012-04-04</instantiationDate>
+  <instantiationDigital source="EBU file formats"></instantiationDigital>
+  <instantiationLocation></instantiationLocation>
+  <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+  <instantiationGenerations source="PBCore instantiationGenerations">Copy: access</instantiationGenerations>
+  <instantiationFileSize unitsOfMeasure="">0</instantiationFileSize>
+  <instantiationDuration></instantiationDuration>
+  <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+  <instantiationEssenceTrack>
+    <essenceTrackType>Video</essenceTrackType>
+    <essenceTrackStandard></essenceTrackStandard>
+    <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
+    <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+    <essenceTrackFrameRate unitsOfMeasure="fps"></essenceTrackFrameRate>
+    <essenceTrackBitDepth></essenceTrackBitDepth>
+    <essenceTrackFrameSize source="PBCore essenceTrackFrameSize"></essenceTrackFrameSize>
+    <essenceTrackAspectRatio source="PBCore essenceTrackAspectRatio"></essenceTrackAspectRatio>
+  </instantiationEssenceTrack>
+  <instantiationEssenceTrack>
+    <essenceTrackType>Audio</essenceTrackType>
+    <essenceTrackStandard></essenceTrackStandard>
+    <essenceTrackEncoding source="PBCore essenceTrackEncoding"></essenceTrackEncoding>
+    <essenceTrackDataRate unitsOfMeasure=""></essenceTrackDataRate>
+    <essenceTrackSamplingRate unitsOfMeasure=""></essenceTrackSamplingRate>
+    <essenceTrackBitDepth></essenceTrackBitDepth>
+    <essenceTrackAnnotation annotationType="Number of Audio Channels"></essenceTrackAnnotation>
+  </instantiationEssenceTrack>
+  <instantiationRights>
+    <rightsSummary></rightsSummary>
+  </instantiationRights>
+  <instantiationAnnotation annotationType="Vendor Name">Rock and Roll Hall of Fame Library and Archives</instantiationAnnotation>
+  <instantiationRelation>
+    <instantiationRelationType annotation="One of a multi-part instantiation">Follows in Sequence</instantiationRelationType>
+    <instantiationRelationIdentifier source="Rock and Roll Hall of Fame and Museum">content_002_access.mp4</instantiationRelationIdentifier>
+  </instantiationRelation>
+</pbcoreInstantiation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>

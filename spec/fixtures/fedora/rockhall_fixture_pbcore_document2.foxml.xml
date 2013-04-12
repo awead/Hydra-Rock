@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="George Blood Audio and Video"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="hydraApp"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-12-22T14:44:48.509Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-01-25T12:45:15.349Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-04-12T14:23:51.206Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-12-22T14:44:48.509Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -358,12 +358,36 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2012-01-25T12:45:15.349Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC44">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:51.109Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC45">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:51.161Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC46">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>properties</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:51.206Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-22T14:44:48.509Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="390">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-22T14:44:48.509Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="414">
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:title>George Blood Audio and Video</dc:title>
@@ -1096,7 +1120,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.9" LABEL="" CREATED="2012-01-25T00:01:19.244Z" MIMETYPE="text/xml" SIZE="10077">
+<foxml:datastreamVersion ID="descMetadata.9" LABEL="" CREATED="2012-01-25T00:01:19.244Z" MIMETYPE="text/xml" SIZE="10075">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1686,13 +1710,71 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.15" LABEL="" CREATED="2013-04-12T14:23:51.161Z" MIMETYPE="text/xml" SIZE="4411">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Hall of Fame Series. An evening with Little Richard. Pt. 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">Rock Hall V.P. of Education Robert Santelli and Curator Jim Henke discuss the origins of rock and roll with Little Richard, after a performance by him and his band. The band’s musical director Wayne Chaney introduces the performance, after a brief note by Santelli.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType">Performed songs. [Instrumental intro] -- [Piano instrumental] -- Good golly Miss Molly -- Jambalaya (On the bayou) -- Chains of love -- Lucille -- Blueberry Hill -- Old time rock and roll.</pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Hall of fame series (Rock and Roll Hall of Fame and Museum)</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">Rock and Roll Hall of Fame and Museum, Cleveland, Ohio</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1997-09-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--To 1961.</pbcoreSubject>
+  <pbcoreTitle titleType="Segment">Part 1.</pbcoreTitle>
+  <pbcoreSubject source="Rock and Roll Hall of Fame and Museum">Inductee</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/names" source="Library of Congress Name Authority File">Little Richard, 1932-</pbcoreSubject>
+  <pbcoreTitle titleType="Label">An evening with Little Richard. Pt. 1</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed performances</pbcoreGenre>
+  <pbcoreContributor>
+    <contributor>Little Richard, 1932-</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Santelli, Robert</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Henke, James</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rhythm and blues music</pbcoreGenre>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed interviews.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rhythm and blues music--History and criticism.</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Piano music (Rock)</pbcoreGenre>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Nonfiction films.</pbcoreGenre>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T19:02:46.370Z" MIMETYPE="text/xml" SIZE="278">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T19:02:46.370Z" MIMETYPE="text/xml" SIZE="297">
 <foxml:xmlContent>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document2">
     <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:ArchivalVideo"></hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="" CREATED="2013-04-12T14:23:51.109Z" MIMETYPE="text/xml" SIZE="465">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document2">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalVideo"></ns0:hasModel>
+    <ns1:isMemberOfCollection rdf:resource="info:fedora/arc:test"></ns1:isMemberOfCollection>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
@@ -2308,6 +2390,13 @@ library@rockhall.org</instantiationLocation>
 <foxml:datastreamVersion ID="properties.2" LABEL="" CREATED="2011-12-22T14:58:34.035Z" MIMETYPE="text/xml" SIZE="19">
 <foxml:xmlContent>
 <fields></fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="properties.3" LABEL="" CREATED="2013-04-12T14:23:51.206Z" MIMETYPE="text/xml" SIZE="48">
+<foxml:xmlContent>
+<fields>
+  <collection></collection>
+</fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>

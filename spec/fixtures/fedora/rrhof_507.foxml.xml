@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="original"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="hydraApp"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-12-22T15:07:16.099Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-03-07T21:12:38.827Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-04-12T14:23:39.904Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-12-22T15:07:16.099Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -78,6 +78,14 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2012-03-07T21:12:38.827Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:39.904Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
@@ -144,6 +152,49 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
     <instantiationAnnotation annotationType="Vendor Name">George Blood Audio and Video</instantiationAnnotation>
   </pbcoreInstantiation>
 </pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2013-04-12T14:23:39.904Z" MIMETYPE="text/xml" SIZE="2714">
+<foxml:xmlContent>
+<pbcoreInstantiation>
+  <instantiationIdentifier annotation="Filename" source="Rock and Roll Hall of Fame and Museum">39156042459763_preservation.mov</instantiationIdentifier>
+  <instantiationDate dateType="created">2011-11-21</instantiationDate>
+  <instantiationDigital source="EBU file formats">mov</instantiationDigital>
+  <instantiationLocation></instantiationLocation>
+  <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+  <instantiationGenerations source="PBCore instantiationGenerations">Copy: preservation</instantiationGenerations>
+  <instantiationFileSize unitsOfMeasure="">67</instantiationFileSize>
+  <instantiationDuration>00:42:53</instantiationDuration>
+  <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+  <instantiationEssenceTrack>
+    <essenceTrackType>Video</essenceTrackType>
+    <essenceTrackStandard>NTSC</essenceTrackStandard>
+    <essenceTrackEncoding source="PBCore essenceTrackEncoding">AJA v210</essenceTrackEncoding>
+    <essenceTrackDataRate unitsOfMeasure="Mbps">224</essenceTrackDataRate>
+    <essenceTrackFrameRate unitsOfMeasure="fps">29.97</essenceTrackFrameRate>
+    <essenceTrackBitDepth>10</essenceTrackBitDepth>
+    <essenceTrackFrameSize source="PBCore essenceTrackFrameSize">720x486</essenceTrackFrameSize>
+    <essenceTrackAspectRatio source="PBCore essenceTrackAspectRatio">4:3</essenceTrackAspectRatio>
+  </instantiationEssenceTrack>
+  <instantiationEssenceTrack>
+    <essenceTrackType>Audio</essenceTrackType>
+    <essenceTrackStandard>Linear PCM Audio</essenceTrackStandard>
+    <essenceTrackEncoding source="PBCore essenceTrackEncoding">in24</essenceTrackEncoding>
+    <essenceTrackDataRate unitsOfMeasure="Kbps">1152</essenceTrackDataRate>
+    <essenceTrackSamplingRate unitsOfMeasure="kHz">48</essenceTrackSamplingRate>
+    <essenceTrackBitDepth>24</essenceTrackBitDepth>
+    <essenceTrackAnnotation annotationType="Number of Audio Channels">2</essenceTrackAnnotation>
+  </instantiationEssenceTrack>
+  <instantiationRights>
+    <rightsSummary></rightsSummary>
+  </instantiationRights>
+  <instantiationAnnotation annotationType="Capture Software">Apple FCP 7 (ver 7.0.3)</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Operator">TM</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Playback Device">BTS BCB75</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Chroma">4:2:2</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Color Space">YUV</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Vendor Name">George Blood Audio and Video</instantiationAnnotation>
+</pbcoreInstantiation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
