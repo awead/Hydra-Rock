@@ -7,7 +7,7 @@ gem 'blacklight'
 # Hydra Bits
 gem 'om'
 gem 'solrizer'
-gem 'hydra-file-access'
+#gem 'hydra-file-access'
 gem 'hydra-pbcore'
 gem 'solr_ead'
 

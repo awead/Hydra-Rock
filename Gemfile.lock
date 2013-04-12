@@ -151,17 +151,6 @@ GEM
       jquery-rails
       rails (~> 3.2.3)
       sanitize
-    hydra-file-access (5.3.0)
-      RedCloth (= 4.2.9)
-      active-fedora
-      blacklight
-      block_helpers
-      deprecation (>= 0.0.5)
-      devise
-      hydra-core (= 5.3.0)
-      hydra-mods (>= 0.0.5)
-      rails (~> 3.2.3)
-      sanitize
     hydra-head (5.3.0)
       hydra-access-controls (= 5.3.0)
       hydra-core (= 5.3.0)
@@ -366,7 +355,6 @@ DEPENDENCIES
   factory_girl
   generator_spec
   gravatar_image_tag
-  hydra-file-access
   hydra-head
   hydra-pbcore
   jquery-rails (< 2.2.0)
