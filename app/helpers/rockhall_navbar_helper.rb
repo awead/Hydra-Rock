@@ -11,7 +11,10 @@ module RockhallNavbarHelper
 
   # navbar items if a user is logged in
   def render_user_navbar(model, opts={})
-    result = String.new
+    result = "<li>"
+    result << link_to('<i class="icon-share"></i> Pbcore </a>'.html_safe, 
+                       catalog_path(params[:id], :format => 'xml'), { :target => "_blank" })
+    result << "</li>"
     if current_user
       if params[:action] == "edit"
         result << "<li>"

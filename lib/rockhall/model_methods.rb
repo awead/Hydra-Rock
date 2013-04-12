@@ -103,5 +103,16 @@ module Rockhall::ModelMethods
     source.reload
   end
 
+  # returns a complete pbcore xml document
+  def to_pbcore_xml instantiations = Array.new
+    unless self.external_videos.nil?
+      self.external_videos.collect { |v| instantiations << v.datastreams["descMetadata"] }
+    end
+    self.datastreams["descMetadata"].to_pbcore_xml(instantiations)
+  end
+
+  def valid_pbcore?
+    HydraPbcore.is_valid?(self.to_pbcore_xml)
+  end
 
 end

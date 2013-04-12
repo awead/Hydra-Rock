@@ -53,4 +53,12 @@ describe Rockhall::ModelMethods do
 
   end
 
+  describe ".to_pbcore_xml" do
+
+    it "should return a complete, valid pbcore document" do
+      ArchivalVideo.find("rrhof:331").valid_pbcore?.should be_true     
+    end
+
+  end
+
 end
