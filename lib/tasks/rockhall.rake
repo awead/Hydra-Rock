@@ -77,6 +77,18 @@ namespace :rockhall do
       ActiveFedora::FixtureExporter.export_to_path(obj.pid, dir)
     end
 
+    desc "Export all objects from fedora"
+    task :export_all => :environment do
+      dir = "spec/fixtures/exports"
+      ActiveFedora::Base.connection_for_pid('foo:1') # Loads Rubydora connection with fake object
+      success = 0
+      ActiveFedora::Base.fedora_connection[0].connection.search(nil) do |object|
+        ActiveFedora::FixtureExporter.export_to_path(object.pid, dir)
+        success = success + 1
+      end
+      puts "Complete: #{success.to_s} objects exported"
+    end
+
   end
 
   namespace :solr do
