@@ -22,6 +22,7 @@ HydraRock::Application.routes.draw do
     resources :external_videos, :only => [:new, :create]
   end
   resources :external_videos, :except => [:new, :create]
+  match ":controller/:id/:action(/:step)", :controller => /archival_videos/
 
   resources :digital_videos
   
