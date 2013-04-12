@@ -91,7 +91,7 @@ describe ArchivalVideo do
 
     it "should return a hash of external video objects" do
       av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
-      av.external_videos.count.should == 2
+      av.external_videos.count.should == 3
       av.external_videos.first.should be_kind_of(ExternalVideo)
     end
   end
