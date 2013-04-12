@@ -8,7 +8,7 @@ gem 'blacklight'
 gem 'om'
 gem 'solrizer'
 gem 'hydra-file-access'
-gem 'hydra-pbcore', :path => '/Users/adamw/Projects/Github/hydra-pbcore'
+gem 'hydra-pbcore'
 gem 'solr_ead'
 
 # Gems for all environments
