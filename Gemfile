@@ -1,13 +1,12 @@
 source 'http://rubygems.org'
 
 gem 'rails',      '~>3.2.11'
-gem 'hydra-head'
+gem 'hydra-head', '< 6.0.0'
 gem 'blacklight'    
 
 # Hydra Bits
 gem 'om'
 gem 'solrizer'
-#gem 'hydra-file-access'
 gem 'hydra-pbcore'
 gem 'solr_ead'
 
