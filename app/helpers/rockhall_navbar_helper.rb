@@ -26,7 +26,7 @@ module RockhallNavbarHelper
           result << link_to_edit_asset('<i class="icon-pencil"></i> Edit </a>'.html_safe, model)
           result << "</li>"
         else
-          result << workflow_dropdown(model)
+          result << workflow_dropdown
         end
       end
       unless opts[:delete].nil?
@@ -38,29 +38,6 @@ module RockhallNavbarHelper
       end
     end
     return result.html_safe
-  end
-
-  # navigation links to the other edit partials
-  def workflow_dropdown(model)
-    steps = Array.new
-    Hydra.config[:submission_workflow][model.to_sym].each { |x| steps << x[:name] }
-    params[:wf_step] = "titles" if params[:wf_step].nil?
-
-    results = String.new
-    results << '<li class="dropdown">'
-    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil"></i> Edit <b class="caret"></b></a>'
-    results << '<ul class="dropdown-menu">'
-    steps.each do |step|
-      if params[:wf_step] == step and params[:action] == "edit"
-        results << "<li class=\"active\">"
-      else
-        results << "<li>"
-      end
-      results << "<a href=\"" + url_for( send(("edit_" + model.singularize + "_path"), :wf_step=>step) ) + "\">" + step.capitalize + "</a>"
-      results<< "</li>"
-    end
-    results << "</ul>"
-    return results.html_safe
   end
 
   # deprecated

@@ -1,6 +1,6 @@
 <% navbar_items << capture do %>
   <% unless params[:new_asset] %>
-    <%= workflow_dropdown("archival_videos") %>
+    <%= workflow_dropdown %>
   <% end %>
   <%= render_user_navbar("archival_videos", {:delete=>TRUE}) %>
 <% end %>
