@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Rockhall::ModelMethods do
 
-  describe "transferring videos" do
+  describe ".transfer_videos_from" do
 
     # setup the scenario with two videos, each with a tape
     before :all do
@@ -31,7 +31,7 @@ describe Rockhall::ModelMethods do
       @video2.save
     end
 
-    describe "from one video to another" do
+    describe "should move all the instantiations from one video object to another" do
       it "should move the tape instantiations" do
         @video1.videos[:tape].first.should == @tape1
         @video2.videos[:tape].first.should == @tape2
