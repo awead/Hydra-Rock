@@ -20,7 +20,7 @@ describe ArchivalVideosController do
     before :each do
       @user = FactoryGirl.find_or_create(:user)
       sign_in @user
-      User.any_instance.stubs(:groups).returns([])
+      User.any_instance.stubs(:groups).returns(["archivist"])
       controller.stubs(:clear_session_user)
     end
 
