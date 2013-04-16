@@ -21,7 +21,7 @@ module RockhallNavbarHelper
         result << link_to('<i class="icon-eye-open"></i> View </a>'.html_safe, catalog_path(params[:id]))
         result << "</li>"
       else
-        if Hydra.config[:submission_workflow][model.to_sym].nil? or RoleMapper.roles(current_user.email).include?("reviewer")
+        if RoleMapper.roles(current_user.email).include?("reviewer")
           result << "<li>"
           result << link_to_edit_asset('<i class="icon-pencil"></i> Edit </a>'.html_safe, model)
           result << "</li>"
