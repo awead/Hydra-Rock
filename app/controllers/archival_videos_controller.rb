@@ -4,7 +4,7 @@ class ArchivalVideosController < ApplicationController
   include Hydra::Controller::ControllerBehavior
   include Rockhall::Controller::ControllerBehavior
 
-  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
+  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer]
   before_filter :enforce_access_controls
   before_filter :enforce_asset_creation_restrictions, :only=>:new
   prepend_before_filter :enforce_review_controls, :only=>:edit
@@ -93,7 +93,35 @@ class ArchivalVideosController < ApplicationController
     else
       redirect_to(edit_archival_video_path(params["id"], :wf_step=>"collection"), :notice => "No changes made")
     end
-
   end
+
+  # renders a form for importing videos from another object
+  def import
+    render :partial => "import"
+  end
+
+  # transfers the videos from a source object to the destination object
+  def transfer
+    message = verify_transfer
+    if message.empty?
+      destination = ActiveFedora::Base.find(params["id"], :cast => true)
+      source      = ActiveFedora::Base.find(params["source"], :cast => true)
+      destination.transfer_videos_from source
+      flash[:notice] = "Transferred #{source.external_videos.count} videos to #{destination.title}"
+      render :partial => "import"
+    else
+      flash[:error]= message
+      render :partial => "import"
+    end
+  end
+
+  # Verifies the parameters for transferring videos.  An empty string indicates the parameters are acceptable.
+  def verify_transfer error = String.new
+    error = "You must enter an id." if params["source"].empty?
+    error = "ID #{params["source"]} does not exist." unless ActiveFedora::Base.exists?(params["source"])
+    error = "Source ID cannot be the same as the destination ID." if params["source"] == params["id"]
+    return error
+  end
+
 
 end

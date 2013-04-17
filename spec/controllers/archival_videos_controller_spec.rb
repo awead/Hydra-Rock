@@ -11,6 +11,10 @@ describe ArchivalVideosController do
       assert_redirected_to new_user_session_path
       post :create
       assert_redirected_to new_user_session_path
+      put :transfer, :id => "foo", :source => "bar"
+      assert_redirected_to new_user_session_path
+      put :assign, :id => "foo"
+      assert_redirected_to new_user_session_path
     end
 
   end
