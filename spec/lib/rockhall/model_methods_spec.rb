@@ -35,7 +35,7 @@ describe Rockhall::ModelMethods do
       it "should move the tape instantiations" do
         @video1.videos[:tape].first.should == @tape1
         @video2.videos[:tape].first.should == @tape2
-        @video1.transfer_videos_from(@video2).should == @video2
+        @video1.transfer_videos_from @video2
         @tape1.parent.should == @video1
         @tape2.parent.should == @video1
         @video1.reload
@@ -43,11 +43,18 @@ describe Rockhall::ModelMethods do
         @video2.external_videos.count.should == 0
       end
 
-      it "should return nil if the source doesn't have any" do
-        source = ArchivalVideo.new nil
-        test = ArchivalVideo.new nil
-        test.transfer_videos_from(source).should be_nil
+    end
+
+    describe "with errors" do
+
+      it "should return false for objects with no external videos" do
+        source = ArchivalVideo.new(:pid => "foo")
+        @video1.transfer_videos_from(source).should be_false
+        #source = ArchivalVideo.new nil
+        #test = ArchivalVideo.new nil
+        #test.transfer_videos_from(source).should be_nil
       end
+
 
     end
 

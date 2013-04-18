@@ -91,16 +91,16 @@ module Rockhall::ModelMethods
   end
 
   # Transfers the external videos from one ArchivalVideo to another
-  # Takes an ArchivalVideo object as the source, and returns the
-  # object, reloaded, and emptied of its associated video objects.
+  # Takes an ArchivalVideo object as the source, and returns self
   def transfer_videos_from source
-    return nil if source.external_videos.empty?
+    return false if source.external_videos.empty?
     source.external_videos.each do |v|
       v.remove_relationship(:is_part_of, source)
       v.parent = self
       v.save
     end
     source.reload
+    return self
   end
 
   # returns a complete pbcore xml document
