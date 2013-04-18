@@ -74,7 +74,7 @@ class PermissionsController < ApplicationController
     respond_to do |format|
       format.html do
         if params.has_key?(:add_permission)
-          redirect_to edit_permission_path(params[:id], :wf_step => :permissions, :add_permission => true)
+          redirect_to edit_permission_path(params[:id], :add_permission => true)
         else
           redirect_to next_step(params[:id])
         end
