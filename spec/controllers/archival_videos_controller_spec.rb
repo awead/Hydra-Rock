@@ -50,7 +50,7 @@ describe ArchivalVideosController do
           :alternative_title => "Fake alt title",
           :event_series => "Fake series"
         }
-        put :update, id: video, document_fields: changes
+        put :update, id: video, wf_step: "titles", document_fields: changes
         video.reload
         video.alternative_title.first.should == "Fake alt title"
         video.event_series.first.should == "Fake series"
@@ -59,7 +59,7 @@ describe ArchivalVideosController do
           :lc_subject => ["Sub one", "Sub two", "Sub three"],
           :rh_subject => ["RH 1", "RH 2", "RH 3"]
         }
-        put :update, id: video, document_fields: changes
+        put :update, id: video, wf_step: "subjects", document_fields: changes
         video.reload
         video.subject.length.should == 6
         video.lc_subject.should == changes[:lc_subject]
@@ -68,7 +68,7 @@ describe ArchivalVideosController do
           :lc_subject => ["", "Sub two", "Sub three"],
           :alternative_title => "Fake edited alt title"
         }
-        put :update, id: video, document_fields: changes
+        put :update, id: video, wf_step: "subjects", document_fields: changes
         video.reload
         video.subject.length.should == 5
         video.alternative_title.first.should == "Fake edited alt title"
