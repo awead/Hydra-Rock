@@ -90,7 +90,7 @@ class ArchivalVideo < ActiveFedora::Base
   def to_discovery
     solr_doc = self.to_solr
     access_videos = Array.new
-    self.videos[:h264].each do |ev|
+    self.videos[:access].each do |ev|
       access_videos << ev.name.first
     end
     solr_doc.merge!("access_file_s"      => access_videos)

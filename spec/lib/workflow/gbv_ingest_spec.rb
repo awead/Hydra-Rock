@@ -35,7 +35,7 @@ describe Workflow::GbvIngest do
       tape.format.should    == ["Betacam"]
 
       # Preservation file
-      original = ExternalVideo.find(ing.parent.videos[:original].first.pid)
+      original = ExternalVideo.find(ing.parent.videos[:preservation].first.pid)
 
       # Preservation: Instantiation fields
       original.date.first.should                    == "2011-10-12"
@@ -75,7 +75,7 @@ describe Workflow::GbvIngest do
       original.audio_channels.first.should          == "2"
 
       # Access file
-      access = ExternalVideo.find(ing.parent.videos[:h264].first.pid)
+      access = ExternalVideo.find(ing.parent.videos[:access].first.pid)
 
       # Access: Instantiation fields
       access.date.first.should                    == "2011-10-12"
@@ -122,7 +122,7 @@ describe Workflow::GbvIngest do
       tape = ing.parent.videos[:tape].first
       tape.date.first.should == "2007-07-09"
 
-      original = ExternalVideo.find(ing.parent.videos[:original].first.pid)
+      original = ExternalVideo.find(ing.parent.videos[:preservation].first.pid)
       original.date.first.should            == "2011-10-12"
       original.vendor.first.should          == "George Blood Audio and Video"
       original.cleaning.first.should        be_nil
@@ -132,7 +132,7 @@ describe Workflow::GbvIngest do
       original.capture_soft.first.should    == "Apple FCP 7 (ver 7.0.3)"
       original.operator.first.should        == "TMu"
 
-      access = ExternalVideo.find(ing.parent.videos[:h264].first.pid)
+      access = ExternalVideo.find(ing.parent.videos[:access].first.pid)
       access.vendor.first.should            == "George Blood Audio and Video"
       access.file_format.first.should       == "mp4"
       access.audio_encoding.first.should    == "MPEG-4: AAC"
@@ -147,13 +147,13 @@ describe Workflow::GbvIngest do
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.external_videos.length.should == 3
       tape         = ing.parent.videos[:tape].first.pid
-      old_original = ing.parent.videos[:original].first.pid
-      old_h264     = ing.parent.videos[:h264].first.pid
+      old_original = ing.parent.videos[:preservation].first.pid
+      old_h264     = ing.parent.videos[:access].first.pid
       ing.process
       ing.parent.external_videos.length.should == 3
       tape.should         == ing.parent.videos[:tape].first.pid
-      old_original.should == ing.parent.videos[:original].first.pid
-      old_h264.should     == ing.parent.videos[:h264].first.pid
+      old_original.should == ing.parent.videos[:preservation].first.pid
+      old_h264.should     == ing.parent.videos[:access].first.pid
     end
 
     it "should reprocess a sip by removing existing video files, re-adding them, and retaining the original tape object" do
@@ -162,13 +162,13 @@ describe Workflow::GbvIngest do
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.external_videos.length.should == 3
       tape         = ing.parent.videos[:tape].first.pid
-      old_original = ing.parent.videos[:original].first.pid
-      old_h264     = ing.parent.videos[:h264].first.pid
+      old_original = ing.parent.videos[:preservation].first.pid
+      old_h264     = ing.parent.videos[:access].first.pid
       ing.reprocess
       ing.parent.external_videos.length.should == 3
       tape.should             == ing.parent.videos[:tape].first.pid
-      old_original.should_not == ing.parent.videos[:original].first.pid
-      old_h264.should_not     == ing.parent.videos[:h264].first.pid
+      old_original.should_not == ing.parent.videos[:preservation].first.pid
+      old_h264.should_not     == ing.parent.videos[:access].first.pid
 
       # Clean-up
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))

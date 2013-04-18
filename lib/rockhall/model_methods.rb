@@ -8,8 +8,8 @@ module Rockhall::ModelMethods
 
   # Removes h264 and original child video objects, but not objects that represent tapes
   def remove_external_videos files = Array.new
-    self.videos[:original].collect { |o| files << o }
-    self.videos[:h264].collect     { |o| files << o }
+    self.videos[:preservation].collect { |o| files << o }
+    self.videos[:access].collect     { |o| files << o }
     if files.count > 0
       files.collect { |obj| ActiveFedora::Base.find(obj.pid).delete }
       return true
@@ -31,17 +31,16 @@ module Rockhall::ModelMethods
 
   # Returns a hash of arrays.  Each array is set of child objects based on the presence of
   # particulr datastream name.
-  def videos
-    results = Hash.new
+  def videos results = Hash.new
     results[:unknown]  = Array.new
-    results[:original] = Array.new
-    results[:h264]     = Array.new
+    results[:preservation] = Array.new
+    results[:access]     = Array.new
     results[:tape]     = Array.new
     self.external_videos.each do |obj|
       if obj.datastreams.keys.include?("PRESERVATION1")
-        results[:original] << obj
+        results[:preservation] << obj
       elsif obj.datastreams.keys.include?("ACCESS1")
-        results[:h264] << obj
+        results[:access] << obj
       elsif obj.generation.first.match("Original")
         results[:tape] << obj
       else

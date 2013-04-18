@@ -16,8 +16,8 @@ class GbvIngest
 
   # runs the first time to process a new sip that doesn't exist in Fedora
   def process(opts={})
-    self.ingest(@sip.base, @sip.access,       "access",       {:format=>"h264"})     unless @parent.videos[:h264].first
-    self.ingest(@sip.base, @sip.preservation, "preservation", {:format=>"original"}) unless @parent.videos[:original].first
+    self.ingest(@sip.base, @sip.access,       "access",       {:format=>"h264"})     unless @parent.videos[:access].first
+    self.ingest(@sip.base, @sip.preservation, "preservation", {:format=>"original"}) unless @parent.videos[:preservation].first
     
     # add thumbnail
     begin
@@ -52,12 +52,12 @@ class GbvIngest
     av.videos[:tape].first.save
 
     # Fields in preservation video object
-    original = ExternalVideo.find(av.videos[:original].first.pid)
+    original = ExternalVideo.find(av.videos[:preservation].first.pid)
     update_preservation_fields(original)
     original.save
 
     # Fields in access video object
-    access = ExternalVideo.find(av.videos[:h264].first.pid)
+    access = ExternalVideo.find(av.videos[:access].first.pid)
     update_access_fields(access)
     access.save
   end

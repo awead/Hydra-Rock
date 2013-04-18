@@ -27,7 +27,7 @@ describe Workflow::RockhallIngest do
       ing.parent.get_thumbnail_url.should_not be_nil
 
       # Check access videos
-      ing.parent.videos[:h264].each do |ev|
+      ing.parent.videos[:access].each do |ev|
         ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
         ev.label.should == "h264"
         ev.generation.first.should == "Copy: access"
@@ -38,20 +38,20 @@ describe Workflow::RockhallIngest do
       end
 
       # Check access video order
-      ing.parent.videos[:h264][0].name.first.should     == "content_001_access.mp4"
-      ing.parent.videos[:h264][0].next.first.should     == "content_002_access.mp4"
-      ing.parent.videos[:h264][0].previous.first.should be_nil
+      ing.parent.videos[:access][0].name.first.should     == "content_001_access.mp4"
+      ing.parent.videos[:access][0].next.first.should     == "content_002_access.mp4"
+      ing.parent.videos[:access][0].previous.first.should be_nil
 
-      ing.parent.videos[:h264][1].name.first.should     == "content_002_access.mp4"
-      ing.parent.videos[:h264][1].next.first.should     == "content_003_access.mp4"
-      ing.parent.videos[:h264][1].previous.first.should == "content_001_access.mp4"
+      ing.parent.videos[:access][1].name.first.should     == "content_002_access.mp4"
+      ing.parent.videos[:access][1].next.first.should     == "content_003_access.mp4"
+      ing.parent.videos[:access][1].previous.first.should == "content_001_access.mp4"
 
-      ing.parent.videos[:h264][2].name.first.should     == "content_003_access.mp4"
-      ing.parent.videos[:h264][2].next.first.should     be_nil
-      ing.parent.videos[:h264][2].previous.first.should == "content_002_access.mp4"
+      ing.parent.videos[:access][2].name.first.should     == "content_003_access.mp4"
+      ing.parent.videos[:access][2].next.first.should     be_nil
+      ing.parent.videos[:access][2].previous.first.should == "content_002_access.mp4"
 
       # Check preservation videos
-      ing.parent.videos[:original].each do |ev|
+      ing.parent.videos[:preservation].each do |ev|
         ev.vendor.first.should == "Rock and Roll Hall of Fame Library and Archives"
         ev.label.should == "original"
         ev.generation.first.should == "original"
@@ -62,17 +62,17 @@ describe Workflow::RockhallIngest do
       end
 
       # Check preservation video order
-      ing.parent.videos[:original][0].name.first.should     == "content_001_preservation.mov"
-      ing.parent.videos[:original][0].next.first.should     == "content_002_preservation.mov"
-      ing.parent.videos[:original][0].previous.first.should be_nil
+      ing.parent.videos[:preservation][0].name.first.should     == "content_001_preservation.mov"
+      ing.parent.videos[:preservation][0].next.first.should     == "content_002_preservation.mov"
+      ing.parent.videos[:preservation][0].previous.first.should be_nil
 
-      ing.parent.videos[:original][1].name.first.should     == "content_002_preservation.mov"
-      ing.parent.videos[:original][1].next.first.should     == "content_003_preservation.mov"
-      ing.parent.videos[:original][1].previous.first.should == "content_001_preservation.mov"
+      ing.parent.videos[:preservation][1].name.first.should     == "content_002_preservation.mov"
+      ing.parent.videos[:preservation][1].next.first.should     == "content_003_preservation.mov"
+      ing.parent.videos[:preservation][1].previous.first.should == "content_001_preservation.mov"
 
-      ing.parent.videos[:original][2].name.first.should     == "content_003_preservation.mov"
-      ing.parent.videos[:original][2].next.first.should     be_nil
-      ing.parent.videos[:original][2].previous.first.should == "content_002_preservation.mov"
+      ing.parent.videos[:preservation][2].name.first.should     == "content_003_preservation.mov"
+      ing.parent.videos[:preservation][2].next.first.should     be_nil
+      ing.parent.videos[:preservation][2].previous.first.should == "content_002_preservation.mov"
 
       # Reprocess
       copy_sip = Workflow::RockhallSip.new(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))

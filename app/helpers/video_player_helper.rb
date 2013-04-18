@@ -7,7 +7,7 @@ module VideoPlayerHelper
 
   # Displays the video player using a Hydra controller
   def render_video_player opts={}
-    if @afdoc.videos[:h264].count > 0
+    if @afdoc.videos[:access].count > 0
       if RH_CONFIG["video_player"].nil?
         render :partial => "video_player/jw_player"
       else
@@ -34,7 +34,7 @@ module VideoPlayerHelper
   end
 
   def flowplayer_playlist results = String.new
-    if @afdoc.videos[:h264].count > 1
+    if @afdoc.videos[:access].count > 1
       @afdoc.external_video(:h264).each do |ds|
         results << link_to("", ds.datastreams["ACCESS1"].label)
       end      
