@@ -143,7 +143,7 @@ namespace :rockhall do
 
     desc "Convert videos to their new models"
     task :videos => :environment do
-      default_collection = ArchivalCollection.find("arc:test")
+      default_collection = ArchivalCollection.find("rockhall:fixture_arc_test")
       ExternalVideo.all.each do |v|
         puts "Converting #{v.pid} to new ExternalVideo"
         v.from_external_video

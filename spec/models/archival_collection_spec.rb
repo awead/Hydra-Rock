@@ -17,24 +17,24 @@ describe ArchivalCollection do
   describe "the test collection" do
 
     before(:all) do
-      @coll = ArchivalCollection.find("arc:test")
-      @ref3 = ArchivalComponent.find("arc:testref3")
-      @ref4 = ArchivalComponent.find("arc:testref4")
-      @ref6 = ArchivalComponent.find("arc:testref6")
+      @coll = ArchivalCollection.find("rockhall:fixture_arc_test")
+      @ref3 = ArchivalComponent.find("rockhall:fixture_arc_testref3")
+      @ref4 = ArchivalComponent.find("rockhall:fixture_arc_testref4")
+      @ref6 = ArchivalComponent.find("rockhall:fixture_arc_testref6")
     end
 
     it "should have a collection with components, and components in a collection" do
       @coll.series.length.should == 3
-      @coll.series_ids.should =~ ["arc:testref3", "arc:testref4", "arc:testref6"]
-      @ref3.collection.pid.should == "arc:test"
-      @ref4.collection.pid.should == "arc:test"
-      @ref6.collection.pid.should == "arc:test"
+      @coll.series_ids.should =~ ["rockhall:fixture_arc_testref3", "rockhall:fixture_arc_testref4", "rockhall:fixture_arc_testref6"]
+      @ref3.collection.pid.should == "rockhall:fixture_arc_test"
+      @ref4.collection.pid.should == "rockhall:fixture_arc_test"
+      @ref6.collection.pid.should == "rockhall:fixture_arc_test"
     end
 
     it "should have components with subseries" do
       @ref3.series.should be_nil
-      @ref3.sub_series.first.pid.should == "arc:testref4"
-      @ref4.series.pid.should == "arc:testref3"
+      @ref3.sub_series.first.pid.should == "rockhall:fixture_arc_testref4"
+      @ref4.series.pid.should == "rockhall:fixture_arc_testref3"
     end
 
     it "should have titles" do

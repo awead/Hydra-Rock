@@ -205,7 +205,7 @@ library@rockhall.org</instantiationLocation>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document3">
     <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalVideo"></ns0:hasModel>
-    <ns1:isMemberOfCollection rdf:resource="info:fedora/arc:test"></ns1:isMemberOfCollection>
+    <ns1:isMemberOfCollection rdf:resource="info:fedora/rockhall:fixture_arc_test"></ns1:isMemberOfCollection>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>

@@ -1,3 +1,4 @@
+@collections
 Feature:
   In order to link items in Hydra to existing collections
   As an archivist
@@ -9,7 +10,7 @@ Feature:
     Then I should see "Test Collection"
 
   Scenario: Displaying collections
-    Given I am on the show document page for arc:test
+    Given I am on the show document page for rockhall:fixture_arc_test
     Then I should see "Test Collection"
     And I should see "Items in Collection"
 
