@@ -1,4 +1,3 @@
-@collections
 Feature:
   In order to link items in Hydra to existing collections
   As an archivist
@@ -14,6 +13,7 @@ Feature:
     Then I should see "Test Collection"
     And I should see "Items in Collection"
 
+  @collections
   Scenario: Importing collections from Blacklight
     Given I am logged in as "archivist1@example.com"
     And I am on the home page

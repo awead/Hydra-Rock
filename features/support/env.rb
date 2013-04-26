@@ -64,6 +64,17 @@ Before do
   ActiveRecord::Fixtures.create_fixtures(fixtures_folder, fixtures)
 end
 
+Before '@sample' do
+  av = ArchivalVideo.new(:pid => "cucumber:1")
+  av.title = "Cucumber Sample 1"
+  av.save
+end
+
+After '@sample' do
+  av = ArchivalVideo.find("cucumber:1")
+  av.delete
+end
+
 After '@collections' do
   Rockhall::JettyCleaner.clean("arc")
 end
