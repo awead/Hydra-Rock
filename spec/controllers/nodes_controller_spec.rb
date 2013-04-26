@@ -34,6 +34,10 @@ include Devise::TestHelpers
         @video.title = "Fake Title"
         @video.save
       end
+  
+      after :all do
+        @video.delete
+      end
 
       describe "#new" do
         it "should render a new contributor page" do

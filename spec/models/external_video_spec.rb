@@ -47,16 +47,25 @@ describe ExternalVideo do
   end
 
   describe "relationships" do
-    it "should create archival video objects" do
-      parent = ArchivalVideo.new
-      parent.title = "Parent"
-      parent.save
-      child = ExternalVideo.new
-      child.save
-      parent.external_videos << child
-      parent.save
-      child.save
-      child.parent.title.should == "Parent"
+
+    before :all do
+      @parent = ArchivalVideo.new
+      @parent.title = "Parent"
+      @parent.save
+      @child = ExternalVideo.new
+      @child.save
+      @parent.external_videos << @child
+      @parent.save
+      @child.save
+    end
+
+    after :all do
+      @parent.delete
+      @child.delete
+    end
+
+    it "should be parent to child" do
+      @child.parent.title.should == "Parent"
     end
 
     it "should have a single parent video" do
@@ -73,7 +82,5 @@ describe ExternalVideo do
       @delegate.mi_file_format.first.should == "MPEG-4"
     end
   end
-
-
 
 end
