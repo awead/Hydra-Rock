@@ -1,24 +1,38 @@
 <%= form_for @afdoc, :url => assign_archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
 
-<fieldset id="archival_fields">
+  <fieldset id="archival_fields"> 
     <legend>Archival Information</legend>
     <p class="legend-caption">Use these fields to identify the item within its archival collection.</p>
-
+  
     <%= f.label  :collection, :class=>"field"  %>
     <%= f.select :collection,
                  ArchivalCollection.find(:all).collect {|p| [ p.title, p.id ] },
                  {:include_blank => 'None', :selected => (@afdoc.collection.nil? ? nil : @afdoc.collection.pid)},
                  {:class => "collection_select"} %>
-
+  
     <%= f.label  :series, :class=>"field"  %>
     <%= f.select :series,
                  components_for_collection,
                  {:include_blank => 'None', :selected => (@afdoc.series.nil? ? nil : @afdoc.series.pid)},
                  {:class => "component_select"} %>
-
+  
     <%= f.label      :accession_number, :class=>"field" %>
-    <%= f.text_field :accession_number, 
-                     :value=>@afdoc.accession_number.first, :class=>" edit span2" %>
+    <%= f.text_field :accession_number, :value=>@afdoc.accession_number.first, :class=>" edit span2" %>
+  </fieldset>
+
+  <fieldset>
+    <legend>
+      Additional Collections
+      <%= link_to("+", new_node_path("collection"), :id => "open_collection_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+    </legend>
+    <p class="legend-caption">
+      Click the button to add additional collections to this item.
+      These do not have to be existing collections defined with an EAD in AT.
+    </p>
+    <div id="collections_form">
+      <%= render :partial => "nodes/edit/collection", :locals => { :document => @afdoc } %>
+    </div>
+
   </fieldset>
 
   <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>

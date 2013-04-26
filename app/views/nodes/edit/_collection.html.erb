@@ -1,0 +1,7 @@
+<% document.additional_collection.each_index do |index| %>
+  <%= text_field_tag "document_fields[additional_collection][#{index.to_s}]", document.additional_collection[index],
+                     :id => ("additional_collection_" + index.to_s), :class=>"edit span3" %>
+                 
+  <%= link_to 'Remove', delete_node_path("collection", index), :class => "btn btn-mini btn-danger delete_collections" %>
+  <br/>
+<% end %>

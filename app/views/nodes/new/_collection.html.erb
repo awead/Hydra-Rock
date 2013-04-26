@@ -1,0 +1,11 @@
+<%= render :partial=>'/flash_msg' %>
+<%= form_tag create_node_path("collection"), :id => "add_collection", :class => "form-inline ajax_form", :method => :post do %>
+  <div class="modal-header">
+    <button type="button" class="close refresh_collections" id="close_modal" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Add collection</h3>
+  </div>
+  <div class="modal-body">
+    <%= text_field_tag "name" %>
+    <%= submit_tag "Add", :id => "add_collection_button" %>
+  </div>
+<% end %>

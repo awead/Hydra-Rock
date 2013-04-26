@@ -5,7 +5,7 @@ module WorkflowHelper
       if params["wf_step"].match("permissions")
         render :partial => "shared/edit/permissions"
       else
-        render :partial => "#{params["controller"]}/edit/#{params["wf_step"]}" rescue render :partial => "#{params["controller"]}/edit/titles"
+        render :partial => "#{params["controller"]}/edit/#{params["wf_step"]}"
       end
     else
       render :partial => "#{params["controller"]}/edit/titles"

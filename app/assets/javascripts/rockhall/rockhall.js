@@ -24,6 +24,8 @@ $(document).ready(refreshContributors);
 $(document).ready(deleteContributors);
 $(document).ready(refreshPublishers);
 $(document).ready(deletePublishers);
+$(document).ready(refreshCollections);
+$(document).ready(deleteCollections);
 
 jQuery(document).ready(function() {
 
@@ -95,6 +97,15 @@ function refreshPublishers() {
 
 }
 
+function refreshCollections() {
+
+  $('.refresh_collections, .modal-backdrop').live("click", function(action) {
+    reloadCollectionsForm();
+    action.preventDefault();
+  });    
+
+}
+
 function deleteContributors() {
 
   $('.delete_contributors').live("click", function(action) {
@@ -122,6 +133,24 @@ function deletePublishers() {
       url: url,
       cache: false,
       success: reloadPublishersForm,
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+    });
+    action.preventDefault();
+  }); 
+}
+
+function deleteCollections() {
+
+  $('.delete_collections').live("click", function(action) {
+    url = $(this).attr("href")
+    $.ajax({
+      type: "GET",
+      url: url,
+      cache: false,
+      success: reloadCollectionsForm,
       error: function(xhr, ajaxOptions, thrownError) {
         alert(xhr.status);
         alert(thrownError);
@@ -174,6 +203,32 @@ function reloadPublishersForm() {
     cache: false,
     success: function(data) {
       $('#publishers_form').html(data);
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      alert(xhr.status);
+      alert(thrownError);
+    }
+  });
+
+}
+
+function reloadCollectionsForm() {
+
+  // Look through our url and find the pid
+  var pid = jQuery.grep(window.location.pathname.split("/"), function (element) {
+    if(element.indexOf(":") !== -1) {
+      return element;
+    }
+  });
+
+  var url = ROOT_PATH+"nodes/"+pid+"/collection/edit";
+
+  $.ajax({
+    type: "GET",
+    url: url,
+    cache: false,
+    success: function(data) {
+      $('#collections_form').html(data);
     },
     error: function(xhr, ajaxOptions, thrownError) {
       alert(xhr.status);

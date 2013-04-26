@@ -69,7 +69,10 @@ class ArchivalVideo < ActiveFedora::Base
      :note, :accession_number]
 
   # we use series to denote an archival series, but HydraPbcore::Datastream::Document defines series as an event series
-  delegate :event_series, :to => :descMetadata, :at => [:series]   
+  delegate :event_series, :to => :descMetadata, :at => [:series]
+
+  # use HydraPcore::Datastream::Document.collection for additional collections that are not linked via RDF
+  delegate :additional_collection, :to => :descMetadata, :at => [:collection]
 
   # Fields with only one value
   delegate :title, :to=> :descMetadata, :unique=>true
