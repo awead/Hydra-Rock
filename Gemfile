@@ -6,7 +6,7 @@ gem 'blacklight'
 
 # Hydra Bits
 gem 'om'
-gem 'solrizer'
+gem 'solrizer', '< 3.0.0'
 gem 'hydra-pbcore'
 gem 'solr_ead'
 
