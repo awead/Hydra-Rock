@@ -16,7 +16,7 @@ class NodesController < ApplicationController
   end
 
   def edit
-    @object = get_model_from_pid(params[:id])
+    @object = ActiveFedora::Base.find(params[:id], :cast => true)
     if params[:type]
       render :partial => "nodes/edit/#{params[:type]}", :locals => {:document=>@object}
     else
@@ -26,7 +26,7 @@ class NodesController < ApplicationController
   end
 
   def create
-    @object = get_model_from_pid(params[:id])
+    @object = ActiveFedora::Base.find(params[:id], :cast => true)
     @object.create_node(params)
     if @object.errors.empty?
       @object.save
@@ -42,7 +42,7 @@ class NodesController < ApplicationController
   end
 
   def destroy
-    @object = get_model_from_pid(params[:id])
+    @object = ActiveFedora::Base.find(params[:id], :cast => true)
     result = @object.send("delete_"+params[:type], params[:index])
     @object.save unless result.nil?
 
