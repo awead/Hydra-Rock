@@ -2,6 +2,10 @@ module Rockhall::Validations
 
   include Rockhall::WorkflowMethods
 
+  def validate_event_date
+    date_format(:event_date)
+  end
+
   def validate_creation_date
     date_format(:creation_date)
   end
