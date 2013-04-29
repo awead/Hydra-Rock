@@ -10,7 +10,13 @@ HydraRock::Application.routes.draw do
   resources :users, :only => [:index, :show]
   resources :activities, :only => [:index]
 
-  resources :nodes
+  resources :nodes, :only => [:edit, :create, :new, :destroy] do
+    member do
+      get    ':type/edit',   :action => 'edit',   :as => 'edit'
+      get    ':type/new',    :action => 'new',    :as => 'new'
+      post   ':type/create', :action => 'create', :as => 'create'
+    end
+  end
   match ":controller/:id/:type(/:action(/:index))", :controller => /nodes/
   
   

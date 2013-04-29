@@ -67,6 +67,16 @@ include Devise::TestHelpers
           post :create, :id => @video.pid, :type => "contributor", :bar => "baz"
           flash[:notice].should == "Unable to insert node: Contributor name is invalid"
         end
+
+        describe "new events" do
+          it "should add event series" do
+            post :create, :id => @video.pid, :type => "event", :event_type => "series", :event_value => "Some series"
+            updated = ArchivalVideo.find(@video.pid)
+            updated.event_series.first.should == "Some series"
+            assert_redirected_to edit_node_path(updated.pid, "event")
+          end 
+        end
+
       end
 
     end
