@@ -12,14 +12,16 @@
   </fieldset>
 
   <fieldset id="event_fields">
-    <legend>Event Fields</legend>
-    <p class="legend-caption">Information about the series in which this event occurred.</p>
-    <%= f.label "Event Series", :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_series", :f=>f, :vals=>@afdoc.event_series, :multiple=>FALSE } %>
-    <%= f.label :event_place, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_place", :f=>f, :vals=>@afdoc.event_place, :multiple=>FALSE } %>
-    <%= f.label :event_date, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_date", :f=>f, :vals=>@afdoc.event_date, :multiple=>FALSE } %>
+    <legend>
+      Event Fields
+      <%= link_to("+", new_node_path("event"), :id => "open_event_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+    </legend>
+    <p class="legend-caption">
+      Click the button to add additional events to this item such as date, place and series.
+    </p>
+    <div id="events_form">
+      <%= render :partial => "nodes/edit/event", :locals => { :document => @afdoc } %>
+    </div>
   </fieldset>
 
   <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>

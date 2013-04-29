@@ -1,0 +1,9 @@
+<% ["event_series","event_place","event_date"].each do |event_type| %>
+  <% document.send(event_type).each_index do |index| %>
+    <%= text_field_tag "document_fields[#{event_type}][#{index.to_s}]", document.send(event_type)[index],
+                       :id => ("#{event_type}_" + index.to_s), :class=>"edit span3" %>
+                   
+    <%= link_to 'Remove', delete_node_path("#{event_type}", index), :class => "btn btn-mini btn-danger delete_events" %>
+    <br/>
+  <% end %>
+<% end %>

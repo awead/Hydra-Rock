@@ -1,0 +1,18 @@
+<%= render :partial=>'/flash_msg' %>
+<%= form_tag create_node_path("event"), :id => "add_event", :class => "form-inline ajax_form", :method => :post do %>
+  <div class="modal-header">
+    <button type="button" class="close refresh_events" id="close_modal" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Add event</h3>
+  </div>
+  <div class="modal-body">
+    <%= select_tag "event_type",
+        options_for_select({ 
+          "Event Series" => "series",
+          "Event Place"  => "place",
+          "Event Date"   => "date",
+        })
+    %>
+    <%= text_field_tag "event_value" %>
+    <%= submit_tag "Add", :id => "add_event_button" %>
+  </div>
+<% end %>
