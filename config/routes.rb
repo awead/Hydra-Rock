@@ -4,21 +4,23 @@ HydraRock::Application.routes.draw do
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
 
-  root :to => "catalog#index"
+  root :to => 'catalog#index'
 
   devise_for :users
   resources :users, :only => [:index, :show]
   resources :activities, :only => [:index]
 
-  resources :nodes, :only => [:edit, :create, :new, :destroy] do
-    member do
-      get    ':type/edit',   :action => 'edit',   :as => 'edit'
-      get    ':type/new',    :action => 'new',    :as => 'new'
-      post   ':type/create', :action => 'create', :as => 'create'
-    end
-  end
-  match ":controller/:id/:type(/:action(/:index))", :controller => /nodes/
-  
+  # Special routes for nodes.  These are probably better done as a resource, but
+  # this will work for now.
+  #
+  # Routes for actual controller methods
+  match 'nodes/:id/:type/edit'   => 'nodes#edit',     :via => :get, :as => "edit_node" 
+  match 'nodes/:id/:type/new'    => 'nodes#new',      :via => :get, :as => "new_node"
+  match 'nodes/:id/:type'        => 'nodes#create',   :via => :post
+  match 'nodes/:id/:type/:index' => 'nodes#destroy',  :via => :delete
+
+  # Bogus route to #show, only so we can have a node_path method in our views
+  match 'nodes/:id/:type(/:index)' => 'nodes#show',   :via => :get, :as => "node" 
   
   resources :archival_videos do
     member do

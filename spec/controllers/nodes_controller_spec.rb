@@ -7,9 +7,9 @@ include Devise::TestHelpers
   describe "with an unauthenticated user" do
 
     it "should redirect to the sign-in page" do
-      get :new, :id => "rockhall:fixture_pbcore_document1"
+      get :new, :id => "rockhall:fixture_pbcore_document1", :type => "foo"
       assert_redirected_to new_user_session_path
-      post :create, :id => "rockhall:fixture_pbcore_document1"
+      post :create, :id => "rockhall:fixture_pbcore_document1", :type => "foo"
       assert_redirected_to new_user_session_path
     end
 
@@ -44,10 +44,6 @@ include Devise::TestHelpers
           get :new, :id => @video.pid, :type => "contributor"
           assert_response :success
         end
-        it "should require a node type" do
-          get :new, :id => @video.pid
-          flash[:notice].should == "Node type is required"
-        end
       end
 
       describe "#create" do
@@ -79,6 +75,26 @@ include Devise::TestHelpers
 
       end
 
+    end
+
+  end
+
+  describe "routes" do
+
+    it "#new" do
+      assert_generates "/nodes/rrhof:1234/foo/new", { :controller => "nodes", :action => "new", :id => "rrhof:1234", :type => "foo" }
+    end
+
+    it "#edit" do
+      assert_generates "/nodes/rrhof:1234/foo/edit", { :controller => "nodes", :action => "edit", :id => "rrhof:1234", :type => "foo" }
+    end
+
+    it "#create" do
+      assert_routing({ :path => "nodes/rrhof:1234/foo", :method => :post }, { :controller => "nodes", :action => "create", :id => "rrhof:1234", :type => "foo" })
+    end
+
+    it "#destroy" do
+      assert_routing({ :path => "nodes/rrhof:1234/foo/0", :method => :delete }, { :controller => "nodes", :action => "destroy", :id => "rrhof:1234", :type => "foo", :index => "0" })
     end
 
   end

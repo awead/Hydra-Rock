@@ -47,7 +47,7 @@ class NodesController < ApplicationController
     @object.save unless result.nil?
 
     respond_to do |format|
-      format.html { redirect_to edit_node_path(params) }
+      format.html { redirect_to edit_node_path(params[:id], params[:type]) }
       format.js   { render :partial => "nodes/new/#{params[:type]}" }
     end 
   end
