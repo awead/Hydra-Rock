@@ -3,7 +3,7 @@
   <fieldset id="contributors">
     <legend>
       Contributors
-      <%= link_to("+", new_node_path("contributor"), :id => "open_contributor_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+      <%= link_to("+", new_node_path(params[:id], "contributor"), :id => "open_contributor_modal", :class => "btn btn-mini btn-info more_facets_link") %>
     </legend>
     <p class="legend-caption">Click the button to add new contributors</p>
     <div id="contributors_form">
@@ -14,7 +14,7 @@
   <fieldset id="publishers">
     <legend>
       Publishers
-      <%= link_to("+", new_node_path("publisher"), :id => "open_publisher_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+      <%= link_to("+", new_node_path(params[:id], "publisher"), :id => "open_publisher_modal", :class => "btn btn-mini btn-info more_facets_link") %>
     </legend>
     <p class="legend-caption">Click the button to add new publishers</p>
     <div id="publishers_form">

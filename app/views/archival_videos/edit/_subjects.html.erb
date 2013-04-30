@@ -14,7 +14,7 @@
   <fieldset id="event_fields">
     <legend>
       Event Fields
-      <%= link_to("+", new_node_path("event"), :id => "open_event_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+      <%= link_to("+", new_node_path(params[:id], "event"), :id => "open_event_modal", :class => "btn btn-mini btn-info more_facets_link") %>
     </legend>
     <p class="legend-caption">
       Click the button to add additional events to this item such as date, place and series.

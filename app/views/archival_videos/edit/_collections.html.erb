@@ -23,7 +23,7 @@
   <fieldset>
     <legend>
       Additional Collections
-      <%= link_to("+", new_node_path("collection"), :id => "open_collection_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+      <%= link_to("+", new_node_path(params[:id], "collection"), :id => "open_collection_modal", :class => "btn btn-mini btn-info more_facets_link") %>
     </legend>
     <p class="legend-caption">
       Click the button to add additional collections to this item.
