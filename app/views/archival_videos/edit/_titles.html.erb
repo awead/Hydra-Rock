@@ -27,6 +27,7 @@
     <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@afdoc.note, :multiple=>TRUE } %>
   </fieldset>
 
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
   <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
 
 <% end %>

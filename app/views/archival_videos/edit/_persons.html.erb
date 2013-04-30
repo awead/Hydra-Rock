@@ -22,6 +22,7 @@
     </div>
   </fieldset>
 
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
   <%= f.submit "Done", :class => "btn-primary" %>
 
 <% end %>
