@@ -15,7 +15,7 @@ gem 'bootstrap-sass'
 gem 'unicode', :platforms => [:mri_18, :mri_19]
 gem 'devise-guests'
 gem 'devise'
-
+gem 'jquery-rails'
 gem 'sqlite3'
 gem 'bagit'
 gem 'mediainfo'
@@ -25,11 +25,7 @@ gem 'public_activity'
 gem 'gravatar_image_tag'
 
 # Gems that we lock to specific versions for compatibility
-
-# jquery-rails 2.2 uses jQuery 1.9 which removed .live()
-# we're still using that and need to update our js, so until then,
-# we'll stick with an older version.
-gem 'jquery-rails', '< 2.2.0'
+# none!
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,7 +40,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry'
 end
-
 
 group :development, :test do
   gem 'bcrypt-ruby'
