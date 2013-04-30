@@ -84,5 +84,13 @@ module RockhallDisplayHelper
     end
   end
 
+  def render_adder_button key
+    content_tag(:button, ('<i class="icon-plus icon-white"></i>').html_safe, 
+                :id => "additional_#{key}", :class => "adder btn-info btn-mini")
+  end
+
+  def render_remover_button key
+    content_tag(:button, ('<i class="icon-minus icon-white"></i>').html_safe, :class => "remover btn-danger btn-mini")
+  end
 
 end

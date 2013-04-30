@@ -63,3 +63,20 @@ $(document).on("click", 'a.hide_tech_info', function(event) {
   $("#"+parent+" table").slideUp("normal", function() { $(this).remove(); } );
   event.preventDefault();
 });
+
+$(document).on("click", '.adder', function(event) {
+  var cloneElement  = $(this).parent("div").clone();
+  var deleteButton  = '<button class="remover btn-danger btn-mini"><i class="icon-minus icon-white"></i></button>'
+
+  // clean-up our clone
+  cloneElement.find('button').replaceWith(deleteButton);
+  cloneElement.find('input').val("");
+
+  $("#"+$(this).attr("id")+"_elements").slideDown("normal", function() { $(this).append(cloneElement); } );
+  event.preventDefault();
+});
+
+$(document).on("click", ".remover", function(event) {
+  $(this).parent().remove();
+  event.preventDefault();
+});
