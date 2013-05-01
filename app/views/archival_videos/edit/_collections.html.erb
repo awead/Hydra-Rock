@@ -15,12 +15,29 @@
                  components_for_collection,
                  {:include_blank => 'None', :selected => (@afdoc.series.nil? ? nil : @afdoc.series.pid)},
                  {:class => "component_select"} %>
-  
-    <%= f.label      :accession_number, :class=>"field" %>
-    <%= f.text_field :accession_number, :value=>@afdoc.accession_number.first, :class=>" edit span2" %>
   </fieldset>
 
-  <fieldset>
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= f.submit "Update Archival Collections", :class => "btn-primary" %>
+
+<% end %>
+
+<%= form_for @afdoc, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => 'form-vertical document_edit'} do |f| %>
+
+  <fieldset id="accessions"> 
+    <legend>
+      Accessions
+      <%= link_to("+", new_node_path(params[:id], "accession"), :id => "open_collection_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+    </legend>
+    <p class="legend-caption">
+      Click the button to add accession numbers to this item
+    </p>
+    <div id="accessions_form">
+      <%= render :partial => "nodes/edit/accession", :locals => { :document => @afdoc } %>
+    </div>
+  </fieldset>
+
+  <fieldset id="additional_collections">
     <legend>
       Additional Collections
       <%= link_to("+", new_node_path(params[:id], "collection"), :id => "open_collection_modal", :class => "btn btn-mini btn-info more_facets_link") %>
@@ -32,10 +49,9 @@
     <div id="collections_form">
       <%= render :partial => "nodes/edit/collection", :locals => { :document => @afdoc } %>
     </div>
-
   </fieldset>
 
   <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
-  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+  <%= f.submit "Save Changes", :class => "btn-primary" %>
 
 <% end %>
