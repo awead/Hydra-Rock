@@ -91,7 +91,7 @@ class ArchivalVideosController < ApplicationController
         redirect_to(workflow_archival_video_path(@afdoc, "collections"), :alert => @afdoc.errors.messages.values.to_s)
       end
     else
-      redirect_to(workflow_archival_video_path(params["id"], "collection"), :notice => "No changes made")
+      redirect_to(workflow_archival_video_path(params["id"], "collections"), :notice => "No changes made")
     end
   end
 
