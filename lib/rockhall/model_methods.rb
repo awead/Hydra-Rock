@@ -116,4 +116,29 @@ module Rockhall::ModelMethods
     HydraPbcore.is_valid?(self.to_pbcore_xml)
   end
 
+  # Uses the supplied terms hash to run .update_attributes for each term in the hash.  This method does some
+  # parsing and if the values for the for the term are different than the number present in the object,
+  # indicating that nodes either need to be added or removed, it will first remove all the terms present
+  # in the object and then update the object with the new set of supplied terms.  This method assumes
+  # that you want to overwrite any old terms with the new hash, instead of relying on OM's default
+  # behavior.
+  def update_metadata terms, message = nil
+    terms.each_key do |term|
+      if terms[term].is_a?(Array)
+        if self.send(term).count == terms[term].count
+          self.update_attributes({term => terms[term]})
+        elsif self.send(term).empty?
+          self.update_attributes({term => terms[term]})
+        else
+          self.send(term).each_index { |i| self.descMetadata.remove_node(term.to_s) }
+          self.update_attributes({term => terms[term]})
+          message = "nodes removed"
+        end
+      else
+        self.update_attributes({term => terms[term]})
+      end
+    end
+    return message
+  end
+
 end

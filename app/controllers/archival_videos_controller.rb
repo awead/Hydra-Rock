@@ -54,7 +54,7 @@ class ArchivalVideosController < ApplicationController
     if changes.empty?
       redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]))
     else
-      @afdoc.update_attributes(changes)
+      @afdoc.update_metadata(changes)
       if @afdoc.save
         record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => changes})
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => 'Video was updated successfully')

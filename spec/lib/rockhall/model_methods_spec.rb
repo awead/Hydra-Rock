@@ -68,4 +68,91 @@ describe Rockhall::ModelMethods do
 
   end
 
+  describe ".update_metadata" do
+
+    before :each do
+      @video = ArchivalVideo.new nil
+      @video.title = "Testing Rockhall::ModelMethods.update_metadata"
+      @video.alternative_title = ["one", "two", "three"]
+      @video.segment = "a segment"
+    end
+
+    it "should replace all existing terms with a given array of new terms" do
+      terms = {:alternative_title => ["four","five"]}
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.update_metadata(terms).should == "nodes removed"
+      @video.alternative_title.should == ["four", "five"]
+      @video.segment.should == ["a segment"]
+    end
+
+    it "should update terms with the same number of values" do
+      terms = {:alternative_title => ["1", "2", "3"]}
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.update_metadata(terms).should be_nil
+      @video.alternative_title.should == ["1", "2", "3"]
+      @video.segment.should == ["a segment"]
+    end
+
+    it "should update terms that have no values with new, multiple values" do
+      terms = {:chapter => ["one", "two", "three"]}
+      @video.chapter.should be_empty
+      @video.update_metadata(terms).should be_nil
+      @video.chapter.should == ["one", "two", "three"]
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.segment.should == ["a segment"]
+    end
+
+    it "should update existing single-valued terms" do
+      terms = {:segment => "another segment"}
+      @video.segment.should == ["a segment"]
+      @video.update_metadata(terms).should be_nil
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.segment.should == ["another segment"]
+    end
+
+    it "should update existing single-valued arrays" do
+      terms = {:segment => ["another segment"]}
+      @video.segment.should == ["a segment"]
+      @video.update_metadata(terms).should be_nil
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.segment.should == ["another segment"]
+    end
+
+    it "should update terms that have no values with single values" do
+      terms = {:chapter => "one"}
+      @video.chapter.should be_empty
+      @video.update_metadata(terms).should be_nil
+      @video.chapter.should == ["one"]
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.segment.should == ["a segment"]
+    end
+
+    it "should update terms that have no values with single-valued arrays" do
+      terms = {:chapter => ["one"]}
+      @video.chapter.should be_empty
+      @video.update_metadata(terms).should be_nil
+      @video.chapter.should == ["one"]
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.segment.should == ["a segment"]
+    end
+
+    it "should update terms that are unique" do
+      terms = {:title => "sample title"}
+      @video.update_metadata(terms).should be_nil
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.segment.should == ["a segment"]
+      @video.title.should == "sample title"
+    end
+
+    it "should update existing title terms" do
+      terms = {:title => "sample title"}
+      @video.title = "existing title"
+      @video.update_metadata(terms).should be_nil
+      @video.alternative_title.should == ["one", "two", "three"]
+      @video.segment.should == ["a segment"]
+      @video.title.should == "sample title"
+    end
+
+  end
+
 end
