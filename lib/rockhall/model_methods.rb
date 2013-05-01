@@ -121,7 +121,11 @@ module Rockhall::ModelMethods
   # indicating that nodes either need to be added or removed, it will first remove all the terms present
   # in the object and then update the object with the new set of supplied terms.  This method assumes
   # that you want to overwrite any old terms with the new hash, instead of relying on OM's default
-  # behavior.
+  # behavior.  A message is returned stating "nodes removed" to inform the user that the xml was processed
+  # outside of OM's normal mode.
+  # 
+  # If the term is empty, not an array, or matches the same number of values as the existing one, then
+  # .update_attributes is run normally, and nil is returned.
   def update_metadata terms, message = nil
     terms.each_key do |term|
       if terms[term].is_a?(Array)
