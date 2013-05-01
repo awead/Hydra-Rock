@@ -54,7 +54,20 @@ module Rockhall::TemplateMethods
   end
 
   def delete_collection index = 0
+    # Note: the OM term is collection, although it is additional_collection at the model level
     self.datastreams["descMetadata"].remove_node(:collection, index, {:include_parent? => TRUE})
+  end
+
+  def new_accession args
+    if args[:name]
+      self.datastreams["descMetadata"].insert_relation(args[:name], "Accession Number")
+    else
+      self.errors.add(:accession_number)
+    end
+  end
+
+  def delete_accession index = 0
+    self.datastreams["descMetadata"].remove_node(:accession_number, index, {:include_parent? => TRUE})
   end
 
   def new_event_series args

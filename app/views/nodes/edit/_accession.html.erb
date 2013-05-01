@@ -1,0 +1,7 @@
+<% document.accession_number.each_index do |index| %>
+  <%= text_field_tag "document_fields[accession_number][#{index.to_s}]", document.accession_number[index],
+                     :id => ("accession_number_" + index.to_s), :class=>"edit span3" %>
+                 
+  <%= link_to 'Remove', node_path(params[:id], "accession", index), :method => :delete, :class => "btn btn-mini btn-danger" %>
+  <br/>
+<% end %>

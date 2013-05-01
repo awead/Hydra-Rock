@@ -1,0 +1,11 @@
+<%= render :partial=>'/flash_msg' %>
+<%= form_tag node_path(params[:id], "accession"), :id => "add_accession", :class => "form-inline ajax_form", :method => :post do %>
+  <div class="modal-header">
+    <button type="button" class="close refresh_accessions" id="close_modal" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Add accession number</h3>
+  </div>
+  <div class="modal-body">
+    <%= text_field_tag "name" %>
+    <%= submit_tag "Add", :id => "add_accession_button" %>
+  </div>
+<% end %>
