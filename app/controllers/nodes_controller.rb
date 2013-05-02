@@ -46,9 +46,10 @@ class NodesController < ApplicationController
     result = @object.send("delete_"+params[:type], params[:index])
     @object.save unless result.nil?
 
+    type = params[:type].match(/event/) ? "event" : params[:type]
     respond_to do |format|
-      format.html { redirect_to edit_node_path(params[:id], params[:type]) }
-      format.js   { render :partial => "nodes/edit/#{params[:type]}", :locals => {:document=>@object} }
+      format.html { redirect_to edit_node_path(params[:id], type) }
+      format.js   { render :partial => "nodes/edit/#{type}", :locals => {:document=>@object} }
     end 
   end
 
