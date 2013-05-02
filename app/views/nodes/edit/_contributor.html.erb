@@ -1,10 +1,10 @@
 <% document.contributor_name.each_index do |index| %>
-  <%= text_field_tag "document_fields[contributor_name][#{index.to_s}]", document.contributor_name[index],
-                     :id => ("contributor_name_" + index.to_s), :class=>"edit span3" %>
-  <%= select_tag "document_fields[contributor_role][#{index.to_s}]",
-                 options_for_select(Relators.marc.keys.sort, document.contributor_role[index]),
-                 {:id => ("contributor_role_" + index.to_s)} %>
-                 
-  <%= link_to 'Remove', node_path(params[:id], "contributor", index), :class => "btn btn-mini btn-danger delete_contributors" %>
-  <br/>
+  <div class="control-group form-inline">
+    <%= text_field_tag "document_fields[contributor_name][#{index.to_s}]", document.contributor_name[index],
+                       :id => ("contributor_name_" + index.to_s), :class=>"edit span3" %>
+    <%= select_tag "document_fields[contributor_role][#{index.to_s}]",
+                   options_for_select(Relators.marc.keys.sort, document.contributor_role[index]),
+                   {:id => ("contributor_role_" + index.to_s)} %>
+    <%= render_remove_nodes_button "contributor", index %>
+  </div>
 <% end %>

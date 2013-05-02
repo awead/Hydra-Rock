@@ -26,8 +26,7 @@
 
   <fieldset id="accessions"> 
     <legend>
-      Accessions
-      <%= link_to("+", new_node_path(params[:id], "accession"), :id => "open_collection_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+      Accessions <%= render_add_nodes_button "accession" %>
     </legend>
     <p class="legend-caption">
       Click the button to add accession numbers to this item
@@ -39,8 +38,7 @@
 
   <fieldset id="additional_collections">
     <legend>
-      Additional Collections
-      <%= link_to("+", new_node_path(params[:id], "collection"), :id => "open_collection_modal", :class => "btn btn-mini btn-info more_facets_link") %>
+      Additional Collections <%= render_add_nodes_button "collection" %>
     </legend>
     <p class="legend-caption">
       Click the button to add additional collections to this item.
