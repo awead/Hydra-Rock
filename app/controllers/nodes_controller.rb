@@ -48,7 +48,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to edit_node_path(params[:id], params[:type]) }
-      format.js   { render :partial => "nodes/new/#{params[:type]}" }
+      format.js   { render :partial => "nodes/edit/#{params[:type]}", :locals => {:document=>@object} }
     end 
   end
 

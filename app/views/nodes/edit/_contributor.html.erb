@@ -5,6 +5,6 @@
                  options_for_select(Relators.marc.keys.sort, document.contributor_role[index]),
                  {:id => ("contributor_role_" + index.to_s)} %>
                  
-  <%= link_to 'Remove', node_path(params[:id], "contributor", index), :method => :delete, :class => "btn btn-mini btn-danger" %>
+  <%= link_to 'Remove', node_path(params[:id], "contributor", index), :class => "btn btn-mini btn-danger delete_contributors" %>
   <br/>
 <% end %>
