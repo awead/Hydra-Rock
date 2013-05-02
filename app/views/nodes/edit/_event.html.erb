@@ -3,7 +3,7 @@
     <%= text_field_tag "document_fields[#{event_type}][#{index.to_s}]", document.send(event_type)[index],
                        :id => ("#{event_type}_" + index.to_s), :class=>"edit span3" %>
                    
-    <%= link_to 'Remove', node_path(params[:id], "#{event_type}", index), :method => :delete, :class => "btn btn-mini btn-danger" %>
+    <%= link_to 'Remove', node_path(params[:id], "#{event_type}", index), :class => "btn btn-mini btn-danger delete_events" %>
     <br/>
   <% end %>
 <% end %>
