@@ -14,7 +14,7 @@ Feature:
     And I wait for 5 seconds
     Then the "archival_video_series" field should contain "rockhall:fixture_arc_testref4"
     When I select "Series 1: Sample Series" from "archival_video_series"
-    And I press "Update Archival Collections"
+    And I press "Save Archival Information"
     Then the "archival_video_collection" field should contain "rockhall:fixture_arc_test"
     And the "archival_video_series" field should contain "rockhall:fixture_arc_testref3"
 
