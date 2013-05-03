@@ -15,6 +15,6 @@ Feature:
     And I close the modal window
     And I wait for 2 seconds
     Then the "event_series_0" field should contain "Sample Series"
-    When I follow "Remove"
+    When I follow "delete_event_series_0"
     And I wait for 2 seconds
     Then I should not see "Foo Collection"

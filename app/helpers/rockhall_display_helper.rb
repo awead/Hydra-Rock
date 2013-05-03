@@ -94,12 +94,14 @@ module RockhallDisplayHelper
   end
 
   def render_add_nodes_button key
-    link_to('<i class="icon-plus icon-white"></i>'.html_safe, new_node_path(params[:id], key), :id => "open_event_modal", :class => "btn btn-info btn-mini more_facets_link").html_safe
+    js_id = key.match(/event/) ? "event" : key
+    link_to('<i class="icon-plus icon-white"></i>'.html_safe, new_node_path(params[:id], key), :id => "open_"+js_id+"_modal", :class => "btn btn-info btn-mini more_facets_link").html_safe
   end
 
   def render_remove_nodes_button key, index
     js_class = key.match(/event/) ? "delete_events" : "delete_" + key + "s"
-    link_to('<i class="icon-minus icon-white"></i>'.html_safe, node_path(params[:id], key, index), :class => "btn btn-mini btn-danger #{js_class}").html_safe
+    js_id    = ["delete", key, index.to_s].join("_")
+    link_to('<i class="icon-minus icon-white"></i>'.html_safe, node_path(params[:id], key, index), :id => js_id, :class => "btn btn-mini btn-danger #{js_class}").html_safe
   end
 
 end

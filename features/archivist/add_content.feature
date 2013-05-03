@@ -3,12 +3,13 @@ Feature: Archivist adds new content
   As an archivist
   I add new items to the repository
 
+  @javascript
   Scenario: Add archival video (DAM-83)
     Given I am logged in as "archivist1@example.com"
     And I am on the home page
+    When I follow "New"
     Then I should see "Archival Video"
-    And I should see "Digital Video"
-    And I should see the "New" dropdown menu
+    And I should see "Archival Collection"
 
   Scenario: Adding new video objects
     Given I am logged in as "archivist1@example.com"
