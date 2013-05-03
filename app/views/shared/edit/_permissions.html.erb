@@ -1,0 +1,33 @@
+<%= form_for @afdoc, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
+
+   <% choices = { "No Access"=>"none", "Discover" => "discover", "Read/Download" => "read", "Edit" => "edit"} %>
+
+  <fieldset id="groups">
+    <legend>Group Permissions</legend>
+    <p>
+      Grant permissions to this object via groups. Any user that is a memeber of the group will automatically
+      have the access rights specified below.
+    </p>
+    <% RoleMapper.role_names.each do |role| %>
+      <%= f.label role %>
+      <%= select_tag "document_fields[permissions][groups][#{role}]", options_for_select(choices, @afdoc.permissions["groups"][role]) %>
+    <% end %>
+  </fieldset>
+
+  <fieldset id="individuals">
+    <legend>Individual Permissions</legend>
+    <p>Grant permissions to this object for a specific user, regardless of his or her group memebership.</p>
+    <p>You have <%= @afdoc.permissions["individuals"][current_user.to_s] %> access.</p>
+    <% @afdoc.permissions["individuals"].each_key do |person| %>
+      
+      <% unless person == current_user %>
+
+      <% end %>
+    
+    <% end %>
+  </fieldset>
+
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+
+<% end %>
