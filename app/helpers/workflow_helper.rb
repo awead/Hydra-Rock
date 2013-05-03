@@ -17,6 +17,7 @@ module WorkflowHelper
 
     steps = [
       "titles",
+      "descriptions",
       "subjects",
       "persons",
       "collections",

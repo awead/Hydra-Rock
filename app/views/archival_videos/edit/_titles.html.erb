@@ -16,17 +16,6 @@
     <% end %>
   </fieldset>
 
-  <fieldset id="description">
-    <legend>Description</legend>
-    <p class="legend-caption">Provide additional descriptive information as needed.</p>
-    <%= f.label :summary, :class=>"field" %>
-    <%= f.text_area :summary, :id=>"summary", :name=>"document_fields[summary][]", :value => @afdoc.summary.first, :class=>"edit span5" %>
-    <%= f.label "Parts List", :class=>"field" %>
-    <%= f.text_area :contents, :id=>"contents", :name=>"document_fields[contents][]", :value => @afdoc.contents.first, :class=>"edit span5" %>
-    <%= f.label :note, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@afdoc.note, :multiple=>TRUE } %>
-  </fieldset>
-
   <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
   <%= f.submit "Save Changes", :class => "btn-primary" %>
 
