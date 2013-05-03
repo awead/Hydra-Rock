@@ -53,7 +53,6 @@ describe ArchivalVideosController do
       end
 
       it "should update fields with single values" do
-
         changes = { 
           :alternative_title => "Fake alt title",
           :event_series => "Fake series"
@@ -82,13 +81,43 @@ describe ArchivalVideosController do
         @video.alternative_title.first.should == "Fake edited alt title"
       end
 
+      it "should update permissions" do
+        changes = { 
+          :permissions => {
+            :groups => {
+              "group1" => "read",
+              "group2" => "edit"
+            },
+            :individuals => {
+              "user1" => "read",
+              "user2" => "edit"
+            }
+          }
+        }
+        put :update, id: @video, wf_step: "permissions", document_fields: changes
+        assert_equal "Video was updated successfully", flash[:notice]
+        @video.reload
+        puts @video.permissions
+      end
+
+      it "should not update permissions if there are no changes" do
+        changes = {
+          :permissions => {
+            :groups      => @video.rightsMetadata.groups,
+            :individuals => @video.rightsMetadata.individuals
+          }
+        }
+        put :update, id: @video, wf_step: "permissions", document_fields: changes
+        assert_equal nil, flash[:notice]
+      end
+
     end
 
     describe "#create" do
 
       it "should save a new archival video" do
         post :create, :archival_video => {:title => "Fake title"}
-        assert_equal 'Video was successfully created.', flash[:notice]
+        assert_equal "Video was successfully created.", flash[:notice]
       end
 
     end

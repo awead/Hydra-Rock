@@ -28,6 +28,16 @@ describe Rockhall::Controller::ControllerBehavior do
       results[:title].should == "My Title"
     end
 
+    it "should return the permissions hash" do
+      sample_permisisons = {
+        "groups"      => {"foo" => "read"},
+        "individuals" => {"bar" => "edit"}
+      }
+      @params[:document_fields][:permissions] = sample_permisisons
+      results = @controller.changed_fields(@params)
+      results[:permissions].should == sample_permisisons
+    end
+
   end
 
 end
