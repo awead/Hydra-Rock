@@ -3,6 +3,7 @@ Feature:
   As a library staff user
   I need to edit the metadata of a video
 
+  @javascript
   Scenario: edit video object (DAM-131)
     Given I am logged in as "archivist1@example.com"
     Given I am on the edit archival video page for rockhall:fixture_pbcore_document1
@@ -46,28 +47,28 @@ Feature:
     When I follow "Permissions"
     Then I should see "Group Permissions"
 
-  Scenario: Navigating different parts of the workflow (DAM-169)
+  Scenario: Edit path should default to the titles workflow step
     Given I am logged in as "archivist1@example.com"
     Given I am on the edit archival video page for rockhall:fixture_pbcore_document1
-    Then I should see "Required Title"
-    When I follow "Subjects"
-    Then I should see "Library of Congress Subject Headings"
-    When I follow "Persons"
-    Then I should see "Contributors"
-    When I follow "Original"
-    Then I should see "Original Item"
-    When I follow "Rockhall"
-    Then I should see "Rockhall Fields"
-    When I follow "Permissions"
-    Then I should see "Group Permissions"
+    Then I should see "Required Title"       
 
   @javascript
-  Scenario: Populate fields with autocomplete data via JSON (DAM-214)
+  Scenario: Navigating different parts of the workflow (DAM-169)
     Given I am logged in as "archivist1@example.com"
-    And I am on the edit archival video page for rockhall:fixture_pbcore_document1
-    And I follow "Edit"
-    And I follow "Original"
-    When I fill in "document_fields[media_format][]" with "Be"
-    Then I should see "Betacam"
-    And I should see "Betacam SP"
-    And I should see "Betacam SX"
+    Given I am on the titles workflow page for rockhall:fixture_pbcore_document1
+    Then I should see "Required Title"
+    When I follow "Edit"
+    And I follow "Descriptions"
+    Then I should see "Description"
+    When I follow "Edit"
+    And I follow "Subjects"
+    Then I should see "Library of Congress Subject Headings"
+    When I follow "Edit"
+    And I follow "Persons"
+    Then I should see "Contributors"
+    When I follow "Edit"
+    And I follow "Collections"
+    Then I should see "Archival Information"
+    #When I follow "Edit"
+    #And I follow "Permissions"
+    #Then I should see "Group Permissions"
