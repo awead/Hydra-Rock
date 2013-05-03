@@ -71,7 +71,7 @@ class ExternalVideosController < ApplicationController
       if @afdoc.save
         redirect_to(edit_external_video_path(@afdoc), :notice => 'Video was updated successfully')
       else
-        redirect_to(edit_external_video_path(@afdoc), :notice => 'Error: Unable to save changes')
+        redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages.values.to_s)
       end
     end
   end
