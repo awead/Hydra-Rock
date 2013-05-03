@@ -23,7 +23,7 @@
     <%= f.label :language, :class=>"field" %>
     <%= f.text_field :language, :name=>"document_fields[language][]", :value=>@afdoc.language.first, :class=>" edit span2" %>
     <%= f.label :location, :class=>"field" %>
-    <%= f.text_area :location, :name=>"document_fields[location][]", :value=>@afdoc.location.first, :cols => "40", :rows => "5", :class=>"edit" %>
+    <%= f.text_area :location, :name=>"document_fields[location][]", :value=>@afdoc.location.first, :rows => "5", :class=>"edit span4" %>
   </fieldset>
 
   <fieldset id="condition_fields">
@@ -33,12 +33,6 @@
       <%= f.label t.to_sym, :class=>"field" %>
       <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
     <% end %>
-  </fieldset>
-
-  <fieldset id="rockhall_fields">
-    <legend>Rockhall Fields</legend>
-    <%= f.label :notes, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"notes", :f=>f, :vals=>@afdoc.notes, :multiple=>TRUE } %>
   </fieldset>
 
   <%= f.submit "Save Changes", :class => "btn btn-primary" %>
