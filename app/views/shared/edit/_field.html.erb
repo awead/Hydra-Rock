@@ -3,10 +3,12 @@
   <% vals = [''] %>
 <% end %>
 <% required = false if defined?(required).nil? %>
+<% span ||= "span6" %>
 <% vals.each_with_index do |v, index| %>
   <div <% if index == 0%> id="additional_<%= t %>_clone" <% end %>>
     <div class="control-group form-inline">
-      <%= f.text_field t.to_sym, :id=>"#{t}_#{index}", :name=>"document_fields[#{t}][]", :value=>v, :class=>"edit span6", :required=>required %>
+      <%= f.text_field t.to_sym, :id=>"#{t}_#{index}", :name=>"document_fields[#{t}][]", 
+          :value=>v, :class=>"edit #{span}", :required=>required %>
       <%= render_adder_button(t) if index == 0 and multiple %>
       <%= render_remover_button(t) if index > 0 and multiple %>
     </div>
