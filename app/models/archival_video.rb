@@ -17,9 +17,9 @@ class ArchivalVideo < ActiveFedora::Base
   include ActiveFedora::FileManagement
   include ActiveFedora::Relationships
   include Hydra::ModelMethods
+  include Hydra::ModelMixins::RightsMetadata
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
-  include Rockhall::Permissions
   include ActiveModel::Validations
   include Rockhall::Validations
   include Rockhall::TemplateMethods
