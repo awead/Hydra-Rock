@@ -35,7 +35,7 @@ class ArchivalVideosController < ApplicationController
     respond_to do |format|
       if @afdoc.save
         record_activity({"pid" => @afdoc.pid, "action" => "create", "title" => @afdoc.title})
-        format.html { redirect_to(edit_archival_video_path(@afdoc), :notice => 'Video was successfully created.') }
+        format.html { redirect_to(edit_archival_video_path(@afdoc), :notice => "Video was successfully created.") }
         format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
       else
         format.html {
@@ -54,18 +54,21 @@ class ArchivalVideosController < ApplicationController
 
     if params[:wf_step].match("permissions")
       permissions_hash = format_permissions_hash(changes["permissions"])
-      if @afdoc.permissions_changed?(permissions_hash)
-        @afdoc.update_permissions(permissions_hash)
-        write_changes
+      if @afdoc.update_permissions(permissions_hash)
+        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Permissions updated successfully")
       else
-        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]))
+        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
       end
     else
       if changes.empty?
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]))
       else
-        @afdoc.update_metadata(changes)
-        write_changes changes
+        if @afdoc.update_metadata(changes)
+          record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => changes}) unless changes.nil?
+          redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Video was updated successfully")
+        else
+          redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
+        end
       end
     end
   end
@@ -127,15 +130,6 @@ class ArchivalVideosController < ApplicationController
     error = "ID #{params["source"]} does not exist." unless ActiveFedora::Base.exists?(params["source"])
     error = "Source ID cannot be the same as the destination ID." if params["source"] == params["id"]
     return error
-  end
-
-  def write_changes changes = nil
-    if @afdoc.save
-      record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => changes}) unless changes.nil?
-      redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => 'Video was updated successfully')
-    else
-      redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
-    end
   end
 
 

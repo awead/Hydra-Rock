@@ -95,7 +95,7 @@ describe ArchivalVideosController do
           }
         }
         put :update, id: @video, wf_step: "permissions", document_fields: changes
-        assert_equal "Video was updated successfully", flash[:notice]
+        assert_equal "Permissions updated successfully", flash[:notice]
         @video.reload
         @video.edit_groups.should include("group2")
         @video.read_users.should include("user1")
