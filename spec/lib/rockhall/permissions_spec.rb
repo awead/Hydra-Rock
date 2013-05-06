@@ -6,21 +6,16 @@ describe Rockhall::Permissions do
     @video = ActiveFedora::Base.find("rockhall:fixture_pbcore_document1", :cast => true)
   end
 
-  it "should return a permssions hash" do
-    @video.permissions["groups"].should == {"public"=>"read", "donor"=>"read", "archivist"=>"edit", "reviewer"=>"edit"}
-    @video.permissions["individuals"].should == {"archivist1@example.com"=>"edit"}
-  end
-
   describe ".permissions_changed?" do
     it "should return false if permissions haven't changed" do
-      params = @video.permissions
-      @video.permissions_changed?(params).should be_false
+      permissions = @video.permissions
+      @video.permissions_changed?(permissions).should be_false
     end
   
     it "should return true if permissions have changed" do
-      params = @video.permissions
-      params["groups"]["donor"] = "edit"
-      @video.permissions_changed?(params).should be_true    
+      permissions = @video.permissions
+      permissions << {:type => "user", :name => "foo", :access => "edit"}
+      @video.permissions_changed?(permissions).should be_true    
     end
   end
 
@@ -28,7 +23,7 @@ describe Rockhall::Permissions do
 
     before :each do
       @test = ArchivalVideo.new
-      @test.title = "Testing permissions= method"
+      @test.title = "Testing update_permissions method"
       @test.save
     end
 
@@ -37,12 +32,11 @@ describe Rockhall::Permissions do
     end
 
     it "should update permissions" do
-      params = @video.permissions
-      params["groups"]["donor"] = "edit"
-      @test.update_permissions params
-      @test.save
+      permissions = @video.permissions
+      permissions << {:type => "group", :name => "donor", :access => "edit"}
+      @test.update_permissions permissions
       @test.reload
-      @test.permissions["groups"]["donor"].should == "edit"
+      @test.edit_groups.should include("donor")
     end
 
   end

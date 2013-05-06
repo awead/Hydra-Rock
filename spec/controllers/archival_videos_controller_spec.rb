@@ -84,11 +84,11 @@ describe ArchivalVideosController do
       it "should update permissions" do
         changes = { 
           :permissions => {
-            :groups => {
+            "groups" => {
               "group1" => "read",
               "group2" => "edit"
             },
-            :individuals => {
+            "users" => {
               "user1" => "read",
               "user2" => "edit"
             }
@@ -97,10 +97,12 @@ describe ArchivalVideosController do
         put :update, id: @video, wf_step: "permissions", document_fields: changes
         assert_equal "Video was updated successfully", flash[:notice]
         @video.reload
-        puts @video.permissions
+        @video.edit_groups.should include("group2")
+        @video.read_users.should include("user1")
       end
 
       it "should not update permissions if there are no changes" do
+        pending
         changes = {
           :permissions => {
             :groups      => @video.rightsMetadata.groups,

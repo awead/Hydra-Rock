@@ -51,15 +51,21 @@ class ArchivalVideosController < ApplicationController
     update_session
     @afdoc = ArchivalVideo.find(params[:id])
     changes = changed_fields(params)
-    if changes.empty?
-      redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]))
-    else
-      changes["permissions"] ? @afdoc.update_permissions(changes["permissions"]) : @afdoc.update_metadata(changes)
-      if @afdoc.save
-        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => changes})
-        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => 'Video was updated successfully')
+
+    if params[:wf_step].match("permissions")
+      permissions_hash = format_permissions_hash(changes["permissions"])
+      if @afdoc.permissions_changed?(permissions_hash)
+        @afdoc.update_permissions(permissions_hash)
+        write_changes
       else
-        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
+        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]))
+      end
+    else
+      if changes.empty?
+        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]))
+      else
+        @afdoc.update_metadata(changes)
+        write_changes changes
       end
     end
   end
@@ -121,6 +127,15 @@ class ArchivalVideosController < ApplicationController
     error = "ID #{params["source"]} does not exist." unless ActiveFedora::Base.exists?(params["source"])
     error = "Source ID cannot be the same as the destination ID." if params["source"] == params["id"]
     return error
+  end
+
+  def write_changes changes = nil
+    if @afdoc.save
+      record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => changes}) unless changes.nil?
+      redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => 'Video was updated successfully')
+    else
+      redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
+    end
   end
 
 

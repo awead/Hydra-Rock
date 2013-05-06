@@ -62,13 +62,6 @@ module Rockhall::ModelMethods
     end
   end
 
-  def apply_default_permissions
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"archivist"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"reviewer"=>"edit"} )
-    self.datastreams["rightsMetadata"].update_permissions( "group"=>{"donor"=>"read"} )
-    self.save
-  end
-
   def add_thumbnail file = String.new
     if file.blank?
       unless self.external_video(:h264).count == 0
