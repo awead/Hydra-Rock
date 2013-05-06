@@ -61,7 +61,7 @@ describe ".format_permissions_hash" do
     permissions_hash = @controller.format_permissions_hash(sample_permisisons)
     permissions_hash.should include({:type => "group", :name => "reviewer", :access => "edit"})
     permissions_hash.should include({:type => "user", :name => "archivist1@example.com", :access => "edit"})
-    permissions_hash.should_not include({:type => "group", :name => "admin_policy_object_editor", :access => "none"})
+    permissions_hash.should include({:type => "group", :name => "admin_policy_object_editor", :access => "none"})
   end
 
 end
