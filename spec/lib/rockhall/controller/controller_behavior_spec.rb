@@ -44,16 +44,24 @@ describe Rockhall::Controller::ControllerBehavior do
 describe ".format_permissions_hash" do
 
   it "should reformat the parameters hash so our model can use it" do
-    sample_permisisons = {
-      "groups" => {
-        "foo" => "read",
-        "baz" => "discover"
+    sample_permisisons = { 
+      "groups"=>{
+        "uva-only"=>"none", 
+        "archivist"=>"edit", 
+        "donor"=>"read", 
+        "reviewer"=>"edit", 
+        "researcher"=>"none", 
+        "patron"=>"none", 
+        "admin_policy_object_editor"=>"none"
       },
-      "users"  => {"bar" => "edit"}
+      "users"=>{
+        "archivist1@example.com"=>"edit"
+      }
     }
     permissions_hash = @controller.format_permissions_hash(sample_permisisons)
-    permissions_hash.should include({:type => "group", :name => "foo", :access => "read"})
-    permissions_hash.should include({:type => "user", :name => "bar", :access => "edit"})
+    permissions_hash.should include({:type => "group", :name => "reviewer", :access => "edit"})
+    permissions_hash.should include({:type => "group", :name => "researcher", :access => "none"})
+    permissions_hash.should include({:type => "user", :name => "archivist1@example.com", :access => "edit"})
   end
 
 end
