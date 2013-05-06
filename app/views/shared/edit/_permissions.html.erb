@@ -14,12 +14,7 @@
 
   <fieldset id="individuals">
     <legend>Individual Permissions</legend>
-    <p>Grant permissions to this object for a specific user, regardless of his or her group memebership.</p>
-    <% user_permissions.each do |user, access| %>
-      <%= user %>
-      <%= select_tag "document_fields[permissions][users][#{user}]", options_for_select(permisison_choices, access ) %>
-    <% end %>
-  </fieldset>
+    <p>You have <%= current_user_permissions %> access</p>
 
   <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
   <%= f.submit "Save Changes", :class => "btn btn-primary" %>

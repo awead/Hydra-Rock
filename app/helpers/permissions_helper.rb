@@ -9,8 +9,8 @@ module PermissionsHelper
     @afdoc.rightsMetadata.groups[role]
   end
 
-  def user_permissions
-    @afdoc.rightsMetadata.individuals
+  def current_user_permissions
+    @afdoc.rightsMetadata.individuals[current_user.email]
   end
 
 
