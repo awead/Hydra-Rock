@@ -1,7 +1,11 @@
 module PermissionsHelper
 
   def permisison_choices
-    { "No Access"=>"none", "Discover" => "discover", "Read/Download" => "read", "Edit" => "edit"}
+    { "No Access"=>"none", "Edit" => "edit", "Read/Download" => "read", "Discover" => "discover" }
+  end
+
+  def role_names
+    RoleMapper.role_names << "public"
   end
 
   def get_access_for_role role=nil
@@ -12,6 +16,5 @@ module PermissionsHelper
   def current_user_permissions
     @afdoc.rightsMetadata.individuals[current_user.email]
   end
-
 
 end

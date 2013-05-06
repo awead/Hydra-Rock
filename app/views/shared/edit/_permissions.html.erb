@@ -1,4 +1,4 @@
-<%= form_for @afdoc, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
+<%= form_for @afdoc, :url => archival_video_path, :html => {:class => 'form-horizontal document_edit'} do |f| %>
 
  <fieldset id="groups">
     <legend>Group Permissions</legend>
@@ -6,9 +6,13 @@
       Grant permissions to this object via groups. Any user that is a memeber of the group will automatically
       have the access rights specified below.
     </p>
-    <% RoleMapper.role_names.each do |role| %>
-      <%= f.label role %>
-      <%= select_tag "document_fields[permissions][groups][#{role}]", options_for_select(permisison_choices, get_access_for_role(role) ) %>
+    <% role_names.each do |role| %>
+      <div class="control-group">
+        <%= f.label role, :class => "control-label" %>
+        <div class="controls">
+          <%= select_tag "document_fields[permissions][groups][#{role}]", options_for_select(permisison_choices, get_access_for_role(role) ) %>
+        </div>
+      </div>
     <% end %>
   </fieldset>
 
