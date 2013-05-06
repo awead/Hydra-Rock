@@ -2,15 +2,9 @@ module Rockhall::Permissions
 
   include Hydra::ModelMixins::RightsMetadata
 
-  def permissions_changed? permissions
-    permissions == self.permissions ? FALSE : TRUE
-  end
-
   def update_permissions permissions
-    if self.permissions_changed?(permissions)
-      self.permissions = permissions
-      self.save
-    end
+    self.permissions = permissions
+    self.save
   end
 
   def apply_default_permissions

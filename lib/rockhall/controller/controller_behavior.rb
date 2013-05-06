@@ -87,8 +87,8 @@ module Rockhall::Controller::ControllerBehavior
   # Takes the :permissions portion of the parameters hash, and reformats it so it can be passed to the model
   # for updating.
   def format_permissions_hash params, permissions = Array.new
-    params["users"].each { |k,v| permissions << {:type => "user", :name => k, :access => v} }   unless params["users"].nil?
-    params["groups"].each { |k,v| permissions << {:type => "group", :name => k, :access => v} } unless params["groups"].nil?
+    params["users"].each { |k,v| permissions << {:type => "user", :name => k, :access => v} unless v == "none" }   unless params["users"].nil?
+    params["groups"].each { |k,v| permissions << {:type => "group", :name => k, :access => v} unless v == "none" } unless params["groups"].nil?
     return permissions
   end
    

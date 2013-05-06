@@ -6,19 +6,6 @@ describe Rockhall::Permissions do
     @video = ActiveFedora::Base.find("rockhall:fixture_pbcore_document1", :cast => true)
   end
 
-  describe ".permissions_changed?" do
-    it "should return false if permissions haven't changed" do
-      permissions = @video.permissions
-      @video.permissions_changed?(permissions).should be_false
-    end
-  
-    it "should return true if permissions have changed" do
-      permissions = @video.permissions
-      permissions << {:type => "user", :name => "foo", :access => "edit"}
-      @video.permissions_changed?(permissions).should be_true    
-    end
-  end
-
   describe ".update_permissions" do
 
     before :each do
@@ -31,12 +18,16 @@ describe Rockhall::Permissions do
       @test.delete
     end
 
-    it "should update permissions" do
+    it "should update permissions and return true" do
       permissions = @video.permissions
       permissions << {:type => "group", :name => "donor", :access => "edit"}
-      @test.update_permissions permissions
+      @test.update_permissions(permissions).should be_true
       @test.reload
       @test.edit_groups.should include("donor")
+    end
+
+    it "should return false when there are no changes" do
+      pending "Need to find a nice way of determining if permissions have changed"
     end
 
   end
