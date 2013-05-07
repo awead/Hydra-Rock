@@ -22,6 +22,8 @@ function reloadNodeForm(type) {
     cache: false,
     success: function(data) {
       $('#'+type+'s_form').html(data);
+      flashInfo('Video was updated successfully')
+      formChanged = false;
     },
     error: function(xhr, ajaxOptions, thrownError) {
       alert(xhr.status);
@@ -40,6 +42,8 @@ function deleteNode(type, url) {
     url: url,
     success: function(data) {
       $('#'+type+'s_form').html(data);
+      flashInfo('Video was updated successfully')
+      formChanged = false;
     },
     cache: false,
     error: function(xhr, ajaxOptions, thrownError) {

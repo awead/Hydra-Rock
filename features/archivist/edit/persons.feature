@@ -17,8 +17,10 @@ Feature:
     And I wait for 2 seconds
     Then the "contributor_name_0" field should contain "John Doe"
     And the "contributor_role_0" field should contain "performer"
+    And I should see "Video was updated successfully"
     When I follow "delete_contributor_0"
     Then I should not see "John Doe"
+    And I should see "Video was updated successfully"
     And I follow "open_publisher_modal"
     And I wait for 2 seconds
     And I fill in "name" with "Jane Doe"
@@ -28,6 +30,22 @@ Feature:
     And I wait for 2 seconds    
     Then the "publisher_name_0" field should contain "Jane Doe"
     And the "publisher_role_0" field should contain "presenter"
+    And I should see "Video was updated successfully"
     When I follow "delete_publisher_0"
     Then I should not see "Jane Doe"
     And I wait for 2 seconds
+    And I should see "Video was updated successfully"
+
+  Scenario: It should not update an object if no persons are present (DAM-286)
+      Given I am logged in as "archivist1@example.com"
+      And I am on the persons workflow page for cucumber:1
+      When I press "Save Changes"
+      Then I should not see "Video was updated successfully"
+      And I should see "No changes made"
+
+  Scenario: It should not update an object if persons are present (DAM-286)
+      Given I am logged in as "archivist1@example.com"
+      And I am on the persons workflow page for rockhall:fixture_pbcore_document1
+      When I press "Save Changes"
+      Then I should not see "Video was updated successfully"
+      And I should see "No changes made"

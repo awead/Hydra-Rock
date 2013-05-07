@@ -4,9 +4,11 @@ Rockhall base.js
 Includes the basic javascript functions for the Hydra-Rock application 
 */
 
+var formChanged = false;
+
 // sanity check
 function hiMom() {
-  alert('hi, mom!');
+  alert('Hi, mom!');
 };
 
 // Defines a simple function that parses a json file stored under public/json
@@ -21,6 +23,13 @@ function getTerms(term) {
 
   });
   return items;
+}
+
+function submitOnChanged(event) {
+  if (!formChanged) {
+    flashAlert('No changes made')
+    event.preventDefault();
+  }
 }
 
 // Typeahead function that's used when fillout certain text fields.  Uses getTerms()
@@ -88,4 +97,9 @@ $(document).on('click', '.adder', function(event) {
 $(document).on('click', '.remover', function(event) {
   $(this).parent().remove();
   event.preventDefault();
+});
+
+// Flip the formChanged switch whenever a form element changes
+$(document).on('change', 'input,select', function(event) {
+  formChanged = true;
 });
