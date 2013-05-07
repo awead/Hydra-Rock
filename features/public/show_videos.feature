@@ -79,3 +79,9 @@ Feature:
   Scenario: Displaying role terms in view mode (DAM-217)
     Given I am on the show archival video page for rockhall:fixture_pbcore_document1
     Then I should see the field content "blacklight-contributor_name_facet" contain "Springsteen, Bruce (recipient)"
+
+  Scenario: Null roles (DAM-169)
+    Given I am on the show archival video page for rrhof:331
+    Then I should see the field content "blacklight-contributor_name_facet" contain "Mastro, James"
+    And I should not see "Mastro, James,"
+    And I should not see "Mastro, James ()"  

@@ -1,16 +1,13 @@
+@sample
+@javascript
 Feature:
-  In order to catalog video content
+  In order to edit items in Hydra
   As an archivist
-  I need add and remove different nodes from documents
+  I need add and edit persons such as contributors and publishers
 
-  @javascript
   Scenario: Add a new nodes enter information (DAM-169)
     Given I am logged in as "archivist1@example.com"
-    And I create a new archival video
-    And I fill in "archival_video[title]" with "Sample Main Title"
-    And I press "Save Changes"
-    And I follow "Edit"
-    And I follow "Persons"
+    And I am on the persons workflow page for cucumber:1
     And I follow "open_contributor_modal"
     And I wait for 2 seconds
     And I fill in "name" with "John Doe"
@@ -20,7 +17,7 @@ Feature:
     And I wait for 2 seconds
     Then the "contributor_name_0" field should contain "John Doe"
     And the "contributor_role_0" field should contain "performer"
-    When I follow "Remove"
+    When I follow "delete_contributor_0"
     Then I should not see "John Doe"
     And I follow "open_publisher_modal"
     And I wait for 2 seconds
@@ -31,12 +28,6 @@ Feature:
     And I wait for 2 seconds    
     Then the "publisher_name_0" field should contain "Jane Doe"
     And the "publisher_role_0" field should contain "presenter"
-    When I follow "Remove"
+    When I follow "delete_publisher_0"
     Then I should not see "Jane Doe"
     And I wait for 2 seconds
-
-  Scenario: Null roles (DAM-169)
-    Given I am on the show archival video page for rrhof:331
-    Then I should see the field content "blacklight-contributor_name_facet" contain "Mastro, James"
-    And I should not see "Mastro, James,"
-    And I should not see "Mastro, James ()"
