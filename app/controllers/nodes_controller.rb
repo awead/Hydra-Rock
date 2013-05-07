@@ -30,7 +30,7 @@ class NodesController < ApplicationController
     @object.create_node(params)
     if @object.errors.empty?
       @object.save
-      flash[:notice] = "Added #{params.inspect}"
+      flash[:notice] = "Video was updated successfully"
     else
       flash[:notice] = "Unable to insert node: #{@object.errors.full_messages.join("<br/>")}"
     end

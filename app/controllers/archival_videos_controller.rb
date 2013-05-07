@@ -86,7 +86,7 @@ class ArchivalVideosController < ApplicationController
   end
 
   # custom action for assigning videos to collections and series
-  def assign message = String.new
+  def assign message = Array.new
     @afdoc = ArchivalVideo.find(params[:id])
 
     message << update_relation("collection")
@@ -95,7 +95,7 @@ class ArchivalVideosController < ApplicationController
     unless message.blank?
       if @afdoc.save
         record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => params["archival_video"]})
-        redirect_to(workflow_archival_video_path(@afdoc, "collections"), :notice => message)
+        redirect_to(workflow_archival_video_path(@afdoc, "collections"), :notice => "Video was updated successfully")
       else
         redirect_to(workflow_archival_video_path(@afdoc, "collections"), :alert => @afdoc.errors.messages.values.to_s)
       end

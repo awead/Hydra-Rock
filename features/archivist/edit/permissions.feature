@@ -24,3 +24,9 @@ Feature:
     And the "document_fields_permissions_groups_reviewer" field should contain "edit"
     And the "document_fields_permissions_groups_public" field should contain "read"
     And the "document_fields_permissions_groups_archivist" field should contain "edit"
+
+  Scenario: No changes are made
+    Given I am logged in as "archivist1@example.com"
+    And I am on the permissions workflow page for cucumber:1
+    When I press "Save Changes"
+    Then I should see "No changes made"     

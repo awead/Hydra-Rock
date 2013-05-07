@@ -96,6 +96,7 @@ $(document).on('click', '.adder', function(event) {
 
 $(document).on('click', '.remover', function(event) {
   $(this).parent().remove();
+  formChanged = true;
   event.preventDefault();
 });
 

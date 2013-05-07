@@ -13,11 +13,11 @@ Feature:
     And I fill in "name" with "John Doe"
     And I select "performer" from "role"
     And I press "add_contributor_button"
+    And I should see "Video was updated successfully"
     And I close the modal window
     And I wait for 2 seconds
     Then the "contributor_name_0" field should contain "John Doe"
     And the "contributor_role_0" field should contain "performer"
-    And I should see "Video was updated successfully"
     When I follow "delete_contributor_0"
     Then I should not see "John Doe"
     And I should see "Video was updated successfully"
@@ -26,11 +26,11 @@ Feature:
     And I fill in "name" with "Jane Doe"
     And I select "presenter" from "role"
     And I press "add_publisher_button"
+    And I should see "Video was updated successfully"
     And I close the modal window
     And I wait for 2 seconds    
     Then the "publisher_name_0" field should contain "Jane Doe"
     And the "publisher_role_0" field should contain "presenter"
-    And I should see "Video was updated successfully"
     When I follow "delete_publisher_0"
     Then I should not see "Jane Doe"
     And I wait for 2 seconds

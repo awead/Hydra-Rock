@@ -22,7 +22,6 @@ function reloadNodeForm(type) {
     cache: false,
     success: function(data) {
       $('#'+type+'s_form').html(data);
-      flashInfo('Video was updated successfully')
       formChanged = false;
     },
     error: function(xhr, ajaxOptions, thrownError) {
