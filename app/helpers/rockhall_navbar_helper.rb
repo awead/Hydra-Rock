@@ -40,6 +40,22 @@ module RockhallNavbarHelper
     return result.html_safe
   end
 
+  # display flash message in the navbar
+  def render_flash_message results = String.new
+    flash.keys.each do |message|
+      alert_class = render_alert_class
+      results << '<div class="alert '+render_alert_class+'">'
+      results << content_tag(:li, flash[message])
+      results << '</div>'
+    end
+    return results.html_safe
+  end
+
+  # determine class based on the flash key
+  def render_alert_class
+    flash.keys.first == :notice ? "alert-info" : "alert-"+flash.keys.first.to_s
+  end
+
   # deprecated
   def add_dropdown
     results = String.new

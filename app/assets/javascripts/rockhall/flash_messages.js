@@ -3,16 +3,23 @@
 // Some simple functions that render flash messages in <div class="flash_messages">
 
 function flashInfo(message) {
-  var html = '<div class="alert alert-info">'+message+'<button type="button" class="close" data-dismiss="alert">&times;</button></div>'
-  $('div.flash_messages').append(html)
+  var html = '<li class="dropdown open"><ul id="flash_message" class="dropdown-menu"><div class="alert alert-info"><li>'+message+'</li></div></ul></li>'
+  $('#flash_message').parent().remove();
+  $('ul.flash').append(html)
 }
 
 function flashAlert(message) {
-  var html = '<div class="alert">'+message+'<button type="button" class="close" data-dismiss="alert">&times;</button></div>'
-  $('div.flash_messages').append(html)
+  var html = '<li class="dropdown open"><ul id="flash_message" class="dropdown-menu"><div class="alert"><li>'+message+'</li></div></ul></li>'
+  $('#flash_message').parent().remove();
+  $('ul.flash').append(html)
 }
 
 function flashWarning(message) {
-  var html = '<div class="alert alert-warning">'+message+'<button type="button" class="close" data-dismiss="alert">&times;</button></div>'
-  $('div.flash_messages').append(html)
+  var html = '<li class="dropdown open"><ul id="flash_message" class="dropdown-menu"><div class="alert alert-warning"><li>'+message+'</li></div></ul></li>'
+  $('#flash_message').parent().remove();
+  $('ul.flash').append(html)
 }
+
+$(document).on('click', '#flash_message', function(event) {
+  $(this).parent().remove();
+});
