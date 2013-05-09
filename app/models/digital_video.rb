@@ -1,6 +1,5 @@
 class DigitalVideo < ActiveFedora::Base
 
-  include Hydra::ModelMethods
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
   include ActiveFedora::FileManagement

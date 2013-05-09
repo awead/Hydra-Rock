@@ -3,7 +3,7 @@ module Rockhall::ModelMethods
   # Adds depositor information
   def apply_depositor_metadata depositor_id
     self.depositor = depositor_id
-    super
+    self.rightsMetadata.permissions({:person=>depositor_id}, 'edit') unless self.rightsMetadata.nil?
   end
 
   # Removes h264 and original child video objects, but not objects that represent tapes

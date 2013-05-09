@@ -13,11 +13,6 @@ describe ExternalVideo do
     @video.should be_kind_of(ActiveFedora::Base)
   end
 
-  it "should include Hydra Model Methods" do
-    @video.class.included_modules.should include(Hydra::ModelMethods)
-    @video.should respond_to(:apply_depositor_metadata)
-  end
-
   describe '#garbage_collect' do
     it "should delete the object if it does not have any objects asserting has_collection_member" do
       mock_non_orphan = mock("non-orphan file asset", :containers=>["foo"])

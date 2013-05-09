@@ -13,7 +13,6 @@ class ExternalVideo < ActiveFedora::Base
   include ActiveFedora::DatastreamCollections
   include ActiveFedora::FileManagement
   include ActiveFedora::Relationships
-  include Hydra::ModelMethods
   include Rockhall::ModelMethods
   include Rockhall::TemplateMethods
   include Rockhall::Conversion

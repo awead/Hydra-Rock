@@ -12,11 +12,6 @@ describe ArchivalVideo do
       @video.should be_kind_of(ActiveFedora::Base)
     end
 
-    it "should include Hydra Model Methods" do
-      @video.class.included_modules.should include(Hydra::ModelMethods)
-      @video.should respond_to(:apply_depositor_metadata)
-    end
-
     describe "using templates to manage multi-valued terms" do
       it "should insert contributors" do
         @video.new_contributor({:name=> "Name", :role => "role"})
