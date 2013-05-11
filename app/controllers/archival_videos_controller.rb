@@ -39,7 +39,7 @@ class ArchivalVideosController < ApplicationController
         format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
       else
         format.html {
-          flash[:alert] = @afdoc.errors.messages.values.to_s
+          flash[:alert] = @afdoc.errors.messages
           render :action => "new"
         }
         format.json { render :json => @afdoc.errors, :status => :unprocessable_entity }
@@ -57,7 +57,7 @@ class ArchivalVideosController < ApplicationController
       if @afdoc.update_permissions(permissions_hash)
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Permissions updated successfully")
       else
-        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
+        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages)
       end
     else
       if changes.empty?
@@ -67,7 +67,7 @@ class ArchivalVideosController < ApplicationController
           record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => changes}) unless changes.nil?
           redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Video was updated successfully")
         else
-          redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages.values.to_s)
+          redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages)
         end
       end
     end
@@ -97,7 +97,7 @@ class ArchivalVideosController < ApplicationController
         record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => params["archival_video"]})
         redirect_to(workflow_archival_video_path(@afdoc, "collections"), :notice => "Video was updated successfully")
       else
-        redirect_to(workflow_archival_video_path(@afdoc, "collections"), :alert => @afdoc.errors.messages.values.to_s)
+        redirect_to(workflow_archival_video_path(@afdoc, "collections"), :alert => @afdoc.errors.messages)
       end
     else
       redirect_to(workflow_archival_video_path(params["id"], "collections"), :notice => "No changes made")

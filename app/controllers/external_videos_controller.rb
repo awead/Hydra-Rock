@@ -33,7 +33,7 @@ class ExternalVideosController < ApplicationController
           format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
         else
           format.html {
-            flash[:alert] = @afdoc.errors.messages.values.to_s
+            flash[:alert] = @afdoc.errors.messages
             render :action => "new"
           }
           format.json { render :json => @afdoc.errors, :status => :unprocessable_entity }
@@ -71,7 +71,7 @@ class ExternalVideosController < ApplicationController
       if @afdoc.save
         redirect_to(edit_external_video_path(@afdoc), :notice => 'Video was updated successfully')
       else
-        redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages.values.to_s)
+        redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages)
       end
     end
   end

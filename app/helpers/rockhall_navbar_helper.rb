@@ -43,12 +43,14 @@ module RockhallNavbarHelper
   # display flash message in the navbar
   def render_flash_message results = String.new
     flash.keys.each do |message|
-      alert_class = render_alert_class
-      results << '<div class="alert '+render_alert_class+'">'
-      results << content_tag(:li, flash[message])
-      results << '</div>'
+      results << content_tag(:div, render_error_message(flash[message]), :class => "alert " + render_alert_class )
     end
     return results.html_safe
+  end
+
+  # if this is an error message, display accordingly, otherwise just return the message
+  def render_error_message message
+    message.is_a?(ActiveSupport::OrderedHash) ? message.values.join("<br/>") : message
   end
 
   # determine class based on the flash key
