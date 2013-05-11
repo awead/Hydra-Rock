@@ -132,6 +132,7 @@ module Rockhall::ModelMethods
         self.update_attributes({term => terms[term]})
       end
     end
+    self.errors.count > 0 ? false : true
   end
 
 end
