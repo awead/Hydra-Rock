@@ -82,7 +82,7 @@ When /^(?:|I )fill in the following:$/ do |fields|
   end
 end
 
-# Use this to view the results
+# Use this to view the results in a show view
 #
 #   And I should see the following:
 #     | id | value |
@@ -92,6 +92,17 @@ Then /^I should see the following:$/ do |fields|
     step %{I should see the field content "#{name}" contain "#{value}"}
   end
 end
+
+# Use this to view the contents of multiple edit fields
+#
+#   And I should see the following in edit fields:
+#     | id | value |
+Then /^I should see the following in edit fields:$/ do |fields|
+  fields.rows_hash.each do |name, value|
+    step %{the "#{name}" field should contain "#{value}"}
+  end
+end
+
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
   select(value, :from => field)

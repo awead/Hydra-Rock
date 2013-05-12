@@ -21,3 +21,10 @@ Feature:
     When I fill in "event_date_0" with "bad dates"
     And I press "Save Changes"
     Then should see "Date must be in YYYY-MM-DD format"
+
+  Scenario: Editing dates on tapes
+    Given I am logged in as "archivist1@example.com"
+    And I am on the edit external video page for rockhall:fixture_tape2
+    When I fill in "external_video_date" with "foo date"
+    And I press "Save Changes"
+    Then should see "Date must be in YYYY-MM-DD format"

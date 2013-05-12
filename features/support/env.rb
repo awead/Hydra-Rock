@@ -64,15 +64,30 @@ Before do
   ActiveRecord::Fixtures.create_fixtures(fixtures_folder, fixtures)
 end
 
+# Creates a sample video with an attached tape
 Before '@sample' do
-  av = ArchivalVideo.new(:pid => "cucumber:1")
+
+  # ArchivalVideo
+  av = ArchivalVideo.new(:pid => "cucumber:1")  
   av.title = "Cucumber Sample 1"
   av.save
+
+  # Tape
+  tape = ExternalVideo.new(:pid => "cucumber:2")
+  tape.define_physical_instantiation
+  tape.save
+  
+  av.external_videos << tape
+  av.save
+  tape.save
 end
 
 After '@sample' do
   av = ArchivalVideo.find("cucumber:1")
   av.delete
+
+  tape = ExternalVideo.find("cucumber:2")
+  tape.delete
 end
 
 After '@collections' do

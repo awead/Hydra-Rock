@@ -4,7 +4,7 @@
     <legend>Date</legend>
     <p class="legend-caption">Enter the date the item was first created or filmed.  Use YYYY-MM-DD for the format.</p>
     <%= f.label :date, :class=>"field" %>
-    <%= f.text_field :date, :name=>"document_fields[date][]", :value=>@afdoc.date.first, :class=>" edit span2" %>
+    <%= f.text_field :date, :name=>"document_fields[date][]", :value=>@afdoc.date.first, :class=>"edit span2" %>
   </fieldset>
 
   <fieldset id="original_fields">
@@ -19,20 +19,22 @@
     <%= f.label :format, :class=>"field"  %>
     <%= f.text_field :format, :name=>"document_fields[format][]", :value=>@afdoc.format.first, :class=>"insPhy_auto edit span2", "data-provide".to_sym => "typeahead"  %>
     <%= f.label :barcode, :class=>"field" %>
-    <%= f.text_field :barcode, :name=>"document_fields[barcode][]", :value=>@afdoc.barcode.first, :class=>" edit span2" %>
+    <%= f.text_field :barcode, :name=>"document_fields[barcode][]", :value=>@afdoc.barcode.first, :class=>"edit span2" %>
     <%= f.label :language, :class=>"field" %>
-    <%= f.text_field :language, :name=>"document_fields[language][]", :value=>@afdoc.language.first, :class=>" edit span2" %>
+    <%= f.text_field :language, :name=>"document_fields[language][]", :value=>@afdoc.language.first, :class=>"edit span2" %>
     <%= f.label :location, :class=>"field" %>
     <%= f.text_area :location, :name=>"document_fields[location][]", :value=>@afdoc.location.first, :rows => "5", :class=>"edit span4" %>
+    <%= f.label :rights_summary, :class => "field" %>
+    <%= f.text_field :rights_summary, :name=>"document_fields[rights_summary][]", :value=>@afdoc.rights_summary.first, :class=>"edit span2" %>    
   </fieldset>
 
   <fieldset id="condition_fields">
     <legend>Item Condition</legend>
-    <p class="legend-caption">Enter any relevant information about the condition of the original item or its usage restrictions.</p>
-    <% ["access", "condition", "cleaning"].each do |t| %>
-      <%= f.label t.to_sym, :class=>"field" %>
-      <%= render :partial => "shared/edit/field", :locals => { :t=>t, :f=>f, :vals=>@afdoc.send(t), :multiple=>FALSE } %>
-    <% end %>
+    <p class="legend-caption">Enter any relevant information about the condition of the original item.</p>
+    <%= f.label :condition, :class => "field" %>
+    <%= f.text_field :condition, :name=>"document_fields[condition][]", :value=>@afdoc.condition.first, :class=>"edit span2" %> 
+    <%= f.label :cleaning, :class => "field" %>
+    <%= f.text_field :cleaning, :name=>"document_fields[cleaning][]", :value=>@afdoc.cleaning.first, :class=>"edit span2" %>
   </fieldset>
 
   <%= f.submit "Save Changes", :class => "btn btn-primary", :onclick => "submitOnChanged(event)" %>

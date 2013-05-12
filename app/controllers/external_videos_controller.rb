@@ -67,8 +67,7 @@ class ExternalVideosController < ApplicationController
     if changes.empty?
       redirect_to(edit_external_video_path(@afdoc), :notice => 'Changes: ' + params.inspect)
     else
-      @afdoc.update_attributes(changes)
-      if @afdoc.save
+      if @afdoc.update_metadata(changes)
         redirect_to(edit_external_video_path(@afdoc), :notice => 'Video was updated successfully')
       else
         redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages)
