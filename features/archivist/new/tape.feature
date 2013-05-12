@@ -10,3 +10,5 @@ Feature:
     And I am on the collections workflow page for cucumber:1
     When I follow "New"
     Then I should see "Tape"
+    When I follow "Tape"
+    Then I should see "New Tape"

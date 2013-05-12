@@ -29,7 +29,7 @@ module RockhallAssetsHelper
     results << content_tag(:li, link_to('Archival Video', new_archival_video_path))
     results << content_tag(:li, link_to('Archival Collection', new_archival_collection_path))
     unless params[:id].nil?
-      results << content_tag(:li, link_to('Tape', ("external_videos/new"))) if params[:wf_step]
+      results << content_tag(:li, link_to('Tape', new_archival_video_external_video_path(params[:id]))) if params[:wf_step]
     end
     return results.html_safe
   end
