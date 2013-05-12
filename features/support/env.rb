@@ -64,7 +64,7 @@ Before do
   ActiveRecord::Fixtures.create_fixtures(fixtures_folder, fixtures)
 end
 
-# Creates a sample video with an attached tape
+# Creates a sample video with an attached tape, and digital file
 Before '@sample' do
 
   # ArchivalVideo
@@ -76,10 +76,17 @@ Before '@sample' do
   tape = ExternalVideo.new(:pid => "cucumber:2")
   tape.define_physical_instantiation
   tape.save
+
+  # File
+  file = ExternalVideo.new(:pid => "cucumber:3")
+  file.define_digital_instantiation
+  file.save
   
   av.external_videos << tape
+  av.external_videos << file
   av.save
   tape.save
+  file.save
 end
 
 After '@sample' do
