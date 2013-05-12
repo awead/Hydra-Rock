@@ -10,9 +10,3 @@ Feature: Archivist adds new content
     When I follow "New"
     Then I should see "Archival Video"
     And I should see "Archival Collection"
-
-  Scenario: Adding new video objects
-    Given I am logged in as "archivist1@example.com"
-    And I create a new archival video
-    Then I should see "New Archival Video"
-    And I should see "Main title"
