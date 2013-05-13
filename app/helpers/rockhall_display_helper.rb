@@ -1,20 +1,21 @@
 module RockhallDisplayHelper
 
-  def display_field field,opts={}, results = String.new
+  def display_field field, opts={}, results = String.new
     return nil if @document[field.to_sym].nil? or @document[field.to_sym].first.empty?
-    
-    # Determine field label
-    if opts[:name].nil?
-      parts = field.to_s.split(/_/)
-      parts.pop
-      name = parts.each{|word| word.capitalize!}.join(" ")
-      @document[field.to_sym].count > 1 ? formatted_name = name.pluralize : formatted_name = name
-    else
-      formatted_name = opts[:name]
-    end
+    formatted_name = field_label_for field, opts
     results << "<dt class=\"#{field.to_s}\">" + formatted_name + "</dt>"
     @document[field.to_sym].each do |v|
       results << "<dd class=\"#{field.to_s}\">" + v + "</dd>"
+    end
+    return results.html_safe
+  end
+
+  def display_permissions_field field, opts={}, results = String.new
+    return nil if @document[field.to_sym].nil? or @document[field.to_sym].first.empty?
+    formatted_name = field_label_for field, opts
+    results << "<dt class=\"#{field.to_s}\">" + formatted_name + "</dt>"
+    @document[field.to_sym].each do |v|
+      results << "<dd class=\"#{field.to_s}\">" + group_name_for(v) + "</dd>"
     end
     return results.html_safe
   end
@@ -30,6 +31,33 @@ module RockhallDisplayHelper
     results << "<td class=\"#{heading.downcase}\">" + field.join("<br/>") + "</td></tr>"
     return results.html_safe
 
+  end
+
+  def field_label_for field, opts={}
+    if opts[:name].nil?
+      parts = field.to_s.split(/_/)
+      parts.pop
+      name = parts.each{|word| word.capitalize!}.join(" ")
+      @document[field.to_sym].count > 1 ? formatted_name = name.pluralize : formatted_name = name
+    else
+      formatted_name = opts[:name]
+    end
+    return formatted_name
+  end
+
+  def group_name_for group
+    case
+    when group == "donor"
+      then "Rockhall Staff"
+    when group == "archivist"
+      then "Library Staff"
+    when group == "reviewer"
+      then "Reviewers"
+    when group == "public"
+      then "Public"
+    else
+      group
+    end
   end
 
   # Determines the image to be used for the icon in the index display
