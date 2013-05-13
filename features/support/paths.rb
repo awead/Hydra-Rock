@@ -39,7 +39,7 @@ module NavigationHelpers
       new_archival_video_external_video_path($1) 
 
     # Archival collections
-    when /new archival_collection/
+    when /new archival collections page/
       new_archival_collection_path
 
     # Activities
