@@ -10,8 +10,8 @@ Narrative:
   there will be objects that exist in Hydra ready for viewing and editing.
 
   Scenario: Video is not publically available immediately following ingest
-    Given I am on the show document page for rockhall:fixture_pbcore_document3
-    Then I should see "You do not have sufficient access privileges to read this document, which has been marked private."
+    Given I am on the catalog page for rockhall:fixture_pbcore_document3
+    Then I should see "Sign in"
 
   Scenario: Members of the archivist group have edit rights (DAM-131)
     Given I am logged in as "archivist1@example.com"
@@ -21,8 +21,8 @@ Narrative:
   @javascript
   Scenario: View all the fields of the original preservation video file
     Given I am logged in as "archivist1@example.com"
-    And I am on the edit archival video page for rockhall:fixture_pbcore_document3
-    When I follow "Original (1)"
+    And I am on the catalog page for rockhall:fixture_pbcore_document3
+    When I follow "Preservation (1)"
     Then I should see "39156042439369_preservation.mov"
     And I should see "80.2 GiB"
     And I should see "2011-10-12"
@@ -54,8 +54,8 @@ Narrative:
   @javascript
   Scenario: View all the fields of the access h264 video file
     Given I am logged in as "archivist1@example.com"
-    And I am on the edit archival video page for rockhall:fixture_pbcore_document3
-    When I follow "H264 (1)"
+    And I am on the catalog page for rockhall:fixture_pbcore_document3
+    When I follow "Access (1)"
     Then I should see "39156042439369_access.mp4"
     And I should see "1008"
     And I should see "2011-10-12"
