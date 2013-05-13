@@ -8,7 +8,3 @@ Feature:
     When I follow "Collection"
     Then I should see "Test Collection"
 
-  Scenario: Displaying collections
-    Given I am on the show document page for rockhall:fixture_arc_test
-    Then I should see "Test Collection"
-    And I should see "Items in Collection"

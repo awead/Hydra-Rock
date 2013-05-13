@@ -19,7 +19,7 @@ module NavigationHelpers
       edit_user_registration_path
     when /the base search page/
       '/catalog?q=&search_field=search&action=index&controller=catalog&commit=search'
-    when /the document page for id (.+)/
+    when /the catalog page for (.+)/
       catalog_path($1)
 
     # Archival videos
