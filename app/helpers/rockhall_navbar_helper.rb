@@ -50,7 +50,7 @@ module RockhallNavbarHelper
 
   # if this is an error message, display accordingly, otherwise just return the message
   def render_error_message message
-    message.is_a?(ActiveSupport::OrderedHash) ? message.values.join("<br/>") : message
+    message.is_a?(ActiveSupport::OrderedHash) ? message.values.flatten.compact.join("<br/>") : message
   end
 
   # determine class based on the flash key

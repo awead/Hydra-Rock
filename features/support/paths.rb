@@ -34,7 +34,9 @@ module NavigationHelpers
 
     # External videos
     when /edit external video page for (.*)/i
-      edit_external_video_path($1)    
+      edit_external_video_path($1)   
+    when /new tape page for (.*)/i
+      new_archival_video_external_video_path($1) 
 
     # Archival collections
     when /new archival_collection/
