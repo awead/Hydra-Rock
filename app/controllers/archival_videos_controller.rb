@@ -111,26 +111,15 @@ class ArchivalVideosController < ApplicationController
 
   # transfers the videos from a source object to the destination object
   def transfer
-    message = verify_transfer
-    if message.empty?
-      destination = ActiveFedora::Base.find(params["id"], :cast => true)
-      source      = ActiveFedora::Base.find(params["source"], :cast => true)
-      destination.transfer_videos_from source
-      flash[:notice] = "Transferred #{source.external_videos.count} videos to #{destination.title}"
-      render :partial => "import"
+    @afdoc = ArchivalVideo.find(params[:id])
+    if params["source"].empty?
+      flash[:error] = "Please enter a source pid"
+    elsif @afdoc.transfer_videos_from_pid(params["source"])
+      flash[:notice] = "Videos were transferred successfully"
     else
-      flash[:error]= message
-      render :partial => "import"
+      flash[:error] = @afdoc.errors.messages.values.join("<br/>")
     end
+    render :partial => "import"
   end
-
-  # Verifies the parameters for transferring videos.  An empty string indicates the parameters are acceptable.
-  def verify_transfer error = String.new
-    error = "You must enter an id." if params["source"].empty?
-    error = "ID #{params["source"]} does not exist." unless ActiveFedora::Base.exists?(params["source"])
-    error = "Source ID cannot be the same as the destination ID." if params["source"] == params["id"]
-    return error
-  end
-
 
 end

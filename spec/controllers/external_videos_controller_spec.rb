@@ -44,6 +44,12 @@ describe ExternalVideosController do
       end
     end
 
+    describe "#index" do
+      it "should route to the index page" do
+        {:get => "/archival_videos/foo/external_videos"}.should route_to(:controller => "external_videos", :archival_video_id => "foo", :action => "index")
+      end
+    end
+
   end
 
   describe "when the user is logged in" do
@@ -73,7 +79,6 @@ describe ExternalVideosController do
         post :create, :archival_video_id => "foo"
         puts response
       end
-
 
     end
 

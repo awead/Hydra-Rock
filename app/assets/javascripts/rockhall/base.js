@@ -32,6 +32,34 @@ function submitOnChanged(event) {
   }
 }
 
+// makes an ajax call to reload the video list given by the external_videos/show/list partial
+function reloadVideos() {
+
+  // Look through our url and find the pid
+  var pid = jQuery.grep(window.location.pathname.split('/'), function (element) {
+    if(element.indexOf(':') !== -1) {
+      return element;
+    }
+  });
+
+  var url = ROOT_PATH+'archival_videos/'+pid+'/external_videos';
+
+  $.ajax({
+    type: 'GET',
+    url: url,
+    cache: false,
+    success: function(data) {
+      $('#video_list').html(data);
+      //formChanged = false;
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      alert(xhr.status);
+      alert(thrownError);
+    }
+  });
+
+}
+
 // Typeahead function that's used when fillout certain text fields.  Uses getTerms()
 // to get options from a locally-stored, static json file.
 jQuery(document).ready(function() {
@@ -104,3 +132,9 @@ $(document).on('click', '.remover', function(event) {
 $(document).on('change', 'input,select', function(event) {
   formChanged = true;
 });
+
+$(document).on('click', '.refresh_videos, .modal-backdrop', function(event) {
+  reloadVideos();
+  event.preventDefault();
+});
+

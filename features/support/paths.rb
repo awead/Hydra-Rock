@@ -31,6 +31,8 @@ module NavigationHelpers
       edit_archival_video_path($1)
     when /the (.+) workflow page for (.+)/
       workflow_archival_video_path($2, $1)
+    when /the import page for (.+)/
+      import_archival_video_path($1)
 
     # External videos
     when /edit external video page for (.*)/i

@@ -52,6 +52,15 @@ class ExternalVideosController < ApplicationController
     end
   end
 
+  # renders a list of external videos from a given video
+  def index
+    @afdoc = ActiveFedora::Base.find(params[:archival_video_id], :cast => true)
+    respond_to do |format|
+      format.html
+      format.js { render :partial => "external_videos/show/list" }
+    end
+  end
+
   def show
     @afdoc = ExternalVideo.find(params[:id])
     partial = @afdoc.generation.first.match("Original") ? "physical" : "digital"

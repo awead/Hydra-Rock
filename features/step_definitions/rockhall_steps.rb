@@ -52,3 +52,7 @@ end
 Given /^I close the modal window$/ do
   click_button('close_modal')
 end
+
+When(/^I acccept the alert$/) do
+  page.driver.browser.switch_to.alert.accept
+end
