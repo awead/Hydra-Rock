@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Rockhall::ModelMethods do
 
-  describe ".transfer_videos_from" do
+  describe ".transfer_videos_from_pid" do
 
     # setup the scenario with two videos, each with a tape
     before :all do
@@ -35,10 +35,11 @@ describe Rockhall::ModelMethods do
       it "should move the tape instantiations" do
         @video1.videos[:tape].first.should == @tape1
         @video2.videos[:tape].first.should == @tape2
-        @video1.transfer_videos_from @video2
+        @video1.transfer_videos_from_pid @video2.pid
+        @video1.reload; @video2.reload; @tape1.reload; @tape2.reload
         @tape1.parent.should == @video1
-        @tape2.parent.should == @video1
-        @video1.reload
+        new_tape2 = ExternalVideo.find(@tape2.pid)
+        new_tape2.parent.should == @video1
         @video1.external_videos.count.should == 2
         @video2.external_videos.count.should == 0
       end
@@ -47,9 +48,16 @@ describe Rockhall::ModelMethods do
 
     describe "with errors" do
 
-      it "should return false for objects with no external videos" do
-        source = ArchivalVideo.new(:pid => "foo")
-        @video1.transfer_videos_from(source).should be_false
+      it "should return false for non-existent objects" do
+        sample = ArchivalVideo.new
+        sample.transfer_videos_from_pid("foo").should be_false
+        sample.errors.messages[:transfer_videos_from_pid].should == ["Source foo does not exist"]
+      end
+
+      it "should return false for objects that have no external videos" do
+        sample = ArchivalVideo.new
+        sample.transfer_videos_from_pid("rockhall:fixture_pbcore_document4").should be_false
+        sample.errors.messages[:transfer_videos_from_pid].should == ["Source rockhall:fixture_pbcore_document4 has no videos"]
       end
 
     end
@@ -59,7 +67,7 @@ describe Rockhall::ModelMethods do
   describe ".to_pbcore_xml" do
 
     it "should return a complete, valid pbcore document" do
-      ArchivalVideo.find("rrhof:331").valid_pbcore?.should be_true     
+      ArchivalVideo.find("rrhof:331").valid_pbcore?.should be_true
     end
 
   end

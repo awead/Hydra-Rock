@@ -83,16 +83,17 @@ module Rockhall::ModelMethods
   end
 
   # Transfers the external videos from one ArchivalVideo to another
-  # Takes an ArchivalVideo object as the source, and returns self
-  def transfer_videos_from source
-    return false if source.external_videos.empty?
-    source.external_videos.each do |v|
-      v.remove_relationship(:is_part_of, source)
-      v.parent = self
-      v.save
+  # Takes a pid as its argument and returns true or false (with errors)
+  def transfer_videos_from_pid pid
+    if check_transfer_source(pid)
+      source = ArchivalVideo.find(pid)
+      source.external_videos.each do |v|
+        v.remove_relationship(:is_part_of, source)
+        v.parent = self
+        v.save
+      end
     end
-    source.reload
-    return self
+    self.errors.count > 0 ? false : true
   end
 
   # returns a complete pbcore xml document
@@ -133,6 +134,23 @@ module Rockhall::ModelMethods
       end
     end
     self.errors.count > 0 ? false : true
+  end
+
+  protected 
+
+  def check_transfer_source source
+    if !ActiveFedora::Base.exists?(source)
+      errors.add(:transfer_videos_from_pid, "Source #{source} does not exist")
+      return false
+    else
+      obj = ArchivalVideo.find(source)
+      if obj.external_videos.count == 0
+        errors.add(:transfer_videos_from_pid, "Source #{source} has no videos")
+        return false
+      else
+        return true
+      end
+    end
   end
 
 end
