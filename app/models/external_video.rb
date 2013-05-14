@@ -106,6 +106,13 @@ class ExternalVideo < ActiveFedora::Base
     unless self.parent.nil?
       solr_doc.merge!({"parent_title_display" => self.parent.title})
     end
+    solr_doc.merge!({"media_format_facet" => self.format})
+    solr_doc.merge!({"create_date_facet"  => Time.new(self.date.first).strftime("%Y")}) if self.date.first.length > 1
+
+    self.language.each do |l|
+      l.match(/^eng$/) ? solr_doc.merge!(:language_facet => "English") : solr_doc.merge!(:language_facet => "Unknown")
+    end
+
     return solr_doc
   end
 

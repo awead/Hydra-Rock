@@ -106,6 +106,7 @@ class ArchivalVideo < ActiveFedora::Base
   def to_solr solr_doc = Hash.new
     super(solr_doc)
     solr_doc.merge!({"format" => "Video"})
+    solr_doc.merge!({"series_facet" => self.event_series})
   end
 
 end
