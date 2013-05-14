@@ -44,18 +44,13 @@ function reloadVideos() {
 
   var url = ROOT_PATH+'archival_videos/'+pid+'/external_videos';
 
-  $.ajax({
-    type: 'GET',
+  var jqxhr = $.ajax({
     url: url,
-    cache: false,
-    success: function(data) {
-      $('#video_list').html(data);
-      //formChanged = false;
-    },
-    error: function(xhr, ajaxOptions, thrownError) {
-      alert(xhr.status);
-      alert(thrownError);
-    }
+    dataType: 'script'
+  });
+
+  jqxhr.always( function (data) {
+    $('#video_list').html(data.responseText);
   });
 
 }

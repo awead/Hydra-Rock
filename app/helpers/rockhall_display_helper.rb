@@ -107,9 +107,7 @@ module RockhallDisplayHelper
   end
 
   def render_import_button
-    if params["action"].match("edit")
-      link_to("Import", import_archival_video_path, :id => "import_video_modal", :class => "btn btn-info more_facets_link")
-    end
+    link_to("Import", import_archival_video_path, :id => "import_video_modal", :class => "btn btn-info more_facets_link")
   end
 
   def render_adder_button key
