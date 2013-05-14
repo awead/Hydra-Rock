@@ -56,7 +56,7 @@ function deleteNode(type, url) {
 
 // ################################################################################
 // contributors
-$(document).on('click', '.refresh_contributors, .modal-backdrop', function(event) {
+$(document).on('click', '.refresh_contributors', function(event) {
   reloadNodeForm('contributor');
   event.preventDefault();
 });
@@ -68,7 +68,7 @@ $(document).on('click', '.delete_contributors', function(event) {
 
 // ################################################################################
 // publishers
-$(document).on('click', '.refresh_publishers, .modal-backdrop', function(event) {
+$(document).on('click', '.refresh_publishers', function(event) {
   reloadNodeForm('publisher');
   event.preventDefault();
 });
@@ -80,7 +80,7 @@ $(document).on('click', '.delete_publishers', function(event) {
 
 // ################################################################################
 // accessions
-$(document).on('click', '.refresh_accessions, .modal-backdrop', function(event) {
+$(document).on('click', '.refresh_accessions', function(event) {
   reloadNodeForm('accession');
   event.preventDefault();
 });
@@ -92,7 +92,7 @@ $(document).on('click', '.delete_accessions', function(event) {
 
 // ################################################################################
 // events
-$(document).on('click', '.refresh_events, .modal-backdrop', function(event) {
+$(document).on('click', '.refresh_events', function(event) {
   reloadNodeForm('event');
   event.preventDefault();
 });
@@ -104,7 +104,7 @@ $(document).on('click', '.delete_events', function(event) {
 
 // ################################################################################
 // collections
-$(document).on('click', '.refresh_collections, .modal-backdrop', function(event) {
+$(document).on('click', '.refresh_collections', function(event) {
   reloadNodeForm('collection');
   event.preventDefault();
 });
@@ -112,4 +112,21 @@ $(document).on('click', '.refresh_collections, .modal-backdrop', function(event)
 $(document).on('click', '.delete_collections', function(event) {
   deleteNode('collection', $(this).attr('href'));
   event.preventDefault();
+});
+
+// Reload content if the user closes the model without clicking on the (x)
+$(document).on('click', '.modal-backdrop', function(event) {
+
+   if ($('#ajax-modal form').attr('id') === 'add_contributor')
+      reloadNodeForm('contributor');
+   if ($('#ajax-modal form').attr('id') === 'add_publisher')
+      reloadNodeForm('publisher');
+   if ($('#ajax-modal form').attr('id') === 'add_event')
+      reloadNodeForm('event');
+   if ($('#ajax-modal form').attr('id') === 'add_accession')
+      reloadNodeForm('accession');
+   if ($('#ajax-modal form').attr('id') === 'add_collection')
+      reloadNodeForm('collection');    
+
+
 });

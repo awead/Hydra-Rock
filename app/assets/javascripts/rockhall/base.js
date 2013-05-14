@@ -128,8 +128,15 @@ $(document).on('change', 'input,select', function(event) {
   formChanged = true;
 });
 
-$(document).on('click', '.refresh_videos, .modal-backdrop', function(event) {
+
+// Importing videos
+$(document).on('click', '.refresh_videos', function(event) {
   reloadVideos();
   event.preventDefault();
 });
 
+// Reload video list if the user closes the modal
+$(document).on('click', '.modal-backdrop', function(event) {
+   if ($('#ajax-modal form').attr('id') === 'import_videos')
+      reloadVideos();
+});
