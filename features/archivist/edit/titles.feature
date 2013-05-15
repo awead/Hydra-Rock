@@ -1,17 +1,16 @@
-@sample
-@javascript
 Feature:
   In order to edit items in Hydra
   As an archivist
   I need add and edit titles
 
-  #Scenario: Require title can't be blank
-  #  Given I am logged in as "archivist1@example.com"
-  #  And I am on the titles workflow page for cucumber:1
-  #  And I fill in "archival_video_title" with ""
-  #  When I press "Save Changes"
-  #  Then I should see "Main title can't be blank"
+  Scenario: Change Title Label to Label (DAM-266)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the titles workflow page for rrhof:525
+    Then I should not see the field label "archival_video_title_label" contain "Title label"
+    And I should see the field label "archival_video_label" contain "Label"
 
+  @sample
+  @javascript
   Scenario: Editing fields in the description workflow
     Given I am logged in as "archivist1@example.com"
     And I am on the titles workflow page for cucumber:1
@@ -34,8 +33,12 @@ Feature:
     And the "translation_0" field should contain "translation_0"
     And I should see "Video was updated successfully"
 
+  @sample
+  @javascript
   Scenario: No changes are made
     Given I am logged in as "archivist1@example.com"
     And I am on the titles workflow page for cucumber:1
     When I press "Save Changes"
-    Then I should see "No changes made" 
+    Then I should see "No changes made"
+
+

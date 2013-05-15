@@ -80,5 +80,11 @@ Then(/^I should not see "(.*?)" in the navbar$/) do |arg1|
   page.should_not have_xpath("//a", :text => arg1)
 end
 
+Then(/^I should not see the field label "(.*?)" contain "(.*?)"$/) do |arg1, arg2|
+  page.should_not have_xpath("//label[@for='#{arg1}']", :text => arg2)
+end
 
+Then(/^I should see the field label "(.*?)" contain "(.*?)"$/) do |arg1, arg2|
+  page.should have_xpath("//label[@for='#{arg1}']", :text => arg2)
+end
 
