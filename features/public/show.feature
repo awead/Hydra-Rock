@@ -74,3 +74,11 @@ Feature:
     Given I am on the catalog page for rockhall:fixture_pbcore_document1
     Then I should not see "Edit" in the navbar
     And I should see "Pbcore" in the navbar
+
+  Scenario: Displaying archival collection information (DAM-295)
+    Given I am on the catalog page for rockhall:fixture_pbcore_document1
+    Then I should see the field content "blacklight-collection_facet" contain "Test Collection"
+    And I should see the field content "blacklight-collection_facet" contain "Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division."    
+    And I should see the field content "blacklight-archival_series_display" contain "Series 1: Sample Series"    
+    And I should see the field content "blacklight-collection_number_display" contain "rockhall-fixture_arc_test"
+    And I should see the field content "blacklight-accession_number_display" contain "LA.2003.01.001"
