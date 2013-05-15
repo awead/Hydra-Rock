@@ -7,7 +7,7 @@ gem 'blacklight'
 # Hydra Bits
 gem 'om'
 gem 'solrizer', '< 3.0.0'
-gem 'hydra-pbcore'
+gem 'hydra-pbcore', :path => '/Users/adamw/Projects/Github/hydra-pbcore'
 gem 'solr_ead'
 
 # Gems for all environments

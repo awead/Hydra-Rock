@@ -1,3 +1,10 @@
+PATH
+  remote: /Users/adamw/Projects/Github/hydra-pbcore
+  specs:
+    hydra-pbcore (2.2.1)
+      active-fedora
+      solrizer (< 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -158,9 +165,6 @@ GEM
       rails (>= 3.2.6)
     hydra-mods (0.0.6)
       active-fedora (> 4.1)
-    hydra-pbcore (2.2.1)
-      active-fedora
-      solrizer (< 3.0.0)
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.2.1)
@@ -356,7 +360,7 @@ DEPENDENCIES
   generator_spec
   gravatar_image_tag
   hydra-head (< 6.0.0)
-  hydra-pbcore
+  hydra-pbcore!
   jquery-rails
   launchy
   mediainfo
