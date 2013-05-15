@@ -22,3 +22,8 @@ Feature:
     And I am on the descriptions workflow page for cucumber:1
     When I press "Save Changes"
     Then I should see "No changes made" 
+
+  Scenario: Change Parts List to Contents (DAM-293)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the descriptions workflow page for cucumber:1
+    Then I should see the field label "archival_video_contents" contain "Contents"

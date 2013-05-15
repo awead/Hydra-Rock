@@ -114,7 +114,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'track_display',             :label => 'Track'
     config.add_show_field 'translation_display',       :label => 'Translation'
     config.add_show_field 'summary_display',           :label => 'Summary'
-    config.add_show_field 'contents_display',          :label => 'Parts List'
+    config.add_show_field 'contents_display',          :label => 'Contents'
     config.add_show_field 'note_display',              :label => 'Note'
     config.add_show_field 'subject_facet',             :label => 'Subject'
     config.add_show_field 'genre_facet',               :label => 'Genre'

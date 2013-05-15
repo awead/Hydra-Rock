@@ -6,7 +6,7 @@
     <%= f.label :summary, :class=>"field" %>
     <%= f.text_area :summary, :id=>"summary", :name=>"document_fields[summary][]", 
                     :value => @afdoc.summary.first, :rows => 6, :class=>"edit span12" %>
-    <%= f.label "Parts List", :class=>"field" %>
+    <%= f.label :contents, :class=>"field" %>
     <%= f.text_area :contents, :id=>"contents", :name=>"document_fields[contents][]", 
                     :value => @afdoc.contents.first, :rows => 6, :class=>"edit span12" %>
     <%= f.label :note, :class=>"field" %>
