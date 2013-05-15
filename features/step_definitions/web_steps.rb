@@ -85,11 +85,13 @@ end
 # Use this to view the results in a show view
 #
 #   And I should see the following:
-#     | id | value |
+#     | id                       | title               | content
+#     | selector for this field  | title of the field  | content of the field
 #
-Then /^I should see the following:$/ do |fields|
-  fields.rows_hash.each do |name, value|
-    step %{I should see the field content "#{name}" contain "#{value}"}
+Then /^I should see the following:$/ do |table|
+  table.hashes.each do |row|
+    step %{I should see the field title "#{row["id"]}" contain "#{row["title"]}"}
+    step %{I should see the field content "#{row["id"]}" contain "#{row["content"]}"}
   end
 end
 
