@@ -1,9 +1,4 @@
 <table class="table table-striped">
-  <tr>
-    <th class="pull-left">
-      <%= link_to_edit_asset('Edit&nbsp;<i class="icon-pencil"></i>', "external_video").html_safe %>
-    </th>
-  </tr>
   <% field_names.each do |field| %>
     <% value = display_tech_data_field(field) %>
     <% unless value.nil? %>

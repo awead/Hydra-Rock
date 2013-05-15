@@ -24,9 +24,13 @@ module RockhallDisplayHelper
     return nil if field.first.blank?
 
     # Determine field label
-    parts = heading.to_s.split(/_/)
-    name = parts.each{|word| word.capitalize!}.join("&nbsp;")
-    formatted_name = field.count > 1 ? formatted_name = name.pluralize : formatted_name = name
+    if heading == "format"
+      formatted_name = "Physical Format"
+    else
+      parts = heading.to_s.split(/_/)
+      name = parts.each{|word| word.capitalize!}.join("&nbsp;")
+      formatted_name = field.count > 1 ? formatted_name = name.pluralize : formatted_name = name
+    end
     results << "<tr><th class=\"#{heading.downcase}\">" + formatted_name + "</th>"
     results << "<td class=\"#{heading.downcase}\">" + field.join("<br/>") + "</td></tr>"
     return results.html_safe
