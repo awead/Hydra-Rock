@@ -115,8 +115,8 @@ namespace :rockhall do
         begin
           ActiveFedora::Base.find(object.pid, cast: true).update_index
           success = success + 1
-        rescue
-          failed << object.pid.to_s
+        rescue => e
+          failed << object.pid.to_s + ": " + e.inspect
         end
       end
       puts "Complete: #{success.to_s} objects indexed, #{failed.count.to_s} failed"
