@@ -5,6 +5,8 @@ Feature:
 
   Scenario: Viewable metadata (DAM-131)
     Given I am on the catalog page for rockhall:fixture_pbcore_document1
+    Then I should not see "Tape (1)"
+    And I should not see the heading "Videos"
     And I should see the field title "blacklight-title_display" contain "Main Title"
     And I should see the field content "blacklight-title_display" contain "Rock and Roll Hall of Fame induction ceremony. Part 1."
     And I should see the field title "blacklight-alternative_title_display" contain "Alternative Title"

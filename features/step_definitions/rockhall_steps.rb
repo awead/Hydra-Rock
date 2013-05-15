@@ -21,7 +21,15 @@ Then /^I should see "([^"]*)" in italics$/ do |arg1|
 end
 
 Then /^I should see the heading "([^"]*)"$/ do |arg1|
-  page.should have_xpath("//*/legend", :text => arg1)
+  page.should have_xpath("//h2", :text => arg1)
+end
+
+Then(/^I should not see the heading "(.*?)"$/) do |arg1|
+  page.should_not have_xpath("//h2", :text => arg1)
+end
+
+Then(/^I should see the main heading "(.*?)"$/) do |arg1|
+  page.should have_xpath("//h1", :text => arg1)
 end
 
 Then /^I should see the field content "([^"]*)" contain the current date$/ do |arg1|
@@ -55,4 +63,11 @@ end
 
 When(/^I acccept the alert$/) do
   page.driver.browser.switch_to.alert.accept
+end
+
+Then(/^I should see the following tabular display:$/) do |table|
+  table.rows_hash.each do |name, value|
+    page.should have_xpath("//th", :text => name)
+    page.should have_xpath("//td", :text => value)
+  end
 end
