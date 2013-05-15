@@ -1,10 +1,11 @@
 Feature:
   In order to display video content
-  As a public user
+  As a donor
   I need to view the content of a video
 
   Scenario: Viewable metadata (DAM-131)
-    Given I am on the show archival video page for rockhall:fixture_pbcore_document1
+    Given I am logged in as "donor1@example.com"
+    And I am on the catalog page for rockhall:fixture_pbcore_document1
     And I should see the field title "blacklight-title_display" contain "Main Title"
     And I should see the field content "blacklight-title_display" contain "Rock and Roll Hall of Fame induction ceremony. Part 1."
     And I should see the field title "blacklight-alternative_title_display" contain "Alternative Title"
@@ -70,18 +71,4 @@ Feature:
     And I should see the field title "reviewer_facet" contain "Reviewer"
     And I should see the field content "reviewer_facet" contain "reviewer1@example.com"
     And I should see the field title "license_display" contain "License"
-    And I should see the field content "license_display" contain "Public"
-
-  Scenario: Message for unavailable video (DAM-200)
-    Given I am on the document page for id rockhall:fixture_pbcore_document1
-    Then I should see "Video not available"  
-
-  Scenario: Displaying role terms in view mode (DAM-217)
-    Given I am on the show archival video page for rockhall:fixture_pbcore_document1
-    Then I should see the field content "blacklight-contributor_name_facet" contain "Springsteen, Bruce (recipient)"
-
-  Scenario: Null roles (DAM-169)
-    Given I am on the show archival video page for rrhof:331
-    Then I should see the field content "blacklight-contributor_name_facet" contain "Mastro, James"
-    And I should not see "Mastro, James,"
-    And I should not see "Mastro, James ()"  
+    And I should see the field content "license_display" contain "Public" 
