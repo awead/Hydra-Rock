@@ -37,8 +37,34 @@ module WorkflowHelper
       results<< "</li>"
     end
 
+    unless @afdoc.external_videos.empty?
+      results << content_tag(:li, nil, :class => "divider")
+      results << content_tag(:li, "Videos", :class => "nav-header")
+      results << render_external_video_workflow_steps
+    end
+
     results << "</ul>"
     return results.html_safe
   end
+
+  def render_external_video_workflow_steps results = String.new
+    @afdoc.videos.each_key do |type| 
+      unless @afdoc.videos[type].empty? 
+        @afdoc.videos[type].each_index do |index| 
+          results << content_tag(:li, link_to(external_video_workflow_name(@afdoc.videos[type][index]), edit_external_video_path(@afdoc.videos[type][index].pid)))
+        end
+      end
+    end
+    return results
+  end
+
+  def external_video_workflow_name obj
+    if obj.generation.nil? || obj.generation.empty?
+      "Unknown generation"
+    else
+      obj.generation.first
+    end
+  end
+
 
 end
