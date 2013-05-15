@@ -56,3 +56,9 @@ Feature:
     And I should see the field content "reviewer_facet" contain "reviewer1@example.com"
     And I should see the field title "license_display" contain "License"
     And I should see the field content "license_display" contain "Public"
+
+  Scenario: No access to edit workflows from navbar
+    Given I am logged in as "donor1@example.com"
+    And I am on the catalog page for rockhall:fixture_pbcore_document1
+    Then I should not see "Edit" in the navbar
+    And I should see "Pbcore" in the navbar

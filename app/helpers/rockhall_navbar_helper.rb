@@ -25,7 +25,8 @@ module RockhallNavbarHelper
           result << "<li>"
           result << link_to_edit_asset('<i class="icon-pencil"></i> Edit </a>'.html_safe, model)
           result << "</li>"
-        else
+        end 
+        if RoleMapper.roles(current_user.email).include?("archivist")
           result << workflow_dropdown
         end
       end

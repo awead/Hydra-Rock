@@ -71,3 +71,14 @@ Then(/^I should see the following tabular display:$/) do |table|
     page.should have_xpath("//td", :text => value)
   end
 end
+
+Then(/^I should see "(.*?)" in the navbar$/) do |arg1|
+  page.should have_xpath("//a", :text => arg1)
+end
+
+Then(/^I should not see "(.*?)" in the navbar$/) do |arg1|
+  page.should_not have_xpath("//a", :text => arg1)
+end
+
+
+
