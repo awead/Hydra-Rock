@@ -59,20 +59,4 @@ module RockhallNavbarHelper
     flash.keys.first == :notice ? "alert-info" : "alert-"+flash.keys.first.to_s
   end
 
-  # deprecated
-  def add_dropdown
-    results = String.new
-    results << '<li class="dropdown">'
-    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-plus"></i> Add <b class="caret"></b></a>'
-    results << '<ul class="dropdown-menu">'
-    ["contributor","publisher"].each do |type|
-      results << '<li>'
-      results << link_to(type.capitalize, new_pbcore_node_path(params.merge!({:node=>type})))
-      results << '</li>'
-    end
-    results << '</ul>'
-    results << '</li>'
-    return nil
-  end
-
 end
