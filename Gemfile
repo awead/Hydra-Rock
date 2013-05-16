@@ -55,12 +55,8 @@ group :development, :test do
 end
 
 group :cucumber do
-  gem 'capybara'
   gem 'cucumber-rails'
-  gem 'cucumber'
   gem 'selenium-webdriver'
-  gem 'spork'
-  gem 'launchy'
 end
 
 group :production do
