@@ -6,30 +6,15 @@ Javscript functions used when dealing with nodes, or additiona bits of xml that 
 
 // Reloads a give node edit partial
 function reloadNodeForm(type) {
-
-  // Look through our url and find the pid
-  var pid = jQuery.grep(window.location.pathname.split('/'), function (element) {
-    if(element.indexOf(':') !== -1) {
-      return element;
-    }
+  var jqxhr = $.ajax({
+    url: ROOT_PATH+'nodes/'+$('#main-container').data('pid')+'/'+type+'/edit',
+    dataType: 'script'
   });
 
-  var url = ROOT_PATH+'nodes/'+pid+'/'+type+'/edit';
-
-  $.ajax({
-    type: 'GET',
-    url: url,
-    cache: false,
-    success: function(data) {
-      $('#'+type+'s_form').html(data);
-      formChanged = false;
-    },
-    error: function(xhr, ajaxOptions, thrownError) {
-      alert(xhr.status);
-      alert(thrownError);
-    }
+  jqxhr.always( function (data) {
+    $('#'+type+'s_form').html(data.responseText);
+    formChanged = false;
   });
-
 }
 
 // Delete a given node
@@ -127,6 +112,5 @@ $(document).on('click', '.modal-backdrop', function(event) {
       reloadNodeForm('accession');
    if ($('#ajax-modal form').attr('id') === 'add_collection')
       reloadNodeForm('collection');    
-
 
 });
