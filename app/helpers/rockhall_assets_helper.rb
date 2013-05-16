@@ -25,6 +25,12 @@ module RockhallAssetsHelper
     end
   end
 
+  def allow_video_import
+    if allow_asset_creation
+      params[:id] ? true : false
+    end
+  end
+
   def list_available_assets_to_create results = String.new
     results << content_tag(:li, link_to('Archival Video', new_archival_video_path))
     results << content_tag(:li, link_to('Archival Collection', new_archival_collection_path))

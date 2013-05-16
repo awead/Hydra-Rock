@@ -1,4 +1,4 @@
-<h2>Videos</h2>
+<%= display_video_heading %>
 <ul id="video-file-list" class="nav nav-tabs nav-stacked">
   <% @afdoc.videos.each_key do |type| %>
     <% unless @afdoc.videos[type].empty? %>

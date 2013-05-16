@@ -29,6 +29,7 @@ Feature:
   Scenario: Importing from another video
     Given I am logged in as "archivist1@example.com"
     And I am on the titles workflow page for cucumber:1
+    And I follow "New"
     And I follow "import_video_modal"
     And I wait for 2 seconds
     And I fill in "source" with "cucumber:2"
@@ -40,4 +41,16 @@ Feature:
     When I close the modal window
     Then I should see "Tape (1)"
     And I should see "Tape (2)"
+    And I should see the heading "Videos"
+
+  @javascript
+  Scenario: Reloading video list shows heading when there aren't any videos
+    Given I am logged in as "archivist1@example.com"
+    And I am on the titles workflow page for rockhall:fixture_pbcore_document4
+    And I follow "New"
+    And I follow "import_video_modal"
+    And I wait for 2 seconds
+    When I close the modal window
+    And I wait for 4 seconds
+    Then I should not see the heading "Videos"
 

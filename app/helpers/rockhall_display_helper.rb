@@ -110,10 +110,6 @@ module RockhallDisplayHelper
     document.fetch(:complete_facet,nil).nil? ? "n/a" : document.fetch(:complete_facet,nil).first
   end
 
-  def render_import_button
-    link_to("Import", import_archival_video_path, :id => "import_video_modal", :class => "btn btn-info more_facets_link")
-  end
-
   def render_adder_button key
     content_tag(:button, ('<i class="icon-plus icon-white"></i>').html_safe, 
                 :id => "additional_#{key}", :class => "adder btn-info btn-mini")
@@ -132,6 +128,12 @@ module RockhallDisplayHelper
     js_class = key.match(/event/) ? "delete_events" : "delete_" + key + "s"
     js_id    = ["delete", key, index.to_s].join("_")
     link_to('<i class="icon-minus icon-white"></i>'.html_safe, node_path(params[:id], key, index), :id => js_id, :class => "btn btn-mini btn-danger #{js_class}").html_safe
+  end
+
+  def display_video_heading
+    if @afdoc.external_videos.count > 0
+      content_tag(:h2, "Videos")
+    end
   end
 
 end
