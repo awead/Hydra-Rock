@@ -34,25 +34,14 @@ function submitOnChanged(event) {
 
 // makes an ajax call to reload the video list given by the external_videos/show/list partial
 function reloadVideos() {
-
-  // Look through our url and find the pid
-  var pid = jQuery.grep(window.location.pathname.split('/'), function (element) {
-    if(element.indexOf(':') !== -1) {
-      return element;
-    }
-  });
-
-  var url = ROOT_PATH+'archival_videos/'+pid+'/external_videos';
-
   var jqxhr = $.ajax({
-    url: url,
+    url: ROOT_PATH+'archival_videos/'+$('#main-container').data('pid')+'/external_videos',
     dataType: 'script'
   });
 
   jqxhr.always( function (data) {
     $('#video_list').html(data.responseText);
   });
-
 }
 
 // Typeahead function that's used when fillout certain text fields.  Uses getTerms()
@@ -127,7 +116,6 @@ $(document).on('click', '.remover', function(event) {
 $(document).on('change', 'input,select', function(event) {
   formChanged = true;
 });
-
 
 // Importing videos
 $(document).on('click', '.refresh_videos', function(event) {

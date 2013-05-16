@@ -29,7 +29,7 @@
     <% onload_text = "$('input#q').focus();" if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
     <%= render :partial => 'shared/navbar' %>
     <div id="ajax-modal" class="modal hide fade" tabindex="-1"></div>
-    <div id="main-container" class="container-fluid">
+    <%= content_tag :div, :id => "main-container", :class => "container-fluid", :data => data_pid do %>
       <div class="row-fluid">
         <%= yield %>
       </div>
@@ -38,6 +38,6 @@
           <%= render :partial => 'shared/footer' %>
         </div>
       </div>
-    </div>
+    <% end %>
   </body>
 </html>

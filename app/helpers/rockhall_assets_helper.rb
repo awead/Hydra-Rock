@@ -90,5 +90,9 @@ module RockhallAssetsHelper
     return results.html_safe
   end
 
+  def data_pid
+    { :pid => @afdoc.pid } if @afdoc
+  end
+
 
 end
