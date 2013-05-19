@@ -1,4 +1,4 @@
-module RockhallDisplayHelper
+module DisplayHelper
 
   def display_field field, opts={}, results = String.new
     return nil if @document[field.to_sym].nil? or @document[field.to_sym].first.empty?

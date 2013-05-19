@@ -1,4 +1,4 @@
-module RockhallAssetsHelper
+module AssetsHelper
 
   include Hydra::AccessControlsEvaluation
 

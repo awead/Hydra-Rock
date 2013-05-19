@@ -1,4 +1,4 @@
-module RockhallNavbarHelper
+module NavbarHelper
 
   # collection of items to be rendered in the @navbar
   def navbar_items
