@@ -157,7 +157,7 @@ GEM
       rails (>= 3.2.6)
     hydra-mods (0.0.6)
       active-fedora (> 4.1)
-    hydra-pbcore (2.2.2)
+    hydra-pbcore (2.2.3)
       active-fedora
       solrizer (< 3.0.0)
     i18n (0.6.1)
