@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "Dates" do
 
   before :each do
-    @ev = ExternalVideo.new nil
-    @av = ArchivalVideo.new nil
+    @ev = ExternalVideo.new
+    @av = ArchivalVideo.new
   end
 
   after :all do
@@ -40,6 +40,15 @@ describe "Dates" do
   it "should accept empty dates" do
     @ev.date = ""
     @ev.date.should == [""]  
+  end
+
+  it "should index multiple dates" do
+    args = {:type => "event", :event_type => "date", :event_value => "2001-02-03"}
+    @av.create_node(args)
+    args[:event_value] = "2001-02-04"
+    @av.create_node(args)
+    @av.event_date.should == ["2001-02-03", "2001-02-04"]
+    @av.update_index
   end
   
 end
