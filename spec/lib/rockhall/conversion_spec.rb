@@ -23,12 +23,13 @@ describe Rockhall::Conversion do
   it "should convert an old ArchivalVideo to a new one" do
   	av = ArchivalVideo.find("rrhof:1041")
   	ev = av.from_archival_video
-  	ev.generation.should        == ["Original"]
-  	ev.barcode.should           == ["39156042459326"]
-  	av.event_date.should        == ["2001-02-01"]
-  	av.event_place.should       == ["Rock and Roll Hall of Fame and Museum, Cleveland, Ohio"]
-  	av.event_series.should      == ["Evening with series (Rock and Roll Hall of Fame and Museum)"]
-  	av.collection_number.should == "RG.0004"
+  	ev.generation.should            == ["Original"]
+  	ev.barcode.should               == ["39156042459326"]
+  	av.event_date.should            == ["2001-02-01"]
+  	av.event_place.should           == ["Rock and Roll Hall of Fame and Museum, Cleveland, Ohio"]
+  	av.event_series.should          == ["Evening with series (Rock and Roll Hall of Fame and Museum)"]
+    av.additional_collection.should == ["Rock and Roll Hall of Fame and Museum records. Education and Public Programs Division"]
+  	av.collection_number.should     == "RG.0004"
   end
 
   describe ".from_external_video" do
@@ -51,9 +52,16 @@ describe Rockhall::Conversion do
   	it "should convert an old DigitalVideo into an ArchivalVideo" do
   	  dv = DigitalVideo.find("rrhof:2405")
   	  av = dv.from_digital_video
-  	  av.pid.should == "rrhof:2405"
-  	  av.videos.should == dv.videos
-  	end
+  	  av.pid.should                   == "rrhof:2405"
+  	  av.title.should                 == "Oral History project. Clive Davis."
+      av.event_series.should          == ["Oral history project (Rock and Roll Hall of Fame and Museum)"]
+      av.event_date.should            == ["2011-12-10"]
+      av.event_place.should           == ["Pound Ridge, New York"]
+      av.accession_number.should      == ["LA.2012.05.024"]
+      av.additional_collection.should == ["Rock and Roll Hall of Fame and Museum records. Education and Public Programs Division."]
+      av.collection_number.should     == "RG.0004"
+      av.archival_series.should       == "Oral history project"
+    end
 
   	it "should not convert anything else" do
   	  av = ArchivalVideo.new nil

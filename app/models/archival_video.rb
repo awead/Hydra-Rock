@@ -82,8 +82,9 @@ class ArchivalVideo < ActiveFedora::Base
   delegate :title_label, :to=> :descMetadata, :at=>[:label]
 
   delegate_to :properties, [:depositor, :notes]
-  # save the old collection number from deprecated PBCore datastreams here
+  # save the old fields from deprecated PBCore datastreams here
   delegate :collection_number, :to => :properties, :at => [:collection], :unique => true
+  delegate :archival_series,   :to => :properties, :at => [:series],     :unique => true
 
   validate :validate_event_date
 

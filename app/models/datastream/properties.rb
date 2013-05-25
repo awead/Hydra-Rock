@@ -2,7 +2,8 @@ class Properties < ActiveFedora::NokogiriDatastream
 
   set_terminology do |t|
     t.root(:path=>"fields", :namespace_prefix=>nil)
-    t.collection # TODO: need to remove this field from all objects
+    t.collection # collection number from hydra-pbcore v1 datastreams
+    t.series     # archival series field from hydra-pbocore v1 datastreams
     t.depositor
     t.notes
     t.access
@@ -13,6 +14,7 @@ class Properties < ActiveFedora::NokogiriDatastream
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.fields {
         xml.collection
+        xml.series
         xml.depositor
         xml.notes
         xml.access
