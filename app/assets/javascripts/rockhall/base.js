@@ -113,7 +113,7 @@ $(document).on('click', '.remover', function(event) {
 });
 
 // Flip the formChanged switch whenever a form element changes
-$(document).on('change', 'input,select', function(event) {
+$(document).on('change', 'input,select,textarea', function(event) {
   formChanged = true;
 });
 

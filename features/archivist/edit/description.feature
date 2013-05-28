@@ -27,3 +27,12 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     And I am on the descriptions workflow page for cucumber:1
     Then I should see the field label "archival_video_contents" contain "Contents"
+
+  Scenario: Text areas need to trigger changed JS variable (DAM-299)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the descriptions workflow page for cucumber:1
+    And I fill in "summary" with "Foo summary"
+    When I press "Save Changes"
+    Then I should not see "No changes made"
+    And the "summary" field should contain "Foo summary"
+
