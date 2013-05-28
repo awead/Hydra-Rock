@@ -19,21 +19,17 @@ function reloadNodeForm(type) {
 
 // Delete a given node
 function deleteNode(type, url) {
-  $.ajax({
-    type: 'POST',
-    dataType: 'html',
-    data: {'_method':'delete'},
+  var jqxhr = $.ajax({
     url: url,
-    success: function(data) {
-      $('#'+type+'s_form').html(data);
-      flashInfo('Video was updated successfully')
-      formChanged = false;
-    },
-    cache: false,
-    error: function(xhr, ajaxOptions, thrownError) {
-      alert(xhr.status);
-      alert(thrownError);
-    }
+    type: 'POST',
+    dataType: 'script',
+    data: {'_method':'delete'}
+  });
+
+  jqxhr.always( function (data) {
+    $('#'+type+'s_form').html(data);
+    flashInfo('Video was updated successfully')
+    formChanged = false;
   });
 }
 
