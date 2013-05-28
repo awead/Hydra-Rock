@@ -10,4 +10,5 @@ Feature:
     And I am on the new tape page for cucumber:1
     When I fill in "external_video_date" with "bad dates"
     And I press "Save Changes"
+    And I wait for 2 seconds
     Then I should see "Date must be in YYYY-MM-DD format"  

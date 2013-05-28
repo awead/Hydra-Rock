@@ -8,6 +8,7 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     And I am on the new archival collections page
     When I press "Save Changes"
+    And I wait for 2 seconds
     Then I should see "No changes made"
 
   Scenario: ID not found in the discovery index
@@ -15,6 +16,7 @@ Feature:
     And I am on the new archival collections page
     When I fill in "archival_collection_pid" with "FOO"
     And I press "Save Changes"
+    And I wait for 2 seconds
     Then I should see "ID FOO not found in discovery index"
 
   @collections
