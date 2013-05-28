@@ -15,20 +15,25 @@ module Rockhall::Conversion
   #    to the additional_collection field, copy previous accession number field to new node
   #  - cleans up xml validation errors
   #  - returns the new ExternalVideo object and does not save anything
-  def from_archival_video ev = ExternalVideo.new, dep_ds = HydraPbcore::Datastream::Deprecated::Document.new
+  def from_archival_video dep_ds = HydraPbcore::Datastream::Deprecated::Document.new
     dep_ds.ng_xml = self.descMetadata.ng_xml
     xml = self.descMetadata.to_document
     doc = Nokogiri::XML::Document.parse(xml.to_s)
-    
+      
     self.descMetadata.clean_document
     self.collection_number = dep_ds.collection_number
     self.archival_series   = dep_ds.archival_series
     self.new_collection({:name => dep_ds.collection.first}) unless dep_ds.collection.nil?
     self.new_accession({:name => dep_ds.accession_number.first}) unless dep_ds.accession_number.nil?
     
-    ev.descMetadata.ng_xml = doc
-    ev.descMetadata.to_physical_instantiation
-    return ev
+    if xml.empty?
+      return nil
+    else
+      ev = ExternalVideo.new
+      ev.descMetadata.ng_xml = doc
+      ev.descMetadata.to_physical_instantiation
+      return ev
+    end
   end
 
 

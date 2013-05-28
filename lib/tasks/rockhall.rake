@@ -154,8 +154,10 @@ namespace :rockhall do
         if video.is_a? (ArchivalVideo)
           puts "Converting #{video.pid} to a new ArchivalVideo"
           ev = video.from_archival_video
-          video.external_videos << ev
-          ev.save
+          unless ev.nil?
+            video.external_videos << ev
+            ev.save
+          end
           video.save
         end
 

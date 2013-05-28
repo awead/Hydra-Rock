@@ -68,5 +68,18 @@ describe Rockhall::Conversion do
   	  lambda { av.from_digital_video }.should raise_error
   	end
   end
+
+  describe "ArchivalVideo models without instantiations" do
+
+    it "should convert to new ArchivalVideo models without attached ExternalVideos" do
+      av = ArchivalVideo.find("rrhof:2166")
+      ev = av.from_archival_video
+      ev.should be_nil
+      av.title.should == "Black history month. Gloria Jones"
+      av.alternative_title.should == ["Gloria Jones"]
+      av.external_videos.should be_empty
+    end
+
+  end
 	
 end
