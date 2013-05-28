@@ -22,6 +22,7 @@ module Rockhall::Conversion
     
     self.descMetadata.clean_document
     self.collection_number = dep_ds.collection_number
+    self.archival_series   = dep_ds.archival_series
     self.new_collection({:name => dep_ds.collection.first}) unless dep_ds.collection.nil?
     self.new_accession({:name => dep_ds.accession_number.first}) unless dep_ds.accession_number.nil?
     
