@@ -41,8 +41,8 @@ class ExternalVideo < ActiveFedora::Base
       :audio_bit_rate, :audio_bit_rate_units, :audio_sample_rate, :audio_sample_rate_units, 
       :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format ]
 
-  delegate :depositor,               :to => :properties
-  delegate :notes,                   :to => :properties
+  delegate_to :properties, [:depositor, :notes]
+  delegate :converted, :to => :properties, :unique => true    
 
   delegate :mi_file_format, :to => :mediaInfo
 

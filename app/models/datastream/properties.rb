@@ -8,6 +8,7 @@ class Properties < ActiveFedora::NokogiriDatastream
     t.notes
     t.access
     t.submission
+    t.converted  # returns true/false if the model was successfully converted; default is nil
   end
 
   def self.xml_template
@@ -19,6 +20,7 @@ class Properties < ActiveFedora::NokogiriDatastream
         xml.notes
         xml.access
         xml.submission
+        xml.converted
       }
     end
     return builder.doc

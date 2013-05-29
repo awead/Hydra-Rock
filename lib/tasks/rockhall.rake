@@ -24,9 +24,9 @@ namespace :rockhall do
       ActiveFedora::FixtureLoader.index(pid)
     end
 
-    desc "Load fixtures into an empty Fedora"
+    desc "Load fixtures from spec/fixtures/fedora, use DIR=path/to/directory to specify other location"
     task :load => :environment do
-      contents = Dir.glob("spec/fixtures/fedora/*.xml")
+      contents = ENV['DIR'] ? Dir.glob(File.join(ENV['DIR'], "*.xml")) : Dir.glob("spec/fixtures/fedora/*.xml")
       contents.each do |file|
         begin
           pid = ActiveFedora::FixtureLoader.import_to_fedora(file)
@@ -59,6 +59,7 @@ namespace :rockhall do
       Rockhall::JettyCleaner.clean("rockhall")
       Rockhall::JettyCleaner.clean("rrhof")
       Rockhall::JettyCleaner.clean("arc")
+      Rockhall::JettyCleaner.clean("cucumber")
     end
 
     desc "Using PID, export a Fedora object and its associated objects to spec/fixtures/exports"
@@ -144,28 +145,63 @@ namespace :rockhall do
     desc "Convert videos to their new models"
     task :videos => :environment do
       ExternalVideo.all.each do |v|
-        puts "Converting #{v.pid} to new ExternalVideo"
-        v.from_external_video
-        v.save
+        print "Converting #{v.pid} to new ExternalVideo: "
+        if v.converted == "yes"
+          puts "already converted"
+        else
+          begin
+            v.from_external_video
+            v.converted = "yes"
+            puts "ok"
+          rescue => e
+            v.converted = "no"
+            puts "FAILED"
+            puts e.inspect
+          end
+          v.save
+        end 
       end
 
-      ActiveFedora::Base.all.each do |obj|
-        video = ActiveFedora::Base.find(obj.pid, :cast => true)
-        if video.is_a? (ArchivalVideo)
-          puts "Converting #{video.pid} to a new ArchivalVideo"
-          ev = video.from_archival_video
-          unless ev.nil?
-            video.external_videos << ev
-            ev.save
+      ArchivalVideo.all.each do |v|
+        print "Converting #{v.pid} to new ArchivalVideo: "
+        if v.converted == "yes"
+          puts "already converted"
+        else
+          begin
+            ev = v.from_archival_video
+            unless ev.nil?
+              v.external_videos << ev
+              # prevent newly created ExternalVideos from being converted
+              ev.converted = "yes"
+              ev.save
+            end
+            v.converted = "yes"
+            puts "ok"
+          rescue => e
+            v.converted = "no"
+            puts "FAILED"
+            puts e.inspect
           end
-          video.save
-        end
+          v.save
+        end 
+      end
 
-        if video.is_a? (DigitalVideo)
-          puts "Converting #{video.pid} from DigitalVideo to ArchivalVideo"
-          av = video.from_digital_video
+      DigitalVideo.all.each do |v|
+        print "Converting DigitalVideo #{v.pid} to new ArchivalVideo: "
+        if v.converted == "yes"
+          puts "status = #{v.converted}"
+        else
+          begin
+            av = v.from_digital_video
+            av.converted = "yes"
+            puts "ok"
+          rescue
+            av.converted = "no"
+            puts "FAILED"
+            puts e.inspect
+          end          
           av.save
-        end
+        end 
       end
     end
 

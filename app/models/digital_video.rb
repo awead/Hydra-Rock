@@ -40,6 +40,7 @@ class DigitalVideo < ActiveFedora::Base
   delegate :title_label, :to=> :descMetadata, :at=>[:label]
 
   delegate_to :properties, [:depositor, :notes]
+  delegate :converted, :to => :properties, :unique => true
 
   validate :validate_event_date
 
