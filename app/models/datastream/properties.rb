@@ -33,6 +33,15 @@ class Properties < ActiveFedora::NokogiriDatastream
     unless self.find_by_terms(:depositor).nil?
       solr_doc.merge!(:depositor_facet => self.find_by_terms(:depositor).text)
     end
+    unless self.find_by_terms(:converted).nil?
+      solr_doc.merge!(:converted_facet => self.find_by_terms(:converted).text)
+    end
+    unless self.find_by_terms(:series).nil?
+      solr_doc.merge!(:internal_series_facet => self.find_by_terms(:series).text)
+    end
+    unless self.find_by_terms(:collection).nil?
+      solr_doc.merge!(:internal_collection_facet => self.find_by_terms(:collection).text)
+    end
 
     return solr_doc
   end

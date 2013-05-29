@@ -62,18 +62,21 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format',                 :label => 'Media Type',      :limit => 10
-    config.add_facet_field 'media_format_facet',     :label => 'Physical Format', :limit => 10
-    config.add_facet_field 'contributor_name_facet', :label => 'Name',            :limit => 10
-    config.add_facet_field 'subject_facet',          :label => 'Subject',         :limit => 10
-    config.add_facet_field 'genre_facet',            :label => 'Genre',           :limit => 10
-    config.add_facet_field 'series_facet',           :label => 'Event/Series',    :limit => 10  
-    config.add_facet_field 'create_date_facet',      :label => 'Creation Date',     :limit => 10
-    config.add_facet_field 'language_facet',         :label => 'Language',        :limit => true
-    config.add_facet_field 'priority_facet',         :label => 'Priority',        :limit => 10
-    config.add_facet_field 'complete_facet',         :label => 'Reviewed',        :limit => 10
-    config.add_facet_field 'reviewer_facet',         :label => 'Reviewer',        :limit => 10
-    config.add_facet_field 'depositor_facet',        :label => 'Depositor',       :limit => 10
+    config.add_facet_field 'format',                    :label => 'Media Type',          :limit => 10
+    config.add_facet_field 'media_format_facet',        :label => 'Physical Format',     :limit => 10
+    config.add_facet_field 'contributor_name_facet',    :label => 'Name',                :limit => 10
+    config.add_facet_field 'subject_facet',             :label => 'Subject',             :limit => 10
+    config.add_facet_field 'genre_facet',               :label => 'Genre',               :limit => 10
+    config.add_facet_field 'series_facet',              :label => 'Event/Series',        :limit => 10  
+    config.add_facet_field 'create_date_facet',         :label => 'Creation Date',       :limit => 10
+    config.add_facet_field 'language_facet',            :label => 'Language',            :limit => true
+    config.add_facet_field 'priority_facet',            :label => 'Priority',            :limit => 10
+    config.add_facet_field 'complete_facet',            :label => 'Reviewed',            :limit => 10
+    config.add_facet_field 'reviewer_facet',            :label => 'Reviewer',            :limit => 10
+    config.add_facet_field 'depositor_facet',           :label => 'Depositor',           :limit => 10
+    config.add_facet_field 'converted_facet',           :label => 'Converted',           :limit => 10
+    config.add_facet_field 'internal_series_facet',     :label => 'Internal Series',     :limit => 10
+    config.add_facet_field 'internal_collection_facet', :label => 'Internal Collection', :limit => 10
 
     # TODO
     #config.add_facet_field 'event_date_dt', :label => 'Event Date', :query => {
