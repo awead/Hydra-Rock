@@ -1,10 +1,17 @@
 #!/bin/bash
 # Tests rake task for converting old models to new
-echo "Epmtying Fedora..."
+echo -n "Re-indexing solr: "
+bin/rake rockhall:solr:index_all
+echo -n "Emptying Fedora... "
 bin/rake rockhall:fedora:empty
-echo "Loading conversion fixtures from spec/fixtures/convert"
+echo "done."
+echo -n "Cleaning out solr: "
+bin/rake rockhall:solr:clean
+echo "done."
+echo -n "Loading conversion fixtures from spec/fixtures/convert ... "
 bin/rake rockhall:fedora:load DIR=spec/fixtures/convert
-echo "Converting videos..."
+echo "done."
+echo "Converting videos:"
 bin/rake rockhall:convert:videos
-echo "Converting again to check"
+echo "Converting again to check:"
 bin/rake rockhall:convert:videos
