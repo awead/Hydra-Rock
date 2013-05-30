@@ -110,7 +110,9 @@ class ExternalVideo < ActiveFedora::Base
     solr_doc.merge!({"media_format_facet" => self.format})
 
     self.date.each do |d|
-      solr_doc.merge!({"create_date_facet"  => Time.new(d).strftime("%Y")}) if d.is_a?(String)
+      unless d.nil?
+        solr_doc.merge!({"create_date_facet"  => Time.new(d).strftime("%Y")}) unless d.empty?
+      end
     end
 
     self.language.each do |l|
