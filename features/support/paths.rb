@@ -49,6 +49,14 @@ module NavigationHelpers
       activities_path
     when /the activities page for user (.*)$/i
       user_path($1)
+
+    # Exports
+    when /the pbcore xml export page for (.*)/i
+      catalog_path($1, :format => "xml")
+    when /the solr export page for (.*)/i
+      catalog_path($1, :format => "solr")
+    when /the discovery export page for (.*)/i
+      catalog_path($1, :format => "discovery")
     
     # Try and figure it out, or report an error
     else

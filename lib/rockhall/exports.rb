@@ -11,11 +11,21 @@ module Rockhall::Exports
   end
 
   def self.register_export_formats(document)
-    document.will_export_as(:xml, "text/xml")
+    document.will_export_as(:xml,       "text/xml")
+    document.will_export_as(:solr,      "text/xml")
+    document.will_export_as(:discovery, "text/xml")
   end
 
   def export_as_pbcore_xml
     ActiveFedora::Base.find(@_source["id"], :cast => true).to_pbcore_xml
+  end
+
+  def export_as_solr
+    ActiveFedora::Base.find(@_source["id"], :cast => true).to_solr.to_xml
+  end
+
+  def export_as_discovery
+    ActiveFedora::Base.find(@_source["id"], :cast => true).to_discovery.to_xml
   end
 
   # This will override Blacklight's default of exporting .xml as opensearch xml 

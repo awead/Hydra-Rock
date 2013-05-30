@@ -10,11 +10,8 @@ module NavbarHelper
   end
 
   # navbar items if a user is logged in
-  def render_user_navbar(model, opts={})
-    result = "<li>"
-    result << link_to('<i class="icon-share"></i> Pbcore </a>'.html_safe, 
-                       catalog_path(params[:id], :format => 'xml'), { :target => "_blank" })
-    result << "</li>"
+  def render_user_navbar model, opts={}, result = String.new
+    result = render :partial => "shared/navbar_partials/export_links"
     if current_user
       if params[:action] == "edit"
         result << "<li>"

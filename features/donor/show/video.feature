@@ -61,4 +61,4 @@ Feature:
     Given I am logged in as "donor1@example.com"
     And I am on the catalog page for rockhall:fixture_pbcore_document1
     Then I should not see "Edit" in the navbar
-    And I should see "Pbcore" in the navbar
+    And I should see "Export" in the navbar

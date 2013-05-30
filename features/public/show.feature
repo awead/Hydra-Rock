@@ -54,7 +54,7 @@ Feature:
   Scenario: No access to edit workflows from navbar
     Given I am on the catalog page for rockhall:fixture_pbcore_document1
     Then I should not see "Edit" in the navbar
-    And I should see "Pbcore" in the navbar
+    And I should see "Export" in the navbar
 
   Scenario: Change Parts List to Contents (DAM-293)
     Given I am on the catalog page for rockhall:fixture_pbcore_digital_document1
