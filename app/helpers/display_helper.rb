@@ -75,14 +75,6 @@ module DisplayHelper
     end
   end
 
-  def render_title_for_index_view document
-    if document["generation_display"].nil?
-      document["title_display"]
-    else
-      document["parent_title_display"].nil? ? document["generation_display"].first : document["parent_title_display"].first + " >> " + document["generation_display"].first
-    end  
-  end
-
   def contributor_display response, results = Array.new
     response[:document][response[:field]].each_index do |i|
       role = response[:document]["contributor_role_display"][i] unless response[:document]["contributor_role_display"].nil?

@@ -104,7 +104,7 @@ class ExternalVideo < ActiveFedora::Base
   def to_solr solr_doc = Hash.new
     super(solr_doc)
     unless self.parent.nil?
-      solr_doc.merge!({"parent_title_display" => self.parent.title})
+      solr_doc.merge!({"title_display" => (self.generation.first + ": " + self.parent.title)})
     end
     solr_doc.merge!({"media_format_facet" => self.format})
 
