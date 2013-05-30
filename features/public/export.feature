@@ -17,5 +17,5 @@ Feature:
   Scenario: Export solr document
     Given I am on the solr export page for rockhall:fixture_pbcore_document1
 
-    Scenario: Export discovery solr document
+  Scenario: Export discovery solr document
     Given I am on the discovery export page for rockhall:fixture_pbcore_document1
