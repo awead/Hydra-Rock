@@ -67,7 +67,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'contributor_name_facet',    :label => 'Name',                :limit => 10
     config.add_facet_field 'subject_facet',             :label => 'Subject',             :limit => 10
     config.add_facet_field 'genre_facet',               :label => 'Genre',               :limit => 10
-    config.add_facet_field 'series_facet',              :label => 'Event/Series',        :limit => 10  
+    config.add_facet_field 'series_facet',              :label => 'Event/Series',        :limit => 10
+    config.add_facet_field 'collection_facet',          :label => 'Collection',          :limit => 10  
     config.add_facet_field 'create_date_facet',         :label => 'Creation Date',       :limit => 10
     config.add_facet_field 'language_facet',            :label => 'Language',            :limit => true
     config.add_facet_field 'priority_facet',            :label => 'Priority',            :limit => 10
@@ -199,9 +200,9 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc',             :label => 'relevance'
-    config.add_sort_field 'system_create_dt asc',   :label => 'deposited (oldest first)'
-    config.add_sort_field 'system_create_dt desc',  :label => 'deposited (newest first)'
+    config.add_sort_field 'score desc, title_sort asc', :label => 'relevance'
+    config.add_sort_field 'system_create_dt asc',       :label => 'deposited (oldest first)'
+    config.add_sort_field 'system_create_dt desc',      :label => 'deposited (newest first)'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

@@ -108,6 +108,7 @@ class ArchivalVideo < ActiveFedora::Base
   def to_solr solr_doc = Hash.new
     super(solr_doc)
     solr_doc.merge!({"format" => "Video"})
+    solr_doc.merge!({"title_sort" => self.title})
 
     unless self.collection.nil?
       facets = Array.new
