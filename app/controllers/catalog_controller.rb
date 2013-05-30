@@ -3,7 +3,7 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include Hydra::AccessControlsEnforcement
   include Rockhall::Controller::ControllerBehavior
-  include Rockhall::Pbcore
+  include Rockhall::Exports
 
   # User still needs the #update action in the catalog, so we only enforce Hydra
   # access controls when the user tries to just view a document they don't have
@@ -17,7 +17,7 @@ class CatalogController < ApplicationController
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.solr_search_params_logic << :exclude_unwanted_models
 
-  SolrDocument.use_extension ::Rockhall::Pbcore
+  SolrDocument.use_extension ::Rockhall::Exports
 
   #--------------------------------------------------------------------------------------
   #
