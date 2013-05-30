@@ -11,7 +11,7 @@ module NavbarHelper
 
   # navbar items if a user is logged in
   def render_user_navbar model, opts={}, result = String.new
-    result = render :partial => "shared/navbar_partials/export_links"
+    result << content_tag(:li, render_export_dropdown)
     if current_user
       if params[:action] == "edit"
         result << "<li>"
@@ -27,13 +27,6 @@ module NavbarHelper
           result << workflow_dropdown
         end
       end
-      unless opts[:delete].nil?
-        result << "<li>"
-        result << button_to('Delete', archival_video_path(params[:id]),
-                  :class => "btn-small btn-danger", :form => { :class=>"navbar-search"},
-                  :confirm => 'Are you sure?', :method => :delete)
-        result << "</li>"
-      end
     end
     return result.html_safe
   end
@@ -44,6 +37,10 @@ module NavbarHelper
       results << content_tag(:div, render_error_message(flash[message]), :class => "alert " + render_alert_class )
     end
     return results.html_safe
+  end
+
+  def render_export_dropdown
+    render :partial => "shared/navbar_partials/export_links"
   end
 
   # if this is an error message, display accordingly, otherwise just return the message

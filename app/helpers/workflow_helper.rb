@@ -12,6 +12,10 @@ module WorkflowHelper
     end
   end
 
+  def render_delete_link
+    link_to("Delete", archival_video_path(params[:id]), :confirm => "Are you sure?", :method => :delete)
+  end
+
   # navigation links to the other edit partials
   def workflow_dropdown results = String.new
 
@@ -42,6 +46,9 @@ module WorkflowHelper
       results << content_tag(:li, "Videos", :class => "nav-header")
       results << render_external_video_workflow_steps
     end
+
+    results << content_tag(:li, nil, :class => "divider")
+    results << content_tag(:li, render_delete_link)
 
     results << "</ul>"
     return results.html_safe
