@@ -3,7 +3,7 @@
   <% if @previous_document || @next_document %>
     <ul class="nav pull-right">
       <li><p class="navbar-text">
-        <%= link_to_previous_document @previous_document %> | <%= item_page_entry_info %> | <%= link_to_next_document @next_document %>
+        <%= link_to_previous_document @previous_document if @previous_document %> | <%= item_page_entry_info %> | <%= link_to_next_document @next_document if @next_document%>
       </p></li>
   </ul>
   <% end %>

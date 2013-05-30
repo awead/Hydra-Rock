@@ -11,8 +11,8 @@ en:
     pagination:
       first: '&laquo; First'
       last: 'Last &raquo;'
-      previous: '&laquo; Previous'
-      next: 'Next &raquo;'
+      previous: '<i class="icon-arrow-left"></i>' #'&laquo;'
+      next: '<i class="icon-arrow-right"></i>' #'&raquo;'
       truncate: '…'
 
     pagination_compact:
