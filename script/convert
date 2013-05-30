@@ -1,0 +1,5 @@
+#!/bin/bash
+# Converts all fedora objects
+bin/rake rockhall:solr:index_all
+bin/rake rockhall:convert:videos
+bin/rake rockhall:solr:index_all
