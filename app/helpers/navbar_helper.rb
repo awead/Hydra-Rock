@@ -42,7 +42,7 @@ module NavbarHelper
   end
 
   # display flash message in the navbar
-  def render_flash_message results = String.new
+  def render_navbar_flash_message results = String.new
     flash.keys.each do |message|
       results << content_tag(:div, render_error_message(flash[message]), :class => "alert " + render_alert_class )
     end

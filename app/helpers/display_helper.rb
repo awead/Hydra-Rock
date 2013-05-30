@@ -136,4 +136,9 @@ module DisplayHelper
     end
   end
 
+  # For displaying a flash message outside of the navbar
+  def render_flash_message 
+    render :partial => "shared/flash_body_msg"
+  end
+
 end
