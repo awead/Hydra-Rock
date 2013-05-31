@@ -4,7 +4,7 @@ class ArchivalVideosController < ApplicationController
   include Hydra::Controller::ControllerBehavior
   include Rockhall::Controller::ControllerBehavior
 
-  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer]
+  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer, :destroy]
   before_filter :enforce_access_controls
   before_filter :enforce_asset_creation_restrictions, :only=>:new
   prepend_before_filter :enforce_review_controls, :only=>:edit
@@ -76,13 +76,11 @@ class ArchivalVideosController < ApplicationController
   def destroy
     @afdoc = ActiveFedora::Base.find(params[:id], :cast=>true)
     title = @afdoc.title
-    assets = @afdoc.destroy_child_assets
+    @afdoc.destroy_external_videos
     @afdoc.delete
     record_activity({"action" => "delete", "title" => title})
-    msg = "Deleted #{params[:id]}"
-    msg.concat(" and associated file_asset(s): #{assets.join(", ")}") unless assets.empty?
-    flash[:notice]= msg
-    redirect_to catalog_index_path()
+    flash[:notice]= "Deleted #{params[:id]} and associated videos"
+    redirect_to catalog_index_path
   end
 
   # custom action for assigning videos to collections and series

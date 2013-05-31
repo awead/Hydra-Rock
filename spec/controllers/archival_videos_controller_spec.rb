@@ -15,6 +15,8 @@ describe ArchivalVideosController do
       assert_redirected_to new_user_session_path
       put :assign, :id => "foo"
       assert_redirected_to new_user_session_path
+      delete :destroy, :id => "foo"
+      assert_redirected_to new_user_session_path
     end
 
   end
@@ -120,6 +122,22 @@ describe ArchivalVideosController do
       it "should save a new archival video" do
         post :create, :archival_video => {:title => "Fake title"}
         assert_equal "Video was successfully created.", flash[:notice]
+      end
+
+    end
+
+    describe "#destroy" do
+
+      before :each do
+        @video = ArchivalVideo.new
+        @video.title = "Archival Video Delete Test"
+        @video.save
+      end
+
+      it "should delete an archival video" do
+        delete :destroy, :id => @video.pid
+        assert_redirected_to catalog_index_path
+        assert_equal "Deleted #{@video.pid} and associated videos", flash[:notice]
       end
 
     end

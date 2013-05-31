@@ -18,6 +18,11 @@ module Rockhall::ModelMethods
     end
   end
 
+  # Removes all external video objects from a parent
+  def destroy_external_videos
+    self.external_videos.collect { |ev| ev.delete } unless self.external_videos.empty?
+  end
+
   # Returns an array of child video objects based on the child's Fedora label
   def external_video(type)
     results = Array.new
