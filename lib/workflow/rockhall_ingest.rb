@@ -36,13 +36,7 @@ class RockhallIngest
     end
 
     # add a thumbnail
-    begin
-      generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access.first))
-      thumb = File.new("tmp/thumb.jpg")
-      @parent.add_thumbnail thumb
-    rescue
-      puts "INFO: Failed to add thumbnail image"
-    end
+    @parent.add_thumbnail File.new("tmp/thumb.jpg") if generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access.first))
   end
 
   # parent object exists in Fedora and has child objects that need to be reingested

@@ -20,12 +20,8 @@ class GbvIngest
     self.ingest(@sip.base, @sip.preservation, "preservation", {:format=>"original"}) unless @parent.videos[:preservation].first
     
     # add thumbnail
-    begin
-      generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access))
-      thumb = File.new("tmp/thumb.jpg")
-      @parent.add_thumbnail thumb
-    rescue
-      puts "INFO: Failed to add thumbnail"
+    if generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access))
+      @parent.add_thumbnail File.new("tmp/thumb.jpg")
     end
   end
 

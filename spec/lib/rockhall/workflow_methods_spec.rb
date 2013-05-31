@@ -209,15 +209,15 @@ describe Rockhall::WorkflowMethods do
   end
 
   describe "#generate_video_thumbnail" do
-
     it "should create a jpeg thumbnail from a video file" do
       video = video_fixture
-      @wf.generate_video_thumbnail(video.path)
+      @wf.generate_video_thumbnail(video.path).should be_true
       File.new("tmp/thumb.jpg").should be_kind_of File
-      # cleanup
-      FileUtils.rm("tmp/thumb.jpg")
     end
 
+    it "should return false when a file is not created" do
+      @wf.generate_video_thumbnail("foo").should be_false
+    end
   end
 
 end

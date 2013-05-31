@@ -67,18 +67,26 @@ module Rockhall::ModelMethods
     end
   end
 
-  def add_thumbnail file = String.new
+  def add_thumbnail file = String.new, result = false
     if file.blank?
       unless self.external_video(:h264).count == 0
         path = File.join(RH_CONFIG["location"], self.pid.gsub(/:/,"_"), "data", self.external_video(:h264).first.name.first)
         if File.exists?(path)
-          self.generate_video_thumbnail path
-          self.datastreams["thumbnail"].content = File.new("tmp/thumb.jpg")
+          if self.generate_video_thumbnail(path)
+            self.datastreams["thumbnail"].content = File.new("tmp/thumb.jpg")
+            result = true
+          end
         end
       end
     else
-      self.datastreams["thumbnail"].content = file
+      begin
+        self.datastreams["thumbnail"].content = File.new(file)
+        result = true
+      rescue => e
+        self.errors.add(:add_thumbnail)
+      end
     end
+    return result
   end
 
   def get_thumbnail_url
