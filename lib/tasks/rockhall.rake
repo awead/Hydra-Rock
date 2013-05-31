@@ -12,7 +12,22 @@ namespace :rockhall do
     bag = BagIt::Bag.new ENV["bag"]
     puts "Validating #{ENV['bag']}"
     puts bag.valid?.to_s
+  end
+
+  desc "Generates thumbnail for PID"
+  task :thumbnail => :environment do
+    video = ActiveFedora::Base.find(ENV['PID'], :cast => true)
+    video.add_thumbnail
+    video.save
   end  
+
+  desc "Generates thumbnails for all videos"
+  task :thumbnail_all => :environment do
+    ArchivalVideo.find(:all).each do |video|
+      video.add_thumbnail
+      video.save
+    end
+  end
 
   namespace :fedora do
 
