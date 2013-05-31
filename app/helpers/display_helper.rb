@@ -67,11 +67,11 @@ module DisplayHelper
   # Determines the image to be used for the icon in the index display
   def render_icon(document)
     object = ActiveFedora::Base.load_instance_from_solr(document.id)
-    case object.class.to_s
-    when "ExternalVideo"
+    url = object.get_thumbnail_url.nil? ? ("rockhall/" + object.class.to_s.underscore + ".png") : object.get_thumbnail_url
+    if object.is_a? ExternalVideo
       object.instantiation_type.nil? ? "unknown" : image_tag(("rockhall/"+object.instantiation_type+"_instantiation.png"), :class => "thumbnail")
     else
-      image_tag(("rockhall/" + object.class.to_s.underscore + ".png"), :class => "thumbnail")
+      image_tag(url, :class => "thumbnail")
     end
   end
 
