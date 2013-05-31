@@ -1,5 +1,3 @@
-uva-only:
-  - uva-only
 archivist:
   - archivist1@example.com
   - awead@rockhall.org
@@ -11,5 +9,3 @@ researcher:
   - researcher1@example.com
 patron:
   - patron1@example.com
-admin_policy_object_editor:
-  - archivist1@example.com
