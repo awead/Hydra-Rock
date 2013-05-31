@@ -102,6 +102,15 @@ class ArchivalVideo < ActiveFedora::Base
     solr_doc.merge!("format_dtl_display" => self.access_format)
     solr_doc.merge!("heading_display"    => self.title)
     solr_doc.merge!("material_facet"     => "Digital")
+
+    # Collect contributors and publishers and put them in the name_facet and contributors_display field
+    name_facet = Array.new
+    self.contributor_name.collect { |name| name_facet << name }
+    self.publisher_name.collect { |name| name_facet << name }
+    solr_doc.merge!("name_facet"           => name_facet) unless name_facet.empty?
+    solr_doc.merge!("contributors_display" => name_facet) unless name_facet.empty?
+
+    return solr_doc
   end
 
   # Override model method to merge in some additional fields as needed

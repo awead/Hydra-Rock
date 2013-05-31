@@ -92,7 +92,7 @@ describe ArchivalVideo do
   end
 
   describe ".to_discovery" do
-    it "solr document with metadata for discovery" do
+    it "should return a solr document with metadata for discovery" do
       doc = ArchivalVideo.find("rockhall:fixture_pbcore_document3").to_discovery
       doc.should be_kind_of(Hash)
       doc["access_file_s"].should be_kind_of(Array)
@@ -101,6 +101,19 @@ describe ArchivalVideo do
       doc["title_display"].first.should == "Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2."
       doc["heading_display"].should == doc["title_display"].first
       doc["material_facet"].should == "Digital"
+    end
+
+    it "should return correctly formatted contributors" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
+      doc["name_facet"].should include "Joel, Billy"
+      doc["name_facet"].should include "Rock and Roll Hall of Fame Foundation"
+      doc["contributors_display"].should include "Joel, Billy"
+    end
+
+    it "should return subject facets" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
+      doc["subject_facet"].should include "Rock music--History and criticism."
+      doc["subject_facet"].should include "Inductee"
     end
   end
 
