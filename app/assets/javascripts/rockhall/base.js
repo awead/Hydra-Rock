@@ -76,16 +76,17 @@ jQuery(document).ready(function() {
 // Show/hide tech info in the show view
 $(document).on('click', 'a.show_tech_info', function(event) {
   var parent  = $(this).parent('li').attr('id');
-  var text = $(this).text();
-  $(this).toggleClass('loading');
-  $(this).text('...loading')
-  $(this).toggleClass('show_tech_info');
-  $(this).toggleClass('hide_tech_info');
-  $.get(this, function(data) {
-    $('#'+parent).slideDown('normal', function() { $(this).append(data); } );
-  });
-  $(this).toggleClass('loading');
-  $(this).text(text);
+  var link = $(this);
+  var text = link.text();
+
+  link.toggleClass('loading').text('...loading').toggleClass('show_tech_info').toggleClass('hide_tech_info');
+
+  var jqxhr = $.ajax({ url: this, dataType: 'script' })
+      .always(function(data) { 
+        $('#'+parent).slideDown('normal', function() { $(this).append(data.responseText); } );
+        link.toggleClass('loading').text(text);
+      });
+
   event.preventDefault();
 });
 

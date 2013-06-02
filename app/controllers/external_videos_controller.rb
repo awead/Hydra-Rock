@@ -65,8 +65,8 @@ class ExternalVideosController < ApplicationController
     @afdoc = ExternalVideo.find(params[:id])
     partial = @afdoc.generation.first.match("Original") ? "physical" : "digital"
     respond_to do |format|
-      format.html  { render :partial => "external_videos/show/tabular_display_#{partial}", :locals => { :video => @afdoc } }
-      format.js
+      format.html { redirect_to catalog_path(params[:id]) }
+      format.js   { render :partial => "external_videos/show/tabular_display_#{partial}", :locals => { :video => @afdoc } }
     end
   end
 
