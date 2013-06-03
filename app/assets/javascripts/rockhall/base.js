@@ -79,14 +79,19 @@ $(document).on('click', 'a.show_tech_info', function(event) {
   var link = $(this);
   var text = link.text();
 
-  link.toggleClass('loading').text('...loading').toggleClass('show_tech_info').toggleClass('hide_tech_info');
+  link.toggleClass('loading').text('...loading');
 
-  var jqxhr = $.ajax({ url: this, dataType: 'script' })
-      .always(function(data) { 
-        $('#'+parent).slideDown('normal', function() { $(this).append(data.responseText); } );
+  var jqxhr = $.get(this)
+      .done(function(html) {
+        link.toggleClass('show_tech_info').toggleClass('hide_tech_info');
+        $('#'+parent).slideDown('normal', function() { $(this).append(html); } );
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        flashAlert('ERROR! - '+textStatus+': '+errorThrown);
+      })
+      .always(function() { 
         link.toggleClass('loading').text(text);
-      });
-
+      });  
   event.preventDefault();
 });
 
