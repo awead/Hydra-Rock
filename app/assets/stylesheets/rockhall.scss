@@ -15,7 +15,6 @@ td .toggle_bookmark {
   
   i {
     float: right;
-    opacity: .5;
   }
 
 }
@@ -69,12 +68,18 @@ a.btn.more_facets_link {
 // Tech button
 .show_tech_info .icon-chevron {
   background-position: -456px -72px;
+  opacity: .5;
 }
 
 .hide_tech_info .icon-chevron {
   background-position: -313px -119px;
+  opacity: 1;
 }
 
 .loading .icon-chevron {
   background-position: -48px  -24px;
+}
+
+li:hover .icon-chevron {
+  opacity: 1;
 }
