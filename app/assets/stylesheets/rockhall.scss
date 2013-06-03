@@ -15,7 +15,7 @@ td .toggle_bookmark {
   
   i {
     float: right;
-    opacity: .25;
+    opacity: .5;
   }
 
 }
@@ -64,4 +64,17 @@ a.btn.more_facets_link {
 
 .loading {
   -webkit-animation: greypan 500ms linear infinite alternate;
+}
+
+// Tech button
+.show_tech_info .icon-chevron {
+  background-position: -456px -72px;
+}
+
+.hide_tech_info .icon-chevron {
+  background-position: -313px -119px;
+}
+
+.loading .icon-chevron {
+  background-position: -48px  -24px;
 }

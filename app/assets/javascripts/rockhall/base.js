@@ -79,7 +79,7 @@ $(document).on('click', 'a.show_tech_info', function(event) {
   var link = $(this);
   var text = link.text();
 
-  link.toggleClass('loading').text('...loading');
+  link.toggleClass('loading');
 
   var jqxhr = $.get(this)
       .done(function(html) {
@@ -90,7 +90,7 @@ $(document).on('click', 'a.show_tech_info', function(event) {
         flashAlert('ERROR! - '+textStatus+': '+errorThrown);
       })
       .always(function() { 
-        link.toggleClass('loading').text(text);
+        link.toggleClass('loading');
       });  
   event.preventDefault();
 });

@@ -1,13 +1,13 @@
 <%= display_video_heading %>
-<ul id="video-file-list" class="nav nav-tabs nav-stacked">
+<%= content_tag :ul, :id => "video-file-list", :class =>"nav nav-tabs nav-stacked" do %>
   <% @afdoc.videos.each_key do |type| %>
     <% unless @afdoc.videos[type].empty? %>
       <% @afdoc.videos[type].each_index do |index| %>
-        <li id="<%= @afdoc.videos[type][index].pid.gsub(/:/,"_") %>">
+        <%= content_tag :li, :id => @afdoc.videos[type][index].pid.gsub(/:/,"_") do %>
           <%= render_tech_info_button type, index %>
-        </li>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
-</ul>
+<% end %>
 <%= link_to_access_video("Download") %>

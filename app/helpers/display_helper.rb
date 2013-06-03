@@ -88,7 +88,7 @@ module DisplayHelper
   end
     
   def render_tech_info_button type, index
-    link_text = type.to_s.capitalize + " (" + (index + 1).to_s + ")" + '<i class="icon-chevron-down"></i>'
+    link_text = type.to_s.capitalize + " (" + (index + 1).to_s + ")" + '<i class="icon-chevron"></i>'
     link_to(link_text.html_safe, external_video_path(@afdoc.videos[type][index].pid), :class => "show_tech_info")
   end
 
