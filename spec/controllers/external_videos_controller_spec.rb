@@ -7,7 +7,8 @@ describe ExternalVideosController do
   describe "when the user is not logged in" do
 
     it "should redirect me to the sign-in page" do
-      pending
+      get :show, :id => "rrhof:507"
+      assert_redirected_to new_user_session_path
     end
 
   end
@@ -74,12 +75,33 @@ describe ExternalVideosController do
     end
 
     describe "#create" do
-      it "should return an error not using an ArchivalVideo" do
-        pending "creation of appropriate fixtures"
-        post :create, :archival_video_id => "foo"
-        puts response
+
+      before :all do
+        @av = ArchivalVideo.new
+        @av.title = "External Video creation test"
+        @av.save
       end
 
+      after :all do
+        @av.destroy_external_videos
+        @av.delete
+      end
+
+      it "should create a new tape from a give ArchivalVideo" do
+        post :create, :archival_video_id => @av.pid, :document_fields => { :barcode => "1234567"}
+        assert_equal "Tape was successfully created.", flash[:notice]
+      end
+
+      it "should fail to add a tape to an object that isn't an ArchivalVideo" do
+        post :create, :archival_video_id => "rockhall:fixture_tape5", :document_fields => { :barcode => "1234567"}
+        assert_equal "Can't add a tape to a ExternalVideo.", flash[:notice]
+      end
+    end
+
+    describe "#index" do
+      it "should render the index page" do
+        get :index, :archival_video_id => "rrhof:331"
+      end
     end
 
   end

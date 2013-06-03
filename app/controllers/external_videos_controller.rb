@@ -29,7 +29,7 @@ class ExternalVideosController < ApplicationController
           parent.external_videos << @afdoc
           parent.save
           @afdoc.save
-          format.html { redirect_to(edit_archival_video_path(parent), :notice => 'Tape was successfully created.') }
+          format.html { redirect_to(edit_archival_video_path(parent), :notice => "Tape was successfully created.") }
           format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
         else
           format.html {
@@ -40,7 +40,7 @@ class ExternalVideosController < ApplicationController
         end
       end
     else
-      redirect_to(edit_archival_video_path(@afdoc), :notice => "Can't add a tape to a #{parent.class}")
+      redirect_to(catalog_path(params[:archival_video_id]), :notice => "Can't add a tape to a #{parent.class}.")
     end
   end
 
@@ -79,10 +79,10 @@ class ExternalVideosController < ApplicationController
     @afdoc = ExternalVideo.find(params[:id])
     changes = changed_fields(params)
     if changes.empty?
-      redirect_to(edit_external_video_path(@afdoc), :notice => 'Changes: ' + params.inspect)
+      redirect_to(edit_external_video_path(@afdoc), :notice => "Changes: " + params.inspect)
     else
       if @afdoc.update_metadata(changes)
-        redirect_to(edit_external_video_path(@afdoc), :notice => 'Video was updated successfully')
+        redirect_to(edit_external_video_path(@afdoc), :notice => "Video was updated successfully")
       else
         redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages)
       end
