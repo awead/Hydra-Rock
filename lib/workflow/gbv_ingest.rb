@@ -41,11 +41,11 @@ class GbvIngest
     av.title         = @sip.title
 
     # Update the fields in the external video representing the tape
-    av.videos[:tape].first.barcode  = @sip.barcode
-    av.videos[:tape].first.date     = @sip.info(:orig_date) unless @sip.info(:orig_date).nil?
-    av.videos[:tape].first.standard = @sip.info(:standard)  unless @sip.info(:standard).nil?
-    av.videos[:tape].first.format   = @sip.info(:format)    unless @sip.info(:format).nil?
-    av.videos[:tape].first.save
+    av.videos[:original].first.barcode  = @sip.barcode
+    av.videos[:original].first.date     = @sip.info(:orig_date) unless @sip.info(:orig_date).nil?
+    av.videos[:original].first.standard = @sip.info(:standard)  unless @sip.info(:standard).nil?
+    av.videos[:original].first.format   = @sip.info(:format)    unless @sip.info(:format).nil?
+    av.videos[:original].first.save
 
     # Fields in preservation video object
     original = ExternalVideo.find(av.videos[:preservation].first.pid)

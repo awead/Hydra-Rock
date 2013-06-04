@@ -40,14 +40,14 @@ module Rockhall::ModelMethods
     results[:unknown]  = Array.new
     results[:preservation] = Array.new
     results[:access]     = Array.new
-    results[:tape]     = Array.new
+    results[:original]     = Array.new
     self.external_videos.each do |obj|
       if obj.datastreams.keys.include?("PRESERVATION1")
         results[:preservation] << obj
       elsif obj.datastreams.keys.include?("ACCESS1")
         results[:access] << obj
       elsif obj.generation.first.match("Original")
-        results[:tape] << obj
+        results[:original] << obj
       else
         results[:unknown] << obj
       end

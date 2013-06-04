@@ -23,7 +23,7 @@ Feature:
     And I press "Save Changes"
     Then I should see "Tape was successfully created"
     And I should see "Cucumber Sample 1"
-    When I follow "Tape (2)"
+    When I follow "Original (2)"
     Then I should see "2011-01-11"
     And I should see "Betacam"
     And I should see "1234567"

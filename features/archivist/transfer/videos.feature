@@ -39,8 +39,8 @@ Feature:
     And I wait for 5 seconds
     Then I should see "Videos were transferred successfully"
     When I close the modal window
-    Then I should see "Tape (1)"
-    And I should see "Tape (2)"
+    Then I should see "Original (1)"
+    And I should see "Original (2)"
     And I should see the heading "Videos"
 
   @javascript

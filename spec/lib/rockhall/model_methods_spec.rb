@@ -33,8 +33,8 @@ describe Rockhall::ModelMethods do
 
     describe "should move all the instantiations from one video object to another" do
       it "should move the tape instantiations" do
-        @video1.videos[:tape].first.should == @tape1
-        @video2.videos[:tape].first.should == @tape2
+        @video1.videos[:original].first.should == @tape1
+        @video2.videos[:original].first.should == @tape2
         @video1.transfer_videos_from_pid @video2.pid
         @video1.reload; @video2.reload; @tape1.reload; @tape2.reload
         @tape1.parent.should == @video1

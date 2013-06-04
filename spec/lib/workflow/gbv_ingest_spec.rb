@@ -119,7 +119,7 @@ describe Workflow::GbvIngest do
       ing.update
 
       # Check metadata
-      tape = ing.parent.videos[:tape].first
+      tape = ing.parent.videos[:original].first
       tape.date.first.should == "2007-07-09"
 
       original = ExternalVideo.find(ing.parent.videos[:preservation].first.pid)
@@ -146,12 +146,12 @@ describe Workflow::GbvIngest do
       copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.external_videos.length.should == 3
-      tape         = ing.parent.videos[:tape].first.pid
+      tape         = ing.parent.videos[:original].first.pid
       old_original = ing.parent.videos[:preservation].first.pid
       old_h264     = ing.parent.videos[:access].first.pid
       ing.process
       ing.parent.external_videos.length.should == 3
-      tape.should         == ing.parent.videos[:tape].first.pid
+      tape.should         == ing.parent.videos[:original].first.pid
       old_original.should == ing.parent.videos[:preservation].first.pid
       old_h264.should     == ing.parent.videos[:access].first.pid
     end
@@ -161,12 +161,12 @@ describe Workflow::GbvIngest do
       lambda { copy.prepare }.should raise_error(RuntimeError)
       ing = Workflow::GbvIngest.new(copy)
       ing.parent.external_videos.length.should == 3
-      tape         = ing.parent.videos[:tape].first.pid
+      tape         = ing.parent.videos[:original].first.pid
       old_original = ing.parent.videos[:preservation].first.pid
       old_h264     = ing.parent.videos[:access].first.pid
       ing.reprocess
       ing.parent.external_videos.length.should == 3
-      tape.should             == ing.parent.videos[:tape].first.pid
+      tape.should             == ing.parent.videos[:original].first.pid
       old_original.should_not == ing.parent.videos[:preservation].first.pid
       old_h264.should_not     == ing.parent.videos[:access].first.pid
 
