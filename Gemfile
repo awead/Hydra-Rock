@@ -23,6 +23,7 @@ gem 'equivalent-xml'
 gem 'ruby-ntlm'
 gem 'public_activity'
 gem 'gravatar_image_tag'
+gem 'curb'
 
 # Gems that we lock to specific versions for compatibility
 # none!

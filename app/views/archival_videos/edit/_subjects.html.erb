@@ -2,7 +2,7 @@
 
   <fieldset id="subjects">
     <legend>Library of Congress Subject Headings</legend>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"lc_subject", :f=>f, :vals=>@afdoc.lc_subject, :multiple=>TRUE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"lc_subject", :f=>f, :vals=>@afdoc.lc_subject, :multiple=>TRUE, :autocomplete => "off" } %>
   </fieldset>
 
   <fieldset id="genres">

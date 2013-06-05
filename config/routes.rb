@@ -43,4 +43,6 @@ HydraRock::Application.routes.draw do
     resources :archival_components, :only => [:index]
   end
 
+  resources :subjects
+
 end
