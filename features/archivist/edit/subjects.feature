@@ -19,4 +19,17 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     And I am on the subjects workflow page for cucumber:1
     When I press "Save Changes"
-    Then I should see "No changes made" 
+    Then I should see "No changes made"
+
+  Scenario: Auto-suggest values
+    Given I am logged in as "archivist1@example.com"
+    And I am on the subjects workflow page for cucumber:1
+    And I fill in "lc_subject_0" with "ABBA"
+    And I wait for 5 seconds
+    Then I should see "ABBA (Musical group)"
+    And I fill in "lc_genre_0" with "Rock"
+    And I wait for 5 seconds
+    Then I should see "Rock concert films."
+    And I should see "Rock music."
+    And I should see "Rock"
+

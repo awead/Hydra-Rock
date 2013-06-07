@@ -48,8 +48,26 @@ function reloadVideos() {
 // to get options from a locally-stored, static json file.
 jQuery(document).ready(function() {
 
+  // Typeahead features
+
   $('.pbcGen_auto').typeahead({ source: getTerms('pbcoreGenerations') });
   $('.insPhy_auto').typeahead({ source: getTerms('instantiationPhysical') });
+  $('#subjects input').typeahead({ 
+    source: function (query, process) { headingSuggestions('subject', query, process) },
+    sorter: function (items) { items.unshift(this.query); return items; },
+    items: 20
+  });
+  $('#genres input').typeahead({ 
+    source: function (query, process) { headingSuggestions('genre', query, process) },
+    sorter: function (items) { items.unshift(this.query); return items; },
+    items: 20
+  });
+  $('#contributors input').typeahead({ 
+    source: function (query, process) { headingSuggestions('name', query, process) },
+    sorter: function (items) { items.unshift(this.query); return items; },
+    items: 20
+  });
+
 
   // When user selects a new archival collection, the options for archival component
   // will be updated via the ArchivalCollections controller.
@@ -115,15 +133,16 @@ $(document).on('click', '.adder', function(event) {
 
   $('#'+$(this).attr('id')+'_elements').slideDown('normal', function() { $(this).append(cloneElement); } );
 
+  // Adds the typeahead functions
   $('#subjects input').typeahead({ 
-    source: function (query, process) {      
-      $.ajax({ 
-        url: '/subjects.json?q='+query,
-        dataType: 'json'
-      }).always(function(data) {
-        return process(data);
-      });
-    }
+    source: function (query, process) { headingSuggestions('subject', query, process) },
+    sorter: function (items) { items.unshift(this.query); return items; },
+    items: 20
+  });
+  $('#genres input').typeahead({ 
+    source: function (query, process) { headingSuggestions('genre', query, process) },
+    sorter: function (items) { items.unshift(this.query); return items; },
+    items: 20
   });
 
   event.preventDefault();
