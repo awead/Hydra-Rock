@@ -25,6 +25,7 @@ module WorkflowHelper
       "subjects",
       "persons",
       "collections",
+      "review",
       "permissions" ]
 
     results << '<li class="dropdown">'

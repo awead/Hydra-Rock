@@ -70,6 +70,8 @@ Before '@sample' do
   # ArchivalVideo
   av = ArchivalVideo.new(:pid => "cucumber:1")  
   av.title = "Cucumber Sample 1"
+  av.reviewer = "reviewer1@example.com"
+  av.abstract = "We don't have permission to show this to the public"
   av.save
 
   # Tape
