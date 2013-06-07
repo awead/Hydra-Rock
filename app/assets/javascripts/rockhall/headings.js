@@ -3,7 +3,7 @@
 
 function headingSuggestions(term, query, process) {
   $.ajax({ 
-    url: '/headings/'+term+'.json?q='+query,
+    url: ROOT_PATH+'headings/'+term+'.json?q='+query,
     dataType: 'json'
   }).success(function(data) {
     return process(data);
