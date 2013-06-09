@@ -55,8 +55,6 @@ module DisplayHelper
       then "Rockhall Staff"
     when group == "archivist"
       then "Library Staff"
-    when group == "reviewer"
-      then "Reviewers"
     when group == "public"
       then "Public"
     else

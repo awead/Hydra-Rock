@@ -18,11 +18,6 @@ module NavbarHelper
         result << link_to('<i class="icon-eye-open"></i> View </a>'.html_safe, catalog_path(params[:id]))
         result << "</li>"
       else
-        if RoleMapper.roles(current_user.email).include?("reviewer")
-          result << "<li>"
-          result << link_to_edit_asset('<i class="icon-pencil"></i> Edit </a>'.html_safe, model)
-          result << "</li>"
-        end 
         if RoleMapper.roles(current_user.email).include?("archivist")
           result << workflow_dropdown
         end

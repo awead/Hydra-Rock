@@ -10,6 +10,5 @@ Feature:
     And I should see the field content "read_access_group_t" contain "Rockhall Staff"
     And I should see the field title "edit_access_group_t" contain "Edit Access Groups"
     And I should see the field content "edit_access_group_t" contain "Library Staff"
-    And I should see the field content "edit_access_group_t" contain "Reviewers"
     And I should see the field title "edit_access_person_t" contain "Edit Access Person"
     And I should see the field content "edit_access_person_t" contain "archivist1@example.com"

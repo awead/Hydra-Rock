@@ -36,7 +36,6 @@ HydraRock::Application.routes.draw do
 
   resources :digital_videos
   
-  resources :reviewers
   resources :permissions
 
   resources :archival_collections do

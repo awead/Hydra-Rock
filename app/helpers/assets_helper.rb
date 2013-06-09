@@ -19,7 +19,7 @@ module AssetsHelper
   def allow_asset_creation
     unless current_user.nil?
       user_groups = RoleMapper.roles(current_user.email)
-      if user_groups.include?("archivist") or user_groups.include?("reviewer")
+      if user_groups.include?("archivist")
         return TRUE
       end
     end

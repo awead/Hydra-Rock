@@ -27,21 +27,9 @@ module Rockhall::Controller::ControllerBehavior
 
   def enforce_asset_creation_restrictions
     user_groups = RoleMapper.roles(current_user.email)
-    unless user_groups.include?("archivist") or user_groups.include?("reviewer")
+    unless user_groups.include?("archivist")
       flash[:notice] = "You are not allowed to create new content"
       redirect_to url_for(root_path)
-    end
-  end
-
-  # Ensure that reviewers can only edit items via the reviewers controller.
-  #
-  # Add this method to any controller for models where you don't want revierwers
-  # to be able to edit via the default interface.
-  def enforce_review_controls
-    user_groups = RoleMapper.roles(current_user.email)
-    if user_groups.include?("reviewer")
-      flash[:notice] = "You have been redirected to the review page for this document"
-      redirect_to url_for(:controller=>"reviewers", :action=>"edit")
     end
   end
 

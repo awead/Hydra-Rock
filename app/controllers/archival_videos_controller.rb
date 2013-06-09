@@ -7,7 +7,6 @@ class ArchivalVideosController < ApplicationController
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer, :destroy]
   before_filter :enforce_access_controls
   before_filter :enforce_asset_creation_restrictions, :only=>:new
-  prepend_before_filter :enforce_review_controls, :only=>:edit
 
   def edit
     @afdoc = ArchivalVideo.find(params[:id])

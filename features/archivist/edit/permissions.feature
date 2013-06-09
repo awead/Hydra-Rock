@@ -10,7 +10,6 @@ Feature:
     And I am on the permissions workflow page for cucumber:1
     Then the "document_fields_permissions_groups_archivist" field should contain "edit"
     And the "document_fields_permissions_groups_donor" field should contain "read"
-    And the "document_fields_permissions_groups_reviewer" field should contain "edit"
     And the "document_fields_permissions_groups_public" field should contain "none"
 
   Scenario: Change group permssions
@@ -21,7 +20,6 @@ Feature:
     And I press "Save Changes"
     Then I should see "Permissions updated successfully"
     And the "document_fields_permissions_groups_donor" field should contain "none"
-    And the "document_fields_permissions_groups_reviewer" field should contain "edit"
     And the "document_fields_permissions_groups_public" field should contain "read"
     And the "document_fields_permissions_groups_archivist" field should contain "edit"
 
