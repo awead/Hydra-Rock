@@ -1,9 +1,8 @@
 <% navbar_items << capture do %>
-  <% unless params[:new_asset] %>
-    <%= workflow_dropdown %>
-  <% end %>
-  <%= render_user_navbar("archival_videos") %>
   <%= render :partial => "catalog/previous_next_doc" %>
+  <%= render :partial => "shared/navbar_partials/export_links" %>
+  <%= render_workflow_menu unless params[:new_asset] %>
+  <%= render_view_button %>
 <% end %>
 
 <div id="video_box" class="span6">

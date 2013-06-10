@@ -5,25 +5,14 @@ module NavbarHelper
     @navbar_items ||= []
   end
 
-  def render_add_assets
-    render :partial=>"shared/navbar_partials/add_assets_links" if allow_asset_creation
+  def render_view_button
+    content_tag(:li, link_to('<i class="icon-eye-open"></i> View </a>'.html_safe, catalog_path(params[:id]))) if params[:action] == "edit"
   end
 
-  # navbar items if a user is logged in
-  def render_user_navbar model, opts={}, result = String.new
-    result << content_tag(:li, render_export_dropdown)
-    if current_user
-      if params[:action] == "edit"
-        result << "<li>"
-        result << link_to('<i class="icon-eye-open"></i> View </a>'.html_safe, catalog_path(params[:id]))
-        result << "</li>"
-      else
-        if RoleMapper.roles(current_user.email).include?("archivist")
-          result << workflow_dropdown
-        end
-      end
+  def render_workflow_menu
+    unless current_user.nil?
+      workflow_dropdown if RoleMapper.roles(current_user.email).include?("archivist")
     end
-    return result.html_safe
   end
 
   # display flash message in the navbar
@@ -32,10 +21,6 @@ module NavbarHelper
       results << content_tag(:div, render_error_message(flash[message]), :class => "alert " + render_alert_class )
     end
     return results.html_safe
-  end
-
-  def render_export_dropdown
-    render :partial => "shared/navbar_partials/export_links"
   end
 
   # if this is an error message, display accordingly, otherwise just return the message
