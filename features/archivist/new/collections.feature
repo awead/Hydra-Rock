@@ -9,6 +9,7 @@ Feature:
     And I am on the new archival collections page
     When I press "Save Changes"
     And I wait for 2 seconds
+    And I acccept the alert
     Then I should see "No changes made"
 
   Scenario: ID not found in the discovery index
@@ -17,6 +18,7 @@ Feature:
     When I fill in "archival_collection_pid" with "FOO"
     And I press "Save Changes"
     And I wait for 2 seconds
+    And I acccept the alert
     Then I should see "ID FOO not found in discovery index"
 
   @collections
@@ -26,4 +28,5 @@ Feature:
     Then I should see "New Archival Collection"
     When I fill in "archival_collection_pid" with "ARC-0026"
     And I press "Save Changes"
+    And I acccept the alert
     Then I should see "Doug Fieger Papers"
