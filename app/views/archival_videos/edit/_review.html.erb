@@ -24,6 +24,6 @@
   <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
   <%= f.hidden_field :date_updated, { :name=>"document_fields[date_updated][]", :id=>"document_fields_date_updated", :value=>DateTime.now.strftime("%Y-%m-%d") } %>
   <%= f.hidden_field :reviewer, { :name=>"document_fields[reviewer][]", :id=>"document_fields_reviewer", :value=>current_user.email } %>
-  <%= f.submit "Save Changes", :class => "btn btn-primary", :onclick => "submitOnChanged(event)" %>
+  <%= f.submit "Save Changes", :class => "btn btn-primary" %>
 
 <% end %>

@@ -91,6 +91,11 @@ jQuery(document).ready(function() {
 
 });
 
+// Checks to see if the form is changed
+$(document).on('click', 'input.btn-primary', function(event) {
+  submitOnChanged(event)
+});
+
 // Show/hide tech info in the show view
 $(document).on('click', 'a.show_tech_info', function(event) {
   var parent  = $(this).parent('li').attr('id');
