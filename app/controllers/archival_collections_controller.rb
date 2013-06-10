@@ -25,13 +25,7 @@ class ArchivalCollectionsController < ApplicationController
   end
 
   def show
-    update_session
-    session[:viewing_context] = "browse"
-    @afdoc = ArchivalCollection.find(params[:id])
-    respond_to do |format|
-      format.html  { setup_next_and_previous_documents }
-      format.json  { render :json => @afdoc }
-    end
+    redirect_to catalog_path(params[:id])
   end
 
   def create
