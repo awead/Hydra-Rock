@@ -1,3 +1,5 @@
+
+
 <h1><%= @afdoc.name.first %></h1>
 
 <% partial = @afdoc.generation.first.match("Original") ? "physical" : "digital" %>
@@ -5,7 +7,7 @@
 
 <% navbar_items << capture do %>
   <li>
-    <%= link_to('<i class="icon-arrow-left"></i> Parent'.html_safe, edit_archival_video_path(@afdoc.parent.id) ) %>
+    <%= link_to('<i class="icon-arrow-up"></i> Parent'.html_safe, edit_archival_video_path(@afdoc.parent.id) ) %>
   </li>
   <li>
     <%= button_to('Delete', external_video_path(params[:id]),
@@ -13,4 +15,5 @@
                   :confirm => 'Are you sure?', :method => :delete)
     %>
   </li>
+  <%= render :partial => "catalog/previous_next_doc" %>
 <% end %>

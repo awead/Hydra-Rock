@@ -5,7 +5,7 @@ class ExternalVideosController < ApplicationController
   include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
-  before_filter :enforce_access_controls
+  before_filter :enforce_access_controls, :update_session
 
   def new
     @afdoc = ExternalVideo.new

@@ -5,13 +5,13 @@ class ArchivalVideosController < ApplicationController
   include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer, :destroy]
-  before_filter :enforce_access_controls
+  before_filter :enforce_access_controls, :update_session
   before_filter :enforce_asset_creation_restrictions, :only=>:new
 
   def edit
     @afdoc = ArchivalVideo.find(params[:id])
     respond_to do |format|
-      format.html
+      format.html  { setup_next_and_previous_documents }
       format.json  { render :json => @afdoc }
     end
   end
@@ -47,7 +47,6 @@ class ArchivalVideosController < ApplicationController
   end
 
   def update
-    update_session
     @afdoc = ArchivalVideo.find(params[:id])
     changes = changed_fields(params)
 

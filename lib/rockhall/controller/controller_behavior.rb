@@ -1,16 +1,13 @@
 module Rockhall::Controller::ControllerBehavior
 
   def update_session
-    logger.info "Updating session with parameters:" + params.inspect
     session[:search][:counter] = params[:counter] unless params[:counter].nil?
-    logger.info "Session now: " + session.inspect
   end
 
   def changed_fields(params)
     changes = Hash.new
     return changes if params[:document_fields].nil?
     object = ActiveFedora::Base.find(params[:id], :cast => true)
-    logger.info("\n\n\n\n\n" + params[:document_fields].inspect + "\n\n\n\n\n\n")
     params[:document_fields].each do |k,v|
       if params[:document_fields][k.to_sym].kind_of?(Array)
         unless object.send(k.to_sym) == v or (object.send(k.to_sym).empty? and v.first.empty?) or (v.sort.uniq.count > object.send(k.to_sym).count and v.sort.uniq.first.empty?)
