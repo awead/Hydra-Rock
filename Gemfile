@@ -59,7 +59,3 @@ group :cucumber do
   gem 'cucumber-rails'
   gem 'selenium-webdriver'
 end
-
-group :production do
-  gem 'passenger', '=3.0.18'
-end
