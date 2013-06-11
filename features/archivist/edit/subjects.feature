@@ -25,7 +25,7 @@ Feature:
     Given I am logged in as "archivist1@example.com"
     And I am on the subjects workflow page for cucumber:1
     And I fill in "lc_subject_0" with "ABBA"
-    And I wait for 5 seconds
+    And I wait for 8 seconds
     Then I should see "ABBA (Musical group)"
     And I fill in "lc_genre_0" with "Rock"
     And I wait for 5 seconds
