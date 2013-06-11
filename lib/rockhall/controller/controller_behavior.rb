@@ -76,6 +76,16 @@ module Rockhall::Controller::ControllerBehavior
     params["groups"].each { |k,v| permissions << {:type => "group", :name => k, :access => v} } unless params["groups"].nil?
     return permissions
   end
+
+  # overrides Blacklight::SolrHelper
+  # Explicity defaults the rows parameter to 10.  This avoids the exception raised at Blacklight::SolrHelper#167 because
+  # non-Blacklight controllers can't seem to determine the rows parameter when it is absent, even though it's set in the
+  # CatalogController.
+  def add_paging_to_solr(solr_params, user_params)
+    user_params[:rows] ||= 10
+    super
+  end
+
    
 
 end
