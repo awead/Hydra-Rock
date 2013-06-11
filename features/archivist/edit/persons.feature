@@ -49,3 +49,23 @@ Feature:
       When I press "Save Changes"
       Then I should not see "Video was updated successfully"
       And I should see "No changes made"
+
+  @multiple-persons
+  Scenario: Deleting indivual persons (DAM-310)
+    Given I am logged in as "archivist1@example.com"
+    And I am on the persons workflow page for cucumber:1
+    Then the "contributor_name_0" field should contain "John"
+    And the "contributor_name_1" field should contain "Paul"
+    And the "contributor_name_2" field should contain "George"
+    And the "contributor_name_3" field should contain "Ringo"
+    When I follow "delete_contributor_0"
+    Then I should not see "John"
+    And the "contributor_name_0" field should contain "Paul"
+    And the "contributor_name_1" field should contain "George"
+    And the "contributor_name_2" field should contain "Ringo"
+    When I follow "delete_contributor_1"
+    Then I should not see "George"
+    And the "contributor_name_0" field should contain "Paul"
+    And the "contributor_name_1" field should contain "Ringo"
+
+

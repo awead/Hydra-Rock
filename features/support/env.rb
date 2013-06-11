@@ -157,4 +157,16 @@ After '@javascript' do
   page.execute_script "window.close();"
 end
 
+Before '@multiple-persons' do
+  av = ArchivalVideo.find("cucumber:1")
+  av.new_contributor({:name => "John"})
+  av.new_contributor({:name => "Paul"})
+  av.new_contributor({:name => "George"})
+  av.new_contributor({:name => "Ringo"})
+  av.new_publisher({:name => "Apple"})
+  av.new_publisher({:name => "Bannana"})
+  av.new_publisher({:name => "Tomato"})
+  av.save
+end
+
 

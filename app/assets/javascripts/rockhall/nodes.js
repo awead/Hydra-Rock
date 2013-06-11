@@ -27,7 +27,7 @@ function deleteNode(type, url) {
   });
 
   jqxhr.always( function (data) {
-    $('#'+type+'s_form').html(data);
+    $('#'+type+'s_form').html(data.responseText);
     flashInfo('Video was updated successfully')
     formChanged = false;
   });
