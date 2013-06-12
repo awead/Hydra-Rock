@@ -17,7 +17,6 @@ class HeadingsController < ApplicationController
     respond_to do |format|
       format.html { render :layout => false, :text => @headings.to_json }
       format.json { render :layout => false, :text => @headings.to_json }
-      format.js   { render :layout => false, :text => @headings.to_json }
     end
   end
 
