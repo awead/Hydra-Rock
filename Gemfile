@@ -58,4 +58,5 @@ end
 group :cucumber do
   gem 'cucumber-rails'
   gem 'selenium-webdriver'
+  gem 'launchy'
 end

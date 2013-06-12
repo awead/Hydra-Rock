@@ -168,6 +168,8 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    launchy (2.3.0)
+      addressable (~> 2.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -345,6 +347,7 @@ DEPENDENCIES
   hydra-head (< 6.0.0)
   hydra-pbcore
   jquery-rails
+  launchy
   mediainfo
   mocha
   om
