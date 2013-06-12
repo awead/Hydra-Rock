@@ -19,3 +19,4 @@ spec/fixtures/exports/*.xml
 bin
 .rvmrc
 !tmp/.gitkeep
+.ruby-gemset
