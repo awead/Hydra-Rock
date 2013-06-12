@@ -34,14 +34,14 @@ function submitOnChanged(event) {
 
 // makes an ajax call to reload the video list given by the external_videos/show/list partial
 function reloadVideos() {
-  var jqxhr = $.ajax({
-    url: ROOT_PATH+'archival_videos/'+$('#main-container').data('pid')+'/external_videos',
-    dataType: 'script'
-  });
-
-  jqxhr.always( function (data) {
-    $('#video_list').html(data.responseText);
-  });
+  var url = ROOT_PATH+'archival_videos/'+$('#main-container').data('pid')+'/external_videos';
+  var jqxhr = $.get(url)
+      .done(function(data) {
+        $('#video_list').html(data);
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        flashAlert('ERROR! - '+textStatus+': '+errorThrown);
+      })
 }
 
 // Typeahead function that's used when fillout certain text fields.  Uses getTerms()

@@ -56,8 +56,7 @@ class ExternalVideosController < ApplicationController
   def index
     @afdoc = ActiveFedora::Base.find(params[:archival_video_id], :cast => true)
     respond_to do |format|
-      format.html
-      format.js { render :partial => "external_videos/show/list" }
+      format.html { render :partial => "external_videos/show/list" if request.xhr? }
     end
   end
 
