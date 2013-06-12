@@ -9,8 +9,7 @@ class NodesController < ApplicationController
   def new
     if params[:type]
       respond_to do |format|
-        format.html
-        format.js { render :partial => "nodes/new/#{params[:type]}" }
+        format.html { render :partial => "nodes/new/#{params[:type]}" if request.xhr? }
       end
     else
       flash[:notice] = "Node type is required"
@@ -22,8 +21,7 @@ class NodesController < ApplicationController
     @object = ActiveFedora::Base.find(params[:id], :cast => true)
     if params[:type]
       respond_to do |format|
-        format.html
-        format.js { render :partial => "nodes/edit/#{params[:type]}", :locals => {:document=>@object} }
+        format.html { render :partial => "nodes/edit/#{params[:type]}", :locals => {:document=>@object} if request.xhr? }
      end
     else
       flash[:notice] = "Node type is required"
@@ -42,8 +40,13 @@ class NodesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to edit_node_path(@object.id, params[:type]) }
-      format.js   { render :partial => "nodes/new/#{params[:type]}" }
+      format.html { 
+        if request.xhr?
+          render :partial => "nodes/new/#{params[:type]}"
+        else
+          redirect_to edit_node_path(@object.id, params[:type])
+        end
+      }
     end 
   end
 

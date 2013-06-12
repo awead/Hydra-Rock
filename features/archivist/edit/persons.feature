@@ -37,18 +37,18 @@ Feature:
     And I should see "Video was updated successfully"
 
   Scenario: It should not update an object if no persons are present (DAM-286)
-      Given I am logged in as "archivist1@example.com"
-      And I am on the persons workflow page for cucumber:1
-      When I press "Save Changes"
-      Then I should not see "Video was updated successfully"
-      And I should see "No changes made"
+    Given I am logged in as "archivist1@example.com"
+    And I am on the persons workflow page for cucumber:1
+    When I press "Save Changes"
+    Then I should not see "Video was updated successfully"
+    And I should see "No changes made"
 
   Scenario: It should not update an object if persons are present (DAM-286)
-      Given I am logged in as "archivist1@example.com"
-      And I am on the persons workflow page for rockhall:fixture_pbcore_document1
-      When I press "Save Changes"
-      Then I should not see "Video was updated successfully"
-      And I should see "No changes made"
+    Given I am logged in as "archivist1@example.com"
+    And I am on the persons workflow page for rockhall:fixture_pbcore_document1
+    When I press "Save Changes"
+    Then I should not see "Video was updated successfully"
+    And I should see "No changes made"
 
   @multiple-persons
   Scenario: Deleting indivual persons (DAM-310)

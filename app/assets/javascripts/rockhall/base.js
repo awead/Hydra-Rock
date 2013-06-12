@@ -41,7 +41,7 @@ function reloadVideos() {
       })
       .fail(function(jqXHR, textStatus, errorThrown) {
         flashAlert('ERROR! - '+textStatus+': '+errorThrown);
-      })
+      });
 }
 
 // Typeahead function that's used when fillout certain text fields.  Uses getTerms()

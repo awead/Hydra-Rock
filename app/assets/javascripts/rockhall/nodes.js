@@ -6,15 +6,15 @@ Javscript functions used when dealing with nodes, or additiona bits of xml that 
 
 // Reloads a give node edit partial
 function reloadNodeForm(type) {
-  var jqxhr = $.ajax({
-    url: ROOT_PATH+'nodes/'+$('#main-container').data('pid')+'/'+type+'/edit',
-    dataType: 'script'
-  });
-
-  jqxhr.always( function (data) {
-    $('#'+type+'s_form').html(data.responseText);
-    formChanged = false;
-  });
+  var url = ROOT_PATH+'nodes/'+$('#main-container').data('pid')+'/'+type+'/edit';
+  var jqxhr = $.get(url)
+      .done(function(data) {
+        $('#'+type+'s_form').html(data);
+        formChanged = false;
+      })
+      .fail(function(jqXHR, textStatus, errorThrown) {
+        flashAlert('ERROR! - '+textStatus+': '+errorThrown);
+      });
 }
 
 // Delete a given node
@@ -27,7 +27,13 @@ function deleteNode(type, url) {
   });
 
   jqxhr.always( function (data) {
-    $('#'+type+'s_form').html(data.responseText);
+    if (data == '') {
+      $('#'+type+'s_form').html('');
+    }
+    else {
+      $('#'+type+'s_form').html(data.responseText);
+    }
+
     flashInfo('Video was updated successfully')
     formChanged = false;
   });
