@@ -1,0 +1,58 @@
+<%= form_for @afdoc, :url => assign_archival_video_path, :html => {:class => "form-inline document_edit"} do |f| %>
+
+  <fieldset id="archival_fields"> 
+    <legend>Archival Information</legend>
+    <p class="legend-caption">
+      Use these fields to identify the item within its archival collection and series or subseries.
+    </p>
+  
+    <div class="control-group">
+      <%= f.select :collection,
+             ArchivalCollection.find(:all).collect {|p| [ p.title, p.id ] },
+             {:include_blank => "None", :selected => (@afdoc.collection.nil? ? nil : @afdoc.collection.pid)},
+             {:class => "collection_select"} %>
+    </div>
+    <div class="control-group">
+      <%= f.select :series,
+                   components_for_collection,
+                   {:include_blank => "None", :selected => (@afdoc.series.nil? ? nil : @afdoc.series.pid)},
+                   {:class => "component_select"} %>
+    </div>
+  </fieldset>
+
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= f.submit "Save Archival Information", :class => "btn btn-primary" %>
+
+<% end %>
+
+<%= form_for @afdoc, :url => archival_video_path(:wf_step=>params[:wf_step]), :html => {:class => "form-vertical document_edit"} do |f| %>
+
+  <fieldset id="accessions"> 
+    <legend>
+      Accessions <%= render_add_nodes_button "accession" %>
+    </legend>
+    <p class="legend-caption">
+      Click the button to add accession numbers to this item
+    </p>
+    <div id="accessions_form">
+      <%= render :partial => "nodes/edit/accession", :locals => { :document => @afdoc } %>
+    </div>
+  </fieldset>
+
+  <fieldset id="additional_collections">
+    <legend>
+      Additional Collections <%= render_add_nodes_button "collection" %>
+    </legend>
+    <p class="legend-caption">
+      Click the button to add additional collections to this item.
+      These do not have to be existing collections defined with an EAD in AT.
+    </p>
+    <div id="collections_form">
+      <%= render :partial => "nodes/edit/collection", :locals => { :document => @afdoc } %>
+    </div>
+  </fieldset>
+
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+
+<% end %>

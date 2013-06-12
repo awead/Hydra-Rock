@@ -1,2 +1,26 @@
-<% @document_fedora = @afdoc %>
-<%= render :partial => "permissions/permissions_form" %>
+<%= form_for @afdoc, :url => archival_video_path, :html => {:class => 'form-horizontal document_edit'} do |f| %>
+
+ <fieldset id="groups">
+    <legend>Group Permissions</legend>
+    <p>
+      Grant permissions to this object via groups. Any user that is a memeber of the group will automatically
+      have the access rights specified below.
+    </p>
+    <% role_names.each do |role| %>
+      <div class="control-group">
+        <%= f.label role, :class => "control-label" %>
+        <div class="controls">
+          <%= select_tag "document_fields[permissions][groups][#{role}]", options_for_select(permisison_choices, get_access_for_role(role) ) %>
+        </div>
+      </div>
+    <% end %>
+  </fieldset>
+
+  <fieldset id="individuals">
+    <legend>Individual Permissions</legend>
+    <p>You have <%= current_user_permissions %> access</p>
+
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+
+<% end %>

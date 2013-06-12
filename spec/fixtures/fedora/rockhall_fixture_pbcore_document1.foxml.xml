@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE=""/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-12-14T19:02:46.117Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-12-14T19:11:44.693Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-05-15T02:11:30.842Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-12-14T19:02:46.117Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -366,12 +366,140 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-12-14T19:11:44.693Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC45">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.417Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC46">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.528Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC47">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>rightsMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.602Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC48">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>properties</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.660Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC49">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>assetReview</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2012-08-22T20:24:09.720Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC50">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:49.125Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC51">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:49.177Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC52">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>properties</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:49.275Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC53">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-05-14T19:11:46.187Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC54">
+<audit:process type="Fedora API-M"/>
+<audit:action>addDatastream</audit:action>
+<audit:componentID>thumbnail</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-05-14T19:11:46.261Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC55">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-05-14T19:26:34.422Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC56">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>thumbnail</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-05-14T19:26:34.455Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC57">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-05-15T02:10:56.324Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC58">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-05-15T02:11:14.102Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC59">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-05-15T02:11:30.802Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC60">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-05-15T02:11:30.842Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-14T19:02:46.117Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="343">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-14T19:02:46.117Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="362">
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:identifier>rockhall:fixture_pbcore_document1</dc:identifier>
@@ -437,7 +565,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2011-12-14T19:04:05.563Z" MIMETYPE="text/xml" SIZE="4296">
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2011-12-14T19:04:05.563Z" MIMETYPE="text/xml" SIZE="4490">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -497,69 +625,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.2" LABEL="" CREATED="2011-12-14T19:04:24.114Z" MIMETYPE="text/xml" SIZE="4417">
-<foxml:xmlContent>
-<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
-  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
-  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
-  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
-  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
-  <pbcoreRelation>
-    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
-    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
-  </pbcoreRelation>
-  <pbcoreCoverage>
-    <coverage annotation="Event Place">New York, NY</coverage>
-    <coverageType>Spatial</coverageType>
-  </pbcoreCoverage>
-  <pbcoreCoverage>
-    <coverage annotation="Event Date">1999-03-15</coverage>
-    <coverageType>Temporal</coverageType>
-  </pbcoreCoverage>
-  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
-  <pbcoreInstantiation>
-    <instantiationIdentifier annotation="Barcode" source="Rock and Roll Hall of Fame and Museum"></instantiationIdentifier>
-    <instantiationDate dateType="created"></instantiationDate>
-    <instantiationPhysical source="PBCore instantiationPhysical"></instantiationPhysical>
-    <instantiationStandard></instantiationStandard>
-    <instantiationLocation>Rock and Roll Hall of Fame and Museum,
-2809 Woodland Ave.,
-Cleveland, OH, 44115
-216-515-1956
-library@rockhall.org</instantiationLocation>
-    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
-    <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
-    <instantiationColors>Color</instantiationColors>
-    <instantiationLanguage ref="http://www.loc.gov/standards/iso639-2/php/code_list.php" source="ISO 639.2">eng</instantiationLanguage>
-    <instantiationRelation>
-      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
-    </instantiationRelation>
-    <instantiationRelation>
-      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
-    </instantiationRelation>
-    <instantiationRelation>
-      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
-    </instantiationRelation>
-    <instantiationRelation>
-      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
-      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
-    </instantiationRelation>
-    <instantiationRights>
-      <rightsSummary></rightsSummary>
-    </instantiationRights>
-  </pbcoreInstantiation>
-  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
-  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
-  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
-  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
-  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-</pbcoreDescriptionDocument>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.3" LABEL="" CREATED="2011-12-14T19:04:31.071Z" MIMETYPE="text/xml" SIZE="4459">
+<foxml:datastreamVersion ID="descMetadata.2" LABEL="" CREATED="2011-12-14T19:04:24.114Z" MIMETYPE="text/xml" SIZE="4805">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -618,11 +684,10 @@ library@rockhall.org</instantiationLocation>
   <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
   <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
-  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.4" LABEL="" CREATED="2011-12-14T19:04:43.135Z" MIMETYPE="text/xml" SIZE="4508">
+<foxml:datastreamVersion ID="descMetadata.3" LABEL="" CREATED="2011-12-14T19:04:31.071Z" MIMETYPE="text/xml" SIZE="4943">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -682,11 +747,10 @@ library@rockhall.org</instantiationLocation>
   <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
-  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.5" LABEL="" CREATED="2011-12-14T19:04:55.855Z" MIMETYPE="text/xml" SIZE="4653">
+<foxml:datastreamVersion ID="descMetadata.4" LABEL="" CREATED="2011-12-14T19:04:43.135Z" MIMETYPE="text/xml" SIZE="5088">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -747,14 +811,10 @@ library@rockhall.org</instantiationLocation>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
   <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.6" LABEL="" CREATED="2011-12-14T19:04:58.245Z" MIMETYPE="text/xml" SIZE="4798">
+<foxml:datastreamVersion ID="descMetadata.5" LABEL="" CREATED="2011-12-14T19:04:55.855Z" MIMETYPE="text/xml" SIZE="5233">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -819,14 +879,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.7" LABEL="" CREATED="2011-12-14T19:05:01.060Z" MIMETYPE="text/xml" SIZE="4943">
+<foxml:datastreamVersion ID="descMetadata.6" LABEL="" CREATED="2011-12-14T19:04:58.245Z" MIMETYPE="text/xml" SIZE="5378">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -895,14 +951,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.8" LABEL="" CREATED="2011-12-14T19:05:03.221Z" MIMETYPE="text/xml" SIZE="5088">
+<foxml:datastreamVersion ID="descMetadata.7" LABEL="" CREATED="2011-12-14T19:05:01.060Z" MIMETYPE="text/xml" SIZE="5523">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -975,14 +1027,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.9" LABEL="" CREATED="2011-12-14T19:05:05.179Z" MIMETYPE="text/xml" SIZE="5233">
+<foxml:datastreamVersion ID="descMetadata.8" LABEL="" CREATED="2011-12-14T19:05:03.221Z" MIMETYPE="text/xml" SIZE="5668">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1059,14 +1107,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.10" LABEL="" CREATED="2011-12-14T19:05:07.305Z" MIMETYPE="text/xml" SIZE="5378">
+<foxml:datastreamVersion ID="descMetadata.9" LABEL="" CREATED="2011-12-14T19:05:05.179Z" MIMETYPE="text/xml" SIZE="5813">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1147,14 +1191,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.11" LABEL="" CREATED="2011-12-14T19:05:09.297Z" MIMETYPE="text/xml" SIZE="5523">
+<foxml:datastreamVersion ID="descMetadata.10" LABEL="" CREATED="2011-12-14T19:05:07.305Z" MIMETYPE="text/xml" SIZE="5958">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1239,14 +1279,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.12" LABEL="" CREATED="2011-12-14T19:05:11.269Z" MIMETYPE="text/xml" SIZE="5668">
+<foxml:datastreamVersion ID="descMetadata.11" LABEL="" CREATED="2011-12-14T19:05:09.297Z" MIMETYPE="text/xml" SIZE="6103">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1335,14 +1371,10 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
-  <pbcoreContributor>
-    <contributor></contributor>
-    <contributorRole source="MARC relator terms"></contributorRole>
-  </pbcoreContributor>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.13" LABEL="" CREATED="2011-12-14T19:05:14.046Z" MIMETYPE="text/xml" SIZE="5813">
+<foxml:datastreamVersion ID="descMetadata.12" LABEL="" CREATED="2011-12-14T19:05:11.269Z" MIMETYPE="text/xml" SIZE="6248">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1435,6 +1467,102 @@ library@rockhall.org</instantiationLocation>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
   </pbcoreContributor>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.13" LABEL="" CREATED="2011-12-14T19:05:14.046Z" MIMETYPE="text/xml" SIZE="6393">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreInstantiation>
+    <instantiationIdentifier annotation="Barcode" source="Rock and Roll Hall of Fame and Museum"></instantiationIdentifier>
+    <instantiationDate dateType="created"></instantiationDate>
+    <instantiationPhysical source="PBCore instantiationPhysical"></instantiationPhysical>
+    <instantiationStandard></instantiationStandard>
+    <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+2809 Woodland Ave.,
+Cleveland, OH, 44115
+216-515-1956
+library@rockhall.org</instantiationLocation>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationLanguage ref="http://www.loc.gov/standards/iso639-2/php/code_list.php" source="ISO 639.2">eng</instantiationLanguage>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Series"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Collection Number"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Accession Number"></instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRights>
+      <rightsSummary></rightsSummary>
+    </instantiationRights>
+  </pbcoreInstantiation>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre source="Library of Congress Genre/Form Terms" ref="http://id.loc.gov/authorities/genreForms.html">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Inductee</pbcoreSubject>
+  <pbcoreSubject source="Library of Congress Subject Headings" ref="http://id.loc.gov/authorities/subjects.html">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
   <pbcoreContributor>
     <contributor></contributor>
     <contributorRole source="MARC relator terms"></contributorRole>
@@ -1442,7 +1570,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.14" LABEL="" CREATED="2011-12-14T19:05:38.006Z" MIMETYPE="text/xml" SIZE="5927">
+<foxml:datastreamVersion ID="descMetadata.14" LABEL="" CREATED="2011-12-14T19:05:38.006Z" MIMETYPE="text/xml" SIZE="6507">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1542,7 +1670,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.15" LABEL="" CREATED="2011-12-14T19:06:52.884Z" MIMETYPE="text/xml" SIZE="6038">
+<foxml:datastreamVersion ID="descMetadata.15" LABEL="" CREATED="2011-12-14T19:06:52.884Z" MIMETYPE="text/xml" SIZE="6618">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1642,7 +1770,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.16" LABEL="" CREATED="2011-12-14T19:06:59.080Z" MIMETYPE="text/xml" SIZE="6173">
+<foxml:datastreamVersion ID="descMetadata.16" LABEL="" CREATED="2011-12-14T19:06:59.080Z" MIMETYPE="text/xml" SIZE="6753">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1746,7 +1874,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.17" LABEL="" CREATED="2011-12-14T19:07:11.093Z" MIMETYPE="text/xml" SIZE="6219">
+<foxml:datastreamVersion ID="descMetadata.17" LABEL="" CREATED="2011-12-14T19:07:11.093Z" MIMETYPE="text/xml" SIZE="6799">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1850,7 +1978,7 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="descMetadata.18" LABEL="" CREATED="2011-12-14T19:08:23.642Z" MIMETYPE="text/xml" SIZE="6490">
+<foxml:datastreamVersion ID="descMetadata.18" LABEL="" CREATED="2011-12-14T19:08:23.642Z" MIMETYPE="text/xml" SIZE="7067">
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1955,13 +2083,591 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.19" LABEL="" CREATED="2012-08-22T20:24:09.417Z" MIMETYPE="text/xml" SIZE="7070">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreInstantiation>
+    <instantiationIdentifier annotation="Barcode" source="Rock and Roll Hall of Fame and Museum">39156042551098</instantiationIdentifier>
+    <instantiationDate dateType="created">1999-03-15</instantiationDate>
+    <instantiationPhysical source="PBCore instantiationPhysical">Betacam</instantiationPhysical>
+    <instantiationStandard>NTSC</instantiationStandard>
+    <instantiationLocation>Rock and Roll Hall of Fame and Museum,
+2809 Woodland Ave.,
+Cleveland, OH, 44115
+216-515-1956
+library@rockhall.org</instantiationLocation>
+    <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+    <instantiationGenerations source="PBCore instantiationGenerations">Original</instantiationGenerations>
+    <instantiationColors>Color</instantiationColors>
+    <instantiationLanguage ref="http://www.loc.gov/standards/iso639-2/php/code_list.php" source="ISO 639.2">eng</instantiationLanguage>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Collection"></instantiationRelationIdentifier>
+      <instantiationRelationIdentifier annotation="Archival collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Archival Series">Audiovisual Materials</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Collection Number">ARC.0002</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRelation>
+      <instantiationRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</instantiationRelationType>
+      <instantiationRelationIdentifier annotation="Accession Number">LA.2003.01.001</instantiationRelationIdentifier>
+    </instantiationRelation>
+    <instantiationRights>
+      <rightsSummary></rightsSummary>
+    </instantiationRights>
+  </pbcoreInstantiation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.20" LABEL="" CREATED="2013-04-12T14:23:49.177Z" MIMETYPE="text/xml" SIZE="4469">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.21" LABEL="" CREATED="2013-05-14T19:11:46.187Z" MIMETYPE="text/xml" SIZE="4469">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.22" LABEL="" CREATED="2013-05-14T19:26:34.422Z" MIMETYPE="text/xml" SIZE="4469">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.23" LABEL="" CREATED="2013-05-15T02:10:56.324Z" MIMETYPE="text/xml" SIZE="4831">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.24" LABEL="" CREATED="2013-05-15T02:11:14.102Z" MIMETYPE="text/xml" SIZE="5118">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Accession Number">LA.2003.01.001</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.25" LABEL="" CREATED="2013-05-15T02:11:30.802Z" MIMETYPE="text/xml" SIZE="5118">
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Collection">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Accession Number">LA.2003.01.001</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T19:02:46.370Z" MIMETYPE="text/xml" SIZE="278">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T19:02:46.370Z" MIMETYPE="text/xml" SIZE="297">
 <foxml:xmlContent>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document1">
     <hasModel xmlns="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:ArchivalVideo"></hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="" CREATED="2012-08-22T20:24:09.528Z" MIMETYPE="text/xml" SIZE="578">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document1">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalVideo"></ns0:hasModel>
+    <ns1:isMemberOf rdf:resource="info:fedora/rockhall:fixture_arc_test-ref6"></ns1:isMemberOf>
+    <ns1:isMemberOfCollection rdf:resource="info:fedora/rockhall:fixture_arc_test"></ns1:isMemberOfCollection>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.2" LABEL="" CREATED="2013-04-12T14:23:49.125Z" MIMETYPE="text/xml" SIZE="578">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document1">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalVideo"></ns0:hasModel>
+    <ns1:isMemberOf rdf:resource="info:fedora/rockhall:fixture_arc_test-ref6"></ns1:isMemberOf>
+    <ns1:isMemberOfCollection rdf:resource="info:fedora/rockhall:fixture_arc_test"></ns1:isMemberOfCollection>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.3" LABEL="" CREATED="2013-05-15T02:11:30.842Z" MIMETYPE="text/xml" SIZE="577">
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document1">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalVideo"></ns0:hasModel>
+    <ns1:isMemberOf rdf:resource="info:fedora/rockhall:fixture_arc_testref3"></ns1:isMemberOf>
+    <ns1:isMemberOfCollection rdf:resource="info:fedora/rockhall:fixture_arc_test"></ns1:isMemberOfCollection>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
@@ -2037,6 +2743,41 @@ library@rockhall.org</instantiationLocation>
 </rightsMetadata>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="rightsMetadata.2" LABEL="" CREATED="2012-08-22T20:24:09.602Z" MIMETYPE="text/xml" SIZE="711">
+<foxml:xmlContent>
+<rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
+  <copyright>
+    <human></human>
+    <machine>
+      <uvalicense>no</uvalicense>
+    </machine>
+  </copyright>
+  <access type="discover">
+    <human></human>
+    <machine></machine>
+  </access>
+  <access type="read">
+    <human></human>
+    <machine>
+      <group>public</group>
+      <group>donor</group>
+    </machine>
+  </access>
+  <access type="edit">
+    <human></human>
+    <machine>
+      <person>archivist1@example.com</person>
+      <group>archivist</group>
+      <group>reviewer</group>
+    </machine>
+  </access>
+  <embargo>
+    <human></human>
+    <machine></machine>
+  </embargo>
+</rightsMetadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="properties" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-12-14T19:02:46.468Z" MIMETYPE="text/xml" SIZE="110">
@@ -2047,6 +2788,22 @@ library@rockhall.org</instantiationLocation>
 </fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="properties.1" LABEL="" CREATED="2012-08-22T20:24:09.660Z" MIMETYPE="text/xml" SIZE="110">
+<foxml:xmlContent>
+<fields>
+  <depositor>archivist1@example.com</depositor>
+  <collection>archival_video</collection>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="properties.2" LABEL="" CREATED="2013-04-12T14:23:49.275Z" MIMETYPE="text/xml" SIZE="118">
+<foxml:xmlContent>
+<fields>
+  <depositor>archivist1@example.com</depositor>
+  <collection>[&quot;ARC.0002&quot;]</collection>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="assetReview" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="assetReview.0" LABEL="" CREATED="2011-12-14T19:02:46.501Z" MIMETYPE="text/xml" SIZE="19">
@@ -2054,7 +2811,7 @@ library@rockhall.org</instantiationLocation>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="assetReview.1" LABEL="" CREATED="2011-12-14T19:10:47.071Z" MIMETYPE="text/xml" SIZE="271">
+<foxml:datastreamVersion ID="assetReview.1" LABEL="" CREATED="2011-12-14T19:10:47.071Z" MIMETYPE="text/xml" SIZE="280">
 <foxml:xmlContent>
 <fields>
   <reviewer>reviewer1@example.com</reviewer>
@@ -2065,6 +2822,815 @@ library@rockhall.org</instantiationLocation>
   <priority>normal</priority>
 </fields>
 </foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="assetReview.2" LABEL="" CREATED="2012-08-22T20:24:09.720Z" MIMETYPE="text/xml" SIZE="280">
+<foxml:xmlContent>
+<fields>
+  <reviewer>reviewer1@example.com</reviewer>
+  <date_updated>2011-11-29</date_updated>
+  <complete>yes</complete>
+  <abstract>We have permission to show this video to the public.</abstract>
+  <license>Publicly Available</license>
+  <priority>normal</priority>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="thumbnail" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
+<foxml:datastreamVersion ID="thumbnail.1" LABEL="Thumbnail image" CREATED="2013-05-14T19:26:34.455Z" MIMETYPE="image/jpeg" SIZE="47430">
+<foxml:binaryContent> 
+              /9j/4AAQSkZJRgABAQEAZABkAAD/4QDeRXhpZgAATU0AKgAAAAgABwEGAAMAAAABAAIAAAESAAMAAAAB
+              AAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAAagEoAAMAAAABAAIAAAExAAIAAABFAAAAcodpAAQAAAAB
+              AAAAuAAAAAAAAABkAAAAAQAAAGQAAAABSW1hZ2VNYWdpY2sgNi41LjQtNyAyMDA5LTA4LTAzIFExNiBP
+              cGVuTVAgaHR0cDovL3d3dy5pbWFnZW1hZ2ljay5vcmcAAAACoAIABAAAAAEAAAGfoAMABAAAAAEAAAFM
+              AAAAAP/bAEMAAgEBAgEBAgIBAgICAgIDBQMDAwMDBgQEAwUHBgcHBwYGBgcICwkHCAoIBgYJDQkKCwsM
+              DAwHCQ0ODQwOCwwMC//bAEMBAgICAwIDBQMDBQsIBggLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsL
+              CwsLCwsLCwsLCwsLCwsLCwsLCwsLC//AABEIAUwBnwMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAA
+              AAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgj
+              QrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2
+              d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj
+              5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIE
+              BAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYn
+              KCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqi
+              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
+              3sV/551YttN/54VJY2zzRffq15PlfWvna6cZONz67Dyi4J20Ivsv7r9+lOt4kni/1dSLH+6zPViHy/uG
+              uWNSVJ6na6MaiVhkNutQzW4h6/8AfdXvJSoVTBrdYzkV9Wc08DzvSxWt2HerG8/3KcE8mWhnUR/crVYr
+              2juos554T2WrmhnnpNFs21PfRpcRc1DvM37zZUvnLD/rq2ejTRyU3Zvmd0/Iy7iweL/U/u6zr6xcS8PW
+              9cSedWfc23rXXRqPc83FUIvYw5ofKNELPMPvVp/ZkEn/ACz3/wAdMmEfc11qoefLDMreao6v5klDb8fu
+              atfZkx+4Skz/ALdPmXQbpJasqzTTeVsCc02H7UYvuVfhtvLNWYJv+eFQ6ltkaKgn1Mb7Dc+b++/74q3b
+              23lfPs5q3M4/5bVm3WsQw9Xp80prY0VOMNb3LVzcvioor9Zj/wA9KyrzxNaQS/6zzJKz5vFq9YEloUI2
+              sZucm7nW/JN89HyVyn/CSPt/f0kOuz+V+5j8z/bqlSv1MJNX0Olll/dvRD++G8/6usmzmvruP9+5j/uV
+              NN5n3Kv2fS5FlZuxpwypUU8/mj9zVW2tnersVs/+rrOSjFhyPfoVvNeXFQXlz+82Vcmt3mP7j/WUyLSH
+              l+eb95JVqcepdOMtkUIpv33+rqWG2x8/+rjq/FYt5m+o7m2aWhVE9inRurszb4+V/H8/9yqcOmNefP8A
+              /bK2/wCzEik/56UfYTD/ANM62VdQWjPLr4e7u0ZsWjZHNTw6Whq95Xk/66meclJ1ZS2OXltsQQ2McXQU
+              Sx+Uaf8AaEl6VHIfMNKN76kcie5WmmqOWV6u+TTPsFaqSRlKn3MuZJJv9RUc1i8p71rTeXDVC4u0zshr
+              anUbehEoqKK32OP/AJbvTPsKAbKf5v8AsGje/wDcrou+5nynC2axzReX5cVbOmuv981wUOqzf9s6vQ6h
+              N+7rzfaRWjR9VyTeqZ3kN6kPz7/+2dTw6zAYv9I8uuIhu5Zv9e9XoZPO/dwRyS/9M6ftYSMXSqLS9zr/
+              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
+              3UOt8hvQ037NUvkj0NOTNfU3a2Z4kYR6o+Rv25+fiunlJ5n/ABK7fn/tpPXi3lT/ALv/AFf+s/pXsv7b
+              MqS/FuSN5Pu6ZbjYn+9LXisvkedH8ksn7z+leHjZWqs9nJfeo3/vS/8ASmVbuGTyo/3/AO88yT/nn/00
+              rM1vz/7IuE+1fu/MrTnmg/0f9x/y0k/5Z1h63eQfYpEMEv8ArfmrjTuetL3UctrEb/arj/Sv+WdcXrUM
+              8Is3gn8uSL95HJH+7lirrNee1+1XH7iT/j3+X93XF+IEgh+zxiCSP/tnXdRmuZHjYyOjsX/CH7VPxL+E
+              kslx4H8W6jHJdSRxyx3En2mKUR/6v/W17X8K/wDgtF4z8E2zp8c9D0nxHZwySSSX1pcDTpY4v+Wfyn93
+              XxT8X/iho3w6td+uTyy3nmeZHaRyfvZa+e9S8XeJ/jdrMg/eW2kRXHmeXH+9iir06cLpTbtE+f8AaSg3
+              GD2/A/Rr9r7/AIOF9T8ZeG7fw7+xb4ev9I1XULeSO91rUhHJLp8npaxfNG7/APTSX/v3X532Xh3xN8S/
+              FWoaz4qt9S8Ta5qPmXMhluJLm7v5P+enm/vPN/5ZV1nw48JeHfDuhSXFza30lxLHJJHJJbyb4pP3nl16
+              1YfBbw/4u+DVuPhbH4/j+Jdr4o8vQ59IsbySX7Pb232mSTzYo5P3nmeV/wBNP3n/ADzrixebxwq5YLXa
+              /nfS5l9WeInKdS+lvXpdLe36nYaF+2JafD/wXoPgv/hQPhKTT9L1i71LyL/UJPN/d+Z+7l+023mfu/3X
+              /fqs7xB+1NL4q0rQx/wrLTdNj8Njw/bSXEesXEltL9k8yST/AJdvL/0nzYv+ufl1v/Bb4p+B/G+ja9Z/
+              G7SvH+veO9G0e8kt/DUH/CQXN1qlxcXMkklzbeXcyeVBH5UXmeZ/q5PM8zzP9ZXmHjT4L+GvDHwM0/xj
+              odjfXMniXU4444I7fX7aK2jj8yP915tt5cnmeVFJ5vmSP/yzjjryadShOV502tX1bvo/PbXfZ69jOpTn
+              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
+              gajH58sP+h2Ecfm3N1/n+/TpU5SkopXYVZRpxcpysu4/xTrfkwahd3sEsVvaxySySSbI4oq+Yfjx+2pL
+              f3X9jfAlPt15H5kbX/2fzI/+2VeV/GH9pHxb+0/rsliry6T4dim8wWFpHJKkX/XX/nrJ/n93UfgHw34Y
+              0ETT6rBfSR+ZJHJ5lnJ+6jj/APtle1Tw8aGs/i7dj5LHZhzXUbpfc3/kVPCfw21fxbrNxfeMrjzbuKSP
+              f5kfm+bXb6XY6rp3gyS6tLnTY/M8yWMR2/7394f3f/LX/rlWMkmgw+E9/wBiuYry6j/5Z2dx+6kk/hrT
+              Nj4YOp6XYwWd7Hby3Eckn+h3HmeXH/mKlUryd5c239f5nlKl7a0aiunZdV+VzsdP1TVPC2gR2MMVlLd3
+              V3ZyW8n9ntJ5Udv5kn/PX/rlXY/CX9pf4h/CbxTef8IHb+ErnyvtFz5l/wCHvtMtvcXHlfvP9Z/07RVw
+              lnonguXx5IxtNSjs7XT/AN3HHp9x96T/APdVWSx8Hw23iC+mtZJI4riTy/8AR77zfLj2R/8Ax2vBlXo1
+              J+9FtNrdadFbW/yPVeFqKmraNJ6abau+xr6R4w8YaPY6p4n8P6pbaT4gi1S8u4/EtpbyR6mknltbSR+b
+              5v8Aq5P3v7qul1z9s34keL/hL4D8D65b2WiW/gu40uSwsY5JJd7Wf/Lz+9//AHcf/POvHY/+EZ/4VnDa
+              XaXP2i6+zxtJH9ok8ppJKZ8UdJ8N6jrGgQWb6lHJ+8kWdLe4821NawcJV+WUNbtap7W8mcrwihTi3KyX
+              Ltbsntb+t99T7Ik/4Ko/GzxB8cPDesx2HgDVrnRre8+xQSaXcfuvtHkx/fil/wCmdfNs+ueO/C3jjxpc
+              y6bpslzrRuNOuJJNIkkiikk8u5kki83/AK6/9s68u03xrp9t4vvIru226jawxx/u47r96n7z95F+8Fam
+              nfE3RofBesXfiPxV4k0+Oae4uUg8u+lt1k/7+VzV8PiKc41KVFezdrqzbb2T05np5pep7FHC5b7KUXjO
+              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
+              HzaLld7aLdPV3fwq1uvWfGe2/ZCs/Hnwv8P+D7DwlHol08lv4i1KPS7iPyre3+zSGSX/AKaSeVLF/wBv
+              NcVqeqfsoTft7XX9op4ZX4R6ToM+ow2ltZ3TxXV75cXlx9PM3eZ5prhvjd430zxB+0HcaV8O/ht47tpP
+              DekfZv7Ln1lvNivJPKkkk/4+pMfu/K4ryP4f68158QtUvvEmjeKdR8qG4/eQXgjuIvL/AHf/AD1/661z
+              4LKZexlUdeqvc2c9dXe/WzJr4/mqJKnD4pvZ2+Fxt0ulo9tzG8Q3fhLxBrMk/hy4sbaTS4v9D/0P93PJ
+              /wAtPN/8hV9B/sEah+zdr1q99+1dceH7bzbi8kkjv5Li2kijjjTy/wDVf7fm18wWviK9t9FkkOnXP2iX
+              zLn955f+sk/1f/tKodK8R3/w5sJEurXV7bTNUt47LUI4LiOJtknl+ZJ/3782vo81yn67hHTp1pRktfda
+              Un5Xsc2V5h7Cryygmrcq5tUno9e3qfUnhvX/ANmLR9c8Wf25q3huSwl8Lpe6ZaR6tJbeVq1xskFt058s
+              S/d/6Z16P40tv2L9L8Q6PoOh674JvdPuv7Ptrq//ALZ+0+VJ9pf7VIf+ukER/wC/lfC/xo/Zjt/2zfjH
+              DcfDax8U2t1LB58l39jjvZZ7SOP70sXmx/8ATLmuQ8S/8EgfiRF4jk0vwTZa3q7xWcdzI02j/ZJYo5N/
+              /TxJ/wA8q+OxWTU3OMa2PqQbirpy8lu9NT7HLK8alGM6eFTSk0rQk72k3ZWbvv8Agux+hXx/+Kf7Hngf
+              4vaPJ8P9M8CeKdGivI9SlgsPLKeX9mmj8vze/wC8liPlf8tPKqX9mT4g/slDXUb4x3Xw3lklSe2t47/T
+              1mVHkuZJP326WP8A5ZxRf9/PLr80G/4JZ/EbTNP1y98T2cuk2fhzy/7Qu59P/dWv7vzP3v8Azy/5ZV4B
+              J4Ourzxfb6F4Uj/t/ULq4jt7eCxt/NluppP9XHFF6+1b4Lh/CxvzYqpUSvde0ajezs3ytP3XZ/Ek7WZc
+              q0K3uRhFPe/LrZ9uZtbXW2nQ/WT4p/tEfs/6BbeKPC3w7tPhcNQupI45PFElms0VpHHbR8aYyz+X5kkn
+              m/v/APVx/wDTST93TvBuo/sr/Cv4D+GJLDxn4A8Q+LdaS41HVLC7kklfS/MhkMdt9p/GLrvkevkH4If8
+              EVfjh8WNW8Qab4t8La34JvNCjuF8q88P3l691dxxxSSWvlW0UhjPlXMUnP7vny/9ZVz9rf8A4Iy+O/2R
+              PiD4S0HxVrltq8/jCORrV4PDuq2Uv7v/AJZ+VcxR+fJ/0yjqsRhcHUh7ChiZRu23ySlJbvRt89rPo3e2
+              +tmTQhTpVOaUU3aNrqKVtOml7/Pbofe9pqH7HngiLw/pbeN/g54kk+x2ceoal9rkjTzfttl5n7qL/Vf6
+              N5v/AJErZ+LHxQ/Y88W3eox6J4r+FNi8eqahe2d9Ya5cebCv9ix+XHF6xyXP8H/LT/V1+S3hP9hPxD4i
+              v9cs767ubG50b7RH5ceh3dzJLJH5fmf6v/V/63/gNdV8OP8AgnBb/EP4f6prd98QvsN3FHH/AGTaR+C9
+              TvotU5j/ANbcxDy7b/x/5K8PE5HhaFT2lXMaqat/N302T3sehCUMTF+zpxad30XW39XPq6x8afBaxvbn
+              xv4Y8ceDoNQ8Ltp9zbeGru8ktrfxBHJcyfaLaXyu0f7oj/nmknmffrrvFX7aP7OHxG8eavF4C8I+EvDE
+              2vCOKTUtXkcQaMPs8fmfZHeT55fN83983yIf3mZPkQ/F/wAPP+CaGl+L9D1S48TfGLw5oE+mapBp62s3
+              hfVbgzRSeX/pH7uL/ln/AM8/v1fX/glfb23i7XbPxD8UbQ6Rp32d7LWdM8H6pf2eqRyf6yT5FEkZj/df
+              u+f9ZGa7pTyqrP8Ae4uUpJNL4lZPpqtbd99bN7W+u4ZyzNeaqsBgYTjJWk3ZKKXvScZSnGMG0t3dK3up
+              Xaf6P/stT/sR+D/2J9Ui8beOvhdH8SZ/7UeS41LV5Jr/AMwySRx+Vh43x5flf7Un8deCLrn7PfiH4XeJ
+              vtnjrwkmp6Nb6e+jrPLIkuo/6Sn2geUMYkEfSI98/wDPOvhmH9ha7kvZpNZ8ZeG9K0iO5gjknu7W4Fz5
+              ckscfmfZIvMz/wA9KXxZ+wlLoeoTpo3jbRdXtftEkVvPJp89rLLH/wA9PKl/1XmUpUssWIjWWLnzuzbT
+              qtS5Xezs3GO+sVyX6prQ8uSp0/aYeOAja7v7ydt0lGW1rrf372+LZn1P4p8dfCG8t9Pj0XxB4WieKeTz
+              JPMk/dfu5K57xZ4q+FMmqaXP4Q8T6RFqVrp8n227kk/0KX95/q6+a0/Ye1l7jT4LLxJoEkl95m3zI5Io
+              ov8ArrT4f2HtQtNQ+y+IfE+k20n/AD0js57yCX/gcXSvZw+KwVC3+1N76bvtso7LseNicorYp831dRei
+              TWi6Pfmtrp1Pdp/ir4B1K51C0tZtN0hLqbzJp5JP9VH8v/Ht61u+E/HPwn0L4ZzWl7rHhaW/lt7j7PH5
+              ckktr/rOZf8AppJ/cr5pj/YwnlttUkm8VWMUemeX5fm6ZPF9rjk/jqtD+yLHNbyeR420SXUopJI/sEen
+              zyyypXTVx2CnH2arySve6U9dL7uL016WOH+ypwrurKKvba8bLdbX3/y7H0x4n+KXw612+s5LXUtJ8iKa
+              3kmkkkklll/1dbepePfg/Dr+my6XrmgfZ4vtEdxH+88r/lnXyt4Q/Yf8UeNvBOr+IPCMxvtP0GS3+3XE
+              Gl3EttYR3G+OPzZf9XF5kkUn/XSsmH9lLXLrS7ee1urGWO68uQf6PJ/y0211UYU6q5aVWT5LppP89P61
+              OOrGlGpKVblTdnskl6fcfUniXxl8LbXxdJqvgLxBogSW3j8y0n8zypZP3n/2r/rnW/4C+I3wj1nSLh9U
+              udEsZJby48uCf/WRR18Qa38BtY0HXvsEDxX0nlySZjt5Nn/LOud8Y+A9b8BxRyeJdKubaPzI4vMkj/db
+              q0eHp14qmq0ubunr8+/qyKNGEJuS5delrrbov0vZdD9CYviL8Iv+Ffx+fe+G/tsUccnl/wDLSVo/LrX1
+              L4i/BQ6ppU1pf+FpI4riSM9f9XIJOf8A0VXwT8J/2e774xxznwbeWMskX7ySD/lr5ddpb/sO65PoMF9P
+              N/x9Rx+XHHZ+an/o2uatksJXlOvNLX7dt15mscyo0pcnLC6t/wAu72a1P1I8P/tlfAv9pb4jav4Z+N7/
+              AAl0C18UaJb22l6xaRyWVvoWqWfmi3klJkfEc/m+W/8A2z/u1J8MvgZ8B/hhPN4l+OnibwV4k0bSopNR
+              vPD+m29w1zcXkkcclvpcv7nrJ5ku8/8ALPymr4E+B/7JR+BnxUs9e8T6VqWv3WmXn2aOCSO3iitbn955
+              cn+tkr3fx98dPH/xo8X6x4Q0618SXx1w/wBq+IY59QSWW6njjk/eS/8ATT7NL+8/5aRx18fU4Xq0aipZ
+              diZRpNLn99Kyvq1o7aPfvbsreq86w84Sq4mkpTWy9m7t20ST2u9Fb13u3X+P/wC1Lov7RPhPQ7VvBPgn
+              SLHwj/x73+i6HJbX2syR97m5/eebB/cH/PT95XLW83g6GZLoJHc28skfkxz6fJ58Pmfwf+ijXoHwx+GH
+              ivVdH8UHwn4Cubu18OTW8txBHqFr5v8ApH/PKLf+9/5a/wCr8zy6ydO8M+L9W8G3iWXgXV7b7BZ3ElxP
+              NJDBFEtvv/56/wDXL/tpJX1uFngMqw/1TDSUYQs9aiu7tavmvvv0Pk8VHGZhX+t4iF5Tvp7Nq11srJXt
+              v16HDXE3hqzMTfZfNeZJI9iafJ+98vb/APHf/IdQ6UnhqT+0LTV7b93LJ/yz0+T915ldy9j4t1TwXB4i
+              0nwxq/8AYcVxHJcXcd5H9mgjk/d/vf8Anl/rYv3lSeOPh943+Gd/peo+NvBur2Ol61FJHbzyXn7q6Pl+
+              ZH5Uqf8AbWvoaGY0Of2fOrybVuZXfdJd/I+br5fXcfaxi7KMdbNbXXM35282eHXGnSaHa2+q+Bp9Siki
+              /eyQfZ5I5IjXpfw3+L/hbxXrOnv4vnvtLvfs8ltfSSX9x9nl/wCecn/o3/v5T2k1HT/FDxt4eube31CO
+              O5toHvPN82OT/Wf+RPNrm/EnwZ1i50uSe30C503VbW8k06STzP8AWyR/8s/+/flVpiqdLGwSqSs7Ozur
+              p7O2tml2KwWPnRm4yjdab6p9bs+4v+CcTfBe/k+Knh/48/FfVvA9jqUdnLp/leL7jRor+OT7SJOPM/e+
+              XJsf/Z8yvXNI+NfwCm0O28V3nxp1S+13w9Npcmq23/Cw9RluLrPmW+qeUv2jzH/d/vI/+ucdflp4I+MM
+              9hayab4rsLm81i6i+yaZJJJ/qlk8vzN//PX/AKZ/9NI/+Wgr6G+FPwR1Lxz4jiuvA3hPTdDtLTR/tMkc
+              eoW8VtItv/o0jy/a5/3ryfupPK/dj/lpH5dfmfEvB+FrYiWKxVeUU1/ds7RXVvm79NHvdI+3yfPMZSgq
+              OFp8zb2Tm95JdFbX1vZdLpP7Q0L4r/s5eGf+Cg2t38vxQvZPDHinw79k/tGHxnqclv8Aarf7GYxLc/aN
+              37yPzePM/wCWVQWeq/sy638DviP4B8RfFcXd3pGt3Emgf2l4o1R7Ce3zHc6cgh83y9kY/wBD9f8AR5K+
+              K/hn4e1Tx7aS+HrvRLK21vT9IkvPtcuoWttayvH5cifZriWX/nn5v+3/ANM69Mn8R/DWz1DT7+38OeJI
+              9Mi8yzvI5NT0r7dfwyRx+Wf9X9+OTzPM8v8Agk/56V85j+GcHhZJKtO8YpXXLpZ+7rdNL+W2z1TPpsBU
+              znFtqOGbfMrq0nrZqz917rfvtbQ83/a68G/BvxF481TXf2b/ABJY2Xh1tPs70aK73ElzFLNc3EcltB5v
+              /PCPyWk+v7uvc/8Agn7/AMFwPGX7ImpWfg39oWW+8c+BIiqQSc/2npcf/TB5P+PiP/pnJ/2zkrzf9lbQ
+              Ph542/aQ8YW3jfwhbavpFz4V+06daS+K/sKWEnP2iTzZceb/AMtZPK/eeXXCSeCF8e6P4o1/xZ4W07QN
+              Xu7SO50zTJNW+xRWqWskf7n7NL9/z7bzZMf89LnzK+uwGKw6SwtSc24pSVSThzLmfwq0rysk3JNNO1pJ
+              6Hh4vA4+GIlKNBJ3UXTjGW8Y6yS5dFquunMnZJu39Dv7O/7TXgr9qr4cWnin4G69aa3pF0g5ikBktpMD
+              93cR9YpB/cNdd4vuli8J6ox/59Jv/QK/nU+EeifGT9ij4yya18DPEem+GpPMjWU/2l9ssNVj/dyf6qL/
+              AI+Yf/Rf/PSv1b/ZD/4KZ6R+1To0vh3xydN8O+N3t5I2to7r/QdT/wBu3ll2SJ/1zk+b/rpW2d4vGYPD
+              yqUoe1ptP3o6vZ6uOrS802u9jbBYadZxqVYOCvvJWW67n2N8O7/z/h/oDz/ek0+3ZvxiFbZv4/79eHfD
+              r4hJF8OfDm1+ukWX8f8A07x1s/8ACxx/fr4qhx57GjTpJPSKX3K36Ht1eHa06s2l1Ox+L2orL8J/FSQN
+              876RebP+/L1qWHiCKXSrdy/+shEleQ+PviEl34C8SRTv+7bTLlP/ACC9O8L/ABMFx4Q0eSZuJtPtpH/7
+              9pXnT44qPFSqWfK4Jbdbv9GdX+r9X6vCLWvM/wAo/wCR0H7Vl2ms/sv/ABKs/wDn68K6rF/5Jy15n+yZ
+              4jh1rwH+zpq7t89/8Ky3/fyHRpK3fiZ40TWfhb4rsZn/AOPjQ9QH/ktNXhf/AATz+IMV9+zD+yBLev8A
+              vp/AAt/++dNtT/7SrkxnEtbE81eCejpr5xk5fkmdtLLpYfDQpNf8/wB/J0or9D8o/wBmP9mDVvC3xL02
+              awg+G2sppFnHqUkF/qckcEsk++OOOX91/rI/3pr1HQPj34u8P/FrWNVvLDwBcx+DLjUYB5mp3EVrFdXk
+              /nz+V8n73935Uf8A20r498DeKfi/oOjSJYaBc20l1NJJceZp/wA+aq3LfFTT7XUJ4NK1eW8upJLjZ9n/
+              ANbJX9B4vK8PjferO707qyXS3Mlqux+JRrYyi1Gi0t+qd233cbuysvueh738IPjprHgfwv448eQWPg25
+              uI9tl9kn1eSK+ljjkkk/dReX/wA9Lj/yHXnC/tt+JbXxn4p1vQILbTv+EnePzYIf3skUcf8Aq44pa83P
+              gz4g6hoUcFxoV7+9jj8z/Q/3vmVQ1T4V+PrODz9P8OalLJ58e1fs/m10UMtwEKs69SN5S7u+mmmrfY5+
+              XFOMaMJJRjZLp3vrZWvf8D1DwV+0pqPg+wkNnpOmy6xLbXCXE8lxJ5stxcSeZ5lcfefHz+ytbm0OzfTb
+              O9v9Kjs/L+2fvZU+TzP/ACHFLWMvwp8brdRyQeHtS8yL+L7PXPaf8LvFNh8Up9T8OaVqVzqN/p8lleJ9
+              jjkSKGP/AFn/ALSrd4HDuU50lrZc2t9F82Oh7VtRrSVrOyWln026dz0PxJa6u+n6fdwf2bHb3XlyRiOQ
+              ySxCP/MVdFfHxN4o8I28c8HheW30aOSSR/LH2mVf3dtH8v8A21lrgR8OfHzR7P8AhH9Skj/69xUcPhH4
+              hw6p9mg8Nal9nlj8yST7H/HXZQx2JwV/q9blUnZ2t8Pb4v67HHLLYYlqVampcqurv7XzR6H+zN8RvEvw
+              l+KEkPhS8itTLDJbW88c/kxxSfvP9G+5J/rP7lfQ3hH9uzxb8D9R8VeNPjCnhfV7a5tpNNt2u9XMMckc
+              Yztiiitfmk8zzf8ArnXx3/wjPxA021uPI8OXrRzxyeZGln+9lrznx5+zx8bvjClvKfBXi25t/Lk/dvHH
+              F8//AH8r5nH5dSddYluKb3fXzs+ZWv8AgfWZZXrVKXsJ6qPp3805aarfX0ujd/aA/a3+JP8AwUE+JOo+
+              Hvh0bjSNC13VP7Vn01Lny7G3P7uPzLmT0jjH/wAbjr7B/wCCQvgX4Vfsfa/rXiHxBdfbfiVpt7b29rrK
+              3EiNYW8kb/aEtY9j+XHj/lr/AKyvj/wH8Av2jvhx4dj03wR8J7a3i/1klw6W/wBpmb/prL9prp/Bf7Pv
+              7RFh4u1ie88Ix2Vtex/afPknt/3skf8Aq4/9bXzmPy+piaaw9JqFFdIyV5dr213+fds+iw+M+oKcqTTq
+              dLpv1vqrNrbyufY/hT9vm98NfAr4j+MLfxdrcPxV1LU9UilvoNSC6hd28kkccfzeVtWAeVEdpP8Ayzqb
+              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
+              rSP7HLZ6P5cdpb+XF/q7nmuJj/4JueFrwx/8Jb4k8f63s/jn1byoqs+Bv2bdLh+KvjDTbHWNfij0a30+
+              OGSPUP3svmRySfvfWr+pUYJ8t5ad2uqEsbOo4uS5fkn0Z6j4l8Wza9rPh+TStOufL0vU/tMnmSeV5q/Z
+              rmP/ANq1H4/8V6j9q8NyQaN5nla5H5ccdxH5ksnl3NVLT4NT6bdb4PE2tyR/8857eOWKp9S+FM95dae8
+              F75cdhqEdzJ5dv5Usv8ArPephRoxV3D8WVWxdeeikvu/4c5D4jftn6j8M/M/tz4e+Noo4pPLjkh0iS5i
+              l/7ax1x037ffjTXvMj8D/Cnxtexy/wCrk/st46+gIdGvbOX9xf3Mf/XS4jiqGbQrmaXfO/mf9NJLg10K
+              jh7fB+JisTiHvU/r5M+XIvjR8YrnXtUl8K+ALmG4upI5LyO7uI43tZPLqaHxn+0Td38Ly2Hg7TY4vvRy
+              Xnm/L/2yir6Rh8EzfarieCGPzLry5JJI/wDlr5dLeaO2mxf6ddW0f/XW4jirmnl+Hk+b2cbnfDNcVpH2
+              srf13ueJeBPF/i/WPG3i21h1m20SPS7y3uWtIdH+3xS3Ekf7z97L5ddHdat4vlljkvdd8P30csnmSQSe
+              H5LaT7v/AF81l/Dm80zR/i38TJNcuI4/M1Czkt5P9b5v7uX/AJ5Vvr8WfCc+s/2bpeq2z6h5fmeR9oji
+              lx/21qauWqVmnZWWnLG3/kyZrTzRwfLJN2b+0+/aLS+5HD+I/Gmv2V3o8fivw5pl8lrqUckUmk6gYpZZ
+              P3v/ACyuf/jlaR+OmjWf/I4aH4p8P/8ALPN3pZli/wC/tt5ld1rXg6fxXFZyLD5f2W8jvUkkvPN8146f
+              /wAIleyy7/P022kl/wCmcktR/YVOtFc0FfyfL+Tt+AoZ5OlJ8smr99dvx/E4tviL4W8XaFeQ+Eda0i9k
+              lt5I4447z97v8uT/AJZVv/DmWK38N6d9sjliki0+3jbzI/L58uuU+Knwj17WLCeT/ijdSt4reSST7Xp/
+              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
+</foxml:binaryContent> 
 </foxml:datastreamVersion>
 </foxml:datastream>
 </foxml:digitalObject>

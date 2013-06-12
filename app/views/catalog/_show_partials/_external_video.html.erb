@@ -1,0 +1,8 @@
+<h1>Video: <%= @afdoc.parent.title %></h1>
+
+<% partial = @afdoc.generation.first.match("Original") ? "physical" : "digital" %>
+<%= render :partial => "external_videos/show/tabular_display_#{partial}", :locals => { :video => @afdoc } %>
+
+<% navbar_items << capture do %>
+  <li><%= link_to('<i class="icon-arrow-up"></i> Parent'.html_safe, catalog_path(@afdoc.parent.id) ) %></li>
+<% end %>

@@ -1,16 +1,14 @@
 <div id="header-navbar-fixed-top" class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="container">
+    <div class="container-fluid">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>
       <%= link_to application_name, root_path, :class => "brand" %>
 
-      <!-- Navbar items when user is logged in -->
       <div class="nav-collapse">
-        <ul class="nav pull-left">
-          <%= render_add_assets %>
+        <ul class="nav">
+          <%= render :partial =>"shared/navbar_partials/add_assets_links" if allow_asset_creation %>
           <%= navbar_items.join("").html_safe %>
         </ul>
-
       </div>
 
       <div id="searchbar">         

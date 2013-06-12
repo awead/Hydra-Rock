@@ -1,0 +1,29 @@
+<h1>New Tape</h1>
+
+<%= form_for @afdoc, :url => { :action => "create" }, :html => {:class => "form-horizontal"} do |f| %>
+
+  <fieldset id="date_fields">
+    <legend>Optional Fields</legend>
+    <p class="legend-caption">All fields are optional, but the date must be in YYYY-MM-DD format.</p>
+    
+    <%= f.label :date, :calss => "field" %>
+    <%= f.text_field :date, :name=>"document_fields[date][]", :value=>@afdoc.date.first, :class=>" edit span2" %>
+
+    <%= f.label :format, :class=>"field"  %>
+    <%= f.text_field :format, :name=>"document_fields[format][]", :value=>@afdoc.format.first, 
+                     :class=>"insPhy_auto edit span2", "data-provide".to_sym => "typeahead"  %>
+    
+    <%= f.label :barcode, :class=>"field" %>
+    <%= f.text_field :barcode, :name=>"document_fields[barcode][]", :value=>@afdoc.barcode.first, :class=>" edit span2" %>
+        
+  </fieldset>
+
+  <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+
+<% end %>
+
+<% navbar_items << capture do %>
+  <li>
+    <%= link_to('<i class="icon-arrow-left"></i> Parent'.html_safe, edit_archival_video_path(params["archival_video_id"]) ) %>
+  </li>
+<% end %>

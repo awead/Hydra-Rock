@@ -8,20 +8,6 @@ describe Rockhall::Controller::ControllerBehavior do
 
   before :each do
     @controller = TestClass.new
-
-  end
-
-  describe "get_model_from_pid" do
-
-    it "should return the name of model" do
-      av = ArchivalVideo.find("rockhall:fixture_pbcore_document1")
-      @controller.get_model_from_pid(av.pid).should == av
-      dv = DigitalVideo.find("rockhall:fixture_pbcore_digital_document1")
-      @controller.get_model_from_pid(dv.pid).should == dv
-      ev = ExternalVideo.find("rockhall:fixture_pbcore_document3_original")
-      @controller.get_model_from_pid(ev.pid).should == ev
-    end
-
   end
 
   describe "changed_fields" do
@@ -42,8 +28,41 @@ describe Rockhall::Controller::ControllerBehavior do
       results[:title].should == "My Title"
     end
 
+    it "should return the permissions portion of params" do
+      sample_permisisons = {
+        "groups" => {"foo" => "read"},
+        "users"  => {"bar" => "edit"}
+      }
+      @params[:document_fields][:permissions] = sample_permisisons
+      results = @controller.changed_fields(@params)
+      results[:permissions].should == sample_permisisons
+    end
+
   end
 
+
+describe ".format_permissions_hash" do
+
+  it "should reformat the parameters hash so our model can use it" do
+    sample_permisisons = { 
+      "groups"=>{
+        "uva-only"=>"none", 
+        "archivist"=>"edit", 
+        "donor"=>"read",  
+        "researcher"=>"none", 
+        "patron"=>"none", 
+        "admin_policy_object_editor"=>"none"
+      },
+      "users"=>{
+        "archivist1@example.com"=>"edit"
+      }
+    }
+    permissions_hash = @controller.format_permissions_hash(sample_permisisons)
+    permissions_hash.should include({:type => "user", :name => "archivist1@example.com", :access => "edit"})
+    permissions_hash.should include({:type => "group", :name => "admin_policy_object_editor", :access => "none"})
+  end
+
+end
 
 
 

@@ -1,0 +1,15 @@
+archivist1:
+  id: 1
+  name: "The Archivist"
+  email: "archivist1@example.com"
+  encrypted_password: "$2a$10$6bwxuFSipbyNem9X8oZgbeCoP7G7h6QEbJpsCDRQ1ZO09h8Nievji" # = "password"
+  reset_password_token: nil
+  reset_password_sent_at: nil
+  remember_created_at: nil
+  sign_in_count: 0
+  current_sign_in_at: <%= Time.now - id.minute %>
+  last_sign_in_at: <%= Time.now - id.minute %>
+  current_sign_in_ip: nil
+  last_sign_in_ip: nil
+  created_at: <%= Time.now - id.minute %>
+  updated_at: <%= Time.now - id.minute %>

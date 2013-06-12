@@ -1,0 +1,27 @@
+<div class="well">
+  <h2>Create a Gravatar</h2>
+  <p>
+    Gravatars are small images that you can create and link to your email address.  They're exactly like
+    profile pictures on Facebook, however, gravatars can be used anywhere and are not tied to a specific application. 
+    We use them to display a picture next to your name in the activities feed on the front page of Hydra.
+  </p>
+
+  <h4>Do I have to have one?</h4>
+  <p>No.</p>
+  <p>
+    If you don't setup a Gravatar, then you'll get the default image next to your name:
+  </p>
+  <%= image_tag("rockhall/default_gravatar.jpg", :class => "img-rounded") %>
+
+  <h4>How do I set one up?</h4>
+  <p>
+    You'll need to create an account with <%= link_to("gravatar.com", "http://en.gravatar.com/") %>, and create
+    an image that is linked to the same email address that you use to login to Hydra.  There's no limit to the number
+    of gravatars you can create, and you can have multiple email addresses linked to one gravatar.  
+    Different email addresses can each have their own gravatar, or they can all share the same one.
+  </p>
+  <p>
+    Go to <%= link_to("gravatar.com", "http://en.gravatar.com/") %> for more information about Gravatars and how to set
+    one up.
+  </p>
+</div>

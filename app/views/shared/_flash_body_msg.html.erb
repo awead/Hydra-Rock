@@ -1,0 +1,6 @@
+<%= content_tag :div, :class => "alert " + render_alert_class do %>
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <% flash.keys.each do |message| %>
+    <%= render_error_message(flash[message]) %>
+  <% end %>
+<% end %>

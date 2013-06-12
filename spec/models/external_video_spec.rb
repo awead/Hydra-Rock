@@ -4,17 +4,13 @@ describe ExternalVideo do
 
   before(:each) do
     @video = ExternalVideo.new nil
+    @video.define_physical_instantiation
     @video.stubs(:create_date).returns("2008-07-02T05:09:42.015Z")
     @video.stubs(:modified_date).returns("2008-09-29T21:21:52.892Z")
   end
 
   it "Should be a kind of ActiveFedora::Base" do
     @video.should be_kind_of(ActiveFedora::Base)
-  end
-
-  it "should include Hydra Model Methods" do
-    @video.class.included_modules.should include(Hydra::ModelMethods)
-    @video.should respond_to(:apply_depositor_metadata)
   end
 
   describe '#garbage_collect' do
@@ -47,15 +43,33 @@ describe ExternalVideo do
 
   describe "relationships" do
 
-    it "should have a single parent video" do
-      ev = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2642")
-      ev.parent.should be_kind_of(DigitalVideo)
+    before :all do
+      @parent = ArchivalVideo.new
+      @parent.title = "Parent"
+      @parent.save
+      @child = ExternalVideo.new
+      @child.save
+      @parent.external_videos << @child
+      @parent.save
+      @child.save
     end
 
+    after :all do
+      @parent.delete
+      @child.delete
+    end
+
+    it "should be parent to child" do
+      @child.parent.title.should == "Parent"
+    end
+
+    it "should have a single parent video" do
+      ev = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2642")
+      ev.parent.should be_kind_of(ArchivalVideo)
+    end
   end
 
   describe "delegate fields" do
-
     before :all do
       @delegate = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2641")
     end

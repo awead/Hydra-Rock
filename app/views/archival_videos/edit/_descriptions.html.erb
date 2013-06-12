@@ -1,0 +1,19 @@
+<%= form_for @afdoc, :url => archival_video_path, :html => {:class => 'form-vertical document_edit'} do |f| %>
+
+  <fieldset id="description">
+    <legend>Description</legend>
+    <p class="legend-caption">Provide additional descriptive information as needed.</p>
+    <%= f.label :summary, :class=>"field" %>
+    <%= f.text_area :summary, :id=>"summary", :name=>"document_fields[summary][]", 
+                    :value => @afdoc.summary.first, :rows => 6, :class=>"edit span12" %>
+    <%= f.label :contents, :class=>"field" %>
+    <%= f.text_area :contents, :id=>"contents", :name=>"document_fields[contents][]", 
+                    :value => @afdoc.contents.first, :rows => 6, :class=>"edit span12" %>
+    <%= f.label :note, :class=>"field" %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"note", :f=>f, :vals=>@afdoc.note, :multiple=>TRUE, :span=>"span11" } %>
+  </fieldset>
+
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= f.submit "Save Changes", :class => "btn btn-primary" %>
+
+<% end %>

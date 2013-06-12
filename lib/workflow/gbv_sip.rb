@@ -43,19 +43,28 @@ class GbvSip
     raise "Invalid sip"                            unless self.valid?
     raise "Can't write to root directory of sip"   unless File.writable?(File.dirname(self.root))
 
-    begin
-      @av = ArchivalVideo.new
-      @av.save
-      @av.label = "George Blood Audio and Video"
-      self.update_fields
-      @av.save
-    rescue Exception=>e
-      raise "Failed create new video object: #{e}"
-    end
+    # Create parent and child objects  
+    av = ArchivalVideo.create
+    av.title = self.title
+    av.label = "George Blood Audio and Video"
+    av.save
+    ev = ExternalVideo.create
+    ev.define_physical_instantiation
+    ev.save
+    av.external_videos << ev
+    av.save
+    ev.save
+
+    # Update child object fields with info from sip
+    ev.barcode  = self.barcode
+    ev.date     = self.info(:orig_date) unless self.info(:orig_date).nil?
+    ev.standard = self.info(:standard)  unless self.info(:standard).nil?
+    ev.format   = self.info(:format)    unless self.info(:format).nil?
+    ev.save
 
     # Rename sip using the new object pid
     begin
-      new_name = @av.pid.gsub(/:/,"_")
+      new_name = av.pid.gsub(/:/,"_")
       FileUtils.mv self.root, File.join(File.dirname(self.root), new_name)
       self.base = new_name
       self.root = File.join(File.dirname(self.root), new_name)
@@ -70,13 +79,23 @@ class GbvSip
     raise "Invalid pid format used in base directory name" unless self.base.match(/^#{RH_CONFIG["pid_space"]}_/)
     raise "Invalid sip"                                    unless self.valid?
 
-    begin
-      @av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
-      self.update_fields
-      @av.save
-    rescue Exception=>e
-      raise "Failed create new video object: #{e}"
-    end
+    av = ArchivalVideo.new({:pid=>self.base.gsub(/_/,":")})
+    av.title = self.title
+    av.label = "George Blood Audio and Video"
+    av.save
+    ev = ExternalVideo.create
+    ev.define_physical_instantiation
+    ev.save
+    av.external_videos << ev
+    av.save
+    ev.save
+
+    # Update child object fields with info from sip
+    ev.barcode  = self.barcode
+    ev.date     = self.info(:orig_date) unless self.info(:orig_date).nil?
+    ev.standard = self.info(:standard)  unless self.info(:standard).nil?
+    ev.format   = self.info(:format)    unless self.info(:format).nil?
+    ev.save
   end
 
   def doc
@@ -114,11 +133,11 @@ class GbvSip
 
   def pid
     return nil unless self.barcode
-    obj = ArchivalVideo.find("barcode_t" => self.barcode)
+    obj = ExternalVideo.find("barcode_t" => self.barcode)
     if obj.empty?
       return nil
     elsif obj.length == 1
-      return obj.first.pid
+      return obj.first.parent.pid
     else
       raise "Barcode search returned more than one document, when there should be only 0 or 1"
     end
@@ -128,13 +147,6 @@ class GbvSip
    self.barcode == self.base ? true : false
   end
 
-  def update_fields
-    @av.barcode       = self.barcode
-    @av.title         = self.title
-    @av.creation_date = self.info(:orig_date) unless self.info(:orig_date).nil?
-    @av.standard      = self.info(:standard)  unless self.info(:standard).nil?
-    @av.media_format  = self.info(:format)    unless self.info(:format).nil?
-  end
 
 end
 end

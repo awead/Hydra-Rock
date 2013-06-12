@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="h264"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="hydraApp"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-12-14T17:41:37.974Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-12-14T17:41:38.428Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-04-12T14:23:37.176Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-12-14T17:41:37.974Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -62,12 +62,20 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2011-12-14T17:41:38.428Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-04-12T14:23:37.176Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-14T17:41:37.974Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="366">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-14T17:41:37.974Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="395">
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:title>h264</dc:title>
@@ -124,6 +132,48 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2013-04-12T14:23:37.176Z" MIMETYPE="text/xml" SIZE="2612">
+<foxml:xmlContent>
+<pbcoreInstantiation>
+  <instantiationIdentifier annotation="Filename" source="Rock and Roll Hall of Fame and Museum">39156042439369_access.mp4</instantiationIdentifier>
+  <instantiationDate dateType="created">2011-10-12</instantiationDate>
+  <instantiationDigital source="EBU file formats">mp4</instantiationDigital>
+  <instantiationLocation></instantiationLocation>
+  <instantiationMediaType source="PBCore instantiationMediaType">Moving image</instantiationMediaType>
+  <instantiationGenerations source="PBCore instantiationGenerations">Copy: access</instantiationGenerations>
+  <instantiationFileSize unitsOfMeasure="">1008</instantiationFileSize>
+  <instantiationDuration>0:50:47</instantiationDuration>
+  <instantiationColors source="PBCore instantiationColors">Color</instantiationColors>
+  <instantiationEssenceTrack>
+    <essenceTrackType>Video</essenceTrackType>
+    <essenceTrackStandard>NTSC</essenceTrackStandard>
+    <essenceTrackEncoding source="PBCore essenceTrackEncoding">H.264/MPEG-4 AVC</essenceTrackEncoding>
+    <essenceTrackDataRate unitsOfMeasure="Kbps">2507</essenceTrackDataRate>
+    <essenceTrackFrameRate unitsOfMeasure="fps">29.97</essenceTrackFrameRate>
+    <essenceTrackBitDepth>8</essenceTrackBitDepth>
+    <essenceTrackFrameSize source="PBCore essenceTrackFrameSize">640x480</essenceTrackFrameSize>
+    <essenceTrackAspectRatio source="PBCore essenceTrackAspectRatio">4:3</essenceTrackAspectRatio>
+  </instantiationEssenceTrack>
+  <instantiationEssenceTrack>
+    <essenceTrackType>Audio</essenceTrackType>
+    <essenceTrackStandard>AAC</essenceTrackStandard>
+    <essenceTrackEncoding source="PBCore essenceTrackEncoding">MPEG-4: AAC</essenceTrackEncoding>
+    <essenceTrackDataRate unitsOfMeasure="Kbps">256</essenceTrackDataRate>
+    <essenceTrackSamplingRate unitsOfMeasure="kHz">48.0</essenceTrackSamplingRate>
+    <essenceTrackBitDepth>16</essenceTrackBitDepth>
+    <essenceTrackAnnotation annotationType="Number of Audio Channels">2</essenceTrackAnnotation>
+  </instantiationEssenceTrack>
+  <instantiationRights>
+    <rightsSummary></rightsSummary>
+  </instantiationRights>
+  <instantiationAnnotation annotationType="Transcoding Software">MPEG Streamclip 1.92</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Operator">TMu</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Chroma">4:2:0</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Color Space">YUV</instantiationAnnotation>
+  <instantiationAnnotation annotationType="Vendor Name">George Blood Audio and Video</instantiationAnnotation>
+</pbcoreInstantiation>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="ACCESS1" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
 <foxml:datastreamVersion ID="ACCESS1.0" LABEL="http://george.rockhall.org/bag/rrhof_185/data/39156042439369_access.mp4" CREATED="2011-12-14T17:41:38.109Z" MIMETYPE="text/xml">
@@ -131,7 +181,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T17:41:38.186Z" MIMETYPE="text/xml" SIZE="394">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T17:41:38.186Z" MIMETYPE="text/xml" SIZE="447">
 <foxml:xmlContent>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document3_h264">
@@ -212,7 +262,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2011-12-14T17:41:38.345Z" MIMETYPE="text/xml" SIZE="649">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2011-12-14T17:41:38.345Z" MIMETYPE="text/xml" SIZE="607">
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -246,7 +296,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="properties" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-12-14T17:41:38.428Z" MIMETYPE="text/xml" SIZE="64">
+<foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-12-14T17:41:38.428Z" MIMETYPE="text/xml" SIZE="68">
 <foxml:xmlContent>
 <fields>
   <depositor>archivist1@example.com</depositor>

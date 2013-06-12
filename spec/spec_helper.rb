@@ -19,12 +19,14 @@ RSpec.configure do |config|
   # config.mock_with :rr
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = "#{Rails.root.to_s}/spec/fixtures/ar"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.global_fixtures = :all
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -37,6 +39,9 @@ RSpec.configure do |config|
   #     --seed 1234
   # Ingest tests are order dependent!
   # config.order = "random"
+
+  config.include Devise::TestHelpers, :type => :controller
+
 end
 
 # Helper method for our local fixtires
@@ -62,4 +67,11 @@ end
 # Video fixture
 def video_fixture
   File.new(File.join(File.dirname(__FILE__), 'fixtures/sips/digital_video_sip/data/content_001_access.mp4'))
+end
+
+module FactoryGirl
+  def self.find_or_create(handle, by=:email)
+    tmpl = FactoryGirl.build(handle)
+    tmpl.class.send("find_by_#{by}".to_sym, tmpl.send(by)) || FactoryGirl.create(handle)
+  end
 end

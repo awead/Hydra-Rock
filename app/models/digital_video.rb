@@ -1,15 +1,15 @@
 class DigitalVideo < ActiveFedora::Base
 
-  include Hydra::ModelMethods
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
-  include Hydra::SubmissionWorkflow
   include ActiveFedora::FileManagement
   include ActiveFedora::Relationships
   include ActiveFedora::DatastreamCollections
   include Rockhall::Validations
   include ActiveModel::Validations
   include Rockhall::TemplateMethods
+  include Rockhall::Conversion
+  include Rockhall::Permissions
 
   after_create :apply_default_permissions
 
@@ -40,6 +40,7 @@ class DigitalVideo < ActiveFedora::Base
   delegate :title_label, :to=> :descMetadata, :at=>[:label]
 
   delegate_to :properties, [:depositor, :notes]
+  delegate :converted, :to => :properties, :unique => true
 
   validate :validate_event_date
 
@@ -49,11 +50,11 @@ class DigitalVideo < ActiveFedora::Base
   def to_discovery
     solr_doc = self.to_solr
     access_videos = Array.new
-    self.videos[:h264].each do |ev|
+    self.videos[:access].each do |ev|
       access_videos << ev.name.first
     end
     solr_doc.merge!("access_file_s"      => access_videos)
-    solr_doc.merge!("format_dtl_display" => self.videos[:h264].first.mi_file_format)
+    solr_doc.merge!("format_dtl_display" => self.videos[:access].first.mi_file_format)
     solr_doc.merge!("heading_display"    => self.title)
     solr_doc.merge!("material_facet"     => "Digital")
   end

@@ -141,10 +141,20 @@ module Rockhall::WorkflowMethods
 
   # Creates a thumbnail for your video using ffmpegthumbnailer
   #   http://code.google.com/p/ffmpegthumbnailer 
-  # Saves the file to /tmp/thumb.jpg
+  # It's offen buggy and has tons of output, so this is all
+  # ignored, and if there's a file at the end that's bigger than zero, 
+  # then it's considered a success; otherwise, it returns false.
+  #
+  # Image files a saved as tmp/thumb.jpg
   def generate_video_thumbnail file
     FileUtils.rm("tmp/thumb.jpg") if File.exists?("tmp/thumb.jpg")
-    `ffmpegthumbnailer -i #{file} -o tmp/thumb.jpg`
+    begin
+      `ffmpegthumbnailer -i #{file} -o tmp/thumb.jpg /dev/null 2>&1`
+      File.new("tmp/thumb.jpg").size > 0 ? true : false
+    rescue => e
+      logger.info e.inspect
+      return false
+    end
   end
 
 end

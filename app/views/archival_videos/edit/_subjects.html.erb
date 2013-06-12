@@ -2,7 +2,7 @@
 
   <fieldset id="subjects">
     <legend>Library of Congress Subject Headings</legend>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"lc_subject", :f=>f, :vals=>@afdoc.lc_subject, :multiple=>TRUE } %>
+    <%= render :partial => "shared/edit/field", :locals => { :t=>"lc_subject", :f=>f, :vals=>@afdoc.lc_subject, :multiple=>TRUE, :autocomplete => "off" } %>
   </fieldset>
 
   <fieldset id="genres">
@@ -12,16 +12,18 @@
   </fieldset>
 
   <fieldset id="event_fields">
-    <legend>Event Fields</legend>
-    <p class="legend-caption">Information about the series in which this event occurred.</p>
-    <%= f.label "Even Series", :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"series", :f=>f, :vals=>@afdoc.series, :multiple=>FALSE } %>
-    <%= f.label :event_place, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_place", :f=>f, :vals=>@afdoc.event_place, :multiple=>FALSE } %>
-    <%= f.label :event_date, :class=>"field" %>
-    <%= render :partial => "shared/edit/field", :locals => { :t=>"event_date", :f=>f, :vals=>@afdoc.event_date, :multiple=>FALSE } %>
+    <legend>
+      Event Fields <%= render_add_nodes_button "event" %>
+    </legend>
+    <p class="legend-caption">
+      Click the button to add additional events to this item such as date, place and series.
+    </p>
+    <div id="events_form">
+      <%= render :partial => "nodes/edit/event", :locals => { :document => @afdoc } %>
+    </div>
   </fieldset>
 
-  <%= f.submit "Save Changes", :class => "btn-primary btn-large" %>
+  <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+  <%= f.submit "Save Changes", :class => "btn btn-primary" %>
 
 <% end %>

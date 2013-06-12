@@ -1,0 +1,65 @@
+deletevideo:
+  id: <%= id = 1 %>
+  trackable_id: 1
+  trackable_type: "User"
+  owner_id: 1
+  owner_type: "User"
+  key: "user.activity"
+  parameters:
+    action: "delete" 
+    title: "Bad Video"
+  recipient_id:
+  recipient_type:
+  created_at: <%= Time.now - id.minute %>
+  updated_at: <%= Time.now - id.minute %>
+
+newvideo:
+  id: <%= id = 2 %>
+  trackable_id: 1 
+  trackable_type: "User"
+  owner_id: 1
+  owner_type: "User"
+  key: "user.activity"
+  parameters:
+    pid: "rrhof:fakepid"
+    action: "create" 
+    title: "Bad Video"
+  recipient_id:
+  recipient_type:
+  created_at: <%= Time.now - id.minute %>
+  updated_at: <%= Time.now - id.minute %>
+
+editvideo:
+  id: <%= id = 3 %>
+  trackable_id: 1 
+  trackable_type: "User"
+  owner_id: 1
+  owner_type: "User"
+  key: "user.activity"
+  parameters:
+    pid: "rrhof:331"
+    action: "update"
+    changes:
+      title_label:
+        - "An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame."
+    title: "Evening with series. Ian Hunter. Part 2."  
+  recipient_id:
+  recipient_type:
+  created_at: <%= Time.now - id.minute %>
+  updated_at: <%= Time.now - id.minute %>
+
+ianhunter:
+  id: <%= id = 4 %>
+  trackable_id: 1 
+  trackable_type: "User"
+  owner_id: 1
+  owner_type: "User"
+  key: "user.activity"
+  parameters:
+    pid: "rrhof:331"
+    action: "create" 
+    title: "Evening with series. Ian Hunter. Part 2." 
+  recipient_id:
+  recipient_type:
+  created_at: <%= Time.now - id.minute %>
+  updated_at: <%= Time.now - id.minute %>

@@ -8,7 +8,9 @@ class NodesController < ApplicationController
 
   def new
     if params[:type]
-      render :partial => "nodes/new/#{params[:type]}"
+      respond_to do |format|
+        format.html { render :partial => "nodes/new/#{params[:type]}" if request.xhr? }
+      end
     else
       flash[:notice] = "Node type is required"
       redirect_to root_path
@@ -16,9 +18,11 @@ class NodesController < ApplicationController
   end
 
   def edit
-    @object = get_model_from_pid(params[:id])
+    @object = ActiveFedora::Base.find(params[:id], :cast => true)
     if params[:type]
-      render :partial => "nodes/edit/#{params[:type]}", :locals => {:document=>@object}
+      respond_to do |format|
+        format.html { render :partial => "nodes/edit/#{params[:type]}", :locals => {:document=>@object} if request.xhr? }
+     end
     else
       flash[:notice] = "Node type is required"
       redirect_to root_path
@@ -26,29 +30,35 @@ class NodesController < ApplicationController
   end
 
   def create
-    @object = get_model_from_pid(params[:id])
+    @object = ActiveFedora::Base.find(params[:id], :cast => true)
     @object.create_node(params)
     if @object.errors.empty?
       @object.save
-      flash[:notice] = "Added #{params.inspect}"
+      flash[:notice] = "Video was updated successfully"
     else
       flash[:notice] = "Unable to insert node: #{@object.errors.full_messages.join("<br/>")}"
     end
 
     respond_to do |format|
-      format.html { redirect_to edit_node_path(params) }
-      format.js   { render :partial => "nodes/new/#{params[:type]}" }
+      format.html { 
+        if request.xhr?
+          render :partial => "nodes/new/#{params[:type]}"
+        else
+          redirect_to edit_node_path(@object.id, params[:type])
+        end
+      }
     end 
   end
 
   def destroy
-    @object = get_model_from_pid(params[:id])
+    @object = ActiveFedora::Base.find(params[:id], :cast => true)
     result = @object.send("delete_"+params[:type], params[:index])
     @object.save unless result.nil?
 
+    type = params[:type].match(/event/) ? "event" : params[:type]
     respond_to do |format|
-      format.html { redirect_to edit_node_path(params) }
-      format.js   { render :partial => "nodes/new/#{params[:type]}" }
+      format.html { redirect_to edit_node_path(params[:id], type) }
+      format.js   { render :partial => "nodes/edit/#{type}", :locals => {:document=>@object} }
     end 
   end
 

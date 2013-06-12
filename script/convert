@@ -1,0 +1,6 @@
+#!/bin/bash
+# Converts all fedora objects and creates thumbnails
+bin/rake rockhall:solr:index_all
+bin/rake rockhall:convert:videos
+bin/rake rockhall:solr:index_all
+bin/rake rockhall:thumbnail_all

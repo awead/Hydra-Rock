@@ -21,96 +21,95 @@ describe Workflow::GbvIngest do
       copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.base))
       copy.prepare
       ing = Workflow::GbvIngest.new(copy)
-      ing.parent.external_videos.empty?.should be_true
+      ing.parent.external_videos.length.should == 1
       ing.process
-      ing.parent.external_videos.length.should == 2
+      ing.parent.external_videos.length.should == 3
 
       # Check parent object fields
       ing.parent.label.should == "George Blood Audio and Video"
-      ds = ing.parent.datastreams["descMetadata"]
-      ds.get_values([:creation_date]).first.should  == "2007-07-09"
-      ds.get_values([:standard]).first.should       == "NTSC"
-      ds.get_values([:media_format]).first.should   == "Betacam"
+
+      # Check the external video object representing the tape
+      tape = ing.parent.external_videos.first
+      tape.date.should      == ["2007-07-09"]
+      tape.standard.should  == ["NTSC"]
+      tape.format.should    == ["Betacam"]
 
       # Preservation file
-      original = ExternalVideo.find(ing.parent.videos[:original].first.pid)
-      o_ds = original.datastreams["descMetadata"]
+      original = ExternalVideo.find(ing.parent.videos[:preservation].first.pid)
 
       # Preservation: Instantiation fields
-      o_ds.get_values([:date]).first.should         == "2011-10-12"
-      o_ds.get_values([:vendor]).first.should       == "George Blood Audio and Video"
-      o_ds.get_values([:cleaning]).first.should     be_nil
-      o_ds.get_values([:condition]).first.should    == "Bars and tone at end of program"
-      o_ds.get_values([:file_format]).first.should  == "mov"
-      o_ds.get_values([:capture_soft]).first.should == "Apple FCP 7 (ver 7.0.3)"
-      o_ds.get_values([:operator]).first.should     == "TMu"
-      o_ds.get_values([:trans_note]).first.should   be_nil
-      o_ds.get_values([:device]).first.should       == "Sony PVW-2800; 20040"
-      o_ds.get_values([:chroma]).first.should       == "4:2:2"
-      o_ds.get_values([:color_space]).first.should  == "YUV"
-      o_ds.get_values([:duration]).first.should     == "0:50:47"
-      o_ds.get_values([:colors]).first.should       == "Color"
-      o_ds.get_values([:generation]).first.should   == "Copy: preservation"
-      o_ds.get_values([:media_type]).first.should   == "Moving image"
+      original.date.first.should                    == "2011-10-12"
+      original.vendor.first.should                  == "George Blood Audio and Video"
+      original.cleaning.first.should                be_nil
+      original.condition.first.should               == "Bars and tone at end of program"
+      original.file_format.first.should             == "mov"
+      original.capture_soft.first.should            == "Apple FCP 7 (ver 7.0.3)"
+      original.operator.first.should                == "TMu"
+      original.trans_note.first.should              be_nil
+      original.device.first.should                  == "Sony PVW-2800; 20040"
+      original.chroma.first.should                  == "4:2:2"
+      original.color_space.first.should             == "YUV"
+      original.duration.first.should                == "0:50:47"
+      original.colors.first.should                  == "Color"
+      original.generation.first.should              == "Copy: preservation"
+      original.media_type.first.should              == "Moving image"
 
       # Preservation: Video essence track fields
-      o_ds.get_values([:video_standard]).first.should       == "NTSC"
-      o_ds.get_values([:video_encoding]).first.should       == "AJA v210"
-      o_ds.get_values([:video_bit_rate]).first.should       == "224"
-      o_ds.get_values([:video_bit_rate_units]).first.should == "Mbps"
-      o_ds.get_values([:video_bit_depth]).first.should      == "10"
-      o_ds.get_values([:frame_rate]).first.should           == "29.97"
-      o_ds.get_values([:frame_size]).first.should           == "720x486"
-      o_ds.get_values([:aspect_ratio]).first.should         == "4:3"
+      original.video_standard.first.should          == "NTSC"
+      original.video_encoding.first.should          == "AJA v210"
+      original.video_bit_rate.first.should          == "224"
+      original.video_bit_rate_units.first.should    == "Mbps"
+      original.video_bit_depth.first.should         == "10"
+      original.frame_rate.first.should              == "29.97"
+      original.frame_size.first.should              == "720x486"
+      original.aspect_ratio.first.should            == "4:3"
 
       # Preservation: Audio essence track fields
-      o_ds.get_values([:audio_standard]).first.should          == "Linear PCM Audio"
-      o_ds.get_values([:audio_encoding]).first.should          == "in24"
-      o_ds.get_values([:audio_bit_rate]).first.should          == "1152"
-      o_ds.get_values([:audio_bit_rate_units]).first.should    == "Kbps"
-      o_ds.get_values([:audio_sample_rate]).first.should       == "48"
-      o_ds.get_values([:audio_sample_rate_units]).first.should == "kHz"
-      o_ds.get_values([:audio_bit_depth]).first.should         == "24"
-      o_ds.get_values([:audio_channels]).first.should          == "2"
-
+      original.audio_standard.first.should          == "Linear PCM Audio"
+      original.audio_encoding.first.should          == "in24"
+      original.audio_bit_rate.first.should          == "1152"
+      original.audio_bit_rate_units.first.should    == "Kbps"
+      original.audio_sample_rate.first.should       == "48"
+      original.audio_sample_rate_units.first.should == "kHz"
+      original.audio_bit_depth.first.should         == "24"
+      original.audio_channels.first.should          == "2"
 
       # Access file
-      access = ExternalVideo.find(ing.parent.videos[:h264].first.pid)
-      a_ds = access.datastreams["descMetadata"]
+      access = ExternalVideo.find(ing.parent.videos[:access].first.pid)
 
       # Access: Instantiation fields
-      a_ds.get_values([:date]).first.should         == "2011-10-12"
-      a_ds.get_values([:vendor]).first.should       == "George Blood Audio and Video"
-      a_ds.get_values([:file_format]).first.should  == "mp4"
-      a_ds.get_values([:trans_soft]).first.should   == "MPEG Streamclip 1.92"
-      a_ds.get_values([:trans_note]).first.should   be_nil
-      a_ds.get_values([:operator]).first.should     == "TMu"
-      a_ds.get_values([:chroma]).first.should       == "4:2:0"
-      a_ds.get_values([:color_space]).first.should  == "YUV"
-      a_ds.get_values([:duration]).first.should     == "0:50:47"
-      a_ds.get_values([:colors]).first.should       == "Color"
-      a_ds.get_values([:generation]).first.should   == "Copy: access"
-      a_ds.get_values([:media_type]).first.should   == "Moving image"
+      access.date.first.should                    == "2011-10-12"
+      access.vendor.first.should                  == "George Blood Audio and Video"
+      access.file_format.first.should             == "mp4"
+      access.trans_soft.first.should              == "MPEG Streamclip 1.92"
+      access.trans_note.first.should              be_nil
+      access.operator.first.should                == "TMu"
+      access.chroma.first.should                  == "4:2:0"
+      access.color_space.first.should             == "YUV"
+      access.duration.first.should                == "0:50:47"
+      access.colors.first.should                  == "Color"
+      access.generation.first.should              == "Copy: access"
+      access.media_type.first.should              == "Moving image"
 
       # Access: Video essence track fields
-      o_ds.get_values([:video_standard]).first.should       == "NTSC"
-      a_ds.get_values([:video_encoding]).first.should       == "H.264/MPEG-4 AVC"
-      a_ds.get_values([:video_bit_rate]).first.should       == "2507"
-      a_ds.get_values([:video_bit_rate_units]).first.should == "Kbps"
-      a_ds.get_values([:video_bit_depth]).first.should      == "8"
-      a_ds.get_values([:frame_rate]).first.should           == "29.97"
-      a_ds.get_values([:frame_size]).first.should           == "640x480"
-      a_ds.get_values([:aspect_ratio]).first.should         == "4:3"
+      access.video_standard.first.should          == "NTSC"
+      access.video_encoding.first.should          == "H.264/MPEG-4 AVC"
+      access.video_bit_rate.first.should          == "2507"
+      access.video_bit_rate_units.first.should    == "Kbps"
+      access.video_bit_depth.first.should         == "8"
+      access.frame_rate.first.should              == "29.97"
+      access.frame_size.first.should              == "640x480"
+      access.aspect_ratio.first.should            == "4:3"
 
       # Access: Audio essence track fields
-      a_ds.get_values([:audio_standard]).first.should          == "AAC"
-      a_ds.get_values([:audio_encoding]).first.should          == "MPEG-4: AAC"
-      a_ds.get_values([:audio_bit_rate]).first.should          == "256"
-      a_ds.get_values([:audio_bit_rate_units]).first.should    == "Kbps"
-      a_ds.get_values([:audio_sample_rate]).first.should       == "48.0"
-      a_ds.get_values([:audio_sample_rate_units]).first.should == "kHz"
-      a_ds.get_values([:audio_bit_depth]).first.should         == "16"
-      a_ds.get_values([:audio_channels]).first.should          == "2"
+      access.audio_standard.first.should          == "AAC"
+      access.audio_encoding.first.should          == "MPEG-4: AAC"
+      access.audio_bit_rate.first.should          == "256"
+      access.audio_bit_rate_units.first.should    == "Kbps"
+      access.audio_sample_rate.first.should       == "48.0"
+      access.audio_sample_rate_units.first.should == "kHz"
+      access.audio_bit_depth.first.should         == "16"
+      access.audio_channels.first.should          == "2"
 
     end
 
@@ -120,57 +119,56 @@ describe Workflow::GbvIngest do
       ing.update
 
       # Check metadata
-      ds = ing.parent.datastreams["descMetadata"]
-      ds.get_values([:creation_date]).first.should == "2007-07-09"
+      tape = ing.parent.videos[:original].first
+      tape.date.first.should == "2007-07-09"
 
-      original = ExternalVideo.find(ing.parent.videos[:original].first.pid)
-      o_ds = original.datastreams["descMetadata"]
-      o_ds.get_values([:date]).first.should == "2011-10-12"
-      o_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
-      o_ds.get_values([:cleaning]).first.should be_nil
-      o_ds.get_values([:condition]).first.should == "Bars and tone at end of program"
-      o_ds.get_values([:file_format]).first.should == "mov"
-      # Preservation video codec
-      o_ds.get_values([:video_encoding]).first.should == "AJA v210"
-      o_ds.get_values([:capture_soft]).first.should == "Apple FCP 7 (ver 7.0.3)"
-      o_ds.get_values([:operator]).first.should == "TMu"
+      original = ExternalVideo.find(ing.parent.videos[:preservation].first.pid)
+      original.date.first.should            == "2011-10-12"
+      original.vendor.first.should          == "George Blood Audio and Video"
+      original.cleaning.first.should        be_nil
+      original.condition.first.should       == "Bars and tone at end of program"
+      original.file_format.first.should     == "mov"
+      original.video_encoding.first.should  == "AJA v210"
+      original.capture_soft.first.should    == "Apple FCP 7 (ver 7.0.3)"
+      original.operator.first.should        == "TMu"
 
-      access = ExternalVideo.find(ing.parent.videos[:h264].first.pid)
-      a_ds = access.datastreams["descMetadata"]
-      a_ds.get_values([:vendor]).first.should == "George Blood Audio and Video"
-      a_ds.get_values([:file_format]).first.should == "mp4"
-      # Access audio codec
-      a_ds.get_values([:audio_encoding]).first.should == "MPEG-4: AAC"
-      # Access audio bit depth
-      a_ds.get_values([:audio_bit_depth]).first.should == "16"
-      a_ds.get_values([:trans_soft]).first.should == "MPEG Streamclip 1.92"
-      a_ds.get_values([:trans_note]).first.should be_nil
-      a_ds.get_values([:operator]).first.should == "TMu"
+      access = ExternalVideo.find(ing.parent.videos[:access].first.pid)
+      access.vendor.first.should            == "George Blood Audio and Video"
+      access.file_format.first.should       == "mp4"
+      access.audio_encoding.first.should    == "MPEG-4: AAC"
+      access.audio_bit_depth.first.should   == "16"
+      access.trans_soft.first.should        == "MPEG Streamclip 1.92"
+      access.trans_note.first.should        be_nil
+      access.operator.first.should          == "TMu"
     end
 
     it "should not add additional files" do
       copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
       ing = Workflow::GbvIngest.new(copy)
-      ing.parent.external_videos.length.should == 2
-      first_pid = ing.parent.external_videos.first.pid
-      last_pid  = ing.parent.external_videos.last.pid
+      ing.parent.external_videos.length.should == 3
+      tape         = ing.parent.videos[:original].first.pid
+      old_original = ing.parent.videos[:preservation].first.pid
+      old_h264     = ing.parent.videos[:access].first.pid
       ing.process
-      ing.parent.external_videos.length.should == 2
-      first_pid.should == ing.parent.external_videos.first.pid
-      last_pid.should  == ing.parent.external_videos.last.pid
+      ing.parent.external_videos.length.should == 3
+      tape.should         == ing.parent.videos[:original].first.pid
+      old_original.should == ing.parent.videos[:preservation].first.pid
+      old_h264.should     == ing.parent.videos[:access].first.pid
     end
 
-    it "should reprocess a sip by removing existing files and re-adding them" do
+    it "should reprocess a sip by removing existing video files, re-adding them, and retaining the original tape object" do
       copy = Workflow::GbvSip.new(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))
       lambda { copy.prepare }.should raise_error(RuntimeError)
       ing = Workflow::GbvIngest.new(copy)
-      ing.parent.external_videos.length.should == 2
-      first_pid = ing.parent.external_videos.first.pid
-      last_pid  = ing.parent.external_videos.last.pid
+      ing.parent.external_videos.length.should == 3
+      tape         = ing.parent.videos[:original].first.pid
+      old_original = ing.parent.videos[:preservation].first.pid
+      old_h264     = ing.parent.videos[:access].first.pid
       ing.reprocess
-      ing.parent.external_videos.length.should == 2
-      first_pid.should_not == ing.parent.external_videos.first.pid
-      last_pid.should_not  == ing.parent.external_videos.last.pid
+      ing.parent.external_videos.length.should == 3
+      tape.should             == ing.parent.videos[:original].first.pid
+      old_original.should_not == ing.parent.videos[:preservation].first.pid
+      old_h264.should_not     == ing.parent.videos[:access].first.pid
 
       # Clean-up
       FileUtils.rm_rf(File.join(RH_CONFIG["location"], @sip.pid.gsub(/:/,"_")))

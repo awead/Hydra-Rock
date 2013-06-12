@@ -1,0 +1,5 @@
+<table class="table table-striped">
+  <% ExternalVideo::FieldList.each do |field| %>
+    <%= display_tabular_field video.send(field), field.to_s %>
+  <% end %>
+</table>

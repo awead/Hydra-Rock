@@ -1,12 +1,19 @@
+
+
 <h1><%= @afdoc.name.first %></h1>
 
-<%= render_submission_workflow_step -%>
+<% partial = @afdoc.generation.first.match("Original") ? "physical" : "digital" %>
+<%= render :partial => "external_videos/edit/#{partial}", :locals => { :video => @afdoc } %>
 
 <% navbar_items << capture do %>
   <li>
-    <%= link_to('<i class="icon-arrow-left"></i> Parent'.html_safe, url_for_parent_video ) %>
+    <%= link_to('<i class="icon-arrow-up"></i> Parent'.html_safe, edit_archival_video_path(@afdoc.parent.id) ) %>
   </li>
-  <%= workflow_dropdown("external_videos") %>
-  <%= render_user_navbar("external_videos") %>
+  <li>
+    <%= button_to('Delete', external_video_path(params[:id]),
+                  :class => "btn-small btn-danger", :form => { :class=>"navbar-search"},
+                  :confirm => 'Are you sure?', :method => :delete)
+    %>
+  </li>
+  <%= render :partial => "catalog/previous_next_doc" %>
 <% end %>
-

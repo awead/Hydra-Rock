@@ -3,17 +3,21 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include Hydra::AccessControlsEnforcement
   include Rockhall::Controller::ControllerBehavior
+  include Rockhall::Exports
 
   # User still needs the #update action in the catalog, so we only enforce Hydra
   # access controls when the user tries to just view a document they don't have
   # access to.
   before_filter :enforce_access_controls, :only => :show
   before_filter :get_af_doc, :only => :show
+  before_filter :get_public_acticity, :only => :index
 
   # This applies appropriate access controls to all solr queries
   CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.solr_search_params_logic << :exclude_unwanted_models
+
+  SolrDocument.use_extension ::Rockhall::Exports
 
   #--------------------------------------------------------------------------------------
   #
@@ -24,7 +28,8 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       :qt   => 'search',
       :rows => 10,
-      :fq   => ["-has_model_s:\"info:fedora/afmodel:ExternalVideo\""]
+      # we're not excluding anything from search results, for now.
+      #:fq   => ["-has_model_s:\"info:fedora/afmodel:ExternalVideo\""]
     }
 
     # solr field configuration for search results/index views
@@ -57,26 +62,33 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field 'format',                 :label => 'Content Type',  :limit => 10
-    config.add_facet_field 'media_format_facet',     :label => 'Media Format',  :limit => 10
-    config.add_facet_field 'contributor_name_facet', :label => 'Name',          :limit => 10
-    config.add_facet_field 'subject_facet',          :label => 'Subject',       :limit => 10
-    config.add_facet_field 'genre_facet',            :label => 'Genre',         :limit => 10
-    config.add_facet_field 'series_facet',           :label => 'Event/Series',  :limit => 10
-    config.add_facet_field 'collection_facet',       :label => 'Collection',    :limit => 10
-    config.add_facet_field 'language_facet',         :label => 'Language',      :limit => true
-    config.add_facet_field 'complete_facet',         :label => 'Review Status', :limit => 10
-    config.add_facet_field 'create_date_facet',      :label => 'Year',          :limit => 10
-    config.add_facet_field 'priority_facet',         :label => 'Priority',      :limit => 10
-    config.add_facet_field 'depositor_facet',        :label => 'Depositor',     :limit => 10
-    config.add_facet_field 'reviewer_facet',         :label => 'Reviewer',      :limit => 10
+    config.add_facet_field 'format',                    :label => 'Media Type',          :limit => 10
+    config.add_facet_field 'media_format_facet',        :label => 'Physical Format',     :limit => 10
+    config.add_facet_field 'contributor_name_facet',    :label => 'Name',                :limit => 10
+    config.add_facet_field 'subject_facet',             :label => 'Subject',             :limit => 10
+    config.add_facet_field 'genre_facet',               :label => 'Genre',               :limit => 10
+    config.add_facet_field 'series_facet',              :label => 'Event/Series',        :limit => 10
+    config.add_facet_field 'collection_facet',          :label => 'Collection',          :limit => 10  
+    config.add_facet_field 'create_date_facet',         :label => 'Creation Date',       :limit => 10
+    config.add_facet_field 'language_facet',            :label => 'Language',            :limit => true
+    config.add_facet_field 'priority_facet',            :label => 'Priority',            :limit => 10
+    config.add_facet_field 'complete_facet',            :label => 'Reviewed',            :limit => 10
+    config.add_facet_field 'reviewer_facet',            :label => 'Reviewer',            :limit => 10
+    config.add_facet_field 'depositor_facet',           :label => 'Depositor',           :limit => 10
+    config.add_facet_field 'converted_facet',           :label => 'Converted',           :limit => 10
+    config.add_facet_field 'internal_series_facet',     :label => 'Internal Series',     :limit => 10
+    config.add_facet_field 'internal_collection_facet', :label => 'Internal Collection', :limit => 10
 
-    # TODO: Maybe add this in later
-    #config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
-    # :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
-    # :years_10 => { :label => 'within 10 Years', :fq => "pub_date:[#{Time.now.year - 10 } TO *]" },
-    # :years_25 => { :label => 'within 25 Years', :fq => "pub_date:[#{Time.now.year - 25 } TO *]" }
-    #}
+    # TODO
+    #config.add_facet_field 'event_date_dt', :label => 'Event Date', :query => {
+    # :years_1 => { :label => 'within the last year', :fq => "event_date_dt:[#{Time.now.year - 1 } TO *]" },
+    # :years_3 => { :label => 'within 3 years', :fq => "event_date_dt:[#{Time.now.year - 3 } TO *]" },
+    # :years_5 => { :label => 'within 5 years', :fq => "event_date_dt:[#{Time.now.year - 5 } TO *]" },
+    # :years_10 => { :label => 'within 10 years', :fq => "event_date_dt:[#{Time.now.year - 10 } TO *]" },
+    # :years_15 => { :label => 'within 15 years', :fq => "event_date_dt:[#{Time.now.year - 15 } TO *]" },
+    # :years_20 => { :label => 'within 20 years', :fq => "event_date_dt:[#{Time.now.year - 20 } TO *]" },
+    # :years_25 => { :label => 'within 25 years', :fq => "event_date_dt:[#{Time.now.year - 25 } TO *]" }
+    #}    
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -106,7 +118,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'track_display',             :label => 'Track'
     config.add_show_field 'translation_display',       :label => 'Translation'
     config.add_show_field 'summary_display',           :label => 'Summary'
-    config.add_show_field 'contents_display',          :label => 'Parts List'
+    config.add_show_field 'contents_display',          :label => 'Contents'
     config.add_show_field 'note_display',              :label => 'Note'
     config.add_show_field 'subject_facet',             :label => 'Subject'
     config.add_show_field 'genre_facet',               :label => 'Genre'
@@ -188,9 +200,9 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc',             :label => 'relevance'
-    config.add_sort_field 'system_create_dt asc',   :label => 'deposited (oldest first)'
-    config.add_sort_field 'system_create_dt desc',  :label => 'deposited (newest first)'
+    config.add_sort_field 'score desc, title_sort asc', :label => 'relevance'
+    config.add_sort_field 'system_create_dt asc',       :label => 'deposited (oldest first)'
+    config.add_sort_field 'system_create_dt desc',      :label => 'deposited (newest first)'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

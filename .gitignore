@@ -10,8 +10,12 @@ gems
 test_support/fixtures
 public/cucumber.html
 public/assets/*
+doc
 nohup.out
 hydra-rock.sublime-project
 hydra-rock.sublime-workspace
 .DS_Store
 spec/fixtures/exports/*.xml
+bin
+.rvmrc
+!tmp/.gitkeep

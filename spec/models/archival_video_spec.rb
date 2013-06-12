@@ -12,11 +12,6 @@ describe ArchivalVideo do
       @video.should be_kind_of(ActiveFedora::Base)
     end
 
-    it "should include Hydra Model Methods" do
-      @video.class.included_modules.should include(Hydra::ModelMethods)
-      @video.should respond_to(:apply_depositor_metadata)
-    end
-
     describe "using templates to manage multi-valued terms" do
       it "should insert contributors" do
         @video.new_contributor({:name=> "Name", :role => "role"})
@@ -51,16 +46,6 @@ describe ArchivalVideo do
       it "should index the right fields in solr" do
         solr_doc = @video.to_solr
       end
-      it "should allow for 4-digit date" do
-        @video.creation_date = "1999"
-        @video.to_solr["creation_date_display"].should == ["1999"]
-        @video.to_solr["creation_date_dt"].should == ["1999-01-01T00:00:00Z"]
-      end
-      it "should use an incomplete date" do
-        @video.creation_date = "2001-12"
-        @video.to_solr["creation_date_display"].should == ["2001-12"]
-        @video.to_solr["creation_date_dt"].should == ["2001-12-01T00:00:00Z"]
-      end
     end
 
     describe "delegate fields" do
@@ -85,15 +70,29 @@ describe ArchivalVideo do
   end
 
   describe "relationships" do
+
+    before :each do
+      @av  = ArchivalVideo.new nil
+      @ev1 = ExternalVideo.new nil
+      @ev2 = ExternalVideo.new nil
+    end
+
+    it "should add external videos as child objects" do
+      @av.external_video_ids.should be_empty
+      @av.external_videos << @ev1
+      @av.external_videos << @ev2
+      @av.external_videos.count.should == 2
+    end
+
     it "should return a hash of external video objects" do
       av = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
-      av.external_videos.count.should == 2
+      av.external_videos.count.should == 3
       av.external_videos.first.should be_kind_of(ExternalVideo)
     end
   end
 
   describe ".to_discovery" do
-    it "solr document with metadata for discovery" do
+    it "should return a solr document with metadata for discovery" do
       doc = ArchivalVideo.find("rockhall:fixture_pbcore_document3").to_discovery
       doc.should be_kind_of(Hash)
       doc["access_file_s"].should be_kind_of(Array)
@@ -102,6 +101,19 @@ describe ArchivalVideo do
       doc["title_display"].first.should == "Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2."
       doc["heading_display"].should == doc["title_display"].first
       doc["material_facet"].should == "Digital"
+    end
+
+    it "should return correctly formatted contributors" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
+      doc["name_facet"].should include "Joel, Billy"
+      doc["name_facet"].should include "Rock and Roll Hall of Fame Foundation"
+      doc["contributors_display"].should include "Joel, Billy"
+    end
+
+    it "should return subject facets" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
+      doc["subject_facet"].should include "Rock music--History and criticism."
+      doc["subject_facet"].should include "Inductee"
     end
   end
 

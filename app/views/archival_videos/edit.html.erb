@@ -1,13 +1,13 @@
 <% navbar_items << capture do %>
-  <% unless params[:new_asset] %>
-    <%= workflow_dropdown("archival_videos") %>
-  <% end %>
-  <%= render_user_navbar("archival_videos", {:delete=>TRUE}) %>
+  <%= render :partial => "catalog/previous_next_doc" %>
+  <%= render :partial => "shared/navbar_partials/export_links" %>
+  <%= render_workflow_menu unless params[:new_asset] %>
+  <%= render_view_button %>
 <% end %>
 
 <div id="video_box" class="span6">
   <%= render_video_player %>
-  <%= render_file_list %>
+  <div id="video_list"><%= render_file_list %></div>
 </div>
 
 <div id="document" class="<%= render_document_class %> span6">

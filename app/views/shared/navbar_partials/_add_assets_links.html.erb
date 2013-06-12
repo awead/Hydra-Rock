@@ -4,5 +4,10 @@
   </a>
   <ul class="dropdown-menu">
     <%= list_available_assets_to_create %>
+    <% if allow_video_import %>
+      <li class = "divider"></li>
+      <li class="nav-header">Import</li>
+      <li><%= link_to("Videos", import_archival_video_path(params[:id]), :id => "import_video_modal", :class => "more_facets_link") %></li>
+    <% end %>
   </ul>
 </li>

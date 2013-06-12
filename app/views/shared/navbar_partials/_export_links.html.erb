@@ -1,0 +1,10 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <i class="icon-share"></i> Export <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <%= content_tag(:li, link_to("PBcore", catalog_path(params[:id], :format => 'xml'), { :target => "_blank" })) %>
+    <%= content_tag(:li, link_to("Solr", catalog_path(params[:id], :format => 'solr'), { :target => "_blank" })) %>
+    <%= content_tag(:li, link_to("Discovery", catalog_path(params[:id], :format => 'discovery'), { :target => "_blank" })) %>
+  </ul>
+</li>

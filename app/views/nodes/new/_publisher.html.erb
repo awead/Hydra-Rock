@@ -1,5 +1,5 @@
 <%= render :partial=>'/flash_msg' %>
-<%= form_tag create_node_path("publisher"), :id => "add_publisher", :class => "form-inline ajax_form", :method => :post do %>
+<%= form_tag node_path(params[:id], "publisher"), :id => "add_publisher", :class => "form-inline ajax_form", :method => :post do %>
   <div class="modal-header">
     <button type="button" class="close refresh_publishers" id="close_modal" data-dismiss="modal" aria-hidden="true">×</button>
     <h3>Add publisher</h3>
