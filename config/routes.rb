@@ -48,4 +48,7 @@ HydraRock::Application.routes.draw do
     end
   end
 
+  # In production, grab anything else and redirect to the catalog page
+  match '*a', :to => 'catalog#index' if Rails.env.match("production")
+
 end

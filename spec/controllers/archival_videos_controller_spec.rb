@@ -19,6 +19,13 @@ describe ArchivalVideosController do
       assert_redirected_to new_user_session_path
     end
 
+    it "should redirect to the catalog controller" do
+      get :show, :id => "rockhall:fixture_pbcore_document1"
+      assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
+      get :index
+      assert_redirected_to catalog_index_path
+    end
+
   end
 
   describe "when the user is logged in" do

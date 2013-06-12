@@ -28,6 +28,10 @@ class ArchivalVideosController < ApplicationController
     redirect_to catalog_path(params[:id])
   end
 
+  def index
+    redirect_to catalog_index_path
+  end
+
   def create
     @afdoc = ArchivalVideo.new(params[:archival_video])
     @afdoc.apply_depositor_metadata(current_user.email)
