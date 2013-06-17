@@ -1,6 +1,7 @@
 #!/bin/bash
 echo -n "Reloading ActiveRecord fixtures: "
-bin/rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar
+bin/rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar/activities.yml
+bin/rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar/users.yml
 echo "done."
 echo -n "Re-indexing solr: "
 bin/rake rockhall:solr:index_all
