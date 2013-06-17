@@ -179,10 +179,12 @@ GEM
     metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.23)
+    mini_portile (0.5.0)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
-    multi_json (1.7.6)
-    nokogiri (1.5.10)
+    multi_json (1.7.7)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     nom-xml (0.5.1)
       activesupport
       i18n
@@ -227,7 +229,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.4)
-    rdf (1.0.6)
+    rdf (1.0.7)
       addressable (>= 2.2)
     rdf-rdfxml (0.3.9)
       rdf (>= 0.3.11)
@@ -268,8 +270,8 @@ GEM
       nokogiri
       rest-client
     rubyzip (0.9.9)
-    sanitize (2.0.3)
-      nokogiri (>= 1.4.4, < 1.6)
+    sanitize (2.0.4)
+      nokogiri (~> 1.6.0)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
