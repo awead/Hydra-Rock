@@ -1,6 +1,5 @@
 class NodesController < ApplicationController
 
-  include Hydra::Controller::ControllerBehavior
   include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]

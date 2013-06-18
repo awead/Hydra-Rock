@@ -1,7 +1,6 @@
 class ArchivalVideosController < ApplicationController
   
   include Blacklight::Catalog
-  include Hydra::Controller::ControllerBehavior
   include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer, :destroy]

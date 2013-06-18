@@ -1,14 +1,10 @@
 class CatalogController < ApplicationController
 
   include Blacklight::Catalog
-  include Hydra::AccessControlsEnforcement
   include Rockhall::Controller::ControllerBehavior
   include Rockhall::Exports
 
-  # User still needs the #update action in the catalog, so we only enforce Hydra
-  # access controls when the user tries to just view a document they don't have
-  # access to.
-  before_filter :enforce_access_controls, :only => :show
+  before_filter :enforce_show_permissions, :only=>:show
   before_filter :get_af_doc, :only => :show
   before_filter :get_public_acticity, :only => :index
 
