@@ -36,7 +36,9 @@ class RockhallIngest
     end
 
     # add a thumbnail
-    @parent.add_thumbnail File.new("tmp/thumb.jpg") if generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access.first))
+    if generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access.first))
+      @parent.save if @parent.add_thumbnail File.new("tmp/thumb.jpg") 
+    end
   end
 
   # parent object exists in Fedora and has child objects that need to be reingested
