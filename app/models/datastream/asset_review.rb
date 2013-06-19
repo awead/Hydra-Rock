@@ -35,10 +35,10 @@ class AssetReview < ActiveFedora::OmDatastream
     # These fields were added later, so existing objects don't have them.  Here we set their
     # values to defaults.
     if self.find_by_terms(:complete).nil?
-      solr_doc.merge!(:complete_facet => "no")
+      solr_doc.merge!("complete_ssim" => "no")
     end
     if self.find_by_terms(:priority).nil?
-      solr_doc.merge!(:priority_facet => "normal")
+      solr_doc.merge!("priority_ssim" => "normal")
     end
 
     return solr_doc

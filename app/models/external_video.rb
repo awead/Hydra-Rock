@@ -100,22 +100,22 @@ class ExternalVideo < ActiveFedora::Base
   def to_solr solr_doc = Hash.new
     super(solr_doc)
     if self.parent.nil?
-      solr_doc.merge!({"title_sort" => self.pid})
+      #solr_doc.merge!({"title_sort" => self.pid}) # TODO: define a dynamic sort field
     else
       title_display = self.generation.first.nil? ? ("Video: " + self.parent.title) : (self.generation.first + ": " + self.parent.title)
-      solr_doc.merge!({"title_display" => title_display})
-      solr_doc.merge!({"title_sort" =>    title_display})
+      solr_doc.merge!({"title_ssm" => title_display})
+      #solr_doc.merge!({"title_sort" =>    title_display}) # TODO: define a dynamic sort field
     end
-    solr_doc.merge!({"media_format_facet" => self.format})
+    solr_doc.merge!({"media_format_ssim" => self.format})
 
     self.date.each do |d|
       unless d.nil?
-        solr_doc.merge!({"create_date_facet"  => Time.new(d).strftime("%Y")}) unless d.empty?
+        solr_doc.merge!({"create_date_ssim"  => Time.new(d).strftime("%Y")}) unless d.empty?
       end
     end
 
     self.language.each do |l|
-      l.match(/^eng$/) ? solr_doc.merge!(:language_facet => "English") : solr_doc.merge!(:language_facet => "Unknown")
+      l.match(/^eng$/) ? solr_doc.merge!("language_ssim" => "English") : solr_doc.merge!("language_ssim" => "Unknown")
     end
 
     return solr_doc
