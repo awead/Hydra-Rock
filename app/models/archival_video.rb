@@ -18,7 +18,6 @@ class ArchivalVideo < ActiveFedora::Base
   include ActiveModel::Validations
   include Rockhall::Validations
   include Rockhall::TemplateMethods
-  include Rockhall::Conversion
   include Rockhall::Permissions
 
   # ActiveFedora implements callbacks just like ActiveRecord does and you can specify

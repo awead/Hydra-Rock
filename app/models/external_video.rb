@@ -12,7 +12,6 @@ class ExternalVideo < ActiveFedora::Base
 
   include Rockhall::ModelMethods
   include Rockhall::TemplateMethods
-  include Rockhall::Conversion
   include Rockhall::Validations
   include Rockhall::Permissions
 
