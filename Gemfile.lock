@@ -272,8 +272,6 @@ GEM
       nokogiri
       rest-client
     rubyzip (0.9.9)
-    sanitize (2.0.4)
-      nokogiri (~> 1.6.0)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -285,11 +283,6 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     slop (3.4.5)
-    solr_ead (0.0.4)
-      om
-      rsolr
-      sanitize
-      solrizer
     solrizer (3.1.0)
       activesupport
       daemons
@@ -362,7 +355,6 @@ DEPENDENCIES
   ruby-ntlm
   sass-rails
   selenium-webdriver
-  solr_ead
   sqlite3
   uglifier
   unicode

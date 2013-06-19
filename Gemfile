@@ -6,7 +6,6 @@ gem 'rails',      '~>3.2.13'
 gem 'blacklight' 
 gem 'hydra-head', '~>6.2.2'
 gem 'hydra-pbcore', :path => '/Users/adamw/Projects/Github/hydra-pbcore'
-gem 'solr_ead'
 
 # Gems for all environments
 gem 'bootstrap-sass'
