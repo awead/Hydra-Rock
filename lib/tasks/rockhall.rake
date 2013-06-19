@@ -224,24 +224,6 @@ namespace :rockhall do
           v.save
         end 
       end
-
-      DigitalVideo.all.each do |v|
-        print "Converting DigitalVideo #{v.pid} to new ArchivalVideo: "
-        if v.converted == "yes"
-          puts "status = #{v.converted}"
-        else
-          begin
-            av = v.from_digital_video
-            av.converted = "yes"
-            puts "ok"
-          rescue
-            av.converted = "no"
-            puts "FAILED"
-            puts e.inspect
-          end          
-          av.save
-        end 
-      end
     end
 
   end
