@@ -13,9 +13,6 @@ class ArchivalVideo < ActiveFedora::Base
   # libraries.  The libraries come from the ActiveFedora gem, Hydra and our own
   # local Rockhall libraries.  You can mix in model methods from any gem or library,
   # such as ActiveModel.  The extent of the mixins is completely up to your own needs.
-  include ActiveFedora::DatastreamCollections
-  include ActiveFedora::FileManagement
-  include ActiveFedora::Relationships
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
   include ActiveModel::Validations

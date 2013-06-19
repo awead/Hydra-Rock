@@ -10,9 +10,6 @@ class ExternalVideo < ActiveFedora::Base
       :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format, :depositor, :notes,
       :mi_file_format ]
 
-  include ActiveFedora::DatastreamCollections
-  include ActiveFedora::FileManagement
-  include ActiveFedora::Relationships
   include Rockhall::ModelMethods
   include Rockhall::TemplateMethods
   include Rockhall::Conversion

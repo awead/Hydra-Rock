@@ -1,7 +1,5 @@
 class ArchivalComponent < ActiveFedora::Base
 
-  include ActiveFedora::DatastreamCollections
-  include ActiveFedora::Relationships
   include Rockhall::CollectionBehaviors
 
   # An archival component belongs to one collection

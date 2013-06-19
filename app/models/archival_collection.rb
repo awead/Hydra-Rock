@@ -1,7 +1,5 @@
 class ArchivalCollection < ActiveFedora::Base
 
-  include ActiveFedora::DatastreamCollections
-  include ActiveFedora::Relationships
   include Rockhall::CollectionBehaviors
 
   after_create :apply_defaults
