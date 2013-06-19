@@ -21,7 +21,7 @@ class GbvIngest
     
     # add thumbnail
     if generate_video_thumbnail(File.join(RH_CONFIG["location"], @sip.base, "data", @sip.access))
-      @parent.add_thumbnail File.new("tmp/thumb.jpg")
+      @parent.save if @parent.add_thumbnail File.new("tmp/thumb.jpg")
     end
   end
 
