@@ -1,7 +1,13 @@
+PATH
+  remote: /Users/adamw/Projects/Github/hydra-pbcore
+  specs:
+    hydra-pbcore (3.0.0pre1)
+      active-fedora
+      solrizer
+
 GEM
   remote: http://rubygems.org/
   specs:
-    RedCloth (4.2.9)
     actionmailer (3.2.13)
       actionpack (= 3.2.13)
       mail (~> 2.5.3)
@@ -15,19 +21,16 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active-fedora (5.6.3)
-      activeresource (>= 3.0.0)
+    active-fedora (6.3.0)
       activesupport (>= 3.0.0)
-      builder (~> 3.0.0)
       deprecation
       mediashelf-loggable
       nom-xml (>= 0.5.1)
-      om (~> 1.8.0)
+      om (~> 2.1.0)
       rdf
-      rdf-rdfxml (~> 0.3.8)
+      rdf-rdfxml (~> 1.0.0)
       rsolr
-      rubydora (~> 1.3)
-      solrizer (~> 2.1)
+      rubydora (~> 1.6, >= 1.6.5)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
@@ -132,34 +135,31 @@ GEM
     gravatar_image_tag (1.1.3)
     hike (1.2.3)
     hooks (0.3.1)
-    hydra-access-controls (5.4.0)
-      active-fedora
+    hydra-access-controls (6.2.2)
+      active-fedora (~> 6.1)
       activesupport
       blacklight
       cancan
       deprecation
-    hydra-core (5.4.0)
-      RedCloth (= 4.2.9)
-      active-fedora (~> 5.3)
+    hydra-core (6.2.2)
+      active-fedora
       blacklight (~> 4.0)
       block_helpers
       deprecation (>= 0.0.5)
-      devise
-      hydra-access-controls (= 5.4.0)
-      hydra-mods (>= 0.0.6)
-      jquery-rails
+      hydra-access-controls (= 6.2.2)
+      jettywrapper (>= 1.4.1)
       rails (~> 3.2.3)
-      sanitize
-    hydra-head (5.4.0)
-      hydra-access-controls (= 5.4.0)
-      hydra-core (= 5.4.0)
+    hydra-head (6.2.2)
+      hydra-access-controls (= 6.2.2)
+      hydra-core (= 6.2.2)
       rails (>= 3.2.6)
-    hydra-mods (0.0.6)
-      active-fedora (> 4.1)
-    hydra-pbcore (2.4.0)
-      active-fedora
-      solrizer (< 3.0.0)
     i18n (0.6.1)
+    jettywrapper (1.4.1)
+      activesupport (>= 3.0.0)
+      childprocess
+      i18n
+      logger
+      mediashelf-loggable
     journey (1.0.4)
     jquery-rails (3.0.1)
       railties (>= 3.0, < 5.0)
@@ -170,6 +170,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
+    logger (1.2.8)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -189,12 +190,13 @@ GEM
       activesupport
       i18n
       nokogiri
-    om (1.8.0)
+    om (2.1.2)
       activemodel
       activesupport
       deprecation
       mediashelf-loggable
       nokogiri (>= 1.4.2)
+      solrizer (~> 3.1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -231,9 +233,9 @@ GEM
     rake (10.0.4)
     rdf (1.0.7)
       addressable (>= 2.2)
-    rdf-rdfxml (0.3.9)
-      rdf (>= 0.3.11)
-      rdf-xsd (>= 0.3.8)
+    rdf-rdfxml (1.0.1)
+      rdf (>= 1.0)
+      rdf-xsd (>= 1.0)
     rdf-xsd (1.0.2.1)
       nokogiri (>= 1.5.0)
       rdf (>= 0.3.4)
@@ -283,17 +285,16 @@ GEM
       rubyzip
       websocket (~> 1.0.4)
     slop (3.4.5)
-    solr_ead (0.4.5)
+    solr_ead (0.0.4)
       om
       rsolr
       sanitize
-      solrizer (~> 2.1.0)
-    solrizer (2.1.0)
+      solrizer
+    solrizer (3.1.0)
       activesupport
       daemons
       mediashelf-loggable (~> 0.4.7)
       nokogiri
-      om (>= 1.5.0)
       stomp
       xml-simple
     sprockets (2.2.2)
@@ -346,16 +347,15 @@ DEPENDENCIES
   factory_girl
   generator_spec
   gravatar_image_tag
-  hydra-head (< 6.0.0)
-  hydra-pbcore
+  hydra-head (~> 6.2.2)
+  hydra-pbcore!
   jquery-rails
   launchy
   mediainfo
   mocha
-  om
   pry
   public_activity
-  rails (~> 3.2.11)
+  rails (~> 3.2.13)
   rest-client
   rspec (~> 2.12.0)
   rspec-rails
@@ -363,7 +363,6 @@ DEPENDENCIES
   sass-rails
   selenium-webdriver
   solr_ead
-  solrizer (< 3.0.0)
   sqlite3
   uglifier
   unicode
