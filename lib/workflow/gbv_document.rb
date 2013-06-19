@@ -1,5 +1,5 @@
 module Workflow
-class GbvDocument < ActiveFedora::NokogiriDatastream
+class GbvDocument < ActiveFedora::OmDatastream
 
   include Rockhall::WorkflowMethods
 

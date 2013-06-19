@@ -1,4 +1,4 @@
-class DublinCore < ActiveFedora::NokogiriDatastream
+class DublinCore < ActiveFedora::OmDatastream
 
   set_terminology do |t|
     t.root(:path=>"dc", :namespace_prefix=>"dc")

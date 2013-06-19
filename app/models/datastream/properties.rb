@@ -1,4 +1,4 @@
-class Properties < ActiveFedora::NokogiriDatastream
+class Properties < ActiveFedora::OmDatastream
 
   set_terminology do |t|
     t.root(:path=>"fields", :namespace_prefix=>nil)

@@ -1,7 +1,7 @@
 # This is the OM terminology for xml we used to get from George Blood.  It has since been
 # updated and defined in GbvDocument.  This is deprecated code.
 module Workflow
-class GbvOriginalDocument < ActiveFedora::NokogiriDatastream
+class GbvOriginalDocument < ActiveFedora::OmDatastream
 
   include Rockhall::WorkflowMethods
 

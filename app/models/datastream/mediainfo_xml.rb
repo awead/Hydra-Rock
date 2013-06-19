@@ -1,6 +1,6 @@
 require 'mediainfo'
 
-class MediainfoXml < ActiveFedora::NokogiriDatastream
+class MediainfoXml < ActiveFedora::OmDatastream
 
   set_terminology do |t|
     t.root(:path=>"Mediainfo")
