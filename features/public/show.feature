@@ -57,5 +57,5 @@ Feature:
     And I should see "Export" in the navbar
 
   Scenario: Change Parts List to Contents (DAM-293)
-    Given I am on the catalog page for rockhall:fixture_pbcore_digital_document1
+    Given I am on the catalog page for rockhall:fixture_pbcore_document5
     Then I should see the field title "blacklight-contents_display" contain "Contents"

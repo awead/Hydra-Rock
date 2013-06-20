@@ -15,7 +15,7 @@ Narrative:
 
   Scenario: Digital video sips have no tech data in pbcore and needs to come from mediaInfo
     Given I am logged in as "archivist1@example.com"
-    When I am on the catalog page for rockhall:fixture_pbcore_digital_document1
+    When I am on the catalog page for rockhall:fixture_pbcore_document5
     And I follow "Preservation (1)"
     Then I should see "143 GiB"
     And I should see "4:2:2"

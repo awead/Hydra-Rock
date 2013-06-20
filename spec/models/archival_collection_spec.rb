@@ -44,7 +44,7 @@ describe ArchivalCollection do
 
     it "should have components with items" do
       pending "Need to update archival video fixtures"
-      @ref4.item_ids.should == ["rockhall:fixture_pbcore_digital_document1"]
+      @ref4.item_ids.should == ["rockhall:fixture_pbcore_document5"]
     end
 
     it "should have items in the collection" do

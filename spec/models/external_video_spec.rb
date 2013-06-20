@@ -64,14 +64,14 @@ describe ExternalVideo do
     end
 
     it "should have a single parent video" do
-      ev = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2642")
+      ev = ExternalVideo.find("rockhall:fixture_pbcore_document5_h2642")
       ev.parent.should be_kind_of(ArchivalVideo)
     end
   end
 
   describe "delegate fields" do
     before :all do
-      @delegate = ExternalVideo.find("rockhall:fixture_pbcore_digital_document1_h2641")
+      @delegate = ExternalVideo.find("rockhall:fixture_pbcore_document5_h2641")
     end
     it "should be defined" do
       @delegate.mi_file_format.first.should == "MPEG-4"
