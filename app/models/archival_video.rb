@@ -112,17 +112,17 @@ class ArchivalVideo < ActiveFedora::Base
   # Override model method to merge in some additional fields as needed
   def to_solr solr_doc = Hash.new
     super(solr_doc)
-    solr_doc.merge!({"format_ssi" => "Video"})
+    Solrizer.insert_field(solr_doc, "format", "Video", :facetable, :displayable)
 
     unless self.collection.nil?
       facets = Array.new
       facets << self.collection.title
       facets << self.additional_collection
-      solr_doc.merge!({"collection_ssim" => facets.flatten})
+      Solrizer.insert_field(solr_doc, "collection", facets.flatten, :facetable, :displayable)
     end
 
-    solr_doc.merge!({"archival_series_ssm" => self.series.title}) unless self.series.nil?
-    solr_doc.merge!({"collection_number_ssm" => self.collection.pid.gsub(/:/,"-")}) unless self.collection.nil?
+    Solrizer.insert_field(solr_doc, "archival_series",   self.series.title,                 :facetable, :displayable) unless self.series.nil?
+    Solrizer.insert_field(solr_doc, "collection_number", self.collection.pid.gsub(/:/,"-"), :facetable, :displayable) unless self.collection.nil?
     
     return solr_doc
   end

@@ -34,12 +34,8 @@ class AssetReview < ActiveFedora::OmDatastream
     # DAM-168: Default values for asset_review fields
     # These fields were added later, so existing objects don't have them.  Here we set their
     # values to defaults.
-    if self.find_by_terms(:complete).nil?
-      solr_doc.merge!("complete_ssim" => "no")
-    end
-    if self.find_by_terms(:priority).nil?
-      solr_doc.merge!("priority_ssim" => "normal")
-    end
+    Solrizer.insert_field(solr_doc, "complete", "no",     :facetable, :displayable) if self.find_by_terms(:complete).nil?
+    Solrizer.insert_field(solr_doc, "priority", "normal", :facetable, :displayable) if self.find_by_terms(:priority).nil?
 
     return solr_doc
   end

@@ -28,9 +28,7 @@ class DublinCore < ActiveFedora::OmDatastream
 
   def to_solr(solr_doc=Solr::Document.new)
     super(solr_doc)
-    unless self.find_by_terms(:format).nil?
-      solr_doc.merge!("format_ssi" => self.find_by_terms(:format).text)
-    end
+    Solrizer.insert_field(solr_doc, "format", self.find_by_terms(:format).text, :facetable, :displayable) unless self.find_by_terms(:format).nil?
   end
 
 end

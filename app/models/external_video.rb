@@ -102,22 +102,22 @@ class ExternalVideo < ActiveFedora::Base
   def to_solr solr_doc = Hash.new
     super(solr_doc)
     if self.parent.nil?
-      #solr_doc.merge!({"title_sort" => self.pid}) # TODO: define a dynamic sort field
+      Solrizer.insert_field(solr_doc, "title", self.pid, :sortable)
     else
-      title_display = self.generation.first.nil? ? ("Video: " + self.parent.title) : (self.generation.first + ": " + self.parent.title)
-      solr_doc.merge!({"title_ssm" => title_display})
-      #solr_doc.merge!({"title_sort" =>    title_display}) # TODO: define a dynamic sort field
+      title = self.generation.first.nil? ? ("Video: " + self.parent.title) : (self.generation.first + ": " + self.parent.title)
+      Solrizer.insert_field(solr_doc, "title", title, :sortable, :displayable)
     end
-    solr_doc.merge!({"media_format_ssim" => self.format})
+    Solrizer.insert_field(solr_doc, "media_format", self.format, :facetable, :displayable)
 
     self.date.each do |d|
       unless d.nil?
-        solr_doc.merge!({"create_date_ssim"  => Time.new(d).strftime("%Y")}) unless d.empty?
+        Solrizer.insert_field(solr_doc, "create_date", Time.new(d).strftime("%Y"), :facetable, :displayable) unless d.empty?
       end
     end
 
     self.language.each do |l|
-      l.match(/^eng$/) ? solr_doc.merge!("language_ssim" => "English") : solr_doc.merge!("language_ssim" => "Unknown")
+      language = l.match(/^eng$/) ? "English" : "Unknown"
+      Solrizer.insert_field(solr_doc, "language", language, :facetable, :displayable)
     end
 
     return solr_doc

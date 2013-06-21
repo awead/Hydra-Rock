@@ -30,18 +30,10 @@ class Properties < ActiveFedora::OmDatastream
     super(solr_doc)
 
     # Facets
-    unless self.find_by_terms(:depositor).nil?
-      solr_doc.merge!("depositor_ssi" => self.find_by_terms(:depositor).text)
-    end
-    unless self.find_by_terms(:converted).nil?
-      solr_doc.merge!("converted_ssi" => self.find_by_terms(:converted).text)
-    end
-    unless self.find_by_terms(:series).nil?
-      solr_doc.merge!("internal_series_ssi" => self.find_by_terms(:series).text)
-    end
-    unless self.find_by_terms(:collection).nil?
-      solr_doc.merge!("internal_collection_ssi" => self.find_by_terms(:collection).text)
-    end
+    Solrizer.insert_field(solr_doc, "depositor",           self.find_by_terms(:depositor).text,  :facetable, :displayable) unless self.find_by_terms(:depositor).nil?
+    Solrizer.insert_field(solr_doc, "converted",           self.find_by_terms(:converted).text,  :facetable, :displayable) unless self.find_by_terms(:converted).nil?
+    Solrizer.insert_field(solr_doc, "internal_series",     self.find_by_terms(:series).text,     :facetable, :displayable) unless self.find_by_terms(:series).nil?
+    Solrizer.insert_field(solr_doc, "internal_collection", self.find_by_terms(:collection).text, :facetable, :displayable) unless self.find_by_terms(:collection).nil?
 
     return solr_doc
   end
