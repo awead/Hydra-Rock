@@ -39,16 +39,16 @@ class Rockhall::Discovery
   end
 
   # Returns an array of pids for items that are publically available, meaning any
-  # objects that have read_access_group_t set to "public" 
+  # objects that have read_access_group_ssim set to "public" 
   def public_items
-    ActiveFedora::Base.where(read_access_group_t: "public").all.collect { |o| o.pid }
+    ActiveFedora::Base.where(read_access_group_ssim: "public").all.collect { |o| o.pid }
   end
 
   def blacklight_items(solr_params = Hash.new)
     solr_params[:fl]   = "id"
     solr_params[:qt]   = "document"
     solr_params[:rows] = 1000
-    solr_params[:q]    = 'active_fedora_model_s:"ArchivalVideo" OR active_fedora_model_s:"ActiveFedora::Base"'
+    solr_params[:q]    = 'active_fedora_model_ssi:"ArchivalVideo"'
     response = @solr.get 'select', :params => solr_params
     return response["response"]["docs"]
   end
