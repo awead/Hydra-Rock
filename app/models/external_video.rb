@@ -1,5 +1,7 @@
 class ExternalVideo < ActiveFedora::Base
 
+  include ActiveFedora::DatastreamCollections
+
   FieldList =
     [ :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 
       :duration, :rights_summary, :note, :checksum_type, :checksum_value, :device, :capture_soft, 
@@ -20,8 +22,8 @@ class ExternalVideo < ActiveFedora::Base
   belongs_to :parent, :property => :is_part_of, :class_name => "ArchivalVideo"
 
   # Object will have either an access or a perservation datastream but not both
-  has_file_datastream :name => "access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
-  has_file_datastream :name => "preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name => "access",         :type=>ActiveFedora::Datastream, :controlGroup=>'E'
+  has_datastream :name => "preservation",   :type=>ActiveFedora::Datastream, :controlGroup=>'E'
 
   has_metadata :name => "rightsMetadata", :type => Hydra::Datastream::RightsMetadata
   has_metadata :name => "descMetadata",   :type => HydraPbcore::Datastream::Instantiation
