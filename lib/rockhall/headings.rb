@@ -3,15 +3,15 @@ require 'curb'
 module Rockhall::Headings
 
   def subjects query = String.new
-    query.empty? ? [] : (suggested_facets_from_solr("subject_facet", query)+lcsh_suggestions(query)).uniq.sort
+    query.empty? ? [] : (suggested_facets_from_solr(Solrizer.solr_name("subject", :facetable), query)+lcsh_suggestions(query)).uniq.sort
   end
 
   def genres query = String.new
-    query.empty? ? [] : suggested_facets_from_solr("genre_facet", query).uniq.sort
+    query.empty? ? [] : suggested_facets_from_solr(Solrizer.solr_name("genre", :facetable), query).uniq.sort
   end
 
   def names query = String.new
-    query.empty? ? [] : suggested_facets_from_solr("contributor_name_facet", query).uniq.sort
+    query.empty? ? [] : suggested_facets_from_solr(Solrizer.solr_name("contributor_name", :facetable), query).uniq.sort
   end  
 
   def suggested_facets_from_solr facet, query

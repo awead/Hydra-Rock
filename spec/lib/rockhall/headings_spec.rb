@@ -16,19 +16,19 @@ describe Rockhall::Headings do
     describe "from a given query" do
 
       it "should return subject headings" do
-        result = @test.suggested_facets_from_solr("subject_facet", "Rock")
+        result = @test.suggested_facets_from_solr(Solrizer.solr_name("subject", :facetable), "Rock")
         result.should include("Rock music--History and criticism")
         result.should_not include(0)
       end
 
       it "should return genre headings" do
-        result = @test.suggested_facets_from_solr("genre_facet", "Rock")
+        result = @test.suggested_facets_from_solr(Solrizer.solr_name("genre", :facetable), "Rock")
         result.should include("Rock concert films.")
         result.should_not include(0)
       end
 
       it "should return name headings" do
-        result = @test.suggested_facets_from_solr("contributor_name_facet", "Hun")
+        result = @test.suggested_facets_from_solr(Solrizer.solr_name("contributor_name", :facetable), "Hun")
         result.should include("Hunter, Ian, 1939-")
         result.should_not include(0)
       end
@@ -37,11 +37,11 @@ describe Rockhall::Headings do
 
     describe "with empty results" do
       it "should return no subject headings" do
-        result = @test.suggested_facets_from_solr("subject_facet", "dasfg")
+        result = @test.suggested_facets_from_solr(Solrizer.solr_name("subject", :facetable), "dasfg")
         result.should be_empty
       end
       it "should return no genre headings" do
-        result = @test.suggested_facets_from_solr("genre_facet", "dasfg")
+        result = @test.suggested_facets_from_solr(Solrizer.solr_name("genre", :facetable), "dasfg")
         result.should be_empty
       end
     end
