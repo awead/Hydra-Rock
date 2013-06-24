@@ -88,6 +88,9 @@ class ArchivalVideo < ActiveFedora::Base
   # When exporting these objects to another index, we need to collect metadata from 
   # child objects such as ExternalVideos.  This method returns the standard .to_solr
   # hash and augments it with additional metadata from child objects.
+  #
+  # The addititional solr fields added here follow the current Blacklight schema, 
+  # and not Hydra's.
   def to_discovery
     solr_doc = self.to_solr
     access_videos = Array.new
