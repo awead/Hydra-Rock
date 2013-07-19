@@ -110,6 +110,15 @@ class ArchivalVideo < ActiveFedora::Base
     solr_doc.merge!("name_facet"           => name_facet) unless name_facet.empty?
     solr_doc.merge!("contributors_display" => name_facet) unless name_facet.empty?
 
+    # BL-374: This is to mesh with our current method of displaying subjects in Blacklight
+    solr_doc["subject_display"] = self.subject.collect { |s| s.gsub(/\.$/,"") }
+    new_subject_facet = Array.new
+    solr_doc["subject_display"].each do |term|
+      splits = term.split(/--/)
+      new_subject_facet << splits
+    end
+    solr_doc["subject_facet"] = new_subject_facet.flatten.compact.uniq.sort
+
     return solr_doc
   end
 

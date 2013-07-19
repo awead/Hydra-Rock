@@ -110,10 +110,17 @@ describe ArchivalVideo do
       doc["contributors_display"].should include "Joel, Billy"
     end
 
-    it "should return subject facets" do
+    it "should return subject facets for Blacklight" do
       doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
-      doc["subject_facet"].should include "Rock music--History and criticism."
+      doc["subject_facet"].should include "Rock music"
+      doc["subject_facet"].should include "History and criticism"
       doc["subject_facet"].should include "Inductee"
+    end
+
+    it "should return subjects for display in Blacklight" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
+      doc["subject_display"].should include "Rock music--History and criticism"
+      doc["subject_display"].should include "Inductee"
     end
   end
 
