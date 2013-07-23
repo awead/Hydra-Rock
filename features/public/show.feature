@@ -46,10 +46,10 @@ Feature:
     Then I should see "Video not available"  
 
   Scenario: Null roles (DAM-169)
-    Given I am on the catalog page for rrhof:331
-    Then I should see the field content "blacklight-contributor_name_facet" contain "Mastro, James"
-    And I should not see "Mastro, James,"
-    And I should not see "Mastro, James ()" 
+    Given I am on the catalog page for rockhall:fixture_pbcore_document1
+    Then I should see the field content "blacklight-publisher_name_facet" contain "Rock and Roll Hall of Fame Foundation"
+    And I should not see "Rock and Roll Hall of Fame Foundation,"
+    And I should not see "Rock and Roll Hall of Fame Foundation ()" 
 
   Scenario: No access to edit workflows from navbar
     Given I am on the catalog page for rockhall:fixture_pbcore_document1
