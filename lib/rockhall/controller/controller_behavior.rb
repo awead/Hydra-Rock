@@ -6,6 +6,7 @@ module Rockhall::Controller::ControllerBehavior
     session[:search][:counter] = params[:counter] unless params[:counter].nil?
   end
 
+  # Deprecated
   def changed_fields(params)
     changes = Hash.new
     return changes if params[:document_fields].nil?

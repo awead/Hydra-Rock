@@ -75,15 +75,10 @@ class ExternalVideosController < ApplicationController
 
   def update
     @afdoc = ExternalVideo.find(params[:id])
-    changes = changed_fields(params)
-    if changes.empty?
-      redirect_to(edit_external_video_path(@afdoc), :notice => "Changes: " + params.inspect)
+    if @afdoc.update_attributes(params[:document_fields])
+      redirect_to(edit_external_video_path(@afdoc), :notice => "Video was updated successfully")
     else
-      if @afdoc.update_metadata(changes)
-        redirect_to(edit_external_video_path(@afdoc), :notice => "Video was updated successfully")
-      else
-        redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages)
-      end
+      redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages)
     end
   end
 

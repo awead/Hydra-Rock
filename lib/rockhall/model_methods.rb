@@ -123,6 +123,8 @@ module Rockhall::ModelMethods
     HydraPbcore.is_valid?(self.to_pbcore_xml)
   end
 
+  # Deprecated as of OM 3, which does this for us.
+  #
   # Uses the supplied terms hash to run .update_attributes for each term in the hash.  This method parses
   # the values for the for the term and if they are different than the number present in the object,
   # indicating that nodes either need to be added or removed, it will first remove all the terms present

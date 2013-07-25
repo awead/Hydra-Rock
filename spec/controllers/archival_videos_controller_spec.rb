@@ -81,7 +81,7 @@ describe ArchivalVideosController do
         @video.lc_subject.should == changes[:lc_subject]
 
         changes = { 
-          :lc_subject => ["", "Sub two", "Sub three"],
+          :lc_subject => ["Sub two", "Sub three"],
           :alternative_title => "Fake edited alt title"
         }
         put :update, id: @video, wf_step: "subjects", document_fields: changes
@@ -108,18 +108,6 @@ describe ArchivalVideosController do
         @video.reload
         @video.edit_groups.should include("group2")
         @video.read_users.should include("user1")
-      end
-
-      it "should not update permissions if there are no changes" do
-        pending
-        changes = {
-          :permissions => {
-            :groups      => @video.rightsMetadata.groups,
-            :individuals => @video.rightsMetadata.individuals
-          }
-        }
-        put :update, id: @video, wf_step: "permissions", document_fields: changes
-        assert_equal nil, flash[:notice]
       end
 
     end

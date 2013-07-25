@@ -51,25 +51,20 @@ class ArchivalVideosController < ApplicationController
 
   def update
     @afdoc = ArchivalVideo.find(params[:id])
-    changes = changed_fields(params)
 
     if params[:wf_step].match("permissions")
-      permissions_hash = format_permissions_hash(changes["permissions"])
+      permissions_hash = format_permissions_hash(params[:document_fields]["permissions"])
       if @afdoc.update_permissions(permissions_hash)
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Permissions updated successfully")
       else
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages)
       end
     else
-      if changes.empty?
-        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]))
+      if @afdoc.update_attributes(params[:document_fields])
+        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => params[:document_fields]})
+        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Video was updated successfully")
       else
-        if @afdoc.update_metadata(changes)
-          record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => changes}) unless changes.nil?
-          redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Video was updated successfully")
-        else
-          redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages)
-        end
+        redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages)
       end
     end
   end
