@@ -12,10 +12,10 @@
     <tr>
       <td><%= render_icon document %></td>
       <td>
-        <%= link_to_document(document, :label => document["title_display"], :counter => (counter + 1 + @response.params[:start].to_i)) %>
+        <%= link_to_document(document, :label => document["title_ssm"].first, :counter => (counter + 1 + @response.params[:start].to_i)) %>
       </td>
       <td style="white-space: nowrap">
-        <%= DateTime.parse(document.fetch(:system_create_dt,nil)).strftime("%Y-%m-%d") %>
+        <%= DateTime.parse(document.fetch(:system_create_dtsi,nil)).strftime("%Y-%m-%d") %>
       </td>
       <td style="text-align: center"><%= is_reviewed? document %></td>
       <td><%= render :partial => "catalog/bookmark_control", :locals => {:document => document } %></td>

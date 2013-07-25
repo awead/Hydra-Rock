@@ -1,4 +1,4 @@
 <% @page_title = t('blacklight.search.show.title', :document_title => document_show_html_title, :application_name => application_name) %>
 <% extra_head_content << render_link_rel_alternates %>
 <%= render 'previous_next_doc' %>
-<%= render :partial => "catalog/_show_partials/#{@document["active_fedora_model_s"].first.underscore}" %>
+<%= render :partial => "catalog/_show_partials/#{@document["active_fedora_model_ssi"].underscore}" %>
