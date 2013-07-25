@@ -11,6 +11,13 @@ end
 
 module HydraRock
   class Application < Rails::Application
+    
+    # This was added by HH6 rails generator
+    config.generators do |g|
+      g.test_framework :rspec, :spec => true
+    end
+
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
