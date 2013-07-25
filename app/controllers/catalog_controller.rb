@@ -9,9 +9,9 @@ class CatalogController < ApplicationController
   before_filter :get_public_acticity, :only => :index
 
   # This applies appropriate access controls to all solr queries
-  CatalogController.solr_search_params_logic << :add_access_controls_to_solr_params
+  CatalogController.solr_search_params_logic += [:add_access_controls_to_solr_params]
   # This filters out objects that you want to exclude from search results, like FileAssets
-  CatalogController.solr_search_params_logic << :exclude_unwanted_models
+  CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
 
   SolrDocument.use_extension ::Rockhall::Exports
 
@@ -23,9 +23,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     config.default_solr_params = {
       :qt   => 'search',
-      :rows => 10,
-      # we're not excluding anything from search results, for now.
-      #:fq   => ["-has_model_s:\"info:fedora/afmodel:ExternalVideo\""]
+      :rows => 10
     }
 
     # solr field configuration for search results/index views
@@ -89,7 +87,9 @@ class CatalogController < ApplicationController
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
-    config.add_facet_fields_to_solr_request!
+    config.default_solr_params[:'facet.field'] = config.facet_fields.keys
+    #use this instead if you don't want to query facets marked :show=>false
+    #config.default_solr_params[:'facet.field'] = config.facet_fields.select{ |k, v| v[:show] != false}.keys
 
 
     # solr fields to be displayed in the index (search results) view
