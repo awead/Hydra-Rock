@@ -6,8 +6,17 @@ describe ExternalVideosController do
 
   describe "when the user is not logged in" do
 
-    it "should redirect me to the sign-in page" do
+    it "show views should redirect to the catalog page" do
       get :show, :id => "rrhof:507"
+      assert_redirected_to catalog_path("rrhof:507")
+    end
+
+    it "should redirect me to the sign-in page" do
+      get :new, :archival_video_id => "foo"
+      assert_redirected_to new_user_session_path
+      post :create, :archival_video_id => "foo", :document_fields => { :barcode => "1234567"}
+      assert_redirected_to new_user_session_path
+      delete :destroy, :id => "rrhof:507"
       assert_redirected_to new_user_session_path
     end
 
