@@ -51,8 +51,7 @@ class NodesController < ApplicationController
 
   def destroy
     @object = ActiveFedora::Base.find(params[:id], :cast => true)
-    result = @object.send("delete_"+params[:type], params[:index])
-    @object.save unless result.nil?
+    @object.save if @object.send("delete_"+params[:type], params[:index])
 
     type = params[:type].match(/event/) ? "event" : params[:type]
     respond_to do |format|

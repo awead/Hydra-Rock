@@ -75,6 +75,17 @@ include Devise::TestHelpers
 
       end
 
+      describe "#delete" do
+        it "should remove a node of a give type and index" do
+          @video.new_contributor(:name => "Person to be deleted")
+          @video.save
+          delete :destroy, :id => @video.pid, :type => "contributor", :index => 0
+          @video.reload
+          @video.contributor_name.should be_empty
+          assert_redirected_to edit_node_path(@video.pid, "contributor")
+        end
+      end
+
     end
 
   end
