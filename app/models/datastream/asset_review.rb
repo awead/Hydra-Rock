@@ -2,12 +2,12 @@ class AssetReview < ActiveFedora::OmDatastream
 
   set_terminology do |t|
     t.root(:path=>"fields", :namespace_prefix=>nil)
-    t.reviewer(:index_as => [:facetable])
+    t.reviewer(:index_as => [:facetable, :displayable])
     t.date_updated(:index_as => [:displayable])
-    t.complete(:index_as => [:facetable])
+    t.complete(:index_as => [:facetable, :displayable])
     t.abstract(:index_as => [:displayable])
     t.license(:index_as => [:displayable])
-    t.priority(:index_as => [:facetable])
+    t.priority(:index_as => [:facetable, :displayable])
   end
 
   def self.xml_template
