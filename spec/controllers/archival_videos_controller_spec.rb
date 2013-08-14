@@ -4,31 +4,145 @@ describe ArchivalVideosController do
 
   include Devise::TestHelpers
 
-  describe "when the user is not logged in" do
-
-    it "should redirect me to the sign-in page" do
-      get :new
-      assert_redirected_to new_user_session_path
-      post :create
-      assert_redirected_to new_user_session_path
-      put :transfer, :id => "foo", :source => "bar"
-      assert_redirected_to new_user_session_path
-      put :assign, :id => "foo"
-      assert_redirected_to new_user_session_path
-      delete :destroy, :id => "foo"
-      assert_redirected_to new_user_session_path
-    end
-
+  describe "#show" do
     it "should redirect to the catalog controller" do
       get :show, :id => "rockhall:fixture_pbcore_document1"
       assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
+    end
+  end
+
+  describe "#index" do
+    it "should redirect to the catalog controller" do
       get :index
       assert_redirected_to catalog_index_path
+    end
+  end
+
+  describe "for pubic users" do
+
+    describe "#new" do
+      it "should redirect to the sign-in page" do
+        get :new
+        assert_redirected_to new_user_session_path
+      end
+    end
+
+    describe "#create" do
+      it "should redirect to the sign-in page" do
+        post :create
+        assert_redirected_to new_user_session_path
+      end
+    end
+
+    describe "#edit" do
+      it "should redirect to the sign-in page" do
+        get :edit, id: "rockhall:fixture_pbcore_document1"
+        assert_redirected_to new_user_session_path
+      end
+    end    
+
+    describe "#update" do
+      it "should redirect to the sign-in page" do
+        put :update, id: "rockhall:fixture_pbcore_document1", wf_step: "titles", document_fields: {}
+        assert_redirected_to new_user_session_path
+      end
+    end 
+
+    describe "#transfer" do
+      it "should redirect to the sign-in page" do
+        put :transfer, :id => "foo", :source => "bar"
+        assert_redirected_to new_user_session_path
+      end
+    end
+
+    describe "#assign" do
+      it "should redirect to the sign-in page" do
+        put :assign, :id => "foo"
+        assert_redirected_to new_user_session_path
+      end
+    end
+
+    describe "#destroy" do
+      it "should redirect to the sign-in page" do
+        delete :destroy, :id => "foo"
+        assert_redirected_to new_user_session_path
+      end
     end
 
   end
 
-  describe "when the user is logged in" do
+  describe "for non-staff users" do
+
+    before :each do
+      @user = FactoryGirl.find_or_create(:user)
+      sign_in @user
+      User.any_instance.stubs(:groups).returns([])
+      controller.stubs(:clear_session_user)
+    end
+
+    after :each do
+      @user.delete
+    end
+
+    describe "#new" do
+      it "should redirect to the sign-in page" do
+        get :new
+        assert_redirected_to root_path
+        assert_equal "You are not allowed to create content", flash[:alert]
+      end
+    end
+
+    describe "#create" do
+      it "should redirect to the sign-in page" do
+        post :create
+        assert_redirected_to root_path
+        assert_equal "You are not allowed to create content", flash[:alert]
+      end
+    end
+
+    describe "#edit" do
+      it "should redirect to the show page" do
+        get :edit, id: "rockhall:fixture_pbcore_document1"
+        assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
+        assert_equal "You are not allowed to edit this item", flash[:alert]
+      end
+    end
+
+    describe "#update" do
+      it "should redirect to the show page" do
+        put :update, id: "rockhall:fixture_pbcore_document1", wf_step: "titles", document_fields: {}
+        assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
+        assert_equal "You are not allowed to edit this item", flash[:alert]
+      end
+    end
+
+    describe "#transfer" do
+      it "should redirect to the show page" do
+        put :transfer, :id => "rockhall:fixture_pbcore_document1", :source => "bar"
+        assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
+        assert_equal "You are not allowed to edit this item", flash[:alert]
+      end
+    end
+
+    describe "#assign" do
+      it "should redirect to the show page" do
+        put :assign, :id => "rockhall:fixture_pbcore_document1"
+        assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
+        assert_equal "You are not allowed to edit this item", flash[:alert]
+      end
+    end
+
+    describe "#destroy" do
+      it "should redirect to the show page" do
+        delete :destroy, :id => "rockhall:fixture_pbcore_document1"
+        assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
+        assert_equal "You are not allowed to edit this item", flash[:alert]
+      end
+    end
+
+  end
+
+  describe "for members of the archivist group" do
 
     before :each do
       @user = FactoryGirl.find_or_create(:user)
@@ -41,7 +155,7 @@ describe ArchivalVideosController do
       @user.delete
     end
 
-    describe "new" do
+    describe "#new" do
       it "should render a new page" do
         get :new
         assert_response :success

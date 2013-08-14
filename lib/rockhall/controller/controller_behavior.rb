@@ -1,5 +1,7 @@
 module Rockhall::Controller::ControllerBehavior
 
+  include Rockhall::Controller::PermissionsEnforcement
+
   def update_session
     session[:search][:counter] = params[:counter] unless params[:counter].nil?
   end
@@ -21,14 +23,6 @@ module Rockhall::Controller::ControllerBehavior
       end
     end
     return changes
-  end
-
-  def enforce_asset_creation_restrictions
-    user_groups = RoleMapper.roles(current_user.email)
-    unless user_groups.include?("archivist")
-      flash[:notice] = "You are not allowed to create new content"
-      redirect_to url_for(root_path)
-    end
   end
 
   # Gets the active_fedora object in the show views of CatalogController.
