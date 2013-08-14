@@ -3313,12 +3313,13 @@ library@rockhall.org</instantiationLocation>
   </copyright>
   <access type="discover">
     <human></human>
-    <machine></machine>
+    <machine>
+      <group>public</group>
+    </machine>
   </access>
   <access type="read">
     <human></human>
     <machine>
-      <group>public</group>
       <group>donor</group>
     </machine>
   </access>

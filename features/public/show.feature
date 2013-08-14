@@ -45,6 +45,7 @@ Feature:
     Given I am on the catalog page for rockhall:fixture_pbcore_document1
     Then I should see "Video not available"  
 
+  @wip
   Scenario: Null roles (DAM-169)
     Given I am on the catalog page for rrhof:331
     Then I should see the field content "blacklight-contributor_name_facet" contain "Mastro, James"
