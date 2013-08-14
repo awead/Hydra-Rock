@@ -13,17 +13,17 @@ describe CatalogController do
 
   describe "Public users" do
 
-    it "should be granted access to public content" do
+    it "should have access to public content" do
       get :show, :id => "rockhall:fixture_pbcore_document1"
       assert_response :success
     end
-    it "should be denied access to private content" do
+    it "should not have access to private content" do
       get :show, :id => "rrhof:507"
       assert_redirected_to new_user_session_path
       assert_equal "You do not have sufficient access privileges to read this document, which has been marked private.", flash[:alert]
     end
     
-    it "should be denied read access to disoverable content" do
+    it "should not have access to discoverable content" do
       get :show, :id => "rrhof:525"
       assert_redirected_to new_user_session_path
       assert_equal "You do not have sufficient access privileges to read this document, which has been marked private.", flash[:alert]
@@ -40,13 +40,18 @@ describe CatalogController do
       controller.stubs(:clear_session_user)
     end
 
-    it "should be granted access to public content" do
+    it "should have access to public content" do
       get :show, :id => "rockhall:fixture_pbcore_document1"
       assert_response :success
     end
 
     it "should have access to private content" do
       get :show, :id => "rockhall:fixture_pbcore_document2"
+      assert_response :success
+    end
+
+    it "should have access to discoverable content" do
+      get :show, :id => "rrhof:525"
       assert_response :success
     end
 
@@ -61,13 +66,19 @@ describe CatalogController do
       controller.stubs(:clear_session_user)
     end
 
-    it "should be granted access to public content" do
+    it "should have access to public content" do
       get :show, :id => "rockhall:fixture_pbcore_document1"
       assert_response :success
     end
 
     it "should not have access to private content" do
       get :show, :id => "rockhall:fixture_pbcore_document2"
+      assert_redirected_to root_path
+      assert_equal "You do not have sufficient access privileges to read this document, which has been marked private.", flash[:alert]
+    end
+
+    it "should not have access to discoverable content" do
+      get :show, :id => "rrhof:525"
       assert_redirected_to root_path
       assert_equal "You do not have sufficient access privileges to read this document, which has been marked private.", flash[:alert]
     end
