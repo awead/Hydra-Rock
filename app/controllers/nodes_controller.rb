@@ -3,7 +3,6 @@ class NodesController < ApplicationController
   include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
-  before_filter :enforce_access_controls
 
   def new
     if params[:type]

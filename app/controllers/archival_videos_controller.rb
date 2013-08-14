@@ -4,7 +4,7 @@ class ArchivalVideosController < ApplicationController
   include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer, :destroy]
-  before_filter :enforce_access_controls, :update_session
+  before_filter :update_session
   before_filter :enforce_asset_creation_restrictions, :only=>:new
 
   def edit
