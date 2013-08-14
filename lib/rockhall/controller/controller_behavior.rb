@@ -1,7 +1,5 @@
 module Rockhall::Controller::ControllerBehavior
 
-  include Rockhall::Controller::AccessBehavior
-
   def update_session
     session[:search][:counter] = params[:counter] unless params[:counter].nil?
   end
