@@ -1,7 +1,7 @@
 PATH
   remote: /Users/adamw/Projects/Github/hydra-pbcore
   specs:
-    hydra-pbcore (3.0.0)
+    hydra-pbcore (3.0.1)
       active-fedora
       solrizer
 
