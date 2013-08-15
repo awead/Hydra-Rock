@@ -54,7 +54,7 @@ describe ArchivalCollectionsController do
       it "should redirect to the sign-in page" do
         get :new
         assert_redirected_to root_path
-        assert_equal "You are not allowed to create content", flash[:alert]
+        assert_equal "You are not allowed to create new content", flash[:alert]
       end
     end
 
@@ -62,7 +62,7 @@ describe ArchivalCollectionsController do
       it "should redirect to the sign-in page" do
         post :create
         assert_redirected_to root_path
-        assert_equal "You are not allowed to create content", flash[:alert]
+        assert_equal "You are not allowed to create new content", flash[:alert]
       end
     end
 

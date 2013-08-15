@@ -2,7 +2,7 @@ module Rockhall::Controller::PermissionsEnforcement
 
   def enforce_create_permissions
     unless can? :create, current_user
-      flash[:alert] = "You are not allowed to create content"
+      flash[:alert] = "You are not allowed to create new content"
       redirect_to root_path
     end
   end
