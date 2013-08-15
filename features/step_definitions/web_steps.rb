@@ -90,8 +90,9 @@ end
 #
 Then /^I should see the following:$/ do |table|
   table.hashes.each do |row|
-    step %{I should see the field title "#{row["id"]}" contain "#{row["title"]}"}
-    step %{I should see the field content "#{row["id"]}" contain "#{row["content"]}"}
+    solr_id = Solrizer.solr_name(row["id"], :displayable)
+    step %{I should see the field title "blacklight-#{solr_id}" contain "#{row["title"]}"}
+    step %{I should see the field content "blacklight-#{solr_id}" contain "#{row["content"]}"}
   end
 end
 

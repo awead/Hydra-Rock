@@ -8,38 +8,38 @@ Feature:
     Then I should not see "Tape (1)"
     And I should not see the heading "Videos"
     And I should see the following:
-    | id                                   | title               | content |
-    | blacklight-title_display             | Main Title          | Rock and Roll Hall of Fame induction ceremony. Part 1. | 
-    | blacklight-alternative_title_display | Alternative Title   | [Tape label title] Induction ceremony, line cut reel #20A, 03/15/99. | 
-    | blacklight-summary_display           | Summary             | (1 of 3) Uncut performances and award presentations from the 1999 ceremony. | 
-    | blacklight-subject_facet             | Subject             | Rock and Roll Hall of Fame and Museum. |
-    | blacklight-subject_facet             | Subject             | Rock music--History and criticism. |
-    | blacklight-subject_facet             | Subject             | Inductee |
-    | blacklight-subject_facet             | Subject             | Rock musicians. | 
-    | blacklight-genre_facet               | Genre               | Award presentations (Motion pictures) |
-    | blacklight-genre_facet               | Genre               | Rock concert films. | 
-    | blacklight-series_display            | Event Series        | Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999. | 
-    | blacklight-event_place_display       | Event Place         | New York, NY | 
-    | blacklight-event_date_display        | Event Date          | 1999-03-15 | 
-    | blacklight-note_display              | Note                | http://rockhall.com/inductees/ceremonies/1999/ | 
-    | blacklight-contributor_name_facet    | Contributor         | Springsteen, Bruce (recipient) |  
-    | blacklight-contributor_name_facet    | Contributor         | McCartney, Paul (recipient) |  
-    | blacklight-contributor_name_facet    | Contributor         | Joel, Billy (recipient) |  
-    | blacklight-contributor_name_facet    | Contributor         | Brown, Charles, 1922-1999 (recipient) |  
-    | blacklight-contributor_name_facet    | Contributor         | Mayfield, Curtis (recipient) |  
-    | blacklight-contributor_name_facet    | Contributor         | Shannon, Del (recipient) |  
-    | blacklight-contributor_name_facet    | Contributor         | Springfield, Dusty (recipient) |  
-    | blacklight-contributor_name_facet    | Contributor         | Staple Singers (recipient) |  
-    | blacklight-contributor_name_facet    | Contributor         | Pickett, Wilson (performer) | 
-    | blacklight-publisher_name_facet      | Publisher           | Rock and Roll Hall of Fame Foundation | 
-    | blacklight-collection_facet          | Archival Collection | Test Collection |
-    | blacklight-collection_facet          | Archival Collection | Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division. | 
-    | blacklight-archival_series_display   | Archival Series     | Series 1: Sample Series | 
-    | blacklight-collection_number_display | Collection Number   | rockhall-fixture_arc_test | 
-    | blacklight-accession_number_display  | Accession Number    | LA.2003.01.001 | 
-    | depositor_facet                      | Depositor           | archivist1@example.com | 
-    | reviewer_facet                       | Reviewer            | reviewer1@example.com | 
-    | license_display                      | License             | Public | 
+    | id                | title               | content |
+    | title             | Main Title          | Rock and Roll Hall of Fame induction ceremony. Part 1. | 
+    | alternative_title | Alternative Title   | [Tape label title] Induction ceremony, line cut reel #20A, 03/15/99. | 
+    | summary           | Summary             | (1 of 3) Uncut performances and award presentations from the 1999 ceremony. | 
+    | subject           | Subject             | Rock and Roll Hall of Fame and Museum. |
+    | subject           | Subject             | Rock music--History and criticism. |
+    | subject           | Subject             | Inductee |
+    | subject           | Subject             | Rock musicians. | 
+    | genre             | Genre               | Award presentations (Motion pictures) |
+    | genre             | Genre               | Rock concert films. | 
+    | series            | Event Series        | Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999. | 
+    | event_place       | Event Place         | New York, NY | 
+    | event_date        | Event Date          | 1999-03-15 | 
+    | note              | Note                | http://rockhall.com/inductees/ceremonies/1999/ | 
+    | contributor_name  | Contributor         | Springsteen, Bruce (recipient) |  
+    | contributor_name  | Contributor         | McCartney, Paul (recipient) |  
+    | contributor_name  | Contributor         | Joel, Billy (recipient) |  
+    | contributor_name  | Contributor         | Brown, Charles, 1922-1999 (recipient) |  
+    | contributor_name  | Contributor         | Mayfield, Curtis (recipient) |  
+    | contributor_name  | Contributor         | Shannon, Del (recipient) |  
+    | contributor_name  | Contributor         | Springfield, Dusty (recipient) |  
+    | contributor_name  | Contributor         | Staple Singers (recipient) |  
+    | contributor_name  | Contributor         | Pickett, Wilson (performer) | 
+    | publisher_name    | Publisher           | Rock and Roll Hall of Fame Foundation | 
+    | collection        | Archival Collection | Test Collection |
+    | collection        | Archival Collection | Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division. | 
+    | archival_series   | Archival Series     | Series 1: Sample Series | 
+    | collection_number | Collection Number   | rockhall-fixture_arc_test | 
+    | accession_number  | Accession Number    | LA.2003.01.001 | 
+    | depositor         | Depositor           | archivist1@example.com | 
+    | reviewer          | Reviewer            | reviewer1@example.com | 
+    | license           | License             | Public | 
 
   Scenario: Message for unavailable video (DAM-200)
     Given I am on the catalog page for rockhall:fixture_pbcore_document1
@@ -59,4 +59,4 @@ Feature:
 
   Scenario: Change Parts List to Contents (DAM-293)
     Given I am on the catalog page for rockhall:fixture_pbcore_document5
-    Then I should see the field title "blacklight-contents_display" contain "Contents"
+    Then I should see the field title "blacklight-contents_ssm" contain "Contents"

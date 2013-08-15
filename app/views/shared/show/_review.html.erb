@@ -1,10 +1,10 @@
 <fieldset id="assetReview">
   <dl class="dl-horizontal">
-    <%= display_field(:reviewer_ssm) %>
-    <%= display_field(Solrizer.solr_name('complete', :facetable)) %>
-    <%= display_field(:date_updated_t) %>
-    <%= display_field(:license_ssm) %>
-    <%= display_field(:abstract_ssm) %>
-    <%= display_field(:priority_facet) %>
+    <%= display_field 'reviewer' %>
+    <%= display_field 'complete' %>
+    <%= display_field 'date_updated' %>
+    <%= display_field 'license' %>
+    <%= display_field 'abstract' %>
+    <%= display_field 'complete' %>
   </dl>
 </fieldset>

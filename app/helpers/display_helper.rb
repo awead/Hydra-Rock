@@ -1,12 +1,12 @@
 module DisplayHelper
 
-  def display_field field, opts={}, results = String.new
+  def display_field fieldname, opts={}, results = String.new
+    field = Solrizer.solr_name(fieldname, :displayable)
     return nil if @document[field.to_sym].nil? or @document[field.to_sym].first.empty?
+    field_class = "blacklight-" + field.to_s
     formatted_name = field_label_for field, opts
-    results << "<dt class=\"#{field.to_s}\">" + formatted_name + "</dt>"
-    @document[field.to_sym].each do |v|
-      results << "<dd class=\"#{field.to_s}\">" + v + "</dd>"
-    end
+    results << content_tag(:dt, formatted_name, :class => field_class)
+    @document[field.to_sym].collect { |v| results << content_tag(:dd, v, :class => field_class) }
     return results.html_safe
   end
 
@@ -75,12 +75,9 @@ module DisplayHelper
 
   def contributor_display response, results = Array.new
     response[:document][response[:field]].each_index do |i|
-      role = response[:document]["contributor_role_display"][i] unless response[:document]["contributor_role_display"].nil?
-      if role
-        results << response[:document][response[:field]][i] + " (" + role + ")"
-      else
-        results << response[:document][response[:field]][i]
-      end
+      role ||= response[:document][Solrizer.solr_name("contributor_role", :displayable)][i]
+      entry = role ? response[:document][response[:field]][i] + " (" + role + ")" : response[:document][response[:field]][i]
+      results << entry
     end
     return results.join("<br/>").html_safe
   end

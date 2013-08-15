@@ -67,7 +67,7 @@ end
 
 Then(/^I should see the following tabular display:$/) do |table|
   table.rows_hash.each do |name, value|
-    page.should have_xpath("//th", :text => name)
+    page.should have_xpath("//th", :text => Solrizer.solr_name(name, :displayable))
     page.should have_xpath("//td", :text => value)
   end
 end
