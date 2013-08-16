@@ -44,7 +44,11 @@ end
 
 group :development, :test do
   gem 'bcrypt-ruby'
-  gem 'database_cleaner'
+
+  # v. 1.1.1 was giving:
+  # undefined local variable or method `postgresql_version'
+  gem 'database_cleaner', '< 1.1.1'
+  
   gem 'factory_girl'
   gem 'generator_spec'
   gem 'mocha', :require => false
