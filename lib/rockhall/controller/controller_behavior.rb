@@ -6,25 +6,6 @@ module Rockhall::Controller::ControllerBehavior
     session[:search][:counter] = params[:counter] unless params[:counter].nil?
   end
 
-  # Deprecated
-  def changed_fields(params)
-    changes = Hash.new
-    return changes if params[:document_fields].nil?
-    object = ActiveFedora::Base.find(params[:id], :cast => true)
-    params[:document_fields].each do |k,v|
-      if params[:document_fields][k.to_sym].kind_of?(Array)
-        unless object.send(k.to_sym) == v or (object.send(k.to_sym).empty? and v.first.empty?) or (v.sort.uniq.count > object.send(k.to_sym).count and v.sort.uniq.first.empty?)
-          changes.store(k,v)
-        end
-      else
-        unless object.send(k.to_sym) == v
-          changes.store(k,v)
-        end
-      end
-    end
-    return changes
-  end
-
   # Gets the active_fedora object in the show views of CatalogController.
   #
   # The show view only has a SolrDocument, but we need the actual fedora 
