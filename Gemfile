@@ -5,7 +5,7 @@ gem 'rails',      '~>3.2.13'
 # Hydra dependencies
 gem 'blacklight' 
 gem 'hydra-head'
-gem 'hydra-pbcore', :path => '/Users/adamw/Projects/Github/hydra-pbcore'
+gem 'hydra-pbcore'
 
 # Gems for all environments
 gem 'bootstrap-sass'
