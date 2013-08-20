@@ -226,6 +226,17 @@ namespace :rockhall do
       end
     end
 
+    desc "Convert inline datastreams to managed datastreams"
+    task :datastreams => :environment do
+      ActiveFedora::Base.find(:all).each do |obj|
+        ["descMetadata", "rightsMetadata", "properties", "assetReview", "mediaInfo"].each do |dsType|
+          if obj.datastreams.include?(dsType) && obj.datastreams[dsType].controlGroup == "X"
+            puts "fedora-modify-control-group.sh migratedatastreamcontrolgroup http #{ActiveFedora.config.credentials[:user]} #{ActiveFedora.config.credentials[:password]} #{obj.pid} #{dsType} M"
+          end
+        end
+      end
+    end
+
   end
 
 end
