@@ -15,7 +15,7 @@ module ActivitiesHelper
     if activity.owner.nil?
       "Someone"
     else
-      (activity.owner.name.nil? || activity.owner.name.empty?)  ? link_to(activity.owner.email, user_path(activity.owner)) : link_to(activity.owner.email, user_path(activity.owner))
+      (activity.owner.name.nil? || activity.owner.name.empty?)  ? link_to(activity.owner.email, user_path(activity.owner)) : link_to(activity.owner.name, user_path(activity.owner))
     end
   end
 
@@ -46,7 +46,7 @@ module ActivitiesHelper
   def render_activity_changes changes, results = String.new
     results << '<dl class="dl-horizontal dl-invert">'
     changes.each_key do |field|
-      unless changes[field] == [""] || changes[field].nil? 
+      unless changes[field] == [""] || changes[field].nil? || changes[field].empty?
         results << "<dt>"+format_activity_field_label(field)+"</dt>"
         results << "<dd>"+format_activity_field(changes[field])+"</dd>"
       end
@@ -64,7 +64,14 @@ module ActivitiesHelper
   end
 
   def format_activity_field content
-    content.is_a?(String) ? content : content.delete_if { |x| x.empty? }.join("<br/>")
+    case
+    when content.is_a?(String)
+      then content
+    when content.is_a?(Array)
+      then content.delete_if { |x| x.empty? }.join("<br/>")
+    when content.is_a?(Hash)
+      then content.values.delete_if { |x| x.empty? }.join("<br/>")
+    end
   end
 
 end
