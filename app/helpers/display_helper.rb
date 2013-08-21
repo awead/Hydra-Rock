@@ -75,7 +75,7 @@ module DisplayHelper
 
   def contributor_display response, results = Array.new
     response[:document][response[:field]].each_index do |i|
-      role ||= response[:document][Solrizer.solr_name("contributor_role", :displayable)][i]
+      role ||= response[:document][Solrizer.solr_name("contributor_role", :displayable)][i] unless response[:document][Solrizer.solr_name("contributor_role", :displayable)].nil?
       entry = role ? response[:document][response[:field]][i] + " (" + role + ")" : response[:document][response[:field]][i]
       results << entry
     end
