@@ -62,8 +62,9 @@ class ArchivalVideosController < ApplicationController
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages)
       end
     else
-      if @afdoc.update_attributes(format_parameters_hash(params[:document_fields]))
-        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => params[:document_fields]})
+      parameters_hash = format_parameters_hash params[:document_fields]
+      if @afdoc.update_attributes(parameters_hash)
+        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => parameters_hash})
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Video was updated successfully")
       else
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages)
@@ -90,7 +91,7 @@ class ArchivalVideosController < ApplicationController
 
     unless message.blank?
       if @afdoc.save
-        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => params["archival_video"]})
+        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => format_parameters_hash(params["archival_video"])})
         redirect_to(workflow_archival_video_path(@afdoc, "collections"), :notice => "Video was updated successfully")
       else
         redirect_to(workflow_archival_video_path(@afdoc, "collections"), :alert => @afdoc.errors.messages)
