@@ -33,6 +33,14 @@ describe Rockhall::Controller::ControllerBehavior do
   
   end
 
+  describe ".format_parameters_hash" do
+
+    it "should replace empty values the parameters hash with nil" do
+      sample = {:a=>"a", :b => "", :c=>[""], :d=>["d", ""]}
+      @controller.format_parameters_hash(sample).should == {:a=>"a", :b => nil, :c => nil, :d=>["d"]}
+    end
+
+  end
 
 
 end

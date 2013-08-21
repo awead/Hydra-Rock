@@ -53,6 +53,19 @@ module Rockhall::Controller::ControllerBehavior
     return permissions
   end
 
+ # Forms use empty strings to delete terms, but AF won't delete the terms unless they're nil, so we replace
+ # empty strings and arrays with nil.
+  def format_parameters_hash params, hash = Hash.new
+    params.each_pair do |k,v|
+      if v.empty? || v == [""]
+        hash[k] = nil
+      else
+        hash[k] = v.is_a?(Array) ? v.delete_if { |e| e.blank? } : v
+      end
+    end
+    return hash
+  end
+
   # overrides Blacklight::SolrHelper
   # Explicity defaults the rows parameter to 10.  This avoids the exception raised at Blacklight::SolrHelper#167 because
   # non-Blacklight controllers can't seem to determine the rows parameter when it is absent, even though it's set in the

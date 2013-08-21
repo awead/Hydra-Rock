@@ -21,7 +21,7 @@ class ExternalVideosController < ApplicationController
     if parent.is_a?(ArchivalVideo)
       @afdoc = ExternalVideo.new
       @afdoc.define_physical_instantiation
-      @afdoc.update_attributes(params["document_fields"])
+      @afdoc.update_attributes(format_parameters_hash(params["document_fields"]))
       @afdoc.apply_depositor_metadata(current_user.email)
       respond_to do |format|
         if @afdoc.save
@@ -75,7 +75,7 @@ class ExternalVideosController < ApplicationController
 
   def update
     @afdoc = ExternalVideo.find(params[:id])
-    if @afdoc.update_attributes(params[:document_fields])
+    if @afdoc.update_attributes(format_parameters_hash(params[:document_fields]))
       redirect_to(edit_external_video_path(@afdoc), :notice => "Video was updated successfully")
     else
       redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages)
