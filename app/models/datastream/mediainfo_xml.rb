@@ -208,7 +208,11 @@ class MediainfoXml < ActiveFedora::OmDatastream
   end
 
   def size
-    self.get_values([:file, :general, :file_size])
+    if self.get_values([:file, :general, :file_size]).first.match(/(\d+) (\d+)/)
+      self.get_values([:file, :general, :file_size]).first.gsub(/(\d+) (\d+)/, $1+$2)
+    else
+      self.get_values([:file, :general, :file_size])
+    end
   end
 
   def self.from_file(file)

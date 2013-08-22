@@ -87,10 +87,10 @@ module TechDataHelper
   end
 
   def size
-    if @afdoc.size.empty? or @afdoc.size.first == "0"
-      return display_mediainfo_field(:size)
-    else
+    if !@afdoc.size.first.to_i == 0 && !@afdoc.size_units.first.empty?
       return format_with_units(:size,:size_units)
+    else 
+      return display_mediainfo_field(:size)
     end
   end
 
