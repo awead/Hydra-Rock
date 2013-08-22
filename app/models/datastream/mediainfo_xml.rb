@@ -139,6 +139,7 @@ class MediainfoXml < ActiveFedora::OmDatastream
     t.width(:ref=>[:file, :video, :width])
     t.file_size(:ref=>[:file, :general, :file_size])
     t.mi_file_format(:proxy=>[:file, :general, :format])
+    t.duration(:proxy=>[:file, :video, :duration])
 
 
   end
@@ -201,7 +202,9 @@ class MediainfoXml < ActiveFedora::OmDatastream
   end
 
   def duration
-    self.get_values([:file, :video, :duration])
+    self.get_values([:file, :video, :duration]).each do |d|
+      return d if d.match(/\d+:\d+:\d/)
+    end
   end
 
   def size

@@ -27,7 +27,6 @@ describe  MediainfoXml do
     end
 
     it "should return the correct formatted string for duration" do
-      pending
       @doc.duration.should == "00:09:56.458"
     end
 
