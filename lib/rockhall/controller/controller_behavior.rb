@@ -15,7 +15,7 @@ module Rockhall::Controller::ControllerBehavior
     @afdoc = ActiveFedora::Base.find(params[:id], :cast => true)
   end
 
-  def get_public_acticity
+  def get_public_activity
     @activities = PublicActivity::Activity.order(:created_at).reverse_order.limit(20)
   end
 
