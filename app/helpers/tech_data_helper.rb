@@ -109,4 +109,8 @@ module TechDataHelper
     result.nil? ? display_mediainfo_field(:audio_sample_rate) : result
   end
 
+  def location value = nil
+    @afdoc.location.first unless @afdoc.location == [""]
+  end
+
 end
