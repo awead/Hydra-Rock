@@ -5,10 +5,9 @@ describe CatalogController do
   include Devise::TestHelpers
 
   it "should redirect to the home page for non-existent items" do
-    pending
     get :show, :id => "bogus"
-    assert_redirected_to root_path
-    assert_equal "Resource id bogus was not found or is unavailable", flash[:notice] 
+    response.response_code.should == 404
+    assert_equal "Sorry, you have requested a record that doesn't exist.", flash[:notice] 
   end
 
   describe "Public users" do
