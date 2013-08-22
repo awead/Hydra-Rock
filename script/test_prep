@@ -1,22 +1,22 @@
 #!/bin/bash
 echo -n "Reloading ActiveRecord fixtures: "
-bin/rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar/activities.yml
-bin/rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar/users.yml
+bundle exec rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar/activities.yml
+bundle exec rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar/users.yml
 echo "done."
 echo -n "Re-indexing solr: "
-bin/rake rockhall:solr:index_all
+bundle exec rake rockhall:solr:index_all
 echo -n "Emptying fedora: "
-bin/rake rockhall:fedora:empty
+bundle exec rake rockhall:fedora:empty
 echo "done."
 echo -n "Cleaning out solr dev: "
-bin/rake rockhall:solr:clean
+bundle exec rake rockhall:solr:clean
 echo "done."
 echo -n "Loading fixtures: "
-bin/rake rockhall:fedora:load
+bundle exec rake rockhall:fedora:load
 echo "done." 
 echo -n "Cleaning out solr test: "
-RAILS_ENV=test bin/rake rockhall:solr:clean
+RAILS_ENV=test bundle exec rake rockhall:solr:clean
 echo "done."
 echo -n "Indexing solr test: "
-RAILS_ENV=test bin/rake rockhall:solr:index_all
+RAILS_ENV=test bundle exec rake rockhall:solr:index_all
 # no echo here since rake task outputs results and a newline
