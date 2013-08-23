@@ -101,7 +101,7 @@ class ExternalVideo < ActiveFedora::Base
 
   # returns the full path to the file within its bag, in the configured location
   def path
-    File.join(RH_CONFIG["location"], self.parent.pid, "data", self.name.first) unless self.parent.nil? or self.name.empty?
+    File.join(RH_CONFIG["location"], self.parent.pid.gsub(/:/,"_"), "data", self.name.first) unless self.parent.nil? or self.name.empty?
   end
 
   # updates size and size_units fields with file metadata

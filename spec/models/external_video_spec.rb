@@ -81,7 +81,7 @@ describe ExternalVideo do
   describe ".path" do
     it "should return the full path to the file" do
       video = ExternalVideo.find("rockhall:fixture_pbcore_document3_h264")
-      video.path.should == File.join(RH_CONFIG["location"], "rockhall:fixture_pbcore_document3", "data", "39156042439369_access.mp4")
+      video.path.should == File.join(RH_CONFIG["location"], "rockhall_fixture_pbcore_document3", "data", "39156042439369_access.mp4")
     end
 
     it "should return nil for videos that have no parent" do
