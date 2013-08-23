@@ -26,9 +26,4 @@ class DublinCore < ActiveFedora::OmDatastream
     return builder.doc
   end
 
-  def to_solr(solr_doc=Solr::Document.new)
-    super(solr_doc)
-    Solrizer.insert_field(solr_doc, "format", self.find_by_terms(:format).text, :facetable, :displayable) unless self.find_by_terms(:format).nil?
-  end
-
 end
