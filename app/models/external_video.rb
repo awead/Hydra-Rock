@@ -59,7 +59,7 @@ class ExternalVideo < ActiveFedora::Base
       units = ""
     end
     self.size       = size
-    self.size_units = size_units
+    self.size_units = units
     self.name       = opts[:label]
   end
 
