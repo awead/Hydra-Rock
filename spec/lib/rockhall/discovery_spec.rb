@@ -25,16 +25,16 @@ describe Rockhall::Discovery do
     @d.solr.should be_a_kind_of(RSolr::Client)
   end
 
-  describe "Items in Hydra" do
-    it "should be an array of publically available ActiveFedora model objects" do
-      @d.public_items.should be_a_kind_of(Array)
-      @d.public_items.count.should == 3
+  describe "#exports" do
+    it "should be an array of AF objects that can be exported to Blacklight" do
+      @d.exports.should be_a_kind_of(Array)
+      @d.exports.count.should == 5
     end
   end
 
-  describe "Items in Blacklight" do
-    it "should be take from public_items" do
-      @d.blacklight_items.length.should == 2
+  describe "#blacklight_items" do
+    it "should be an array of the existing Hydra objects in Blacklight's solr index" do
+      @d.blacklight_items.length.should == 4
     end
   end
 

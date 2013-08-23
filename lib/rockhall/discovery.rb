@@ -22,7 +22,7 @@ class Rockhall::Discovery
   # newly queried ones from Hydra's solr index.
   def update
     delete if blacklight_items.count > 0
-    self.public_items.each do |pid|
+    self.exports.each do |pid|
       obj = ActiveFedora::Base.find(pid, :cast => true)
       solr.add obj.to_discovery if obj.respond_to? "to_discovery"
     end
@@ -38,10 +38,9 @@ class Rockhall::Discovery
     end
   end
 
-  # Returns an array of pids for items that are publically available, meaning any
-  # objects that have read_access_group_ssim set to "public" 
-  def public_items
-    ActiveFedora::Base.where(read_access_group_ssim: "public").all.collect { |o| o.pid }
+  # Returns an array of pids that can be exported to Blacklight
+  def exports
+    ActiveFedora::Base.where(read_access_group_ssim: "public").all.collect { |o| o.pid } + ActiveFedora::Base.where(discover_access_group_ssim: "public").all.collect { |o| o.pid }
   end
 
   def blacklight_items(solr_params = Hash.new)
