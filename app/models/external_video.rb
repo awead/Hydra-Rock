@@ -127,6 +127,10 @@ class ExternalVideo < ActiveFedora::Base
     end
     Solrizer.insert_field(solr_doc, "media_format", self.format, :facetable, :displayable)
 
+    # remove existing format field
+    solr_doc.delete Solrizer.solr_name("format", :facetable)
+    solr_doc.delete Solrizer.solr_name("format", :displayable)
+
     self.date.each do |d|
       unless d.nil?
         Solrizer.insert_field(solr_doc, "create_date", Time.new(d).strftime("%Y"), :facetable, :displayable) unless d.empty?
