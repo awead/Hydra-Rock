@@ -99,6 +99,24 @@ class ExternalVideo < ActiveFedora::Base
     self.generation.first.match("Original") ? "physical" : "digital"
   end
 
+  # returns the full path to the file within its bag, in the configured location
+  def path
+    File.join(RH_CONFIG["location"], self.parent.pid, "data", self.name.first) unless self.parent.nil? or self.name.empty?
+  end
+
+  # updates size and size_units fields with file metadata
+  def update_file_info
+    if self.path
+      size = File.exists?(self.path) ? File.size(self.path) : nil
+    end
+    if size
+      (value, units)  = bits_to_human_readable(size)
+      self.size       = value  unless value.nil? or value.empty?
+      self.size_units = units unless units.nil? or units.empty?
+      self.save if self.descMetadata.changed?
+    end
+  end
+
   def to_solr solr_doc = Hash.new
     super(solr_doc)
     if self.parent.nil?

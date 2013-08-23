@@ -37,6 +37,13 @@ namespace :rockhall do
     end
   end
 
+  desc "Updates all ExternalVideo files with their file metadata"
+  task :update_files => :environment do
+    ExternalVideo.find(:all).each do |v|
+      v.update_file_info
+    end
+  end
+
   namespace :fedora do
 
     desc "Load a single object into fedora specified by FILE=path/to/file"
