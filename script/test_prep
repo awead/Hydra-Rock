@@ -13,7 +13,9 @@ bundle exec rake rockhall:solr:clean
 echo "done."
 echo -n "Loading fixtures: "
 bundle exec rake rockhall:fedora:load
-echo "done." 
+echo "done."
+echo -n "Re-indexing solr: "
+bundle exec rake rockhall:solr:index_all
 echo -n "Cleaning out solr test: "
 RAILS_ENV=test bundle exec rake rockhall:solr:clean
 echo "done."
