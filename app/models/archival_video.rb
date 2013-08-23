@@ -101,6 +101,7 @@ class ArchivalVideo < ActiveFedora::Base
     solr_doc.merge!("format_dtl_display" => self.access_format)
     solr_doc.merge!("heading_display"    => self.title)
     solr_doc.merge!("material_facet"     => "Digital")
+    solr_doc.merge!("format"             => "Video")
 
     # Collect contributors and publishers and put them in the name_facet and contributors_display field
     name_facet = Array.new
