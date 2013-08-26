@@ -117,11 +117,9 @@ class ArchivalVideo < ActiveFedora::Base
 
     # Subject facets
     subject_facet = Array.new
-    solr_doc[Solrizer.solr_name('subject', :facetable)].each do |term|
-      subject_facet << term.split("--")
-    end
+    self.subject.collect { |term| subject_facet << term.split("--") }
     solr_doc.merge!("subject_facet" => subject_facet.flatten.uniq) unless subject_facet.empty?
-
+    
     return solr_doc
   end
 
