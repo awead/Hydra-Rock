@@ -36,6 +36,19 @@ describe Rockhall::Discovery do
     it "should be an array of the existing Hydra objects in Blacklight's solr index" do
       @d.blacklight_items.length.should == 4
     end
+
+    it "should be indexed according to the catalog's schema" do
+      params = {:q => 'id:"rrhof:331"', :qt => 'document'}
+      doc = @d.solr.get("select", :params=>params)["response"]["docs"].first
+      doc["title_display"].should == "Evening with series. Ian Hunter. Part 2."
+      doc["collection_facet"].should == ["Test Collection"]
+      doc["subject_display"].should include("Rock musicians--England")
+      doc["subject_facet"].should include("Rock musicians")
+      doc["subject_facet"].should include("England")
+      doc["series_display"].should == ["Evening with series (Rock and Roll Hall of Fame and Museum)"]
+      doc["genre_facet"].should include("Filmed performances")
+    end
+
   end
 
 end

@@ -103,12 +103,24 @@ class ArchivalVideo < ActiveFedora::Base
     solr_doc.merge!("material_facet"     => "Digital")
     solr_doc.merge!("format"             => "Video")
 
+    # Facets
+    solr_doc.merge!("series_facet" => solr_doc[Solrizer.solr_name("series", :facetable)]) unless solr_doc[Solrizer.solr_name("series", :facetable)].nil?
+    solr_doc.merge!("collection_facet" => solr_doc[Solrizer.solr_name("collection", :facetable)]) unless solr_doc[Solrizer.solr_name("collection", :facetable)].nil?
+    solr_doc.merge!("genre_facet" => solr_doc[Solrizer.solr_name("genre", :facetable)]) unless solr_doc[Solrizer.solr_name("genre", :facetable)].nil?
+
     # Collect contributors and publishers and put them in the name_facet and contributors_display field
     name_facet = Array.new
     self.contributor_name.collect { |name| name_facet << name }
     self.publisher_name.collect { |name| name_facet << name }
     solr_doc.merge!("name_facet"           => name_facet) unless name_facet.empty?
     solr_doc.merge!("contributors_display" => name_facet) unless name_facet.empty?
+
+    # Subject facets
+    subject_facet = Array.new
+    solr_doc[Solrizer.solr_name('subject', :facetable)].each do |term|
+      subject_facet << term.split("--")
+    end
+    solr_doc.merge!("subject_facet" => subject_facet.flatten.uniq) unless subject_facet.empty?
 
     return solr_doc
   end
