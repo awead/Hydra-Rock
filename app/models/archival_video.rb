@@ -118,7 +118,7 @@ class ArchivalVideo < ActiveFedora::Base
     # BL-374: This is to mesh with our current method of displaying subjects in Blacklight
     subject_facet = Array.new
     self.subject.collect { |term| subject_facet << term.split("--") }
-    solr_doc.merge!("subject_facet" => subject_facet.flatten.uniq) unless subject_facet.empty?
+    solr_doc.merge!("subject_facet" => subject_facet.flatten.uniq.collect { |t| t.gsub(/\.$/,"") }) unless subject_facet.empty?
 
     return solr_doc
   end
