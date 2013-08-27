@@ -1,11 +1,10 @@
 class ExternalVideosController < ApplicationController
   
   include Blacklight::Catalog
-  include Hydra::Controller::ControllerBehavior
   include Rockhall::Controller::ControllerBehavior
 
-  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
-  before_filter :enforce_access_controls, :update_session
+  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :destroy]
+  before_filter :update_session
 
   def new
     @afdoc = ExternalVideo.new
@@ -22,7 +21,7 @@ class ExternalVideosController < ApplicationController
     if parent.is_a?(ArchivalVideo)
       @afdoc = ExternalVideo.new
       @afdoc.define_physical_instantiation
-      @afdoc.update_attributes(params["document_fields"])
+      @afdoc.update_attributes(format_parameters_hash(params["document_fields"]))
       @afdoc.apply_depositor_metadata(current_user.email)
       respond_to do |format|
         if @afdoc.save
@@ -76,15 +75,10 @@ class ExternalVideosController < ApplicationController
 
   def update
     @afdoc = ExternalVideo.find(params[:id])
-    changes = changed_fields(params)
-    if changes.empty?
-      redirect_to(edit_external_video_path(@afdoc), :notice => "Changes: " + params.inspect)
+    if @afdoc.update_attributes(format_parameters_hash(params[:document_fields]))
+      redirect_to(edit_external_video_path(@afdoc), :notice => "Video was updated successfully")
     else
-      if @afdoc.update_metadata(changes)
-        redirect_to(edit_external_video_path(@afdoc), :notice => "Video was updated successfully")
-      else
-        redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages)
-      end
+      redirect_to(edit_external_video_path(@afdoc), :alert => @afdoc.errors.messages)
     end
   end
 

@@ -2,20 +2,6 @@ Then /^I should be able to follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
-Then /^I should see the field title "([^"]*)" contain "([^"]*)"$/ do |arg1, arg2|
-  selector = "dt." + arg1
-  find(selector, :text => arg2)
-end
-
-Then /^I should see the field content "([^"]*)" contain "([^"]*)"$/ do |arg1, arg2|
-  selector = "dd." + arg1
-  find(selector, :text => arg2)
-end
-
-Then /^I should see the field content "([^"]*)" not contain "([^"]*)"$/ do |arg1, arg2|
-  page.should have_xpath("//dd[@id='#{arg1}']", :text => arg2)
-end
-
 Then /^I should see "([^"]*)" in italics$/ do |arg1|
   page.should have_xpath("//*/i", :text => arg1)
 end
@@ -30,10 +16,6 @@ end
 
 Then(/^I should see the main heading "(.*?)"$/) do |arg1|
   page.should have_xpath("//h1", :text => arg1)
-end
-
-Then /^I should see the field content "([^"]*)" contain the current date$/ do |arg1|
-  page.should have_xpath("//dd[@id='#{arg1}']", :text => DateTime.now.strftime("%Y-%m-%d"))
 end
 
 When /^I hit the enter key$/ do
@@ -65,13 +47,6 @@ When(/^I acccept the alert$/) do
   page.driver.browser.switch_to.alert.accept
 end
 
-Then(/^I should see the following tabular display:$/) do |table|
-  table.rows_hash.each do |name, value|
-    page.should have_xpath("//th", :text => name)
-    page.should have_xpath("//td", :text => value)
-  end
-end
-
 Then(/^I should see "(.*?)" in the navbar$/) do |arg1|
   page.should have_xpath("//a", :text => arg1)
 end
@@ -79,12 +54,3 @@ end
 Then(/^I should not see "(.*?)" in the navbar$/) do |arg1|
   page.should_not have_xpath("//a", :text => arg1)
 end
-
-Then(/^I should not see the field label "(.*?)" contain "(.*?)"$/) do |arg1, arg2|
-  page.should_not have_xpath("//label[@for='#{arg1}']", :text => arg2)
-end
-
-Then(/^I should see the field label "(.*?)" contain "(.*?)"$/) do |arg1, arg2|
-  page.should have_xpath("//label[@for='#{arg1}']", :text => arg2)
-end
-

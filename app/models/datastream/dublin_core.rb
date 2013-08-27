@@ -1,4 +1,4 @@
-class DublinCore < ActiveFedora::NokogiriDatastream
+class DublinCore < ActiveFedora::OmDatastream
 
   set_terminology do |t|
     t.root(:path=>"dc", :namespace_prefix=>"dc")
@@ -24,13 +24,6 @@ class DublinCore < ActiveFedora::NokogiriDatastream
       xml.dc("xmlns:dc" => "http://purl.org/dc/elements/1.1/", "xmlns:dct" => "http://purl.org/dc/terms/")
     end
     return builder.doc
-  end
-
-  def to_solr(solr_doc=Solr::Document.new)
-    super(solr_doc)
-    unless self.find_by_terms(:format).nil?
-      solr_doc.merge!(:format => self.find_by_terms(:format).text)
-    end
   end
 
 end

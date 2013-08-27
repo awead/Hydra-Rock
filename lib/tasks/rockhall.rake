@@ -37,6 +37,13 @@ namespace :rockhall do
     end
   end
 
+  desc "Updates all ExternalVideo files with their file metadata"
+  task :update_files => :environment do
+    ExternalVideo.find(:all).each do |v|
+      v.update_file_info
+    end
+  end
+
   namespace :fedora do
 
     desc "Load a single object into fedora specified by FILE=path/to/file"
@@ -224,24 +231,28 @@ namespace :rockhall do
           v.save
         end 
       end
+    end
 
-      DigitalVideo.all.each do |v|
-        print "Converting DigitalVideo #{v.pid} to new ArchivalVideo: "
-        if v.converted == "yes"
-          puts "status = #{v.converted}"
-        else
-          begin
-            av = v.from_digital_video
-            av.converted = "yes"
-            puts "ok"
-          rescue
-            av.converted = "no"
-            puts "FAILED"
-            puts e.inspect
-          end          
-          av.save
-        end 
+
+    desc "Use Fedora's fedora-modify-control-group.sh to convert inline datastreams to managed datastreams"
+    task :datastreams => :environment do
+      raise "fedora-modify-control-group.sh doesn't appear to be in your PATH" unless `which fedora-modify-control-group.sh`.length > 0
+      failed = Array.new
+      ActiveFedora::Base.find(:all).each do |obj|
+        ["descMetadata", "rightsMetadata", "properties", "assetReview", "mediaInfo"].each do |dsType|
+          if obj.datastreams.include?(dsType) && obj.datastreams[dsType].controlGroup == "X"
+            begin
+              `fedora-modify-control-group.sh migratedatastreamcontrolgroup http #{ActiveFedora.config.credentials[:user]} #{ActiveFedora.config.credentials[:password]} #{obj.pid} #{dsType} M`
+            rescue
+              failed << "#{obj.pid} #{dsType} failed"
+            end
+          end
+        end
       end
+      if failed.length > 0
+        puts "#{failed.length} datastreams did not convert:"
+        puts failed.join("\n")
+      end    
     end
 
   end

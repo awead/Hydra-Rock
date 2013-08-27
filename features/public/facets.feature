@@ -27,4 +27,3 @@ Feature:
   Scenario: Facet counts
     Given I am on the home page
     Then I should see "Video 4"
-    And I should see "Collection 1"

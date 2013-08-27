@@ -93,14 +93,12 @@ describe ArchivalVideo do
 
   describe ".to_discovery" do
     it "should return a solr document with metadata for discovery" do
-      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document3").to_discovery
-      doc.should be_kind_of(Hash)
-      doc["access_file_s"].should be_kind_of(Array)
-      doc["access_file_s"].should == ["39156042439369_access.mp4"]
-      doc["format_dtl_display"].should == ["H.264/MPEG-4 AVC"]
-      doc["title_display"].first.should == "Rock-n-Roll Hall of Fame. The craft. Jim James. @ the Belly Up, San Diego. Main mix, stereo. Part 2 of 2."
-      doc["heading_display"].should == doc["title_display"].first
-      doc["material_facet"].should == "Digital"
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
+      solr_doc = doc.to_discovery
+      solr_doc["access_file_s"].should == ["39156042439369_access.mp4"]
+      solr_doc["format_dtl_display"].should == ["H.264/MPEG-4 AVC"]
+      solr_doc["heading_display"].should == doc.title
+      solr_doc["material_facet"].should == "Digital"
     end
 
     it "should return correctly formatted contributors" do

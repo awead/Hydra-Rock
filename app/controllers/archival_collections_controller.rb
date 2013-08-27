@@ -1,12 +1,10 @@
 class ArchivalCollectionsController < ApplicationController
   
   include Blacklight::Catalog
-  include Hydra::Controller::ControllerBehavior
   include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :update]
-  before_filter :enforce_access_controls
-  before_filter :enforce_asset_creation_restrictions, :only=>:new
+  before_filter :enforce_create_permissions, :only => [:new, :create]
 
   # Returns a json object of all the collection ids and names
   def index(results = Hash.new)

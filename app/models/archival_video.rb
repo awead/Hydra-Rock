@@ -13,15 +13,11 @@ class ArchivalVideo < ActiveFedora::Base
   # libraries.  The libraries come from the ActiveFedora gem, Hydra and our own
   # local Rockhall libraries.  You can mix in model methods from any gem or library,
   # such as ActiveModel.  The extent of the mixins is completely up to your own needs.
-  include ActiveFedora::DatastreamCollections
-  include ActiveFedora::FileManagement
-  include ActiveFedora::Relationships
   include Rockhall::ModelMethods
   include Rockhall::WorkflowMethods
   include ActiveModel::Validations
   include Rockhall::Validations
   include Rockhall::TemplateMethods
-  include Rockhall::Conversion
   include Rockhall::Permissions
 
   # ActiveFedora implements callbacks just like ActiveRecord does and you can specify
@@ -92,6 +88,9 @@ class ArchivalVideo < ActiveFedora::Base
   # When exporting these objects to another index, we need to collect metadata from 
   # child objects such as ExternalVideos.  This method returns the standard .to_solr
   # hash and augments it with additional metadata from child objects.
+  #
+  # The addititional solr fields added here follow the current Blacklight schema, 
+  # and not Hydra's.
   def to_discovery
     solr_doc = self.to_solr
     access_videos = Array.new
@@ -102,6 +101,12 @@ class ArchivalVideo < ActiveFedora::Base
     solr_doc.merge!("format_dtl_display" => self.access_format)
     solr_doc.merge!("heading_display"    => self.title)
     solr_doc.merge!("material_facet"     => "Digital")
+    solr_doc.merge!("format"             => "Video")
+
+    # Facets
+    solr_doc.merge!("series_facet" => solr_doc[Solrizer.solr_name("series", :facetable)]) unless solr_doc[Solrizer.solr_name("series", :facetable)].nil?
+    solr_doc.merge!("collection_facet" => solr_doc[Solrizer.solr_name("collection", :facetable)]) unless solr_doc[Solrizer.solr_name("collection", :facetable)].nil?
+    solr_doc.merge!("genre_facet" => solr_doc[Solrizer.solr_name("genre", :facetable)]) unless solr_doc[Solrizer.solr_name("genre", :facetable)].nil?
 
     # Collect contributors and publishers and put them in the name_facet and contributors_display field
     name_facet = Array.new
@@ -111,13 +116,9 @@ class ArchivalVideo < ActiveFedora::Base
     solr_doc.merge!("contributors_display" => name_facet) unless name_facet.empty?
 
     # BL-374: This is to mesh with our current method of displaying subjects in Blacklight
-    solr_doc["subject_display"] = self.subject.collect { |s| s.gsub(/\.$/,"") }
-    new_subject_facet = Array.new
-    solr_doc["subject_display"].each do |term|
-      splits = term.split(/--/)
-      new_subject_facet << splits
-    end
-    solr_doc["subject_facet"] = new_subject_facet.flatten.compact.uniq.sort
+    subject_facet = Array.new
+    self.subject.collect { |term| subject_facet << term.split("--") }
+    solr_doc.merge!("subject_facet" => subject_facet.flatten.uniq) unless subject_facet.empty?
 
     return solr_doc
   end
@@ -125,18 +126,17 @@ class ArchivalVideo < ActiveFedora::Base
   # Override model method to merge in some additional fields as needed
   def to_solr solr_doc = Hash.new
     super(solr_doc)
-    solr_doc.merge!({"format" => "Video"})
-    solr_doc.merge!({"title_sort" => self.title})
+    Solrizer.insert_field(solr_doc, "format", "Video", :facetable, :displayable)
 
     unless self.collection.nil?
       facets = Array.new
       facets << self.collection.title
       facets << self.additional_collection
-      solr_doc.merge!({"collection_facet" => facets.flatten})
+      Solrizer.insert_field(solr_doc, "collection", facets.flatten, :facetable, :displayable)
     end
 
-    solr_doc.merge!({"archival_series_display" => self.series.title}) unless self.series.nil?
-    solr_doc.merge!({"collection_number_display" => self.collection.pid.gsub(/:/,"-")}) unless self.collection.nil?
+    Solrizer.insert_field(solr_doc, "archival_series",   self.series.title,                 :facetable, :displayable) unless self.series.nil?
+    Solrizer.insert_field(solr_doc, "collection_number", self.collection.pid.gsub(/:/,"-"), :facetable, :displayable) unless self.collection.nil?
     
     return solr_doc
   end

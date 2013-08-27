@@ -1,10 +1,8 @@
 class NodesController < ApplicationController
 
-  include Hydra::Controller::ControllerBehavior
   include Rockhall::Controller::ControllerBehavior
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update]
-  before_filter :enforce_access_controls
 
   def new
     if params[:type]
@@ -52,8 +50,7 @@ class NodesController < ApplicationController
 
   def destroy
     @object = ActiveFedora::Base.find(params[:id], :cast => true)
-    result = @object.send("delete_"+params[:type], params[:index])
-    @object.save unless result.nil?
+    @object.save if @object.send("delete_"+params[:type], params[:index])
 
     type = params[:type].match(/event/) ? "event" : params[:type]
     respond_to do |format|

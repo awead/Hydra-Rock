@@ -1,33 +1,9 @@
 module Rockhall::Controller::ControllerBehavior
 
+  include Rockhall::Controller::PermissionsEnforcement
+
   def update_session
     session[:search][:counter] = params[:counter] unless params[:counter].nil?
-  end
-
-  def changed_fields(params)
-    changes = Hash.new
-    return changes if params[:document_fields].nil?
-    object = ActiveFedora::Base.find(params[:id], :cast => true)
-    params[:document_fields].each do |k,v|
-      if params[:document_fields][k.to_sym].kind_of?(Array)
-        unless object.send(k.to_sym) == v or (object.send(k.to_sym).empty? and v.first.empty?) or (v.sort.uniq.count > object.send(k.to_sym).count and v.sort.uniq.first.empty?)
-          changes.store(k,v)
-        end
-      else
-        unless object.send(k.to_sym) == v
-          changes.store(k,v)
-        end
-      end
-    end
-    return changes
-  end
-
-  def enforce_asset_creation_restrictions
-    user_groups = RoleMapper.roles(current_user.email)
-    unless user_groups.include?("archivist")
-      flash[:notice] = "You are not allowed to create new content"
-      redirect_to url_for(root_path)
-    end
   end
 
   # Gets the active_fedora object in the show views of CatalogController.
@@ -39,7 +15,7 @@ module Rockhall::Controller::ControllerBehavior
     @afdoc = ActiveFedora::Base.find(params[:id], :cast => true)
   end
 
-  def get_public_acticity
+  def get_public_activity
     @activities = PublicActivity::Activity.order(:created_at).reverse_order.limit(20)
   end
 
@@ -75,6 +51,19 @@ module Rockhall::Controller::ControllerBehavior
     params["users"].each { |k,v| permissions << {:type => "user", :name => k, :access => v} }   unless params["users"].nil?
     params["groups"].each { |k,v| permissions << {:type => "group", :name => k, :access => v} } unless params["groups"].nil?
     return permissions
+  end
+
+ # Forms use empty strings to delete terms, but AF won't delete the terms unless they're nil, so we replace
+ # empty strings and arrays with nil.
+  def format_parameters_hash params, hash = Hash.new
+    params.each_pair do |k,v|
+      if v.empty? || v == [""]
+        hash[k] = nil
+      else
+        hash[k] = v.is_a?(Array) ? v.delete_if { |e| e.blank? } : v
+      end
+    end
+    return hash
   end
 
   # overrides Blacklight::SolrHelper

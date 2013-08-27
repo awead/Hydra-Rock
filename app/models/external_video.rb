@@ -1,5 +1,7 @@
 class ExternalVideo < ActiveFedora::Base
 
+  include ActiveFedora::DatastreamCollections
+
   FieldList =
     [ :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 
       :duration, :rights_summary, :note, :checksum_type, :checksum_value, :device, :capture_soft, 
@@ -10,12 +12,8 @@ class ExternalVideo < ActiveFedora::Base
       :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format, :depositor, :notes,
       :mi_file_format ]
 
-  include ActiveFedora::DatastreamCollections
-  include ActiveFedora::FileManagement
-  include ActiveFedora::Relationships
   include Rockhall::ModelMethods
   include Rockhall::TemplateMethods
-  include Rockhall::Conversion
   include Rockhall::Validations
   include Rockhall::Permissions
 
@@ -61,7 +59,7 @@ class ExternalVideo < ActiveFedora::Base
       units = ""
     end
     self.size       = size
-    self.size_units = size_units
+    self.size_units = units
     self.name       = opts[:label]
   end
 
@@ -101,25 +99,47 @@ class ExternalVideo < ActiveFedora::Base
     self.generation.first.match("Original") ? "physical" : "digital"
   end
 
+  # returns the full path to the file within its bag, in the configured location
+  def path
+    File.join(RH_CONFIG["location"], self.parent.pid.gsub(/:/,"_"), "data", self.name.first) unless self.parent.nil? or self.name.empty?
+  end
+
+  # updates size and size_units fields with file metadata
+  def update_file_info
+    if self.path
+      size = File.exists?(self.path) ? File.size(self.path) : nil
+    end
+    if size
+      (value, units)  = bits_to_human_readable(size)
+      self.size       = value  unless value.nil? or value.empty?
+      self.size_units = units unless units.nil? or units.empty?
+      self.save if self.descMetadata.changed?
+    end
+  end
+
   def to_solr solr_doc = Hash.new
     super(solr_doc)
     if self.parent.nil?
-      solr_doc.merge!({"title_sort" => self.pid})
+      Solrizer.insert_field(solr_doc, "title", self.pid, :sortable)
     else
-      title_display = self.generation.first.nil? ? ("Video: " + self.parent.title) : (self.generation.first + ": " + self.parent.title)
-      solr_doc.merge!({"title_display" => title_display})
-      solr_doc.merge!({"title_sort" =>    title_display})
+      title = self.generation.first.nil? ? ("Video: " + self.parent.title) : (self.generation.first + ": " + self.parent.title)
+      Solrizer.insert_field(solr_doc, "title", title, :sortable, :displayable)
     end
-    solr_doc.merge!({"media_format_facet" => self.format})
+    Solrizer.insert_field(solr_doc, "media_format", self.format, :facetable, :displayable)
+
+    # remove existing format field
+    solr_doc.delete Solrizer.solr_name("format", :facetable)
+    solr_doc.delete Solrizer.solr_name("format", :displayable)
 
     self.date.each do |d|
       unless d.nil?
-        solr_doc.merge!({"create_date_facet"  => Time.new(d).strftime("%Y")}) unless d.empty?
+        Solrizer.insert_field(solr_doc, "create_date", Time.new(d).strftime("%Y"), :facetable, :displayable) unless d.empty?
       end
     end
 
     self.language.each do |l|
-      l.match(/^eng$/) ? solr_doc.merge!(:language_facet => "English") : solr_doc.merge!(:language_facet => "Unknown")
+      language = l.match(/^eng$/) ? "English" : "Unknown"
+      Solrizer.insert_field(solr_doc, "language", language, :facetable, :displayable)
     end
 
     return solr_doc

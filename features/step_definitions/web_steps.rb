@@ -82,19 +82,6 @@ When /^(?:|I )fill in the following:$/ do |fields|
   end
 end
 
-# Use this to view the results in a show view
-#
-#   And I should see the following:
-#     | id                       | title               | content
-#     | selector for this field  | title of the field  | content of the field
-#
-Then /^I should see the following:$/ do |table|
-  table.hashes.each do |row|
-    step %{I should see the field title "#{row["id"]}" contain "#{row["title"]}"}
-    step %{I should see the field content "#{row["id"]}" contain "#{row["content"]}"}
-  end
-end
-
 # Use this to view the contents of multiple edit fields
 #
 #   And I should see the following in edit fields:

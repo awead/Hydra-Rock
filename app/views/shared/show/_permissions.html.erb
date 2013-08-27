@@ -1,10 +1,10 @@
 <fieldset id="rightsMetdata">
   <dl class="dl-horizontal">
-    <%= display_permissions_field(:read_access_group_t)      %>
-    <%= display_permissions_field(:read_access_person_t)     %>
-    <%= display_permissions_field(:edit_access_group_t)      %>
-    <%= display_permissions_field(:edit_access_person_t)     %>
-    <%= display_permissions_field(:discover_access_group_t)  %>
-    <%= display_permissions_field(:discover_access_person_t) %>
+    <%= display_permissions_field(Hydra.config[:permissions][:read][:group])      %>
+    <%= display_permissions_field(Hydra.config[:permissions][:read][:individual])     %>
+    <%= display_permissions_field(Hydra.config[:permissions][:edit][:group])      %>
+    <%= display_permissions_field(Hydra.config[:permissions][:edit][:individual])     %>
+    <%= display_permissions_field(Hydra.config[:permissions][:discover][:group])  %>
+    <%= display_permissions_field(Hydra.config[:permissions][:discover][:individual]) %>
   </dl>
 </fieldset>

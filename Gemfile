@@ -1,20 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails',      '~>3.2.11'
-gem 'hydra-head', '< 6.0.0'
-gem 'blacklight'    
+gem 'rails',      '~>3.2.13'
 
-# Hydra Bits
-gem 'om'
-gem 'solrizer', '< 3.0.0'
+# Hydra dependencies
+gem 'blacklight' 
+gem 'hydra-head'
 gem 'hydra-pbcore'
-gem 'solr_ead'
 
 # Gems for all environments
 gem 'bootstrap-sass'
 gem 'unicode', :platforms => [:mri_18, :mri_19]
 gem 'devise-guests'
-gem 'devise'
+
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'bagit'
@@ -26,7 +23,10 @@ gem 'gravatar_image_tag'
 gem 'curb'
 
 # Gems that we lock to specific versions for compatibility
-# none!
+#
+# Don't use devise 3.0 just yet: https://github.com/plataformatec/devise/issues/2515
+gem 'devise', '< 3.0.0'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,7 +44,11 @@ end
 
 group :development, :test do
   gem 'bcrypt-ruby'
-  gem 'database_cleaner'
+
+  # v. 1.1.1 was giving:
+  # undefined local variable or method `postgresql_version'
+  gem 'database_cleaner', '< 1.1.1'
+  
   gem 'factory_girl'
   gem 'generator_spec'
   gem 'mocha', :require => false

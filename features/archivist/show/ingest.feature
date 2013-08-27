@@ -57,7 +57,7 @@ Narrative:
     And I am on the catalog page for rockhall:fixture_pbcore_document3
     When I follow "Access (1)"
     Then I should see "39156042439369_access.mp4"
-    And I should see "1008"
+    And I should see "1009 MiB"
     And I should see "2011-10-12"
     And I should see "George Blood Audio and Video"
     And I should see "Copy: access"

@@ -1,6 +1,6 @@
 require 'mediainfo'
 
-class MediainfoXml < ActiveFedora::NokogiriDatastream
+class MediainfoXml < ActiveFedora::OmDatastream
 
   set_terminology do |t|
     t.root(:path=>"Mediainfo")
@@ -139,6 +139,7 @@ class MediainfoXml < ActiveFedora::NokogiriDatastream
     t.width(:ref=>[:file, :video, :width])
     t.file_size(:ref=>[:file, :general, :file_size])
     t.mi_file_format(:proxy=>[:file, :general, :format])
+    t.duration(:proxy=>[:file, :video, :duration])
 
 
   end
@@ -201,11 +202,17 @@ class MediainfoXml < ActiveFedora::NokogiriDatastream
   end
 
   def duration
-    self.get_values([:file, :video, :duration])
+    self.get_values([:file, :video, :duration]).each do |d|
+      return d if d.match(/\d+:\d+:\d/)
+    end
   end
 
   def size
-    self.get_values([:file, :general, :file_size])
+    if self.get_values([:file, :general, :file_size]).first.match(/(\d+) (\d+)/)
+      self.get_values([:file, :general, :file_size]).first.gsub(/(\d+) (\d+)/, $1+$2)
+    else
+      self.get_values([:file, :general, :file_size])
+    end
   end
 
   def self.from_file(file)

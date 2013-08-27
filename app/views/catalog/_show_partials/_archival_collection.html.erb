@@ -1,4 +1,4 @@
-<div class="well"><h1><%= @document["title_display"] %></h1></div>
+<div class="well"><%= render_document_heading(:h1).html_safe %></div>
 
 <% @components = components_for_collection_id(@document.id) %>
 

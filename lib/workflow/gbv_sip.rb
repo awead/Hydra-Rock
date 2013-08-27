@@ -133,7 +133,7 @@ class GbvSip
 
   def pid
     return nil unless self.barcode
-    obj = ExternalVideo.find("barcode_t" => self.barcode)
+    obj = ExternalVideo.find(Solrizer.solr_name("barcode", :searchable) => self.barcode) 
     if obj.empty?
       return nil
     elsif obj.length == 1

@@ -40,14 +40,14 @@ class Rockhall::Discovery
 
   # Returns an array of pids that can be exported to Blacklight
   def exports
-    ActiveFedora::Base.where(read_access_group_t: "public").all.collect { |o| o.pid } + ActiveFedora::Base.where(discover_access_group_t: "public").all.collect { |o| o.pid }
+    ActiveFedora::Base.where(read_access_group_ssim: "public").all.collect { |o| o.pid } + ActiveFedora::Base.where(discover_access_group_ssim: "public").all.collect { |o| o.pid }
   end
 
   def blacklight_items(solr_params = Hash.new)
     solr_params[:fl]   = "id"
     solr_params[:qt]   = "document"
     solr_params[:rows] = 1000
-    solr_params[:q]    = 'active_fedora_model_s:"DigitalVideo" OR active_fedora_model_s:"ArchivalVideo" OR active_fedora_model_s:"ActiveFedora::Base"'
+    solr_params[:q]    = 'active_fedora_model_ssi:"ArchivalVideo"'
     response = @solr.get 'select', :params => solr_params
     return response["response"]["docs"]
   end
