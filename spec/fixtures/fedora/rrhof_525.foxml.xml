@@ -1961,9 +1961,7 @@ library@rockhall.org</instantiationLocation>
   </copyright>
   <access type="discover">
     <human></human>
-    <machine>
-      <group>public</group>
-    </machine>
+    <machine></machine>
   </access>
   <access type="read">
     <human></human>
