@@ -114,12 +114,6 @@ describe ArchivalVideo do
       doc["subject_facet"].should include "History and criticism"
       doc["subject_facet"].should include "Inductee"
     end
-
-    it "should return subjects for display in Blacklight" do
-      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
-      doc["subject_display"].should include "Rock music--History and criticism"
-      doc["subject_display"].should include "Inductee"
-    end
   end
 
   describe "adding thumbnails to existing videos" do
