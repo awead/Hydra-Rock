@@ -1,3 +1,5 @@
+1. Potential changes to our capybara config
+
 Post-install message from capybara:
 IMPORTANT! Some of the defaults have changed in Capybara 2.1. If you're experiencing failures,
 please revert to the old behaviour by setting:
@@ -17,3 +19,6 @@ If you're migrating from Capybara 1.x, try:
     end
 
 Details here: http://www.elabs.se/blog/60-introducing-capybara-2-1
+
+2. May need to specify load order of fixtures, but we can't use FIXTURES_PATH 
+Using FIXTURES_PATH env variable is deprecated, please use ActiveRecord::Tasks::DatabaseTasks.fixtures_path = '/path/to/fixtures' instead
