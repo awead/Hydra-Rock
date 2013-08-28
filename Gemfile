@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails',      '~>3.2.13'
+gem 'rails'
 
 # Hydra dependencies
 gem 'blacklight' 
@@ -11,7 +11,7 @@ gem 'hydra-pbcore'
 gem 'bootstrap-sass'
 gem 'unicode', :platforms => [:mri_18, :mri_19]
 gem 'devise-guests'
-
+gem 'devise'
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'bagit'
@@ -23,10 +23,7 @@ gem 'gravatar_image_tag'
 gem 'curb'
 
 # Gems that we lock to specific versions for compatibility
-#
-# Don't use devise 3.0 just yet: https://github.com/plataformatec/devise/issues/2515
-gem 'devise', '< 3.0.0'
-
+# none!
 
 # Gems used only for assets and not required
 # in production environments by default.
