@@ -13,6 +13,9 @@ gem 'unicode', :platforms => [:mri_18, :mri_19]
 gem 'devise-guests'
 gem 'devise'
 gem 'jquery-rails'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 gem 'sqlite3'
 gem 'bagit'
 gem 'mediainfo'
@@ -21,17 +24,6 @@ gem 'ruby-ntlm'
 gem 'public_activity'
 gem 'gravatar_image_tag'
 gem 'curb'
-
-# Gems that we lock to specific versions for compatibility
-# none!
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
 
 group :development do
   gem 'better_errors'
