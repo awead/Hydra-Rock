@@ -10,7 +10,7 @@
       <p>Enter Rockhall ID number</p>
     
       <%= text_field_tag "source", nil, :placeholder => "rrhof:1234" %>
-      <%= submit_tag "Transfer", :id => "import_videos_button", :confirm => "Are you sure? This is NOT undoable!" %>
+      <%= submit_tag "Transfer", :id => "import_videos_button", :data => { :confirm => "Are you sure? This is NOT undoable!" } %>
 
     </fieldset>
   </div>

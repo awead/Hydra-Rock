@@ -12,7 +12,7 @@
   <li>
     <%= button_to('Delete', external_video_path(params[:id]),
                   :class => "btn-small btn-danger", :form => { :class=>"navbar-search"},
-                  :confirm => 'Are you sure?', :method => :delete)
+                  :data => { :confirm => 'Are you sure?' }, :method => :delete)
     %>
   </li>
   <%= render :partial => "catalog/previous_next_doc" %>
