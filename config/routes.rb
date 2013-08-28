@@ -22,10 +22,10 @@ HydraRock::Application.routes.draw do
   
   resources :archival_videos do
     member do
-      put  'assign'
-      get  'import'
-      post 'transfer'
-      get  'edit/:wf_step', :action => 'edit', :as => 'workflow'
+      patch 'assign'
+      get   'import'
+      post  'transfer'
+      get   'edit/:wf_step', :action => 'edit', :as => 'workflow'
     end
     # Used nested resources for only creating new external videos
     resources :external_videos, :only => [:new, :create, :index]
