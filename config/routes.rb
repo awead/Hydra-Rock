@@ -1,6 +1,4 @@
 HydraRock::Application.routes.draw do
-  devise_for :installs
-
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
 
