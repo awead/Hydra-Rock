@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
 
-  # Connects this user object to Blacklights Bookmarks. 
-  include Blacklight::User
+  # Connects this user object to Sufia behaviors. 
+  include Sufia::User
   # Connects this user object to Hydra behaviors. 
   include Hydra::User
+  # Connects this user object to Blacklights Bookmarks. 
+  include Blacklight::User
   # Use PublicActivity to add user avtivities via the AF models, so don't track the user model here
   include PublicActivity::Model
   
