@@ -1,10 +1,13 @@
 HydraRock::Application.routes.draw do
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
+  Hydra::BatchEdit.add_routes(self)
+
 
   root :to => 'catalog#index'
 
   devise_for :users
+
   resources :users, :only => [:index, :show]
   resources :activities, :only => [:index]
 
@@ -46,7 +49,8 @@ HydraRock::Application.routes.draw do
     end
   end
 
-  # In production, grab anything else and redirect to the catalog page
-  match '*a', :to => 'catalog#index' if Rails.env.match("production")
+  # This must be the very last route in the file because it has a catch all route for 404 errors.
+  # This behavior seems to show up only in production mode.
+  mount Sufia::Engine => '/'
 
 end

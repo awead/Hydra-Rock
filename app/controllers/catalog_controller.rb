@@ -1,6 +1,15 @@
-class CatalogController < ApplicationController
+# -*- coding: utf-8 -*-
+# -*- encoding : utf-8 -*-
+require 'blacklight/catalog'
+require 'blacklight_advanced_search'
 
+# bl_advanced_search 1.2.4 is doing unitialized constant on these because we're calling ParseBasicQ directly
+require 'parslet'  
+require 'parsing_nesting/tree'
+
+class CatalogController < ApplicationController
   include Blacklight::Catalog
+  include BlacklightAdvancedSearch::ParseBasicQ
   include Rockhall::Controller::ControllerBehavior
   include Rockhall::Exports
 
@@ -14,6 +23,42 @@ class CatalogController < ApplicationController
   CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
 
   SolrDocument.use_extension ::Rockhall::Exports
+
+  skip_before_filter :default_html_head
+
+  def index
+    super
+    recent
+    #also grab my recent docs too
+    recent_me    
+  end
+
+  def recent
+    if user_signed_in?
+      # grab other people's documents
+      (_, @recent_documents) = get_search_results(:q =>filter_not_mine,
+                                        :sort=>sort_field, :rows=>4)      
+    else 
+      # grab any documents we do not know who you are
+      (_, @recent_documents) = get_search_results(:q =>'', :sort=>sort_field, :rows=>4)
+    end
+  end
+
+  def recent_me
+    if user_signed_in?
+      (_, @recent_user_documents) = get_search_results(:q =>filter_mine,
+                                        :sort=>sort_field, :rows=>4)
+    end
+  end
+
+  def self.uploaded_field
+#  system_create_dtsi
+    solr_name('desc_metadata__date_uploaded', :stored_sortable, type: :date)
+  end
+
+  def self.modified_field
+    solr_name('desc_metadata__date_modified', :stored_sortable, type: :date)
+  end
 
   #--------------------------------------------------------------------------------------
   #
@@ -200,5 +245,31 @@ class CatalogController < ApplicationController
   #
   #--------------------------------------------------------------------------------------
 
+  protected
+
+  # Limits search results just to GenericFiles
+  # @param solr_parameters the current solr parameters
+  # @param user_parameters the current user-subitted parameters
+  #def exclude_unwanted_models(solr_parameters, user_parameters)
+  #  solr_parameters[:fq] ||= []
+  #  solr_parameters[:fq] << "#{Solrizer.solr_name("has_model", :symbol)}:\"info:fedora/afmodel:GenericFile\""
+  #end
+
+  def depositor 
+    #Hydra.config[:permissions][:owner] maybe it should match this config variable, but it doesn't.
+    Solrizer.solr_name('depositor', :stored_searchable, type: :string)
+  end
+
+  def filter_not_mine 
+    "{!lucene q.op=AND df=#{depositor}}-#{current_user.user_key}"
+  end
+
+  def filter_mine 
+    "{!lucene q.op=AND df=#{depositor}}#{current_user.user_key}"
+  end
+
+  def sort_field
+    "#{Solrizer.solr_name('system_create', :sortable)} desc"
+  end
 
 end
