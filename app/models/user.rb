@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   include Hydra::User
   # Connects this user object to Blacklights Bookmarks. 
   include Blacklight::User
-  # Use PublicActivity to add user avtivities via the AF models, so don't track the user model here
-  include PublicActivity::Model
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

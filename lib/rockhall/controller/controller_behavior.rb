@@ -15,16 +15,6 @@ module Rockhall::Controller::ControllerBehavior
     @afdoc = ActiveFedora::Base.find(params[:id], :cast => true)
   end
 
-  def get_public_activity
-    @activities = PublicActivity::Activity.order(:created_at).reverse_order.limit(20)
-  end
-
-  def record_activity parameters
-    unless current_user.nil?
-      current_user.create_activity :activity, params: parameters, owner: current_user
-    end
-  end
-
   def update_relation relation, message = String.new
     if params["archival_video"][relation].empty? && !@afdoc.collection.nil?
       message = "Removed video from #{@afdoc.send(relation).title}"

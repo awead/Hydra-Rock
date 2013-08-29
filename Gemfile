@@ -23,7 +23,6 @@ gem 'bagit'
 gem 'mediainfo'
 gem 'equivalent-xml'
 gem 'ruby-ntlm'
-gem 'public_activity'
 gem 'gravatar_image_tag'
 gem 'curb'
 

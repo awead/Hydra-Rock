@@ -38,7 +38,6 @@ class ArchivalVideosController < ApplicationController
     @afdoc.apply_depositor_metadata(current_user.email)
     respond_to do |format|
       if @afdoc.save
-        record_activity({"pid" => @afdoc.pid, "action" => "create", "title" => @afdoc.title})
         format.html { redirect_to(edit_archival_video_path(@afdoc), :notice => "Video was successfully created.") }
         format.json { render :json => @afdoc, :status => :created, :location => @afdoc }
       else
@@ -64,7 +63,6 @@ class ArchivalVideosController < ApplicationController
     else
       parameters_hash = format_parameters_hash params[:document_fields]
       if @afdoc.update_attributes(parameters_hash)
-        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => parameters_hash})
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :notice => "Video was updated successfully")
       else
         redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]), :alert => @afdoc.errors.messages)
@@ -77,7 +75,6 @@ class ArchivalVideosController < ApplicationController
     title = @afdoc.title
     @afdoc.destroy_external_videos
     @afdoc.delete
-    record_activity({"action" => "delete", "title" => title})
     flash[:notice]= "Deleted #{params[:id]} and associated videos"
     redirect_to catalog_index_path
   end
@@ -91,7 +88,6 @@ class ArchivalVideosController < ApplicationController
 
     unless message.blank?
       if @afdoc.save
-        record_activity({"pid" => @afdoc.pid, "action" => "update", "title" => @afdoc.title, "changes" => format_parameters_hash(params["archival_video"])})
         redirect_to(workflow_archival_video_path(@afdoc, "collections"), :notice => "Video was updated successfully")
       else
         redirect_to(workflow_archival_video_path(@afdoc, "collections"), :alert => @afdoc.errors.messages)

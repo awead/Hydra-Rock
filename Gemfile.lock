@@ -277,11 +277,6 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    public_activity (1.4.0)
-      actionpack (>= 3.0.0)
-      activerecord (>= 3.0)
-      i18n (>= 0.5.0)
-      railties (>= 3.0.0)
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
@@ -448,7 +443,6 @@ DEPENDENCIES
   mediainfo
   mocha
   pry
-  public_activity
   rails
   rest-client
   rspec

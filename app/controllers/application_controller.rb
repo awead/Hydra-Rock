@@ -3,9 +3,7 @@ class ApplicationController < ActionController::Base
   include Blacklight::Controller  
   # Adds Sufia behaviors into the application controller 
   include Sufia::Controller
-
   include Hydra::Controller::ControllerBehavior
-  include PublicActivity::StoreController
 
   layout 'hydra-rock'
 
