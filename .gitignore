@@ -20,3 +20,4 @@ bin
 .rvmrc
 !tmp/.gitkeep
 .ruby-gemset
+dump.rdb

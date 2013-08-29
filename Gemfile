@@ -6,6 +6,8 @@ gem 'rails'
 gem 'blacklight' 
 gem 'hydra-head'
 gem 'hydra-pbcore'
+gem 'sufia', :path => '/Users/adamw/Projects/Github/projecthydra/sufia'
+#gem 'sufia', :github => 'projecthydra/sufia', :branch => 'master'
 
 # Gems for all environments
 gem 'bootstrap-sass'
