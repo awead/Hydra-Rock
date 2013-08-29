@@ -1,6 +1,6 @@
 Before do
   ActiveRecord::FixtureSet.reset_cache
-  ActiveRecord::FixtureSet.create_fixtures File.join(Rails.root, 'spec', 'fixtures', 'ar'), ["activities", "users"]
+  #ActiveRecord::FixtureSet.create_fixtures File.join(Rails.root, 'spec', 'fixtures', 'ar'), ["activities", "users"]
 end
 
 # Creates a sample video with an attached tape, and digital file
