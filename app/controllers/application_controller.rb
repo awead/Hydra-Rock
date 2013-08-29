@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include Hydra::Controller::ControllerBehavior
   include PublicActivity::StoreController
 
-  layout 'hydra-head'
+  layout 'hydra-rock'
 
   protect_from_forgery
 
