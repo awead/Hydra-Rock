@@ -1,7 +1,7 @@
 #!/bin/bash
-echo -n "Reloading ActiveRecord fixtures: "
-bundle exec rake db:fixtures:load
-echo "done."
+#echo -n "Reloading ActiveRecord fixtures: "
+#bundle exec rake db:fixtures:load
+#echo "done."
 echo -n "Re-indexing solr: "
 bundle exec rake rockhall:solr:index_all
 echo -n "Emptying fedora: "
