@@ -13,6 +13,25 @@ describe ExternalVideo do
     @video.should be_kind_of(ActiveFedora::Base)
   end
 
+  it "should have a single parent video" do
+    ev = ExternalVideo.find("rockhall:fixture_pbcore_document5_h2642")
+    ev.parent.should be_kind_of(ArchivalVideo)
+  end
+
+  describe "delegate fields" do
+    before :all do
+      @delegate = ExternalVideo.find("rockhall:fixture_pbcore_document5_h2641")
+    end
+    it "should be defined" do
+      @delegate.mi_file_format.first.should == "MPEG-4"
+    end
+  end
+
+  it "should return the full path to the file" do
+    video = ExternalVideo.find("rockhall:fixture_pbcore_document3_h264")
+    video.path.should == File.join(RH_CONFIG["location"], "rockhall_fixture_pbcore_document3", "data", "39156042439369_access.mp4")
+  end
+
   describe '#garbage_collect' do
     it "should delete the object if it does not have any objects asserting has_collection_member" do
       mock_non_orphan = mock("non-orphan file asset", :containers=>["foo"])
@@ -63,26 +82,13 @@ describe ExternalVideo do
       @child.parent.title.should == "Parent"
     end
 
-    it "should have a single parent video" do
-      ev = ExternalVideo.find("rockhall:fixture_pbcore_document5_h2642")
-      ev.parent.should be_kind_of(ArchivalVideo)
-    end
+
   end
 
-  describe "delegate fields" do
-    before :all do
-      @delegate = ExternalVideo.find("rockhall:fixture_pbcore_document5_h2641")
-    end
-    it "should be defined" do
-      @delegate.mi_file_format.first.should == "MPEG-4"
-    end
-  end
+
 
   describe ".path" do
-    it "should return the full path to the file" do
-      video = ExternalVideo.find("rockhall:fixture_pbcore_document3_h264")
-      video.path.should == File.join(RH_CONFIG["location"], "rockhall_fixture_pbcore_document3", "data", "39156042439369_access.mp4")
-    end
+
 
     it "should return nil for videos that have no parent" do
       @video.path.should be_nil
