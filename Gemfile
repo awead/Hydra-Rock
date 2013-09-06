@@ -8,6 +8,8 @@ gem 'hydra-head'
 gem 'hydra-pbcore'
 gem 'sufia', :path => '/Users/adamw/Projects/Github/projecthydra/sufia'
 #gem 'sufia', :github => 'projecthydra/sufia', :branch => 'master'
+gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
+gem 'font-awesome-sass-rails'
 
 # Gems for all environments
 gem 'bootstrap-sass'

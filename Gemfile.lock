@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/harai/kaminari.git
+  revision: 384fcb5d11b66a0cc8fad030104bf80f82616355
+  branch: route_prefix_prototype
+  specs:
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
 PATH
   remote: /Users/adamw/Projects/Github/projecthydra/sufia
   specs:
@@ -220,9 +229,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
-    kaminari (0.14.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     logger (1.2.8)
@@ -434,11 +440,13 @@ DEPENDENCIES
   devise-guests
   equivalent-xml
   factory_girl
+  font-awesome-sass-rails
   generator_spec
   gravatar_image_tag
   hydra-head
   hydra-pbcore
   jquery-rails
+  kaminari!
   launchy
   mediainfo
   mocha
