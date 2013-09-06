@@ -1,67 +1,29 @@
-<% navbar_items << capture do %>
-  <%= render :partial => "catalog/search_form" %>
-<% end %>
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<div id="sidebar" class="span4">
-  <%= render :partial=>'shared/gravatar' %>
-</div>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
 
-<%= devise_error_messages! %>
-
-<div id="content" class="span8">
-  
-  <div class="row-fluid">
-    <div class="span4">
-      <%= gravatar_image_tag(@user.email, :gravatar => { :size => 80 }, :class => "img-rounded pull-left") %>
-      <div class="pull-right"><h2>Edit <%= resource_name.to_s.humanize %></h2></div>
-    </div>
-  </div>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
-  
-    <fieldset>
-      <legend>Current fields</legend>
-      <p>Make changes to the following fields.  To change your password, enter it twice for confirmation.</p>
-      <div class="control-group">
-        <%= f.label :email, :class => "control-label" %>
-        <div class="controls"><%= f.email_field :email, :autofocus => true %></div>
-      </div>
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
 
-      <div class="control-group">
-        <%= f.label :name, :class => "control-label" %>
-        <div class="controls"><%= f.text_field :name %></div>
-      </div>
-      
-      <div class="control-group">
-        <%= f.label :password, :class => "control-label" %>
-        <div class="controls"><%= f.password_field :password %></div>
-      </div>
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
 
-      <div class="control-group">
-        <%= f.label :password_confirmation, :class => "control-label" %>
-        <div class="controls"><%= f.password_field :password_confirmation %></div>
-      </div>
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password %></div>
 
-    </fieldset>
+  <div><%= f.submit "Update" %></div>
+<% end %>
 
-    <fieldset>
-      <legend>Current Password</legend>
-      <p>Enter your current password to confirm changes</p>
+<h3>Cancel my account</h3>
 
-      <div class="control-group">
-        <%= f.label :current_password, :class => "control-label" %>
-        <div class="controls"><%= f.password_field :current_password %></div>
-      </div>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
-    </fieldset>
-
-    <%= f.submit "Update", :class => "btn btn-primary" %>
-  <% end %>
-
-  <%= button_to "Delete User Account", registration_path(resource_name), 
-        :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "btn btn-danger" %>
-</div>
+<%= link_to "Back", :back %>
