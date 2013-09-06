@@ -54,4 +54,8 @@ HydraRock::Application.routes.draw do
   # This behavior seems to show up only in production mode.
   mount Sufia::Engine => '/'
 
+  # Enable routes to Rescue
+  mount Resque::Server, :at => "queues"
+  
+
 end
