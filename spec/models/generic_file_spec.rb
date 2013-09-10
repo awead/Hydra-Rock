@@ -4,14 +4,10 @@ describe GenericFile do
 
   before :each do
     @file = GenericFile.new
-  end
-
-  after :each do
-    #@file.delete
+    @file.apply_depositor_metadata "mrfoo@rockhall.org"
   end
 
   it "should have depositor metadata" do
-    @file.apply_depositor_metadata "mrfoo@rockhall.org"
     @file.depositor.should == "mrfoo@rockhall.org"
   end
 
@@ -20,10 +16,18 @@ describe GenericFile do
     @file.descMetadata.to_solr["title_ssm"].should == ["My Title"] 
   end
 
-  it "should have an ArchivalFileRdfDatastream for descMetadata" do
-    @file.descMetadata.should be_kind_of ArchivalFileRdfDatastream
+  it "should have an PbcoreGenericFileDatastream for descMetadata" do
+    @file.descMetadata.should be_kind_of PbcoreGenericFileDatastream
   end
 
+  describe "saving" do
+    after :each do
+      @file.delete
+    end
+    it "should save the file" do
+      @file.save.should be_true
+    end
 
+  end
 
 end
