@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe ArchivalFile do
+describe GenericFile do
 
   before :each do
-    @file = ArchivalFile.new
+    @file = GenericFile.new
   end
 
   after :each do

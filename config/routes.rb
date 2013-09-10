@@ -36,7 +36,7 @@ HydraRock::Application.routes.draw do
   resources :external_videos, :except => [:new, :create, :index]
 
   resources :digital_videos
-  resources :archival_files
+  resources :generic_files
   
   resources :permissions
 
