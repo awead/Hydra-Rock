@@ -4,11 +4,16 @@ class Properties < ActiveFedora::OmDatastream
     t.root(:path=>"fields", :namespace_prefix=>nil)
     t.collection # collection number from hydra-pbcore v1 datastreams
     t.series     # archival series field from hydra-pbocore v1 datastreams
-    t.depositor
+    t.depositor :index_as=>[:stored_searchable]
     t.notes
     t.access
     t.submission
     t.converted  # returns true/false if the model was successfully converted; default is nil
+    # terms added for sufia integration
+    t.relative_path
+    t.import_url path: 'importUrl', :index_as=>:symbol
+    t.date_uploaded :index_as => [:stored_sortable], :type => :date
+    t.date_modified :index_as => [:stored_sortable], :type => :date
   end
 
   def self.xml_template
@@ -30,7 +35,7 @@ class Properties < ActiveFedora::OmDatastream
     super(solr_doc)
 
     # Facets
-    Solrizer.insert_field(solr_doc, "depositor",           self.find_by_terms(:depositor).text,  :facetable, :displayable) unless self.find_by_terms(:depositor).nil?
+    #Solrizer.insert_field(solr_doc, "depositor",           self.find_by_terms(:depositor).text,  :facetable, :displayable) unless self.find_by_terms(:depositor).nil?
     Solrizer.insert_field(solr_doc, "converted",           self.find_by_terms(:converted).text,  :facetable, :displayable) unless self.find_by_terms(:converted).nil?
     Solrizer.insert_field(solr_doc, "internal_series",     self.find_by_terms(:series).text,     :facetable, :displayable) unless self.find_by_terms(:series).nil?
     Solrizer.insert_field(solr_doc, "internal_collection", self.find_by_terms(:collection).text, :facetable, :displayable) unless self.find_by_terms(:collection).nil?
