@@ -55,6 +55,31 @@ module WorkflowHelper
     return results.html_safe
   end
 
+  def generic_file_workflow_dropdown results = String.new
+
+    steps = [ "descriptions", "versions", "permissions" ]
+
+    results << '<li class="dropdown">'
+    results << '<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil"></i> Edit <b class="caret"></b></a>'
+    results << '<ul class="dropdown-menu">'
+    steps.each do |step|
+      if params[:wf_step] == step and params[:action] == "edit"
+        results << "<li class=\"active\">"
+        results << content_tag(:a, step.capitalize) 
+      else
+        results << "<li>"
+        results << link_to(step.capitalize, sufia.edit_generic_file_path+"/"+step)
+      end
+      results<< "</li>"
+    end
+
+    results << content_tag(:li, nil, :class => "divider")
+    results << content_tag(:li, render_delete_link)
+
+    results << "</ul>"
+    return results.html_safe
+  end
+
   def render_external_video_workflow_steps results = String.new
     @afdoc.videos.each_key do |type| 
       unless @afdoc.videos[type].empty? 
