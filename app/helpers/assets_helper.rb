@@ -34,7 +34,7 @@ module AssetsHelper
   def list_available_assets_to_create results = String.new
     results << content_tag(:li, link_to('Archival Video', new_archival_video_path))
     results << content_tag(:li, link_to('Archival Collection', new_archival_collection_path))
-    results << content_tag(:li, link_to('File', new_generic_file_path))
+    results << content_tag(:li, link_to('File', sufia.new_generic_file_path))
     unless params[:id].nil?
       results << content_tag(:li, link_to('Tape', new_archival_video_external_video_path(params[:id]))) if params[:wf_step]
     end

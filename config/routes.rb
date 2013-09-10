@@ -3,13 +3,15 @@ HydraRock::Application.routes.draw do
   HydraHead.add_routes(self)
   Hydra::BatchEdit.add_routes(self)
 
-
   root :to => 'catalog#index'
 
   devise_for :users
 
-  resources :users, :only => [:index, :show]
-  resources :activities, :only => [:index]
+  # Enable routes to Rescue
+  mount Resque::Server, :at => "queues"
+
+  #resources :users, :only => [:index, :show]
+  #resources :activities, :only => [:index]
 
   # Special routes for nodes.  These are probably better done as a resource, but
   # this will work for now.
@@ -33,13 +35,7 @@ HydraRock::Application.routes.draw do
     # Used nested resources for only creating new external videos
     resources :external_videos, :only => [:new, :create, :index]
   end
-  resources :external_videos, :except => [:new, :create, :index]
-
-  resources :digital_videos
-  resources :generic_files
   
-  resources :permissions
-
   resources :archival_collections do
     resources :archival_components, :only => [:index]
   end
@@ -50,12 +46,12 @@ HydraRock::Application.routes.draw do
     end
   end
 
+  resources :external_videos, :except => [:new, :create, :index]
+  resources :digital_videos
+  resources :permissions
+
   # This must be the very last route in the file because it has a catch all route for 404 errors.
   # This behavior seems to show up only in production mode.
   mount Sufia::Engine => '/'
-
-  # Enable routes to Rescue
-  mount Resque::Server, :at => "queues"
-  
 
 end
