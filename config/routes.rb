@@ -46,6 +46,13 @@ HydraRock::Application.routes.draw do
     end
   end
 
+  # Add-in our workflow options to Sufia's generic files
+  resources :generic_files, :path => :files, :only => :edit do
+    member do
+      get   'edit/:wf_step', :action => 'edit', :as => 'workflow'
+    end
+  end
+
   resources :external_videos, :except => [:new, :create, :index]
   resources :digital_videos
   resources :permissions
