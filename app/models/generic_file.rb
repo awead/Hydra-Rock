@@ -52,8 +52,8 @@ class GenericFile < ActiveFedora::Base
     terms_for_display
   end
 
-  # Weird things happen when Sufia calls this method.  It may be because it uses RDF datastreams
-  # and ours is not.  For now, this method is overrided to simply return nil.
+  # Weird things happen when Sufia calls this method for us. It may be because Sufia uses RDF datastreams
+  # and we're not.  For now, this method is overrided to simply return nil.
   def initialize_fields
     nil
   end
