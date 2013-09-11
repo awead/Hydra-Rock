@@ -41,6 +41,10 @@ describe GenericFilesController do
       end
     end
 
+    after :each do
+      @file.delete
+    end
+
     describe "#edit" do
       it "should be successful" do
         get :edit, id: @file
@@ -65,7 +69,6 @@ describe GenericFilesController do
           :lc_genre          => ["foo_genre", "bar_genre"],
           :note              => ["foo_note", "bar_note"],
           :accession_number  => ["foo_accession_number", "bar_accession_number"]
-
         }
         @file.reload
         @file.title.should == "New Title"
@@ -95,9 +98,7 @@ describe GenericFilesController do
         @file.genre[1].should == "bar_genre"
         @file.note[1].should == "bar_note"
         @file.accession_number[1].should == "bar_accession_number"
-
       end
-
 
     end
 
