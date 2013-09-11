@@ -24,7 +24,6 @@ class GenericFile < ActiveFedora::Base
 
   # Fields with only one value
   delegate :title, :to=> :descMetadata, :unique=>true
-  validates_presence_of :title, :message => "Main title can't be blank"
 
   # label is used for the Fedora object, so we have to call our label something else
   delegate :title_label, :to=> :descMetadata, :at=>[:label]

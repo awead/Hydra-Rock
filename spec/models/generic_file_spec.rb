@@ -20,9 +20,7 @@ describe GenericFile do
     after :each do
       @file.delete
     end
-    it "should require a title to save the file" do
-      @file.save.should be_false
-      @file.title = "My title"
+    it "should not require any additional information to save the file" do
       @file.save.should be_true
     end
   end
