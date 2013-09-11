@@ -29,4 +29,10 @@ class GenericFile < ActiveFedora::Base
   # label is used for the Fedora object, so we have to call our label something else
   delegate :title_label, :to=> :descMetadata, :at=>[:label]
 
+  attr_accessible :title, :alternative_title, :chapter, :episode, :segment, :subtitle, :track,
+    :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
+    :getty_genre, :lc_genre, :lc_subject_genre, :genre, :event_place,
+    :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
+    :note, :accession_number
+
 end
