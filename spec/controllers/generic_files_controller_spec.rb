@@ -25,8 +25,6 @@ describe GenericFilesController do
     end
   end
 
-
-
   describe "when the user is signed in" do
     
     before :each do
@@ -35,8 +33,6 @@ describe GenericFilesController do
       @routes = Sufia::Engine.routes
       @file = GenericFile.new.tap do |f|
         f.apply_depositor_metadata(@user.user_key)
-        f.title   = "Sample title"
-        f.summary = "This is a summary of the file"
         f.save!
       end
     end
