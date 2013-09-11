@@ -16,10 +16,6 @@ describe GenericFile do
     @file.descMetadata.to_solr["title_ssm"].should == ["My Title"] 
   end
 
-  it "should have an PbcoreGenericFileDatastream for descMetadata" do
-    @file.descMetadata.should be_kind_of PbcoreGenericFileDatastream
-  end
-
   describe "saving" do
     after :each do
       @file.delete
