@@ -16,6 +16,12 @@ describe GenericFile do
     @file.descMetadata.to_solr["title_ssm"].should == ["My Title"] 
   end
 
+  it "should return nil for label, until this is fixed" do
+    pending "Need to address the @inner_object nil issue"
+    @file.label = "foo"
+    @file.label.should == "foo"
+  end
+
   describe "saving" do
     after :each do
       @file.delete
