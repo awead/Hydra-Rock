@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Multicore solr config -->
+<solr persistent="true">
+
+  <!--
+  adminPath: RequestHandler path to manage cores.
+    If 'null' (or absent), cores will not be manageable via REST
+  -->
+  <cores adminPath="/admin/cores" host="${host:}" hostPort="${jetty.port:8985}" hostContext="${hostContext:solr}">  
+    <core name="blacklight-dev"  instanceDir="blacklight-dev-core"  />
+    <core name="blacklight-test" instanceDir="blacklight-test-core" />
+    <core name="blacklight-prod" instanceDir="blacklight-prod-core" />
+    <core name="hydra-dev"       instanceDir="hydra-dev-core"       />
+    <core name="hydra-test"      instanceDir="hydra-test-core"      />
+    <core name="hydra-prod"      instanceDir="hydra-prod-core"      />
+  </cores>
+
+</solr>

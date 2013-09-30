@@ -56,8 +56,7 @@ class RockhallIngest
     mtime = parse_date(File.new(File.join(directory, file)).mtime.to_s)
 
     # Get tech data using MediaInfo
-    info      = Mediainfo.new File.join(directory, file)
-    ng_info   = Nokogiri::XML::Document.parse(info.raw_response)
+    ng_info = get_mediainfo_xml File.join(directory, file)
 
     begin
       ev = ExternalVideo.new
@@ -67,7 +66,7 @@ class RockhallIngest
       opts[:format].nil? ? ev.label = "unknown" : ev.label = opts[:format]
       ev.add_named_datastream(type, :label=>file, :dsLocation=>location, :directory=>directory )
       ev.apply_depositor_metadata(RH_CONFIG["depositor"])
-      ev.datastreams["mediaInfo"].ng_xml = ng_info
+      ev.datastreams["mediaInfo"].ng_xml = ng_info unless ng_info.nil?
       ev.vendor = "Rock and Roll Hall of Fame Library and Archives"
       ev.date = mtime
       @parent.external_videos << ev

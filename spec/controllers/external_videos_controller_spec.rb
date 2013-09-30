@@ -93,7 +93,7 @@ describe ExternalVideosController do
 
       after :all do
         @av.destroy_external_videos
-        @av.delete
+        ActiveFedora::Base.find(@av.pid).delete
       end
 
       it "should create a new tape from a give ArchivalVideo" do

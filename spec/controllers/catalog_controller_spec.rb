@@ -12,19 +12,30 @@ describe CatalogController do
 
   describe "Public users" do
 
+    before :each do
+      @user = FactoryGirl.find_or_create(:user)
+      sign_in @user
+      User.any_instance.stubs(:groups).returns(["public"])
+      controller.stubs(:clear_session_user)
+    end
+
+    after :each do
+      @user.delete
+    end
+
     it "should have access to public content" do
       get :show, :id => "rockhall:fixture_pbcore_document1"
       assert_response :success
     end
     it "should not have access to private content" do
       get :show, :id => "rrhof:507"
-      assert_redirected_to new_user_session_path
+      assert_redirected_to root_path  
       assert_equal "You do not have sufficient access privileges to read this document, which has been marked private.", flash[:alert]
     end
     
     it "should not have access to discoverable content" do
       get :show, :id => "rrhof:525"
-      assert_redirected_to new_user_session_path
+      assert_redirected_to root_path  
       assert_equal "You do not have sufficient access privileges to read this document, which has been marked private.", flash[:alert]
     end
 

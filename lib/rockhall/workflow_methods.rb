@@ -1,3 +1,5 @@
+require 'mediainfo'
+
 module Rockhall::WorkflowMethods
 
   def new_name(pid,file,opts={})
@@ -157,5 +159,13 @@ module Rockhall::WorkflowMethods
     end
   end
 
-end
+  # Gather info from mediainfo
+  # It must be installed and available in the application path, otherwise
+  # it's just nil.
+  def get_mediainfo_xml file
+    if system("which #{Mediainfo.path} > /dev/null") && File.exists?(file)
+      Nokogiri::XML::Document.parse(Mediainfo.new(file).raw_response)
+    end
+  end
 
+end

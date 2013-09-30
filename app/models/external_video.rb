@@ -63,18 +63,6 @@ class ExternalVideo < ActiveFedora::Base
     self.name       = opts[:label]
   end
 
-  # deletes the object identified by pid if it does not have any objects asserting has_collection_member
-  # Originally duplicated from FileAssets
-  def self.garbage_collect(pid)
-    begin
-      obj = ExternalVideo.find(pid)
-      if obj.containers.empty?
-        obj.delete
-      end
-    rescue
-    end
-  end
-
   # @num file size in bits
   # Returns a human readable filesize and unit of measure (ie. automatically chooses 'bytes','KB','MB','GB','TB')
   # Based on a bit of python code posted here: http://blogmag.net/blog/read/38/Print_human_readable_file_size
