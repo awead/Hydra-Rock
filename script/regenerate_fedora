@@ -1,0 +1,17 @@
+#!/bin/bash
+# Removes, downloads and configures a new Fedora instance using hydra-jetty
+echo "Stopping jetty"
+bundle exec rake jetty:stop
+echo -n "Deleting jetty directory..."
+rm -Rf jetty
+echo "done"
+echo "Re-creating jetty directory"
+bundle exec rake jetty:clean
+echo "Loading fedora config"
+bundle exec rake hydra:jetty:config_fedora
+echo "Starting jetty"
+bundle exec rake jetty:start
+echo -n "Cleaning out solr dev: "
+bundle exec rake rockhall:solr:clean
+echo -n "Cleaning out solr test: "
+RAILS_ENV=test bundle exec rake rockhall:solr:clean
