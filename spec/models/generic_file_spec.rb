@@ -17,7 +17,7 @@ describe GenericFile do
   end
 
   it "should return nil for label, until this is fixed" do
-    pending "Need to address the @inner_object nil issue"
+    #pending "Need to address the @inner_object nil issue"
     @file.label = "foo"
     @file.label.should == "foo"
   end
