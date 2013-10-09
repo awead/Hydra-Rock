@@ -13,7 +13,7 @@ class ArchivalComponent < ActiveFedora::Base
   has_many :videos, :property => :is_member_of, :class_name => "ArchivalVideo"
 
   has_metadata :name => "descMetadata", :type => DublinCore
-  delegate :title, :to=> :descMetadata, :unique=>true
+  delegate :title, :to=> :descMetadata, :multiple => false
 
   # The solr ids for components appear as:
   #    ARC-0003:ref1

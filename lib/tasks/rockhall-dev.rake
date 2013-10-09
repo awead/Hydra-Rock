@@ -2,27 +2,26 @@ namespace :rockhall do
 
   namespace :dev do
 
-    desc "Run the entire application setup process"
+    desc "Setup solr and fedora"
     task :setup do
       Rake::Task["rockhall:jetty:config"].invoke
       Rake::Task["jetty:start"].invoke
       Rake::Task["rockhall:fedora:load"].invoke
-      ENV["FIXTURES_PATH"] = "spec/fixtures/ar/activities.yml"
+    end
+
+    desc "Prepare devlopment environment"
+    task :prep => :environment do
+      Rake::Task["db:drop"].invoke
+      Rake::Task["db:migrate"].invoke
+      ActiveRecord::Tasks::DatabaseTasks.fixtures_path = 'spec/fixtures/ar/'
       Rake::Task["db:fixtures:load"].invoke
-      Rake::Task["db:fixtures:load"].reenable
-      ENV["FIXTURES_PATH"] = "spec/fixtures/ar/users.yml"
-      Rake::Task["db:fixtures:load"].invoke
-      Rake::Task["rockhall:solr:index_all"].invoke
-      Rake::Task["rockhall:solr:index_all"].reenable
+      Rake::Task["rockhall:solr:clean"].invoke
       Rake::Task["rockhall:solr:index_all"].invoke
     end
 
-    desc "Prepare solr to run spec tests"
+    desc "Prepare test environment"
     task :test_prep do
-      #`bundle exec rake db:migrate RAILS_ENV=test`
-      `bundle exec rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar/activities.yml RAILS_ENV=test`
-      `bundle exec rake db:fixtures:load FIXTURES_PATH=spec/fixtures/ar/users.yml RAILS_ENV=test`
-      `bundle exec rake rockhall:solr:index_all RAILS_ENV=test`
+      `bundle exec rake rockhall:dev:prep RAILS_ENV=test`
     end
 
   end

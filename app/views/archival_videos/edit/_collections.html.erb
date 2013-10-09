@@ -8,7 +8,7 @@
   
     <div class="control-group">
       <%= f.select :collection,
-             ArchivalCollection.find(:all).collect {|p| [ p.title, p.id ] },
+             ArchivalCollection.all.collect {|p| [ p.title, p.id ] },
              {:include_blank => "None", :selected => (@afdoc.collection.nil? ? nil : @afdoc.collection.pid)},
              {:class => "collection_select"} %>
     </div>

@@ -1,12 +1,11 @@
 HydraRock::Application.routes.draw do
-  devise_for :installs
 
+  devise_for :users
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
 
   root :to => 'catalog#index'
-
-  devise_for :users
+  
   resources :users, :only => [:index, :show]
   resources :activities, :only => [:index]
 
@@ -24,10 +23,10 @@ HydraRock::Application.routes.draw do
   
   resources :archival_videos do
     member do
-      put  'assign'
-      get  'import'
-      post 'transfer'
-      get  'edit/:wf_step', :action => 'edit', :as => 'workflow'
+      patch 'assign'
+      get   'import'
+      post  'transfer'
+      get   'edit/:wf_step', :action => 'edit', :as => 'workflow'
     end
     # Used nested resources for only creating new external videos
     resources :external_videos, :only => [:new, :create, :index]

@@ -8,7 +8,7 @@ class ArchivalCollectionsController < ApplicationController
 
   # Returns a json object of all the collection ids and names
   def index(results = Hash.new)
-    ArchivalCollection.find(:all).each do |coll|
+    ArchivalCollection.all.each do |coll|
       results[coll.pid] = coll.title
     end
     render :json=>results.to_json
@@ -41,7 +41,7 @@ class ArchivalCollectionsController < ApplicationController
   end
 
   def destroy
-    coll = ArchivalCollection.find(params[:id], :cast=>true)
+    coll = ArchivalCollection.find(params[:id])
     coll.delete_componets
     af.delete
     msg = "Deleted archival collection #{params[:id]}"

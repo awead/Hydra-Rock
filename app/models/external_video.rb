@@ -15,6 +15,7 @@ class ExternalVideo < ActiveFedora::Base
   include Rockhall::ModelMethods
   include Rockhall::TemplateMethods
   include Rockhall::Validations
+  include Hydra::AccessControls::Permissions
   include Rockhall::Permissions
 
   after_create :apply_default_permissions
@@ -37,12 +38,13 @@ class ExternalVideo < ActiveFedora::Base
       :standard, :language, :video_standard, :video_encoding, :video_bit_rate, :video_bit_rate_units, 
       :frame_rate, :frame_size, :video_bit_depth, :aspect_ratio, :audio_standard, :audio_encoding, 
       :audio_bit_rate, :audio_bit_rate_units, :audio_sample_rate, :audio_sample_rate_units, 
-      :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format ]
+      :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format ],
+      :multiple => true
 
-  delegate_to :properties, [:depositor, :notes]
-  delegate :converted, :to => :properties, :unique => true    
+  delegate_to :properties, [:depositor, :notes], :multiple => true
+  delegate :converted, :to => :properties, :multiple => false   
 
-  delegate :mi_file_format, :to => :mediaInfo
+  delegate :mi_file_format, :to => :mediaInfo, :multiple => true
 
   validate :validate_date
 

@@ -53,7 +53,7 @@ module Rockhall::TemplateMethods
 
   def new_collection args
     if args[:name]
-      self.descMetadata.insert_relation(args[:name], "Archival Collection")
+      self.descMetadata.is_part_of(args[:name], {:annotation => "Archival Collection"})
     else
       self.errors.add(:additional_collection)
     end
@@ -69,7 +69,7 @@ module Rockhall::TemplateMethods
 
   def new_accession args
     if args[:name]
-      self.descMetadata.insert_relation(args[:name], "Accession Number")
+      self.descMetadata.is_part_of(args[:name], {:annotation => "Accession Number"})
     else
       self.errors.add(:accession_number)
     end
@@ -84,7 +84,7 @@ module Rockhall::TemplateMethods
 
   def new_event_series args
     if args[:event_value]
-      self.descMetadata.insert_relation args[:event_value], "Event Series"
+      self.descMetadata.is_part_of(args[:event_value], {:annotation => "Event Series"})
     else
       self.errors.add :event_series
     end

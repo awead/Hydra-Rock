@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "Dates" do
 
   before :each do
-    @ev = ExternalVideo.new
-    @av = ArchivalVideo.new
+    @ev = ExternalVideo.new(:pid => "dates-integration:2")
+    @av = ArchivalVideo.new(:pid => "dates-integration:1")
   end
 
   after :all do
