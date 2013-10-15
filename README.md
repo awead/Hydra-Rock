@@ -39,47 +39,33 @@ Video files are stored on an external system using the [BagIt](https://wiki.ucop
 To use this software, you will need a full [Hydra stack](https://github.com/projecthydra/hydra-head) and all of its
 dependencies.
 
-You will also need MediaInfo available on your machine.  You can install this via Homebrew:
+You will also need these executeables in your path
+
+* mediainfo
+* ffmpegthumbnailer
+
+On Mac, install these both via Homebrew:
 
     brew install media-info
+    brew install ffmpegthumbnailer
 
-For other options, visit [Media Info's install page](http://mediaarea.net/en/MediaInfo)
+Note that ffmpegthumbnailer requires ffmpeg which can take some time.
 
-### Fedora
-
-You will need a copy of Fedora, which is available via the hydra-head gem, but should
-be downloaded separately as [hydra-jetty](https://github.com/projecthydra/hydra-jetty).  Once downloaded, you can
-start hydra-jetty:
-
-    cd hydra-jetty
-    java -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled -XX:PermSize=64M -XX:MaxPermSize=128M -jar start.jar
-
-### Solr
-
-Hydra Jetty includes an instance of solr, however, Hydra-Rock has a different version of solr which can be installed
-using our own [solr-jetty](https://github.com/awead/solr-jetty) repository.  Once downloaded, you can start the
-solr-jetty instance:
-
-    cd solr-jetty
-    java -jar start.jar
-
-Note: hydra-jetty includes solr as well, but runs on port 8983.  Solr Jetty runs on port 8985, so the two can run
-concurrently.
+For other options for Media Info, visit [Media Info's install page](http://mediaarea.net/en/MediaInfo)
 
 ### Download
 
-Download Hydra-Rock, run migrations and install the sample fixtures:
+Download Hydra-Rock and run the tests:
 
     git clone https://github.com/awead/Hydra-Rock
     cd Hydra-Rock
     bundle install
-    rake db:migrate
-    ./script/test-prep
+    bundle exec rake
 
-If you want to run the full set of tests, you can:
+This will download hydra-jetty, run all the necessary configurations, migrations, and run the spec tests.  If all the tests pass
+you should be able to run the embedded server and take the application for a spin.
 
-    rake spec
-    rake cucumber
+    bundle exec rails server
 
 # Copyright
 
