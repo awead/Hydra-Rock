@@ -1,3 +1,4 @@
+# DEPRECATED: This is no longer used or tested and can be removed at any time
 # This is the OM terminology for xml we used to get from George Blood.  It has since been
 # updated and defined in GbvDocument.  This is deprecated code.
 module Workflow

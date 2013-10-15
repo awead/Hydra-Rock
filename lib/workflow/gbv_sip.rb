@@ -1,3 +1,4 @@
+# DEPRECATED: This is no longer used or tested and can be removed at any time
 # SIPs from George Blood
 #
 # These are not cataloged in Hydra yet, so they have no pids

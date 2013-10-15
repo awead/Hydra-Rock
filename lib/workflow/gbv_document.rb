@@ -1,3 +1,5 @@
+# DEPRECATED: This is no longer used or tested and can be removed at any time
+
 module Workflow
 class GbvDocument < ActiveFedora::OmDatastream
 

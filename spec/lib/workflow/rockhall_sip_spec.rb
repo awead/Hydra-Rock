@@ -85,10 +85,12 @@ describe Workflow::RockhallSip do
 
     before(:each) do
       Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      clean_dir RH_CONFIG["location"]
     end
 
     after(:each) do
       Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      clean_dir RH_CONFIG["location"]
     end
 
     it "should prepare it for ingestion" do
@@ -102,7 +104,6 @@ describe Workflow::RockhallSip do
       copy_check.valid?.should be_true
       copy_check.pid.should == copy.pid
       copy_check.prepare # this tests the update process
-      FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.base))
     end
 
   end

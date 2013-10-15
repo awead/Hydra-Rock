@@ -1,0 +1,1144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!-- Note:
+
+  This config file is based off of:
+
+    ../solrconfig-sample.xml
+
+  The sample config file was taken from the lucene svn branch, lucene_solr_4_1.
+
+  Comments here have removed and otherwise edited for clarity.  For more information, see the above
+  file for a full explanation of each option.
+
+-->
+
+<config>
+
+  <luceneMatchVersion>LUCENE_43</luceneMatchVersion>
+
+  <!-- Load additional jars -->
+
+  <lib dir="../lib" />
+  <lib dir="../contrib/analysis-extras/lib" />
+  <lib dir="../contrib/analysis-extras/lucene-libs" />
+  <lib dir="../contrib/clustering/lib" />
+  <lib dir="../contrib/langid/lib" />
+  <lib dir="../contrib/velocity/lib" />
+
+  <!-- Data Directory
+
+       Used to specify an alternate directory to hold all index data
+       other than the default ./data under the Solr home.  If
+       replication is in use, this should match the replication
+       configuration.
+    -->
+  <dataDir>${solr.data.dir:}</dataDir>
+
+  <!-- The DirectoryFactory to use for indexes.
+     
+     solr.StandardDirectoryFactory is filesystem
+     based and tries to pick the best implementation for the current
+     JVM and platform.  solr.NRTCachingDirectoryFactory, the default,
+     wraps solr.StandardDirectoryFactory and caches small files in memory
+     for better NRT performance.
+  -->
+  <directoryFactory name="DirectoryFactory" 
+                    class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}"/> 
+  
+  <!-- Index Config
+
+    These settings control low-level behavior of indexing.  Most of these are all 
+    the default settings.  Any value omitted here is set to its default.
+
+  -->  
+
+  <indexConfig>
+
+    <useCompoundFile>false</useCompoundFile>
+    <mergeFactor>10</mergeFactor>
+    <ramBufferSizeMB>32</ramBufferSizeMB>
+    <writeLockTimeout>1000</writeLockTimeout>
+
+    <deletionPolicy class="solr.SolrDeletionPolicy">
+      <!-- The number of commit points to be kept -->
+      <str name="maxCommitsToKeep">1</str>
+      <!-- The number of optimized commit points to be kept -->
+      <str name="maxOptimizedCommitsToKeep">0</str>
+    </deletionPolicy>
+
+    <!-- Lucene Infostream
+       
+      To aid in advanced debugging, Lucene provides an "InfoStream"
+      of detailed information when indexing.
+
+      Setting The value to true will instruct the underlying Lucene
+      IndexWriter to write its debugging info the specified file
+    -->
+    <infoStream file="INFOSTREAM.txt">false</infoStream>
+
+  </indexConfig>
+
+  <!-- The default high-performance update handler -->
+
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <autoCommit> 
+      <maxTime>15000</maxTime> 
+      <openSearcher>false</openSearcher> 
+    </autoCommit>
+  </updateHandler>
+
+  <!-- IndexReaderFactory -->
+
+  <query>
+
+    <maxBooleanClauses>1024</maxBooleanClauses>
+
+    <filterCache class="solr.FastLRUCache"
+                 size="16384"
+                 initialSize="8192"
+                 autowarmCount="8192"/>
+
+    <queryResultCache class="solr.LRUCache"
+                     size="16384"
+                     initialSize="8192"
+                     autowarmCount="8192"/>
+
+    <!-- 
+      Autowarming doesn't apply because document ids can change in the index
+      We set this to our max number of documents so we can cache all our documents
+    -->
+    <documentCache class="solr.LRUCache"
+                   size="38000"
+                   initialSize="38000"/>
+
+    <enableLazyFieldLoading>true</enableLazyFieldLoading>
+    <queryResultWindowSize>100</queryResultWindowSize>
+    <queryResultMaxDocsCached>38000</queryResultMaxDocsCached>
+
+    <listener event="newSearcher" class="solr.QuerySenderListener">
+      <arr name="queries">
+        <!--
+           <lst><str name="q">solr</str><str name="sort">price asc</str></lst>
+           <lst><str name="q">rocks</str><str name="sort">weight asc</str></lst>
+          -->
+      </arr>
+    </listener>
+
+    <listener event="firstSearcher" class="solr.QuerySenderListener">
+      <arr name="queries">
+        <lst>
+          <str name="q">static firstSearcher warming in solrconfig.xml</str>
+        </lst>
+      </arr>
+    </listener>
+
+    <useColdSearcher>false</useColdSearcher>
+    <maxWarmingSearchers>2</maxWarmingSearchers>
+
+  </query>
+
+  <!-- Request Dispatcher
+
+       This section contains instructions for how the SolrDispatchFilter
+       should behave when processing requests for this SolrCore.
+
+       handleSelect affects the behavior of requests such as /select?qt=XXX
+
+       handleSelect="true" will cause the SolrDispatchFilter to process
+       the request and will result in consistent error handling and
+       formatting for all types of requests.
+
+       handleSelect="false" will cause the SolrDispatchFilter to
+       ignore "/select" requests and fallback to using the legacy
+       SolrServlet and it's Solr 1.1 style error formatting
+    -->
+  <requestDispatcher handleSelect="true" >
+    
+    <requestParsers enableRemoteStreaming="true"
+                    multipartUploadLimitInKB="2048000" />
+
+    <httpCaching never304="true" />
+
+  </requestDispatcher>
+
+  <!-- Request Handlers -->
+
+  <requestHandler name="standard" class="solr.SearchHandler">
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+      <str name="q.op">AND</str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="search" class="solr.SearchHandler" default="true">
+    <!-- default values for query parameters can be specified, these
+         will be overridden by parameters in the request
+      -->
+     <lst name="defaults">
+       <str name="defType">dismax</str>
+       <str name="echoParams">explicit</str>
+       <int name="rows">10</int>
+
+       <str name="q.alt">*:*</str>
+       <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+
+       <!-- this qf and pf are used by default, if not otherwise specified by
+            client. The default blacklight_config will use these for the
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
+            below, which the default blacklight_config will specify for
+            those searches. You may also be interested in:
+            http://wiki.apache.org/solr/LocalParams
+       -->
+
+       <str name="qf">
+         title_unstem_search^100000
+         subtitle_unstem_search^50000
+         title_t^25000
+         subtitle_t^10000
+         title_addl_unstem_search^5000
+         title_addl_t^2500
+         title_added_entry_unstem_search^1500
+         title_added_entry_t^1250
+         subject_unstem_search^1000
+         subject_unstem_search^750
+         subject_facet^625
+         name_facet^600
+         subject_t^500
+         author_unstem_search^250
+         author_addl_unstem_search^250
+         author_t^100
+         author_addl_t^50
+         subject_addl_unstem_search^250
+         subject_addl_t^50
+         title_series_unstem_search^25
+         title_series_t^10
+         oclc_unstem_search
+         accession_unstem_search
+         text
+       </str>
+       <str name="pf">
+         title_unstem_search^1000000
+         subtitle_unstem_search^500000
+         title_t^250000
+         subtitle_t^100000
+         title_addl_unstem_search^50000
+         title_addl_t^25000
+         title_added_entry_unstem_search^15000
+         title_added_entry_t^12500
+         subject_unstem_search^10000
+         subject_unstem_search^7500
+         subject_facet^6250
+         name_facet^6000
+         subject_t^5000
+         author_unstem_search^2500
+         author_addl_unstem_search^2500
+         author_t^1000
+         author_addl_t^500
+         subject_addl_unstem_search^2500
+         subject_addl_t^500
+         title_series_unstem_search^250
+         title_series_t^100
+         text^10
+       </str>
+       <str name="name_qf">
+         author_unstem_search^200
+         contributors_unstem_search^200
+         author_addl_unstem_search^50
+         author_t^20
+         contributors_t^20
+         author_addl_t
+       </str>
+       <str name="name_pf">
+         author_unstem_search^2000
+         contributors_unstem_search^2000
+         author_addl_unstem_search^500
+         author_t^200
+         contributors_t^200
+         author_addl_t^10
+       </str>
+       <str name="title_qf">
+         title_unstem_search^50000
+         subtitle_unstem_search^25000
+         title_addl_unstem_search^10000
+         title_t^5000
+         subtitle_t^2500
+         title_addl_t^100
+         title_added_entry_unstem_search^50
+         title_added_entry_t^10
+         title_series_unstem_search^5
+         title_series_t
+       </str>
+       <str name="title_pf">
+         title_unstem_search^500000
+         subtitle_unstem_search^250000
+         title_addl_unstem_search^100000
+         title_t^50000
+         subtitle_t^25000
+         title_addl_t^1000
+         title_added_entry_unstem_search^500
+         title_added_entry_t^100
+         title_series_t^50
+         title_series_unstem_search^10
+       </str>
+       <str name="subject_qf">
+         subject_unstem_search^200
+         subject_unstem_search^125
+         subject_facet^100
+         subject_t^50
+         subject_addl_unstem_search^10
+         subject_addl_t
+       </str>
+       <str name="subject_pf">
+         subject_unstem_search^2000
+         subject_unstem_search^1250
+         subject_t^1000
+         subject_facet^500
+         subject_addl_unstem_search^100
+         subject_addl_t^10
+       </str>
+       <str name="oclc_qf">
+         oclc_unstem_search
+       </str>
+       <str name="oclc_pf">
+         oclc_unstem_search
+       </str>
+       <str name="call_qf">
+         lc_callnum_unstem_search
+       </str> 
+       <str name="call_pf">
+         lc_callnum_unstem_search
+       </str>
+
+
+       <int name="ps">3</int>
+       <float name="tie">0.01</float>
+
+       <!-- NOT using marc_display because it is large and will slow things down for search results -->
+       <str name="fl">
+         id,
+         score,
+         author_display,
+         author_vern_display,
+         format,
+         ohlink_url_display,
+         ohlink_text_display,
+         resource_url_display,
+         resource_text_display,
+         isbn_display,
+         innovative_display,
+         language_facet,
+         lc_callnum_display,
+         material_type_display,
+         published_display,
+         published_vern_display,
+         pub_date,
+         title_display,
+         title_vern_display,
+         subject_facet,
+         subject_geo_facet,
+         subject_era_facet,
+         name_facet,
+         subtitle_display,
+         subtitle_vern_display,
+         url_fulltext_display,
+         url_suppl_display,
+         parent_unittitles_display,
+         heading_display,
+         unitdate_display,
+         collection_facet,
+         location_display,
+         accessrestrict_display,
+         accruals_display,
+         acqinfo_display,
+         altformavail_display,
+         appraisal_display,
+         arrangement_display,
+         custodhist_display,
+         fileplan_display,
+         originalsloc_display,
+         phystech_display,
+         processinfo_display,
+         relatedmaterial_display,
+         separatedmaterial_display,
+         scopecontent_display,
+         userestrict_display,
+         physdesc_display,
+         dimensions_display,
+         langmaterial_display,
+         note_display,
+         accession_display
+       </str>
+
+       <str name="facet">true</str>
+       <str name="facet.mincount">1</str>
+       <str name="facet.limit">10</str>
+       <str name="facet.field">format</str>
+       <str name="facet.field">lc_1letter_facet</str>
+       <str name="facet.field">lc_alpha_facet</str>
+       <str name="facet.field">lc_b4cutter_facet</str>
+       <str name="facet.field">language_facet</str>
+       <str name="facet.field">pub_date</str>
+       <str name="facet.field">subject_era_facet</str>
+       <str name="facet.field">subject_geo_facet</str>
+       <str name="facet.field">subject_facet</str>
+       <str name="facet.field">name_facet</str>
+
+       <str name="spellcheck">true</str>
+       <str name="spellcheck.dictionary">default</str>
+       <str name="spellcheck.onlyMorePopular">true</str>
+       <str name="spellcheck.extendedResults">true</str>
+       <str name="spellcheck.collate">false</str>
+       <str name="spellcheck.count">5</str>
+
+     </lst>
+
+    <!-- Supress EAD non-item-level components -->
+    <lst name="appends"><str name="fq">-component_children_b:[TRUE TO *]</str></lst>
+
+    <arr name="last-components">
+      <str>spellcheck</str>
+    </arr>
+  </requestHandler>
+
+  <requestHandler name="document" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+      <str name="fl">*</str>
+      <str name="rows">1</str>
+      <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="advanced" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="defType">lucene</str>
+      <str name="echoParams">explicit</str>
+      <str name="sort">score desc, pub_date_sort desc, title_sort asc</str>
+      <str name="df">text</str>
+      <str name="q.op">AND</str>
+      <str name="qs">1</str>
+
+      <!-- used for dismax query parser -->
+      <str name="mm">1</str>
+      <str name="ps">3</str>
+      <float name="tie">0.01</float>
+
+      <!-- for user query terms in author text box -->
+      <str name="qf_author">
+        author_unstem_search^200
+        author_addl_unstem_search^50
+        author_t^20
+        author_addl_t
+      </str>
+      <str name="pf_author">
+        author_unstem_search^2000
+        author_addl_unstem_search^500
+        author_t^200
+        author_addl_t^10
+      </str>
+
+      <!-- for user query terms in title text box -->
+      <str name="qf_title">
+        title_unstem_search^50000
+        subtitle_unstem_search^25000
+        title_addl_unstem_search^10000
+        title_t^5000
+        subtitle_t^2500
+        title_addl_t^100
+        title_added_entry_unstem_search^50
+        title_added_entry_t^10
+        title_series_unstem_search^5
+        title_series_t
+      </str>
+      <str name="pf_title">
+        title_unstem_search^500000
+        subtitle_unstem_search^250000
+        title_addl_unstem_search^100000
+        title_t^50000
+        subtitle_t^25000
+        title_addl_t^1000
+        title_added_entry_unstem_search^500
+        title_added_entry_t^100
+        title_series_t^50
+        title_series_unstem_search^10
+      </str>
+
+      <!-- for user query terms in subject text box -->
+      <str name="qf_subject">
+        subject_unstem_search^200
+        subject_unstem_search^125
+        subject_facet^100
+        name_facet^90
+        subject_t^50
+        subject_addl_unstem_search^10
+        subject_addl_t
+      </str>
+      <str name="pf_subject">
+        subject_unstem_search^2000
+        subject_unstem_search^1250
+        subject_t^1000
+        subject_facet^500
+        name_facet^400
+        subject_addl_unstem_search^100
+        subject_addl_t^10
+      </str>
+
+      <!-- for user query terms in number text box -->
+      <str name="qf_number">isbn_t</str>
+
+      <!-- for user query terms in keyword text box -->
+      <str name="qf_keyword">text</str>
+      <str name="pf_keyword">text^10</str>
+
+      <!-- NOT using marc_display because it is large and will slow things down for search results -->
+      <str name="fl">
+        id,
+        score,
+        author_display,
+        author_vern_display,
+        format,
+        ohlink_url_display,
+        ohlink_text_display,
+        resource_url_display,
+        resource_text_display,
+        isbn_display,
+        innovative_display,
+        language_facet,
+        lc_callnum_display,
+        material_type_display,
+        published_display,
+        published_vern_display,
+        pub_date,
+        title_display,
+        title_vern_display,
+        subject_facet,
+        subject_geo_facet,
+        subject_era_facet,
+        name_facet,
+        subtitle_display,
+        subtitle_vern_display,
+        url_fulltext_display,
+        url_suppl_display,
+        parent_unittitles_display,
+        heading_display,
+        unitdate_display,
+        collection_facet,
+        location_display,
+        accessrestrict_display,
+        accruals_display,
+        acqinfo_display,
+        altformavail_display,
+        appraisal_display,
+        arrangement_display,
+        custodhist_display,
+        fileplan_display,
+        originalsloc_display,
+        phystech_display,
+        processinfo_display,
+        relatedmaterial_display,
+        separatedmaterial_display,
+        scopecontent_display,
+        userestrict_display,
+        physdesc_display,
+        dimensions_display,
+        langmaterial_display,
+        note_display,
+        accession_display
+      </str>
+
+      <str name="facet">true</str>
+      <str name="facet.mincount">1</str>
+      <str name="facet.limit">10</str>
+      <str name="facet.field">format</str>
+      <str name="facet.field">lc_1letter_facet</str>
+      <str name="facet.field">lc_alpha_facet</str>
+      <str name="facet.field">lc_b4cutter_facet</str>
+      <str name="facet.field">language_facet</str>
+      <str name="facet.field">pub_date</str>
+      <str name="facet.field">subject_era_facet</str>
+      <str name="facet.field">subject_geo_facet</str>
+      <str name="facet.field">subject_facet</str>
+      <str name="facet.field">name_facet</str>
+
+      <str name="spellcheck">true</str>
+      <str name="spellcheck.dictionary">subject</str>
+      <str name="spellcheck.onlyMorePopular">true</str>
+      <str name="spellcheck.extendedResults">true</str>
+      <str name="spellcheck.collate">false</str>
+      <str name="spellcheck.count">5</str>
+    </lst>
+    <arr name="last-components">
+      <str>spellcheck</str>
+    </arr>
+  </requestHandler>
+
+  <!-- XML Update Request Handlers -->
+
+  <requestHandler name="/update"
+                  class="solr.UpdateRequestHandler" />
+  
+  <requestHandler name="/update/javabin"
+                  class="solr.UpdateRequestHandler" />
+
+  <requestHandler name="/update/csv"
+                  class="solr.CSVRequestHandler"
+                  startup="lazy" />
+
+  <requestHandler name="/update/json"
+                  class="solr.JsonUpdateRequestHandler"
+                  startup="lazy" />
+
+  <requestHandler name="/update/extract"
+                  startup="lazy"
+                  class="solr.extraction.ExtractingRequestHandler" >
+    <lst name="defaults">
+      <!-- All the main content goes into "text"... if you need to return
+           the extracted text or do highlighting, use a stored field. -->
+      <str name="fmap.content">text</str>
+      <str name="lowernames">true</str>
+      <str name="uprefix">ignored_</str>
+
+      <!-- capture link hrefs but ignore div attributes -->
+      <str name="captureAttr">true</str>
+      <str name="fmap.a">links</str>
+      <str name="fmap.div">ignored_</str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/analysis/field"
+                  startup="lazy"
+                  class="solr.FieldAnalysisRequestHandler" />
+
+  <requestHandler name="/analysis/document"
+                  class="solr.DocumentAnalysisRequestHandler"
+                  startup="lazy" />
+
+  <requestHandler name="/admin/"
+                  class="solr.admin.AdminHandlers" />
+ 
+  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+    <lst name="defaults">
+      <str name="qt">search</str>
+      <str name="q">solrpingquery</str>
+      <str name="echoParams">all</str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/debug/dump" class="solr.DumpRequestHandler" >
+    <lst name="defaults">
+     <str name="echoParams">explicit</str>
+     <str name="echoHandler">true</str>
+    </lst>
+  </requestHandler>
+
+  <requestHandler name="/replication" class="solr.ReplicationHandler" >
+    <lst name="master">
+      <str name="enable">${enable.master:false}</str>
+      <str name="replicateAfter">commit</str>
+      <str name="replicateAfter">startup</str>
+    </lst>
+    <lst name="slave">
+      <str name="enable">${enable.slave:false}</str>
+      <str name="masterUrl">${solr.master.url}/${solr.core.name}/replication</str>
+      <str name="pollInterval">00:00:60</str>
+    </lst>
+  </requestHandler>
+
+  <!-- Search Components -->
+
+  <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
+
+    <str name="queryAnalyzerFieldType">textSpell</str>
+
+    <lst name="spellchecker">
+      <str name="name">default</str>
+      <str name="field">spell</str>
+      <str name="spellcheckIndexDir">./spell</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+    <lst name="spellchecker">
+      <str name="name">name</str>
+      <str name="field">name_spell</str>
+      <str name="spellcheckIndexDir">./spell_name</str>
+      <str name="accuracy">0.7</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+    <lst name="spellchecker">
+      <str name="name">subject</str>
+      <str name="field">subject_spell</str>
+      <str name="spellcheckIndexDir">./spell_subject</str>
+      <str name="accuracy">0.7</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+    <lst name="spellchecker">
+      <str name="name">title</str>
+      <str name="field">title_spell</str>
+      <str name="spellcheckIndexDir">./spell_title</str>
+      <str name="accuracy">0.7</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+    <lst name="spellchecker">
+      <str name="name">genre</str>
+      <str name="field">genre_spell</str>
+      <str name="spellcheckIndexDir">./spell_genre</str>
+      <str name="accuracy">0.7</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+
+  </searchComponent>
+
+  <!-- A request handler for demonstrating the spellcheck component.
+
+       NOTE: This is purely as an example.  The whole purpose of the
+       SpellCheckComponent is to hook it into the request handler that
+       handles your normal user queries so that a separate request is
+       not needed to get suggestions.
+
+       IN OTHER WORDS, THERE IS REALLY GOOD CHANCE THE SETUP BELOW IS
+       NOT WHAT YOU WANT FOR YOUR PRODUCTION SYSTEM!
+
+       See http://wiki.apache.org/solr/SpellCheckComponent for details
+       on the request parameters.
+    -->
+  <requestHandler name="/spell" class="solr.SearchHandler" startup="lazy">
+    <lst name="defaults">
+      <str name="spellcheck.onlyMorePopular">false</str>
+      <str name="spellcheck.extendedResults">false</str>
+      <str name="spellcheck.count">1</str>
+    </lst>
+    <arr name="last-components">
+      <str>spellcheck</str>
+    </arr>
+  </requestHandler>
+
+  <!-- Term Vector Component
+
+       http://wiki.apache.org/solr/TermVectorComponent
+    -->
+  <searchComponent name="tvComponent" class="solr.TermVectorComponent"/>
+
+  <!-- A request handler for demonstrating the term vector component
+
+       This is purely as an example.
+
+       In reality you will likely want to add the component to your
+       already specified request handlers.
+    -->
+  <requestHandler name="tvrh" class="solr.SearchHandler" startup="lazy">
+    <lst name="defaults">
+      <bool name="tv">true</bool>
+    </lst>
+    <arr name="last-components">
+      <str>tvComponent</str>
+    </arr>
+  </requestHandler>
+
+  <!-- Clustering Component
+
+       http://wiki.apache.org/solr/ClusteringComponent
+
+       This relies on third party jars which are notincluded in the
+       release.  To use this component (and the "/clustering" handler)
+       Those jars will need to be downloaded, and you'll need to set
+       the solr.cluster.enabled system property when running solr...
+
+          java -Dsolr.clustering.enabled=true -jar start.jar
+    -->
+  <searchComponent name="clustering"
+                   enable="${solr.clustering.enabled:false}"
+                   class="solr.clustering.ClusteringComponent" >
+    <!-- Declare an engine -->
+    <lst name="engine">
+      <!-- The name, only one can be named "default" -->
+      <str name="name">default</str>
+
+      <!-- Class name of Carrot2 clustering algorithm.
+
+           Currently available algorithms are:
+
+           * org.carrot2.clustering.lingo.LingoClusteringAlgorithm
+           * org.carrot2.clustering.stc.STCClusteringAlgorithm
+           * org.carrot2.clustering.kmeans.BisectingKMeansClusteringAlgorithm
+
+           See http://project.carrot2.org/algorithms.html for the
+           algorithm's characteristics.
+        -->
+      <str name="carrot.algorithm">org.carrot2.clustering.lingo.LingoClusteringAlgorithm</str>
+
+      <!-- Overriding values for Carrot2 default algorithm attributes.
+
+           For a description of all available attributes, see:
+           http://download.carrot2.org/stable/manual/#chapter.components.
+           Use attribute key as name attribute of str elements
+           below. These can be further overridden for individual
+           requests by specifying attribute key as request parameter
+           name and attribute value as parameter value.
+        -->
+      <str name="LingoClusteringAlgorithm.desiredClusterCountBase">20</str>
+
+      <!-- Location of Carrot2 lexical resources.
+
+           A directory from which to load Carrot2-specific stop words
+           and stop labels. Absolute or relative to Solr config directory.
+           If a specific resource (e.g. stopwords.en) is present in the
+           specified dir, it will completely override the corresponding
+           default one that ships with Carrot2.
+
+           For an overview of Carrot2 lexical resources, see:
+           http://download.carrot2.org/head/manual/#chapter.lexical-resources
+        -->
+      <str name="carrot.lexicalResourcesDir">clustering/carrot2</str>
+
+      <!-- The language to assume for the documents.
+
+           For a list of allowed values, see:
+           http://download.carrot2.org/stable/manual/#section.attribute.lingo.MultilingualClustering.defaultLanguage
+       -->
+      <str name="MultilingualClustering.defaultLanguage">ENGLISH</str>
+    </lst>
+    <lst name="engine">
+      <str name="name">stc</str>
+      <str name="carrot.algorithm">org.carrot2.clustering.stc.STCClusteringAlgorithm</str>
+    </lst>
+  </searchComponent>
+
+  <!-- A request handler for demonstrating the clustering component
+
+       This is purely as an example.
+
+       In reality you will likely want to add the component to your
+       already specified request handlers.
+    -->
+  <requestHandler name="/clustering"
+                  startup="lazy"
+                  enable="${solr.clustering.enabled:false}"
+                  class="solr.SearchHandler">
+    <lst name="defaults">
+      <bool name="clustering">true</bool>
+      <str name="clustering.engine">default</str>
+      <bool name="clustering.results">true</bool>
+      <!-- The title field -->
+      <str name="carrot.title">name</str>
+      <str name="carrot.url">id</str>
+      <!-- The field to cluster on -->
+       <str name="carrot.snippet">features</str>
+       <!-- produce summaries -->
+       <bool name="carrot.produceSummary">true</bool>
+       <!-- the maximum number of labels per cluster -->
+       <!--<int name="carrot.numDescriptions">5</int>-->
+       <!-- produce sub clusters -->
+       <bool name="carrot.outputSubClusters">false</bool>
+
+       <str name="defType">edismax</str>
+       <str name="qf">
+          text^0.5 features^1.0 name^1.2 sku^1.5 id^10.0 manu^1.1 cat^1.4
+       </str>
+       <str name="q.alt">*:*</str>
+       <str name="rows">10</str>
+       <str name="fl">*,score</str>
+    </lst>
+    <arr name="last-components">
+      <str>clustering</str>
+    </arr>
+  </requestHandler>
+
+  <!-- Terms Component
+
+       http://wiki.apache.org/solr/TermsComponent
+
+       A component to return terms and document frequency of those
+       terms
+    -->
+  <searchComponent name="terms" class="solr.TermsComponent"/>
+
+  <!-- A request handler for demonstrating the terms component -->
+  <requestHandler name="/terms" class="solr.SearchHandler" startup="lazy">
+     <lst name="defaults">
+      <bool name="terms">true</bool>
+    </lst>
+    <arr name="components">
+      <str>terms</str>
+    </arr>
+  </requestHandler>
+
+
+  <!-- Query Elevation Component
+
+       http://wiki.apache.org/solr/QueryElevationComponent
+
+       a search component that enables you to configure the top
+       results for a given query regardless of the normal lucene
+       scoring.
+    -->
+  <searchComponent name="elevator" class="solr.QueryElevationComponent" >
+    <!-- pick a fieldType to analyze queries -->
+    <str name="queryFieldType">string</str>
+    <str name="config-file">elevate.xml</str>
+  </searchComponent>
+
+  <!-- A request handler for demonstrating the elevator component -->
+  <requestHandler name="/elevate" class="solr.SearchHandler" startup="lazy">
+    <lst name="defaults">
+      <str name="echoParams">explicit</str>
+    </lst>
+    <arr name="last-components">
+      <str>elevator</str>
+    </arr>
+  </requestHandler>
+
+  <!-- Highlighting Component
+
+       http://wiki.apache.org/solr/HighlightingParameters
+    -->
+  <searchComponent class="solr.HighlightComponent" name="highlight">
+    <highlighting>
+      <!-- Configure the standard fragmenter -->
+      <!-- This could most likely be commented out in the "default" case -->
+      <fragmenter name="gap"
+                  default="true"
+                  class="solr.highlight.GapFragmenter">
+        <lst name="defaults">
+          <int name="hl.fragsize">100000</int>
+        </lst>
+      </fragmenter>
+
+      <!-- A regular-expression-based fragmenter
+           (for sentence extraction)
+        -->
+      <fragmenter name="regex"
+                  class="solr.highlight.RegexFragmenter">
+        <lst name="defaults">
+          <!-- slightly smaller fragsizes work better because of slop -->
+          <int name="hl.fragsize">100000</int>
+          <!-- allow 50% slop on fragment sizes -->
+          <float name="hl.regex.slop">0.5</float>
+          <!-- a basic sentence pattern -->
+          <str name="hl.regex.pattern">[-\w ,/\n\&quot;&apos;]{20,200}</str>
+        </lst>
+      </fragmenter>
+
+      <!-- Configure the standard formatter -->
+      <formatter name="html"
+                 default="true"
+                 class="solr.highlight.HtmlFormatter">
+        <lst name="defaults">
+          <str name="hl.simple.pre"><![CDATA[<span style="background-color:yellow">]]></str>
+          <str name="hl.simple.post"><![CDATA[</span>]]></str>
+        </lst>
+      </formatter>
+
+      <!-- Configure the standard encoder -->
+      <encoder name="html"
+               class="solr.highlight.HtmlEncoder" />
+
+      <!-- Configure the standard fragListBuilder -->
+      <fragListBuilder name="simple"
+                       default="true"
+                       class="solr.highlight.SimpleFragListBuilder"/>
+
+      <!-- Configure the single fragListBuilder -->
+      <fragListBuilder name="single"
+                       class="solr.highlight.SingleFragListBuilder"/>
+
+      <!-- default tag FragmentsBuilder -->
+      <fragmentsBuilder name="default"
+                        default="true"
+                        class="solr.highlight.ScoreOrderFragmentsBuilder">
+        <!--
+        <lst name="defaults">
+          <str name="hl.multiValuedSeparatorChar">/</str>
+        </lst>
+        -->
+      </fragmentsBuilder>
+
+      <!-- multi-colored tag FragmentsBuilder -->
+      <fragmentsBuilder name="colored"
+                        class="solr.highlight.ScoreOrderFragmentsBuilder">
+        <lst name="defaults">
+          <str name="hl.tag.pre"><![CDATA[
+               <b style="background:yellow">,<b style="background:lawgreen">,
+               <b style="background:aquamarine">,<b style="background:magenta">,
+               <b style="background:palegreen">,<b style="background:coral">,
+               <b style="background:wheat">,<b style="background:khaki">,
+               <b style="background:lime">,<b style="background:deepskyblue">]]></str>
+          <str name="hl.tag.post"><![CDATA[</b>]]></str>
+        </lst>
+      </fragmentsBuilder>
+
+      <boundaryScanner name="default"
+                       default="true"
+                       class="solr.highlight.SimpleBoundaryScanner">
+        <lst name="defaults">
+          <str name="hl.bs.maxScan">10</str>
+          <str name="hl.bs.chars">.,!? &#9;&#10;&#13;</str>
+        </lst>
+      </boundaryScanner>
+
+      <boundaryScanner name="breakIterator"
+                       class="solr.highlight.BreakIteratorBoundaryScanner">
+        <lst name="defaults">
+          <!-- type should be one of CHARACTER, WORD(default), LINE and SENTENCE -->
+          <str name="hl.bs.type">WORD</str>
+          <!-- language and country are used when constructing Locale object.  -->
+          <!-- And the Locale object will be used when getting instance of BreakIterator -->
+          <str name="hl.bs.language">en</str>
+          <str name="hl.bs.country">US</str>
+        </lst>
+      </boundaryScanner>
+    </highlighting>
+  </searchComponent>
+
+  <!-- Update Processors
+
+       Chains of Update Processor Factories for dealing with Update
+       Requests can be declared, and then used by name in Update
+       Request Processors
+
+       http://wiki.apache.org/solr/UpdateRequestProcessor
+
+    -->
+  <!-- Deduplication
+
+       An example dedup update processor that creates the "id" field
+       on the fly based on the hash code of some other fields.  This
+       example has overwriteDupes set to false since we are using the
+       id field as the signatureField and Solr will maintain
+       uniqueness based on that anyway.
+
+    -->
+  <!--
+     <updateRequestProcessorChain name="dedupe">
+       <processor class="solr.processor.SignatureUpdateProcessorFactory">
+         <bool name="enabled">true</bool>
+         <str name="signatureField">id</str>
+         <bool name="overwriteDupes">false</bool>
+         <str name="fields">name,features,cat</str>
+         <str name="signatureClass">solr.processor.Lookup3Signature</str>
+       </processor>
+       <processor class="solr.LogUpdateProcessorFactory" />
+       <processor class="solr.RunUpdateProcessorFactory" />
+     </updateRequestProcessorChain>
+    -->
+
+    <!--
+       This example update chain identifies the language of the incoming
+       documents using the langid contrib. The detected language is
+       written to field language_s. No field name mapping is done.
+       The fields used for detection are text, title, subject and description,
+       making this example suitable for detecting languages form full-text
+       rich documents injected via ExtractingRequestHandler.
+       See more about langId at http://wiki.apache.org/solr/LanguageDetection
+    -->
+    <!--
+     <updateRequestProcessorChain name="langid">
+       <processor class="org.apache.solr.update.processor.TikaLanguageIdentifierUpdateProcessorFactory">
+         <str name="langid.fl">text,title,subject,description</str>
+         <str name="langid.langField">language_s</str>
+         <str name="langid.fallback">en</str>
+       </processor>
+       <processor class="solr.LogUpdateProcessorFactory" />
+       <processor class="solr.RunUpdateProcessorFactory" />
+     </updateRequestProcessorChain>
+    -->
+
+  <!-- Response Writers
+
+       http://wiki.apache.org/solr/QueryResponseWriter
+
+       Request responses will be written using the writer specified by
+       the 'wt' request parameter matching the name of a registered
+       writer.
+
+       The "default" writer is the default and will be used if 'wt' is
+       not specified in the request.
+    -->
+  <!-- The following response writers are implicitly configured unless
+       overridden...
+    -->
+  <!--
+     <queryResponseWriter name="xml"
+                          default="true"
+                          class="solr.XMLResponseWriter" />
+     <queryResponseWriter name="json" class="solr.JSONResponseWriter"/>
+     <queryResponseWriter name="python" class="solr.PythonResponseWriter"/>
+     <queryResponseWriter name="ruby" class="solr.RubyResponseWriter"/>
+     <queryResponseWriter name="php" class="solr.PHPResponseWriter"/>
+     <queryResponseWriter name="phps" class="solr.PHPSerializedResponseWriter"/>
+     <queryResponseWriter name="csv" class="solr.CSVResponseWriter"/>
+    -->
+
+  <queryResponseWriter name="json" class="solr.JSONResponseWriter">
+     <!-- For the purposes of the tutorial, JSON responses are written as
+      plain text so that they are easy to read in *any* browser.
+      If you expect a MIME type of "application/json" just remove this override.
+     -->
+    <str name="content-type">text/plain; charset=UTF-8</str>
+  </queryResponseWriter>
+
+  <!-- Custom response writers can be declared as needed.. -->
+  <queryResponseWriter name="velocity" class="solr.VelocityResponseWriter" startup="lazy"/>
+
+  <!-- XSLT response writer transforms the XML output by any xslt file found
+       in Solr's conf/xslt directory.  Changes to xslt files are checked for
+       every xsltCacheLifetimeSeconds.
+    -->
+  <queryResponseWriter name="xslt" class="solr.XSLTResponseWriter">
+    <int name="xsltCacheLifetimeSeconds">5</int>
+  </queryResponseWriter>
+
+  <!-- Query Parsers
+
+       http://wiki.apache.org/solr/SolrQuerySyntax
+
+       Multiple QParserPlugins can be registered by name, and then
+       used in either the "defType" param for the QueryComponent (used
+       by SearchHandler) or in LocalParams
+    -->
+  <!-- example of registering a query parser -->
+  <!--
+     <queryParser name="myparser" class="com.mycompany.MyQParserPlugin"/>
+    -->
+
+  <!-- Function Parsers
+
+       http://wiki.apache.org/solr/FunctionQuery
+
+       Multiple ValueSourceParsers can be registered by name, and then
+       used as function names when using the "func" QParser.
+    -->
+  <!-- example of registering a custom function parser  -->
+  <!--
+     <valueSourceParser name="myfunc"
+                        class="com.mycompany.MyValueSourceParser" />
+    -->
+
+  <!-- Legacy config for the admin interface -->
+  <admin>
+    <defaultQuery>*:*</defaultQuery>
+
+    <!-- configure a healthcheck file for servers behind a
+         loadbalancer
+      -->
+    <!--
+       <healthcheck type="file">server-enabled</healthcheck>
+      -->
+  </admin>
+
+</config>

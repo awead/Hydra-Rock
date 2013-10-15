@@ -4,10 +4,12 @@ describe Workflow::RockhallIngest do
 
   before(:all) do
     Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+    clean_dir RH_CONFIG["location"]
   end
 
   after(:all) do
     Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+    clean_dir RH_CONFIG["location"]
   end
 
   describe "the entire ingestion process" do
@@ -24,7 +26,6 @@ describe Workflow::RockhallIngest do
 
       # Check parent object fields
       ing.parent.label.should == "Rock and Roll Hall of Fame Library and Archives"
-      ing.parent.get_thumbnail_url.should_not be_nil
 
       # Check access videos
       ing.parent.videos[:access].each do |ev|
@@ -84,9 +85,6 @@ describe Workflow::RockhallIngest do
       re_ing.parent.external_videos.length.should == 6
       first_pid.should_not == re_ing.parent.external_videos.first.pid
       last_pid.should_not  == re_ing.parent.external_videos.last.pid
-
-      # Clean-up
-      FileUtils.rm_rf(File.join(RH_CONFIG["location"], copy.pid.gsub(/:/,"_")))
     end
 
   end

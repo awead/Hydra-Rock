@@ -30,13 +30,13 @@ include Devise::TestHelpers
     describe "and an ArchivalVideo using" do
 
       before :all do
-        @video = ArchivalVideo.new
+        @video = ArchivalVideo.new(:pid => "nodes-controller-spec:1")
         @video.title = "Fake Title"
         @video.save
       end
   
       after :all do
-        @video.delete
+        ActiveFedora::Base.find("nodes-controller-spec:1").delete
       end
 
       describe "#new" do

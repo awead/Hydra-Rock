@@ -1,3 +1,4 @@
+# DEPRECATED: This is no longer used or tested and can be removed at any time
 require 'mediainfo'
 
 module Workflow
@@ -28,7 +29,6 @@ class GbvIngest
   # parent object exists in Fedora and has child objects that need to be reingested
   def reprocess(opts={})
     @parent.remove_external_videos unless @parent.external_videos.empty?
-    puts self.sip.pid
     av = ArchivalVideo.find(self.sip.pid)
     @parent = av
     self.process

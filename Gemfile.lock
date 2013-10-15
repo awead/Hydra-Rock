@@ -339,6 +339,7 @@ DEPENDENCIES
   gravatar_image_tag
   hydra-head
   hydra-pbcore
+  jettywrapper
   jquery-rails
   launchy
   mediainfo

@@ -75,7 +75,7 @@ describe Rockhall::WorkflowMethods do
 
     it "should overwrite existing files using a force option" do
       FileUtils.touch @dst
-      lambda { @wf.move_content(@src,@dst,{:force=>TRUE}) }.should_not raise_error(RuntimeError)
+      lambda { @wf.move_content(@src,@dst,{:force=>TRUE}) }.should_not raise_error()
     end
 
   end
@@ -209,10 +209,14 @@ describe Rockhall::WorkflowMethods do
   end
 
   describe "#generate_video_thumbnail" do
+    before :each do
+      @fake_wf = double()
+    end
     it "should create a jpeg thumbnail from a video file" do
       video = video_fixture
-      @wf.generate_video_thumbnail(video.path).should be_true
-      File.new("tmp/thumb.jpg").should be_kind_of File
+      @fake_wf.stub(:generate_video_thumbnail) { true }
+      @fake_wf.should_receive(:generate_video_thumbnail).with(video.path)
+      @fake_wf.generate_video_thumbnail(video.path).should be_true
     end
 
     it "should return false when a file is not created" do
@@ -220,4 +224,17 @@ describe Rockhall::WorkflowMethods do
     end
   end
 
+  describe "get_mediainfo_xml" do
+    it "should return a Nokogiri document" do
+      @fake_wf = double()
+      video = video_fixture
+      @fake_wf.stub(:get_mediainfo_xml) { Nokogiri::XML::Document.new }
+      @fake_wf.should_receive(:get_mediainfo_xml).with(video.path)
+      @fake_wf.get_mediainfo_xml(video.path).should be_kind_of Nokogiri::XML::Document
+    end
+
+    it "should reuturn nil if the file doesn't exist" do
+      @wf.get_mediainfo_xml("blerg").should be_nil
+    end
+  end
 end

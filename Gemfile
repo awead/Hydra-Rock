@@ -51,6 +51,7 @@ group :development, :test do
   gem 'bcrypt-ruby'
   gem 'factory_girl'
   gem 'generator_spec'
+  gem 'jettywrapper'
   gem 'mocha', :require => false
   gem 'rest-client'
   gem 'rspec'
