@@ -27,6 +27,7 @@
 //  Vendor assets
 //= require flowplayer-5.3.2.min.js
 //= require video.js
+//= require bootstrap-combobox.js
 //
 //  Include our custom js files
 //= require_tree .

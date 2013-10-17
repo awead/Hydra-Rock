@@ -42,7 +42,7 @@ class NodesController < ApplicationController
         if request.xhr?
           render :partial => "nodes/new/#{params[:type]}"
         else
-          redirect_to edit_node_path(@object.id, params[:type])
+          redirect_to edit_node_path
         end
       }
     end 

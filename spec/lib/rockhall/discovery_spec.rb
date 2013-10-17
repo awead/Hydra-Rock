@@ -28,7 +28,7 @@ describe Rockhall::Discovery do
   describe "#exports" do
     it "should be an array of AF objects that can be exported to Blacklight" do
       @d.exports.should be_a_kind_of(Array)
-      @d.exports.count.should == 5
+      @d.exports.count.should == 4
     end
   end
 
@@ -41,7 +41,7 @@ describe Rockhall::Discovery do
       params = {:q => 'id:"rrhof:331"', :qt => 'document'}
       doc = @d.solr.get("select", :params=>params)["response"]["docs"].first
       doc["title_display"].should == "Evening with series. Ian Hunter. Part 2."
-      doc["collection_facet"].should == ["Test Collection"]
+      doc["collection_facet"].should == ["Rock and Roll Hall of Fame and Museum Records"]
       doc["subject_display"].should include("Rock musicians--England")
       doc["subject_facet"].should include("Rock musicians")
       doc["subject_facet"].should include("England")

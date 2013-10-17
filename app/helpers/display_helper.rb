@@ -81,6 +81,10 @@ module DisplayHelper
     end
     return results.join("<br/>").html_safe
   end
+
+  def subject_display response
+    response[:document][response[:field]].join("<br/>").html_safe
+  end
     
   def render_tech_info_button type, index
     link_text = type.to_s.capitalize + " (" + (index + 1).to_s + ")" + '<i class="icon-chevron"></i>'

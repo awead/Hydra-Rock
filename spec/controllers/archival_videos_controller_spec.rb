@@ -251,6 +251,38 @@ describe ArchivalVideosController do
 
     end
 
+    describe "#assign" do
+
+      describe "with no existing collection" do
+
+        before :each do
+          @sample = ArchivalVideo.new(:pid => "assign:1")
+          @sample.title = "Assign test video"
+          @sample.save
+        end
+
+        after :each do
+          ArchivalVideo.find("assign:1").delete
+        end
+
+        it "should update the video's collection information" do
+          put :assign, :id => "assign:1", :archival_video => { :collection => "ARC-0001", :archival_series => ""}
+          @sample.reload
+          @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0001"  
+          @sample.archival_series.should be_nil      
+        end
+
+        it "should update the video's collection information" do
+          put :assign, :id => "assign:1", :archival_video => { :collection => "ARC-0001", :archival_series => "ref1"}
+          @sample.reload
+          @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0001"        
+          @sample.archival_series_uri.should == "http://repository.rockhall.org/collections/ARC-0001/components/ref1"
+        end
+
+      end
+
+    end
+
   end
 
 end

@@ -114,6 +114,12 @@ describe ArchivalVideo do
       doc["subject_facet"].should include "History and criticism"
       doc["subject_facet"].should include "Inductee"
     end
+
+    it "should combine collection and additional_collection for faceting in Blacklight" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
+      doc["collection_facet"].should include "Rock and Roll Hall of Fame and Museum Records"
+      doc["collection_facet"].should include "Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division."
+    end
   end
 
   describe "adding thumbnails to existing videos" do
@@ -132,7 +138,33 @@ describe ArchivalVideo do
       video.add_thumbnail
       video.get_thumbnail_url.should be_nil
     end
+  end
 
+  describe "collection ids" do
+
+    before :each do
+      @video = ArchivalVideo.new
+    end
+
+    describe "#ead_id" do
+      it "should be the ead for a linked collection" do
+        @video.new_collection({:name => "Collection name", :ref => "http://www.place.com/foo/bar"})
+        @video.ead_id.should == "bar"
+      end
+      it "should be nil" do
+        @video.ead_id.should be_nil
+      end
+    end
+
+    describe "#ref_id" do
+      it "should be the ref id for a linked collection" do
+        @video.new_archival_series({:name => "Series name", :ref => "http://www.place.com/foo/bar"})
+        @video.ref_id.should == "bar"
+      end
+      it "should be nil" do
+        @video.ref_id.should be_nil
+      end
+    end
 
   end
 

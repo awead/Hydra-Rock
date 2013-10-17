@@ -90,14 +90,14 @@ $(document).on('click', '.delete_events', function(event) {
 }); 
 
 // ################################################################################
-// collections
-$(document).on('click', '.refresh_collections', function(event) {
-  reloadNodeForm('collection');
+// additional_collections
+$(document).on('click', '.refresh_additional_collections', function(event) {
+  reloadNodeForm('additional_collection');
   event.preventDefault();
 });
 
-$(document).on('click', '.delete_collections', function(event) {
-  deleteNode('collection', $(this).attr('href'));
+$(document).on('click', '.delete_additional_collections', function(event) {
+  deleteNode('additional_collection', $(this).attr('href'));
   event.preventDefault();
 });
 
@@ -112,7 +112,7 @@ $(document).on('click', '.modal-backdrop', function(event) {
       reloadNodeForm('event');
    if ($('#ajax-modal form').attr('id') === 'add_accession')
       reloadNodeForm('accession');
-   if ($('#ajax-modal form').attr('id') === 'add_collection')
-      reloadNodeForm('collection');    
+   if ($('#ajax-modal form').attr('id') === 'add_additional_collection')
+      reloadNodeForm('additional_collection');    
 
 });

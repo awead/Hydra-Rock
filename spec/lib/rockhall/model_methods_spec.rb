@@ -72,4 +72,135 @@ describe Rockhall::ModelMethods do
 
   end
 
+  describe "#update_collection" do
+
+    before :each do
+      @sample = ArchivalVideo.new
+    end
+
+    after :each do
+      @sample.valid_pbcore?.should be_true
+    end
+
+    it "adds a new collection" do
+      args = {:collection => "ARC-0001", :archival_series => ""}
+      @sample.update_collection args
+      @sample.collection.should == "Art Collins Papers"
+      @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0001"
+      @sample.collection_authority.should == "Rock and Roll Hall of Fame and Museum"
+    end
+
+    it "adds a new collection and series" do
+      args = {:collection => "ARC-0001", :archival_series => "ref2619"}
+      @sample.update_collection args
+      @sample.collection.should == "Art Collins Papers"
+      @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0001"
+      @sample.collection_authority.should == "Rock and Roll Hall of Fame and Museum"
+      @sample.archival_series.should == "Subseries 4: Miscellaneous Formats [RESTRICTED]"
+      @sample.archival_series_uri.should == "http://repository.rockhall.org/collections/ARC-0001/components/ref2619"
+      @sample.archival_series_authority.should == "Rock and Roll Hall of Fame and Museum"
+    end
+
+    describe "with an existing collection" do
+
+      before :each do
+        args = {:collection => "ARC-0001", :archival_series => ""}
+        @sample.update_collection args
+      end
+
+      it "should remove the collection" do
+        args = {:collection => "", :archival_series => ""}
+        @sample.update_collection args
+        @sample.collection.should be_nil
+        @sample.collection_uri.should be_nil
+        @sample.collection_authority.should be_nil
+      end
+
+      it "should update the collection" do
+        args = {:collection => "ARC-0002", :archival_series => ""}
+        @sample.update_collection args
+        @sample.collection.should == "Sire Records Collection"
+        @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0002"
+        @sample.collection_authority.should == "Rock and Roll Hall of Fame and Museum"
+      end
+
+      it "should update the series using the same collection" do
+        args = {:collection => "ARC-0001", :archival_series => "ref2619"}
+        @sample.update_collection args
+        @sample.collection.should == "Art Collins Papers"
+        @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0001"
+        @sample.collection_authority.should == "Rock and Roll Hall of Fame and Museum"
+        @sample.archival_series.should == "Subseries 4: Miscellaneous Formats [RESTRICTED]"
+        @sample.archival_series_uri.should == "http://repository.rockhall.org/collections/ARC-0001/components/ref2619"
+        @sample.archival_series_authority.should == "Rock and Roll Hall of Fame and Museum"
+      end
+
+      it "should update the series and collection" do
+        args = {:collection => "ARC-0002", :archival_series => "ref557"}
+        @sample.update_collection args
+        @sample.collection.should == "Sire Records Collection"
+        @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0002"
+        @sample.collection_authority.should == "Rock and Roll Hall of Fame and Museum"
+        @sample.archival_series.should == "Subseries 2: Financial Files"
+        @sample.archival_series_uri.should == "http://repository.rockhall.org/collections/ARC-0002/components/ref557"
+        @sample.archival_series_authority.should == "Rock and Roll Hall of Fame and Museum"
+      end
+
+    end
+
+    describe "with an existing collection and series" do
+
+      before :each do
+        args = {:collection => "ARC-0001", :archival_series => "ref2619"}
+        @sample.update_collection args
+      end
+
+      it "deletes series, but not collection" do
+        args = {:collection => "ARC-0001", :archival_series => ""}
+        @sample.update_collection args
+        @sample.collection.should == "Art Collins Papers"
+        @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0001"
+        @sample.collection_authority.should == "Rock and Roll Hall of Fame and Museum"
+        @sample.archival_series.should be_nil
+        @sample.archival_series_uri.should be_nil
+        @sample.archival_series_authority.should be_nil
+      end
+
+      it "deletes both series and collection" do
+        args = {:collection => "", :archival_series => ""}
+        @sample.update_collection args
+        @sample.collection.should be_nil
+        @sample.collection_uri.should be_nil
+        @sample.collection_authority.should be_nil
+        @sample.archival_series.should be_nil
+        @sample.archival_series_uri.should be_nil
+        @sample.archival_series_authority.should be_nil
+      end
+
+      it "updates both series and collection" do
+        args = {:collection => "ARC-0002", :archival_series => "ref557"}
+        @sample.update_collection args
+        @sample.collection.should == "Sire Records Collection"
+        @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0002"
+        @sample.collection_authority.should == "Rock and Roll Hall of Fame and Museum"
+        @sample.archival_series.should == "Subseries 2: Financial Files"
+        @sample.archival_series_uri.should == "http://repository.rockhall.org/collections/ARC-0002/components/ref557"
+        @sample.archival_series_authority.should == "Rock and Roll Hall of Fame and Museum"
+      end
+
+      it "updates collection and deletes series" do
+        args = {:collection => "ARC-0002", :archival_series => ""}
+        @sample.update_collection args
+        @sample.collection.should == "Sire Records Collection"
+        @sample.collection_uri.should == "http://repository.rockhall.org/collections/ARC-0002"
+        @sample.collection_authority.should == "Rock and Roll Hall of Fame and Museum"
+        @sample.archival_series.should be_nil
+        @sample.archival_series_uri.should be_nil
+        @sample.archival_series_authority.should be_nil
+      end
+
+    end
+
+  end
+
 end

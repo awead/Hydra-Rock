@@ -2,6 +2,6 @@
   <div class="control-group form-inline">
     <%= text_field_tag "document_fields[additional_collection][#{index.to_s}]", document.additional_collection[index],
                        :id => ("additional_collection_" + index.to_s), :class=>"edit span10" %>    
-    <%= render_remove_nodes_button "collection", index %>
+    <%= render_remove_nodes_button "additional_collection", index %>
   </div>
 <% end %>

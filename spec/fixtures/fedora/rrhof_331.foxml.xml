@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="George Blood Audio and Video"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="hydraApp"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-12-22T14:45:53.792Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-04-12T14:23:53.400Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-10-24T17:12:28.029Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-12-22T14:45:53.792Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -942,12 +942,85 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:date>2013-04-12T14:23:53.400Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
+<audit:record ID="AUDREC117">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-18T19:29:33.443Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC118">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>properties</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-18T19:29:33.502Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC119">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-18T19:29:57.803Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC120">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-18T19:29:57.863Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC121">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-18T19:38:54.256Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC122">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-18T19:39:17.070Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC123">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-18T19:39:38.006Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC124">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-18T19:59:00.220Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC125">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-10-24T17:12:28.029Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
 </audit:auditTrail>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-22T14:45:53.792Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="390">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="17e19b1b52afa467ca2c6928ed7b367040ea17c6"/>
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:title>George Blood Audio and Video</dc:title>
@@ -958,6 +1031,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2011-12-22T14:45:53.843Z" MIMETYPE="text/xml" SIZE="3876">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="250069e3821589a260e361cf5fd302ebedfdaaed"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1015,6 +1089,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2011-12-22T15:07:10.130Z" MIMETYPE="text/xml" SIZE="3876">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="250069e3821589a260e361cf5fd302ebedfdaaed"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1072,6 +1147,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.2" LABEL="" CREATED="2011-12-22T15:07:16.990Z" MIMETYPE="text/xml" SIZE="3876">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="250069e3821589a260e361cf5fd302ebedfdaaed"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1129,6 +1205,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.3" LABEL="" CREATED="2012-03-19T20:05:40.588Z" MIMETYPE="text/xml" SIZE="3876">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="250069e3821589a260e361cf5fd302ebedfdaaed"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1186,6 +1263,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.4" LABEL="" CREATED="2012-06-18T14:37:51.952Z" MIMETYPE="text/xml" SIZE="4302">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="38d288d09a586495c81f62cc344eecc2cc9ccf68"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1244,6 +1322,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.5" LABEL="" CREATED="2012-06-18T14:39:14.992Z" MIMETYPE="text/xml" SIZE="4718">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="f64f97f761a1c8a56ef8a186119cb9a6a835f1f1"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1304,6 +1383,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.6" LABEL="" CREATED="2012-06-18T14:39:44.126Z" MIMETYPE="text/xml" SIZE="5018">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="efa3d560b6d569f74c396da63e1408680fa1ffa2"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1366,6 +1446,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.7" LABEL="" CREATED="2012-06-18T14:40:19.090Z" MIMETYPE="text/xml" SIZE="5325">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="7f931ecbc2333b48db3dd3f4d85d20e12a58343f"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1430,6 +1511,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.8" LABEL="" CREATED="2012-06-18T14:40:23.089Z" MIMETYPE="text/xml" SIZE="5470">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="3f22833fc9077ed384f860971de88b09e3fe9fe1"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1498,6 +1580,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.9" LABEL="" CREATED="2012-06-18T14:40:50.269Z" MIMETYPE="text/xml" SIZE="5500">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="c52a3970c40d32977b2cdc382a34165fc1612c51"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1566,6 +1649,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.10" LABEL="" CREATED="2012-06-18T14:40:53.257Z" MIMETYPE="text/xml" SIZE="5645">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="1c40a365b8745590791feb8d8bfd5fe76c96cb92"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1638,6 +1722,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.11" LABEL="" CREATED="2012-06-18T14:41:16.566Z" MIMETYPE="text/xml" SIZE="5663">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="01d61660fdadabeaf289449b30c41fbf1f8a1837"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1710,6 +1795,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.12" LABEL="" CREATED="2012-06-18T14:41:45.724Z" MIMETYPE="text/xml" SIZE="5663">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="01d61660fdadabeaf289449b30c41fbf1f8a1837"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1782,6 +1868,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.13" LABEL="" CREATED="2012-06-18T14:41:49.087Z" MIMETYPE="text/xml" SIZE="5808">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="b5840f155acf9819beeb32a46c14f59b3e95f9a2"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1858,6 +1945,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.14" LABEL="" CREATED="2012-06-18T14:42:06.551Z" MIMETYPE="text/xml" SIZE="5821">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="38f5748dedb1bd42208f4af141158fb2da34d519"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -1934,6 +2022,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.15" LABEL="" CREATED="2012-06-18T14:42:28.103Z" MIMETYPE="text/xml" SIZE="5966">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="039a5e780c48716344d60e9e4a519aae8e87130e"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -2014,6 +2103,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.16" LABEL="" CREATED="2012-06-18T14:42:43.151Z" MIMETYPE="text/xml" SIZE="6003">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="9bdc88931dd463ba759856f9290cfda2e9b2901d"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -2094,6 +2184,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.17" LABEL="" CREATED="2012-06-18T14:43:02.745Z" MIMETYPE="text/xml" SIZE="6013">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="eeaccbc09fb85fa66b9502469b04b976cda6bc9c"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -2174,6 +2265,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.18" LABEL="" CREATED="2012-06-18T14:43:08.729Z" MIMETYPE="text/xml" SIZE="6013">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="eeaccbc09fb85fa66b9502469b04b976cda6bc9c"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -2254,6 +2346,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.19" LABEL="" CREATED="2012-06-18T14:43:31.729Z" MIMETYPE="text/xml" SIZE="6013">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="eeaccbc09fb85fa66b9502469b04b976cda6bc9c"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -2334,6 +2427,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.20" LABEL="" CREATED="2012-06-18T14:44:18.250Z" MIMETYPE="text/xml" SIZE="6212">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="35845c66d695cb1aa0b4f31720068f802d7e299d"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -2415,6 +2509,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.21" LABEL="" CREATED="2012-06-19T13:04:05.396Z" MIMETYPE="text/xml" SIZE="6212">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="26f514f53cdabbb8aa2746c92976e6079ad2f26a"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -2496,6 +2591,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.22" LABEL="" CREATED="2013-04-12T14:23:53.340Z" MIMETYPE="text/xml" SIZE="3648">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="d83843958a16274b513d5c9583bbed5ea5d0cac3"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -2541,9 +2637,343 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.23" LABEL="" CREATED="2013-10-18T19:29:33.443Z" MIMETYPE="text/xml" SIZE="3648">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="d83843958a16274b513d5c9583bbed5ea5d0cac3"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Evening with series. Ian Hunter. Part 2.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">David Spero interviews Ian Hunter, who discusses his time in Mott the Hoople and his solo career. Hunter performs songs with James Mastro.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType">Songs. Resurrection Mary -- I wish I was your mother -- Just another night [partial] -- Irene Wilde -- Still love rock and roll -- Dead man walkin’ (eastenders) -- All the way from Memphis -- Cleveland rocks.</pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Evening with series (Rock and Roll Hall of Fame and Museum)</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">Rock and Roll Hall of Fame and Museum, Cleveland, Ohio</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">2001-05-03</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreTitle titleType="Label">An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame.</pbcoreTitle>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Hunter, Ian, 1939-</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed interviews</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians--England</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed performances</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Nonfiction films</pbcoreGenre>
+  <pbcoreContributor>
+    <contributor>Spero, David, 1951-</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Hunter, Ian, 1939-</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mastro, James</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Rock and Roll Hall of Fame and Museum</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.24" LABEL="" CREATED="2013-10-18T19:29:57.803Z" MIMETYPE="text/xml" SIZE="3648">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="d83843958a16274b513d5c9583bbed5ea5d0cac3"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Evening with series. Ian Hunter. Part 2.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">David Spero interviews Ian Hunter, who discusses his time in Mott the Hoople and his solo career. Hunter performs songs with James Mastro.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType">Songs. Resurrection Mary -- I wish I was your mother -- Just another night [partial] -- Irene Wilde -- Still love rock and roll -- Dead man walkin’ (eastenders) -- All the way from Memphis -- Cleveland rocks.</pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Evening with series (Rock and Roll Hall of Fame and Museum)</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">Rock and Roll Hall of Fame and Museum, Cleveland, Ohio</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">2001-05-03</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreTitle titleType="Label">An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame.</pbcoreTitle>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Hunter, Ian, 1939-</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed interviews</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians--England</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed performances</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Nonfiction films</pbcoreGenre>
+  <pbcoreContributor>
+    <contributor>Spero, David, 1951-</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Hunter, Ian, 1939-</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mastro, James</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Rock and Roll Hall of Fame and Museum</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.25" LABEL="" CREATED="2013-10-18T19:38:54.256Z" MIMETYPE="text/xml" SIZE="3648">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="d83843958a16274b513d5c9583bbed5ea5d0cac3"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Evening with series. Ian Hunter. Part 2.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">David Spero interviews Ian Hunter, who discusses his time in Mott the Hoople and his solo career. Hunter performs songs with James Mastro.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType">Songs. Resurrection Mary -- I wish I was your mother -- Just another night [partial] -- Irene Wilde -- Still love rock and roll -- Dead man walkin’ (eastenders) -- All the way from Memphis -- Cleveland rocks.</pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Evening with series (Rock and Roll Hall of Fame and Museum)</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">Rock and Roll Hall of Fame and Museum, Cleveland, Ohio</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">2001-05-03</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreTitle titleType="Label">An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame.</pbcoreTitle>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Hunter, Ian, 1939-</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed interviews</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians--England</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed performances</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Nonfiction films</pbcoreGenre>
+  <pbcoreContributor>
+    <contributor>Spero, David, 1951-</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Hunter, Ian, 1939-</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mastro, James</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Rock and Roll Hall of Fame and Museum</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.26" LABEL="" CREATED="2013-10-18T19:39:17.070Z" MIMETYPE="text/xml" SIZE="3648">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="d83843958a16274b513d5c9583bbed5ea5d0cac3"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Evening with series. Ian Hunter. Part 2.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">David Spero interviews Ian Hunter, who discusses his time in Mott the Hoople and his solo career. Hunter performs songs with James Mastro.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType">Songs. Resurrection Mary -- I wish I was your mother -- Just another night [partial] -- Irene Wilde -- Still love rock and roll -- Dead man walkin’ (eastenders) -- All the way from Memphis -- Cleveland rocks.</pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Evening with series (Rock and Roll Hall of Fame and Museum)</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">Rock and Roll Hall of Fame and Museum, Cleveland, Ohio</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">2001-05-03</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreTitle titleType="Label">An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame.</pbcoreTitle>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Hunter, Ian, 1939-</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed interviews</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians--England</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed performances</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Nonfiction films</pbcoreGenre>
+  <pbcoreContributor>
+    <contributor>Spero, David, 1951-</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Hunter, Ian, 1939-</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mastro, James</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Rock and Roll Hall of Fame and Museum</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.27" LABEL="" CREATED="2013-10-18T19:39:38.006Z" MIMETYPE="text/xml" SIZE="3648">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="d83843958a16274b513d5c9583bbed5ea5d0cac3"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Evening with series. Ian Hunter. Part 2.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">David Spero interviews Ian Hunter, who discusses his time in Mott the Hoople and his solo career. Hunter performs songs with James Mastro.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType">Songs. Resurrection Mary -- I wish I was your mother -- Just another night [partial] -- Irene Wilde -- Still love rock and roll -- Dead man walkin’ (eastenders) -- All the way from Memphis -- Cleveland rocks.</pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Evening with series (Rock and Roll Hall of Fame and Museum)</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">Rock and Roll Hall of Fame and Museum, Cleveland, Ohio</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">2001-05-03</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreTitle titleType="Label">An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame.</pbcoreTitle>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Hunter, Ian, 1939-</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed interviews</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians--England</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed performances</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Nonfiction films</pbcoreGenre>
+  <pbcoreContributor>
+    <contributor>Spero, David, 1951-</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Hunter, Ian, 1939-</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mastro, James</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Rock and Roll Hall of Fame and Museum</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.28" LABEL="" CREATED="2013-10-18T19:59:00.220Z" MIMETYPE="text/xml" SIZE="3648">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="d83843958a16274b513d5c9583bbed5ea5d0cac3"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Evening with series. Ian Hunter. Part 2.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">David Spero interviews Ian Hunter, who discusses his time in Mott the Hoople and his solo career. Hunter performs songs with James Mastro.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType">Songs. Resurrection Mary -- I wish I was your mother -- Just another night [partial] -- Irene Wilde -- Still love rock and roll -- Dead man walkin’ (eastenders) -- All the way from Memphis -- Cleveland rocks.</pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Evening with series (Rock and Roll Hall of Fame and Museum)</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">Rock and Roll Hall of Fame and Museum, Cleveland, Ohio</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">2001-05-03</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreTitle titleType="Label">An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame.</pbcoreTitle>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Hunter, Ian, 1939-</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed interviews</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians--England</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed performances</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Nonfiction films</pbcoreGenre>
+  <pbcoreContributor>
+    <contributor>Spero, David, 1951-</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Hunter, Ian, 1939-</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mastro, James</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Rock and Roll Hall of Fame and Museum</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.29" LABEL="" CREATED="2013-10-24T17:12:28.029Z" MIMETYPE="text/xml" SIZE="4073">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="1822af58408700603f7768339fda0220b1866b85"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Evening with series. Ian Hunter. Part 2.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">David Spero interviews Ian Hunter, who discusses his time in Mott the Hoople and his solo career. Hunter performs songs with James Mastro.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType">Songs. Resurrection Mary -- I wish I was your mother -- Just another night [partial] -- Irene Wilde -- Still love rock and roll -- Dead man walkin’ (eastenders) -- All the way from Memphis -- Cleveland rocks.</pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Evening with series (Rock and Roll Hall of Fame and Museum)</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">Rock and Roll Hall of Fame and Museum, Cleveland, Ohio</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">2001-05-03</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes"></pbcoreAnnotation>
+  <pbcoreTitle titleType="Label">An evening with Ian Hunter. Part 2. At the Rock and Roll Hall of Fame.</pbcoreTitle>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Hunter, Ian, 1939-</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed interviews</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians--England</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Filmed performances</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism</pbcoreSubject>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Nonfiction films</pbcoreGenre>
+  <pbcoreContributor>
+    <contributor>Spero, David, 1951-</contributor>
+    <contributorRole source="MARC relator terms">interviewer</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Hunter, Ian, 1939-</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mastro, James</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Rock and Roll Hall of Fame and Museum</contributor>
+    <contributorRole source="MARC relator terms"></contributorRole>
+  </pbcoreContributor>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Collection" ref="http://repository.rockhall.org/collections/RG-0006" source="Rock and Roll Hall of Fame and Museum">Rock and Roll Hall of Fame and Museum Records</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2011-12-22T14:45:54.003Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2577,6 +3007,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.1" LABEL="" CREATED="2011-12-22T15:07:10.228Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2610,6 +3041,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.2" LABEL="" CREATED="2011-12-22T15:07:17.091Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2643,6 +3075,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.3" LABEL="" CREATED="2012-02-23T17:36:37.741Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2676,6 +3109,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.4" LABEL="" CREATED="2012-03-19T20:05:40.689Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2709,6 +3143,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.5" LABEL="" CREATED="2012-06-18T14:37:52.122Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2742,6 +3177,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.6" LABEL="" CREATED="2012-06-18T14:39:15.088Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2775,6 +3211,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.7" LABEL="" CREATED="2012-06-18T14:39:44.225Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2808,6 +3245,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.8" LABEL="" CREATED="2012-06-18T14:40:19.198Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2841,6 +3279,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.9" LABEL="" CREATED="2012-06-18T14:40:23.197Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2874,6 +3313,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.10" LABEL="" CREATED="2012-06-18T14:40:50.381Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2907,6 +3347,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.11" LABEL="" CREATED="2012-06-18T14:40:53.373Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2940,6 +3381,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.12" LABEL="" CREATED="2012-06-18T14:41:16.688Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -2973,6 +3415,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.13" LABEL="" CREATED="2012-06-18T14:41:45.852Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3006,6 +3449,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.14" LABEL="" CREATED="2012-06-18T14:41:49.213Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3039,6 +3483,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.15" LABEL="" CREATED="2012-06-18T14:42:06.687Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3072,6 +3517,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.16" LABEL="" CREATED="2012-06-18T14:42:28.243Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3105,6 +3551,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.17" LABEL="" CREATED="2012-06-18T14:42:43.291Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3138,6 +3585,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.18" LABEL="" CREATED="2012-06-18T14:43:02.891Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3171,6 +3619,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.19" LABEL="" CREATED="2012-06-18T14:43:09.007Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3204,6 +3653,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.20" LABEL="" CREATED="2012-06-18T14:43:31.879Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3237,6 +3687,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.21" LABEL="" CREATED="2012-06-18T14:44:18.404Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3270,6 +3721,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="rightsMetadata.22" LABEL="" CREATED="2012-06-19T13:04:05.626Z" MIMETYPE="text/xml" SIZE="637">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0e6219ceffc086b2a56572c0c4c900dcc672f927"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3302,7 +3754,8 @@ library@rockhall.org</instantiationLocation>
 </rightsMetadata>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="rightsMetadata.23" LABEL="" CREATED="2012-06-19T13:04:16.096Z" MIMETYPE="text/xml" SIZE="665">
+<foxml:datastreamVersion ID="rightsMetadata.23" LABEL="" CREATED="2012-06-19T13:04:16.096Z" MIMETYPE="text/xml" SIZE="670">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="5c24b845b0d9ce7ca60f4a2a079b0b99f760e733"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -3340,140 +3793,176 @@ library@rockhall.org</instantiationLocation>
 </foxml:datastream>
 <foxml:datastream ID="properties" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-12-22T14:45:54.085Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.1" LABEL="" CREATED="2011-12-22T15:07:10.420Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.2" LABEL="" CREATED="2011-12-22T15:07:17.289Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.3" LABEL="" CREATED="2012-03-19T20:05:40.839Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.4" LABEL="" CREATED="2012-06-18T14:37:52.213Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.5" LABEL="" CREATED="2012-06-18T14:39:15.182Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.6" LABEL="" CREATED="2012-06-18T14:39:44.327Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.7" LABEL="" CREATED="2012-06-18T14:40:19.298Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.8" LABEL="" CREATED="2012-06-18T14:40:23.325Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.9" LABEL="" CREATED="2012-06-18T14:40:50.495Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.10" LABEL="" CREATED="2012-06-18T14:40:53.493Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.11" LABEL="" CREATED="2012-06-18T14:41:16.805Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.12" LABEL="" CREATED="2012-06-18T14:41:45.977Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.13" LABEL="" CREATED="2012-06-18T14:41:49.340Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.14" LABEL="" CREATED="2012-06-18T14:42:06.818Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.15" LABEL="" CREATED="2012-06-18T14:42:28.378Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.16" LABEL="" CREATED="2012-06-18T14:42:43.428Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.17" LABEL="" CREATED="2012-06-18T14:43:03.108Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.18" LABEL="" CREATED="2012-06-18T14:43:09.151Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.19" LABEL="" CREATED="2012-06-18T14:43:32.026Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.20" LABEL="" CREATED="2012-06-18T14:44:18.562Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.21" LABEL="" CREATED="2012-06-19T13:04:05.808Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="properties.22" LABEL="" CREATED="2013-04-12T14:23:53.400Z" MIMETYPE="text/xml" SIZE="55">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="c5253f02c19c7bc413742e55dcf90ae041e6f9a8"/>
 <foxml:xmlContent>
 <fields>
   <collection>RG.0004</collection>
 </fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="properties.23" LABEL="" CREATED="2013-10-18T19:29:33.502Z" MIMETYPE="text/xml" SIZE="110">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="6a75bee62f2f61b08258cc4e4ff083f7d2ad96a5"/>
+<foxml:xmlContent>
+<fields>
+  <collection>RG.0004</collection>
+  <collection_title>Test Collection</collection_title>
+</fields>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="assetReview" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="assetReview.0" LABEL="" CREATED="2011-12-22T14:45:54.165Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.1" LABEL="" CREATED="2011-12-22T15:07:10.322Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.2" LABEL="" CREATED="2011-12-22T15:07:17.191Z" MIMETYPE="text/xml" SIZE="19">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="caf3eb28484944b464a49d0a527bb7ec3ab0669e"/>
 <foxml:xmlContent>
 <fields></fields>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.3" LABEL="" CREATED="2012-02-23T17:36:37.961Z" MIMETYPE="text/xml" SIZE="628">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="3af45cf57dc5c5ac2911d5d87950d46c89d8c5cc"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3485,6 +3974,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.4" LABEL="" CREATED="2012-03-19T20:05:40.786Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3497,6 +3987,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.5" LABEL="" CREATED="2012-06-18T14:37:52.167Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3509,6 +4000,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.6" LABEL="" CREATED="2012-06-18T14:39:15.134Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3521,6 +4013,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.7" LABEL="" CREATED="2012-06-18T14:39:44.273Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3533,6 +4026,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.8" LABEL="" CREATED="2012-06-18T14:40:19.248Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3545,6 +4039,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.9" LABEL="" CREATED="2012-06-18T14:40:23.254Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3557,6 +4052,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.10" LABEL="" CREATED="2012-06-18T14:40:50.439Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3569,6 +4065,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.11" LABEL="" CREATED="2012-06-18T14:40:53.435Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3581,6 +4078,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.12" LABEL="" CREATED="2012-06-18T14:41:16.748Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3593,6 +4091,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.13" LABEL="" CREATED="2012-06-18T14:41:45.912Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3605,6 +4104,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.14" LABEL="" CREATED="2012-06-18T14:41:49.278Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3617,6 +4117,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.15" LABEL="" CREATED="2012-06-18T14:42:06.750Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3629,6 +4130,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.16" LABEL="" CREATED="2012-06-18T14:42:28.308Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3641,6 +4143,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.17" LABEL="" CREATED="2012-06-18T14:42:43.357Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3653,6 +4156,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.18" LABEL="" CREATED="2012-06-18T14:43:03.034Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3665,6 +4169,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.19" LABEL="" CREATED="2012-06-18T14:43:09.081Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3677,6 +4182,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.20" LABEL="" CREATED="2012-06-18T14:43:31.952Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3689,6 +4195,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.21" LABEL="" CREATED="2012-06-18T14:44:18.485Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3701,6 +4208,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="assetReview.22" LABEL="" CREATED="2012-06-19T13:04:05.717Z" MIMETYPE="text/xml" SIZE="658">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="a5e8bb5285cb283fc94eeaa74729fbf47d8a5726"/>
 <foxml:xmlContent>
 <fields>
   <complete>yes</complete>
@@ -3715,6 +4223,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2012-03-07T21:11:47.318Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3724,6 +4233,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-03-19T20:05:40.638Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3733,6 +4243,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.2" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:37:52.077Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3742,6 +4253,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.3" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:39:15.041Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3751,6 +4263,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.4" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:39:44.176Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3760,6 +4273,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.5" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:40:19.142Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3769,6 +4283,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.6" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:40:23.144Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3778,6 +4293,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.7" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:40:50.325Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3787,6 +4303,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.8" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:40:53.315Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3796,6 +4313,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.9" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:41:16.625Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3805,6 +4323,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.10" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:41:45.791Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3814,6 +4333,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.11" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:41:49.150Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3823,6 +4343,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.12" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:42:06.617Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3832,6 +4353,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.13" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:42:28.176Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3841,6 +4363,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.14" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:42:43.224Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3850,6 +4373,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.15" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:43:02.822Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3859,6 +4383,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.16" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:43:08.803Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3868,6 +4393,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.17" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:43:31.801Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3877,6 +4403,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.18" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-18T14:44:18.329Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3886,6 +4413,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.19" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2012-06-19T13:04:05.527Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
@@ -3894,12 +4422,23 @@ library@rockhall.org</instantiationLocation>
 </rdf:RDF>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
-<foxml:datastreamVersion ID="RELS-EXT.20" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-04-12T14:23:53.266Z" MIMETYPE="application/rdf+xml" SIZE="441">
+<foxml:datastreamVersion ID="RELS-EXT.20" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-04-12T14:23:53.266Z" MIMETYPE="application/rdf+xml" SIZE="458">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="0bb46810d4329005413ae038414c88d5f5a4c3e2"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rrhof:331">
     <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalVideo"></ns0:hasModel>
     <ns1:isMemberOfCollection rdf:resource="info:fedora/rockhall:fixture_arc_test"></ns1:isMemberOfCollection>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.21" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-10-18T19:29:57.863Z" MIMETYPE="application/rdf+xml" SIZE="285">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="427ac078d7c7b2356e4bc4f2784f6cef85252978"/>
+<foxml:xmlContent>
+<rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <rdf:Description rdf:about="info:fedora/rrhof:331">
+    <ns0:hasModel rdf:resource="info:fedora/afmodel:ArchivalVideo"></ns0:hasModel>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>

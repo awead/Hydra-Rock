@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<foxml:digitalObject VERSION="1.1" PID="rockhall:fixture_tape3"
+<foxml:digitalObject VERSION="1.1" PID="rockhall:fixture_tape2"
 xmlns:foxml="info:fedora/fedora-system:def/foxml#"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
@@ -7,11 +7,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE=""/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
-<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2013-04-12T14:23:49.914Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-04-12T14:23:50.842Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2013-04-12T14:23:48.124Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-10-18T19:25:46.965Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
-<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2013-04-12T14:23:49.914Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2013-04-12T14:23:48.124Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
 <foxml:xmlContent>
 <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
 <audit:record ID="AUDREC1">
@@ -19,7 +19,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>addDatastream</audit:action>
 <audit:componentID>RELS-EXT</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-04-12T14:23:49.998Z</audit:date>
+<audit:date>2013-04-12T14:23:48.173Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 <audit:record ID="AUDREC2">
@@ -27,7 +27,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>addDatastream</audit:action>
 <audit:componentID>descMetadata</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-04-12T14:23:50.039Z</audit:date>
+<audit:date>2013-04-12T14:23:48.196Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 <audit:record ID="AUDREC3">
@@ -35,7 +35,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>addDatastream</audit:action>
 <audit:componentID>rightsMetadata</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-04-12T14:23:50.093Z</audit:date>
+<audit:date>2013-04-12T14:23:48.250Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 <audit:record ID="AUDREC4">
@@ -43,7 +43,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>addDatastream</audit:action>
 <audit:componentID>mediaInfo</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-04-12T14:23:50.670Z</audit:date>
+<audit:date>2013-04-12T14:23:48.792Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 <audit:record ID="AUDREC5">
@@ -51,7 +51,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:action>addDatastream</audit:action>
 <audit:componentID>properties</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
-<audit:date>2013-04-12T14:23:50.842Z</audit:date>
+<audit:date>2013-04-12T14:23:48.818Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 </audit:auditTrail>
@@ -59,32 +59,35 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2013-04-12T14:23:49.914Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="339">
+<foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2013-04-12T14:23:48.124Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="351">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="7cf8a0468e8c325237e7614673d2e75b501330e2"/>
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
-  <dc:identifier>rockhall:fixture_tape3</dc:identifier>
+  <dc:identifier>rockhall:fixture_tape2</dc:identifier>
 </oai_dc:dc>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-04-12T14:23:49.998Z" MIMETYPE="application/rdf+xml" SIZE="443">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Fedora Object-to-Object Relationship Metadata" CREATED="2013-04-12T14:23:48.173Z" MIMETYPE="application/rdf+xml" SIZE="455">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="f21eff39e23393f277eceae33271842f63777134"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:ns0="info:fedora/fedora-system:def/model#" xmlns:ns1="info:fedora/fedora-system:def/relations-external#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-  <rdf:Description rdf:about="info:fedora/rockhall:fixture_tape3">
+  <rdf:Description rdf:about="info:fedora/rockhall:fixture_tape2">
     <ns0:hasModel rdf:resource="info:fedora/afmodel:ExternalVideo"></ns0:hasModel>
-    <ns1:isPartOf rdf:resource="info:fedora/rockhall:fixture_pbcore_document2"></ns1:isPartOf>
+    <ns1:isPartOf rdf:resource="info:fedora/rockhall:fixture_pbcore_document1"></ns1:isPartOf>
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2013-04-12T14:23:50.039Z" MIMETYPE="text/xml" SIZE="1079">
+<foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2013-04-12T14:23:48.196Z" MIMETYPE="text/xml" SIZE="1079">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="9c1b241efd38d03c21f04cf800556106559242b4"/>
 <foxml:xmlContent>
 <pbcoreInstantiation>
-  <instantiationIdentifier annotation="Barcode" source="Rock and Roll Hall of Fame and Museum">39156042457627</instantiationIdentifier>
-  <instantiationDate dateType="created">1997-09-15</instantiationDate>
+  <instantiationIdentifier annotation="Barcode" source="Rock and Roll Hall of Fame and Museum">39156042551098</instantiationIdentifier>
+  <instantiationDate dateType="created">1999-03-15</instantiationDate>
   <instantiationPhysical source="PBCore instantiationPhysical">Betacam</instantiationPhysical>
   <instantiationStandard>NTSC</instantiationStandard>
   <instantiationLocation>Rock and Roll Hall of Fame and Museum,
@@ -104,7 +107,8 @@ library@rockhall.org</instantiationLocation>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2013-04-12T14:23:50.093Z" MIMETYPE="text/xml" SIZE="661">
+<foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2013-04-12T14:23:48.250Z" MIMETYPE="text/xml" SIZE="661">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="6f42599f33a32aee0cd4e4804b5370ff9d892008"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -138,14 +142,16 @@ library@rockhall.org</instantiationLocation>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="mediaInfo" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="mediaInfo.0" LABEL="" CREATED="2013-04-12T14:23:50.670Z" MIMETYPE="text/xml" SIZE="13">
+<foxml:datastreamVersion ID="mediaInfo.0" LABEL="" CREATED="2013-04-12T14:23:48.792Z" MIMETYPE="text/xml" SIZE="13">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="07315aebd3da4beb4f679dc4efb4c389f3ff436b"/>
 <foxml:xmlContent>
 <xml></xml>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="properties" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2013-04-12T14:23:50.842Z" MIMETYPE="text/xml" SIZE="140">
+<foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2013-04-12T14:23:48.818Z" MIMETYPE="text/xml" SIZE="140">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="27a9a2c23eff60172ae415d1fc923b1afbe31cc3"/>
 <foxml:xmlContent>
 <fields>
   <collection></collection>

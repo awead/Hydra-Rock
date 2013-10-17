@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="h264"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="hydraApp"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-12-14T17:41:37.974Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-04-12T14:23:37.176Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-10-18T19:25:42.554Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-12-14T17:41:37.974Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -76,6 +76,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Record for this object" CREATED="2011-12-14T17:41:37.974Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="395">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="9db97d55e0ad7631622124c570e1892eacf1871c"/>
 <foxml:xmlContent>
 <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
   <dc:title>h264</dc:title>
@@ -86,6 +87,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="descMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="descMetadata.0" LABEL="" CREATED="2011-12-14T17:41:38.069Z" MIMETYPE="text/xml" SIZE="3046">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="b463278f04322878c462ae5d1a7b8cb42173c72a"/>
 <foxml:xmlContent>
 <pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
   <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
@@ -133,6 +135,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 <foxml:datastreamVersion ID="descMetadata.1" LABEL="" CREATED="2013-04-12T14:23:37.176Z" MIMETYPE="text/xml" SIZE="2612">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="4f75bf53c0b5e5bdf7e51343bc7c35376dbd1648"/>
 <foxml:xmlContent>
 <pbcoreInstantiation>
   <instantiationIdentifier annotation="Filename" source="Rock and Roll Hall of Fame and Museum">39156042439369_access.mp4</instantiationIdentifier>
@@ -177,11 +180,13 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="ACCESS1" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
 <foxml:datastreamVersion ID="ACCESS1.0" LABEL="http://george.rockhall.org/bag/rrhof_185/data/39156042439369_access.mp4" CREATED="2011-12-14T17:41:38.109Z" MIMETYPE="text/xml">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="ExceptionReadingStream"/>
 <foxml:contentLocation TYPE="URL" REF="http://george.rockhall.org/bag/rrhof_185/data/39156042439369_access.mp4"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T17:41:38.186Z" MIMETYPE="text/xml" SIZE="447">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="3947ff34ff7b14e162566ca167e53d943e377931"/>
 <foxml:xmlContent>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <rdf:Description rdf:about="info:fedora/rockhall:fixture_pbcore_document3_h264">
@@ -194,6 +199,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="mediaInfo" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="mediaInfo.0" LABEL="" CREATED="2011-12-14T17:41:38.267Z" MIMETYPE="text/xml" SIZE="2722">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="030b9cfd849c46d3d90e3a25c4a8d33b07500d26"/>
 <foxml:xmlContent>
 <Mediainfo version="0.7.44">
   <File>
@@ -263,6 +269,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="rightsMetadata" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="rightsMetadata.0" LABEL="" CREATED="2011-12-14T17:41:38.345Z" MIMETYPE="text/xml" SIZE="607">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="11f11cdb9825200d1b345657fca244c2586e6bb8"/>
 <foxml:xmlContent>
 <rightsMetadata xmlns="http://hydra-collab.stanford.edu/schemas/rightsMetadata/v1" version="0.1">
   <copyright>
@@ -297,6 +304,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastream>
 <foxml:datastream ID="properties" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="properties.0" LABEL="" CREATED="2011-12-14T17:41:38.428Z" MIMETYPE="text/xml" SIZE="68">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="61702a25d0f7de2d3bf118b08076d952696053f5"/>
 <foxml:xmlContent>
 <fields>
   <depositor>archivist1@example.com</depositor>

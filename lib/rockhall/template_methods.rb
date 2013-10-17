@@ -51,21 +51,52 @@ module Rockhall::TemplateMethods
     end
   end
 
-  def new_collection args
+  def new_additional_collection args
     if args[:name]
-      self.descMetadata.is_part_of(args[:name], {:annotation => "Archival Collection"})
+      self.descMetadata.is_part_of(get_name_from_args(args), additional_collection_options(args))
     else
       self.errors.add(:additional_collection)
     end
   end
 
+  def delete_additional_collection index = 0
+    if self.descMetadata.remove_node(:additional_collection, index, {:include_parent? => TRUE})
+      self.descMetadata.ng_xml_will_change!
+      return true
+    end
+  end
+
+  def new_collection args
+    if args[:name]
+      self.descMetadata.is_part_of(get_name_from_args(args), collection_options(args))
+      self.descMetadata.ng_xml_will_change!
+    else
+      self.errors.add(:collection)
+    end
+  end
+
   def delete_collection index = 0
-    # Note: the OM term is collection, although it is additional_collection at the model level
     if self.descMetadata.remove_node(:collection, index, {:include_parent? => TRUE})
       self.descMetadata.ng_xml_will_change!
       return true
     end
   end
+
+  def new_archival_series args
+    if args[:name]
+      self.descMetadata.is_part_of(get_name_from_args(args), archival_series_options(args))
+      self.descMetadata.ng_xml_will_change!
+    else
+      self.errors.add(:archival_series)
+    end
+  end
+
+  def delete_archival_series index = 0
+    if self.descMetadata.remove_node(:archival_series, index, {:include_parent? => TRUE})
+      self.descMetadata.ng_xml_will_change!
+      return true
+    end
+  end  
 
   def new_accession args
     if args[:name]
@@ -143,6 +174,30 @@ module Rockhall::TemplateMethods
 
   def define_digital_instantiation
     self.descMetadata.define :digital
+  end
+
+  private
+
+  def get_name_from_args args
+    args[:name]
+  end
+
+  def additional_collection_options args
+    args.delete :name
+    args[:annotation] = "Additional Collection"
+    return args
+  end
+
+  def collection_options args
+    args.delete :name
+    args[:annotation] = "Archival Collection"
+    return args
+  end
+
+  def archival_series_options args
+    args.delete :name
+    args[:annotation] = "Archival Series"
+    return args
   end
 
 end

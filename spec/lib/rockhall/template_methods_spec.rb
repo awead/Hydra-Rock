@@ -69,7 +69,7 @@ describe Rockhall::TemplateMethods do
       @sample.new_event_series({:event_value => "my series 2"})
       @sample.new_event_place({:event_value => "my place 2"})
       @sample.new_event_date({:event_value => "2001-02-04"})
-      @sample.new_collection({:name => "Foo Collection"})
+      @sample.new_additional_collection({:name => "Foo Collection"})
     end
 
     after :each do
@@ -100,6 +100,32 @@ describe Rockhall::TemplateMethods do
       @sample.event_date.should == ["2001-02-04"]
     end
   end
+
+  describe "adding collections" do
+    it "should add a collection with a uri and source" do
+      @sample.create_node({:type => "collection", :name => "Foo", :ref => "Bar", :source => "Some source"})
+      @sample.collection.should == "Foo"
+      @sample.collection_uri.should == "Bar"
+      @sample.collection_authority.should == "Some source"
+    end
+    it "should add a collection with just a name" do
+      @sample.create_node({:type => "collection", :name => "Blerg"})
+      @sample.collection.should == "Blerg"
+    end
+  end
+
+  describe "adding archival series" do
+    it "should add an archival series with a uri and source" do
+      @sample.create_node({:type => "archival_series", :name => "Foo", :ref => "Bar", :source => "Some source"})
+      @sample.archival_series.should == "Foo"
+      @sample.archival_series_uri.should == "Bar"
+      @sample.archival_series_authority.should == "Some source"
+    end
+    it "should add an archival series with just a name" do
+      @sample.create_node({:type => "archival_series", :name => "Blerg"})
+      @sample.archival_series.should == "Blerg"
+    end
+  end  
 
   describe "deleting named nodes" do
     before :each do

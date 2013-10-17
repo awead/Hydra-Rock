@@ -18,6 +18,8 @@ gem 'public_activity'
 gem 'gravatar_image_tag'
 gem 'curb'
 gem 'devise'
+gem 'artk'
+gem 'mysql2'
 
 group :development do
   gem 'better_errors', '=0.9.0'

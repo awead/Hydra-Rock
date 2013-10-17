@@ -3,21 +3,23 @@
   <fieldset id="archival_fields"> 
     <legend>Archival Information</legend>
     <p class="legend-caption">
-      Use these fields to identify the item within its archival collection and series or subseries.
+      Link this item to an archival collection and series within Archivists' Toolkit
     </p>
   
-    <div class="control-group">
+    <div id="collection" class="control-group">
       <%= f.select :collection,
-             ArchivalCollection.all.collect {|p| [ p.title, p.id ] },
-             {:include_blank => "None", :selected => (@afdoc.collection.nil? ? nil : @afdoc.collection.pid)},
-             {:class => "collection_select"} %>
+             Artk::Resource.finding_aids.collect { |fa| [fa.findingAidTitle, fa.eadFaUniqueIdentifier] },
+             {:include_blank => "", :selected => @afdoc.ead_id },
+             {:class => "combobox", :data => { :placeholder => "Enter collection name" } } %>
     </div>
-    <div class="control-group">
-      <%= f.select :series,
-                   components_for_collection,
-                   {:include_blank => "None", :selected => (@afdoc.series.nil? ? nil : @afdoc.series.pid)},
-                   {:class => "component_select"} %>
+
+    <div id="archival_series" class="control-group">
+      <%= f.select :archival_series,
+             components_for_select,
+             {:include_blank => "", :selected => @afdoc.ref_id },
+             {:class => "combobox", :data => { :placeholder => "Enter archival series name" } } %>
     </div>
+
   </fieldset>
 
   <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
@@ -41,14 +43,14 @@
 
   <fieldset id="additional_collections">
     <legend>
-      Additional Collections <%= render_add_nodes_button "collection" %>
+      Additional Collections <%= render_add_nodes_button "additional_collection" %>
     </legend>
     <p class="legend-caption">
       Click the button to add additional collections to this item.
       These do not have to be existing collections defined with an EAD in AT.
     </p>
-    <div id="collections_form">
-      <%= render :partial => "nodes/edit/collection", :locals => { :document => @afdoc } %>
+    <div id="additional_collections_form">
+      <%= render :partial => "nodes/edit/additional_collection", :locals => { :document => @afdoc } %>
     </div>
   </fieldset>
 

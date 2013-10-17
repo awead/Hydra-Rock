@@ -68,27 +68,16 @@ jQuery(document).ready(function() {
     items: 20
   });
 
+  $('#collection .combobox').combobox();
+  if ( $('#archival_series .combobox').length > 0 )
+    $('#archival_series .combobox').combobox(buildSeriesOptions());
 
-  // When user selects a new archival collection, the options for archival component
-  // will be updated via the ArchivalCollections controller.
-  $('.collection_select').change(function() {
-    var url = ROOT_PATH
-            + 'archival_collections/'
-            + $('select.collection_select option:selected').val()
-            + '/archival_components.json';
+});
 
-    // remove existing options
-    $('.component_select').empty();
-
-    jQuery.getJSON(url, function(data) {
-      $.each(data, function(key, val) {
-        $('.component_select').append($('<option></option>')
-          .attr('value', key).text(val));
-      });
-    });
-
-  });
-
+//
+$(document).on('change', '#collection input', function(event) {
+  flashInfo("Loading from Archivists' Toolkit, this may take a few moments...");
+  buildSeriesOptions();
 });
 
 // Checks to see if the form is changed

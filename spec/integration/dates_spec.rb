@@ -36,10 +36,8 @@ describe "Dates" do
   end
 
   it "should index multiple dates" do
-    args = {:type => "event", :event_type => "date", :event_value => "2001-02-03"}
-    @av.create_node(args)
-    args[:event_value] = "2001-02-04"
-    @av.create_node(args)
+    @av.create_node({:type => "event", :event_type => "date", :event_value => "2001-02-03"})
+    @av.create_node({:type => "event", :event_type => "date", :event_value => "2001-02-04"})
     @av.event_date.should == ["2001-02-03", "2001-02-04"]
     @av.update_index
   end

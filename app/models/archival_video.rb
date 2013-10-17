@@ -36,8 +36,6 @@ class ArchivalVideo < ActiveFedora::Base
   # relationship is incoming from another object, like inbound traffic coming in from
   # somewhere.
   has_many   :external_videos, :property => :is_part_of
-  belongs_to :collection,      :property => :is_member_of_collection, :class_name => "ArchivalCollection"
-  belongs_to :series,          :property => :is_member_of,            :class_name => "ArchivalComponent"
 
   # This is the essential "meat" section of our model where we actually define which
   # datastreams are in our objects and what's in them.  The name of the datastream is
@@ -54,39 +52,36 @@ class ArchivalVideo < ActiveFedora::Base
   # and we set versionable to false to keep our object size small.
   has_file_datastream :name => "thumbnail", :type=>ActiveFedora::Datastream, :label => "Thumbnail image", :versionable => false
 
-  # We use the delegate_to method link term definitions and their datastreams to our
+  # We use the delegate methods to link term definitions and their datastreams to our
   # model's attributes.
+
+  # Fields in the assetReview datastream
   delegate_to :assetReview,
     [:reviewer, :date_updated, :complete, :priority, :license, :abstract],
     :multiple => true
 
+  # Fields in the descMetadata datastream
   delegate_to :descMetadata,
     [:alternative_title, :chapter, :episode, :segment, :subtitle, :track,
-     :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
-     :getty_genre, :lc_genre, :lc_subject_genre, :genre, :event_place,
-     :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
-     :note, :accession_number], 
-     :multiple => true
+      :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
+      :getty_genre, :lc_genre, :lc_subject_genre, :genre, :event_place,
+      :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
+      :note, :accession_number, :additional_collection], 
+    :multiple => true
 
-  # we use series to denote an archival series, but HydraPbcore::Datastream::Document defines series as an event series
-  delegate :event_series, :to => :descMetadata, :at => [:series], :multiple => true
+  delegate_to :descMetadata, 
+    [:title, :collection, :collection_uri, :collection_authority, :archival_series, :archival_series_uri, :archival_series_authority], 
+    :multiple => false
 
-  # use HydraPcore::Datastream::Document.collection for additional collections that are not linked via RDF
-  delegate :additional_collection, :to => :descMetadata, :at => [:collection], :multiple => true
+  delegate :event_series,     :to => :descMetadata, :at => [:series], :multiple => true
+  delegate :title_label,      :to => :descMetadata, :at => [:label],  :multiple => true
 
-  # Fields with only one value
-  delegate :title, :to=> :descMetadata, :multiple => false
-  validates_presence_of :title, :message => "Main title can't be blank"
-
-  # label is used for the Fedora object, so we have to call our label something else
-  delegate :title_label, :to=> :descMetadata, :at=>[:label], :multiple => true
-
+  # Fields in the properties datastream
   delegate_to :properties, [:depositor, :notes], :multiple => true
   delegate :converted, :to => :properties, :multiple => false 
-  # save the old fields from deprecated PBCore datastreams here
-  delegate :collection_number, :to => :properties, :at => [:collection], :multiple => false
-  delegate :archival_series,   :to => :properties, :at => [:series],     :multiple => false
 
+  # Validations
+  validates_presence_of :title, :message => "Main title can't be blank"
   validate :validate_event_date
 
   # When exporting these objects to another index, we need to collect metadata from 
@@ -109,8 +104,11 @@ class ArchivalVideo < ActiveFedora::Base
 
     # Facets
     solr_doc.merge!("series_facet" => solr_doc[Solrizer.solr_name("series", :facetable)]) unless solr_doc[Solrizer.solr_name("series", :facetable)].nil?
-    solr_doc.merge!("collection_facet" => solr_doc[Solrizer.solr_name("collection", :facetable)]) unless solr_doc[Solrizer.solr_name("collection", :facetable)].nil?
     solr_doc.merge!("genre_facet" => solr_doc[Solrizer.solr_name("genre", :facetable)]) unless solr_doc[Solrizer.solr_name("genre", :facetable)].nil?
+
+    # Collection facet
+    collection = [ solr_doc[Solrizer.solr_name("collection", :facetable)], solr_doc[Solrizer.solr_name("additional_collection", :facetable)] ]
+    solr_doc.merge!("collection_facet" => collection.compact.flatten) unless collection.nil?
 
     # Collect contributors and publishers and put them in the name_facet and contributors_display field
     name_facet = Array.new
@@ -130,19 +128,18 @@ class ArchivalVideo < ActiveFedora::Base
   # Override model method to merge in some additional fields as needed
   def to_solr solr_doc = Hash.new
     super(solr_doc)
-    Solrizer.insert_field(solr_doc, "format", "Video", :facetable, :displayable)
-
-    unless self.collection.nil?
-      facets = Array.new
-      facets << self.collection.title
-      facets << self.additional_collection
-      Solrizer.insert_field(solr_doc, "collection", facets.flatten, :facetable, :displayable)
-    end
-
-    Solrizer.insert_field(solr_doc, "archival_series",   self.series.title,                 :facetable, :displayable) unless self.series.nil?
-    Solrizer.insert_field(solr_doc, "collection_number", self.collection.pid.gsub(/:/,"-"), :facetable, :displayable) unless self.collection.nil?
-    
+    Solrizer.insert_field(solr_doc, "format", "Video", :facetable, :displayable)    
     return solr_doc
+  end
+
+  # Returns the ead_id from the colletion_uri field
+  def ead_id
+    URI.parse(self.collection_uri).path.split("/").last unless self.collection_uri.nil?
+  end
+
+  # Returns the ref_id from the archival_series_uri field
+  def ref_id
+    URI.parse(self.archival_series_uri).path.split("/").last unless self.archival_series_uri.nil?
   end
 
 end

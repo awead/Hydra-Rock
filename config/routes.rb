@@ -4,6 +4,8 @@ HydraRock::Application.routes.draw do
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
 
+  mount Artk::Engine => '/artk'
+
   root :to => 'catalog#index'
   
   resources :users, :only => [:index, :show]
@@ -48,6 +50,6 @@ HydraRock::Application.routes.draw do
   end
 
   # In production, grab anything else and redirect to the catalog page
-  match '*a', :to => 'catalog#index' if Rails.env.match("production")
+  match '*a', :to => 'catalog#index', via: [:get, :post] if Rails.env.match("production")
 
 end

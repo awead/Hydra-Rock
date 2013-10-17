@@ -5,6 +5,7 @@ Feature:
   As an archivist
   I need edit archival collection information for objects
 
+  @wip
   Scenario: Editing archival series and collection
     Given I am logged in as "archivist1@example.com"
     And I am on the collections workflow page for cucumber:1
@@ -22,15 +23,15 @@ Feature:
   Scenario: Adding additional collections to items
     Given I am logged in as "archivist1@example.com"
     And I am on the collections workflow page for cucumber:1
-    When I follow "open_collection_modal"
+    When I follow "open_additional_collection_modal"
     And I wait for 2 seconds
     And I fill in "name" with "Foo Collection"
-    And I press "add_collection_button"
+    And I press "add_additional_collection_button"
     And I should see "Video was updated successfully"
     And I close the modal window
     And I wait for 2 seconds
     Then the "additional_collection_0" field should contain "Foo Collection"
-    When I follow "delete_collection_0"
+    When I follow "delete_additional_collection_0"
     And I wait for 2 seconds
     Then I should not see "Foo Collection"
     And I should see "Video was updated successfully"
