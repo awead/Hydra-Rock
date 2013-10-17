@@ -11,7 +11,6 @@ namespace :rockhall do
 
     desc "Prepare devlopment environment"
     task :prep => :environment do
-      Rake::Task["db:drop"].invoke
       Rake::Task["db:migrate"].invoke
       ActiveRecord::Tasks::DatabaseTasks.fixtures_path = 'spec/fixtures/ar/'
       Rake::Task["db:fixtures:load"].invoke
