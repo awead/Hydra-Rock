@@ -1,9 +1,7 @@
 module Rockhall::Permissions
 
-  include Hydra::ModelMixins::RightsMetadata
-
   def update_permissions permissions
-    self.permissions = permissions
+    self.permissions_attributes = permissions
     self.save
   end
 

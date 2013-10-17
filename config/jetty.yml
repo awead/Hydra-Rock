@@ -4,3 +4,6 @@ default:
   java_opts:
     - "-Xmx256m" 
     - "-XX:MaxPermSize=128m"
+    - "-XX:+CMSPermGenSweepingEnabled"
+    - "-XX:+CMSClassUnloadingEnabled"
+    - "-XX:PermSize=64M"

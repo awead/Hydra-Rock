@@ -7,8 +7,8 @@ describe Properties do
       class Foo < ActiveFedora::Base
         has_metadata :name => "properties", :type => Properties 
         has_metadata :name => "stuff", :type => Properties
-        delegate :collection, :to=> :properties, :unique=>true
-        delegate :depositor, :to=> :stuff, :unique=>true
+        delegate :collection, :to=> :properties, :multiple => false
+        delegate :depositor, :to=> :stuff, :multiple => false
       end
       obj = Foo.new()
       obj.collection = "test value"

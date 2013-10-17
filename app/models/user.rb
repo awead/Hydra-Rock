@@ -13,9 +13,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
-
   # Method added by Blacklight; Blacklight uses #to_s on your
   # user class to get a user-displayable identifier for
   # the account. 

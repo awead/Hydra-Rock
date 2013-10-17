@@ -18,6 +18,7 @@ class ArchivalVideo < ActiveFedora::Base
   include ActiveModel::Validations
   include Rockhall::Validations
   include Rockhall::TemplateMethods
+  include Hydra::AccessControls::Permissions
   include Rockhall::Permissions
 
   # ActiveFedora implements callbacks just like ActiveRecord does and you can specify
@@ -55,33 +56,35 @@ class ArchivalVideo < ActiveFedora::Base
   # We use the delegate_to method link term definitions and their datastreams to our
   # model's attributes.
   delegate_to :assetReview,
-    [:reviewer, :date_updated, :complete, :priority, :license, :abstract]
+    [:reviewer, :date_updated, :complete, :priority, :license, :abstract],
+    :multiple => true
 
   delegate_to :descMetadata,
     [:alternative_title, :chapter, :episode, :segment, :subtitle, :track,
      :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
      :getty_genre, :lc_genre, :lc_subject_genre, :genre, :event_place,
      :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
-     :note, :accession_number]
+     :note, :accession_number], 
+     :multiple => true
 
   # we use series to denote an archival series, but HydraPbcore::Datastream::Document defines series as an event series
-  delegate :event_series, :to => :descMetadata, :at => [:series]
+  delegate :event_series, :to => :descMetadata, :at => [:series], :multiple => true
 
   # use HydraPcore::Datastream::Document.collection for additional collections that are not linked via RDF
-  delegate :additional_collection, :to => :descMetadata, :at => [:collection]
+  delegate :additional_collection, :to => :descMetadata, :at => [:collection], :multiple => true
 
   # Fields with only one value
-  delegate :title, :to=> :descMetadata, :unique=>true
+  delegate :title, :to=> :descMetadata, :multiple => false
   validates_presence_of :title, :message => "Main title can't be blank"
 
   # label is used for the Fedora object, so we have to call our label something else
-  delegate :title_label, :to=> :descMetadata, :at=>[:label]
+  delegate :title_label, :to=> :descMetadata, :at=>[:label], :multiple => true
 
-  delegate_to :properties, [:depositor, :notes]
-  delegate :converted, :to => :properties, :unique => true 
+  delegate_to :properties, [:depositor, :notes], :multiple => true
+  delegate :converted, :to => :properties, :multiple => false 
   # save the old fields from deprecated PBCore datastreams here
-  delegate :collection_number, :to => :properties, :at => [:collection], :unique => true
-  delegate :archival_series,   :to => :properties, :at => [:series],     :unique => true
+  delegate :collection_number, :to => :properties, :at => [:collection], :multiple => false
+  delegate :archival_series,   :to => :properties, :at => [:series],     :multiple => false
 
   validate :validate_event_date
 

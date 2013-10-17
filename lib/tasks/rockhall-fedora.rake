@@ -1,3 +1,5 @@
+require 'colorize'
+
 namespace :rockhall do
 
   namespace :fedora do
@@ -14,11 +16,13 @@ namespace :rockhall do
     task :load => :environment do
       contents = ENV['DIR'] ? Dir.glob(File.join(ENV['DIR'], "*.xml")) : Dir.glob("spec/fixtures/fedora/*.xml")
       contents.each do |file|
+        print "Loading #{File.basename(file)} ... "
         begin
           pid = ActiveFedora::FixtureLoader.import_to_fedora(file)
           ActiveFedora::FixtureLoader.index(pid)
+          puts "done.".colorize(:green)
         rescue
-          puts "Failed to load #{file.to_s}"
+          puts "Failed!".colorize(:red)
         end
       end
     end

@@ -4,7 +4,7 @@ namespace :rockhall do
 
     desc "Override jetty:clean with our own url (as needed)"
     task :clean => :environment do
-      Jettywrapper.url = "https://github.com/projecthydra/hydra-jetty/archive/solr-4.3.zip"
+      Jettywrapper.url = "https://github.com/projecthydra/hydra-jetty/archive/v6.0.0.zip"
       Jettywrapper.clean
     end
     
@@ -22,9 +22,7 @@ namespace :rockhall do
 
     desc "Configure jetty with local Fedora and Solr files"
     task :config => ['jetty:stop', :clean] do
-      Rake::Task["rockhall:jetty:config_fedora"].reenable
       Rake::Task["rockhall:jetty:config_fedora"].invoke
-      Rake::Task["rockhall:jetty:config_solr"].reenable
       Rake::Task["rockhall:jetty:config_solr"].invoke
     end
 

@@ -73,7 +73,7 @@ class ArchivalVideosController < ApplicationController
   end
 
   def destroy
-    @afdoc = ActiveFedora::Base.find(params[:id], :cast=>true)
+    @afdoc = ActiveFedora::Base.find(params[:id], :cast => true)
     title = @afdoc.title
     @afdoc.destroy_external_videos
     @afdoc.delete

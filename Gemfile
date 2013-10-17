@@ -1,17 +1,13 @@
 source 'http://rubygems.org'
 
-gem 'rails',      '~>3.2.13'
+gem 'rails', '~>4.0.0'
 
-# Hydra dependencies
-gem 'blacklight' 
-gem 'hydra-head'
+gem 'hydra-head', '~>6.4.0'
 gem 'hydra-pbcore'
-
-# Gems for all environments
 gem 'bootstrap-sass'
 gem 'unicode', :platforms => [:mri_18, :mri_19]
 gem 'devise-guests'
-
+gem 'colorize'
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'bagit'
@@ -21,25 +17,12 @@ gem 'ruby-ntlm'
 gem 'public_activity'
 gem 'gravatar_image_tag'
 gem 'curb'
-
-# Gems that we lock to specific versions for compatibility
-#
-# Don't use devise 3.0 just yet: https://github.com/plataformatec/devise/issues/2515
-gem 'devise', '< 3.0.0'
-
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
+gem 'devise'
 
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '=0.9.0'
   gem 'binding_of_caller'
-  gem 'pry'
+  gem 'pry', '~>0.9.12'
 end
 
 group :development, :test do
@@ -47,7 +30,10 @@ group :development, :test do
   # undefined local variable or method `postgresql_version'
   # https://github.com/bmabey/database_cleaner/issues/224
   gem 'database_cleaner', '<=1.0.1'
-  
+
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
   gem 'bcrypt-ruby'
   gem 'factory_girl'
   gem 'generator_spec'

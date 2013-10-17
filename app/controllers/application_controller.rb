@@ -28,4 +28,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  # override Devise to allow additional attributes
+  before_filter :configure_permitted_parameters, :if => :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :name
+  end
+
 end

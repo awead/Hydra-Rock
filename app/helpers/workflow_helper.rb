@@ -13,7 +13,7 @@ module WorkflowHelper
   end
 
   def render_delete_link
-    link_to("Delete", archival_video_path(params[:id]), :confirm => "Are you sure?", :method => :delete)
+    link_to("Delete", archival_video_path(params[:id]), :data => { :confirm => "Are you sure?" }, :method => :delete)
   end
 
   # navigation links to the other edit partials

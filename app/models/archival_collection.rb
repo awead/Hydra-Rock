@@ -10,8 +10,8 @@ class ArchivalCollection < ActiveFedora::Base
   has_many :series, :property => :is_member_of_collection, :class_name => "ArchivalComponent"
   has_many :videos, :property => :is_member_of_collection, :class_name => "ArchivalVideo"
 
-  delegate :title, :to=> :descMetadata, :unique=>true
-  delegate :format, :to=> :descMetadata, :unique=>true
+  delegate :title, :to=> :descMetadata, :multiple => false
+  delegate :format, :to=> :descMetadata, :multiple => false
 
   # The id for the solr document of an archival collection as is is in our discovery
   # index is different than the solr document for the collection here in Fedora.

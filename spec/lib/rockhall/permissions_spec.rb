@@ -19,15 +19,9 @@ describe Rockhall::Permissions do
     end
 
     it "should update permissions and return true" do
-      permissions = @video.permissions
-      permissions << {:type => "group", :name => "donor", :access => "edit"}
-      @test.update_permissions(permissions).should be_true
+      @test.update_permissions([{:type => "group", :name => "donor", :access => "edit"}]).should be_true
       @test.reload
       @test.edit_groups.should include("donor")
-    end
-
-    it "should return false when there are no changes" do
-      pending "Need to find a nice way of determining if permissions have changed"
     end
 
   end
