@@ -4,6 +4,8 @@ class Properties < ActiveFedora::OmDatastream
     t.root(:path=>"fields", :namespace_prefix=>nil)
     t.collection # collection number from hydra-pbcore v1 datastreams
     t.series     # archival series field from hydra-pbocore v1 datastreams
+    t.collection_title
+    t.additional_collection
     t.depositor
     t.notes
     t.access
@@ -16,6 +18,8 @@ class Properties < ActiveFedora::OmDatastream
       xml.fields {
         xml.collection
         xml.series
+        xml.collection_title
+        xml.additional_collection
         xml.depositor
         xml.notes
         xml.access
