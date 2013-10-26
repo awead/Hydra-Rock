@@ -1,6 +1,7 @@
 class ExternalVideo < ActiveFedora::Base
 
   include ActiveFedora::DatastreamCollections
+  include Rockhall::Models
 
   FieldList =
     [ :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 
@@ -11,12 +12,6 @@ class ExternalVideo < ActiveFedora::Base
       :audio_bit_rate, :audio_bit_rate_units, :audio_sample_rate, :audio_sample_rate_units, 
       :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format, :depositor, :notes,
       :mi_file_format ]
-
-  include Rockhall::ModelMethods
-  include Rockhall::TemplateMethods
-  include Rockhall::Validations
-  include Hydra::AccessControls::Permissions
-  include Rockhall::Permissions
 
   after_create :apply_default_permissions
 

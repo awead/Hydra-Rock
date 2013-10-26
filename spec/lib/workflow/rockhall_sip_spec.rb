@@ -84,12 +84,12 @@ describe Workflow::RockhallSip do
   describe "preparing a sip" do
 
     before(:each) do
-      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      Rockhall.jetty_clean(RH_CONFIG["pid_space"])
       clean_dir RH_CONFIG["location"]
     end
 
     after(:each) do
-      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      Rockhall.jetty_clean(RH_CONFIG["pid_space"])
       clean_dir RH_CONFIG["location"]
     end
 
@@ -111,7 +111,7 @@ describe Workflow::RockhallSip do
   describe "reusing a sip" do
 
     after(:each) do
-      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+      Rockhall.jetty_clean(RH_CONFIG["pid_space"])
     end
 
     it "should use the previously defined pid" do

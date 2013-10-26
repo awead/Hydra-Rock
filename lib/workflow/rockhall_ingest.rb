@@ -3,7 +3,7 @@ require 'mediainfo'
 module Workflow
 class RockhallIngest
 
-  include Rockhall::WorkflowMethods
+  include Workflow::Methods
 
   attr_accessor :parent, :sip, :force
 

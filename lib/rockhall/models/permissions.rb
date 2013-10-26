@@ -1,4 +1,7 @@
-module Rockhall::Permissions
+module Rockhall::Models::Permissions
+  extend ActiveSupport::Concern
+
+  include Hydra::AccessControls::Permissions
 
   def update_permissions permissions
     self.permissions_attributes = permissions

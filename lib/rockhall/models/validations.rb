@@ -1,6 +1,8 @@
-module Rockhall::Validations
+module Rockhall::Models::Validations
+  extend ActiveSupport::Concern
 
-  include Rockhall::WorkflowMethods
+  include ActiveModel::Validations
+  include Workflow::Methods
 
   def validate_event_date
     date_format(:event_date)
@@ -23,6 +25,5 @@ module Rockhall::Validations
       end
     end
   end
-
 
 end

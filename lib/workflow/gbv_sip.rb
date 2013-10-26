@@ -12,7 +12,7 @@
 module Workflow
 class GbvSip
 
-  include Rockhall::WorkflowMethods
+  include Workflow::Methods
 
   attr_accessor :root, :base
 

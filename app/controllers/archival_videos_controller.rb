@@ -1,7 +1,7 @@
 class ArchivalVideosController < ApplicationController
   
   include Blacklight::Catalog
-  include Rockhall::Controller::ControllerBehavior
+  include Rockhall::Controllers
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer, :destroy]
   before_filter :enforce_create_permissions, :only => [:new, :create]

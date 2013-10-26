@@ -1,4 +1,5 @@
-module Rockhall::Controller::PermissionsEnforcement
+module Rockhall::Controllers::PermissionsEnforcement
+  extend ActiveSupport::Concern
 
   def enforce_create_permissions
     unless can? :create, current_user

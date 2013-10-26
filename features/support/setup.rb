@@ -86,10 +86,6 @@ After '@import' do
   end
 end
 
-After '@collections' do
-  Rockhall::JettyCleaner.clean("arc")
-end
-
 Before '@javascript' do
   Capybara.current_session.driver.browser.manage.window.resize_to(1280, 1024)
 end

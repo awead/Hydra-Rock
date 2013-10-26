@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Rockhall::ModelMethods do
+describe Rockhall::Models do
 
   describe ".transfer_videos_from_pid" do
 

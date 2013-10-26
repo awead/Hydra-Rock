@@ -1,4 +1,5 @@
-module Rockhall::Reorganize
+module Rockhall::Models::Reorganize
+  extend ActiveSupport::Concern
 
   def capture_collections
     self.properties.additional_collection = self.additional_collection unless additional_collection_saved?

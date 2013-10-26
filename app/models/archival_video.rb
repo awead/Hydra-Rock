@@ -13,14 +13,7 @@ class ArchivalVideo < ActiveFedora::Base
   # libraries.  The libraries come from the ActiveFedora gem, Hydra and our own
   # local Rockhall libraries.  You can mix in model methods from any gem or library,
   # such as ActiveModel.  The extent of the mixins is completely up to your own needs.
-  include Rockhall::ModelMethods
-  include Rockhall::WorkflowMethods
-  include ActiveModel::Validations
-  include Rockhall::Validations
-  include Rockhall::TemplateMethods
-  include Hydra::AccessControls::Permissions
-  include Rockhall::Permissions
-  include Rockhall::Reorganize
+  include Rockhall::Models
 
   # ActiveFedora implements callbacks just like ActiveRecord does and you can specify
   # them here.  #apply_default_permissions is a particular method in our local Rockhall

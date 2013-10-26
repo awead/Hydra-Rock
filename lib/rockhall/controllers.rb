@@ -1,6 +1,7 @@
-module Rockhall::Controller::ControllerBehavior
+module Rockhall::Controllers
+  extend ActiveSupport::Concern
 
-  include Rockhall::Controller::PermissionsEnforcement
+  include Rockhall::Controllers::PermissionsEnforcement
 
   def update_session
     session[:search][:counter] = params[:counter] unless params[:counter].nil?
@@ -74,7 +75,5 @@ module Rockhall::Controller::ControllerBehavior
     user_params[:rows] ||= 10
     super
   end
-
-   
 
 end
