@@ -20,17 +20,9 @@ HydraRock::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
-  # Falling back to assets pipeline
-  #
-  # Ideally, we want all of our assets compiled so there one big, nice js and css
-  # file for everything.  Occasionally, however, some files don't get compiled for one
-  # reason or another.  In that case, asset pipeline can serve out those files.
-  # Set to "true" if you want to allow the non-compiled files to get out via
-  # asset pipeline, set to "false" if you want only the compiled stuff to be served
-  # out.  Note, not using asset pipeline in production is best (ie. setting to false),
-  # but sometimes certain css files won't compile so we'll set this to true and allow
-  # asset pipeline in production just so things will work.
-  config.assets.compile = true
+  # Set to "true" only if can't get assets to compile properly and want the pipeline to serve
+  # out the non-compiled assets anyway.
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true

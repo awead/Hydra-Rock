@@ -56,22 +56,21 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
-    config.add_facet_field solr_name('format', :facetable),              :label => 'Media Type',          :limit => 10
-    config.add_facet_field solr_name('media_format', :facetable),        :label => 'Physical Format',     :limit => 10
-    config.add_facet_field solr_name('contributor_name', :facetable),    :label => 'Name',                :limit => 10
-    config.add_facet_field solr_name('subject', :facetable),             :label => 'Subject',             :limit => 10
-    config.add_facet_field solr_name('genre', :facetable),               :label => 'Genre',               :limit => 10
-    config.add_facet_field solr_name('series', :facetable),              :label => 'Event/Series',        :limit => 10
-    config.add_facet_field solr_name('collection', :facetable),          :label => 'Collection',          :limit => 10  
-    config.add_facet_field solr_name('create_date', :facetable),         :label => 'Creation Date',       :limit => 10
-    config.add_facet_field solr_name('language', :facetable),            :label => 'Language',            :limit => true
-    config.add_facet_field solr_name('priority', :facetable),            :label => 'Priority',            :limit => 10
-    config.add_facet_field solr_name('complete', :facetable),            :label => 'Reviewed',            :limit => 10
-    config.add_facet_field solr_name('reviewer', :facetable),            :label => 'Reviewer',            :limit => 10
-    config.add_facet_field solr_name('depositor', :facetable),           :label => 'Depositor',           :limit => 10
-    config.add_facet_field solr_name('converted', :facetable),           :label => 'Converted',           :limit => 10
-    config.add_facet_field solr_name('internal_series', :facetable),     :label => 'Internal Series',     :limit => 10
-    config.add_facet_field solr_name('internal_collection', :facetable), :label => 'Internal Collection', :limit => 10
+    config.add_facet_field solr_name('format', :facetable),                :label => 'Media Type',            :limit => 10
+    config.add_facet_field solr_name('media_format', :facetable),          :label => 'Physical Format',       :limit => 10
+    config.add_facet_field solr_name('contributor_name', :facetable),      :label => 'Name',                  :limit => 10
+    config.add_facet_field solr_name('subject', :facetable),               :label => 'Subject',               :limit => 10
+    config.add_facet_field solr_name('genre', :facetable),                 :label => 'Genre',                 :limit => 10
+    config.add_facet_field solr_name('series', :facetable),                :label => 'Event/Series',          :limit => 10
+    config.add_facet_field solr_name('collection', :facetable),            :label => 'Collection',            :limit => 10
+    config.add_facet_field solr_name('archival_series', :facetable),       :label => 'Archival Series',       :limit => 10
+    config.add_facet_field solr_name('additional_collection', :facetable), :label => 'Additional Collection', :limit => 10  
+    config.add_facet_field solr_name('create_date', :facetable),           :label => 'Creation Date',         :limit => 10
+    config.add_facet_field solr_name('language', :facetable),              :label => 'Language',              :limit => true
+    config.add_facet_field solr_name('priority', :facetable),              :label => 'Priority',              :limit => 10
+    config.add_facet_field solr_name('complete', :facetable),              :label => 'Reviewed',              :limit => 10
+    config.add_facet_field solr_name('reviewer', :facetable),              :label => 'Reviewer',              :limit => 10
+    config.add_facet_field solr_name('depositor', :facetable),             :label => 'Depositor',             :limit => 10
 
     # TODO
     #config.add_facet_field 'event_date_dt', :label => 'Event Date', :query => {
