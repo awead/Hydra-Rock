@@ -144,9 +144,9 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="ACCESS1" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="ACCESS1.0" LABEL="http://localhost" CREATED="2012-01-13T14:43:55.915Z" MIMETYPE="text/xml">
+<foxml:datastreamVersion ID="ACCESS1.0" LABEL="http://archive.rockhall.org/rrhof_525/data/39156042459755_access.mp4" CREATED="2012-01-13T14:43:55.915Z" MIMETYPE="text/xml">
 <foxml:contentDigest TYPE="SHA-1" DIGEST="ExceptionReadingStream"/>
-<foxml:contentLocation TYPE="URL" REF="http://localhost"/>
+<foxml:contentLocation TYPE="URL" REF="http://archive.rockhall.org/rrhof_525/data/39156042459755_access.mp4"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="mediaInfo" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
