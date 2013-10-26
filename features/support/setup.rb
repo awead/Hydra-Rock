@@ -2,9 +2,7 @@
 
 Before do
   ActiveRecord::FixtureSet.reset_cache
-  fixtures_folder = File.join(Rails.root, 'spec', 'fixtures', 'ar')
-  fixtures = Dir[File.join(fixtures_folder, '*.yml')].map {|f| File.basename(f, '.yml') }
-  ActiveRecord::FixtureSet.create_fixtures(fixtures_folder, fixtures)
+  ActiveRecord::FixtureSet.create_fixtures(File.join(Rails.root, 'spec', 'fixtures', 'ar'), [:activities, :users])
 end
 
 # Creates a sample video with an attached tape, and digital file
