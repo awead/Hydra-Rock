@@ -3,7 +3,7 @@
     <%= text_field_tag "document_fields[publisher_name][#{index.to_s}]", document.publisher_name[index],
                        :id => ("publisher_name_" + index.to_s), :class=>"edit span3" %>
     <%= select_tag "document_fields[publisher_role][#{index.to_s}]",
-                   options_for_select(Relators.pbcore.keys.sort, document.publisher_role[index]),
+                   options_for_select(Rockhall.relators(:pbcore).keys.sort, document.publisher_role[index]),
                    {:id => ("publisher_role_" + index.to_s)} %>              
     <%= render_remove_nodes_button "publisher", index %>
   </div>

@@ -1,10 +1,6 @@
 require "spec_helper"
 
-describe Rockhall::Permissions do
-
-  before :all do
-    @video = ActiveFedora::Base.find("rockhall:fixture_pbcore_document1", :cast => true)
-  end
+describe Rockhall::Models::Permissions do
 
   describe ".update_permissions" do
 

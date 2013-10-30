@@ -1,7 +1,7 @@
 class ExternalVideosController < ApplicationController
   
   include Blacklight::Catalog
-  include Rockhall::Controller::ControllerBehavior
+  include Rockhall::Controllers
 
   before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :destroy]
   before_filter :update_session

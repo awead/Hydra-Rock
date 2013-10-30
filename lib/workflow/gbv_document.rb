@@ -3,7 +3,7 @@
 module Workflow
 class GbvDocument < ActiveFedora::OmDatastream
 
-  include Rockhall::WorkflowMethods
+  include Workflow::Methods
 
   set_terminology do |t|
     t.root(:path=>"/VideoObject", :xmlns=> nil)

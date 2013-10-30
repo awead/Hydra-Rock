@@ -1,6 +1,7 @@
 require 'mediainfo'
 
-module Rockhall::WorkflowMethods
+module Workflow::Methods
+  extend ActiveSupport::Concern
 
   def new_name(pid,file,opts={})
     elements = Array.new

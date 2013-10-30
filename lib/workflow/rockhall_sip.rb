@@ -12,7 +12,7 @@
 module Workflow
 class RockhallSip
 
-  include Rockhall::WorkflowMethods
+  include Workflow::Methods
 
   attr_accessor :root, :base
 

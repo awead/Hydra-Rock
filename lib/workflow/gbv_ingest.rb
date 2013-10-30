@@ -4,7 +4,7 @@ require 'mediainfo'
 module Workflow
 class GbvIngest
 
-  include Rockhall::WorkflowMethods
+  include Workflow::Methods
 
   attr_accessor :parent, :sip, :force
 

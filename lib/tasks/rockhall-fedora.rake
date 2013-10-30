@@ -36,18 +36,18 @@ namespace :rockhall do
   
     desc "Clean out unwanted objects from Fedora"
     task :clean => :environment do
-      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      Rockhall::JettyCleaner.clean("cucumber")
+      Rockhall.jetty_clean(RH_CONFIG["pid_space"])
+      Rockhall.jetty_clean("cucumber")
     end
 
     desc "Cleans out everytyhing from Fedora"
     task :empty => :environment do
       raise "You don't want to run this task in production.  You'll royally f#&@ things up." if Rails.env.match("production")
-      Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
-      Rockhall::JettyCleaner.clean("rockhall")
-      Rockhall::JettyCleaner.clean("rrhof")
-      Rockhall::JettyCleaner.clean("arc")
-      Rockhall::JettyCleaner.clean("cucumber")
+      Rockhall.jetty_clean(RH_CONFIG["pid_space"])
+      Rockhall.jetty_clean("rockhall")
+      Rockhall.jetty_clean("rrhof")
+      Rockhall.jetty_clean("arc")
+      Rockhall.jetty_clean("cucumber")
     end
 
     desc "Using PID, export a Fedora object and its associated objects to spec/fixtures/exports"

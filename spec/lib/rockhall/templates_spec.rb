@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Rockhall::TemplateMethods do
+describe Rockhall::Models::Templates do
 
   before :each do
     @sample = ArchivalVideo.new

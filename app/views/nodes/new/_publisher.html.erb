@@ -6,7 +6,7 @@
   </div>
   <div class="modal-body">
     <%= text_field_tag "name" %>
-    <%= select_tag "role", options_for_select(Relators.pbcore.keys.sort) %>
+    <%= select_tag "role", options_for_select(Rockhall.relators(:pbcore).keys.sort) %>
     <%= submit_tag "Add", :id => "add_publisher_button" %>
   </div>
 <% end %>

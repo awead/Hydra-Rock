@@ -1,10 +1,10 @@
 require "spec_helper"
 
-describe Rockhall::WorkflowMethods do
+describe Workflow::Methods do
 
   before(:each) do
     class WorkflowTest
-      include Rockhall::WorkflowMethods
+      include Workflow::Methods
     end
     @wf = WorkflowTest.new
   end

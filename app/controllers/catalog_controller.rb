@@ -1,7 +1,7 @@
 class CatalogController < ApplicationController
 
   include Blacklight::Catalog
-  include Rockhall::Controller::ControllerBehavior
+  include Rockhall::Controllers
   include Rockhall::Exports
 
   before_filter :enforce_show_permissions, :only=>:show

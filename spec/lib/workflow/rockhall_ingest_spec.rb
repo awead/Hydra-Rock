@@ -3,12 +3,12 @@ require "spec_helper"
 describe Workflow::RockhallIngest do
 
   before(:all) do
-    Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+    Rockhall.jetty_clean(RH_CONFIG["pid_space"])
     clean_dir RH_CONFIG["location"]
   end
 
   after(:all) do
-    Rockhall::JettyCleaner.clean(RH_CONFIG["pid_space"])
+    Rockhall.jetty_clean(RH_CONFIG["pid_space"])
     clean_dir RH_CONFIG["location"]
   end
 

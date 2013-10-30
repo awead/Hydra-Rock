@@ -8,7 +8,7 @@ describe "Dates" do
   end
 
   after :all do
-    Rockhall::JettyCleaner.clean("changeme")
+    Rockhall.jetty_clean("changeme")
   end
 
   it "should solrize complete dates" do

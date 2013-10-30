@@ -5,9 +5,10 @@
 # methods here to link them to the appropriate datastream so that they're
 # available at the object level.
 
-module Rockhall::TemplateMethods
+module Rockhall::Models::Templates
+  extend ActiveSupport::Concern
 
-  include Rockhall::WorkflowMethods
+  #include Rockhall::WorkflowMethods
 
   # Used in conjunction with NodesController to call new_[node] on
   # a given node within the web GUI.

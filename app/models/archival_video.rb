@@ -13,14 +13,7 @@ class ArchivalVideo < ActiveFedora::Base
   # libraries.  The libraries come from the ActiveFedora gem, Hydra and our own
   # local Rockhall libraries.  You can mix in model methods from any gem or library,
   # such as ActiveModel.  The extent of the mixins is completely up to your own needs.
-  include Rockhall::ModelMethods
-  include Rockhall::WorkflowMethods
-  include ActiveModel::Validations
-  include Rockhall::Validations
-  include Rockhall::TemplateMethods
-  include Hydra::AccessControls::Permissions
-  include Rockhall::Permissions
-  include Rockhall::Reorganize
+  include Rockhall::Models
 
   # ActiveFedora implements callbacks just like ActiveRecord does and you can specify
   # them here.  #apply_default_permissions is a particular method in our local Rockhall
@@ -56,29 +49,29 @@ class ArchivalVideo < ActiveFedora::Base
   # model's attributes.
 
   # Fields in the assetReview datastream
-  delegate_to :assetReview,
-    [:reviewer, :date_updated, :complete, :priority, :license, :abstract],
-    :multiple => true
+  has_attributes :reviewer, :date_updated, :complete, :priority, :license, :abstract,
+    :datastream => :assetReview,
+    :multiple   => true
 
   # Fields in the descMetadata datastream
-  delegate_to :descMetadata,
-    [:alternative_title, :chapter, :episode, :segment, :subtitle, :track,
+  has_attributes :alternative_title, :chapter, :episode, :segment, :subtitle, :track,
       :translation, :lc_subject, :lc_name, :rh_subject, :subject, :summary, :contents,
       :getty_genre, :lc_genre, :lc_subject_genre, :genre, :event_place,
       :event_date, :contributor_name, :contributor_role, :publisher_name, :publisher_role,
-      :note, :accession_number, :additional_collection], 
+      :note, :accession_number, :additional_collection,
+    :datastream => :descMetadata,
     :multiple => true
 
-  delegate_to :descMetadata, 
-    [:title, :collection, :collection_uri, :collection_authority, :archival_series, :archival_series_uri, :archival_series_authority], 
+  has_attributes :title, :collection, :collection_uri, :collection_authority, :archival_series, :archival_series_uri, :archival_series_authority, 
+    :datastream => :descMetadata,
     :multiple => false
 
-  delegate :event_series,     :to => :descMetadata, :at => [:series], :multiple => true
-  delegate :title_label,      :to => :descMetadata, :at => [:label],  :multiple => true
+  has_attributes :event_series, :datastream => :descMetadata, :at => [:series], :multiple => true
+  has_attributes :title_label,  :datastream => :descMetadata, :at => [:label],  :multiple => true
 
   # Fields in the properties datastream
-  delegate_to :properties, [:depositor, :notes], :multiple => true
-  delegate :converted, :to => :properties, :multiple => false 
+  has_attributes :depositor, :notes, :datastream => :properties, :multiple => true
+  has_attributes :converted, :datastream => :properties, :multiple => false 
 
   # Validations
   validates_presence_of :title, :message => "Main title can't be blank"
