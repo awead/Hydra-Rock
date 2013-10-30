@@ -26,20 +26,19 @@ class ExternalVideo < ActiveFedora::Base
   has_metadata :name => "mediaInfo",      :type => MediainfoXml
   has_metadata :name => "properties",     :type => Properties
 
-  delegate_to :descMetadata,
-    [ :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 
+  has_attributes :name, :location, :date, :generation, :media_type, :file_format, :size, :size_units, :colors, 
       :duration, :rights_summary, :note, :checksum_type, :checksum_value, :device, :capture_soft, 
       :trans_soft, :operator, :trans_note, :vendor, :condition, :cleaning, :color_space, :chroma, 
       :standard, :language, :video_standard, :video_encoding, :video_bit_rate, :video_bit_rate_units, 
       :frame_rate, :frame_size, :video_bit_depth, :aspect_ratio, :audio_standard, :audio_encoding, 
       :audio_bit_rate, :audio_bit_rate_units, :audio_sample_rate, :audio_sample_rate_units, 
-      :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format ],
-      :multiple => true
+      :audio_bit_depth, :audio_channels, :next, :previous, :barcode, :format,
+    :datastream => :descMetadata,  
+    :multiple => true
 
-  delegate_to :properties, [:depositor, :notes], :multiple => true
-  delegate :converted, :to => :properties, :multiple => false   
-
-  delegate :mi_file_format, :to => :mediaInfo, :multiple => true
+  has_attributes :depositor, :notes, :datastream => :properties, :multiple => true
+  has_attributes :converted, :datastream => :properties, :multiple => false   
+  has_attributes :mi_file_format, :datastream => :mediaInfo, :multiple => true
 
   validate :validate_date
 
