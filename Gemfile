@@ -22,9 +22,9 @@ gem 'artk'
 gem 'mysql2'
 
 group :development do
-  gem 'better_errors', '=0.9.0'
+  gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pry', '~>0.9.12'
+  gem 'pry'
 end
 
 group :development, :test do
