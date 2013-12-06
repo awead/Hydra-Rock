@@ -89,31 +89,41 @@ class ArchivalVideo < ActiveFedora::Base
     self.videos[:access].each do |ev|
       access_videos << ev.name.first
     end
+
+    # Blacklight pre-Solrizer solr fields
+    # These can be removed once we've upgraded Blacklight to use Solrizer
     solr_doc.merge!("access_file_s"      => access_videos)
     solr_doc.merge!("format_dtl_display" => self.access_format)
     solr_doc.merge!("heading_display"    => self.title)
-    solr_doc.merge!("material_facet"     => "Digital")
     solr_doc.merge!("format"             => "Video")
 
+    # Additional fields
+    Solrizer.insert_field(solr_doc, "heading", self.title, :displayable)
+    Solrizer.insert_field(solr_doc, "ead", self.ead_id, :stored_sortable)
+    Solrizer.insert_field(solr_doc, "ref", self.id, :stored_sortable)
+    Solrizer.insert_field(solr_doc, "parent", self.ref_id, :stored_sortable, :displayable)
+    Solrizer.insert_field(solr_doc, "parent_unittiles", self.archival_series, :displayable)
+
     # Facets
-    solr_doc.merge!("series_facet" => solr_doc[Solrizer.solr_name("series", :facetable)]) unless solr_doc[Solrizer.solr_name("series", :facetable)].nil?
-    solr_doc.merge!("genre_facet" => solr_doc[Solrizer.solr_name("genre", :facetable)]) unless solr_doc[Solrizer.solr_name("genre", :facetable)].nil?
+    Solrizer.insert_field(solr_doc, "material", "Digital", :facetable, :displayable)
+    Solrizer.insert_field(solr_doc, "format",   "Video",   :facetable, :displayable)
 
-    # Collection facet
-    collection = [ solr_doc[Solrizer.solr_name("collection", :facetable)], solr_doc[Solrizer.solr_name("additional_collection", :facetable)] ]
-    solr_doc.merge!("collection_facet" => collection.compact.flatten) unless collection.nil?
-
-    # Collect contributors and publishers and put them in the name_facet and contributors_display field
+    # Merge additional collection terms into collection field and copy this to Blacklight collection_facet field
+    Solrizer.insert_field(solr_doc, "collection", self.additional_collection, :facetable)
+    #solr_doc.merge!("collection_facet" => solr_doc[Solrizer.solr_name("collection", :facetable)] ) unless solr_doc[Solrizer.solr_name("collection", :facetable)].nil?
+    
+    # Collect contributors and publishers and put them in the name and contributors fields
     name_facet = Array.new
     self.contributor_name.collect { |name| name_facet << name }
     self.publisher_name.collect { |name| name_facet << name }
-    solr_doc.merge!("name_facet"           => name_facet) unless name_facet.empty?
-    solr_doc.merge!("contributors_display" => name_facet) unless name_facet.empty?
+    Solrizer.set_field(solr_doc, "name", name_facet, :facetable) unless name_facet.empty?
+    Solrizer.set_field(solr_doc, "contributors", name_facet, :displayable) unless name_facet.empty?
 
     # BL-374: This is to mesh with our current method of displaying subjects in Blacklight
-    subject_facet = Array.new
-    self.subject.collect { |term| subject_facet << term.split("--") }
-    solr_doc.merge!("subject_facet" => subject_facet.flatten.uniq.collect { |t| t.gsub(/\.$/,"") }) unless subject_facet.empty?
+    subject_terms = Array.new
+    self.subject.collect { |term| subject_terms << term.split("--") }
+    subject_facet = subject_terms.flatten.uniq.collect { |t| t.gsub(/\.$/,"") }
+    Solrizer.set_field(solr_doc, "subject", subject_facet, :facetable) unless subject_facet.empty?
 
     return solr_doc
   end
