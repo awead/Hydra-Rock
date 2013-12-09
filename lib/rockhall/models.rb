@@ -20,7 +20,6 @@ module Rockhall::Models
       self.external_videos.collect { |v| instantiations << v.datastreams["descMetadata"] }
     end
     self.datastreams["descMetadata"].pbc_id = self.pid
-    self.datastreams["descMetadata"].remove_node(:note) if self.note.first.blank?
     self.datastreams["descMetadata"].to_pbcore_xml(instantiations)
   end
 
