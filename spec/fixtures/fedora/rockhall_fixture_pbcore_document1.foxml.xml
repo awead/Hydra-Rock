@@ -8,7 +8,7 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE=""/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE="fedoraAdmin"/>
 <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-12-14T19:02:46.117Z"/>
-<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-10-24T18:56:47.592Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-12-09T15:28:19.169Z"/>
 </foxml:objectProperties>
 <foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
 <foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-12-14T19:02:46.117Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
@@ -604,6 +604,30 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <audit:componentID>descMetadata</audit:componentID>
 <audit:responsibility>fedoraAdmin</audit:responsibility>
 <audit:date>2013-10-24T18:56:47.592Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC75">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-12-09T03:54:53.096Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC76">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>thumbnail</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-12-09T03:54:53.163Z</audit:date>
+<audit:justification></audit:justification>
+</audit:record>
+<audit:record ID="AUDREC77">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>descMetadata</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-12-09T15:28:19.169Z</audit:date>
 <audit:justification></audit:justification>
 </audit:record>
 </audit:auditTrail>
@@ -3533,6 +3557,176 @@ library@rockhall.org</instantiationLocation>
 </pbcoreDescriptionDocument>
 </foxml:xmlContent>
 </foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.36" LABEL="" CREATED="2013-12-09T03:54:53.096Z" MIMETYPE="text/xml" SIZE="5725">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="f1fa1ac189b4ea63667b05c63969727ce2ecbd07"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Accession Number">LA.2003.01.001</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier action="create" annotation="Additional Collection" authenticity_token="Lsq47GKq0W5t+TXb5sVfjLKT7hKG5FPRYK4rV55V2ts=" controller="nodes" id="rockhall:fixture_pbcore_document1" type="additional_collection" utf8="✓">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Collection" ref="http://repository.rockhall.org/collections/RG-0006" source="Rock and Roll Hall of Fame and Museum">Rock and Roll Hall of Fame and Museum Records</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="descMetadata.37" LABEL="" CREATED="2013-12-09T15:28:19.169Z" MIMETYPE="text/xml" SIZE="6151">
+<foxml:contentDigest TYPE="SHA-1" DIGEST="4c0a3b07bd064271b5795ad4245787a41fef6d92"/>
+<foxml:xmlContent>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier annotation="PID" source="Rock and Roll Hall of Fame and Museum"></pbcoreIdentifier>
+  <pbcoreTitle titleType="Main">Rock and Roll Hall of Fame induction ceremony. Part 1.</pbcoreTitle>
+  <pbcoreDescription annotation="Summary" descriptionType="Description" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#description" descriptionTypeSource="pbcoreDescription/descriptionType">(1 of 3) Uncut performances and award presentations from the 1999 ceremony.</pbcoreDescription>
+  <pbcoreDescription annotation="Parts List" descriptionType="Table of Contents" descriptionTypeRef="http://pbcore.org/vocabularies/pbcoreDescription/descriptionType#table-of-contents" descriptionTypeSource="pbcoreDescription/descriptionType"></pbcoreDescription>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Event Series">Rock and Roll Hall of Fame and Museum. Annual induction ceremony. 1999.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreCoverage>
+    <coverage annotation="Event Place">New York, NY</coverage>
+    <coverageType>Spatial</coverageType>
+  </pbcoreCoverage>
+  <pbcoreCoverage>
+    <coverage annotation="Event Date">1999-03-15</coverage>
+    <coverageType>Temporal</coverageType>
+  </pbcoreCoverage>
+  <pbcoreAnnotation annotationType="Notes">http://rockhall.com/inductees/ceremonies/1999/</pbcoreAnnotation>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Award presentations (Motion pictures)</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock music--History and criticism.</pbcoreSubject>
+  <pbcoreTitle titleType="Alternative">[Tape label title] Induction ceremony, line cut reel #20A, 03/15/99.</pbcoreTitle>
+  <pbcoreGenre ref="http://id.loc.gov/authorities/genreForms.html" source="Library of Congress Genre/Form Terms">Rock concert films.</pbcoreGenre>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock and Roll Hall of Fame and Museum.</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Inductee</pbcoreSubject>
+  <pbcoreSubject ref="http://id.loc.gov/authorities/subjects.html" source="Library of Congress Subject Headings">Rock musicians.</pbcoreSubject>
+  <pbcoreContributor>
+    <contributor>Springsteen, Bruce</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>McCartney, Paul</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Joel, Billy</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Brown, Charles, 1922-1999</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Mayfield, Curtis</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Shannon, Del</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Springfield, Dusty</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Staple Singers</contributor>
+    <contributorRole source="MARC relator terms">recipient</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor>Pickett, Wilson</contributor>
+    <contributorRole source="MARC relator terms">performer</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>Rock and Roll Hall of Fame Foundation</publisher>
+    <publisherRole source="PBCore publisherRole">presenter</publisherRole>
+  </pbcorePublisher>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Accession Number">LA.2003.01.001</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier action="create" annotation="Additional Collection" authenticity_token="Lsq47GKq0W5t+TXb5sVfjLKT7hKG5FPRYK4rV55V2ts=" controller="nodes" id="rockhall:fixture_pbcore_document1" type="additional_collection" utf8="✓">Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division.</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Collection" ref="http://repository.rockhall.org/collections/RG-0010" source="Rock and Roll Hall of Fame and Museum">Rock and Roll Hall of Fame Foundation Records</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+  <pbcoreRelation>
+    <pbcoreRelationType ref="http://pbcore.org/vocabularies/relationType#is-part-of" source="PBCore relationType">Is Part Of</pbcoreRelationType>
+    <pbcoreRelationIdentifier annotation="Archival Series" ref="http://repository.rockhall.org/collections/RG-0010/components/ref42" source="Rock and Roll Hall of Fame and Museum">Series III: Audiovisual materials</pbcoreRelationIdentifier>
+  </pbcoreRelation>
+</pbcoreDescriptionDocument>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="" CREATED="2011-12-14T19:02:46.370Z" MIMETYPE="text/xml" SIZE="297">
@@ -3777,7 +3971,7 @@ library@rockhall.org</instantiationLocation>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="thumbnail" STATE="A" CONTROL_GROUP="M" VERSIONABLE="false">
-<foxml:datastreamVersion ID="thumbnail.3" LABEL="Thumbnail image" CREATED="2013-10-24T18:47:20.701Z" MIMETYPE="image/jpeg" SIZE="47430">
+<foxml:datastreamVersion ID="thumbnail.4" LABEL="Thumbnail image" CREATED="2013-12-09T03:54:53.163Z" MIMETYPE="image/jpeg" SIZE="47430">
 <foxml:contentDigest TYPE="SHA-1" DIGEST="26669b09e81147bdcd638425fcba50f512beccd6"/>
 <foxml:binaryContent> 
               /9j/4AAQSkZJRgABAQEAZABkAAD/4QDeRXhpZgAATU0AKgAAAAgABwEGAAMAAAABAAIAAAESAAMAAAAB

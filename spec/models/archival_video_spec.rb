@@ -92,33 +92,55 @@ describe ArchivalVideo do
   end
 
   describe ".to_discovery" do
-    it "should return a solr document with metadata for discovery" do
+    it "should fields specifically for Blacklight" do
       doc = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
       solr_doc = doc.to_discovery
       solr_doc["access_file_s"].should == ["39156042439369_access.mp4"]
       solr_doc["format_dtl_display"].should == ["H.264/MPEG-4 AVC"]
       solr_doc["heading_display"].should == doc.title
-      solr_doc["material_facet"].should == "Digital"
+      solr_doc["format"].should == "Video"
     end
 
+    it "should add additional fields for integration with our finding aids" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1")
+      solr_doc = doc.to_discovery
+      solr_doc[Solrizer.solr_name("heading", :displayable)].should == [doc.title] 
+      solr_doc[Solrizer.solr_name("ead", :stored_sortable)].should == "RG-0010"
+      solr_doc[Solrizer.solr_name("ref", :stored_sortable)].should == "rockhall:fixture_pbcore_document1"
+      solr_doc[Solrizer.solr_name("parent", :displayable)].should == ["ref42"]
+      solr_doc[Solrizer.solr_name("parent", :stored_sortable)].should == "ref42"
+      solr_doc[Solrizer.solr_name("parent_unittitles", :displayable)].should == ["Series III: Audiovisual materials"]
+
+    end
+
+    it "should include digital files and formats" do
+      doc = ArchivalVideo.find("rrhof:525")
+      solr_doc = doc.to_discovery
+      solr_doc[Solrizer.solr_name("access_file", :displayable)].should == ["39156042459755_access.mp4"]
+      solr_doc[Solrizer.solr_name("format_dtl", :displayable)].should == ["H.264/MPEG-4 AVC"]
+    end
+
+    it "should add additional facets" do
+      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document3")
+      solr_doc = doc.to_discovery
+      solr_doc[Solrizer.solr_name("material", :facetable)].should == ["Digital"]
+      solr_doc[Solrizer.solr_name("format", :facetable)].should == ["Video"]
+      solr_doc[Solrizer.solr_name("material", :displayable)].should == ["Digital"]
+      solr_doc[Solrizer.solr_name("format", :displayable)].should == ["Video"]
+    end
+    
     it "should return correctly formatted contributors" do
       doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
-      doc["name_facet"].should include "Joel, Billy"
-      doc["name_facet"].should include "Rock and Roll Hall of Fame Foundation"
-      doc["contributors_display"].should include "Joel, Billy"
+      doc[Solrizer.solr_name("name", :facetable)].should include "Springsteen, Bruce"
+      doc[Solrizer.solr_name("name", :facetable)].should include "Rock and Roll Hall of Fame Foundation"
+      doc[Solrizer.solr_name("contributors", :displayable)].should include "Springsteen, Bruce"
+      doc[Solrizer.solr_name("contributors", :displayable)].should include "Rock and Roll Hall of Fame Foundation"
     end
 
-    it "should return subject facets for Blacklight" do
+    it "should combine collection and additional_collection fields" do
       doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
-      doc["subject_facet"].should include "Rock music"
-      doc["subject_facet"].should include "History and criticism"
-      doc["subject_facet"].should include "Inductee"
-    end
-
-    it "should combine collection and additional_collection for faceting in Blacklight" do
-      doc = ArchivalVideo.find("rockhall:fixture_pbcore_document1").to_discovery
-      doc["collection_facet"].should include "Rock and Roll Hall of Fame and Museum Records"
-      doc["collection_facet"].should include "Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division."
+      doc[Solrizer.solr_name("collection", :facetable)].should include "Rock and Roll Hall of Fame Foundation Records"
+      doc[Solrizer.solr_name("collection", :facetable)].should include "Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division."
     end
   end
 

@@ -102,15 +102,15 @@ class ArchivalVideo < ActiveFedora::Base
     Solrizer.insert_field(solr_doc, "ead", self.ead_id, :stored_sortable)
     Solrizer.insert_field(solr_doc, "ref", self.id, :stored_sortable)
     Solrizer.insert_field(solr_doc, "parent", self.ref_id, :stored_sortable, :displayable)
-    Solrizer.insert_field(solr_doc, "parent_unittiles", self.archival_series, :displayable)
+    Solrizer.insert_field(solr_doc, "parent_unittitles", self.archival_series, :displayable)
+    Solrizer.insert_field(solr_doc, "access_file", access_videos, :displayable)
+    Solrizer.insert_field(solr_doc, "format_dtl", self.access_format, :displayable)
 
     # Facets
     Solrizer.insert_field(solr_doc, "material", "Digital", :facetable, :displayable)
-    Solrizer.insert_field(solr_doc, "format",   "Video",   :facetable, :displayable)
 
-    # Merge additional collection terms into collection field and copy this to Blacklight collection_facet field
+    # Merge additional collection and collection into one facetable field
     Solrizer.insert_field(solr_doc, "collection", self.additional_collection, :facetable)
-    #solr_doc.merge!("collection_facet" => solr_doc[Solrizer.solr_name("collection", :facetable)] ) unless solr_doc[Solrizer.solr_name("collection", :facetable)].nil?
     
     # Collect contributors and publishers and put them in the name and contributors fields
     name_facet = Array.new

@@ -32,7 +32,8 @@ Feature:
     | contributor_name      | Contributor           | Staple Singers (recipient) |  
     | contributor_name      | Contributor           | Pickett, Wilson (performer) | 
     | publisher_name        | Publisher             | Rock and Roll Hall of Fame Foundation | 
-    | collection            | Archival Collection   | Rock and Roll Hall of Fame and Museum Records |
+    | collection            | Archival Collection   | Rock and Roll Hall of Fame Foundation Records |
+    | archival_series       | Archival Series       | Series III: Audiovisual materials |
     | additional_collection | Additional Collection | Rock and Roll Hall of Fame and Museum Records. Education and Public Programs Division. | 
     | accession_number      | Accession Number      | LA.2003.01.001 | 
     | depositor             | Depositor             | archivist1@example.com | 
