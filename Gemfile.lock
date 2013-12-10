@@ -37,7 +37,7 @@ GEM
       tzinfo (~> 0.3.37)
     addressable (2.3.5)
     arel (4.0.1)
-    artk (0.3.0)
+    artk (0.3.1)
       rails (~> 4.0.0)
     atomic (1.1.14)
     bagit (0.3.2)
