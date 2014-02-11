@@ -2,7 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '~>4.0.0'
 
-gem 'hydra-head', '~>6.4.0'
+gem 'hydra-head'
+gem 'blacklight', '< 5.0.0'
 gem 'hydra-pbcore'
 gem 'bootstrap-sass'
 gem 'unicode', :platforms => [:mri_18, :mri_19]
