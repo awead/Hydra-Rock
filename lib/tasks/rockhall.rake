@@ -1,8 +1,12 @@
 namespace :rockhall do
 
-  desc "Export items from hydra into blacklight"
+  desc "Export items from hydra into blacklight (use URL= to override config)"
   task :discovery => :environment do
-    discovery = Rockhall::Discovery.new
+    if ENV["URL"]
+      discovery = Rockhall::Discovery.new(ENV["URL"])
+    else
+      discovery = Rockhall::Discovery.new
+    end
     discovery.delete
     discovery.update
   end
