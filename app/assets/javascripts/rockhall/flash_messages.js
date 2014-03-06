@@ -20,6 +20,12 @@ function flashWarning(message) {
   $('ul.flash').append(html)
 }
 
+// Remove the message if you click on it
 $(document).on('click', '#flash_message', function(event) {
   $(this).parent().remove();
 });
+
+// or, it goes away by itself after 3 seconds
+setTimeout(function() {
+  $('#flash_message').remove();
+}, 3000);
