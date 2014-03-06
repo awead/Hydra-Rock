@@ -2,12 +2,14 @@
 
 module LocalBlacklightHelper
 
+  include Blacklight::BlacklightHelperBehavior
+
   def application_name
     'Hydra'
   end
 
   def field_value_separator
-    '<br/>'
+    '<br/>'.html_safe
   end
 
 end
