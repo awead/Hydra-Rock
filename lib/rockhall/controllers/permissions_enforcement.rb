@@ -20,5 +20,4 @@ module Rockhall::Controllers::PermissionsEnforcement
     end
   end
 
-
 end

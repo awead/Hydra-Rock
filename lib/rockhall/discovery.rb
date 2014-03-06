@@ -18,16 +18,12 @@ class Rockhall::Discovery
     @solr = url.nil? ? RSolr.connect(:url => RH_CONFIG["solr_discovery"]) : RSolr.connect(:url => url)
   end
 
-  # Deletes all existing Hydra-related documents in Blacklight and adds
-  # newly queried ones from Hydra's solr index.
-  def update
-    delete if blacklight_items.count > 0
-    self.exports.each do |pid|
-      obj = ActiveFedora::Base.find(pid, :cast => true)
-      solr.add obj.to_discovery if obj.respond_to? "to_discovery"
+  def update pid = nil
+    if pid.nil?
+      update_all
+    else
+      add_to_solr pid
     end
-    solr.commit
-    solr.optimize
   end
 
   # delete any ActiveFedora objects from the Blacklight index
@@ -50,6 +46,26 @@ class Rockhall::Discovery
     solr_params[:q]    = 'active_fedora_model_ssi:"ArchivalVideo"'
     response = @solr.get 'select', :params => solr_params
     return response["response"]["docs"]
+  end
+
+  private
+
+  # Deletes all existing Hydra-related documents in Blacklight and adds
+  # newly queried ones from Hydra's solr index.
+  def update_all
+    delete if blacklight_items.count > 0
+    self.exports.collect { |pid| add_to_solr(pid) }
+    commit
+  end
+
+  def add_to_solr pid
+    obj = ActiveFedora::Base.find(pid, :cast => true)
+    solr.add obj.to_discovery if obj.respond_to? "to_discovery"
+  end
+
+  def commit
+    solr.commit
+    solr.optimize
   end
 
 end

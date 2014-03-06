@@ -25,6 +25,10 @@ describe Rockhall::Discovery do
     @d.solr.should be_a_kind_of(RSolr::Client)
   end
 
+  it "should update a single AF object" do
+    @d.update "rrhof:525"
+  end
+
   describe "#exports" do
     it "should be an array of AF objects that can be exported to Blacklight" do
       @d.exports.should be_a_kind_of(Array)
@@ -33,10 +37,7 @@ describe Rockhall::Discovery do
   end
 
   describe "#blacklight_items" do
-    it "should be an array of the existing Hydra objects in Blacklight's solr index" do
-      @d.blacklight_items.length.should == 4
-    end
-
+    
     it "should be indexed according to the catalog's schema" do
       params = {:q => 'id:"rrhof:331"', :qt => 'document'}
       doc = @d.solr.get("select", :params=>params)["response"]["docs"].first

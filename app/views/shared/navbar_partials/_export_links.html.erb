@@ -3,8 +3,15 @@
     <i class="icon-share"></i> Export <b class="caret"></b>
   </a>
   <ul class="dropdown-menu">
-    <%= content_tag(:li, link_to("PBcore", catalog_path(params[:id], :format => 'xml'), { :target => "_blank" })) %>
-    <%= content_tag(:li, link_to("Solr", catalog_path(params[:id], :format => 'solr'), { :target => "_blank" })) %>
-    <%= content_tag(:li, link_to("Discovery", catalog_path(params[:id], :format => 'discovery'), { :target => "_blank" })) %>
+    <%= content_tag(:li, link_to("View PBcore", catalog_path(params[:id], :format => 'xml'), { :target => "_blank" })) %>
+    <%= content_tag(:li, link_to("View Solr", catalog_path(params[:id], :format => 'solr'), { :target => "_blank" })) %>
+    <%= content_tag(:li, link_to("View Discovery", catalog_path(params[:id], :format => 'discovery'), { :target => "_blank" })) %>
+    <li class = "divider"></li>
+    <li>
+      <%= form_tag export_archival_video_path, :method => "patch" do %>
+        <%= hidden_field_tag(:wf_step, params[:wf_step]) %>
+        <%= submit_tag "To Discovery", :class => "btn-link btn-dropdown" %>
+      <% end %>
+    </li>
   </ul>
 </li>

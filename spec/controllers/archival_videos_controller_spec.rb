@@ -69,6 +69,13 @@ describe ArchivalVideosController do
       end
     end
 
+    describe "#export" do
+      it "should redirect to the sign-in page" do
+        put :export, :id => "foo"
+        assert_redirected_to new_user_session_path
+      end
+    end
+
   end
 
   describe "for non-staff users" do
@@ -135,6 +142,14 @@ describe ArchivalVideosController do
     describe "#destroy" do
       it "should redirect to the show page" do
         delete :destroy, :id => "rockhall:fixture_pbcore_document1"
+        assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
+        assert_equal "You are not allowed to edit this item", flash[:alert]
+      end
+    end
+
+    describe "#export" do
+      it "should redirect to the show page" do
+        put :export, :id => "rockhall:fixture_pbcore_document1"
         assert_redirected_to catalog_path("rockhall:fixture_pbcore_document1")
         assert_equal "You are not allowed to edit this item", flash[:alert]
       end
@@ -279,6 +294,37 @@ describe ArchivalVideosController do
           @sample.archival_series_uri.should == "http://repository.rockhall.org/collections/ARC-0001/components/ref1"
         end
 
+      end
+
+    end
+
+    describe "#export" do
+
+      before :each do
+        @video = ArchivalVideo.new
+        @video.title = "Archival Video Update Test"
+        @video.save
+      end
+
+      after :each do
+        @video.delete
+      end
+
+      it "should export a video to the discovery interface" do
+        @video.discover_groups = ["public"]
+        @video.save
+        put :export, :id => @video.pid, :wf_step => "foo"
+        assert_equal "Video was exported for discovery", flash[:notice]
+      end
+    
+      it "should return an error message when the video is not discoverable" do
+        put :export, :id => @video.pid, :wf_step => "foo"
+        assert_equal "Video isn't discoverable", flash[:error]
+      end
+
+      it "should redirect to the show view if there's no workflow step" do
+        put :export, :id => @video.pid, :wf_step => ""
+        assert_redirected_to catalog_path(@video.pid)
       end
 
     end

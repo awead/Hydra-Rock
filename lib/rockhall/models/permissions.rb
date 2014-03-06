@@ -14,4 +14,8 @@ module Rockhall::Models::Permissions
     self.save
   end
 
+  def is_discoverable?
+    self.discover_groups.include?("public") || self.read_groups.include?("public")
+  end
+
 end

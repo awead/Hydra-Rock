@@ -3,10 +3,10 @@ class ArchivalVideosController < ApplicationController
   include Blacklight::Catalog
   include Rockhall::Controllers
 
-  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer, :destroy]
+  before_filter :authenticate_user!, :only=>[:create, :new, :edit, :update, :assign, :transfer, :destroy, :export]
   before_filter :enforce_create_permissions, :only => [:new, :create]
   before_filter :enforce_delete_permissions, :only => [:destroy]
-  before_filter :enforce_edit_permissions, :only => [:edit, :update, :transfer, :assign, :import]
+  before_filter :enforce_edit_permissions, :only => [:edit, :update, :transfer, :assign, :import, :export]
   before_filter :update_session
 
   def edit
@@ -114,6 +114,30 @@ class ArchivalVideosController < ApplicationController
       flash[:error] = @afdoc.errors.messages.values.join("<br/>")
     end
     render :partial => "import"
+  end
+
+  # Exports a video to our disovery app (Blacklight)
+  def export
+    @afdoc = ArchivalVideo.find(params[:id])
+    if @afdoc.is_discoverable?
+      discover = Rockhall::Discovery.new
+      discover.update params[:id]
+      flash[:notice] = "Video was exported for discovery"
+    else
+      flash[:error] = "Video isn't discoverable"
+    end
+    redirect_to_edit_or_view
+    
+  end
+
+  protected
+
+  def redirect_to_edit_or_view
+    if params[:wf_step].empty?
+      redirect_to catalog_path(@afdoc)
+    else
+      redirect_to(workflow_archival_video_path(@afdoc, params[:wf_step]))
+    end
   end
 
 end

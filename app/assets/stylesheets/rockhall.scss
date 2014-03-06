@@ -2,6 +2,14 @@
  Local stylings
 */
 
+@import 'bootstrap';
+@import 'bootstrap-responsive';
+
+// Just import facet stylings.  If you want to import the entire
+// blacklight style do:
+// @import 'blacklight/blacklight';
+@import 'blacklight/facets';
+
 body { padding-top: 60px; }
 
 // Hide text label for bookmark toggle when using tables
@@ -82,4 +90,20 @@ a.btn.more_facets_link {
 
 li:hover .icon-chevron {
   opacity: 1;
+}
+
+.btn-dropdown {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 20px;
+  color: inherit;
+  white-space: nowrap;
+  text-decoration: inherit;
+  &:hover {
+    text-decoration: none;
+    color: $white;
+    background: #0081c2;
+  }
 }
